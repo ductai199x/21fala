@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Darij Grinberg: Advanced Linear Algebra and Matrix Analysis (Math 504), Fall 2021">
+  <meta name="keywords" content="mathematics, advanced linear algebra, matrix analysis, linear algebra, matrices, eigenvalues, jordan form, teaching, courses, drexel, math 504">
+  <meta name="author" content="Darij Grinberg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style media="all">
+  .boldtable
+    dt {
+      font-weight: bold;
+    }
+  </style>
+  <style media="screen">
+  .boldtable dl {
+      display: grid;
+      grid-template-columns: max-content auto;
+      grid-gap: 10px;
+    }
+
+    dt {
+      grid-column-start: 1;
+      font-weight: bold;
+    }
+
+    dd {
+      grid-column-start: 2;
+    }
+    
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    
+  </style>
+  <title>Darij Grinberg: Advanced Linear Algebra and Matrix Analysis (Math 504), Fall 2021</title>
+</head>
+<body>
+
+<h1 style="text-align:center">Math 504: Advanced Linear Algebra and Matrix Analysis, Fall 2021 <br>
+Professor: <a href="https://www.cip.ifi.lmu.de/~grinberg/">Darij Grinberg</a></h1>
+
+<hr>
+
+<h2>Organization</h2>
+
+<div class="boldtable">
+<dl>
+  <dt>Classes:</dt>
+  <dd>Mon/Wed/Fri 11:00 AM -- 11:50 AM in Curtis 454.</dd>
+  <dt>Office hours:</dt>
+  <dd>
+  TBA.
+  <!-- Monday noon till 1 PM on <a href="https://drexel.zoom.us/j/2350700617">https://drexel.zoom.us/j/2350700617</a>. Also by appointment. -->
+  </dd>
+  <dt>Notes:</dt>
+  <dd><a href="alanotes.pdf"><cite>Lecture notes</cite></a> (<a href="alanotes.tex">source code</a>). Work in progress; your collaboration appreciated!</dd>
+  <!--
+  <dt>Blackboard:</dt>
+  <dd><a href="https://?????">https://?????</a>.</dd>
+  -->
+  <dt>Gradescope:</dt>
+  <dd><a href="https://www.gradescope.com/courses/313218">https://www.gradescope.com/courses/313218</a>.</dd>
+  <dt>Piazza:</dt>
+  <dd><a href="https://piazza.com/drexel/fall2021/math504">https://piazza.com/drexel/fall2021/math504</a>.</dd>
+  <dt>Instructor email:</dt>
+  <dd><address><a href="mailto:darij.grinberg@drexel.edu">darij.grinberg@drexel.edu</a></address>
+  <!--
+  <dt>Mailbox:</dt>
+  <dd>Mathematics Common Room (Korman Center, 2nd floor).
+  -->
+</dl>
+</div>
+
+<h2>Course description</h2>
+
+<p>A second course in linear algebra, with a focus on complex matrices and their eigenvalues and various decompositions. Topics to be covered include QR factorization, Schur factorization (unitary triangulation), spectral theorems, SVD and polar decompositions, the Jordan canonical form, the interlacing eigenvalues theorem, the Gershgorin disc theorem and Perron-Frobenius theory of nonnegative matrices.
+</p>
+
+<p><strong>Level:</strong> graduate. </p>
+
+<p><strong>Prerequisites:</strong> basic knowledge of linear algebra, including determinants, the "basic" subspaces (kernel and image), eigenvalues and eigenvectors. </p>
+
+<h2>Course materials</h2>
+
+<div class="boldtable">
+<dl>
+  <dt>Recommended:</dt>
+  <dd><ul>
+         <li> <a href="http://www.cse.zju.edu.cn/eclass/attachments/2015-10/01-1446086008-145421.pdf">Roger A. Horn, Charles R. Johnson, <cite>Matrix analysis</cite>, Cambridge University Press, 2nd edition 2013.</a>: The main source. We won't follow it directly, but most of what we will do is in here. </li>
+  </ul></dd>
+  <dt>Other:</dt>
+  <dd>
+      <ul>
+         <li> <a href="https://staff.math.su.se/mleites/books/prasolov-1994-problems.pdf">Viktor Prasolov, <cite>Problems and Theorems in Linear Algebra</cite>, AMS 1994</a>. </li>
+         <li> <a href="http://libgen.rs/search.php?req=gantmacher+theory+of+matrices&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def">F. R. Gantmacher, <cite>Theory of Matrices, vols. 1 and 2</cite>, AMS 1990 and 2000.</a> </li>
+      </ul>
+    <p> The following list is from Hugo Woerdeman, who taught this course last year. I don't know these well. <p>
+    <ul>
+         <li> <a href="http://libgen.rs/book/index.php?md5=BA7FA8CE04A7021B0E0B84813E2BF144">Peter Lancaster, Miron Tismenetsky, <cite>The Theory of Matrices</cite>, 2nd edition, Academic Press 1985</a>. </li>
+         <li> Ben Noble, James W. Daniel, <cite>Applied Linear Algebra</cite>, 3rd edition. </li>
+         <li> <a href="http://libgen.rs/book/index.php?md5=3C2B1C284DA2B824ADDB8B9788772BC0">Kenneth M. Hoffman, Ray Kunze, <cite>Linear Algebra</cite>, Pearson 1971.</a> </li>
+         <li> <a href="http://libgen.rs/book/index.php?md5=CAFB2B211A6CC3D318A149267884A82F">Stephen Friedberg, Arnold J. Insel, Lawrence E. Spence, <cite>Linear Algebra</cite>, 4th edition, Pearson 2003</a>. </li>
+         <li> <a href="http://libgen.rs/book/index.php?md5=D13553C540B5BC01A9C9BB9A095D552B">Gene Golub, Charles Van Loan, <cite>Matrix Computations</cite>, 4th edition, Johns Hopkins University Press 2012</a>. </li>
+         <li> <a href="http://libgen.rs/book/index.php?md5=4E5C19A2C435FF3DD5FD80F6604DEF8B">Lloyd N. Trefethen, David Bau III, <cite>Numerical Linear Algebra</cite>, SIAM 1997</a>. </li>
+         <li> <a href="http://matematicas.unex.es/~navarro/algebralineal/lax.pdf">Peter D. Lax, <cite>Linear Algebra and Its
+Applications</cite>, 2nd edition, Wiley 2007</a>. </li>
+         <li> <a href="https://linear.axler.net/">Sheldon Axler, <cite>Linear Algebra done right</cite>, 3rd edition, Springer 2015</a>. Undergraduate introduction. Defines polynomials and determinants badly; other things are done well. </li>
+         <!--
+         <li> [SHORT] <a href="LINK">AUTHOR, <cite>TITLE</cite>, PUBLISHER YEAR</a>: DESCRIPTION </li>
+         -->
+      </ul>
+      </dd>
+</dl>
+</div>
+
+<h2>Course calendar</h2>
+
+<div class="boldtable">
+<dl>
+  <!--
+  <dt>Week 1:</dt>
+  <dd><ul>
+         <li> This week's material: <a href="lec1.pdf">Lecture 1 (defining rings)</a> and <a href="lec2.pdf">Lecture 2 (integral domains, fields, subrings)</a>. </li>
+         <li> <a href="hw1.pdf">Homework set 1</a> (<a href="hw1.tex">source code</a>). </li>
+  </ul></dd>
+  -->
+
+  <dt>Plan:</dt>
+  <dd>
+  The following is copied from Hugo Woerdeman's 2020 syllabus. Things can change.
+  <ul>
+  <li>
+    1. QR factorization </li> <li>
+    2. Schur’s unitary triangularization </li> <li>
+    3. Spectral theorems for normal and Hermitian matrices </li> <li>
+    4. Singular value decomposition; polar decomposition </li> <li>
+    5. Jordan canonical form </li> <li>
+    6. Courant Fisher theorem </li> <li>
+    7. Interlacing eigenvalues theorem </li> <li>
+    8. Schur’s product theorem </li> <li>
+    9. Gelfand’s formula for the spectral radius </li> <li>
+    10. Gersgorin discs </li> <li>
+    11. Perron-Frobenius theory </li>
+  </ul></dd>
+
+</dl>
+</div>
+
+<h2>Grading and policies</h2>
+
+<div class="boldtable">
+<dl>
+  <dt>Grading matrix:</dt>
+  <dd><ul>
+         <li> 60%: homework (250 experience points = full score). </li>
+         <li> 40%: scribing (2 lectures per participant). </li>
+      </ul> </dd>
+  <dt>Grade scale:</dt>
+  <dd>These numbers are <strong>tentative and subject to change</strong>:
+      <ul>
+         <li> A+, A, A-: (80%, 100%]. </li>
+         <li> B+, B, B-: (60%, 80%]. </li>
+         <li> C+, C, C-: (40%, 60%]. </li>
+         <li> D+, D, D-: (20%, 40%]. </li>
+      </ul> </dd>
+  <dt>Homework policy:</dt>
+  <dd><ul>
+         <li> Collaboration and reading is allowed, but you have to write solutions in your own words and <strong>acknowledge all sources that you used</strong>. </li>
+         <li> Asking outsiders (anyone apart from your classmates and Drexel staff) for help with the problems is <strong>not</strong> allowed. (In particular, you cannot post homework as questions on math.stackexchange before the due date!) </li>
+         <li> Late homework will <strong>not</strong> be accepted. <!-- (But keep in mind that the lowest homework score will be dropped.) --> </li>
+         <li> Solutions have to be submitted electronically via Gradescope in a format I can read (PDF, TeX or plain text if it works; <strong>no doc/docx!</strong>). If you submit a PDF, make sure that it is readable and does not go over the margins. If there are problems with submission, send your work to me by email for good measure. </li>
+      </ul> </dd>
+  <dt>Expected outcomes:</dt>
+  <dd>The students should have an understanding of the results listed in the course description, and be familiar with their proofs. They should have gained experience with applying these results and exploring the terrain around them. </dd>
+</dl>
+</div>
+
+
+<h2>Other resources</h2>
+
+<div class="boldtable">
+<dl>
+  <dt>Homework help:</dt>
+  <dd><ul>
+         <li> <a href="https://drexel.zoom.us/meeting/register/tZAkcemgpjgrH9e05JwSTA-SLLXcA792vQqO">Math Resource Center</a> (Zoom registration link; use your Drexel email), open Mon-Thu: 10:00 am - 7:00 pm and Fri: 10:00 am - 4:00 pm. Starts September 22nd. </li>
+      </ul> </dd>
+  <dt>University policies:</dt>
+  <dd><ul>
+         <li> <a href="https://www.drexel.edu/provost/policies/academic_dishonesty.asp" target="_blank">Academic Dishonesty</a>. </li>
+         <li> <a href="../20f/recording-policy.html" target="_blank">Recording of Class Activities</a>. </li>
+         <li> <a href="https://drexel.edu/provost/policies/course-add-drop/" target="_blank">Course Add/Drop Policy</a>. </li>
+         <li> <a href="https://drexel.edu/provost/policies/course-withdrawal/" target="_blank">Course Withdrawal Policy</a>. </li>
+         <li> <a href="https://drexel.edu/provost/policies/incomplete_grades/" target="_blank">Incomplete Grade Policy</a>. </li>
+         <li> <a href="https://drexel.edu/provost/policies/grade-appeals/" target="_blank">Grade Appeals</a>. </li>
+         <li> <a href="https://drexel.edu/studentlife/community_standards/code-of-conduct/" target="_blank">Code of Conduct</a>. </li>
+      </ul> </dd>
+  <dt>Disability resources:</dt>
+  <dd><ul>
+         <li> <a href="https://drexel.edu/disability-resources/support-accommodations/student-family-resources/">Disability resources for students</a>. </li>
+      </ul> </dd>
+</dl>
+</div>
+
+</body>

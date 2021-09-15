@@ -1,0 +1,2977 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Thursday, September 16, 2021 00:18:44}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Preface}
+
+These are lecture notes originally written by Hugo Woerdeman and edited by
+myself for the Math 504 (Advanced Linear Algebra) class at Drexel University
+in Fall 2021. The website of this class can be found at%
+\[
+\text{\url{http://www.cip.ifi.lmu.de/~grinberg/t/21fala}\ \ .}%
+\]
+
+
+\textbf{This document is a work in progress.}
+
+\textbf{Please report any errors you find to
+\texttt{\href{mailto:darijgrinberg@gmail.com}{darijgrinberg@gmail.com}} .}
+
+\subsection*{What is this?}
+
+This is a second course on linear algebra, meant for (mostly graduate)
+students that are already familiar with matrices, determinants and vector
+spaces. Much of the prerequisites (but also some of our material, and even
+some content that goes beyond our course) is covered by textbooks like
+\cite{Heffer20}, \cite{LaNaSc16}, \cite{Taylor20}, \cite{Treil15},
+\cite{Strick20}, \cite[Part I]{GalQua20}, \cite{Loehr14}, \cite{Woerde16}%
+\footnote{This list is nowhere near complete. (It is biased towards freely
+available sources, but even in that category it is probably far from
+comprehensive.)}. The text we will follow the closest is \cite{HorJoh13}.
+
+We will freely use the basic theory of complex numbers, including the
+Fundamental Theorem of Algebra. See \cite[Chapters 2--3]{LaNaSc16} or
+\cite[Chapters 9--10]{Korner20} for an introduction to these matters.
+
+\subsection*{Notations}
+
+\begin{itemize}
+\item We let $\mathbb{N}:=\left\{  0,1,2,\ldots\right\}  $.
+
+\item For any $n\in\mathbb{N}$, we let $\left[  n\right]  $ denote the
+$n$-element set $\left\{  1,2,\ldots,n\right\}  $.
+
+\item If $\mathbb{F}$ is a field, and $n,m\in\mathbb{N}$, then $\mathbb{F}%
+^{n\times m}$ denotes the set (actually, an $\mathbb{F}$-vector space) of all
+$n\times m$-matrices over $\mathbb{F}$.
+
+\item If $\mathbb{F}$ is a field, and $n\in\mathbb{N}$, then the space
+$\mathbb{F}^{n\times1}$ of all $n\times1$-matrices over $\mathbb{F}$ (that is,
+column vectors of size $n$) is also denoted by $\mathbb{F}^{n}$.
+
+\item The $n\times n$ identity matrix is denoted by $I_{n}$ or by $I$ if the
+$n$ is clear from the context.
+
+\item The transpose of a matrix $A$ is denoted by $A^{T}$.
+
+\item If $A$ is an $n\times m$-matrix, and if $i\in\left[  n\right]  $ and
+$j\in\left[  m\right]  $, then:
+
+\begin{itemize}
+\item we let $A_{i,j}$ denote the $\left(  i,j\right)  $-th entry of $A$ (that
+is, the entry of $A$ in the $i$-th row and the $j$-th column);
+
+\item we let $A_{i,\bullet}$ denote the $i$-th row of $A$;
+
+\item we let $A_{\bullet,j}$ denote the $j$-th column of $A$.
+\end{itemize}
+
+\item The letter $i$ usually denotes the complex number $\sqrt{-1}$. Sometimes
+(e.g. in the bullet point just above) it also stands for something else
+(usually an \textbf{i}ndex that is an \textbf{i}nteger). I'll do my best to
+avoid the latter meaning when there is any realistic chance that it be
+confused for the former.
+
+\item We use the notation $\operatorname*{diag}\left(  \lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}\right)  $ for the diagonal matrix with diagonal
+entries $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$.
+\end{itemize}
+
+\subsection{Remark on exercises}
+
+Each exercise gives a number of \textquotedblleft experience
+points\textquotedblright, which roughly corresponds to its difficulty (with
+some adjustment for its relevance). This is the number in the square (like
+\fbox{3} or \fbox{5}). The harder or more important the exercise, the larger
+is the number in the square. A \fbox{1} is a warm-up question whose solution
+you will probably see right after reading; a \fbox{3} typically requires some
+thinking or work; a \fbox{5} requires both; higher values tend to involve some
+creativity or research.
+
+\newpage
+
+\section{Unitary matrices (\cite[\S 2.1]{HorJoh13})}
+
+In this chapter, $n$ will usually denote a nonnegative integer.%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Old lecture 1 starts here.}\\\hline\hline
+\end{tabular}
+\
+\]
+
+
+\subsection{Inner products}
+
+\begin{definition}
+\label{def.unitary.innerprod.innerprod}For any two vectors $x=\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$ and $y=\left(
+\begin{array}
+[c]{c}%
+y_{1}\\
+y_{2}\\
+\vdots\\
+y_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$, we define the scalar%
+\begin{equation}
+\left\langle x,y\right\rangle :=x_{1}\overline{y_{1}}+x_{2}\overline{y_{2}%
+}+\cdots+x_{n}\overline{y_{n}}\in\mathbb{C}
+\label{eq.def.unitary.innerprod.innerprod.def}%
+\end{equation}
+(where $\overline{z}$ denotes the complex conjugate of a $z\in\mathbb{C}$).
+This scalar $\left\langle x,y\right\rangle $ is called the \emph{inner
+product} (or \emph{dot product}) of $x$ and $y$.
+\end{definition}
+
+\begin{example}
+If $x=\left(
+\begin{array}
+[c]{c}%
+1+i\\
+2+3i
+\end{array}
+\right)  \in\mathbb{C}^{2}$ and $y=\left(
+\begin{array}
+[c]{c}%
+-i\\
+4+i
+\end{array}
+\right)  \in\mathbb{C}^{2}$, then%
+\begin{align*}
+\left\langle x,y\right\rangle  &  =\left(  1+i\right)  \left(  \overline
+{-i}\right)  +\left(  2+3i\right)  \left(  \overline{4+i}\right) \\
+&  =\left(  1+i\right)  i+\left(  2+3i\right)  \left(  4-i\right) \\
+&  =i-1+8-2i+12i+3=10+11i.
+\end{align*}
+
+\end{example}
+
+Some warnings about the literature are in order:
+
+\begin{itemize}
+\item Some authors (e.g., Treil in \cite{Treil15}) write $\left(  x,y\right)
+$ instead of $\left\langle x,y\right\rangle $ for the inner product of $x$ and
+$y$. This can be rather confusing, since $\left(  x,y\right)  $ also means the
+pair consisting of $x$ and $y$.
+
+\item The notation $\left\langle x,y\right\rangle $, too, can mean something
+different in certain texts (namely, the span of $x$ and $y$); however, it
+won't have this second meaning in our course.
+
+\item If I am not mistaken, Definition \ref{def.unitary.innerprod.innerprod}
+is also not the only game in town. Some authors follow a competing standard,
+which causes their $\left\langle x,y\right\rangle $ to be what we would denote
+$\left\langle y,x\right\rangle $.
+
+\item Finally, the word \textquotedblleft dot product\textquotedblright\ often
+means the analogue of $\left\langle x,y\right\rangle $ that does not use
+complex conjugation (i.e., that replaces
+(\ref{eq.def.unitary.innerprod.innerprod.def}) by $\left\langle
+x,y\right\rangle :=x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}$). This convention
+is used mostly in abstract algebra, where complex conjugation is not
+considered intrinsic to the number system. We will not use this convention.
+For vectors with real entries, the distinction disappears, since
+$\overline{\lambda}=\lambda$ for any $\lambda\in\mathbb{R}$.
+\end{itemize}
+
+\begin{definition}
+\label{def.unitary.innerprod.ystar}For any column vector $y=\left(
+\begin{array}
+[c]{c}%
+y_{1}\\
+y_{2}\\
+\vdots\\
+y_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$, we define the row vector
+\[
+y^{\ast}:=\left(
+\begin{array}
+[c]{cccc}%
+\overline{y_{1}} & \overline{y_{2}} & \cdots & \overline{y_{n}}%
+\end{array}
+\right)  \in\mathbb{C}^{1\times n}.
+\]
+
+\end{definition}
+
+\begin{proposition}
+\label{prop.unitary.innerprod.props}Let $x\in\mathbb{C}^{n}$ and
+$y\in\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} We have $\left\langle x,y\right\rangle =y^{\ast}x$.
+
+\textbf{(b)} We have $\left\langle x,y\right\rangle =\overline{\left\langle
+y,x\right\rangle }$.
+
+\textbf{(c)} We have $\left\langle x+x^{\prime},y\right\rangle =\left\langle
+x,y\right\rangle +\left\langle x^{\prime},y\right\rangle $ for any $x^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(d)} We have $\left\langle x,y+y^{\prime}\right\rangle =\left\langle
+x,y\right\rangle +\left\langle x,y^{\prime}\right\rangle $ for any $y^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(e)} We have $\left\langle \lambda x,y\right\rangle =\lambda
+\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$.
+
+\textbf{(f)} We have $\left\langle x,\lambda y\right\rangle =\overline
+{\lambda}\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$.
+
+\textbf{(g)} We have $\left\langle x-x^{\prime},y\right\rangle =\left\langle
+x,y\right\rangle -\left\langle x^{\prime},y\right\rangle $ for any $x^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(h)} We have $\left\langle x,y-y^{\prime}\right\rangle =\left\langle
+x,y\right\rangle -\left\langle x,y^{\prime}\right\rangle $ for any $y^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(i)} We have $\left\langle \sum_{i=1}^{k}\lambda_{i}x_{i}%
+,y\right\rangle =\sum_{i=1}^{k}\lambda_{i}\left\langle x_{i},y\right\rangle $
+for any $k\in\mathbb{N}$, any $x_{1},x_{2},\ldots,x_{k}\in\mathbb{C}^{n}$ and
+any $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}\in\mathbb{C}$.
+
+\textbf{(j)} We have $\left\langle x,\sum_{i=1}^{k}\lambda_{i}y_{i}%
+\right\rangle =\sum_{i=1}^{k}\overline{\lambda_{i}}\left\langle x,y_{i}%
+\right\rangle $ for any $k\in\mathbb{N}$, any $y_{1},y_{2},\ldots,y_{k}%
+\in\mathbb{C}^{n}$ and any $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}%
+\in\mathbb{C}$.
+\end{proposition}
+
+\begin{proof}
+Parts \textbf{(a)} till \textbf{(h)} are straightforward computations using
+Definition \ref{def.unitary.innerprod.innerprod}, since
+
+\begin{itemize}
+\item the multiplication in $\mathbb{C}$ is commutative;
+
+\item we have $\overline{\overline{z}}=z$ for any $z\in\mathbb{C}$.
+\end{itemize}
+
+Parts \textbf{(i)} and \textbf{(j)} follow from parts \textbf{(c)},
+\textbf{(d)}, \textbf{(e)} and \textbf{(f)} by induction on $k$.
+\end{proof}
+
+\begin{proposition}
+\label{prop.unitary.innerprod.pos}Let $x\in\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} The number $\left\langle x,x\right\rangle $ is a nonnegative real.
+
+\textbf{(b)} We have $\left\langle x,x\right\rangle >0$ whenever $x\neq0$.
+\end{proposition}
+
+\begin{proof}
+Write $x$ as $x=\left(
+\begin{array}
+[c]{cccc}%
+x_{1} & x_{2} & \cdots & x_{n}%
+\end{array}
+\right)  ^{T}$. Then, the definition of $\left\langle x,x\right\rangle $
+yields%
+\begin{align*}
+\left\langle x,x\right\rangle  &  =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
+}+\cdots+x_{n}\overline{x_{n}}\\
+&  =\left\vert x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}%
++\cdots+\left\vert x_{n}\right\vert ^{2},
+\end{align*}
+since any complex number $z$ satisfies $z\overline{z}=\left\vert z\right\vert
+^{2}$. Since the absolute values $\left\vert x_{1}\right\vert ,\left\vert
+x_{2}\right\vert ,\ldots,\left\vert x_{n}\right\vert $ are real, this yields
+immediately that $\left\langle x,x\right\rangle $ is a nonnegative real. Thus,
+Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved.
+Furthermore, if $x\neq0$, then at least one $i\in\left[  n\right]  $ satisfies
+$x_{i}\neq0$ and therefore $\left\vert x_{i}\right\vert ^{2}>0$; but this
+entails $\left\langle x,x\right\rangle =\left\vert x_{1}\right\vert
+^{2}+\left\vert x_{2}\right\vert ^{2}+\cdots+\left\vert x_{n}\right\vert
+^{2}>0$. This proves Proposition \ref{prop.unitary.innerprod.pos} \textbf{(b)}.
+\end{proof}
+
+\begin{definition}
+\label{def.unitary.innerprod.len}Let $x\in\mathbb{C}^{n}$. We define the
+\emph{length} (aka \emph{norm}) of $x$ to be the nonnegative real number
+\[
+\left\vert \left\vert x\right\vert \right\vert :=\sqrt{\left\langle
+x,x\right\rangle }.
+\]
+This is well-defined, since Proposition \ref{prop.unitary.innerprod.pos}
+\textbf{(a)} says that $\left\langle x,x\right\rangle $ is a nonnegative real.
+\end{definition}
+
+\begin{example}
+If $x=\left(
+\begin{array}
+[c]{c}%
+1+i\\
+3-2i
+\end{array}
+\right)  \in\mathbb{C}^{2}$, then%
+\begin{align*}
+\left\langle x,x\right\rangle  &  =\left(  1+i\right)  \left(  \overline
+{1+i}\right)  +\left(  3-2i\right)  \left(  \overline{3+2i}\right)  =\left(
+1+i\right)  \left(  1-i\right)  +\left(  3-2i\right)  \left(  3+2i\right) \\
+&  =1+1+9+4=15
+\end{align*}
+and thus $\left\vert \left\vert x\right\vert \right\vert =\sqrt{\left\langle
+x,x\right\rangle }=\sqrt{15}$.
+\end{example}
+
+\begin{proposition}
+For any $\lambda\in\mathbb{C}$ and $x\in\mathbb{C}^{n}$, we have $\left\vert
+\left\vert \lambda x\right\vert \right\vert =\left\vert \lambda\right\vert
+\cdot\left\vert \left\vert x\right\vert \right\vert $.
+\end{proposition}
+
+\begin{proof}
+Straightforward.
+\end{proof}
+
+\begin{exercise}
+\fbox{3} Let $x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Prove that
+\[
+\left\vert \left\vert x+y\right\vert \right\vert ^{2}-\left\vert \left\vert
+x\right\vert \right\vert ^{2}-\left\vert \left\vert y\right\vert \right\vert
+^{2}=\left\langle x,y\right\rangle +\left\langle y,x\right\rangle
+=2\cdot\operatorname*{Re}\left\langle x,y\right\rangle .
+\]
+Here, $\operatorname*{Re}z$ denotes the real part of any complex number $z$.
+\end{exercise}
+
+\subsection{Orthogonality and orthonormality}
+
+We shall now define orthogonality first for two vectors, then for any tuple of vectors.
+
+\begin{definition}
+\label{def.unitary.innerprod.orth}Let $x\in\mathbb{C}^{n}$ and $y\in
+\mathbb{C}^{n}$ be two vectors. We say that $x$ is \emph{orthogonal} to $y$ if
+and only if $\left\langle x,y\right\rangle =0$. The shorthand notation for
+this is \textquotedblleft$x\perp y$\textquotedblright.
+\end{definition}
+
+The relation $\perp$ is symmetric:
+
+\begin{proposition}
+\label{prop.unitary.innerprod.orth-symm}Let $x\in\mathbb{C}^{n}$ and
+$y\in\mathbb{C}^{n}$ be two vectors. Then, $x\perp y$ holds if and only if
+$y\perp x$.
+\end{proposition}
+
+\begin{proof}
+Follows from Proposition \ref{prop.unitary.innerprod.props} \textbf{(b)}.
+\end{proof}
+
+\begin{definition}
+Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ be a tuple of vectors in
+$\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
+is \emph{orthogonal} if we have
+\[
+u_{p}\perp u_{q}\ \ \ \ \ \ \ \ \ \ \text{whenever }p\neq q.
+\]
+
+
+\textbf{(b)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
+is \emph{orthonormal} if it is orthogonal \textbf{and} satisfies%
+\[
+\left\vert \left\vert u_{1}\right\vert \right\vert =\left\vert \left\vert
+u_{2}\right\vert \right\vert =\cdots=\left\vert \left\vert u_{k}\right\vert
+\right\vert =1.
+\]
+
+
+\textbf{(c)} We note that the orthogonality and the orthonormality of a tuple
+are preserved when the entries of the tuple are permuted. Thus, we can extend
+both notions (\textquotedblleft orthogonal\textquotedblright\ and
+\textquotedblleft orthonormal\textquotedblright) to finite sets of vectors in
+$\mathbb{C}^{n}$: A set $\left\{  u_{1},u_{2},\ldots,u_{k}\right\}  $ of
+vectors in $\mathbb{C}^{n}$ (with $u_{1},u_{2},\ldots,u_{k}$ being distinct)
+is said to be \emph{orthogonal} (or \emph{orthonormal}, respectively) if and
+only if the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthogonal
+(resp., orthonormal).
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The tuple $\left(  \left(
+\begin{array}
+[c]{c}%
+1\\
+0\\
+0
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+0\\
+1\\
+0
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+0\\
+0\\
+1
+\end{array}
+\right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthonormal. It is also
+a basis of $\mathbb{C}^{3}$, and known as the \emph{standard basis}.
+
+\textbf{(b)} More generally: Let $n\in\mathbb{N}$. Let $e_{1},e_{2}%
+,\ldots,e_{n}\in\mathbb{C}^{n}$ be the vectors defined by%
+\[
+e_{i}=\underbrace{\left(
+\begin{array}
+[c]{ccccccccc}%
+0 & 0 & \cdots & 0 & 1 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  ^{T}}_{\substack{\text{the }1\text{ is in the }i\text{-th
+position;}\\\text{all other entries are }0}}.
+\]
+Then, $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ is an orthonormal basis of
+$\mathbb{C}^{n}$, and is known as the \emph{standard basis} of $\mathbb{C}%
+^{n}$.
+
+\textbf{(c)} The pair $\left(  \left(
+\begin{array}
+[c]{c}%
+1\\
+-i\\
+2
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+0\\
+2i\\
+1
+\end{array}
+\right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthogonal (but not
+orthonormal). Indeed,%
+\[
+\left\langle \left(
+\begin{array}
+[c]{c}%
+1\\
+-i\\
+2
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+0\\
+2i\\
+1
+\end{array}
+\right)  \right\rangle =1\cdot\overline{0}+\left(  -i\right)  \cdot
+\overline{2i}+2\cdot\overline{1}=0-2+2=0.
+\]
+
+
+\textbf{(d)} The pair $\left(  \dfrac{1}{\sqrt{6}}\left(
+\begin{array}
+[c]{c}%
+1\\
+-i\\
+2
+\end{array}
+\right)  ,\dfrac{1}{\sqrt{5}}\left(
+\begin{array}
+[c]{c}%
+0\\
+2i\\
+1
+\end{array}
+\right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthonormal. (This is
+just the previous pair, with each vector scaled so that its length becomes $1$.)
+\end{example}
+
+\begin{proposition}
+\label{prop.unitary.innerprod.orth-norm}Let $\left(  u_{1},u_{2},\ldots
+,u_{k}\right)  $ be an orthogonal tuple of nonzero vectors in $\mathbb{C}^{n}%
+$. Then, the tuple%
+\[
+\left(  \dfrac{1}{\left\vert \left\vert u_{1}\right\vert \right\vert }%
+u_{1},\ \ \dfrac{1}{\left\vert \left\vert u_{2}\right\vert \right\vert }%
+u_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert u_{k}\right\vert
+\right\vert }u_{k}\right)
+\]
+is orthonormal.
+\end{proposition}
+
+\begin{proof}
+Straightforward.
+\end{proof}
+
+\begin{proposition}
+\label{prop.unitary.orthog.indep}Any orthogonal tuple of nonzero vectors in
+$\mathbb{C}^{n}$ is linearly independent.
+\end{proposition}
+
+\begin{proof}
+Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ be an orthogonal tuple of
+nonzero vectors in $\mathbb{C}^{n}$. We must prove that it is linearly independent.
+
+Indeed, for any $i\in\left[  k\right]  $ and any $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{k}\in\mathbb{C}$, we have
+\begin{align}
+&  \left\langle \lambda_{1}u_{1}+\lambda_{2}u_{2}+\cdots+\lambda_{k}%
+u_{k},u_{i}\right\rangle \nonumber\\
+&  =\lambda_{1}\left\langle u_{1},u_{i}\right\rangle +\lambda_{2}\left\langle
+u_{2},u_{i}\right\rangle +\cdots+\lambda_{k}\left\langle u_{k},u_{i}%
+\right\rangle \nonumber\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by parts \textbf{(c)}
+and \textbf{(e)} of Proposition \ref{prop.unitary.innerprod.props}}\right)
+\nonumber\\
+&  =\lambda_{i}\left\langle u_{i},u_{i}\right\rangle +\sum_{\substack{j\in
+\left[  k\right]  ;\\j\neq i}}\lambda_{j}\underbrace{\left\langle u_{j}%
+,u_{i}\right\rangle }_{\substack{=0\\\text{(since }u_{j}\perp u_{i}%
+\\\text{(because }\left(  u_{1},u_{2},\ldots,u_{k}\right)  \text{
+is}\\\text{an orthogonal tuple))}}}\nonumber\\
+&  =\lambda_{i}\left\langle u_{i},u_{i}\right\rangle .
+\label{pf.prop.unitary.orthog.indep.1}%
+\end{align}
+
+
+For any $i\in\left[  k\right]  $, we have $u_{i}\neq0$ (since $\left(
+u_{1},u_{2},\ldots,u_{k}\right)  $ is a tuple of nonzero vectors) and thus
+\begin{equation}
+\left\langle u_{i},u_{i}\right\rangle >0
+\label{pf.prop.unitary.orthog.indep.pos}%
+\end{equation}
+(by Proposition \ref{prop.unitary.innerprod.pos} \textbf{(b)}, applied to
+$x=u_{i}$).
+
+Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}\in\mathbb{C}$ be such
+that $\lambda_{1}u_{1}+\lambda_{2}u_{2}+\cdots+\lambda_{k}u_{k}=0$. Then, for
+each $i\in\left[  k\right]  $, we have%
+\begin{align*}
+\lambda_{i}\left\langle u_{i},u_{i}\right\rangle  &  =\left\langle
+\underbrace{\lambda_{1}u_{1}+\lambda_{2}u_{2}+\cdots+\lambda_{k}u_{k}}%
+_{=0},u_{i}\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.prop.unitary.orthog.indep.1})}\right) \\
+&  =\left\langle 0,u_{i}\right\rangle =0
+\end{align*}
+and therefore $\lambda_{i}=0$ (indeed, we can divide by $\left\langle
+u_{i},u_{i}\right\rangle $, because of (\ref{pf.prop.unitary.orthog.indep.pos})).
+
+Forget that we fixed $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$. We thus
+have shown that if $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}\in\mathbb{C}$
+are such that $\lambda_{1}u_{1}+\lambda_{2}u_{2}+\cdots+\lambda_{k}u_{k}=0$,
+then we have $\lambda_{i}=0$ for each $i\in\left[  k\right]  $. In other
+words, $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is linearly independent.
+This proves Proposition \ref{prop.unitary.orthog.indep}.
+\end{proof}
+
+The following simple lemma will be used further below:
+
+\begin{lemma}
+\label{lem.unitary.orthog.one-more}Let $k<n$. Let $a_{1},a_{2},\ldots,a_{k}$
+be $k$ vectors in $\mathbb{C}^{n}$. Then, there exists a nonzero vector
+$b\in\mathbb{C}^{n}$ that is orthogonal to each of $a_{1},a_{2},\ldots,a_{k}$.
+\end{lemma}
+
+\begin{proof}
+Write each vector $a_{i}$ as $a_{i}=\left(
+\begin{array}
+[c]{cccc}%
+a_{i,1} & a_{i,2} & \cdots & a_{i,n}%
+\end{array}
+\right)  ^{T}$. Now, consider an arbitrary vector $b=\left(
+\begin{array}
+[c]{cccc}%
+b_{1} & b_{2} & \cdots & b_{n}%
+\end{array}
+\right)  ^{T}\in\mathbb{C}^{n}$, whose entries $b_{1},b_{2},\ldots,b_{n}$ are
+so far undetermined. This new vector $b$ is orthogonal to each of $a_{1}%
+,a_{2},\ldots,a_{k}$ if and only if it satisfies%
+\[
+\left\langle b,a_{i}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{for all }%
+i\in\left[  k\right]  .
+\]
+In other words, this new vector $b$ is orthogonal to each of $a_{1}%
+,a_{2},\ldots,a_{k}$ if and only if it satisfies%
+\[
+b_{1}\overline{a_{i,1}}+b_{2}\overline{a_{i,2}}+\cdots+b_{n}\overline{a_{i,n}%
+}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\in\left[  k\right]
+\]
+(since $\left\langle b,a_{i}\right\rangle =b_{1}\overline{a_{i,1}}%
++b_{2}\overline{a_{i,2}}+\cdots+b_{n}\overline{a_{i,n}}$ for each $i\in\left[
+k\right]  $). In other words, this new vector $b$ is orthogonal to each of
+$a_{1},a_{2},\ldots,a_{k}$ if and only if it satisfies the system of equations%
+\[
+\left\{
+\begin{array}
+[c]{c}%
+b_{1}\overline{a_{1,1}}+b_{2}\overline{a_{1,2}}+\cdots+b_{n}\overline{a_{1,n}%
+}=0;\\
+b_{1}\overline{a_{2,1}}+b_{2}\overline{a_{2,2}}+\cdots+b_{n}\overline{a_{2,n}%
+}=0;\\
+\cdots;\\
+b_{1}\overline{a_{k,1}}+b_{2}\overline{a_{k,2}}+\cdots+b_{n}\overline{a_{k,n}%
+}=0.
+\end{array}
+\right.
+\]
+But this is a system of $k$ homogeneous linear equations in the $n$ unknowns
+$b_{1},b_{2},\ldots,b_{n}$, and thus (by a classical fact in linear
+algebra\footnote{The fact we are using here is the following: If $p$ and $q$
+are two integers such that $0\leq p<q$, then any system of $p$ homogeneous
+linear equations in $q$ unknowns has at least one nonzero solution. Rewritten
+in terms of matrices, this is saying that if $p$ and $q$ are two integers such
+that $0\leq p<q$, then any $p\times q$-matrix has a nonzero vector in its
+kernel (= nullspace). For a proof, see, e.g., \cite[Remark 8.9]{Strick20} or
+(rewritten in the language of linear maps) \cite[Corollary 6.5.3 item
+1]{LaNaSc16}.}) has at least one nonzero solution (since $k<n$). In other
+words, there exists at least one nonzero vector $b=\left(
+\begin{array}
+[c]{cccc}%
+b_{1} & b_{2} & \cdots & b_{n}%
+\end{array}
+\right)  ^{T}\in\mathbb{C}^{n}$ that is orthogonal to each of $a_{1}%
+,a_{2},\ldots,a_{k}$. This proves Lemma \ref{lem.unitary.orthog.one-more}.
+\medskip
+
+\begin{fineprint}
+Here is a neater way to state the same argument: We define a map
+$f:\mathbb{C}^{n}\rightarrow\mathbb{C}^{k}$ by setting%
+\[
+f\left(  w\right)  =\left(
+\begin{array}
+[c]{c}%
+\left\langle w,a_{1}\right\rangle \\
+\left\langle w,a_{2}\right\rangle \\
+\vdots\\
+\left\langle w,a_{k}\right\rangle
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for each }w\in\mathbb{C}^{n}.
+\]
+It is easy to see that this map $f$ is $\mathbb{C}$-linear. (Indeed,
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(c)} shows that every
+two vectors $x,x^{\prime}\in\mathbb{C}^{n}$ and every $i\in\left[  k\right]  $
+satisfy $\left\langle x+x^{\prime},a_{i}\right\rangle =\left\langle
+x,a_{i}\right\rangle +\left\langle x^{\prime},a_{i}\right\rangle $; therefore,
+every two vectors $x,x^{\prime}\in\mathbb{C}^{n}$ satisfy $f\left(
+x+x^{\prime}\right)  =f\left(  x\right)  +f\left(  x^{\prime}\right)  $.
+Similarly, Proposition \ref{prop.unitary.innerprod.props} \textbf{(e)} can be
+used to show that $f\left(  \lambda x\right)  =\lambda f\left(  x\right)  $
+for each $\lambda\in\mathbb{C}$ and $x\in\mathbb{C}^{n}$. Hence, $f$ is
+$\mathbb{C}$-linear.)
+
+Now, we know that $f$ is a $\mathbb{C}$-linear map from $\mathbb{C}^{n}$ to
+$\mathbb{C}^{k}$. Hence, the rank-nullity theorem (see, e.g., \cite[Chapter 2,
+Theorem 7.2]{Treil15} or \cite[Chapter II, Corollary 2.15]{Knapp1} or
+\cite[Proposition 3.3.35]{Goodman}) yields that%
+\[
+n=\dim\left(  \operatorname*{Ker}f\right)  +\dim\left(  \operatorname{Im}%
+f\right)  ,
+\]
+where $\operatorname*{Ker}f$ denotes the kernel of $f$ (that is, the subspace
+of $\mathbb{C}^{n}$ that consists of all vectors $v\in\mathbb{C}^{n}$
+satisfying $f\left(  v\right)  =0$), and where $\operatorname{Im}f$ denotes
+the image\footnote{also known as \textquotedblleft range\textquotedblright} of
+$f$ (that is, the subspace of $\mathbb{C}^{k}$ consisting of all vectors of
+the form $f\left(  v\right)  $ with $v\in\mathbb{C}^{n}$). Therefore,%
+\[
+\dim\left(  \operatorname*{Ker}f\right)  =n-\dim\left(  \operatorname{Im}%
+f\right)  .
+\]
+However, $\operatorname{Im}f$ is a vector subspace of $\mathbb{C}^{k}$, and
+thus has dimension $\leq k$. Thus, $\dim\left(  \operatorname{Im}f\right)
+\leq k<n$, so that%
+\[
+\dim\left(  \operatorname*{Ker}f\right)  =n-\underbrace{\dim\left(
+\operatorname{Im}f\right)  }_{<n}>n-n=0.
+\]
+This shows that the vector space $\operatorname*{Ker}f$ contains at least one
+nonzero vector $b$. Consider this $b$. Thus, $b\in\operatorname*{Ker}%
+f\subseteq\mathbb{C}^{n}$.
+
+However, $b\in\operatorname*{Ker}f$ shows that $f\left(  b\right)  =0$. But
+the definition of $f$ yields $f\left(  b\right)  =\left(
+\begin{array}
+[c]{c}%
+\left\langle b,a_{1}\right\rangle \\
+\left\langle b,a_{2}\right\rangle \\
+\vdots\\
+\left\langle b,a_{k}\right\rangle
+\end{array}
+\right)  $. Thus, $\left(
+\begin{array}
+[c]{c}%
+\left\langle b,a_{1}\right\rangle \\
+\left\langle b,a_{2}\right\rangle \\
+\vdots\\
+\left\langle b,a_{k}\right\rangle
+\end{array}
+\right)  =f\left(  b\right)  =0$. In other words, each $i\in\left[  k\right]
+$ satisfies $\left\langle b,a_{i}\right\rangle =0$. In other words, each
+$i\in\left[  k\right]  $ satisfies $b\perp a_{i}$. In other words, $b$ is
+orthogonal to each of $a_{1},a_{2},\ldots,a_{k}$. Thus, we have found a
+nonzero vector $b\in\mathbb{C}^{n}$ that is orthogonal to each of $a_{1}%
+,a_{2},\ldots,a_{k}$. This proves Lemma \ref{lem.unitary.orthog.one-more}.
+\end{fineprint}
+\end{proof}
+
+\begin{corollary}
+\label{cor.unitary.orthog-extend}Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)
+$ be an orthogonal $k$-tuple of nonzero vectors in $\mathbb{C}^{n}$. Then, we
+have $k\leq n$, and we can find $n-k$ further nonzero vectors $u_{k+1}%
+,u_{k+2},\ldots,u_{n}$ such that $\left(  u_{1},u_{2},\ldots,u_{n}\right)  $
+is an orthogonal basis of $\mathbb{C}^{n}$.
+\end{corollary}
+
+\begin{exercise}
+\fbox{2} Prove Corollary \ref{cor.unitary.orthog-extend}.
+\end{exercise}
+
+\subsection{Conjugate transposes}
+
+The following definition generalizes Definition
+\ref{def.unitary.innerprod.ystar}:
+
+\begin{definition}
+\label{def.unitary.innerprod.A*}Let $A=\left(
+\begin{array}
+[c]{ccc}%
+a_{1,1} & \cdots & a_{1,m}\\
+\vdots & \ddots & \vdots\\
+a_{n,1} & \cdots & a_{n,m}%
+\end{array}
+\right)  \in\mathbb{C}^{n\times m}$ be any $n\times m$-matrix. Then, we define
+the $m\times n$-matrix%
+\[
+A^{\ast}:=\left(
+\begin{array}
+[c]{ccc}%
+\overline{a_{1,1}} & \cdots & \overline{a_{n,1}}\\
+\vdots & \ddots & \vdots\\
+\overline{a_{1,m}} & \cdots & \overline{a_{n,m}}%
+\end{array}
+\right)  \in\mathbb{C}^{m\times n}.
+\]
+This matrix $A^{\ast}$ is called the \emph{conjugate transpose} of $A$.
+\end{definition}
+
+This conjugate transpose $A^{\ast}$ can thus be obtained from the usual
+transpose $A^{T}$ by conjugating all entries.
+
+\begin{example}
+$\left(
+\begin{array}
+[c]{ccc}%
+1+i & 2-3i & 5i\\
+6 & 2+4i & 10-i
+\end{array}
+\right)  ^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1-i & 6\\
+2+3i & 2-4i\\
+-5i & 10+i
+\end{array}
+\right)  $.
+\end{example}
+
+In the olden days, the conjugate transpose of a matrix was also known as the
+\textquotedblleft adjoint\textquotedblright\ of $A$. Unsurprisingly, this word
+has at least one other meaning, which opens the door to a lot of unwanted
+confusion; thus we will speak of the \textquotedblleft conjugate
+transpose\textquotedblright\ instead.
+
+Some authors use the alternative notation $A^{\dag}$ (read \textquotedblleft%
+$A$ dagger\textquotedblright) for $A^{\ast}$. (The Wikipedia suggests calling
+it the \textquotedblleft bedaggered matrix $A$\textquotedblright, although I
+am not aware of anyone using this terminology outside of the Wikipedia.)
+
+The following rules for conjugate transposes are straightforward to check:
+
+\begin{proposition}
+\label{prop.unitary.(AB)*}\textbf{(a)} If $A\in\mathbb{C}^{n\times m}$ and
+$B\in\mathbb{C}^{n\times m}$ are two matrices, then $\left(  A+B\right)
+^{\ast}=A^{\ast}+B^{\ast}$.
+
+\textbf{(b)} If $A\in\mathbb{C}^{n\times m}$ and $\lambda\in\mathbb{C}$, then
+$\left(  \lambda A\right)  ^{\ast}=\overline{\lambda}A^{\ast}$.
+
+\textbf{(c)} If $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times k}$
+are two matrices, then $\left(  AB\right)  ^{\ast}=B^{\ast}A^{\ast}$.
+
+\textbf{(d)} If $A\in\mathbb{C}^{n\times m}$, then $\left(  A^{\ast}\right)
+^{\ast}=A$.
+\end{proposition}
+
+\subsection{Isometries}
+
+\begin{definition}
+\label{def.unitary.innerprod.isometry}An $n\times k$-matrix $A$ is said to be
+an \emph{isometry} if $A^{\ast}A=I_{k}$.
+\end{definition}
+
+\begin{proposition}
+\label{prop.unitary.innerprod.isometry.2}An $n\times k$-matrix $A$ is an
+isometry if and only if its columns form an orthonormal tuple of vectors.
+\end{proposition}
+
+\begin{proof}
+Let $A$ be an $n\times k$-matrix with columns $a_{1},a_{2},\ldots,a_{k}$ from
+left to right. Therefore,%
+\[
+A=\left(
+\begin{array}
+[c]{ccc}%
+\mid &  & \mid\\
+a_{1} & \cdots & a_{k}\\
+\mid &  & \mid
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and thus}\ \ \ \ \ \ \ \ \ \ A^{\ast
+}=\left(
+\begin{array}
+[c]{ccc}%
+\text{---} & a_{1}^{\ast} & \text{---}\\
+& \vdots & \\
+\text{---} & a_{k}^{\ast} & \text{---}%
+\end{array}
+\right)  .
+\]
+Hence,%
+\begin{align*}
+A^{\ast}A  &  =\left(
+\begin{array}
+[c]{cccc}%
+a_{1}^{\ast}a_{1} & a_{1}^{\ast}a_{2} & \cdots & a_{1}^{\ast}a_{k}\\
+a_{2}^{\ast}a_{1} & a_{2}^{\ast}a_{2} & \cdots & a_{2}^{\ast}a_{k}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{k}^{\ast}a_{1} & a_{k}^{\ast}a_{2} & \cdots & a_{k}^{\ast}a_{k}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+\left\vert \left\vert a_{1}\right\vert \right\vert ^{2} & \left\langle
+a_{1},a_{2}\right\rangle  & \cdots & \left\langle a_{1},a_{k}\right\rangle \\
+\left\langle a_{2},a_{1}\right\rangle  & \left\vert \left\vert a_{2}%
+\right\vert \right\vert ^{2} & \cdots & \left\langle a_{2},a_{k}\right\rangle
+\\
+\vdots & \vdots & \ddots & \vdots\\
+\left\langle a_{k},a_{1}\right\rangle  & \left\langle a_{k},a_{2}\right\rangle
+& \cdots & \left\vert \left\vert a_{k}\right\vert \right\vert ^{2}%
+\end{array}
+\right)  .
+\end{align*}
+On the other hand,%
+\[
+I_{k}=\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{array}
+\right)  .
+\]
+Thus, $A^{\ast}A=I_{k}$ holds if and only if we have%
+\[
+\left\langle a_{p},a_{q}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{for all
+}p\neq q
+\]
+and%
+\[
+\left\vert \left\vert a_{p}\right\vert \right\vert ^{2}%
+=1\ \ \ \ \ \ \ \ \ \ \text{for each }p.
+\]
+In other words, $A^{\ast}A=I_{k}$ holds if and only if we have%
+\[
+a_{p}\perp a_{q}\ \ \ \ \ \ \ \ \ \ \text{for all }p\neq q
+\]
+and%
+\[
+\left\vert \left\vert a_{1}\right\vert \right\vert =\left\vert \left\vert
+a_{2}\right\vert \right\vert =\cdots=\left\vert \left\vert a_{k}\right\vert
+\right\vert =1.
+\]
+In other words, $A$ is an isometry if and only if $\left(  a_{1},a_{2}%
+,\ldots,a_{k}\right)  $ is orthonormal. This proves Proposition
+\ref{prop.unitary.innerprod.isometry.2}.
+\end{proof}
+
+Isometries are called isometries because they preserve lengths:
+
+\begin{proposition}
+\label{prop.unitary.innerprod.isometry.len}Let $A\in\mathbb{C}^{n\times k}$ be
+an isometry. Then, each $x\in\mathbb{C}^{k}$ satisfies $\left\vert \left\vert
+Ax\right\vert \right\vert =\left\vert \left\vert x\right\vert \right\vert $.
+\end{proposition}
+
+\begin{proof}
+We have $A^{\ast}A=I_{k}$ (since $A$ is an isometry). Let $x\in\mathbb{C}^{k}%
+$. Then, the definition of $\left\vert \left\vert Ax\right\vert \right\vert $
+yields $\left\vert \left\vert Ax\right\vert \right\vert =\sqrt{\left\langle
+Ax,Ax\right\rangle }$. Hence,%
+\begin{align}
+\left\vert \left\vert Ax\right\vert \right\vert ^{2}  &  =\left\langle
+Ax,Ax\right\rangle \nonumber\\
+&  =\underbrace{\left(  Ax\right)  ^{\ast}}_{\substack{=x^{\ast}A^{\ast
+}\\\text{(by Proposition \ref{prop.unitary.(AB)*} \textbf{(c)})}%
+}}Ax\ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(a)}}\right) \nonumber\\
+&  =x^{\ast}A^{\ast}Ax\label{pf.prop.unitary.innerprod.isometry.len.1}\\
+&  =x^{\ast}x\ \ \ \ \ \ \ \ \ \ \left(  \text{since }A^{\ast}A=I_{k}\right)
+\nonumber\\
+&  =\left\langle x,x\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(a)}}\right)
+\nonumber\\
+&  =\left\vert \left\vert x\right\vert \right\vert ^{2}\nonumber
+\end{align}
+(since the definition of $\left\vert \left\vert x\right\vert \right\vert $
+yields $\left\vert \left\vert x\right\vert \right\vert =\sqrt{\left\langle
+x,x\right\rangle }$). In other words, we have $\left\vert \left\vert
+Ax\right\vert \right\vert =\left\vert \left\vert x\right\vert \right\vert $
+(since $\left\vert \left\vert Ax\right\vert \right\vert $ and $\left\vert
+\left\vert x\right\vert \right\vert $ are nonnegative reals). This proves
+Proposition \ref{prop.unitary.innerprod.isometry.len}.
+\end{proof}
+
+\begin{remark}
+Another warning on terminology: Some authors (e.g., Conrad in
+\cite[\textquotedblleft Isometries\textquotedblright]{Conrad}) use the word
+\textquotedblleft isometry\textquotedblright\ in a wider sense than we do.
+Namely, they use it for arbitrary maps from $\mathbb{C}^{k}$ to $\mathbb{C}%
+^{n}$ that preserve distances. Our isometries can be viewed as \textbf{linear}
+isometries in this wider sense, because a matrix $A\in\mathbb{C}^{n\times k}$
+corresponds to a linear map from $\mathbb{C}^{k}$ to $\mathbb{C}^{n}$.
+However, not all isometries in this wider sense are linear.
+\end{remark}
+
+\subsection{Unitary matrices}
+
+\subsubsection{Definition, examples, basic properties}
+
+\begin{definition}
+\label{def.unitary.unitary.unitary}A matrix $U\in\mathbb{C}^{n\times k}$ is
+said to be \emph{unitary} if and only if both $U$ and $U^{\ast}$ are isometries.
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & -1
+\end{array}
+\right)  $ is unitary. Indeed, it is easy to see that $A^{\ast}A=I_{2}$, so
+that $A$ is an isometry. Thus, $A^{\ast}$ is an isometry as well, since
+$A^{\ast}=A$. Hence, $A$ is unitary.
+
+\textbf{(b)} A $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+\lambda
+\end{array}
+\right)  \in\mathbb{C}^{1\times1}$ is unitary if and only if $\left\vert
+\lambda\right\vert =1$.
+
+\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is unitary.
+
+\textbf{(d)} Let $n\in\mathbb{N}$, and let $\sigma$ be a permutation of
+$\left[  n\right]  $ (that is, a bijective map from $\left[  n\right]  $ to
+$\left[  n\right]  $). Let $P_{\sigma}$ be the \emph{permutation matrix} of
+$\sigma$; this is the $n\times n$-matrix whose $\left(  \sigma\left(
+j\right)  ,j\right)  $-th entry is $1$ for each $j\in\left[  n\right]  $, and
+whose all other entries are $0$. For instance, if $n=3$ and if $\sigma$ is the
+cyclic permutation sending $1,2,3$ to $2,3,1$ (respectively), then%
+\[
+P_{\sigma}=\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{array}
+\right)  .
+\]
+
+
+The permutation matrix $P_{\sigma}$ is always unitary (for any $n$ and any
+permutation $\sigma$). Indeed, its conjugate transpose $\left(  P_{\sigma
+}\right)  ^{\ast}$ is easily seen to be the permutation matrix $P_{\sigma
+^{-1}}$ of the inverse permutation $\sigma^{-1}$; but this latter permutation
+matrix $P_{\sigma^{-1}}$ is also the inverse of $P_{\sigma}$.
+
+\textbf{(e)} A diagonal matrix $\operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  \in\mathbb{C}^{n\times n}$ is
+unitary if and only if its diagonal entries $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$ lie on the unit circle (i.e., their absolute values
+$\left\vert \lambda_{1}\right\vert ,\left\vert \lambda_{2}\right\vert
+,\ldots,\left\vert \lambda_{n}\right\vert $ all equal $1$).
+\end{example}
+
+Unitary matrices can be characterized in many other ways:
+
+\begin{theorem}
+\label{thm.unitary.unitary.eqs}Let $U\in\mathbb{C}^{n\times k}$ be a matrix.
+The following six statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{A}$: The matrix $U$ is unitary.
+
+\item $\mathcal{B}$: The matrices $U$ and $U^{\ast}$ are isometries.
+
+\item $\mathcal{C}$: We have $UU^{\ast}=I_{n}$ and $U^{\ast}U=I_{k}$.
+
+\item $\mathcal{D}$: The matrix $U$ is square (that is, $n=k$) and invertible
+and satisfies $U^{-1}=U^{\ast}$.
+
+\item $\mathcal{E}$: The columns of $U$ form an orthonormal basis of
+$\mathbb{C}^{n}$.
+
+\item $\mathcal{F}$\textit{:} The matrix $U$ is square (that is, $n=k$) and is
+an isometry.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+The equivalence $\mathcal{A}\Longleftrightarrow\mathcal{B}$ follows
+immediately from Definition \ref{def.unitary.unitary.unitary}. The equivalence
+$\mathcal{B}\Longleftrightarrow\mathcal{C}$ follows immediately from the
+definition of an isometry (since $\left(  U^{\ast}\right)  ^{\ast}=U$). The
+implication $\mathcal{D}\Longrightarrow\mathcal{C}$ is obvious. The
+implication $\mathcal{C}\Longrightarrow\mathcal{D}$ follows from the known
+fact (see, e.g., \cite[Chapter 2, Corollary 3.7]{Treil15}) that every
+invertible matrix is square. Let us now prove some of the other implications:
+
+\begin{itemize}
+\item $\mathcal{D}\Longrightarrow\mathcal{E}$\textit{:} Assume that statement
+$\mathcal{D}$ holds. Then, $U^{\ast}U=I_{k}$ (since $U^{-1}=U^{\ast}$), and
+therefore $U$ is an isometry. Hence, Proposition
+\ref{prop.unitary.innerprod.isometry.2} shows that the tuple of columns of $U$
+is orthonormal. However, the columns of $U$ form a basis of $\mathbb{C}^{n}$
+(because $U$ is invertible), and this basis is orthonormal (since we have just
+shown that the tuple of columns of $U$ is orthonormal). Thus, statement
+$\mathcal{E}$ holds. We have thus proved the implication $\mathcal{D}%
+\Longrightarrow\mathcal{E}$.
+
+\item $\mathcal{E}\Longrightarrow\mathcal{D}$\textit{:} Assume that statement
+$\mathcal{E}$ holds. Then, the columns of $U$ form an orthonormal basis, hence
+an orthogonal tuple. Thus, Proposition \ref{prop.unitary.innerprod.isometry.2}
+shows that $U$ is an isometry, so that $U^{\ast}U=I_{k}$. However, $U$ is
+invertible because the columns of $U$ form a basis of $\mathbb{C}^{n}$.
+Therefore, from $U^{\ast}U=I_{k}$, we obtain $U^{-1}=U^{\ast}$. Finally, the
+matrix $U$ is square, since any invertible matrix is square. Thus, statement
+$\mathcal{D}$ holds. We have thus proved the implication $\mathcal{E}%
+\Longrightarrow\mathcal{D}$.
+
+\item $\mathcal{D}\Longrightarrow\mathcal{F}$\textit{:} The implication
+$\mathcal{D}\Longrightarrow\mathcal{F}$ is easy (since $U^{-1}=U^{\ast}$
+entails $U^{\ast}U=I_{k}$, which shows that $U$ is an isometry).
+
+\item $\mathcal{F}\Longrightarrow\mathcal{D}$\textit{:} Assume that statement
+$\mathcal{F}$ holds. Thus, $U$ is an isometry; that is, we have $U^{\ast
+}U=I_{k}=I_{n}$ (since $k=n$). However, it is known\footnote{One part of the
+infamous \textquotedblleft inverse matrix theorem\textquotedblright\ that
+lists many equivalent conditions for invertibility.} that a square matrix $A$
+that has a left inverse (i.e., a further square matrix $B$ satisfying $BA=I$)
+must be invertible. We can apply this to the square matrix $U$ (which has a
+left inverse, since $U^{\ast}U=I_{n}$), and thus conclude that $U$ is
+invertible. Hence, from $U^{\ast}U=I_{n}$, we obtain $U^{-1}=U^{\ast}$.
+Therefore, statement $\mathcal{D}$ holds. We have thus proved the implication
+$\mathcal{F}\Longrightarrow\mathcal{D}$.
+\end{itemize}
+
+Altogether, we have thus proved that all six statements $\mathcal{A}%
+,\mathcal{B},\mathcal{C},\mathcal{D},\mathcal{E},\mathcal{F}$ are equivalent.
+\end{proof}
+
+Note that Theorem \ref{thm.unitary.unitary.eqs} (specifically, the implication
+$\mathcal{A}\Longrightarrow\mathcal{D}$) shows that any unitary matrix is
+square. In contrast, an isometry can be rectangular -- but only tall, not
+wide, as the following exercise shows:
+
+\begin{exercise}
+\label{exe.unitary.isometry-tall}\fbox{1} Let $A\in\mathbb{C}^{n\times k}$ be
+an isometry. Show that $n\geq k$.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.unitary.group}\fbox{3} \textbf{(a)} Prove that the product $AB$ of
+two isometries $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times k}$
+is always an isometry.
+
+\textbf{(b)} Prove that the product $AB$ of two unitary matrices
+$A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ is always unitary.
+
+\textbf{(c)} Prove that the inverse of a unitary matrix $A\in\mathbb{C}%
+^{n\times n}$ is always unitary.
+\end{exercise}
+
+Exercise \ref{exe.unitary.group} shows that the set of all unitary $n\times
+n$-matrices over $\mathbb{C}$ (for a given $n\in\mathbb{N}$) is a group under
+multiplication. This group is known as the $n$\emph{-th unitary group}, and is
+denoted by $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $.
+
+\begin{exercise}
+\label{exe.unitary.det-eval}\fbox{2} Let $U\in\mathbb{C}^{n\times n}$ be a
+unitary matrix.
+
+\textbf{(a)} Prove that $\left\vert \det U\right\vert =1$.
+
+\textbf{(b)} Prove that any eigenvalue $\lambda$ of $U$ satisfies $\left\vert
+\lambda\right\vert =1$.
+\end{exercise}
+
+\subsubsection{Various constructions of unitary matrices}
+
+The next two exercises show some ways to generate unitary matrices:
+
+\begin{exercise}
+\label{exe.unitary.house}\fbox{3} Let $w\in\mathbb{C}^{n}$ be a nonzero
+vector. Then, $w^{\ast}w=\left\langle w,w\right\rangle >0$ (by Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)}). Thus, we can define an
+$n\times n$-matrix
+\[
+U_{w}:=I_{n}-2\left(  w^{\ast}w\right)  ^{-1}ww^{\ast}\in\mathbb{C}^{n\times
+n}.
+\]
+This is called a \emph{Householder matrix}.
+
+Show that this matrix $U_{w}$ is unitary and satisfies $U_{w}^{\ast}=U_{w}$.
+\end{exercise}
+
+The next exercise uses the notion of a skew-Hermitian matrix:
+
+\begin{definition}
+\label{def.unitary.skew-herm}A matrix $S\in\mathbb{C}^{n\times n}$ is said to
+be \emph{skew-Hermitian} if and only if $S^{\ast}=-S$.
+\end{definition}
+
+For instance, the matrix $\left(
+\begin{array}
+[c]{cc}%
+i & 1\\
+-1 & 0
+\end{array}
+\right)  $ is skew-Hermitian.
+
+\begin{exercise}
+\fbox{5} \label{exe.unitary.skew-herm.1}Let $S\in\mathbb{C}^{n\times n}$ be a
+skew-Hermitian matrix.
+
+\textbf{(a)} Prove that the matrix $I_{n}-S$ is invertible.
+
+[\textbf{Hint:} Show first that the matrix $I_{n}+S^{\ast}S$ is invertible,
+since each nonzero vector $v\in\mathbb{C}^{n}$ satisfies $v^{\ast}\left(
+I_{n}+S^{\ast}S\right)  v=\underbrace{\left\langle v,v\right\rangle }%
+_{>0}+\underbrace{\left\langle Sv,Sv\right\rangle }_{\geq0}>0$. Then, expand
+the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.]
+
+\textbf{(b)} Prove that the matrices $I_{n}+S$ and $\left(  I_{n}-S\right)
+^{-1}$ commute (i.e., satisfy $\left(  I_{n}+S\right)  \cdot\left(
+I_{n}-S\right)  ^{-1}=\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}%
++S\right)  $).
+
+\textbf{(c)} Prove that the matrix $U:=\left(  I_{n}-S\right)  ^{-1}%
+\cdot\left(  I_{n}+S\right)  $ is unitary.
+
+\textbf{(d)} Prove that the matrix $U+I_{n}$ is invertible.
+
+\textbf{(e)} Prove that $S=\left(  U-I_{n}\right)  \cdot\left(  U+I_{n}%
+\right)  ^{-1}$.
+\end{exercise}
+
+Exercise \ref{exe.unitary.skew-herm.1} constructs a map\footnote{Recall that
+$\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ denotes the $n$-th
+unitary group (i.e., the set of all unitary $n\times n$-matrices).}%
+\begin{align*}
+\left\{  \text{skew-Hermitian matrices in }\mathbb{C}^{n\times n}\right\}   &
+\rightarrow\left\{  U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}%
+\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  ,\\
+S  &  \mapsto\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}+S\right)  ;
+\end{align*}
+this map is known as the \emph{Cayley parametrization} of the unitary matrices
+(and can be seen as an $n$-dimensional generalization of the stereographic
+projection from the imaginary axis to the unit circle -- which is what it does
+for $n=1$). Exercise \ref{exe.unitary.skew-herm.1} \textbf{(e)} shows that it
+is injective. It is not hard to check that it is surjective, too.
+
+How close is the set $\left\{  U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  $ to
+the whole unitary group $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}%
+\right)  $ ? The answer is that it is almost the entire group
+$\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $. Here is a
+rigorous way to state this:
+
+\begin{exercise}
+\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Prove the following:
+
+\textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
+each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
+
+\textbf{(b)} If $A$ is invertible, then the matrix $\lambda A+I_{n}$ is
+invertible for all but finitely many $\lambda\in\mathbb{C}$.
+
+[\textbf{Hint:} The determinant $\det\left(  \lambda A+I_{n}\right)  $ is a
+polynomial function in $\lambda$.]
+
+\textbf{(c)} The set $\left\{  U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  $ is
+dense in $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $. (That
+is, each unitary matrix in $\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ can be written as a limit $\lim\limits_{k\rightarrow
+\infty}U_{k}$ of a sequence of unitary matrices $U_{k}$ such that $U_{k}%
++I_{n}$ is invertible for each $k$.)
+\end{exercise}
+
+Thus, if the Cayley parametrization does not hit a unitary matrix, then at
+least it comes arbitrarily close.
+
+\begin{remark}
+A square matrix $A\in\mathbb{C}^{n\times n}$ satisfying $AA^{T}=A^{T}A=I_{n}$
+is called \emph{orthogonal}. Thus, unitary matrices differ from orthogonal
+matrices only in the use of the conjugate transpose $A^{\ast}$ instead of the
+transpose $A^{T}$. In particular, a matrix $A\in\mathbb{R}^{n\times n}$ (with
+real entries) is orthogonal if and only if it is unitary.
+\end{remark}
+
+\begin{exercise}
+\fbox{5} A \emph{Pythagorean triple} is a triple $\left(  p,q,r\right)  $ of
+positive integers satisfying $p^{2}+q^{2}=r^{2}$. (In other words, it is a
+triple of positive integers that are the sides of a right-angled triangle.)
+Two famous Pythagorean triples are $\left(  3,4,5\right)  $ and $\left(
+5,12,13\right)  $.
+
+\textbf{(a)} Prove that a triple $\left(  p,q,r\right)  $ of positive integers
+is Pythagorean if and only if the matrix $\left(
+\begin{array}
+[c]{cc}%
+p/r & -q/r\\
+q/r & p/r
+\end{array}
+\right)  $ is unitary.
+
+\textbf{(b)} Let $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $ be any unitary matrix with rational entries. Assume that $a$ and
+$c$ are positive, and write $a$ and $c$ as $p/r$ and $q/r$ for some positive
+integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple.
+
+\textbf{(c)} Find infinitely many Pythagorean triples that are pairwise
+non-proportional (i.e., no two of them are obtained from one another just by
+multiplying all three entries by the same number.)
+
+[\textbf{Hint:} Use the $S\mapsto U$ construction from Exercise
+\ref{exe.unitary.skew-herm.1}.]
+\end{exercise}
+
+For the next exercise, we recall the notion of similar matrices:
+
+\begin{definition}
+Let $A$ and $B$ be two matrices in $\mathbb{C}^{n\times n}$. We say that $A$
+and $B$ are \emph{similar} if there exists an invertible matrix $W$ such that
+$B=WAW^{-1}$.
+\end{definition}
+
+The relation \textquotedblleft similar\textquotedblright\ is easily seen to be
+an equivalence relation. (Algebraists will recognize it as just being the
+conjugacy relation in the ring $\mathbb{C}^{n\times n}$ of all $n\times n$-matrices.)
+
+\begin{exercise}
+\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a matrix that is similar to some
+unitary matrix. Prove that $A^{-1}$ is similar to $A^{\ast}$.
+\end{exercise}
+
+\subsubsection{Block matrices}
+
+We record one more way to construct unitary matrices from smaller ones:
+
+\begin{definition}
+\label{def.blockmats.2x2}Let $\mathbb{F}$ be a field. Let $n,m,p,q\in
+\mathbb{N}$. Let $A\in\mathbb{F}^{n\times p}$, $B\in\mathbb{F}^{n\times q}$,
+$C\in\mathbb{F}^{m\times p}$ and $D\in\mathbb{F}^{m\times q}$ be four
+matrices. Then, $\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  $ shall denote the $\left(  n+m\right)  \times\left(  p+q\right)
+$-matrix obtained by \textquotedblleft gluing\textquotedblright\ the four
+matrices $A,B,C,D$ together in the manner suggested by the notation (i.e., we
+glue $B$ to the right edge of $A$, we glue $C$ to the bottom edge of $A$, and
+we glue $D$ to the right edge of $C$ and to the bottom edge of $B$). In other
+words, we set%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  :=\left(
+\begin{array}
+[c]{cccccccc}%
+A_{1,1} & A_{1,2} & \cdots & A_{1,p} & B_{1,1} & B_{1,2} & \cdots & B_{1,q}\\
+A_{2,1} & A_{2,2} & \cdots & A_{2,p} & B_{2,1} & B_{2,2} & \cdots & B_{2,q}\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+A_{n,1} & A_{n,2} & \cdots & A_{n,p} & B_{n,1} & B_{n,2} & \cdots & B_{n,q}\\
+C_{1,1} & C_{1,2} & \cdots & C_{1,p} & D_{1,1} & D_{1,2} & \cdots & D_{1,q}\\
+C_{2,1} & C_{2,2} & \cdots & C_{2,p} & D_{2,1} & D_{2,2} & \cdots & D_{2,q}\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+C_{m,1} & C_{m,2} & \cdots & C_{m,p} & D_{m,1} & D_{m,2} & \cdots & D_{m,q}%
+\end{array}
+\right)
+\]
+(where, as we recall, the notation $M_{i,j}$ denotes the $\left(  i,j\right)
+$-th entry of a matrix $M$).
+\end{definition}
+
+\begin{example}
+If $A=\left(
+\begin{array}
+[c]{cc}%
+a & a^{\prime}\\
+a^{\prime\prime} & a^{\prime\prime\prime}%
+\end{array}
+\right)  $ and $B=\left(
+\begin{array}
+[c]{c}%
+b\\
+b^{\prime}%
+\end{array}
+\right)  $ and $C=\left(
+\begin{array}
+[c]{cc}%
+c & c^{\prime}%
+\end{array}
+\right)  $ and $D=\left(
+\begin{array}
+[c]{c}%
+d
+\end{array}
+\right)  $, then $\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccc}%
+a & a^{\prime} & b\\
+a^{\prime\prime} & a^{\prime\prime\prime} & b^{\prime}\\
+c & c^{\prime} & d
+\end{array}
+\right)  $.
+\end{example}
+
+The notation introduced in Definition \ref{def.blockmats.2x2} is called
+\emph{block matrix notation}, and can be generalized to more than four matrices:
+
+\begin{definition}
+\label{def.blockmatrix.uxv}Let $\mathbb{F}$ be a field. Let $u,v\in\mathbb{N}%
+$. Let $n_{1},n_{2},\ldots,n_{u}\in\mathbb{N}$ and $p_{1},p_{2},\ldots
+,p_{v}\in\mathbb{N}$. For each $i\in\left[  u\right]  $ and $j\in\left[
+v\right]  $, let $A\left(  i,j\right)  \in\mathbb{F}^{n_{i}\times p_{j}}$ be a
+matrix. (We denote it by $A\left(  i,j\right)  $ instead of $A_{i,j}$ to avoid
+mistaking it for a single entry.) Then,%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  & A\left(  1,2\right)  & \cdots & A\left(  1,v\right) \\
+A\left(  2,1\right)  & A\left(  2,2\right)  & \cdots & A\left(  2,v\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+A\left(  u,1\right)  & A\left(  u,2\right)  & \cdots & A\left(  u,v\right)
+\end{array}
+\right)  \label{eq.def.blockmatrix.uxv.blockmat}%
+\end{equation}
+shall denote the $\left(  n_{1}+n_{2}+\cdots+n_{u}\right)  \times\left(
+p_{1}+p_{2}+\cdots+p_{v}\right)  $-matrix obtained by \textquotedblleft
+gluing\textquotedblright\ the matrices $A\left(  i,j\right)  $ together in the
+manner suggested by the notation. In other words,%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  & A\left(  1,2\right)  & \cdots & A\left(  1,v\right) \\
+A\left(  2,1\right)  & A\left(  2,2\right)  & \cdots & A\left(  2,v\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+A\left(  u,1\right)  & A\left(  u,2\right)  & \cdots & A\left(  u,v\right)
+\end{array}
+\right)
+\]
+shall denote the $\left(  n_{1}+n_{2}+\cdots+n_{u}\right)  \times\left(
+p_{1}+p_{2}+\cdots+p_{v}\right)  $-matrix whose $\left(  n_{1}+n_{2}%
++\cdots+n_{i-1}+k,\ \ p_{1}+p_{2}+\cdots+p_{j-1}+\ell\right)  $-th entry is
+$\left(  A\left(  i,j\right)  \right)  _{k,\ell}$ for all $i\in\left[
+u\right]  $ and $j\in\left[  v\right]  $ and $k\in\left[  n_{i}\right]  $ and
+$\ell\in\left[  p_{j}\right]  $.
+\end{definition}
+
+Alternatively, this matrix can be defined abstractly using direct sums of
+vector spaces; see \cite[Chapter II, \S 10, section 2]{Bourba74} for this definition.
+
+\begin{example}
+Let $0_{2\times2}$ denote the zero matrix of size $2\times2$. Then,%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+0_{2\times2} & I_{2} & 0_{2\times2}\\
+I_{2} & 0_{2\times2} & 0_{2\times2}\\
+0_{2\times2} & -I_{2} & I_{2}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccccc}%
+0 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & -1 & 0 & 1 & 0\\
+0 & 0 & 0 & -1 & 0 & 1
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+In Definition \ref{def.blockmatrix.uxv}, the big matrix
+(\ref{eq.def.blockmatrix.uxv.blockmat}) is called the \emph{block matrix}
+formed out of the matrices $A\left(  i,j\right)  $; the single matrices
+$A\left(  i,j\right)  $ are called its \emph{blocks}.
+
+One of the most useful properties of block matrices is that they can be
+multiplied block by block (i.e., by the same formula as for regular matrices)
+if the products make sense. More precisely, the following holds:
+
+\begin{proposition}
+\label{prop.blockmatrix.mult-2x2}Let $\mathbb{F}$ be a field. Let $n$,
+$n^{\prime}$, $m$, $m^{\prime}$, $\ell$ and $\ell^{\prime}$ be six nonnegative
+integers. Let $A\in\mathbb{F}^{n\times m}$, $B\in\mathbb{F}^{n\times
+m^{\prime}}$, $C\in\mathbb{F}^{n^{\prime}\times m}$, $D\in\mathbb{F}%
+^{n^{\prime}\times m^{\prime}}$, $A^{\prime}\in\mathbb{F}^{m\times\ell}$,
+$B^{\prime}\in\mathbb{F}^{m\times\ell^{\prime}}$, $C^{\prime}\in
+\mathbb{F}^{m^{\prime}\times\ell}$ and $D^{\prime}\in\mathbb{F}^{m^{\prime
+}\times\ell^{\prime}}$. Then,
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+A^{\prime} & B^{\prime}\\
+C^{\prime} & D^{\prime}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+AA^{\prime}+BC^{\prime} & AB^{\prime}+BD^{\prime}\\
+CA^{\prime}+DC^{\prime} & CB^{\prime}+DD^{\prime}%
+\end{array}
+\right)  .
+\]
+
+\end{proposition}
+
+Note that the products on the right hand sides are products of matrices, so
+they cannot be reordered (e.g., we cannot replace $AA^{\prime}$ by $A^{\prime
+}A$), since matrix multiplication is not commutative.
+
+\begin{proof}
+[Proof of Proposition \ref{prop.blockmatrix.mult-2x2}.]This is a
+straightforward computation that is made painful by the notational load and
+the amount of cases to distinguish (depending on which block our entry lies
+in). Do one of the cases to convince yourself that there is nothing difficult
+here. (See \cite{detnotes} for all the gory details.)
+\end{proof}
+
+Unsurprisingly, Proposition \ref{prop.blockmatrix.mult-2x2} generalizes to the
+multi-block case:
+
+\begin{proposition}
+\label{prop.blockmatrix.mult-uxv}Let $\mathbb{F}$ be a field. Let
+$u,v,w\in\mathbb{N}$. Let $n_{1},n_{2},\ldots,n_{u}\in\mathbb{N}$ and
+$p_{1},p_{2},\ldots,p_{v}\in\mathbb{N}$ and $q_{1},q_{2},\ldots,q_{w}%
+\in\mathbb{N}$. For each $i\in\left[  u\right]  $ and $j\in\left[  v\right]
+$, let $A\left(  i,j\right)  \in\mathbb{F}^{n_{i}\times p_{j}}$ be a matrix.
+For each $j\in\left[  v\right]  $ and $k\in\left[  w\right]  $, let $B\left(
+j,k\right)  \in\mathbb{F}^{p_{j}\times q_{k}}$ be a matrix. Then,%
+\begin{align*}
+&  \left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  & A\left(  1,2\right)  & \cdots & A\left(  1,v\right) \\
+A\left(  2,1\right)  & A\left(  2,2\right)  & \cdots & A\left(  2,v\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+A\left(  u,1\right)  & A\left(  u,2\right)  & \cdots & A\left(  u,v\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,w\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,w\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  v,1\right)  & B\left(  v,2\right)  & \cdots & B\left(  v,w\right)
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+\sum_{j=1}^{v}A\left(  1,j\right)  B\left(  j,1\right)  & \sum_{j=1}%
+^{v}A\left(  1,j\right)  B\left(  j,2\right)  & \cdots & \sum_{j=1}%
+^{v}A\left(  1,j\right)  B\left(  j,w\right) \\
+\sum_{j=1}^{v}A\left(  2,j\right)  B\left(  j,1\right)  & \sum_{j=1}%
+^{v}A\left(  2,j\right)  B\left(  j,2\right)  & \cdots & \sum_{j=1}%
+^{v}A\left(  2,j\right)  B\left(  j,w\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+\sum_{j=1}^{v}A\left(  u,j\right)  B\left(  j,1\right)  & \sum_{j=1}%
+^{v}A\left(  u,j\right)  B\left(  j,2\right)  & \cdots & \sum_{j=1}%
+^{v}A\left(  u,j\right)  B\left(  j,w\right)
+\end{array}
+\right)  .
+\end{align*}
+
+\end{proposition}
+
+\begin{proof}
+Just like Proposition \ref{prop.blockmatrix.mult-2x2}, but with more indices.
+In short, fun!
+\end{proof}
+
+\emph{Block-diagonal matrices} are block matrices of the form
+(\ref{eq.def.blockmatrix.uxv.blockmat}), where
+
+\begin{itemize}
+\item we have $u=v$,
+
+\item all matrices $A\left(  i,i\right)  $ are square (i.e., we have
+$n_{i}=p_{i}$ for all $i\in\left[  u\right]  $), and
+
+\item all $A\left(  i,j\right)  $ with $i\neq j$ are zero matrices.
+\end{itemize}
+
+In other words, block-diagonal matrices are block matrices of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  u,u\right)
+\end{array}
+\right)  ,
+\]
+where $A\left(  1,1\right)  ,A\left(  2,2\right)  ,\ldots,A\left(  u,u\right)
+$ are arbitrary square matrices, and where each \textquotedblleft%
+$0$\textquotedblright\ means a zero matrix of appropriate dimensions. As an
+easy consequence of Proposition \ref{prop.blockmatrix.mult-uxv}, we obtain a
+multiplication rule for block-diagonal matrices that looks exactly like
+multiplication of usual diagonal matrices:
+
+\begin{corollary}
+\label{cor.blockmatrix.mult-diag}Let $u\in\mathbb{N}$. Let $n_{1},n_{2}%
+,\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let $A\left(
+i,i\right)  $ and $B\left(  i,i\right)  $ be two $n_{i}\times n_{i}$-matrices.
+Then,%
+\begin{align*}
+&  \left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  u,u\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & B\left(  2,2\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & B\left(  u,u\right)
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  B\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  B\left(  2,2\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  u,u\right)  B\left(  u,u\right)
+\end{array}
+\right)  .
+\end{align*}
+(Here, each \textquotedblleft$0$\textquotedblright\ means a zero matrix of
+appropriate dimensions.)
+\end{corollary}
+
+Now, we claim that a block-diagonal matrix is unitary if and only if its
+diagonal blocks are unitary:
+
+\begin{proposition}
+\label{prop.blockmatrix.unitary-diag}Let $u\in\mathbb{N}$. Let $n_{1}%
+,n_{2},\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let
+$A_{i}\in\mathbb{C}^{n_{i}\times n_{i}}$ be a matrix. Then, the block-diagonal
+matrix $\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  $ is unitary if and only if all $u$ matrices $A_{1},A_{2}%
+,\ldots,A_{u}$ are unitary.
+\end{proposition}
+
+\begin{proof}
+Let $N=n_{1}+n_{2}+\cdots+n_{u}$. Let
+\begin{equation}
+A=\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  . \label{pf.prop.blockmatrix.unitary-diag.A=}%
+\end{equation}
+Thus, we must prove that $A$ is unitary if and only if all $u$ matrices
+$A_{1},A_{2},\ldots,A_{u}$ are unitary.
+
+It is easy to see that
+\[
+A^{\ast}=\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{\ast} & 0 & \cdots & 0\\
+0 & A_{2}^{\ast} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}^{\ast}%
+\end{array}
+\right)  .
+\]
+Multiplying this equality by (\ref{pf.prop.blockmatrix.unitary-diag.A=}), we
+obtain%
+\begin{align*}
+A^{\ast}A  &  =\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{\ast} & 0 & \cdots & 0\\
+0 & A_{2}^{\ast} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}^{\ast}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{\ast}A_{1} & 0 & \cdots & 0\\
+0 & A_{2}^{\ast}A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}^{\ast}A_{u}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Corollary
+\ref{cor.blockmatrix.mult-diag}}\right)  .
+\end{align*}
+On the other hand, it is again easy to see that
+\[
+I_{N}=\left(
+\begin{array}
+[c]{cccc}%
+I_{n_{1}} & 0 & \cdots & 0\\
+0 & I_{n_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & I_{n_{u}}%
+\end{array}
+\right)
+\]
+(since $N=n_{1}+n_{2}+\cdots+n_{u}$). In light of these two equalities, we see
+that $A^{\ast}A=I_{N}$ holds if and only if
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{\ast}A_{1} & 0 & \cdots & 0\\
+0 & A_{2}^{\ast}A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}^{\ast}A_{u}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+I_{n_{1}} & 0 & \cdots & 0\\
+0 & I_{n_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & I_{n_{u}}%
+\end{array}
+\right)
+\]
+holds, i.e., if and only if we have $A_{i}^{\ast}A_{i}=I_{n_{i}}$ for each
+$i\in\left[  u\right]  $. Likewise, we can see that $AA^{\ast}=I_{N}$ holds if
+and only if $A_{i}A_{i}^{\ast}=I_{n_{i}}$ for each $i\in\left[  u\right]  $.
+Hence, we have the following chain of equivalences:%
+\begin{align*}
+&  \ \left(  A\text{ is unitary}\right) \\
+&  \Longleftrightarrow\ \left(  AA^{\ast}=I_{N}\text{ and }A^{\ast}%
+A=I_{N}\right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
+}\mathcal{A}\Longleftrightarrow\mathcal{C}\text{ in Theorem
+\ref{thm.unitary.unitary.eqs}}\right) \\
+&  \Longleftrightarrow\ \left(  \text{we have }A_{i}A_{i}^{\ast}=I_{n_{i}%
+}\text{ and }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[  u\right]
+\right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since we have shown that }AA^{\ast}=I_{N}\text{ holds if and only if}\\
+\text{we have }A_{i}A_{i}^{\ast}=I_{n_{i}}\text{ for each }i\in\left[
+u\right]  \text{, and since we have}\\
+\text{shown that }A^{\ast}A=I_{N}\text{ holds if and only if}\\
+\text{we have }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[
+u\right]
+\end{array}
+\right) \\
+&  \Longleftrightarrow\ \left(  \text{the matrix }A_{i}\text{ is unitary for
+each }i\in\left[  u\right]  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
+}\mathcal{C}\Longleftrightarrow\mathcal{A}\text{ in Theorem
+\ref{thm.unitary.unitary.eqs}}\right) \\
+&  \Longleftrightarrow\ \left(  \text{all }u\text{ matrices }A_{1}%
+,A_{2},\ldots,A_{u}\text{ are unitary}\right)  .
+\end{align*}
+But this is precisely what we need to show. Thus, Proposition
+\ref{prop.blockmatrix.unitary-diag} is proven.
+\end{proof}
+
+\subsection{The Gram--Schmidt process}
+
+\begin{theorem}
+[Gram--Schmidt process]\label{thm.unitary.gs}Let $\left(  v_{1},v_{2}%
+,\ldots,v_{m}\right)  $ be a linearly independent tuple of vectors in
+$\mathbb{C}^{n}$.
+
+Then, there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $
+of vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+
+Furthermore, such a tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ can be
+constructed by the following recursive process:
+
+\begin{itemize}
+\item For each $p\in\left[  m\right]  $, if the first $p-1$ entries
+$z_{1},z_{2},\ldots,z_{p-1}$ of this tuple have already been constructed, then
+we define the $p$-th entry $z_{p}$ by the equality%
+\begin{equation}
+z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}. \label{eq.thm.unitary.gs.zp=}%
+\end{equation}
+(Note that the sum on the right hand side of (\ref{eq.thm.unitary.gs.zp=}) is
+an empty sum when $p=1$; thus, (\ref{eq.thm.unitary.gs.zp=}) simplifies to
+$z_{1}=v_{1}$ in this case.)
+\end{itemize}
+\end{theorem}
+
+Roughly speaking, the claim of Theorem \ref{thm.unitary.gs} is that if we
+start with any linearly independent tuple $\left(  v_{1},v_{2},\ldots
+,v_{m}\right)  $ of vectors in $\mathbb{C}^{n}$, then we can make this tuple
+orthogonal by tweaking it as follows:
+
+\begin{itemize}
+\item leave $v_{1}$ unchanged;
+
+\item modify $v_{2}$ by subtracting some scalar multiple of $v_{1}$;
+
+\item modify $v_{3}$ by subtracting some linear combination of $v_{1}$ and
+$v_{2}$;
+
+\item modify $v_{4}$ by subtracting some linear combination of $v_{1}%
+,v_{2},v_{3}$;
+
+\item and so on.
+\end{itemize}
+
+\noindent Specifically, the equation (\ref{eq.thm.unitary.gs.zp=}) tells us
+(recursively) the precise multiples (and linear combinations) that we need to
+subtract. This recursive tweaking process is known as \emph{Gram--Schmidt
+orthogonalization} or the \emph{Gram--Schmidt process}.
+
+\begin{example}
+Here is how the equalities (\ref{eq.thm.unitary.gs.zp=}) in Theorem
+\ref{thm.unitary.gs} look like for $p\in\left\{  1,2,3,4\right\}  $:%
+\begin{align*}
+z_{1}  &  =v_{1};\\
+z_{2}  &  =v_{2}-\dfrac{\left\langle v_{2},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1};\\
+z_{3}  &  =v_{3}-\dfrac{\left\langle v_{3},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}-\dfrac{\left\langle v_{3},z_{2}\right\rangle
+}{\left\langle z_{2},z_{2}\right\rangle }z_{2};\\
+z_{4}  &  =v_{4}-\dfrac{\left\langle v_{4},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}-\dfrac{\left\langle v_{4},z_{2}\right\rangle
+}{\left\langle z_{2},z_{2}\right\rangle }z_{2}-\dfrac{\left\langle v_{4}%
+,z_{3}\right\rangle }{\left\langle z_{3},z_{3}\right\rangle }z_{3}.
+\end{align*}
+
+\end{example}
+
+\begin{example}
+Let us try out the recursive construction of $\left(  z_{1},z_{2},\ldots
+,z_{m}\right)  $ from Theorem \ref{thm.unitary.gs} on an example. Let $n=4$
+and $m=3$ and
+\[
+v_{1}=\left(
+\begin{array}
+[c]{c}%
+1\\
+1\\
+1\\
+1
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ v_{2}=\left(
+\begin{array}
+[c]{c}%
+0\\
+-2\\
+0\\
+-2
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ v_{3}=\left(
+\begin{array}
+[c]{c}%
+2\\
+-2\\
+0\\
+0
+\end{array}
+\right)  .
+\]
+Then, (\ref{eq.thm.unitary.gs.zp=}) becomes%
+\begin{align*}
+z_{1}  &  =v_{1}=\left(
+\begin{array}
+[c]{c}%
+1\\
+1\\
+1\\
+1
+\end{array}
+\right)  ;\\
+z_{2}  &  =v_{2}-\dfrac{\left\langle v_{2},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}=\left(
+\begin{array}
+[c]{c}%
+0\\
+-2\\
+0\\
+-2
+\end{array}
+\right)  -\dfrac{-4}{4}\left(
+\begin{array}
+[c]{c}%
+1\\
+1\\
+1\\
+1
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+1\\
+-1\\
+1\\
+-1
+\end{array}
+\right)  ;\\
+z_{3}  &  =v_{3}-\dfrac{\left\langle v_{3},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}-\dfrac{\left\langle v_{3},z_{2}\right\rangle
+}{\left\langle z_{2},z_{2}\right\rangle }z_{2}\\
+&  =\left(
+\begin{array}
+[c]{c}%
+2\\
+-2\\
+0\\
+0
+\end{array}
+\right)  -\dfrac{0}{4}\left(
+\begin{array}
+[c]{c}%
+1\\
+1\\
+1\\
+1
+\end{array}
+\right)  -\dfrac{4}{4}\left(
+\begin{array}
+[c]{c}%
+1\\
+-1\\
+1\\
+-1
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+1\\
+-1\\
+-1\\
+1
+\end{array}
+\right)  .
+\end{align*}
+So
+\[
+\left(  z_{1},z_{2},z_{3}\right)  =\left(  \left(
+\begin{array}
+[c]{c}%
+1\\
+1\\
+1\\
+1
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+1\\
+-1\\
+1\\
+-1
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+1\\
+-1\\
+-1\\
+1
+\end{array}
+\right)  \right)
+\]
+is an orthogonal tuple of vectors.
+
+According to Proposition \ref{prop.unitary.innerprod.orth-norm}, we thus
+obtain an orthonormal tuple%
+\[
+\left(  \dfrac{1}{\left\vert \left\vert z_{1}\right\vert \right\vert }%
+z_{1},\ \ \dfrac{1}{\left\vert \left\vert z_{2}\right\vert \right\vert }%
+z_{2},\ \ \dfrac{1}{\left\vert \left\vert z_{3}\right\vert \right\vert }%
+z_{3}\right)  =\left(  \left(
+\begin{array}
+[c]{c}%
+1/2\\
+1/2\\
+1/2\\
+1/2
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+1/2\\
+-1/2\\
+1/2\\
+-1/2
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+1/2\\
+-1/2\\
+-1/2\\
+1/2
+\end{array}
+\right)  \right)  .
+\]
+(We are in luck with this example; normally we would get square roots at this step.)
+\end{example}
+
+For more examples of the Gram--Schmidt process, see \cite[Week 3,
+\S 4]{Bartle14}. (These examples all use vectors in $\mathbb{R}^{n}$ rather
+than $\mathbb{C}^{n}$, which allows for visualization and saves one the
+trouble of complex conjugates.)
+
+\begin{proof}
+[Proof of Theorem \ref{thm.unitary.gs}.]We define a tuple $\left(  z_{1}%
+,z_{2},\ldots,z_{m}\right)  $ recursively by (\ref{eq.thm.unitary.gs.zp=}).
+First, we need to show that this tuple is actually well-defined -- i.e., that
+the denominators $\left\langle z_{k},z_{k}\right\rangle $ never become $0$ in
+the process (which would render (\ref{eq.thm.unitary.gs.zp=}) meaningless).
+Second, we need to show that the resulting tuple does indeed satisfy
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+Finally, we need to show that the resulting tuple is orthogonal.
+
+Let us prove the first two of these three claims in lockstep, by showing the
+following claim:
+
+\begin{statement}
+\textit{Claim 1:} For each $p\in\left[  m\right]  $, the vector $z_{p}$ is
+well-defined (i.e., the denominators $\left\langle z_{k},z_{k}\right\rangle $
+on the right hand side of (\ref{eq.thm.unitary.gs.zp=}) are nonzero) and
+satisfies $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $.
+\end{statement}
+
+[\textit{Proof of Claim 1:} Strong induction on $p$. Thus, we fix some
+$p\in\left[  m\right]  $, and assume that the vectors $z_{1},z_{2}%
+,\ldots,z_{p-1}$ are well-defined and satisfy
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j<p. \label{pf.thm.unitary.gs.4}%
+\end{equation}
+We now need to show that the vector $z_{p}$ is well-defined and satisfies
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\label{pf.thm.unitary.gs.5}%
+\end{equation}
+
+
+The tuple $\left(  v_{1},v_{2},\ldots,v_{p}\right)  $ is linearly independent
+(since the tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ is linearly
+independent). Thus, the span $\operatorname*{span}\left\{  v_{1},v_{2}%
+,\ldots,v_{p-1}\right\}  $ is $\left(  p-1\right)  $-dimensional and we have
+$v_{p}\notin\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+$. However, we have
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+\label{pf.thm.unitary.gs.6}%
+\end{equation}
+(Indeed, this is obvious when $p=1$, and otherwise follows from
+(\ref{pf.thm.unitary.gs.4}) (applied to $j=p-1$).) Hence,%
+\[
+v_{p}\notin\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+\]
+
+
+Now, recall that the span $\operatorname*{span}\left\{  v_{1},v_{2}%
+,\ldots,v_{p-1}\right\}  $ is $\left(  p-1\right)  $-dimensional. In view of
+(\ref{pf.thm.unitary.gs.6}), we can rewrite this as follows: The span
+$\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  $ is
+$\left(  p-1\right)  $-dimensional. In other words, the tuple $\left(
+z_{1},z_{2},\ldots,z_{p-1}\right)  $ is linearly independent. Hence, for each
+$k\in\left[  p-1\right]  $, we have $z_{k}\neq0$ and therefore $\left\langle
+z_{k},z_{k}\right\rangle >0$ (by Proposition \ref{prop.unitary.innerprod.pos}
+\textbf{(b)}), so that $\left\langle z_{k},z_{k}\right\rangle \neq0$. Thus,
+the denominators on the right hand side of (\ref{eq.thm.unitary.gs.zp=}) are
+nonzero, so that $v_{p}$ is well-defined. It remains to prove that
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\]
+But this is easy: From (\ref{eq.thm.unitary.gs.zp=}), we see that $z_{p}$
+equals $v_{p}$ minus some linear combination of $v_{1},v_{2},\ldots,v_{p-1}$.
+Thus,%
+\begin{align*}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}   &
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\} \\
+&  =\underbrace{\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}%
+\right\}  }_{=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
+}+\operatorname*{span}\left\{  z_{p}\right\} \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
++\operatorname*{span}\left\{  z_{p}\right\} \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\end{align*}
+Thus, the induction step is complete, so that Claim 1 is proved by induction.]
+
+Claim 1 shows that the tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ is
+well-defined and satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+It now remains to show that this tuple is orthogonal. We shall achieve this by
+showing the following claim:
+
+\begin{statement}
+\textit{Claim 2:} For any $j\in\left\{  0,1,\ldots,m\right\}  $, the tuple
+$\left(  z_{1},z_{2},\ldots,z_{j}\right)  $ is orthogonal.
+\end{statement}
+
+[\textit{Proof of Claim 2:} We proceed by induction on $j$:
+
+\textit{Induction base:} Claim 2 clearly holds for $j=0$, since the (empty)
+$0$-tuple is vacuously orthogonal.
+
+\textit{Induction step:} Let $p\in\left[  m\right]  $. Assume (as the
+induction hypothesis) that Claim 2 holds for $j=p-1$. We must show that Claim
+2 holds for $j=p$.
+
+Our induction hypothesis says that Claim 2 holds for $j=p-1$. In other words,
+the tuple $\left(  z_{1},z_{2},\ldots,z_{p-1}\right)  $ is orthogonal. In
+other words, we have%
+\begin{equation}
+z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p-1\right]
+\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.12}%
+\end{equation}
+In other words, we have%
+\begin{equation}
+\left\langle z_{a},z_{b}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{whenever
+}a,b\in\left[  p-1\right]  \text{ satisfy }a\neq b.
+\label{pf.thm.unitary.gs.12b}%
+\end{equation}
+
+
+We must show that Claim 2 holds for $j=p$. In other words, we must show that
+the tuple $\left(  z_{1},z_{2},\ldots,z_{p}\right)  $ is orthogonal. In other
+words, we must show that%
+\begin{equation}
+z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p\right]
+\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.13}%
+\end{equation}
+It will clearly suffice to prove (\ref{pf.thm.unitary.gs.13}) in the case when
+one of $a$ and $b$ equals $p$ (because in all other cases, we have
+$a,b\in\left[  p-1\right]  $, and thus $z_{a}\perp z_{b}$ follows from
+(\ref{pf.thm.unitary.gs.12})).
+
+Thus, let $a,b\in\left[  p\right]  $ satisfy $a\neq b$, and assume that one of
+$a$ and $b$ equals $p$. We must prove that $z_{a}\perp z_{b}$. Proposition
+\ref{prop.unitary.innerprod.orth-symm} shows that $z_{a}\perp z_{b}$ is
+equivalent to $z_{b}\perp z_{a}$. Hence, in our proof of $z_{a}\perp z_{b}$,
+we can WLOG assume that $a\leq b$ (since otherwise, we can swap $a$ with $b$).
+Assume this. Hence, $a<b$ (since $a\neq b$). Thus, $a<b\leq p$, so that $a\neq
+p$. However, we assumed that one of $a$ and $b$ equals $p$; hence, $b=p$
+(since $a\neq p$). Also, we have $a\in\left[  p-1\right]  $ (since $a<b=p$).
+
+Now, (\ref{eq.thm.unitary.gs.zp=}) yields%
+\begin{align*}
+\left\langle z_{p},z_{a}\right\rangle  &  =\left\langle v_{p}-\sum_{k=1}%
+^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
+,z_{k}\right\rangle }z_{k},v_{a}\right\rangle \\
+&  =\left\langle v_{p},z_{a}\right\rangle -\sum_{k=1}^{p-1}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }\left\langle
+z_{k},z_{a}\right\rangle \\
+&  =\left\langle v_{p},z_{a}\right\rangle -\left(  \sum_{\substack{k\in\left[
+p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }\left\langle z_{k},z_{a}\right\rangle
++\dfrac{\left\langle v_{p},z_{a}\right\rangle }{\left\langle z_{a}%
+,z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{here, we have split off the addend for }k=a\\
+\text{from the sum, since }a\in\left[  p-1\right]
+\end{array}
+\right) \\
+&  =\left\langle v_{p},z_{a}\right\rangle -\sum_{\substack{k\in\left[
+p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }\underbrace{\left\langle z_{k}%
+,z_{a}\right\rangle }_{\substack{=0\\\text{(by (\ref{pf.thm.unitary.gs.13}),
+applied to }k\text{ and }a\\\text{instead of }a\text{ and }b\text{)}%
+}}-\underbrace{\dfrac{\left\langle v_{p},z_{a}\right\rangle }{\left\langle
+z_{a},z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle }%
+_{=\left\langle v_{p},z_{a}\right\rangle }\\
+&  =\left\langle v_{p},z_{a}\right\rangle -\underbrace{\sum_{\substack{k\in
+\left[  p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }0}_{=0}-\left\langle v_{p}%
+,z_{a}\right\rangle =0.
+\end{align*}
+In view of $b=p$, this rewrites as $\left\langle z_{b},z_{a}\right\rangle =0$.
+Thus, $z_{b}\perp z_{a}$, so that $z_{a}\perp z_{b}$ (by Proposition
+\ref{prop.unitary.innerprod.orth-symm}).
+
+As explained above, this completes our proof of the fact that Claim 2 holds
+for $j=p$. Thus, the induction step is complete, and Claim 2 is proven.]
+
+Now, applying Claim 2 to $j=m$, we obtain that the tuple $\left(  z_{1}%
+,z_{2},\ldots,z_{m}\right)  $ is orthogonal. Thus, the proof of Theorem
+\ref{thm.unitary.gs} is complete.
+\end{proof}
+
+One might wonder how the Gram--Schmidt process could be adapted to a tuple
+$\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors that is \textbf{not}
+linearly independent. The equality (\ref{eq.thm.unitary.gs.zp=}) requires the
+vectors $z_{k}$ to be nonzero, since the denominators in which they appear
+would be $0$ otherwise. In Theorem \ref{thm.unitary.gs}, this requirement is
+indeed satisfied (as we have shown in the proof above). However, if we do not
+assume $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ to be linearly independent,
+then some of the $z_{k}$ can be zero, and so the construction of the following
+$z_{p}$ will fail. There are several ways to adapt the process to this
+complication. We will take the most stupid-sounding one: In the cases where
+the equality (\ref{eq.thm.unitary.gs.zp=}) would produce a zero vector $z_{p}%
+$, we opt to instead pick some nonzero vector orthogonal to $z_{1}%
+,z_{2},\ldots,z_{p-1}$ (using Lemma \ref{lem.unitary.orthog.one-more}) and
+declare it to be $z_{p}$. This works well as long as $m\leq n$; here is the result:
+
+\begin{theorem}
+[Gram--Schmidt process, take 2]\label{thm.unitary.gs-2}Let $\left(
+v_{1},v_{2},\ldots,v_{m}\right)  $ be any tuple of vectors in $\mathbb{C}^{n}$
+with $m\leq n$.
+
+Then, there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $
+of nonzero vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+
+Furthermore, such a tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ can be
+constructed by the following recursive process:
+
+\begin{itemize}
+\item For each $p\in\left[  m\right]  $, if the first $p-1$ entries
+$z_{1},z_{2},\ldots,z_{p-1}$ of this tuple have already been constructed, then
+we define the $p$-th entry $z_{p}$ as follows:
+
+\begin{itemize}
+\item \textit{If }$v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}\neq0$, then
+we define $z_{p}$ by the equality%
+\begin{equation}
+z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}.
+\label{eq.thm.unitary.gs-2.zp=sum}%
+\end{equation}
+
+
+\item \textit{If }$v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}=0$, then we
+pick an arbitrary nonzero vector $b\in\mathbb{C}^{n}$ that is orthogonal to
+each of $z_{1},z_{2},\ldots,z_{p-1}$ (indeed, such a vector $b$ exists by
+Lemma \ref{lem.unitary.orthog.one-more}, because $p-1<p\leq m\leq n$), and we
+set%
+\begin{equation}
+z_{p}=b. \label{eq.thm.unitary.gs-2.zp=b}%
+\end{equation}
+
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.unitary.gs-2}.]We define a tuple $\left(
+z_{1},z_{2},\ldots,z_{m}\right)  $ by the recursive process described in
+Theorem \ref{thm.unitary.gs-2}. It is clear that this tuple is actually
+well-defined (indeed, the vectors $z_{p}$ are nonzero by their construction,
+and thus the denominators $\left\langle z_{k},z_{k}\right\rangle $ in
+(\ref{eq.thm.unitary.gs-2.zp=sum}) never become $0$, because Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)} shows that any nonzero vector
+$z$ satisfies $\left\langle z,z\right\rangle \neq0$). We do, however, need to
+show that the resulting tuple does indeed satisfy
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  ,
+\]
+and that this tuple is orthogonal.
+
+Let us prove the first of these two claims:
+
+\begin{statement}
+\textit{Claim 1:} For each $p\in\left[  m\right]  $, we have
+$\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $.
+\end{statement}
+
+[\textit{Proof of Claim 1:} Strong induction on $p$. Thus, we fix some
+$p\in\left[  m\right]  $, and assume that%
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j<p. \label{pf.thm.unitary.gs-2.4}%
+\end{equation}
+We now need to show that
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\label{pf.thm.unitary.gs-2.5}%
+\end{equation}
+
+
+We shall first show that
+\begin{equation}
+v_{p}\in\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\label{pf.thm.unitary.gs-2.5a}%
+\end{equation}
+
+
+Indeed, we recall our definition of $z_{p}$. This definition distinguishes
+between two cases, depending on whether the difference $v_{p}-\sum_{k=1}%
+^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
+,z_{k}\right\rangle }z_{k}$ is $\neq0$ or $=0$. Let us analyze these two cases separately:
+
+\begin{itemize}
+\item \textit{Case 1:} We have $v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}\neq0$.
+In this case, $z_{p}$ is defined by the equality
+(\ref{eq.thm.unitary.gs-2.zp=sum}). Solving this equality for $v_{p}$, we
+obtain%
+\[
+v_{p}=z_{p}+\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}\in\operatorname*{span}\left\{
+z_{1},z_{2},\ldots,z_{p}\right\}  .
+\]
+Thus, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 1.
+
+\item \textit{Case 2:} We have $v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}=0$. In
+this case, we have%
+\[
+v_{p}=\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}\in\operatorname*{span}\left\{
+z_{1},z_{2},\ldots,z_{p-1}\right\}  \subseteq\operatorname*{span}\left\{
+z_{1},z_{2},\ldots,z_{p}\right\}  .
+\]
+Hence, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 2.
+\end{itemize}
+
+We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, we
+have
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+\]
+(Indeed, this is obvious when $p=1$, and otherwise follows from
+(\ref{pf.thm.unitary.gs-2.4}) (applied to $j=p-1$).) Thus, for each
+$i\in\left[  p-1\right]  $, we have%
+\begin{align*}
+v_{i}  &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\} \\
+&  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
+\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\end{align*}
+In other words, all $p-1$ vectors $v_{1},v_{2},\ldots,v_{p-1}$ belong to
+$\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Since the
+vector $v_{p}$ also belongs to $\operatorname*{span}\left\{  z_{1}%
+,z_{2},\ldots,z_{p}\right\}  $ (by (\ref{pf.thm.unitary.gs-2.5a})), we thus
+conclude that all $p$ vectors $v_{1},v_{2},\ldots,v_{p}$ belong to
+$\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Therefore,
+$\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Thus, the
+induction step is complete, so that Claim 1 is proved by induction.]
+
+It now remains to show that the tuple $\left(  z_{1},z_{2},\ldots
+,z_{m}\right)  $ is orthogonal. We shall achieve this by showing the following claim:
+
+\begin{statement}
+\textit{Claim 2:} For any $j\in\left\{  0,1,\ldots,m\right\}  $, the tuple
+$\left(  z_{1},z_{2},\ldots,z_{j}\right)  $ is orthogonal.
+\end{statement}
+
+[\textit{Proof of Claim 2:} We proceed by induction on $j$, similarly to the
+proof of Claim 2 in the proof of Theorem \ref{thm.unitary.gs}. Only one minor
+complication emerges in the induction step:
+
+\textit{Induction step:} Let $p\in\left[  m\right]  $. Assume (as the
+induction hypothesis) that Claim 2 holds for $j=p-1$. We must show that Claim
+2 holds for $j=p$.
+
+As in the proof of Theorem \ref{thm.unitary.gs}, we can convince ourselves
+that it suffices to show that
+\begin{equation}
+z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p\right]
+\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs-2.13}%
+\end{equation}
+Moreover, we only need to show this in the case when one of $a$ and $b$ equals
+$p$ (because in all other cases, it follows from the induction hypothesis). In
+other words, we only need to show that the vector $z_{p}$ is orthogonal to
+each of $z_{1},z_{2},\ldots,z_{p-1}$.
+
+Recall our definition of $z_{p}$. This definition distinguishes between two
+cases, depending on whether the difference $v_{p}-\sum_{k=1}^{p-1}%
+\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
+,z_{k}\right\rangle }z_{k}$ is $\neq0$ or $=0$. In the first of these two
+cases, the proof proceeds exactly as in the proof of Theorem
+\ref{thm.unitary.gs}. Let us thus WLOG assume that we are in the second case.
+That is, we assume that $v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}=0$. Hence,
+$z_{p}$ is defined by (\ref{eq.thm.unitary.gs-2.zp=b}), where $b$ is a nonzero
+vector in $\mathbb{C}^{n}$ that is orthogonal to each of $z_{1},z_{2}%
+,\ldots,z_{p-1}$. This shows that $z_{p}$ is orthogonal to each of
+$z_{1},z_{2},\ldots,z_{p-1}$. But as we explained above, this is exactly what
+we need to show. Thus, Claim 2 holds for $j=p$. The induction step is
+complete, and Claim 2 is proved.]
+
+Now, applying Claim 2 to $j=m$, we obtain that the tuple $\left(  z_{1}%
+,z_{2},\ldots,z_{m}\right)  $ is orthogonal. Thus, the proof of Theorem
+\ref{thm.unitary.gs-2} is complete.
+\end{proof}
+
+\begin{corollary}
+\label{cor.unitary.gs-2nor}Let $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ be
+any tuple of vectors in $\mathbb{C}^{n}$ with $m\leq n$.
+
+Then, there is an orthonormal tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)
+$ of vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  q_{1},q_{2},\ldots,q_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+\end{corollary}
+
+\begin{proof}
+[Proof of Corollary \ref{cor.unitary.gs-2nor}.]Theorem \ref{thm.unitary.gs-2}
+shows that there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots
+,z_{m}\right)  $ of nonzero vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+Consider this tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $. Proposition
+\ref{prop.unitary.innerprod.orth-norm} (applied to $\left(  z_{1},z_{2}%
+,\ldots,z_{m}\right)  $ instead of $\left(  u_{1},u_{2},\ldots,u_{k}\right)
+$) then shows that the tuple%
+\[
+\left(  \dfrac{1}{\left\vert \left\vert z_{1}\right\vert \right\vert }%
+z_{1},\ \ \dfrac{1}{\left\vert \left\vert z_{2}\right\vert \right\vert }%
+z_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert z_{m}\right\vert
+\right\vert }z_{m}\right)
+\]
+is orthonormal. Moreover, we have
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+=\operatorname*{span}\left\{  \dfrac{1}{\left\vert \left\vert z_{1}\right\vert
+\right\vert }z_{1},\ \ \dfrac{1}{\left\vert \left\vert z_{2}\right\vert
+\right\vert }z_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert
+z_{j}\right\vert \right\vert }z_{j}\right\}
+\]
+for all $j\in\left[  m\right]  $. Hence, Corollary \ref{cor.unitary.gs-2nor}
+is proven (just take $q_{i}=\dfrac{1}{\left\vert \left\vert z_{i}\right\vert
+\right\vert }z_{i}$).
+\end{proof}
+
+\subsection{QR factorization}
+
+Recall that an isometry is a matrix whose columns form an orthonormal tuple.
+(We saw this in Proposition \ref{prop.unitary.innerprod.isometry.2}.)
+
+\begin{theorem}
+[QR factorization, isometry version]\label{thm.unitary.QR1}Let $A\in
+\mathbb{C}^{n\times m}$ satisfy $n\geq m$. Then, there exists an isometry
+$Q\in\mathbb{C}^{n\times m}$ and an upper-triangular matrix $R\in
+\mathbb{C}^{m\times m}$ such that $A=QR$.
+\end{theorem}
+
+The pair $\left(  Q,R\right)  $ in Theorem \ref{thm.unitary.QR1} is called a
+\emph{QR factorization} of $A$. (We are using the indefinite article, since it
+is usually not unique.)
+
+\begin{example}
+Let%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & 1 & 2\\
+1 & -2 & 0 & 2\\
+1 & 0 & 1 & 0\\
+1 & -2 & 0 & 0
+\end{array}
+\right)  \in\mathbb{C}^{4\times4}.
+\]
+Then, one QR factorization of $A$ is given by%
+\[
+A=\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+1/2 & 1/2 & 1/2 & 1/2\\
+1/2 & -1/2 & 1/2 & -1/2\\
+1/2 & 1/2 & -1/2 & -1/2\\
+1/2 & -1/2 & -1/2 & 1/2
+\end{array}
+\right)  }_{=Q}\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+2 & -2 & 1 & 0\\
+0 & 2 & 1 & 2\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 2
+\end{array}
+\right)  }_{=R}.
+\]
+Another is given by%
+\[
+A=\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+1/2 & 1/2 & \sqrt{2}/2 & 0\\
+1/2 & -1/2 & 0 & \sqrt{2}/2\\
+1/2 & 1/2 & -\sqrt{2}/2 & 0\\
+1/2 & -1/2 & 0 & -\sqrt{2}/2
+\end{array}
+\right)  }_{=Q}\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+2 & -2 & 1 & 2\\
+0 & 2 & 1 & 0\\
+0 & 0 & 0 & \sqrt{2}\\
+0 & 0 & 0 & \sqrt{2}%
+\end{array}
+\right)  }_{=R}.
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.unitary.QR1} (sketched).]Recall that $A_{\bullet
+,1},A_{\bullet,2},\ldots,A_{\bullet,m}$ denote the $m$ columns of the matrix
+$A$. Applying Corollary \ref{cor.unitary.gs-2nor} to $\left(  v_{1}%
+,v_{2},\ldots,v_{m}\right)  =\left(  A_{\bullet,1},A_{\bullet,2}%
+,\ldots,A_{\bullet,m}\right)  $, we conclude that there is an orthonormal
+tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)  $ of vectors in $\mathbb{C}%
+^{n}$ that satisfies%
+\begin{align}
+\operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet
+,j}\right\}   &  \subseteq\operatorname*{span}\left\{  q_{1},q_{2}%
+,\ldots,q_{j}\right\} \label{pf.thm.unitary.QR1.spansequal}\\
+\ \ \ \ \ \ \ \ \ \ \text{for all }j  &  \in\left[  m\right]  .\nonumber
+\end{align}
+Consider this tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)  $. Let
+$Q\in\mathbb{C}^{n\times m}$ be the matrix whose columns are $q_{1}%
+,q_{2},\ldots,q_{m}$. Then, $Q$ is an isometry (by Proposition
+\ref{prop.unitary.innerprod.isometry.2}, since its columns form an orthonormal
+tuple). The definition of $Q$ shows that%
+\begin{equation}
+Q_{\bullet,i}=q_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]  .
+\label{pf.thm.unitary.QR1.Qbull}%
+\end{equation}
+
+
+Now, let $j\in\left[  m\right]  $. Then,%
+\[
+A_{\bullet,j}\in\operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet
+,2},\ldots,A_{\bullet,j}\right\}  \subseteq\operatorname*{span}\left\{
+q_{1},q_{2},\ldots,q_{j}\right\}
+\]
+(by (\ref{pf.thm.unitary.QR1.spansequal})). In other words, there exist
+scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}\in\mathbb{C}$ such that $A_{\bullet
+,j}=\sum_{i=1}^{j}r_{i,j}q_{i}$. Consider these scalars $r_{1,j}%
+,r_{2,j},\ldots,r_{j,j}$. Also, set
+\begin{equation}
+r_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for each integer }i>j.
+\label{pf.thm.unitary.QR1.triang}%
+\end{equation}
+Thus,%
+\begin{equation}
+A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}=\sum_{i=1}^{m}r_{i,j}q_{i}
+\label{pf.thm.unitary.QR1.col=}%
+\end{equation}
+(since $\sum_{i=1}^{m}r_{i,j}q_{i}=\sum_{i=1}^{j}r_{i,j}q_{i}+\sum_{i=j+1}%
+^{m}\underbrace{r_{i,j}}_{\substack{=0\\\text{(by
+(\ref{pf.thm.unitary.QR1.triang}))}}}q_{i}=\sum_{i=1}^{j}r_{i,j}q_{i}$).
+
+Forget that we fixed $j$. Thus, for each $j\in\left[  m\right]  $, we have
+defined scalars $r_{1,j},r_{2,j},r_{3,j},\ldots\in\mathbb{C}$ that satisfy
+(\ref{pf.thm.unitary.QR1.triang}) and (\ref{pf.thm.unitary.QR1.col=}).
+
+Now, let $R\in\mathbb{C}^{m\times m}$ be the $m\times m$-matrix whose $\left(
+i,j\right)  $-th entry is $r_{i,j}$ for each $i,j\in\left[  n\right]  $. This
+matrix $R$ is upper-triangular, because of (\ref{pf.thm.unitary.QR1.triang}).
+The definition of $R$ yields%
+\begin{equation}
+R_{i,j}=r_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]  .
+\label{pf.thm.unitary.QR1.Rij=}%
+\end{equation}
+Furthermore, for each $j\in\left[  m\right]  $, we have%
+\begin{align*}
+A_{\bullet,j}  &  =\sum_{i=1}^{m}\underbrace{r_{i,j}}_{\substack{=R_{i,j}%
+\\\text{(by (\ref{pf.thm.unitary.QR1.Rij=}))}}}\underbrace{q_{i}%
+}_{\substack{=Q_{\bullet,i}\\\text{(by (\ref{pf.thm.unitary.QR1.Qbull}))}%
+}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.QR1.col=})}\right)
+\\
+&  =\sum_{i=1}^{m}R_{i,j}Q_{\bullet,i}=\left(  QR\right)  _{\bullet,j}%
+\end{align*}
+(by the definition of the product of two matrices). In other words, $A=QR$.
+
+Thus, we have found an isometry $Q\in\mathbb{C}^{n\times m}$ and an
+upper-triangular matrix $R\in\mathbb{C}^{m\times m}$ such that $A=QR$. This
+proves Theorem \ref{thm.unitary.QR1}.
+\end{proof}
+
+Note that there are other variants of QR factorization, such as the following one:
+
+\begin{theorem}
+[QR factorization, unitary version]\label{thm.unitary.QR2}Let $A\in
+\mathbb{C}^{n\times m}$. Then, there exists a unitary matrix $Q\in
+\mathbb{C}^{n\times n}$ and an upper-triangular matrix $R\in\mathbb{C}%
+^{n\times m}$ such that $A=QR$. Here, a rectangular matrix $R\in
+\mathbb{C}^{n\times m}$ is said to be \emph{upper-triangular} if and only if
+it satisfies%
+\[
+R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
+\]
+
+\end{theorem}
+
+\begin{exercise}
+\fbox{5} Prove Theorem \ref{thm.unitary.QR2}.
+
+[\textbf{Hint:} Reduce both cases $n>m$ and $n<m$ to the case $n=m$.]
+\end{exercise}
+
+\newpage
+
+\begin{thebibliography}{99999999}                                                                                         %
+
+
+\bibitem[AigZie14]{AigZie}%
+\href{https://doi.org/10.1007/978-3-662-57265-8}{Martin Aigner, G\"{u}nter M.
+Ziegler, \textit{Proofs from the Book}, 6th edition, Springer 2018.}
+
+\bibitem[AndDos10]{AndDos}\href{https://bookstore.ams.org/xyz-13}{Titu
+Andreescu, Gabriel Dospinescu, \textit{Problems from the Book}, 2nd edition,
+XYZ Press 2010}.
+
+\bibitem[AndDos12]{AndDosS}\href{https://bookstore.ams.org/xyz-6}{Titu
+Andreescu, Gabriel Dospinescu, \textit{Straight from the Book}, XYZ Press
+2012}.
+
+\bibitem[Bartle14]{Bartle14}Padraic Bartlett, \textit{Math 108b: Advanced
+Linear Algebra, Winter 2014}, 2014.\newline\url{http://web.math.ucsb.edu/~padraic/ucsb_2013_14/math108b_w2014/math108b_w2014.html}
+
+\bibitem[Bourba74]{Bourba74}%
+\href{http://libgen.rs/book/index.php?md5=3270565F6D0052635A1550883588204C}{Nicolas
+Bourbaki, \textit{Algebra I: Chapters 1--3}, Addison-Wesley 1974}.
+
+\bibitem[BoyDip12]{BoyDip12}William E. Boyce, Richard C. DiPrima,
+\textit{Elementary Differential Equations}, 10th edition, Wiley 2012.
+
+\bibitem[ChaSed97]{ChaSed97}%
+\href{https://www.jstor.org/stable/10.4169/j.ctt19b9mbq}{Gengzhe Chang, Thomas
+W. Sederberg, \textit{Over and Over Again}, Anneli Lax New Mathematical
+Library \textbf{39}, The Mathematical Association of America 1997}.
+
+\bibitem[Conrad]{Conrad}Keith Conrad, \textit{Expository notes
+(\textquotedblleft blurbs\textquotedblright)}.\newline\url{https://kconrad.math.uconn.edu/blurbs/}
+
+\bibitem[Edward05]{Edwards-Essays}%
+\href{https://doi.org/10.1007/b138656}{Harold M. Edwards, \textit{Essays in
+Constructive Mathematics}, Springer 2005}.\newline See
+\url{https://www.math.nyu.edu/faculty/edwardsh/eserrata.pdf} for errata.
+
+\bibitem[Edward95]{Edward95}%
+\href{https://doi.org/10.1007/978-0-8176-4446-8}{Harold M. Edwards,
+\textit{Linear Algebra}, Springer 1995}.
+
+\bibitem[Elman20]{Elman20}Richard Elman, \textit{Lectures on Abstract
+Algebra}, 28 September 2020.\newline\url{https://www.math.ucla.edu/~rse/algebra_book.pdf}
+
+\bibitem[GalQua20]{GalQua20}Jean Gallier and Jocelyn Quaintance,
+\textit{Algebra, Topology, Differential Calculus, and Optimization Theory For
+Computer Science and Engineering}, 11 November 2020.\newline\url{https://www.cis.upenn.edu/~jean/gbooks/geomath.html}
+
+\bibitem[Geck20]{Geck20}\href{https://doi.org/10.13001/ela.2020.5055}{Meinolf
+Geck, \textit{On Jacob's construction of the rational canonical form of a
+matrix}, Electronic Journal of Linear Algebra \textbf{36} (2020), pp.
+177--182}.
+
+\bibitem[GelAnd17]{GelAnd}%
+\href{https://doi.org/10.1007/978-3-319-58988-6}{R\u{a}zvan Gelca, Titu
+Andreescu, \textit{Putnam and Beyond}, 2nd edition, Springer 2017}.
+
+\bibitem[Goodma15]{Goodman}Frederick M. Goodman, \textit{Algebra: Abstract and
+Concrete}, edition 2.6, 1 May 2015.\newline%
+\url{http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/book.2.6.pdf} .
+
+\bibitem[Grinbe15]{detnotes}Darij Grinberg, \textit{Notes on the combinatorial
+fundamentals of algebra}, 10 January 2019.\newline%
+\url{http://www.cip.ifi.lmu.de/~grinberg/primes2015/sols.pdf} \newline The
+numbering of theorems and formulas in this link might shift when the project
+gets updated; for a \textquotedblleft frozen\textquotedblright\ version whose
+numbering is guaranteed to match that in the citations above, see
+\url{https://github.com/darijgr/detnotes/releases/tag/2019-01-10} .
+
+\bibitem[Grinbe19]{trach}Darij Grinberg, \textit{The trace Cayley-Hamilton
+theorem}, 14 July 2019.\newline\url{https://www.cip.ifi.lmu.de/~grinberg/algebra/trach.pdf}
+
+\bibitem[Heffer20]{Heffer20}Jim Hefferon, \textit{Linear Algebra}, 4th edition
+2020.\newline\url{http://joshua.smcvt.edu/linearalgebra}
+
+\bibitem[Ho14]{Ho-rear2}%
+\href{https://www.math.hkust.edu.hk/excalibur/v19_n3.pdf}{Law Ka Ho,
+\textit{Variations and Generalisations to the Rearrangement Inequality},
+Mathematical Excalibur \textbf{19}, Number 3, pp. 1--2, 4}.
+
+\bibitem[HorJoh13]{HorJoh13}%
+\href{http://www.cse.zju.edu.cn/eclass/attachments/2015-10/01-1446086008-145421.pdf}{Roger
+A. Horn, Charles R. Johnson, \textit{Matrix analysis}, Cambridge University
+Press, 2nd edition 2013}.
+
+\bibitem[Hung07]{Hung07}%
+\href{http://refkol.ro/matek/mathbooks/!Books!/Secrets in Inequalities (volume 1) Pham Kim Hung.pdf}{Pham
+Kim Hung, \textit{Secrets in Inequalities, volume 1}, GIL 2007}.
+
+\bibitem[Ivanov08]{Ivanov08}Nikolai V. Ivanov, \textit{Linear Recurrences}, 17
+January 2008.\newline\url{https://nikolaivivanov.files.wordpress.com/2014/02/ivanov2008arecurrence.pdf}
+
+\bibitem[Knapp16]{Knapp1}Anthony W. Knapp, \textit{Basic Algebra}, digital
+second edition 2016.\newline\url{http://www.math.stonybrook.edu/~aknapp/download.html}
+
+\bibitem[Korner20]{Korner20}T. W. K\"{o}rner, \textit{Where Do Numbers Come
+From?}, Cambridge University Press 2020.\newline See
+\url{https://web.archive.org/web/20190813160507/https://www.dpmms.cam.ac.uk/~twk/Number.pdf}
+for a preprint.\newline See \url{https://www.dpmms.cam.ac.uk/~twk/} for errata
+and solutions.
+
+\bibitem[LaNaSc16]{LaNaSc16}Isaiah Lankham, Bruno Nachtergaele, Anne
+Schilling, \textit{Linear Algebra As an Introduction to Abstract Mathematics},
+2016.\newline\url{https://www.math.ucdavis.edu/~anne/linear_algebra/mat67_course_notes.pdf}
+
+\bibitem[Li99]{Li-rear1}%
+\href{https://www.math.hkust.edu.hk/excalibur/v4_n3.pdf}{Kin-Yin Li,
+\textit{Rearrangement Inequality}, Mathematical Excalibur \textbf{4}, Number
+3, pp. 1--2, 4}.
+
+\bibitem[Loehr14]{Loehr14}%
+\href{https://elblogdecontar.files.wordpress.com/2017/01/ebookdaraz-advanced-linear-algebra.pdf}{Nicholas
+Loehr, \textit{Advanced Linear Algebra}, CRC Press 2014}.
+
+\bibitem[Markus83]{Markus83}%
+\href{https://archive.org/details/recursion-sequences}{Aleksei Ivanovich
+Markushevich, \textit{Recursion sequences}, Mir Publishers, Moscow, 2nd
+printing 1983}.
+
+\bibitem[Melian01]{Melian01}Mar\'{\i}a Victoria Meli\'{a}n, \textit{Linear
+recurrence relations with constant coefficients}, 9 April 2001.\newline\url{http://matematicas.uam.es/~mavi.melian/CURSO_15_16/web_Discreta/recurrence.pdf}
+
+\bibitem[Nathan21]{Nathan21}\href{https://arxiv.org/abs/2109.01746v1}{Melvyn
+B. Nathanson, \textit{The Muirhead-Rado inequality, 1 Vector majorization and
+the permutohedron}, arXiv:2109.01746v1}.
+
+\bibitem[PolSze78]{PolSze78}%
+\href{https://doi.org/10.1007/978-3-642-61983-0}{George P\'{o}lya, Gabor
+Szeg\H{o}, \textit{Problems and Theorems in Analysis I}, Springer 1978
+(reprinted 1998)}.
+
+\bibitem[Prasol94]{Prasolov}Viktor V. Prasolov,
+\textit{\href{http://www2.math.su.se/~mleites/books/prasolov-1994-problems.pdf}{\textit{Problems
+and Theorems in Linear Algebra}}}, Translations of Mathematical Monographs,
+vol. \#134, AMS 1994.
+
+\bibitem[Steele04]{Steele04}%
+\href{http://www.ma.huji.ac.il/~ehudf/courses/Ineq09/The Cauchy-Schwarz Master Class .pdf}{J.
+Michael Steele, \textit{The Cauchy--Schwarz Master Class: An Introduction to
+the Art of Mathematical Inequalities}, Cambridge University Press
+2004}.\newline See
+\url{http://www-stat.wharton.upenn.edu/~steele/Publications/Books/CSMC/CSMC_Errata.pdf}
+for errata.
+
+\bibitem[Steinb06]{Steinb06}Mark Steinberger, \textit{Algebra}, 31 August
+2006.\newline\url{https://web.archive.org/web/20180821125315/https://www.albany.edu/~mark/algebra.pdf}
+
+\bibitem[Strick20]{Strick20}Neil Strickland, \textit{Linear mathematics for
+applications}, 11 February 2020.\newline\url{https://neilstrickland.github.io/linear_maths/notes/linear_maths.pdf}
+
+\bibitem[Swanso20]{Swanso20}Irene Swanson, \textit{Introduction with Analysis
+with Complex Numbers}, 2020.\newline\url{https://web.archive.org/web/20201012174324/https://people.reed.edu/~iswanson/analysisconstructR.pdf}
+
+\bibitem[Taylor20]{Taylor20}%
+\href{https://bookstore.ams.org/amstext-45/}{Michael Taylor, \textit{Linear
+Algebra}, AMS 2020}.\newline See
+\url{https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/linalg.pdf}
+for a preprint.
+
+\bibitem[Treil15]{Treil15}Sergei Treil, \textit{Linear Algebra Done Wrong},
+2017.\newline\url{https://www.math.brown.edu/~treil/papers/LADW/LADW.html}
+
+\bibitem[Walker87]{Walker87}%
+\href{https://web.archive.org/web/20170809055317/https://www.math.nmsu.edu/~elbert/AbsAlgeb.pdf}{Elbert
+A. Walker, \textit{Introduction to Abstract Algebra}, Random House/Birkhauser,
+New York, 1987.}
+
+\bibitem[Woerde16]{Woerde16}Hugo J. Woerdeman, \textit{Advanced Linear
+Algebra}, CRC Press 2016.
+
+\bibitem[Zill17]{Zill17}Dennis G. Zill, \textit{A First Course in Differential
+Equations with Modeling Applications}, Cengage 2017.
+\end{thebibliography}
+
+
+\end{document}
