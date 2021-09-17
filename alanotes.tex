@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Thursday, September 16, 2021 00:18:44}
+%TCIDATA{LastRevised=Friday, September 17, 2021 19:37:18}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -2174,13 +2174,92 @@ For more examples of the Gram--Schmidt process, see \cite[Week 3,
 than $\mathbb{C}^{n}$, which allows for visualization and saves one the
 trouble of complex conjugates.)
 
+Our proof of Theorem \ref{thm.unitary.gs} will require a simple lemma from
+elementary linear algebra:
+
+\begin{lemma}
+\label{lem.span-last-vec-change}Let $V$ be a vector space over some field. Let
+$v_{1},v_{2},\ldots,v_{k}$ be some vectors in $V$. Let $x$ and $y$ be two
+further vectors in $V$. Assume that $x-y\in\operatorname*{span}\left\{
+v_{1},v_{2},\ldots,v_{k}\right\}  $. Then,%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  .
+\]
+
+\end{lemma}
+
+\begin{proof}
+[Proof of Lemma \ref{lem.span-last-vec-change}.] Set%
+\begin{align*}
+S  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k}\right\}  ;\\
+X  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  ;\\
+Y  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  .
+\end{align*}
+These three sets $S$, $X$ and $Y$ are subspaces of $V$ (since a span is always
+a vector subspace). By assumption, we have $x-y\in\operatorname*{span}\left\{
+v_{1},v_{2},\ldots,v_{k}\right\}  =S$. Therefore, $-\left(  x-y\right)  \in S$
+as well (since $S$ is a vector subspace of $V$). In other words, $y-x\in S$
+(since $-\left(  x-y\right)  =y-x$). Hence, $x$ and $y$ play symmetric roles
+in our situation.
+
+However, $x-y\in S=\operatorname*{span}\left\{  v_{1},v_{2},\ldots
+,v_{k}\right\}  $ shows that $x-y$ is a linear combination of $v_{1}%
+,v_{2},\ldots,v_{k}$. In other words,%
+\begin{equation}
+x-y=\lambda_{1}v_{1}+\lambda_{2}v_{2}+\cdots+\lambda_{k}v_{k}%
+,\label{pf.lem.span-last-vec-change.1}%
+\end{equation}
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$ are some scalars (i.e.,
+elements of the base field). Consider these scalars. Solving the equality
+(\ref{pf.lem.span-last-vec-change.1}) for $x$, we obtain%
+\[
+x=\lambda_{1}v_{1}+\lambda_{2}v_{2}+\cdots+\lambda_{k}v_{k}+y.
+\]
+This shows that $x$ is a linear combination of $v_{1},v_{2},\ldots,v_{k},y$.
+In other words, $x\in\operatorname*{span}\left\{  v_{1},v_{2},\ldots
+,v_{k},y\right\}  $. In other words, $x\in Y$ (since $Y=\operatorname*{span}%
+\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  $). On the other hand, each
+$i\in\left[  k\right]  $ satisfies%
+\[
+v_{i}\in\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  =Y.
+\]
+In other words, the $k$ vectors $v_{1},v_{2},\ldots,v_{k}$ belong to $Y$.
+Since we also know that $x\in Y$, we thus conclude that all $k+1$ vectors
+$v_{1},v_{2},\ldots,v_{k},x$ belong to $Y$. Since $Y$ is a vector subspace of
+$V$, this entails that any linear combination of $v_{1},v_{2},\ldots,v_{k},x$
+must belong to $Y$. In other words,%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  \subseteq Y
+\]
+(since $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  $ is
+the set of all linear combinations of $v_{1},v_{2},\ldots,v_{k},x$). In other
+words, $X\subseteq Y$ (since $X=\operatorname*{span}\left\{  v_{1}%
+,v_{2},\ldots,v_{k},x\right\}  $).
+
+However, as we explained, $x$ and $y$ play symmetric roles in our situation.
+Swapping $x$ with $y$ results in the exchange of $X$ with $Y$. Thus, just as
+we have proved $X\subseteq Y$, we can show that $Y\subseteq X$. Combining
+these two inclusions, we obtain $X=Y$. In view of $X=\operatorname*{span}%
+\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  $ and $Y=\operatorname*{span}%
+\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  $, this rewrites as%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  .
+\]
+This proves Lemma \ref{lem.span-last-vec-change}.
+\end{proof}
+
 \begin{proof}
 [Proof of Theorem \ref{thm.unitary.gs}.]We define a tuple $\left(  z_{1}%
 ,z_{2},\ldots,z_{m}\right)  $ recursively by (\ref{eq.thm.unitary.gs.zp=}).
 First, we need to show that this tuple is actually well-defined -- i.e., that
-the denominators $\left\langle z_{k},z_{k}\right\rangle $ never become $0$ in
-the process (which would render (\ref{eq.thm.unitary.gs.zp=}) meaningless).
-Second, we need to show that the resulting tuple does indeed satisfy
+the denominators $\left\langle z_{k},z_{k}\right\rangle $ in the equality
+(\ref{eq.thm.unitary.gs.zp=}) never become $0$ in the process (which would
+render (\ref{eq.thm.unitary.gs.zp=}) meaningless and therefore prevent $z_{p}$
+from being well-defined). Second, we need to show that the resulting tuple
+does indeed satisfy
 \[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
 =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
@@ -2192,26 +2271,32 @@ Let us prove the first two of these three claims in lockstep, by showing the
 following claim:
 
 \begin{statement}
-\textit{Claim 1:} For each $p\in\left[  m\right]  $, the vector $z_{p}$ is
-well-defined (i.e., the denominators $\left\langle z_{k},z_{k}\right\rangle $
-on the right hand side of (\ref{eq.thm.unitary.gs.zp=}) are nonzero) and
-satisfies $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $.
-\end{statement}
-
-[\textit{Proof of Claim 1:} Strong induction on $p$. Thus, we fix some
-$p\in\left[  m\right]  $, and assume that the vectors $z_{1},z_{2}%
-,\ldots,z_{p-1}$ are well-defined and satisfy
-\begin{equation}
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
-\ \ \ \ \ \ \ \ \ \ \text{for all }j<p. \label{pf.thm.unitary.gs.4}%
-\end{equation}
-We now need to show that the vector $z_{p}$ is well-defined and satisfies
-\begin{equation}
+\textit{Claim 1:} For each $p\in\left\{  0,1,\ldots,m\right\}  $, the vectors
+$z_{1},z_{2},\ldots,z_{p}$ are well-defined and satisfy%
+\[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
 =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
-\label{pf.thm.unitary.gs.5}%
+\]
+
+\end{statement}
+
+[\textit{Proof of Claim 1:} We induct on $p$.
+
+\textit{Induction base:} Claim 1 is obviously true for $p=0$.
+
+\textit{Induction step:} Fix some $p\in\left[  m\right]  $, and assume that
+the vectors $z_{1},z_{2},\ldots,z_{p-1}$ are well-defined and satisfy
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
+.\label{pf.thm.unitary.gs.6}%
+\end{equation}
+We now need to show that the vectors $z_{1},z_{2},\ldots,z_{p}$  are
+well-defined and satisfy%
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}
+.\label{pf.thm.unitary.gs.5}%
 \end{equation}
 
 
@@ -2220,17 +2305,11 @@ The tuple $\left(  v_{1},v_{2},\ldots,v_{p}\right)  $ is linearly independent
 independent). Thus, the span $\operatorname*{span}\left\{  v_{1},v_{2}%
 ,\ldots,v_{p-1}\right\}  $ is $\left(  p-1\right)  $-dimensional and we have
 $v_{p}\notin\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-$. However, we have
-\begin{equation}
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
-\label{pf.thm.unitary.gs.6}%
-\end{equation}
-(Indeed, this is obvious when $p=1$, and otherwise follows from
-(\ref{pf.thm.unitary.gs.4}) (applied to $j=p-1$).) Hence,%
+$. Hence,%
 \[
 v_{p}\notin\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs.6})}\right)  .
 \]
 
 
@@ -2244,35 +2323,66 @@ $k\in\left[  p-1\right]  $, we have $z_{k}\neq0$ and therefore $\left\langle
 z_{k},z_{k}\right\rangle >0$ (by Proposition \ref{prop.unitary.innerprod.pos}
 \textbf{(b)}), so that $\left\langle z_{k},z_{k}\right\rangle \neq0$. Thus,
 the denominators on the right hand side of (\ref{eq.thm.unitary.gs.zp=}) are
-nonzero, so that $v_{p}$ is well-defined. It remains to prove that
+nonzero, so that $z_{p}$ is well-defined. Hence, the vectors $z_{1}%
+,z_{2},\ldots,z_{p}$ are well-defined (since we already know that the vectors
+$z_{1},z_{2},\ldots,z_{p-1}$ are well-defined).
+
+It remains to prove that
 \[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
 =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
 \]
-But this is easy: From (\ref{eq.thm.unitary.gs.zp=}), we see that $z_{p}$
-equals $v_{p}$ minus some linear combination of $v_{1},v_{2},\ldots,v_{p-1}$.
-Thus,%
+But this is easy: From (\ref{eq.thm.unitary.gs.zp=}), we obtain%
+\[
+v_{p}-z_{p}=\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}\in\operatorname*{span}\left\{
+z_{1},z_{2},\ldots,z_{p-1}\right\}
+\]
+(since $\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}$ is clearly a linear
+combination of $z_{1},z_{2},\ldots,z_{p-1}$). Hence, Lemma
+\ref{lem.span-last-vec-change} (applied to $k=p-1$ and $x=v_{p}$ and $y=z_{p}%
+$) yields%
 \begin{align*}
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}   &
-=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\} \\
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},v_{p}\right\}   &
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\}  \\
 &  =\underbrace{\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}%
 \right\}  }_{=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-}+\operatorname*{span}\left\{  z_{p}\right\} \\
+}+\operatorname*{span}\left\{  z_{p}\right\}  \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since }\operatorname*{span}\left(  A\cup B\right)  =\operatorname*{span}%
+A+\operatorname*{span}B\\
+\text{for any two sets }A\text{ and }B\text{ of vectors}%
+\end{array}
+\right)  \\
 &  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-+\operatorname*{span}\left\{  z_{p}\right\} \\
-&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
++\operatorname*{span}\left\{  z_{p}\right\}  \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\}  \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since }\operatorname*{span}A+\operatorname*{span}B=\operatorname*{span}%
+\left(  A\cup B\right)  \\
+\text{for any two sets }A\text{ and }B\text{ of vectors}%
+\end{array}
+\right)  .
 \end{align*}
-Thus, the induction step is complete, so that Claim 1 is proved by induction.]
+In other words, $\operatorname*{span}\left\{  v_{1},v_{2},\ldots
+,v_{p}\right\}  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots
+,z_{p}\right\}  $. Thus, the induction step is complete, so that Claim 1 is
+proved by induction.]
 
-Claim 1 shows that the tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ is
-well-defined and satisfies%
+Claim 1 (applied to $p=m$) shows that the tuple $\left(  z_{1},z_{2}%
+,\ldots,z_{m}\right)  $ is well-defined. Furthermore, this tuple satisfies%
 \[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
 =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
-\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]
 \]
-It now remains to show that this tuple is orthogonal. We shall achieve this by
-showing the following claim:
+(by Claim 1, applied to $p=j$). It now remains to show that this tuple is
+orthogonal. We shall achieve this by showing the following claim:
 
 \begin{statement}
 \textit{Claim 2:} For any $j\in\left\{  0,1,\ldots,m\right\}  $, the tuple
@@ -2293,13 +2403,13 @@ the tuple $\left(  z_{1},z_{2},\ldots,z_{p-1}\right)  $ is orthogonal. In
 other words, we have%
 \begin{equation}
 z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p-1\right]
-\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.12}%
+\text{ satisfy }a\neq b.\label{pf.thm.unitary.gs.12}%
 \end{equation}
 In other words, we have%
 \begin{equation}
 \left\langle z_{a},z_{b}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{whenever
-}a,b\in\left[  p-1\right]  \text{ satisfy }a\neq b.
-\label{pf.thm.unitary.gs.12b}%
+}a,b\in\left[  p-1\right]  \text{ satisfy }a\neq
+b.\label{pf.thm.unitary.gs.12b}%
 \end{equation}
 
 
@@ -2308,7 +2418,7 @@ the tuple $\left(  z_{1},z_{2},\ldots,z_{p}\right)  $ is orthogonal. In other
 words, we must show that%
 \begin{equation}
 z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p\right]
-\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.13}%
+\text{ satisfy }a\neq b.\label{pf.thm.unitary.gs.13}%
 \end{equation}
 It will clearly suffice to prove (\ref{pf.thm.unitary.gs.13}) in the case when
 one of $a$ and $b$ equals $p$ (because in all other cases, we have
@@ -2336,14 +2446,14 @@ z_{k},z_{a}\right\rangle \\
 p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
 }{\left\langle z_{k},z_{k}\right\rangle }\left\langle z_{k},z_{a}\right\rangle
 +\dfrac{\left\langle v_{p},z_{a}\right\rangle }{\left\langle z_{a}%
-,z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle \right) \\
+,z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle \right)  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{here, we have split off the addend for }k=a\\
 \text{from the sum, since }a\in\left[  p-1\right]
 \end{array}
-\right) \\
+\right)  \\
 &  =\left\langle v_{p},z_{a}\right\rangle -\sum_{\substack{k\in\left[
 p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
 }{\left\langle z_{k},z_{k}\right\rangle }\underbrace{\left\langle z_{k}%
@@ -2451,23 +2561,26 @@ and that this tuple is orthogonal.
 Let us prove the first of these two claims:
 
 \begin{statement}
-\textit{Claim 1:} For each $p\in\left[  m\right]  $, we have
+\textit{Claim 1:} For each $p\in\left\{  0,1,\ldots,m\right\}  $, we have
 $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
 \operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $.
 \end{statement}
 
-[\textit{Proof of Claim 1:} Strong induction on $p$. Thus, we fix some
-$p\in\left[  m\right]  $, and assume that%
+[\textit{Proof of Claim 1:} We induct on $p$:
+
+\textit{Induction base:} Claim 1 obviously holds for $p=0$.
+
+\textit{Induction step:} Fix some $p\in\left[  m\right]  $, and assume that%
 \begin{equation}
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
-\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
-\ \ \ \ \ \ \ \ \ \ \text{for all }j<p. \label{pf.thm.unitary.gs-2.4}%
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
+.\label{pf.thm.unitary.gs-2.4}%
 \end{equation}
 We now need to show that
 \begin{equation}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
-\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
-\label{pf.thm.unitary.gs-2.5}%
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}
+.\label{pf.thm.unitary.gs-2.5}%
 \end{equation}
 
 
@@ -2508,20 +2621,14 @@ z_{1},z_{2},\ldots,z_{p}\right\}  .
 Hence, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 2.
 \end{itemize}
 
-We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, we
-have
-\[
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
-\]
-(Indeed, this is obvious when $p=1$, and otherwise follows from
-(\ref{pf.thm.unitary.gs-2.4}) (applied to $j=p-1$).) Thus, for each
-$i\in\left[  p-1\right]  $, we have%
+We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, for
+each $i\in\left[  p-1\right]  $, we have%
 \begin{align*}
-v_{i}  &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\} \\
+v_{i} &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right)  \\
+&  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
 \end{align*}
 In other words, all $p-1$ vectors $v_{1},v_{2},\ldots,v_{p-1}$ belong to
 $\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Since the
