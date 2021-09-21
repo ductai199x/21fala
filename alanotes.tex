@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, September 17, 2021 19:37:18}
+%TCIDATA{LastRevised=Monday, September 20, 2021 21:39:38}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -245,18 +245,57 @@ creativity or research.
 
 \section{Unitary matrices (\cite[\S 2.1]{HorJoh13})}
 
-In this chapter, $n$ will usually denote a nonnegative integer.%
+In this chapter, $n$ will usually denote a nonnegative integer.
 
+\begin{noncompile}%
 \[%
 \begin{tabular}
 [c]{||l||}\hline\hline
 \textbf{Old lecture 1 starts here.}\\\hline\hline
 \end{tabular}
-\
+\ \
+\]
+
+\end{noncompile}
+
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 1 starts here.}\\\hline\hline
+\end{tabular}
+\ \
 \]
 
 
 \subsection{Inner products}
+
+We recall a basic definition regarding complex numbers:
+
+\begin{definition}
+Let $z\in\mathbb{C}$ be a complex number. Then, the \emph{complex conjugate}
+of $z$ means the complex number $a-bi$, where $z$ is written in the form
+$z=a+bi$ for some $a,b\in\mathbb{R}$. In other words, the complex conjugate of
+$z$ is obtained from $z$ by keeping the real part unchanged but flipping the
+sign of the imaginary part.
+
+The complex conjugate of $z$ is denoted by $\overline{z}$.
+\end{definition}
+
+Complex conjugation is known to preserve all arithmetic operations: i.e., for
+any complex numbers $z$ and $w$, we have%
+\begin{align*}
+\overline{z+w}  &  =\overline{z}+\overline{w}\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ \overline{z-w}=\overline{z}-\overline{w}%
+\ \ \ \ \ \ \ \ \ \ \text{and}\\
+\overline{z\cdot w}  &  =\overline{z}\cdot\overline{w}%
+\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ \overline{z/w}=\overline
+{z}/\overline{w}.
+\end{align*}
+Also, a complex number $z$ satisfies $\overline{z}=z$ if and only if
+$z\in\mathbb{R}$. Finally, if $z$ is any complex number, then $z\overline
+{z}=\left\vert z\right\vert ^{2}$ is a nonnegative real.
 
 \begin{definition}
 \label{def.unitary.innerprod.innerprod}For any two vectors $x=\left(
@@ -451,7 +490,7 @@ entails $\left\langle x,x\right\rangle =\left\vert x_{1}\right\vert
 
 \begin{definition}
 \label{def.unitary.innerprod.len}Let $x\in\mathbb{C}^{n}$. We define the
-\emph{length} (aka \emph{norm}) of $x$ to be the nonnegative real number
+\emph{length} of $x$ to be the nonnegative real number
 \[
 \left\vert \left\vert x\right\vert \right\vert :=\sqrt{\left\langle
 x,x\right\rangle }.
@@ -478,6 +517,11 @@ and thus $\left\vert \left\vert x\right\vert \right\vert =\sqrt{\left\langle
 x,x\right\rangle }=\sqrt{15}$.
 \end{example}
 
+The length $\left\vert \left\vert x\right\vert \right\vert $ of a vector
+$x\in\mathbb{C}^{n}$ is sometimes also called the \emph{norm} of $x$ (but
+beware that other things are called \textquotedblleft norms\textquotedblright%
+\ as well).
+
 \begin{proposition}
 For any $\lambda\in\mathbb{C}$ and $x\in\mathbb{C}^{n}$, we have $\left\vert
 \left\vert \lambda x\right\vert \right\vert =\left\vert \lambda\right\vert
@@ -489,7 +533,8 @@ Straightforward.
 \end{proof}
 
 \begin{exercise}
-\fbox{3} Let $x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Prove that
+\label{exe.unitary.innerprod.x+y}\fbox{3} Let $x\in\mathbb{C}^{n}$ and
+$y\in\mathbb{C}^{n}$. Prove that
 \[
 \left\vert \left\vert x+y\right\vert \right\vert ^{2}-\left\vert \left\vert
 x\right\vert \right\vert ^{2}-\left\vert \left\vert y\right\vert \right\vert
@@ -523,8 +568,8 @@ Follows from Proposition \ref{prop.unitary.innerprod.props} \textbf{(b)}.
 \end{proof}
 
 \begin{definition}
-Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ be a tuple of vectors in
-$\mathbb{C}^{n}$. Then:
+\label{def.unitary.innerprod.orth-n}Let $\left(  u_{1},u_{2},\ldots
+,u_{k}\right)  $ be a tuple of vectors in $\mathbb{C}^{n}$. Then:
 
 \textbf{(a)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
 is \emph{orthogonal} if we have
@@ -551,6 +596,12 @@ vectors in $\mathbb{C}^{n}$ (with $u_{1},u_{2},\ldots,u_{k}$ being distinct)
 is said to be \emph{orthogonal} (or \emph{orthonormal}, respectively) if and
 only if the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthogonal
 (resp., orthonormal).
+
+\textbf{(d)} Sometimes, we (sloppily) say \textquotedblleft the vectors
+$u_{1},u_{2},\ldots,u_{k}$ are orthogonal\textquotedblright\ when we mean
+\textquotedblleft the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is
+orthogonal\textquotedblright. The same applies to \textquotedblleft
+orthonormal\textquotedblright.
 \end{definition}
 
 \begin{example}
@@ -661,7 +712,8 @@ is orthonormal.
 \end{proposition}
 
 \begin{proof}
-Straightforward.
+Straightforward. (Observe that any two orthogonal vectors remain orthogonal
+when they are scaled by scalars.)
 \end{proof}
 
 \begin{proposition}
@@ -883,7 +935,8 @@ is an orthogonal basis of $\mathbb{C}^{n}$.
 \end{corollary}
 
 \begin{exercise}
-\fbox{2} Prove Corollary \ref{cor.unitary.orthog-extend}.
+\label{exe.unitary.orthog-extend}\fbox{2} Prove Corollary
+\ref{cor.unitary.orthog-extend}.
 \end{exercise}
 
 \subsection{Conjugate transposes}
@@ -1114,6 +1167,16 @@ However, not all isometries in this wider sense are linear.
 said to be \emph{unitary} if and only if both $U$ and $U^{\ast}$ are isometries.
 \end{definition}
 
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 2 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
+
 \begin{example}
 \textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}}\left(
 \begin{array}
@@ -1187,8 +1250,7 @@ and satisfies $U^{-1}=U^{\ast}$.
 \item $\mathcal{E}$: The columns of $U$ form an orthonormal basis of
 $\mathbb{C}^{n}$.
 
-\item $\mathcal{F}$\textit{:} The matrix $U$ is square (that is, $n=k$) and is
-an isometry.
+\item $\mathcal{F}$: The matrix $U$ is square (that is, $n=k$) and is an isometry.
 \end{itemize}
 \end{theorem}
 
@@ -1363,7 +1425,8 @@ $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $. Here is a
 rigorous way to state this:
 
 \begin{exercise}
-\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Prove the following:
+\label{exe.unitary.skew-herm.2}\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a
+matrix. Prove the following:
 
 \textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
 each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
@@ -1395,11 +1458,11 @@ real entries) is orthogonal if and only if it is unitary.
 \end{remark}
 
 \begin{exercise}
-\fbox{5} A \emph{Pythagorean triple} is a triple $\left(  p,q,r\right)  $ of
-positive integers satisfying $p^{2}+q^{2}=r^{2}$. (In other words, it is a
-triple of positive integers that are the sides of a right-angled triangle.)
-Two famous Pythagorean triples are $\left(  3,4,5\right)  $ and $\left(
-5,12,13\right)  $.
+\label{exe.unitary.skew-herm.pyth}\fbox{5} A \emph{Pythagorean triple} is a
+triple $\left(  p,q,r\right)  $ of positive integers satisfying $p^{2}%
++q^{2}=r^{2}$. (In other words, it is a triple of positive integers that are
+the sides of a right-angled triangle.) Two famous Pythagorean triples are
+$\left(  3,4,5\right)  $ and $\left(  5,12,13\right)  $.
 
 \textbf{(a)} Prove that a triple $\left(  p,q,r\right)  $ of positive integers
 is Pythagorean if and only if the matrix $\left(
@@ -1426,23 +1489,6 @@ multiplying all three entries by the same number.)
 
 [\textbf{Hint:} Use the $S\mapsto U$ construction from Exercise
 \ref{exe.unitary.skew-herm.1}.]
-\end{exercise}
-
-For the next exercise, we recall the notion of similar matrices:
-
-\begin{definition}
-Let $A$ and $B$ be two matrices in $\mathbb{C}^{n\times n}$. We say that $A$
-and $B$ are \emph{similar} if there exists an invertible matrix $W$ such that
-$B=WAW^{-1}$.
-\end{definition}
-
-The relation \textquotedblleft similar\textquotedblright\ is easily seen to be
-an equivalence relation. (Algebraists will recognize it as just being the
-conjugacy relation in the ring $\mathbb{C}^{n\times n}$ of all $n\times n$-matrices.)
-
-\begin{exercise}
-\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a matrix that is similar to some
-unitary matrix. Prove that $A^{-1}$ is similar to $A^{\ast}$.
 \end{exercise}
 
 \subsubsection{Block matrices}
@@ -1643,16 +1689,19 @@ CA^{\prime}+DC^{\prime} & CB^{\prime}+DD^{\prime}%
 
 \end{proposition}
 
-Note that the products on the right hand sides are products of matrices, so
-they cannot be reordered (e.g., we cannot replace $AA^{\prime}$ by $A^{\prime
-}A$), since matrix multiplication is not commutative.
+Note that the products on the right hand side are products of matrices, so the
+order of their factors is important (e.g., we cannot replace $AA^{\prime}$ by
+$A^{\prime}A$), since matrix multiplication is not commutative. So our block
+matrices can be multiplied block by block, but only if you keep the factors in
+their natural order!
 
 \begin{proof}
-[Proof of Proposition \ref{prop.blockmatrix.mult-2x2}.]This is a
-straightforward computation that is made painful by the notational load and
-the amount of cases to distinguish (depending on which block our entry lies
-in). Do one of the cases to convince yourself that there is nothing difficult
-here. (See \cite{detnotes} for all the gory details.)
+[Proof of Proposition \ref{prop.blockmatrix.mult-2x2}.]Just check that each
+entry on the left hand side equals the corresponding entry on the right. This
+is a straightforward computation that is made painful by the notational load
+and the need to distinguish between four cases (depending on which block our
+entry lies in). Do one of the four cases to convince yourself that there is
+nothing difficult here. (See \cite{detnotes} for all the gory details.)
 \end{proof}
 
 Unsurprisingly, Proposition \ref{prop.blockmatrix.mult-2x2} generalizes to the
@@ -2190,11 +2239,11 @@ v_{1},v_{2},\ldots,v_{k}\right\}  $. Then,%
 \end{lemma}
 
 \begin{proof}
-[Proof of Lemma \ref{lem.span-last-vec-change}.] Set%
+[Proof of Lemma \ref{lem.span-last-vec-change}.]Set%
 \begin{align*}
-S  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k}\right\}  ;\\
-X  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  ;\\
-Y  & :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  .
+S  &  :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k}\right\}  ;\\
+X  &  :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},x\right\}  ;\\
+Y  &  :=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{k},y\right\}  .
 \end{align*}
 These three sets $S$, $X$ and $Y$ are subspaces of $V$ (since a span is always
 a vector subspace). By assumption, we have $x-y\in\operatorname*{span}\left\{
@@ -2207,8 +2256,8 @@ However, $x-y\in S=\operatorname*{span}\left\{  v_{1},v_{2},\ldots
 ,v_{k}\right\}  $ shows that $x-y$ is a linear combination of $v_{1}%
 ,v_{2},\ldots,v_{k}$. In other words,%
 \begin{equation}
-x-y=\lambda_{1}v_{1}+\lambda_{2}v_{2}+\cdots+\lambda_{k}v_{k}%
-,\label{pf.lem.span-last-vec-change.1}%
+x-y=\lambda_{1}v_{1}+\lambda_{2}v_{2}+\cdots+\lambda_{k}v_{k},
+\label{pf.lem.span-last-vec-change.1}%
 \end{equation}
 where $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$ are some scalars (i.e.,
 elements of the base field). Consider these scalars. Solving the equality
@@ -2282,21 +2331,23 @@ $z_{1},z_{2},\ldots,z_{p}$ are well-defined and satisfy%
 
 [\textit{Proof of Claim 1:} We induct on $p$.
 
-\textit{Induction base:} Claim 1 is obviously true for $p=0$.
+\textit{Induction base:} Claim 1 is obviously true for $p=0$ (since
+$\operatorname*{span}\left\{  {}\right\}  =\operatorname*{span}\left\{
+{}\right\}  $).
 
 \textit{Induction step:} Fix some $p\in\left[  m\right]  $, and assume that
 the vectors $z_{1},z_{2},\ldots,z_{p-1}$ are well-defined and satisfy
 \begin{equation}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-.\label{pf.thm.unitary.gs.6}%
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+\label{pf.thm.unitary.gs.6}%
 \end{equation}
-We now need to show that the vectors $z_{1},z_{2},\ldots,z_{p}$  are
+We now need to show that the vectors $z_{1},z_{2},\ldots,z_{p}$ are
 well-defined and satisfy%
 \begin{equation}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
-=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}
-.\label{pf.thm.unitary.gs.5}%
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\label{pf.thm.unitary.gs.5}%
 \end{equation}
 
 
@@ -2345,10 +2396,10 @@ combination of $z_{1},z_{2},\ldots,z_{p-1}$). Hence, Lemma
 $) yields%
 \begin{align*}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},v_{p}\right\}   &
-=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\}  \\
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\} \\
 &  =\underbrace{\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}%
 \right\}  }_{=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-}+\operatorname*{span}\left\{  z_{p}\right\}  \\
+}+\operatorname*{span}\left\{  z_{p}\right\} \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
@@ -2356,15 +2407,15 @@ $) yields%
 A+\operatorname*{span}B\\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-+\operatorname*{span}\left\{  z_{p}\right\}  \\
-&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\}  \\
++\operatorname*{span}\left\{  z_{p}\right\} \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\} \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{since }\operatorname*{span}A+\operatorname*{span}B=\operatorname*{span}%
-\left(  A\cup B\right)  \\
+\left(  A\cup B\right) \\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
 \right)  .
@@ -2374,8 +2425,9 @@ In other words, $\operatorname*{span}\left\{  v_{1},v_{2},\ldots
 ,z_{p}\right\}  $. Thus, the induction step is complete, so that Claim 1 is
 proved by induction.]
 
-Claim 1 (applied to $p=m$) shows that the tuple $\left(  z_{1},z_{2}%
-,\ldots,z_{m}\right)  $ is well-defined. Furthermore, this tuple satisfies%
+Claim 1 (applied to $p=m$) shows that the vectors $z_{1},z_{2},\ldots,z_{m}$
+are well-defined. In other words, the tuple $\left(  z_{1},z_{2},\ldots
+,z_{m}\right)  $ is well-defined. Furthermore, this tuple satisfies%
 \[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
 =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
@@ -2403,13 +2455,13 @@ the tuple $\left(  z_{1},z_{2},\ldots,z_{p-1}\right)  $ is orthogonal. In
 other words, we have%
 \begin{equation}
 z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p-1\right]
-\text{ satisfy }a\neq b.\label{pf.thm.unitary.gs.12}%
+\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.12}%
 \end{equation}
 In other words, we have%
 \begin{equation}
 \left\langle z_{a},z_{b}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{whenever
-}a,b\in\left[  p-1\right]  \text{ satisfy }a\neq
-b.\label{pf.thm.unitary.gs.12b}%
+}a,b\in\left[  p-1\right]  \text{ satisfy }a\neq b.
+\label{pf.thm.unitary.gs.12b}%
 \end{equation}
 
 
@@ -2418,7 +2470,7 @@ the tuple $\left(  z_{1},z_{2},\ldots,z_{p}\right)  $ is orthogonal. In other
 words, we must show that%
 \begin{equation}
 z_{a}\perp z_{b}\ \ \ \ \ \ \ \ \ \ \text{whenever }a,b\in\left[  p\right]
-\text{ satisfy }a\neq b.\label{pf.thm.unitary.gs.13}%
+\text{ satisfy }a\neq b. \label{pf.thm.unitary.gs.13}%
 \end{equation}
 It will clearly suffice to prove (\ref{pf.thm.unitary.gs.13}) in the case when
 one of $a$ and $b$ equals $p$ (because in all other cases, we have
@@ -2428,45 +2480,54 @@ $a,b\in\left[  p-1\right]  $, and thus $z_{a}\perp z_{b}$ follows from
 Thus, let $a,b\in\left[  p\right]  $ satisfy $a\neq b$, and assume that one of
 $a$ and $b$ equals $p$. We must prove that $z_{a}\perp z_{b}$. Proposition
 \ref{prop.unitary.innerprod.orth-symm} shows that $z_{a}\perp z_{b}$ is
-equivalent to $z_{b}\perp z_{a}$. Hence, in our proof of $z_{a}\perp z_{b}$,
-we can WLOG assume that $a\leq b$ (since otherwise, we can swap $a$ with $b$).
-Assume this. Hence, $a<b$ (since $a\neq b$). Thus, $a<b\leq p$, so that $a\neq
-p$. However, we assumed that one of $a$ and $b$ equals $p$; hence, $b=p$
-(since $a\neq p$). Also, we have $a\in\left[  p-1\right]  $ (since $a<b=p$).
+equivalent to $z_{b}\perp z_{a}$. Thus, $a$ and $b$ play symmetric roles in
+our claim. Hence, in our proof of $z_{a}\perp z_{b}$, we can WLOG assume that
+$a\leq b$ (since otherwise, we can swap $a$ with $b$). Assume this. Hence,
+$a<b$ (since $a\neq b$). Thus, $a<b\leq p$, so that $a\neq p$. However, we
+assumed that one of $a$ and $b$ equals $p$; hence, $b=p$ (since $a\neq p$).
+Also, we have $a\in\left[  p-1\right]  $ (since $a<b=p$).
 
 Now, (\ref{eq.thm.unitary.gs.zp=}) yields%
-\begin{align*}
-\left\langle z_{p},z_{a}\right\rangle  &  =\left\langle v_{p}-\sum_{k=1}%
+\[
+\left\langle z_{p},z_{a}\right\rangle =\left\langle v_{p}-\sum_{k=1}%
 ^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
-,z_{k}\right\rangle }z_{k},v_{a}\right\rangle \\
-&  =\left\langle v_{p},z_{a}\right\rangle -\sum_{k=1}^{p-1}\dfrac{\left\langle
-v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }\left\langle
-z_{k},z_{a}\right\rangle \\
-&  =\left\langle v_{p},z_{a}\right\rangle -\left(  \sum_{\substack{k\in\left[
-p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+,z_{k}\right\rangle }z_{k},z_{a}\right\rangle =\left\langle v_{p}%
+,z_{a}\right\rangle -\left\langle \sum_{k=1}^{p-1}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}%
+,z_{a}\right\rangle
+\]
+(by Proposition \ref{prop.unitary.innerprod.props} \textbf{(h)}). In view of%
+\begin{align*}
+&  \left\langle \sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k},z_{a}\right\rangle \\
+&  =\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
 }{\left\langle z_{k},z_{k}\right\rangle }\left\langle z_{k},z_{a}\right\rangle
-+\dfrac{\left\langle v_{p},z_{a}\right\rangle }{\left\langle z_{a}%
-,z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle \right)  \\
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(i)}}\right) \\
+&  =\sum_{\substack{k\in\left[  p-1\right]  ;\\k\neq a}}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle
+}\underbrace{\left\langle z_{k},z_{a}\right\rangle }_{\substack{=0\\\text{(by
+(\ref{pf.thm.unitary.gs.13}), applied to }k\text{ and }a\\\text{instead of
+}a\text{ and }b\text{)}}}+\underbrace{\dfrac{\left\langle v_{p},z_{a}%
+\right\rangle }{\left\langle z_{a},z_{a}\right\rangle }\left\langle
+z_{a},z_{a}\right\rangle }_{=\left\langle v_{p},z_{a}\right\rangle }\\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{here, we have split off the addend for }k=a\\
 \text{from the sum, since }a\in\left[  p-1\right]
 \end{array}
-\right)  \\
-&  =\left\langle v_{p},z_{a}\right\rangle -\sum_{\substack{k\in\left[
-p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
-}{\left\langle z_{k},z_{k}\right\rangle }\underbrace{\left\langle z_{k}%
-,z_{a}\right\rangle }_{\substack{=0\\\text{(by (\ref{pf.thm.unitary.gs.13}),
-applied to }k\text{ and }a\\\text{instead of }a\text{ and }b\text{)}%
-}}-\underbrace{\dfrac{\left\langle v_{p},z_{a}\right\rangle }{\left\langle
-z_{a},z_{a}\right\rangle }\left\langle z_{a},z_{a}\right\rangle }%
-_{=\left\langle v_{p},z_{a}\right\rangle }\\
-&  =\left\langle v_{p},z_{a}\right\rangle -\underbrace{\sum_{\substack{k\in
-\left[  p-1\right]  ;\\k\neq a}}\dfrac{\left\langle v_{p},z_{k}\right\rangle
-}{\left\langle z_{k},z_{k}\right\rangle }0}_{=0}-\left\langle v_{p}%
-,z_{a}\right\rangle =0.
+\right) \\
+&  =\underbrace{\sum_{\substack{k\in\left[  p-1\right]  ;\\k\neq a}%
+}\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
+,z_{k}\right\rangle }0}_{=0}+\left\langle v_{p},z_{a}\right\rangle
+=\left\langle v_{p},z_{a}\right\rangle ,
 \end{align*}
+we can rewrite this as%
+\[
+\left\langle z_{p},z_{a}\right\rangle =\left\langle v_{p},z_{a}\right\rangle
+-\left\langle v_{p},z_{a}\right\rangle =0.
+\]
 In view of $b=p$, this rewrites as $\left\langle z_{b},z_{a}\right\rangle =0$.
 Thus, $z_{b}\perp z_{a}$, so that $z_{a}\perp z_{b}$ (by Proposition
 \ref{prop.unitary.innerprod.orth-symm}).
@@ -2573,14 +2634,14 @@ $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
 \textit{Induction step:} Fix some $p\in\left[  m\right]  $, and assume that%
 \begin{equation}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
-\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-.\label{pf.thm.unitary.gs-2.4}%
+\subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  .
+\label{pf.thm.unitary.gs-2.4}%
 \end{equation}
 We now need to show that
 \begin{equation}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
-\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}
-.\label{pf.thm.unitary.gs-2.5}%
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\label{pf.thm.unitary.gs-2.5}%
 \end{equation}
 
 
@@ -2624,10 +2685,10 @@ Hence, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 2.
 We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, for
 each $i\in\left[  p-1\right]  $, we have%
 \begin{align*}
-v_{i} &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \\
+v_{i}  &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\} \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right)  \\
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right) \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
 \end{align*}
 In other words, all $p-1$ vectors $v_{1},v_{2},\ldots,v_{p-1}$ belong to
@@ -2898,10 +2959,567 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 \end{theorem}
 
 \begin{exercise}
-\fbox{5} Prove Theorem \ref{thm.unitary.QR2}.
+\label{exe.unitary.QR2}\fbox{5} Prove Theorem \ref{thm.unitary.QR2}.
 
 [\textbf{Hint:} Reduce both cases $n>m$ and $n<m$ to the case $n=m$.]
 \end{exercise}
+
+\section{Schur triangularization (\cite[Chapter 2]{HorJoh13})}
+
+\begin{noncompile}%
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Old lecture 2 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
+\end{noncompile}
+
+\subsection{Similarity of matrices}
+
+Next, let us recall the notion of similar matrices:
+
+\begin{definition}
+\label{def.schurtri.similar.def}Let $\mathbb{F}$ be a field. Let $A$ and $B$
+be two matrices in $\mathbb{F}^{n\times n}$. We say that $A$ is \emph{similar}
+to $B$ if there exists an invertible matrix $W\in\mathbb{F}^{n\times n}$ such
+that $B=WAW^{-1}$.
+\end{definition}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  $ is similar to the matrix $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  $, since $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  =W\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  W^{-1}$ for the invertible matrix $W=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  $.
+\end{example}
+
+The relation \textquotedblleft similar\textquotedblright\ is easily seen to be
+an equivalence relation:\footnote{Algebraists will recognize the relation
+\textquotedblleft similar\textquotedblright\ (for matrices in $\mathbb{F}%
+^{n\times n}$) as just being the conjugacy relation in the ring $\mathbb{C}%
+^{n\times n}$ of all $n\times n$-matrices.}
+
+\begin{proposition}
+\label{prop.schurtri.similar.eqrel}Let $\mathbb{F}$ be a field. Then:
+
+\textbf{(a)} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar to itself.
+
+\textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{F}^{n\times n}$ such
+that $A$ is similar to $B$, then $B$ is similar to $A$.
+
+\textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{F}^{n\times
+n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$, then
+$A$ is similar to $C$.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} This follows from $A=I_{n}AI_{n}^{-1}$.
+
+\textbf{(b)} Let $A$ and $B$ be two matrices in $\mathbb{F}^{n\times n}$ such
+that $A$ is similar to $B$. Thus, there exists an invertible matrix
+$W\in\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$. From
+$B=WAW^{-1}$, we obtain $BW=WA$, so that $W^{-1}BW=A$. Thus, $A=W^{-1}%
+B\underbrace{W}_{=\left(  W^{-1}\right)  ^{-1}}=W^{-1}B\left(  W^{-1}\right)
+^{-1}$. Since $W^{-1}$ is invertible, this shows that $B$ is similar to $A$.
+This proves Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}.
+
+\textbf{(c)} Let $A$, $B$ and $C$ be three matrices in $\mathbb{F}^{n\times
+n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$. Thus,
+there exists an invertible matrix $U\in\mathbb{F}^{n\times n}$ such that
+$B=UAU^{-1}$ (since $A$ is similar to $B$), and there exists an invertible
+matrix $V\in\mathbb{F}^{n\times n}$ such that $C=VBV^{-1}$ (since $B$ is
+similar to $C$). Consider these $U$ and $V$.
+
+The matrices $V$ and $U$ are invertible. Thus, so is their product $VU$, and
+its inverse is $\left(  VU\right)  ^{-1}=U^{-1}V^{-1}$. (This is the famous
+\textquotedblleft socks-and-shoes rule\textquotedblright\ for inverting
+products or compositions.) Now,%
+\[
+C=V\underbrace{B}_{=UAU^{-1}}V^{-1}=VUA\underbrace{U^{-1}V^{-1}}_{=\left(
+VU\right)  ^{-1}}=VUA\left(  VU\right)  ^{-1}.
+\]
+In other words, $C=WAW^{-1}$ for the invertible matrix $W=VU$ (since we know
+that $VU$ is invertible). This shows that $A$ is similar to $C$. This proves
+Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(c)}.
+\end{proof}
+
+Since the relation \textquotedblleft similar\textquotedblright\ is symmetric
+(by Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}), we can make
+the following definition:
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. Let $A$ and $B$ be two matrices in $\mathbb{F}%
+^{n\times n}$. We say that $A$ and $B$ are \emph{similar} if $A$ is similar to
+$B$ (or, equivalently, $B$ is similar to $A$).
+\end{definition}
+
+Similar matrices have a lot in common. Here is a selection of invariants:
+
+\begin{proposition}
+\label{prop.schurtri.similar.same}Let $\mathbb{F}$ be a field. Let
+$A\in\mathbb{F}^{n\times n}$ and $B\in\mathbb{F}^{n\times n}$ be two similar
+matrices. Then:
+
+\textbf{(a)} The matrices $A$ and $B$ have the same rank.
+
+\textbf{(b)} The matrices $A$ and $B$ have the same nullity.
+
+\textbf{(c)} The matrices $A$ and $B$ have the same determinant.
+
+\textbf{(d)} The matrices $A$ and $B$ have the same characteristic polynomial.
+
+\textbf{(e)} The matrices $A$ and $B$ have the same eigenvalues, with the same
+algebraic multiplicities and with the same geometric multiplicities.
+
+\textbf{(f)} For any $k\in\mathbb{N}$, the matrix $A^{k}$ is similar to
+$B^{k}$.
+\end{proposition}
+
+\begin{proof}
+Since $A$ is similar to $B$, there exists an invertible matrix $W\in
+\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$.
+
+\textbf{(b)} Consider the kernels\footnote{Recall that \textquotedblleft
+kernel\textquotedblright\ is a synonym for \textquotedblleft
+nullspace\textquotedblright.} $\operatorname*{Ker}A$ and $\operatorname*{Ker}%
+B$ of $A$ and $B$. For any $v\in\operatorname*{Ker}A$, we have $Wv\in
+\operatorname*{Ker}B$ (because $v\in\operatorname*{Ker}A$ implies $Av=0$, so
+that $\underbrace{B}_{=WAW^{-1}}Wv=WA\underbrace{W^{-1}W}_{=I_{n}%
+}v=W\underbrace{Av}_{=0}=0$ and therefore $Wv\in\operatorname*{Ker}B$). Thus,
+we have found a linear map%
+\begin{align*}
+\operatorname*{Ker}A  &  \rightarrow\operatorname*{Ker}B,\\
+v  &  \mapsto Wv.
+\end{align*}
+This yields $\dim\left(  \operatorname*{Ker}A\right)  \leq\dim\left(
+\operatorname*{Ker}B\right)  $. But $A$ and $B$ play symmetric roles in our
+situation (since the relation \textquotedblleft similar\textquotedblright\ is
+symmetric), so that we can use the same reasoning to obtain $\dim\left(
+\operatorname*{Ker}B\right)  \leq\dim\left(  \operatorname*{Ker}A\right)  $.
+Combining these two inequalities, we obtain $\dim\left(  \operatorname*{Ker}%
+A\right)  =\dim\left(  \operatorname*{Ker}B\right)  $. In other words, $A$ and
+$B$ have the same nullity. This proves Proposition
+\ref{prop.schurtri.similar.same} \textbf{(b)}.
+
+\textbf{(a)} The rank of an $n\times n$-matrix equals $n$ minus its nullity
+(by the rank-nullity theorem). Hence, two $n\times n$-matrices that have the
+same nullity must also have the same rank. Thus, Proposition
+\ref{prop.schurtri.similar.same} \textbf{(a)} follows from Proposition
+\ref{prop.schurtri.similar.same} \textbf{(b)}.
+
+\textbf{(c)} From $B=WAW^{-1}$, we obtain%
+\begin{align*}
+\det B  &  =\det\left(  WAW^{-1}\right)  =\det W\cdot\det A\cdot
+\underbrace{\det\left(  W^{-1}\right)  }_{=\left(  \det W\right)  ^{-1}}\\
+&  =\det W\cdot\det A\cdot\left(  \det W\right)  ^{-1}=\det A.
+\end{align*}
+This proves Proposition \ref{prop.schurtri.similar.same} \textbf{(c)}.
+
+\textbf{(d)} The characteristic polynomial of an $n\times n$-matrix $M$ is
+defined to be $\det\left(  tI_{n}-M\right)  $ (where $t$ is the
+indeterminate)\footnote{At least this is one popular definition. Another one
+is $\det\left(  M-tI_{n}\right)  $. However, the two definitions differ only
+in a factor of $\left(  -1\right)  ^{n}$, so they behave almost completely the
+same (and our argument works equally well for either of them).}. Thus, we must
+show that $\det\left(  tI_{n}-A\right)  =\det\left(  tI_{n}-B\right)  $.
+However, we have%
+\begin{align*}
+t\underbrace{I_{n}}_{\substack{=WW^{-1}\\=WI_{n}W^{-1}}}-\underbrace{B}%
+_{=WAW^{-1}}  &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
+W^{-1}-WAW^{-1}=W\left(  tI_{n}\right)  W^{-1}-WAW^{-1}\\
+&  =W\left(  tI_{n}-A\right)  W^{-1}.
+\end{align*}
+Thus,%
+\begin{align*}
+\det\left(  tI_{n}-B\right)   &  =\det\left(  W\left(  tI_{n}-A\right)
+W^{-1}\right)  =\det W\cdot\det\left(  tI_{n}-A\right)  \cdot\underbrace{\det
+\left(  W^{-1}\right)  }_{=\left(  \det W\right)  ^{-1}}\\
+&  =\det W\cdot\det\left(  tI_{n}-A\right)  \cdot\left(  \det W\right)
+^{-1}=\det\left(  tI_{n}-A\right)  .
+\end{align*}
+Thus, $\det\left(  tI_{n}-A\right)  =\det\left(  tI_{n}-B\right)  $, and
+Proposition \ref{prop.schurtri.similar.same} \textbf{(d)} is proven.
+
+\textbf{(e)} The eigenvalues of a matrix, with their algebraic multiplicities,
+are the roots of the characteristic polynomial. Thus, from Proposition
+\ref{prop.schurtri.similar.same} \textbf{(d)}, we see that the matrices $A$
+and $B$ have the same eigenvalues, with the same algebraic multiplicities. It
+remains to show that the geometric multiplicities are also the same.
+
+Let $\lambda$ be an eigenvalue of $A$ (and therefore also of $B$, as we have
+just seen). The geometric multiplicity of $\lambda$ as an eigenvalue of $A$ is
+$\dim\left(  \operatorname*{Ker}\left(  A-\lambda I_{n}\right)  \right)  $.
+Likewise, the geometric multiplicity of $\lambda$ as an eigenvalue of $B$ is
+$\dim\left(  \operatorname*{Ker}\left(  B-\lambda I_{n}\right)  \right)  $.
+Hence, we must show that $\dim\left(  \operatorname*{Ker}\left(  A-\lambda
+I_{n}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  B-\lambda
+I_{n}\right)  \right)  $.
+
+We have%
+\begin{align*}
+\underbrace{B}_{=WAW^{-1}}-\lambda\underbrace{I_{n}}_{\substack{=WW^{-1}%
+\\=WI_{n}W^{-1}}}  &  =WAW^{-1}-\underbrace{\lambda WI_{n}}_{=W\left(  \lambda
+I_{n}\right)  }W^{-1}=WAW^{-1}-W\left(  \lambda I_{n}\right)  W^{-1}\\
+&  =W\left(  A-\lambda I_{n}\right)  W^{-1}.
+\end{align*}
+This shows that the matrices $A-\lambda I_{n}$ and $B-\lambda I_{n}$ are
+similar. Hence, Proposition \ref{prop.schurtri.similar.same} \textbf{(b)}
+shows that these two matrices $A-\lambda I_{n}$ and $B-\lambda I_{n}$ have the
+same nullity. In other words, $\dim\left(  \operatorname*{Ker}\left(
+A-\lambda I_{n}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(
+B-\lambda I_{n}\right)  \right)  $. This is exactly what we needed to show;
+thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} is proven.
+
+\textbf{(f)} Let $k\in\mathbb{N}$. We claim that $B^{k}=WA^{k}W^{-1}$. Once
+this is proved, it will clearly follow that $A^{k}$ is similar to $B^{k}$.
+
+One way to prove $B^{k}=WA^{k}W^{-1}$ is as follows: From $B=WAW^{-1}$, we
+obtain%
+\begin{align*}
+B^{k}  &  =\left(  WAW^{-1}\right)  ^{k}=WA\underbrace{W^{-1}\cdot W}_{=I_{n}%
+}A\underbrace{W^{-1}\cdot W}_{=I_{n}}AW^{-1}\cdot\cdots\cdot
+WA\underbrace{W^{-1}\cdot W}_{=I_{n}}AW^{-1}\\
+&  =W\underbrace{AA\cdots A}_{k\text{ factors}}W^{-1}%
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since all the }W^{-1}\cdot W\text{'s in the
+middle cancel out}\right) \\
+&  =WA^{k}W^{-1}.
+\end{align*}
+(To be precise, this works for $k\geq1$; but the case $k=0$ is trivial.)
+
+A less handwavy proof of $B^{k}=WA^{k}W^{-1}$ would proceed by induction on
+$k$. As it is completely straightforward, I leave it to the reader.
+\end{proof}
+
+Note that neither part \textbf{(a)}, nor part \textbf{(b)}, nor part
+\textbf{(c)}, nor part \textbf{(d)}, nor part \textbf{(e)} of Proposition
+\ref{prop.schurtri.similar.same} is an \textquotedblleft if and only
+if\textquotedblright\ statement: One can find two $n\times n$-matrices (for
+sufficiently large $n$) that have the same rank, nullity, determinant,
+characteristic polynomial and eigenvalues but are not similar.\footnote{Some
+of these examples are easy to find: For example, the matrices $\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+0 & 0
+\end{array}
+\right)  $ have the same eigenvalues with the same algebraic multiplicities,
+but are not similar.} Thus, proving the similarity of two matrices is not as
+easy as comparing these data. We will later learn an algorithmic way to check
+whether two matrices are similar.
+
+\begin{exercise}
+\label{exe.schurtri.similar.two-4x4s}\fbox{2} Prove that the two matrices
+$\left(
+\begin{array}
+[c]{cccc}%
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{cccc}%
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  $ are not similar.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.schurtri.similar.unitary-inv}\fbox{3} Let $A\in\mathbb{C}^{n\times
+n}$ be a matrix that is similar to some unitary matrix. Prove that $A^{-1}$ is
+similar to $A^{\ast}$.
+\end{exercise}
+
+\begin{remark}
+If you are used to thinking of matrices as linear maps, then similarity is a
+rather natural concept: Two $n\times n$-matrices $A\in\mathbb{F}^{n\times n}$
+and $B\in\mathbb{F}^{n\times n}$ are similar if and only if they represent one
+and the same endomorphism $f:\mathbb{F}^{n}\rightarrow\mathbb{F}^{n}$ of
+$\mathbb{F}^{n}$ with respect to two (possibly different) bases of
+$\mathbb{F}^{n}$. To be more precise, $A$ has to represent $f$ with respect to
+some basis of $\mathbb{F}^{n}$, while $B$ has to represent $f$ with respect to
+a further basis of $\mathbb{F}^{n}$ (possibly the same, but usually not).
+
+This fact is not hard to prove. Indeed, if $A$ and $B$ represent the same
+endomorphism $f$ with respect to two bases of $\mathbb{F}^{n}$, then we have
+$B=WAW^{-1}$, where $W$ is the change-of-basis matrix between these two bases.
+Conversely, if $A$ and $B$ are similar, then there exists some invertible
+matrix $W$ satisfying $B=WAW^{-1}$, and then $A$ and $B$ represent the same
+endomorphism $f$ with respect to two bases of $\mathbb{F}^{n}$ (namely, $B$
+represents the endomorphism%
+\begin{align*}
+\mathbb{F}^{n}  &  \rightarrow\mathbb{F}^{n},\\
+v  &  \mapsto Bv
+\end{align*}
+with respect to the standard basis $\left(  e_{1},e_{2},\ldots,e_{n}\right)
+$, whereas $A$ represents the same endomorphism with respect to the basis
+$\left(  We_{1},We_{2},\ldots,We_{n}\right)  $).
+
+Knowing these fact, many properties of similar matrices -- including all parts
+of Proposition \ref{prop.schurtri.similar.same} -- become essentially trivial:
+One just needs to recall that things like rank, nullity, determinant,
+eigenvalues etc. are properties of the endomorphism rather than properties of
+the matrix.
+\end{remark}
+
+\subsection{Unitary similarity}
+
+Unitary similarity is a more restrictive form of similarity, even though it is
+not immediately obvious from its definition:
+
+\begin{definition}
+\label{def.schurtri.unisim.def}Let $A$ and $B$ be two matrices in
+$\mathbb{C}^{n\times n}$. We say that $A$ is \emph{unitary similar} to $B$ if
+there exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ such that $B=WAW^{\ast}$.
+
+We write \textquotedblleft$A\overset{\operatorname*{us}}{\sim}B$%
+\textquotedblright\ for \textquotedblleft$A$ is unitary similar to
+$B$\textquotedblright.
+\end{definition}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  $ is unitary similar to the matrix $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  $, since $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  =W\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  W^{-1}$ for the unitary matrix $W=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  $.
+\end{example}
+
+\begin{example}
+\label{exe.schurtri.unisim.two2x2}\fbox{2} Prove that the matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+0 & 2
+\end{array}
+\right)  $ is similar to the matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 2
+\end{array}
+\right)  $, but not unitary similar to it.
+\end{example}
+
+Just like the relation \textquotedblleft similar\textquotedblright, the
+relation \textquotedblleft unitary similar\textquotedblright\ is an
+equivalence relation:
+
+\begin{proposition}
+\label{prop.schurtri.unisim.eqrel}\textbf{(a)} Any matrix $A\in\mathbb{C}%
+^{n\times n}$ is similar to itself.
+
+\textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{C}^{n\times n}$ such
+that $A$ is similar to $B$, then $B$ is similar to $A$.
+
+\textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{C}^{n\times
+n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$, then
+$A$ is similar to $C$.
+\end{proposition}
+
+\begin{proof}
+This is very similar to the proof of Proposition
+\ref{prop.schurtri.similar.eqrel}, and therefore left to the reader.
+\end{proof}
+
+\begin{definition}
+Let $A$ and $B$ be two matrices in $\mathbb{C}^{n\times n}$. We say that $A$
+and $B$ are \emph{unitary similar} if $A$ is unitary similar to $B$ (or,
+equivalently, $B$ is unitary similar to $A$).
+\end{definition}
+
+As we promised, unitary similarity is a more restrictive version of similarity:
+
+\begin{proposition}
+\label{prop.schurtri.unisim.sim}Let $A$ and $B$ be two unitary similar
+matrices in $\mathbb{C}^{n\times n}$. Then, $A$ and $B$ are similar.
+\end{proposition}
+
+\begin{proof}
+There exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ such that $B=WAW^{\ast}$ (since $A$ is unitary similar to
+$B$). Consider this $W$. The matrix $W$ is unitary, and thus (by the
+implication $\mathcal{A}\Longrightarrow\mathcal{D}$ in Theorem
+\ref{thm.unitary.unitary.eqs}) must be square and invertible and satisfy
+$W^{-1}=W^{\ast}$. Hence, $B=WA\underbrace{W^{\ast}}_{=W^{-1}}=WAW^{-1}$. But
+this shows that $A$ is similar to $B$. Thus, Proposition
+\ref{prop.schurtri.unisim.sim} is proven.
+\end{proof}
+
+\subsection{Schur triangularization}
+
+We are now ready for one more matrix decomposition: the so-called \emph{Schur
+triangularization} (aka \emph{Schur decomposition}):
+
+\begin{theorem}
+[Schur triangularization theorem]\label{thm.schurtri.schurtri}Let
+$A\in\mathbb{C}^{n\times n}$. Then, there exists a unitary matrix
+$U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and an
+upper-triangular matrix $T\in\mathbb{C}^{n\times n}$ such that $A=UTU^{\ast}$.
+In other words, $A$ is unitary similar to some upper-triangular matrix.
+\end{theorem}
+
+The factorization $A=UTU^{\ast}$ in Theorem \ref{thm.schurtri.schurtri} is
+called a \emph{Schur triangularization} of $A$. It is usually not unique.
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & 3\\
+-3 & 7
+\end{array}
+\right)  $. Then, a Schur triangularization of $A$ is $A=UTU^{\ast}$, where%
+\[
+U=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ T=\left(
+\begin{array}
+[c]{cc}%
+4 & 6\\
+0 & 4
+\end{array}
+\right)  .
+\]
+(We chose $A$ deliberately to obtain \textquotedblleft nice\textquotedblright%
+\ matrices $U$ and $T$. The Schur triangularization of a typical $n\times
+n$-matrix will be more complicated, involving square roots for $n=2$ and roots
+of $n$-th degree polynomials for general $n$.)
+\end{example}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.schurtri.schurtri}.]We proceed by induction on $n$:
+
+\textit{Induction base:} For $n=0$, Theorem \ref{thm.schurtri.schurtri} holds trivially.
+
+\textit{Induction step:} TODO: Scribe!
+\end{proof}
+
+\begin{exercise}
+\label{exe.schurtri.schurtri.one3x3}\fbox{3} Find a Schur triangularization of
+the matrix $\left(
+\begin{array}
+[c]{ccc}%
+1 & 1 & 1\\
+1 & 1 & 1\\
+1 & 1 & 1
+\end{array}
+\right)  $.
+\end{exercise}
+
+\subsection{Commuting matrices}
+
+\begin{definition}
+Two $n\times n$-matrices $A$ and $B$ are said to \emph{commute} if $AB=BA$.
+\end{definition}
+
+Examples of commuting matrices are easy to find; e.g., any two powers of a
+single matrix commute (i.e., we have $A^{k}A^{\ell}=A^{\ell}A^{k}$ for any
+$n\times n$-matrix $A$ and any $k,\ell\in\mathbb{N}$). But there are many more
+situations in which matrices commute. In this section, we shall extend Schur
+triangularization from a single matrix to a family of commuting matrices.
+
+First, we need a lemma (\cite[Lemma 1.3.19]{HorJoh13}) which says that any
+family of pairwise commuting matrices in $\mathbb{C}^{n\times n}$ has a common eigenvector:
+
+\begin{lemma}
+\label{lem.schurtri.commute.1}Let $n>0$. Let $\mathcal{F}$ be a subset of
+$\mathbb{C}^{n\times n}$ such that any two matrices in $\mathcal{F}$ commute
+(i.e., any $A\in\mathcal{F}$ and $B\in\mathcal{F}$ satisfy $AB=BA$).
+
+Then, there exists a nonzero vector $x\in\mathbb{C}^{n}$ such that $x$ is an
+eigenvector of each $A\in\mathcal{F}$.
+\end{lemma}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+We can now generalize Theorem \ref{thm.schurtri.schurtri} to families of
+commuting matrices:
+
+\begin{theorem}
+\label{thm.schurtri.commute.schurtri}Let $\mathcal{F}$ be a subset of
+$\mathbb{C}^{n\times n}$ such that any two matrices in $\mathcal{F}$ commute
+(i.e., any $A\in\mathcal{F}$ and $B\in\mathcal{F}$ satisfy $AB=BA$).
+
+Then, there exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ such that the matrix $UAU^{\ast}$ is upper-triangular for
+each $A\in\mathcal{F}$.
+\end{theorem}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
 
 \newpage
 
