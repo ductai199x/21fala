@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, September 20, 2021 21:39:38}
+%TCIDATA{LastRevised=Friday, September 24, 2021 15:15:52}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -543,6 +543,164 @@ x\right\vert \right\vert ^{2}-\left\vert \left\vert y\right\vert \right\vert
 \]
 Here, $\operatorname*{Re}z$ denotes the real part of any complex number $z$.
 \end{exercise}
+
+One of the most famous properties of the inner product is the
+\emph{Cauchy--Schwarz inequality}:
+
+\begin{theorem}
+[Cauchy--Schwarz inequality]\label{thm.unitary.innerprod.cs}Let $x\in
+\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$ be two vectors. Then:
+
+\textbf{(a)} The inequality%
+\[
+\left\vert \left\vert x\right\vert \right\vert \cdot\left\vert \left\vert
+y\right\vert \right\vert \geq\left\vert \left\langle x,y\right\rangle
+\right\vert
+\]
+holds.
+
+\textbf{(b)} This inequality becomes an equality if and only if the pair
+$\left(  x,y\right)  $ of vectors is linearly dependent.
+\end{theorem}
+
+\begin{proof}
+[Prof of Theorem \ref{thm.unitary.innerprod.cs}.]If $x=0$, then Theorem
+\ref{thm.unitary.innerprod.cs} is obvious (because the inequality in part
+\textbf{(a)} simplifies to $0\geq0$, and since the pair $\left(  0,y\right)  $
+of vectors is always linearly dependent). Hence, for the rest of this proof,
+we WLOG assume that $x\neq0$.
+
+Thus, Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} yields that
+$\left\langle x,x\right\rangle $ is a nonnegative real, and Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)} yields $\left\langle
+x,x\right\rangle >0$. Let $a:=\left\langle x,x\right\rangle $. Then,
+$a=\left\langle x,x\right\rangle >0$. Furthermore, let $b:=\left\langle
+y,x\right\rangle \in\mathbb{C}$. Thus, $\overline{b}=\overline{\left\langle
+y,x\right\rangle }=\left\langle x,y\right\rangle $ (by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(b)}).
+
+Now, Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} (applied to
+$bx-ay$ instead of $x$) yields that
+\begin{equation}
+\left\langle bx-ay,bx-ay\right\rangle \geq
+0.\label{pf.thm.unitary.innerprod.cs.main}%
+\end{equation}
+Since%
+\begin{align*}
+&  \left\langle bx-ay,bx-ay\right\rangle \\
+&  =\underbrace{\left\langle bx,bx-ay\right\rangle }_{\substack{=\left\langle
+bx,bx\right\rangle -\left\langle bx,ay\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(h)})}}}-\underbrace{\left\langle
+ay,bx-ay\right\rangle }_{\substack{=\left\langle ay,bx\right\rangle
+-\left\langle ay,ay\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(h)})}}}\ \ \ \ \ \ \ \ \ \ \left(
+\text{by Proposition \ref{prop.unitary.innerprod.props} \textbf{(g)}}\right)
+\\
+&  =\left\langle bx,bx\right\rangle -\left\langle bx,ay\right\rangle -\left(
+\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right)  \\
+&  =\underbrace{\left\langle bx,bx\right\rangle }_{\substack{=b\left\langle
+x,bx\right\rangle \\\text{(by Proposition \ref{prop.unitary.innerprod.props}
+\textbf{(e)})}}}+\underbrace{\left\langle ay,ay\right\rangle }%
+_{\substack{=a\left\langle y,ay\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(e)})}}}\\
+&  \ \ \ \ \ \ \ \ \ \ -\underbrace{\left\langle bx,ay\right\rangle
+}_{\substack{=b\left\langle x,ay\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(e)})}}}-\underbrace{\left\langle
+ay,bx\right\rangle }_{\substack{=a\left\langle y,bx\right\rangle \\\text{(by
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(e)})}}}\\
+&  =b\underbrace{\left\langle x,bx\right\rangle }_{\substack{=\overline
+{b}\left\langle x,x\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(f)})}}}+a\underbrace{\left\langle
+y,ay\right\rangle }_{\substack{=\overline{a}\left\langle y,y\right\rangle
+\\\text{(by Proposition \ref{prop.unitary.innerprod.props} \textbf{(f)})}}}\\
+&  \ \ \ \ \ \ \ \ \ \ -b\underbrace{\left\langle x,ay\right\rangle
+}_{\substack{=\overline{a}\left\langle x,y\right\rangle \\\text{(by
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(f)})}}%
+}-a\underbrace{\left\langle y,bx\right\rangle }_{\substack{=\overline
+{b}\left\langle y,x\right\rangle \\\text{(by Proposition
+\ref{prop.unitary.innerprod.props} \textbf{(f)})}}}\\
+&  =b\overline{b}\underbrace{\left\langle x,x\right\rangle }_{=a}%
++a\underbrace{\overline{a}}_{\substack{=a\\\text{(since }a\in\mathbb{R}%
+\text{)}}}\left\langle y,y\right\rangle -b\underbrace{\overline{a}%
+}_{\substack{=a\\\text{(since }a\in\mathbb{R}\text{)}}%
+}\underbrace{\left\langle x,y\right\rangle }_{=\overline{b}}-a\overline
+{b}\underbrace{\left\langle y,x\right\rangle }_{=b}\\
+&  =b\overline{b}a+\underbrace{aa}_{=a^{2}}\left\langle y,y\right\rangle
+-\underbrace{ba}_{=ab}\overline{b}-\underbrace{a\overline{b}b}_{=b\overline
+{b}a}\\
+&  =b\overline{b}a+a^{2}\left\langle y,y\right\rangle -ab\overline
+{b}-b\overline{b}a=a^{2}\left\langle y,y\right\rangle -ab\overline{b}=a\left(
+a\left\langle y,y\right\rangle -b\overline{b}\right)  ,
+\end{align*}
+we can rewrite this as
+\[
+a\left(  a\left\langle y,y\right\rangle -b\overline{b}\right)  \geq0.
+\]
+We can divide both sides of this inequality by $a$ (since $a>0$). Thus, we
+obtain
+\[
+a\left\langle y,y\right\rangle -b\overline{b}\geq0.
+\]
+In other words,%
+\[
+a\left\langle y,y\right\rangle \geq b\overline{b}.
+\]
+In view of
+\[
+a=\left\langle x,x\right\rangle =\left\vert \left\vert x\right\vert
+\right\vert ^{2}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\vert \left\vert
+x\right\vert \right\vert =\sqrt{\left\langle x,x\right\rangle }\text{ (by the
+definition of }\left\vert \left\vert x\right\vert \right\vert \text{)}\right)
+\]
+and%
+\[
+\left\langle y,y\right\rangle =\left\vert \left\vert y\right\vert \right\vert
+^{2}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\vert \left\vert
+y\right\vert \right\vert =\sqrt{\left\langle y,y\right\rangle }\text{ (by the
+definition of }\left\vert \left\vert y\right\vert \right\vert \text{)}\right)
+\]
+and%
+\[
+b\overline{b}=\overline{b}\underbrace{b}_{=\overline{\overline{b}}}%
+=\overline{b}\overline{\overline{b}}=\left\vert \overline{b}\right\vert
+^{2}\ \ \ \ \ \ \ \ \ \ \left(  \text{because }z\overline{z}=\left\vert
+z\right\vert ^{2}\text{ for any }z\in\mathbb{C}\right)  ,
+\]
+we can rewrite this as $\left\vert \left\vert x\right\vert \right\vert
+^{2}\left\vert \left\vert y\right\vert \right\vert ^{2}\geq\left\vert
+\overline{b}\right\vert ^{2}$. Since $\left\vert \left\vert x\right\vert
+\right\vert $ and $\left\vert \left\vert y\right\vert \right\vert $ and
+$\left\vert \overline{b}\right\vert $ are nonnegative reals, we can take
+square roots on both sides of this inequality, and obtain $\left\vert
+\left\vert x\right\vert \right\vert \cdot\left\vert \left\vert y\right\vert
+\right\vert \geq\left\vert \overline{b}\right\vert $. In other words,
+$\left\vert \left\vert x\right\vert \right\vert \cdot\left\vert \left\vert
+y\right\vert \right\vert \geq\left\vert \left\langle x,y\right\rangle
+\right\vert $ (since $\overline{b}=\left\langle x,y\right\rangle $). This
+proves Theorem \ref{thm.unitary.innerprod.cs} \textbf{(a)}.
+
+\textbf{(b)} Our above proof of the inequality $\left\vert \left\vert
+x\right\vert \right\vert \cdot\left\vert \left\vert y\right\vert \right\vert
+\geq\left\vert \left\langle x,y\right\rangle \right\vert $ shows that this
+inequality can only become an equality if $\left\langle
+bx-ay,bx-ay\right\rangle =0$ (since it was obtained by a chain of reversible
+transformations from the inequality (\ref{pf.thm.unitary.innerprod.cs.main})).
+But this happens if and only if $bx-ay=0$ (since Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)} shows that $\left\langle
+bx-ay,bx-ay\right\rangle >0$ in any other case). In turn, $bx-ay=0$ entails
+that the pair $\left(  x,y\right)  $ is linearly dependent (since $a>0$).
+Thus, the inequality $\left\vert \left\vert x\right\vert \right\vert
+\cdot\left\vert \left\vert y\right\vert \right\vert \geq\left\vert
+\left\langle x,y\right\rangle \right\vert $ can only become an equality if the
+pair $\left(  x,y\right)  $ is linearly dependent. Conversely, it is easy to
+see that if the pair $\left(  x,y\right)  $ is linearly dependent, then the
+inequality $\left\vert \left\vert x\right\vert \right\vert \cdot\left\vert
+\left\vert y\right\vert \right\vert \geq\left\vert \left\langle
+x,y\right\rangle \right\vert $ indeed becomes an equality (because in light of
+$x\neq0$, the linear dependence of the pair $\left(  x,y\right)  $ yields that
+$y=\lambda x$ for some $\lambda\in\mathbb{C}$). Thus, Theorem
+\ref{thm.unitary.innerprod.cs} \textbf{(b)} is proven.
+\end{proof}
 
 \subsection{Orthogonality and orthonormality}
 
@@ -1277,13 +1435,13 @@ $\mathcal{E}$ holds. We have thus proved the implication $\mathcal{D}%
 
 \item $\mathcal{E}\Longrightarrow\mathcal{D}$\textit{:} Assume that statement
 $\mathcal{E}$ holds. Then, the columns of $U$ form an orthonormal basis, hence
-an orthogonal tuple. Thus, Proposition \ref{prop.unitary.innerprod.isometry.2}
-shows that $U$ is an isometry, so that $U^{\ast}U=I_{k}$. However, $U$ is
-invertible because the columns of $U$ form a basis of $\mathbb{C}^{n}$.
-Therefore, from $U^{\ast}U=I_{k}$, we obtain $U^{-1}=U^{\ast}$. Finally, the
-matrix $U$ is square, since any invertible matrix is square. Thus, statement
-$\mathcal{D}$ holds. We have thus proved the implication $\mathcal{E}%
-\Longrightarrow\mathcal{D}$.
+an orthonormal tuple. Thus, Proposition
+\ref{prop.unitary.innerprod.isometry.2} shows that $U$ is an isometry, so that
+$U^{\ast}U=I_{k}$. However, $U$ is invertible because the columns of $U$ form
+a basis of $\mathbb{C}^{n}$. Therefore, from $U^{\ast}U=I_{k}$, we obtain
+$U^{-1}=U^{\ast}$. Finally, the matrix $U$ is square, since any invertible
+matrix is square. Thus, statement $\mathcal{D}$ holds. We have thus proved the
+implication $\mathcal{E}\Longrightarrow\mathcal{D}$.
 
 \item $\mathcal{D}\Longrightarrow\mathcal{F}$\textit{:} The implication
 $\mathcal{D}\Longrightarrow\mathcal{F}$ is easy (since $U^{-1}=U^{\ast}$
@@ -1491,9 +1649,10 @@ multiplying all three entries by the same number.)
 \ref{exe.unitary.skew-herm.1}.]
 \end{exercise}
 
-\subsubsection{Block matrices}
+We shall soon see one more way to construct unitary matrices from smaller
+ones, using the notion of block matrices, which we shall now introduce.
 
-We record one more way to construct unitary matrices from smaller ones:
+\subsection{Block matrices}
 
 \begin{definition}
 \label{def.blockmats.2x2}Let $\mathbb{F}$ be a field. Let $n,m,p,q\in
@@ -1824,6 +1983,79 @@ A\left(  1,1\right)  B\left(  1,1\right)  & 0 & \cdots & 0\\
 (Here, each \textquotedblleft$0$\textquotedblright\ means a zero matrix of
 appropriate dimensions.)
 \end{corollary}
+
+\begin{example}
+Let $u=2$ and $n_{1}=1$ and $n_{2}=2$. Let $A\left(  1,1\right)  =\left(
+\begin{array}
+[c]{c}%
+a
+\end{array}
+\right)  $ and $A\left(  2,2\right)  =\left(
+\begin{array}
+[c]{cc}%
+b & c\\
+d & e
+\end{array}
+\right)  $ and $B\left(  1,1\right)  =\left(
+\begin{array}
+[c]{c}%
+a^{\prime}%
+\end{array}
+\right)  $ and $B\left(  2,2\right)  =\left(
+\begin{array}
+[c]{cc}%
+b^{\prime} & c^{\prime}\\
+d^{\prime} & e^{\prime}%
+\end{array}
+\right)  $. Then, Corollary \ref{cor.blockmatrix.mult-diag} says that%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A\left(  1,1\right)  & 0\\
+0 & A\left(  2,2\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+B\left(  1,1\right)  & 0\\
+0 & B\left(  2,2\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+A\left(  1,1\right)  B\left(  1,1\right)  & 0\\
+0 & A\left(  2,2\right)  B\left(  2,2\right)
+\end{array}
+\right)  ,
+\]
+i.e., that%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+a & 0 & 0\\
+0 & b & c\\
+0 & d & e
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+a^{\prime} & 0 & 0\\
+0 & b^{\prime} & c^{\prime}\\
+0 & d^{\prime} & e^{\prime}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccc}%
+aa^{\prime} & 0 & 0\\
+0 & cd^{\prime}+bb^{\prime} & ce^{\prime}+bc^{\prime}\\
+0 & ed^{\prime}+db^{\prime} & ee^{\prime}+dc^{\prime}%
+\end{array}
+\right)  \allowbreak.
+\]
+
+\end{example}
 
 Now, we claim that a block-diagonal matrix is unitary if and only if its
 diagonal blocks are unitary:
@@ -3293,7 +3525,7 @@ with respect to the standard basis $\left(  e_{1},e_{2},\ldots,e_{n}\right)
 $, whereas $A$ represents the same endomorphism with respect to the basis
 $\left(  We_{1},We_{2},\ldots,We_{n}\right)  $).
 
-Knowing these fact, many properties of similar matrices -- including all parts
+Knowing this fact, many properties of similar matrices -- including all parts
 of Proposition \ref{prop.schurtri.similar.same} -- become essentially trivial:
 One just needs to recall that things like rank, nullity, determinant,
 eigenvalues etc. are properties of the endomorphism rather than properties of
@@ -3341,7 +3573,7 @@ The matrix $\left(
 1 & 1\\
 1 & 1
 \end{array}
-\right)  W^{-1}$ for the unitary matrix $W=\dfrac{1}{\sqrt{2}}\left(
+\right)  W^{\ast}$ for the unitary matrix $W=\dfrac{1}{\sqrt{2}}\left(
 \begin{array}
 [c]{cc}%
 1 & 1\\
@@ -3372,19 +3604,20 @@ equivalence relation:
 
 \begin{proposition}
 \label{prop.schurtri.unisim.eqrel}\textbf{(a)} Any matrix $A\in\mathbb{C}%
-^{n\times n}$ is similar to itself.
+^{n\times n}$ is unitary similar to itself.
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{C}^{n\times n}$ such
-that $A$ is similar to $B$, then $B$ is similar to $A$.
+that $A$ is unitary similar to $B$, then $B$ is unitary similar to $A$.
 
 \textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{C}^{n\times
-n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$, then
-$A$ is similar to $C$.
+n}$ such that $A$ is unitary similar to $B$ and such that $B$ is unitary
+similar to $C$, then $A$ is unitary similar to $C$.
 \end{proposition}
 
 \begin{proof}
 This is very similar to the proof of Proposition
-\ref{prop.schurtri.similar.eqrel}, and therefore left to the reader.
+\ref{prop.schurtri.similar.eqrel}, and therefore left to the reader. (The only
+new idea is to use Exercise \ref{exe.unitary.group}.)
 \end{proof}
 
 \begin{definition}
@@ -3452,8 +3685,7 @@ U=\dfrac{1}{\sqrt{2}}\left(
 \]
 (We chose $A$ deliberately to obtain \textquotedblleft nice\textquotedblright%
 \ matrices $U$ and $T$. The Schur triangularization of a typical $n\times
-n$-matrix will be more complicated, involving square roots for $n=2$ and roots
-of $n$-th degree polynomials for general $n$.)
+n$-matrix will be more complicated, involving roots of $n$-th degree polynomials.)
 \end{example}
 
 \begin{proof}
@@ -3513,8 +3745,8 @@ $\mathbb{C}^{n\times n}$ such that any two matrices in $\mathcal{F}$ commute
 (i.e., any $A\in\mathcal{F}$ and $B\in\mathcal{F}$ satisfy $AB=BA$).
 
 Then, there exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
-\mathbb{C}\right)  $ such that the matrix $UAU^{\ast}$ is upper-triangular for
-each $A\in\mathcal{F}$.
+\mathbb{C}\right)  $ such that for each $A\in\mathcal{F}$, the matrix
+$UAU^{\ast}$ is upper-triangular.
 \end{theorem}
 
 \begin{proof}
