@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Tuesday, September 28, 2021 22:29:36}
+%TCIDATA{LastRevised=Tuesday, September 28, 2021 23:25:17}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -474,8 +474,8 @@ yields%
 \left\langle x,x\right\rangle  &  =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
 }+\cdots+x_{n}\overline{x_{n}}\nonumber\\
 &  =\left\vert x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}%
-+\cdots+\left\vert x_{n}\right\vert ^{2}%
-,\label{pf.prop.unitary.innerprod.pos.1}%
++\cdots+\left\vert x_{n}\right\vert ^{2},
+\label{pf.prop.unitary.innerprod.pos.1}%
 \end{align}
 since any complex number $z$ satisfies $z\overline{z}=\left\vert z\right\vert
 ^{2}$. Since all the absolute values $\left\vert x_{1}\right\vert ,\left\vert
@@ -1573,7 +1573,7 @@ unitary group (i.e., the set of all unitary $n\times n$-matrices).}%
 \left\{  \text{skew-Hermitian matrices in }\mathbb{C}^{n\times n}\right\}   &
 \rightarrow\left\{  U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}%
 \right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  ,\\
-S &  \mapsto\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}+S\right)  .
+S  &  \mapsto\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}+S\right)  .
 \end{align*}
 This map is known as the \emph{Cayley parametrization} of the unitary matrices
 (and can be seen as an $n$-dimensional generalization of the stereographic
@@ -2076,19 +2076,19 @@ d^{\prime} & e^{\prime}%
 \left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)   & 0\\
+A\left(  1,1\right)  & 0\\
 0 & A\left(  2,2\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cc}%
-B\left(  1,1\right)   & 0\\
+B\left(  1,1\right)  & 0\\
 0 & B\left(  2,2\right)
 \end{array}
 \right)  =\left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  B\left(  1,1\right)   & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)  & 0\\
 0 & A\left(  2,2\right)  B\left(  2,2\right)
 \end{array}
 \right)  ,
@@ -2171,7 +2171,7 @@ A_{1}^{\ast} & 0 & \cdots & 0\\
 Multiplying this equality by (\ref{pf.prop.blockmatrix.unitary-diag.A=}), we
 obtain%
 \begin{align*}
-A^{\ast}A &  =\left(
+A^{\ast}A  &  =\left(
 \begin{array}
 [c]{cccc}%
 A_{1}^{\ast} & 0 & \cdots & 0\\
@@ -2187,7 +2187,7 @@ A_{1} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A_{u}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
@@ -2237,15 +2237,15 @@ $i\in\left[  u\right]  $. Likewise, we can see that $AA^{\ast}=I_{N}$ holds if
 and only if we have $A_{i}A_{i}^{\ast}=I_{n_{i}}$ for each $i\in\left[
 u\right]  $. Hence, we have the following chain of equivalences:%
 \begin{align*}
-&  \ \left(  A\text{ is unitary}\right)  \\
+&  \ \left(  A\text{ is unitary}\right) \\
 &  \Longleftrightarrow\ \left(  AA^{\ast}=I_{N}\text{ and }A^{\ast}%
-A=I_{N}\right)  \\
+A=I_{N}\right) \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
 }\mathcal{A}\Longleftrightarrow\mathcal{C}\text{ in Theorem
-\ref{thm.unitary.unitary.eqs}}\right)  \\
+\ref{thm.unitary.unitary.eqs}}\right) \\
 &  \Longleftrightarrow\ \left(  \text{we have }A_{i}A_{i}^{\ast}=I_{n_{i}%
 }\text{ and }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[  u\right]
-\right)  \\
+\right) \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
@@ -2256,12 +2256,12 @@ u\right]  \text{, and since we have}\\
 \text{we have }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[
 u\right]
 \end{array}
-\right)  \\
+\right) \\
 &  \Longleftrightarrow\ \left(  \text{the matrix }A_{i}\text{ is unitary for
-each }i\in\left[  u\right]  \right)  \\
+each }i\in\left[  u\right]  \right) \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
 }\mathcal{C}\Longleftrightarrow\mathcal{A}\text{ in Theorem
-\ref{thm.unitary.unitary.eqs}}\right)  \\
+\ref{thm.unitary.unitary.eqs}}\right) \\
 &  \Longleftrightarrow\ \left(  \text{all }u\text{ matrices }A_{1}%
 ,A_{2},\ldots,A_{u}\text{ are unitary}\right)  .
 \end{align*}
@@ -3186,8 +3186,8 @@ conclude that there is an orthonormal tuple $\left(  q_{1},q_{2},\ldots
 \begin{align}
 \operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet
 ,j}\right\}   &  \subseteq\operatorname*{span}\left\{  q_{1},q_{2}%
-,\ldots,q_{j}\right\}  \label{pf.thm.unitary.QR1.spansequal}\\
-\ \ \ \ \ \ \ \ \ \ \text{for all }j &  \in\left[  m\right]  .\nonumber
+,\ldots,q_{j}\right\} \label{pf.thm.unitary.QR1.spansequal}\\
+\ \ \ \ \ \ \ \ \ \ \text{for all }j  &  \in\left[  m\right]  .\nonumber
 \end{align}
 Consider this tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)  $. Let
 $Q\in\mathbb{C}^{n\times m}$ be the matrix whose columns are $q_{1}%
@@ -3195,8 +3195,8 @@ $Q\in\mathbb{C}^{n\times m}$ be the matrix whose columns are $q_{1}%
 \ref{prop.unitary.innerprod.isometry.2}, since its columns form an orthonormal
 tuple). The definition of $Q$ shows that%
 \begin{equation}
-Q_{\bullet,i}=q_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
-.\label{pf.thm.unitary.QR1.Qbull}%
+Q_{\bullet,i}=q_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]  .
+\label{pf.thm.unitary.QR1.Qbull}%
 \end{equation}
 
 
@@ -3211,12 +3211,12 @@ In other words, there exist scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}%
 \in\mathbb{C}$ such that $A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}$. Consider
 these scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}$. Also, set
 \begin{equation}
-r_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for each integer }%
-i>j.\label{pf.thm.unitary.QR1.triang}%
+r_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for each integer }i>j.
+\label{pf.thm.unitary.QR1.triang}%
 \end{equation}
 Thus,%
 \begin{equation}
-A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}=\sum_{i=1}^{m}r_{i,j}q_{i}%
+A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}=\sum_{i=1}^{m}r_{i,j}q_{i}
 \label{pf.thm.unitary.QR1.col=}%
 \end{equation}
 (since $\sum_{i=1}^{m}r_{i,j}q_{i}=\sum_{i=1}^{j}r_{i,j}q_{i}+\sum_{i=j+1}%
@@ -3233,16 +3233,16 @@ matrix $R$ is upper-triangular, because of (\ref{pf.thm.unitary.QR1.triang}).
 The definition of $R$ yields\footnote{Recall that $M_{i,j}$ is our general
 notation for the $\left(  i,j\right)  $-th entry of a matrix $M$.}%
 \begin{equation}
-R_{i,j}=r_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]
-.\label{pf.thm.unitary.QR1.Rij=}%
+R_{i,j}=r_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]  .
+\label{pf.thm.unitary.QR1.Rij=}%
 \end{equation}
 Furthermore, for each $j\in\left[  m\right]  $, we have%
 \begin{align*}
-A_{\bullet,j} &  =\sum_{i=1}^{m}\underbrace{r_{i,j}}_{\substack{=R_{i,j}%
+A_{\bullet,j}  &  =\sum_{i=1}^{m}\underbrace{r_{i,j}}_{\substack{=R_{i,j}%
 \\\text{(by (\ref{pf.thm.unitary.QR1.Rij=}))}}}\ \ \underbrace{q_{i}%
 }_{\substack{=Q_{\bullet,i}\\\text{(by (\ref{pf.thm.unitary.QR1.Qbull}))}%
-}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.QR1.col=}%
-)}\right)  \\
+}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.QR1.col=})}\right)
+\\
 &  =\sum_{i=1}^{m}R_{i,j}Q_{\bullet,i}=\left(  QR\right)  _{\bullet,j}%
 \end{align*}
 (by the definition of the product of two matrices\footnote{Actually, let's be
@@ -3285,8 +3285,6 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 
 \section{Schur triangularization (\cite[Chapter 2]{HorJoh13})}
 
-
-
 \begin{noncompile}%
 \[%
 \begin{tabular}
@@ -3297,8 +3295,6 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 \]
 
 \end{noncompile}
-
-
 
 \subsection{Similarity of matrices}
 
@@ -3849,6 +3845,293 @@ $\mathbb{C}^{n\times n}$ such that any two matrices in $\mathcal{F}$ commute
 Then, there exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
 \mathbb{C}\right)  $ such that for each $A\in\mathcal{F}$, the matrix
 $UAU^{\ast}$ is upper-triangular.
+\end{theorem}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 5 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
+
+\subsection{Normal matrices and the spectral theorem}
+
+We next define a fairly wide class of matrices with complex entries that
+contains several of our familiar classes as subsets:
+
+\begin{definition}
+\label{def.schurtri.normal.normal}A square matrix $A\in\mathbb{C}^{n\times n}$
+is said to be \emph{normal} if $AA^{\ast}=A^{\ast}A$.
+\end{definition}
+
+In other words, a square matrix is normal if it commutes with its own
+conjugate transpose. This is not the most intuitive notion (nor is the word
+\textquotedblleft normal\textquotedblright\ particularly expressive), so we
+shall give some examples:
+
+\begin{example}
+\textbf{(a)} Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  \in\mathbb{C}^{2\times2}$. Then, the matrix $A$ is normal. Indeed,
+its conjugate transpose is $A^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  $, and it is easily seen that $AA^{\ast}=A^{\ast}A=2I_{2}$.
+
+\textbf{(b)} Let $B=\left(
+\begin{array}
+[c]{cc}%
+0 & i\\
+0 & 0
+\end{array}
+\right)  \in\mathbb{C}^{2\times2}$. Then, the matrix $B$ is not normal.
+Indeed, $B^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+-i & 0
+\end{array}
+\right)  $ satisfies $BB^{\ast}\neq B^{\ast}B$, as can easily be verified.
+
+\textbf{(c)} Let $a,b\in\mathbb{C}$ be arbitrary, and let $C=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+b & a
+\end{array}
+\right)  \in\mathbb{C}^{2\times2}$. Then, $C$ is normal. Indeed, $C^{\ast
+}=\left(
+\begin{array}
+[c]{cc}%
+\overline{a} & \overline{b}\\
+\overline{b} & \overline{a}%
+\end{array}
+\right)  $, so that it is easy to check that both $CC^{\ast}$ and $C^{\ast}C$
+equal $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+b & a
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\overline{a} & \overline{b}\\
+\overline{b} & \overline{a}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+a\overline{a}+b\overline{b} & a\overline{b}+b\overline{a}\\
+a\overline{b}+b\overline{a} & a\overline{a}+b\overline{b}%
+\end{array}
+\right)  $.
+\end{example}
+
+As we promised, several familiar classes of matrices are normal. We recall a definition:
+
+\begin{definition}
+\label{def.schurtri.herm}A square matrix $H\in\mathbb{C}^{n\times n}$ is said
+to be \emph{Hermitian} if and only if $H^{\ast}=H$.
+\end{definition}
+
+For example, the matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & i\\
+-i & 2
+\end{array}
+\right)  $ is Hermitian.
+
+In contrast, a square matrix $S\in\mathbb{C}^{n\times n}$ is skew-Hermitian if
+and only if $S^{\ast}=-S$ (by Definition \ref{def.unitary.skew-herm}).
+Finally, a matrix $U\in\mathbb{C}^{n\times n}$ is unitary if and only if
+$UU^{\ast}=U^{\ast}U=I_{n}$ (by Theorem \ref{thm.unitary.unitary.eqs},
+equivalence $\mathcal{A}\Longleftrightarrow\mathcal{C}$). Having recalled all
+these concepts, we can state the following:
+
+\begin{proposition}
+\label{prop.schurtri.normal.classes}\textbf{(a)} Every Hermitian matrix
+$H\in\mathbb{C}^{n\times n}$ is normal.
+
+\textbf{(b)} Every skew-Hermitian matrix $S\in\mathbb{C}^{n\times n}$ is normal.
+
+\textbf{(c)} Every unitary matrix $U\in\mathbb{C}^{n\times n}$ is normal.
+
+\textbf{(d)} Every diagonal matrix $D\in\mathbb{C}^{n\times n}$ is normal.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} Let $H\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Then,
+$H^{\ast}=H$ (by the definition of \textquotedblleft
+Hermitian\textquotedblright). Hence, $H\underbrace{H^{\ast}}_{=H}%
+=\underbrace{H}_{=H^{\ast}}H=H^{\ast}H$. In other words, $H$ is normal. This
+proves Proposition \ref{prop.schurtri.normal.classes} \textbf{(a)}.
+
+\textbf{(b)} This is analogous to part \textbf{(a)}, except for a minus sign
+that appears and disappears again.
+
+\textbf{(c)} This is clear, since $UU^{\ast}=U^{\ast}U=I_{n}$ entails
+$UU^{\ast}=U^{\ast}U$.
+
+\textbf{(d)} Let $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix. Write $D$
+in the form $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  $ for some $\lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}\in\mathbb{C}$. Then, $D^{\ast}=\operatorname*{diag}\left(
+\overline{\lambda_{1}},\overline{\lambda_{2}},\ldots,\overline{\lambda_{n}%
+}\right)  $. Hence,
+\begin{align*}
+DD^{\ast}  & =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
+},\lambda_{2}\overline{\lambda_{2}},\ldots,\lambda_{n}\overline{\lambda_{n}%
+}\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
+D^{\ast}D  & =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
+_{1},\overline{\lambda_{2}}\lambda_{2},\ldots,\overline{\lambda_{n}}%
+\lambda_{n}\right)  .
+\end{align*}
+The right hand sides of these two equalities are equal (since $\lambda
+_{i}\overline{\lambda_{i}}=\overline{\lambda_{i}}\lambda_{i}$ for each
+$i\in\left[  n\right]  $). Thus, the left hand sides must too be equal. In
+other words, $DD^{\ast}=D^{\ast}D$. This means that $D$ is normal. This proves
+Proposition \ref{prop.schurtri.normal.classes} \textbf{(d)}.
+\end{proof}
+
+Unlike the unitary matrices, the normal matrices are not closed under multiplication:
+
+\begin{exercise}
+\label{exe.schurtri.normal.not-additive}\fbox{2} Find two normal matrices
+$A,B\in\mathbb{C}^{2\times2}$ such that neither $A+B$ nor $AB$ is normal.
+\end{exercise}
+
+Here are some more ways to construct normal matrices out of existing normal matrices:
+
+\begin{proposition}
+\label{prop.schurtri.normal.conj}Let $A\in\mathbb{C}^{n\times n}$ be a normal matrix.
+
+\textbf{(a)} If $\lambda\in\mathbb{C}$ is arbitrary, then the matrix $\lambda
+I_{n}+A$ is normal.
+
+\textbf{(b)} If $U\in\mathbb{C}^{n\times n}$ is a unitary matrix, then the
+matrix $UAU^{\ast}$ is normal.
+\end{proposition}
+
+\begin{proof}
+We have $AA^{\ast}=A^{\ast}A$ (since $A$ is normal).
+
+\textbf{(a)} Let $\lambda\in\mathbb{C}$ be arbitrary. Then, Proposition
+\ref{prop.unitary.(AB)*} \textbf{(a)} yields%
+\[
+\left(  \lambda I_{n}+A\right)  ^{\ast}=\underbrace{\left(  \lambda
+I_{n}\right)  ^{\ast}}_{\substack{=\overline{\lambda}I_{n}\\\text{(this is
+easily seen directly, or}\\\text{obtained from Proposition
+\ref{prop.unitary.(AB)*} \textbf{(b)})}}}+A^{\ast}=\overline{\lambda}%
+I_{n}+A^{\ast}.
+\]
+Hence,
+\begin{align*}
+\left(  \lambda I_{n}+A\right)  \underbrace{\left(  \lambda I_{n}+A\right)
+^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}}  & =\left(  \lambda
+I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right)  \\
+& =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
+}A+AA^{\ast}.
+\end{align*}
+A similar computation shows that%
+\[
+\left(  \lambda I_{n}+A\right)  ^{\ast}\left(  \lambda I_{n}+A\right)
+=\overline{\lambda}\lambda I_{n}+\lambda A^{\ast}+\overline{\lambda}A+A^{\ast
+}A.
+\]
+The right hand sides of these two equalities are equal (since $\lambda
+\overline{\lambda}=\overline{\lambda}\lambda$ and $AA^{\ast}=A^{\ast}A$).
+Hence, so are the left hand sides. In other words, $\left(  \lambda
+I_{n}+A\right)  \left(  \lambda I_{n}+A\right)  ^{\ast}=\left(  \lambda
+I_{n}+A\right)  ^{\ast}\left(  \lambda I_{n}+A\right)  $. In other words, the
+matrix $\lambda I_{n}+A$ is normal. This proves Proposition
+\ref{prop.schurtri.normal.conj} \textbf{(a)}.
+
+\textbf{(b)} Let $U\in\mathbb{C}^{n\times n}$ be a unitary matrix. Thus,
+$UU^{\ast}=U^{\ast}U=I_{n}$ (by the $\mathcal{A}\Longleftrightarrow
+\mathcal{C}$ part of Theorem \ref{thm.unitary.unitary.eqs}). Now, applying
+Proposition \ref{prop.unitary.(AB)*} \textbf{(c)} twice, we see that $\left(
+XYZ\right)  ^{\ast}=Z^{\ast}Y^{\ast}X^{\ast}$ for any three $n\times
+n$-matrices $X,Y,Z$. Hence,%
+\[
+\left(  UAU^{\ast}\right)  ^{\ast}=\underbrace{\left(  U^{\ast}\right)
+^{\ast}}_{\substack{=U\\\text{(by Proposition \ref{prop.unitary.(AB)*}
+\textbf{(d)})}}}A^{\ast}U^{\ast}=UA^{\ast}U^{\ast}.
+\]
+Hence,%
+\[
+\left(  UAU^{\ast}\right)  \underbrace{\left(  UAU^{\ast}\right)  ^{\ast}%
+}_{=UA^{\ast}U^{\ast}}=\left(  UAU^{\ast}\right)  \left(  UA^{\ast}U^{\ast
+}\right)  =UA\underbrace{U^{\ast}U}_{=I_{n}}A^{\ast}U^{\ast}=UAA^{\ast}%
+U^{\ast}.
+\]
+A similar computation shows that%
+\[
+\left(  UAU^{\ast}\right)  ^{\ast}\left(  UAU^{\ast}\right)  =UA^{\ast
+}AU^{\ast}.
+\]
+The right hand sides of these two equalities are equal (since $AA^{\ast
+}=A^{\ast}A$). Hence, so are the left hand sides. In other words, $\left(
+UAU^{\ast}\right)  \left(  UAU^{\ast}\right)  ^{\ast}=\left(  UAU^{\ast
+}\right)  ^{\ast}\left(  UAU^{\ast}\right)  $. In other words, the matrix
+$UAU^{\ast}$ is normal. This proves Proposition
+\ref{prop.schurtri.normal.conj} \textbf{(b)}.
+\end{proof}
+
+We will now prove an innocent-looking property of normal matrices that will
+turn out crucial in characterizing them:
+
+\begin{lemma}
+\label{lem.schurtri.normal.tri}Let $T\in\mathbb{C}^{n\times n}$ be a
+triangular matrix. Then, $T$ is normal if and only if $T$ is diagonal.
+\end{lemma}
+
+\begin{proof}
+The \textquotedblleft if\textquotedblright\ direction follows from Proposition
+\ref{prop.schurtri.normal.classes} \textbf{(d)}. Thus, it remains to prove the
+\textquotedblleft only if\textquotedblright\ direction.
+
+So let us assume that $T$ is normal. We shall show that $T$ is diagonal.
+
+TODO:\ Scribe!
+\end{proof}
+
+We are now ready to state the main theorem about normal matrices: the
+so-called \emph{spectral theorem}:
+
+\begin{theorem}
+[spectral theorem for normal matrices]\label{thm.schurtri.normal.spectral}Let
+$A\in\mathbb{C}^{n\times n}$ be a normal matrix. Then:
+
+\textbf{(a)} There exists a unitary matrix $U\in\operatorname*{U}%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ and a diagonal matrix $D\in
+\mathbb{C}^{n\times n}$ such that%
+\[
+A=UDU^{\ast}.
+\]
+In other words, $A$ is unitary similar to a diagonal matrix.
+
+\textbf{(b)} Let $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)
+$ be a unitary matrix, and $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix
+such that $A=UDU^{\ast}$. Then, the diagonal entries of $D$ are the
+eigenvalues of $A$. Moreover, the columns of $U$ are the eigenvectors of $A$.
+Thus, there exists an orthonormal basis of $\mathbb{C}^{n}$ consisting of
+eigenvectors of $A$.
 \end{theorem}
 
 \begin{proof}
