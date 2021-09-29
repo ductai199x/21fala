@@ -3627,12 +3627,12 @@ not immediately obvious from its definition:
 
 \begin{definition}
 \label{def.schurtri.unisim.def}Let $A$ and $B$ be two matrices in
-$\mathbb{C}^{n\times n}$. We say that $A$ is \emph{unitary similar} to $B$ if
+$\mathbb{C}^{n\times n}$. We say that $A$ is \emph{unitarily similar} to $B$ if
 there exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
 \mathbb{C}\right)  $ such that $B=WAW^{\ast}$.
 
 We write \textquotedblleft$A\overset{\operatorname*{us}}{\sim}B$%
-\textquotedblright\ for \textquotedblleft$A$ is unitary similar to
+\textquotedblright\ for \textquotedblleft$A$ is unitarily similar to
 $B$\textquotedblright.
 \end{definition}
 
@@ -3643,7 +3643,7 @@ The matrix $\left(
 1 & 1\\
 1 & 1
 \end{array}
-\right)  $ is unitary similar to the matrix $\left(
+\right)  $ is unitarily similar to the matrix $\left(
 \begin{array}
 [c]{cc}%
 2 & 0\\
@@ -3683,23 +3683,23 @@ The matrix $\left(
 1 & 0\\
 0 & 2
 \end{array}
-\right)  $, but not unitary similar to it.
+\right)  $, but not unitarily similar to it.
 \end{example}
 
 Just like the relation \textquotedblleft similar\textquotedblright, the
-relation \textquotedblleft unitary similar\textquotedblright\ is an
+relation \textquotedblleft unitarily similar\textquotedblright\ is an
 equivalence relation:
 
 \begin{proposition}
 \label{prop.schurtri.unisim.eqrel}\textbf{(a)} Any matrix $A\in\mathbb{C}%
-^{n\times n}$ is unitary similar to itself.
+^{n\times n}$ is unitarily similar to itself.
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{C}^{n\times n}$ such
-that $A$ is unitary similar to $B$, then $B$ is unitary similar to $A$.
+that $A$ is unitarily similar to $B$, then $B$ is unitarily similar to $A$.
 
 \textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{C}^{n\times
-n}$ such that $A$ is unitary similar to $B$ and such that $B$ is unitary
-similar to $C$, then $A$ is unitary similar to $C$.
+n}$ such that $A$ is unitarily similar to $B$ and such that $B$ is unitarily
+similar to $C$, then $A$ is unitarily similar to $C$.
 \end{proposition}
 
 \begin{proof}
@@ -3710,20 +3710,20 @@ new idea is to use Exercise \ref{exe.unitary.group}.)
 
 \begin{definition}
 Let $A$ and $B$ be two matrices in $\mathbb{C}^{n\times n}$. We say that $A$
-and $B$ are \emph{unitary similar} if $A$ is unitary similar to $B$ (or,
-equivalently, $B$ is unitary similar to $A$).
+and $B$ are \emph{unitarily similar} if $A$ is unitarily similar to $B$ (or,
+equivalently, $B$ is unitarily similar to $A$).
 \end{definition}
 
 As we promised, unitary similarity is a more restrictive version of similarity:
 
 \begin{proposition}
-\label{prop.schurtri.unisim.sim}Let $A$ and $B$ be two unitary similar
+\label{prop.schurtri.unisim.sim}Let $A$ and $B$ be two unitarily similar
 matrices in $\mathbb{C}^{n\times n}$. Then, $A$ and $B$ are similar.
 \end{proposition}
 
 \begin{proof}
 There exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
-\mathbb{C}\right)  $ such that $B=WAW^{\ast}$ (since $A$ is unitary similar to
+\mathbb{C}\right)  $ such that $B=WAW^{\ast}$ (since $A$ is unitarily similar to
 $B$). Consider this $W$. The matrix $W$ is unitary, and thus (by the
 implication $\mathcal{A}\Longrightarrow\mathcal{D}$ in Theorem
 \ref{thm.unitary.unitary.eqs}) must be square and invertible and satisfy
@@ -3752,7 +3752,7 @@ triangularization} (aka \emph{Schur decomposition}):
 $A\in\mathbb{C}^{n\times n}$. Then, there exists a unitary matrix
 $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and an
 upper-triangular matrix $T\in\mathbb{C}^{n\times n}$ such that $A=UTU^{\ast}$.
-In other words, $A$ is unitary similar to some upper-triangular matrix.
+In other words, $A$ is unitarily similar to some upper-triangular matrix.
 \end{theorem}
 
 The factorization $A=UTU^{\ast}$ in Theorem \ref{thm.schurtri.schurtri} is
