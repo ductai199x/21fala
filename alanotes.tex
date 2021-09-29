@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Tuesday, September 28, 2021 23:25:17}
+%TCIDATA{LastRevised=Tuesday, September 28, 2021 23:42:36}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -3627,8 +3627,8 @@ not immediately obvious from its definition:
 
 \begin{definition}
 \label{def.schurtri.unisim.def}Let $A$ and $B$ be two matrices in
-$\mathbb{C}^{n\times n}$. We say that $A$ is \emph{unitarily similar} to $B$ if
-there exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
+$\mathbb{C}^{n\times n}$. We say that $A$ is \emph{unitarily similar} to $B$
+if there exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
 \mathbb{C}\right)  $ such that $B=WAW^{\ast}$.
 
 We write \textquotedblleft$A\overset{\operatorname*{us}}{\sim}B$%
@@ -3723,8 +3723,8 @@ matrices in $\mathbb{C}^{n\times n}$. Then, $A$ and $B$ are similar.
 
 \begin{proof}
 There exists a unitary matrix $W\in\operatorname*{U}\nolimits_{n}\left(
-\mathbb{C}\right)  $ such that $B=WAW^{\ast}$ (since $A$ is unitarily similar to
-$B$). Consider this $W$. The matrix $W$ is unitary, and thus (by the
+\mathbb{C}\right)  $ such that $B=WAW^{\ast}$ (since $A$ is unitarily similar
+to $B$). Consider this $W$. The matrix $W$ is unitary, and thus (by the
 implication $\mathcal{A}\Longrightarrow\mathcal{D}$ in Theorem
 \ref{thm.unitary.unitary.eqs}) must be square and invertible and satisfy
 $W^{-1}=W^{\ast}$. Hence, $B=WA\underbrace{W^{\ast}}_{=W^{-1}}=WAW^{-1}$. But
@@ -3861,7 +3861,7 @@ TODO: Scribe!
 \]
 
 
-\subsection{Normal matrices and the spectral theorem}
+\subsection{Normal matrices}
 
 We next define a fairly wide class of matrices with complex entries that
 contains several of our familiar classes as subsets:
@@ -3995,10 +3995,10 @@ in the form $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
 \overline{\lambda_{1}},\overline{\lambda_{2}},\ldots,\overline{\lambda_{n}%
 }\right)  $. Hence,
 \begin{align*}
-DD^{\ast}  & =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
+DD^{\ast}  &  =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
 },\lambda_{2}\overline{\lambda_{2}},\ldots,\lambda_{n}\overline{\lambda_{n}%
 }\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
-D^{\ast}D  & =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
+D^{\ast}D  &  =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
 _{1},\overline{\lambda_{2}}\lambda_{2},\ldots,\overline{\lambda_{n}}%
 \lambda_{n}\right)  .
 \end{align*}
@@ -4043,9 +4043,9 @@ I_{n}+A^{\ast}.
 Hence,
 \begin{align*}
 \left(  \lambda I_{n}+A\right)  \underbrace{\left(  \lambda I_{n}+A\right)
-^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}}  & =\left(  \lambda
-I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right)  \\
-& =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
+^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}}  &  =\left(  \lambda
+I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right) \\
+&  =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
 }A+AA^{\ast}.
 \end{align*}
 A similar computation shows that%
@@ -4111,7 +4111,9 @@ So let us assume that $T$ is normal. We shall show that $T$ is diagonal.
 TODO:\ Scribe!
 \end{proof}
 
-We are now ready to state the main theorem about normal matrices: the
+\subsection{The spectral theorem}
+
+We are now ready to state the main theorem about normal matrices, the
 so-called \emph{spectral theorem}:
 
 \begin{theorem}
@@ -4124,7 +4126,7 @@ $A\in\mathbb{C}^{n\times n}$ be a normal matrix. Then:
 \[
 A=UDU^{\ast}.
 \]
-In other words, $A$ is unitary similar to a diagonal matrix.
+In other words, $A$ is unitarily similar to a diagonal matrix.
 
 \textbf{(b)} Let $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)
 $ be a unitary matrix, and $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix
@@ -4137,6 +4139,93 @@ eigenvectors of $A$.
 \begin{proof}
 TODO: Scribe!
 \end{proof}
+
+The decomposition $A=UDU^{\ast}$ in Theorem
+\ref{thm.schurtri.commute.schurtri} (or, to be more precise, the pair $\left(
+U,D\right)  $) is called a \emph{spectral decomposition} of $A$. It is not
+unique (e.g., we can replace $U$ by $\lambda U$ whenever $\lambda\in
+\mathbb{C}$ satisfies $\left\vert \lambda\right\vert =1$; this does not change
+$UDU^{\ast}$).
+
+Only normal matrices can have a spectral decomposition. Indeed, if some
+$n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ can be written as
+$A=UDU^{\ast}$ for some unitary $U$ and some diagonal $D$, then $D$ is normal
+(by Proposition \ref{prop.schurtri.normal.classes} \textbf{(d)}), and
+therefore $A$ is normal (by Proposition \ref{prop.schurtri.normal.conj}
+\textbf{(b)}, applied to $D$ instead of $A$). Thus, we obtain the following
+characterization of normal matrices:
+
+\begin{corollary}
+\label{cor.schurtri.normal.normal-iff}An $n\times n$-matrix $A\in
+\mathbb{C}^{n\times n}$ is normal if and only if it is unitarily similar to a
+diagonal matrix.
+\end{corollary}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+We can similarly characterize Hermitian matrices:
+
+\begin{proposition}
+\label{prop.schurtri.normal.hermitian-spec}Let $A\in\mathbb{C}^{n\times n}$ be
+a Hermitian matrix, and let $\left(  U,D\right)  $ be a spectral decomposition
+of $A$. Then, the diagonal entries of $D$ are real.
+\end{proposition}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+\begin{corollary}
+\label{cor.schurtri.normal.hermitian-iff}An $n\times n$-matrix $A\in
+\mathbb{C}^{n\times n}$ is Hermitian if and only if it is unitarily similar to
+a diagonal matrix with real entries.
+\end{corollary}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+Similarly, we can handle skew-Hermitian matrices:
+
+\begin{proposition}
+\label{prop.schurtri.normal.skewherm-spec}Let $A\in\mathbb{C}^{n\times n}$ be
+a skew-Hermitian matrix, and let $\left(  U,D\right)  $ be a spectral
+decomposition of $A$. Then, the diagonal entries of $D$ are purely imaginary.
+\end{proposition}
+
+\begin{corollary}
+\label{cor.schurtri.normal.skewherm-iff}An $n\times n$-matrix $A\in
+\mathbb{C}^{n\times n}$ is skew-Hermitian if and only if it is unitarily
+similar to a diagonal matrix with purely imaginary entries.
+\end{corollary}
+
+\begin{exercise}
+\label{exe.schurtri.normal.skewherm}\fbox{3} Prove Proposition
+\ref{prop.schurtri.normal.skewherm-spec} and Corollary
+\ref{cor.schurtri.normal.skewherm-iff}.
+\end{exercise}
+
+Likewise, we can handle unitary matrices.
+
+\begin{proposition}
+\label{prop.schurtri.normal.unitary-spec}Let $A\in\mathbb{C}^{n\times n}$ be a
+unitary matrix, and let $\left(  U,D\right)  $ be a spectral decomposition of
+$A$. Then, each of the diagonal entries of $D$ has absolute value $1$.
+\end{proposition}
+
+\begin{corollary}
+\label{cor.schurtri.normal.unitary-iff}An $n\times n$-matrix $A\in
+\mathbb{C}^{n\times n}$ is unitary if and only if it is unitarily similar to a
+diagonal matrix whose all diagonal entries have absolute value $1$.
+\end{corollary}
+
+\begin{exercise}
+\label{exe.schurtri.normal.unitary}\fbox{2} Prove Proposition
+\ref{prop.schurtri.normal.unitary-spec} and Corollary
+\ref{cor.schurtri.normal.unitary-iff}.
+\end{exercise}
 
 \newpage
 
