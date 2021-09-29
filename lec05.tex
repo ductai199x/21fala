@@ -1,0 +1,652 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, September 29, 2021 11:47:28}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 5}
+
+\section{Schur triangularization (cont'd)}
+
+\subsection{Normal matrices}
+
+\begin{definition}
+A square matrix $A\in\mathbb{C}^{n\times n}$ is said to be \textbf{normal} if
+$AA^{\ast}=A^{\ast}A$.
+\end{definition}
+
+In other words, a square matrix is normal if it commutes with its own
+conjugate transpose. Here are some examples:
+
+\begin{exam}
+\textbf{(a)} Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  $. Then, $A^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  $ and $AA^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 2
+\end{array}
+\right)  $ and $A^{\ast}A=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 2
+\end{array}
+\right)  $, so that $AA^{\ast}=A^{\ast}A$. Thus, $A$ is normal.
+
+\textbf{(b)} Let $B=\left(
+\begin{array}
+[c]{cc}%
+0 & i\\
+0 & 0
+\end{array}
+\right)  $. Then, $B^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+-i & 0
+\end{array}
+\right)  $ and $BB^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+0 & i\\
+0 & 0
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+-i & 0
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 0
+\end{array}
+\right)  $ and $B^{\ast}B=\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+-i & 0
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+0 & i\\
+0 & 0
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+0 & 1
+\end{array}
+\right)  $, so that $BB^{\ast}\neq B^{\ast}B$. Thus, $B$ is not normal.
+
+\textbf{(c)} For any $a,b\in\mathbb{C}$, the matrix $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+b & a
+\end{array}
+\right)  $ is normal.
+\end{exam}
+
+The class of normal matrices includes several known classes. Recall:
+
+\begin{itemize}
+\item A square matrix $A\in\mathbb{C}^{n\times n}$ is unitary if and only if
+$AA^{\ast}=A^{\ast}A=I_{n}$.
+
+\item A square matrix $A\in\mathbb{C}^{n\times n}$ is \textbf{Hermitian} if
+and only if $A^{\ast}=A$.
+
+\item A square matrix $A\in\mathbb{C}^{n\times n}$ is \textbf{skew-Hermitian}
+if and only if $A^{\ast}=-A$.
+\end{itemize}
+
+\begin{proposition}
+\textbf{(a)} Every Hermitian matrix is normal.
+
+\textbf{(b)} Every skew-Hermitian matrix is normal.
+
+\textbf{(c)} Every unitary matrix is normal.
+
+\textbf{(d)} Every diagonal matrix is normal.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} If $A$ is Hermitian, then $A^{\ast}=A$, so that%
+\[
+A\underbrace{A^{\ast}}_{=A}=\underbrace{A}_{=A^{\ast}}A=A^{\ast}A,
+\]
+so that $A$ is normal.
+
+\textbf{(b)} Similar.
+
+\textbf{(c)} Trivial.
+
+\textbf{(d)} LTTR.
+\end{proof}
+
+Unlike the unitary matrices, the normal matrices are not closed under
+multiplication (i.e., $A$ and $B$ can be unitary without $AB$ being unitary).
+
+Here are two more ways to construct normal matrices out of existing normal matrices:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a normal matrix.
+
+\textbf{(a)} If $\lambda\in\mathbb{C}$ is arbitrary, then $\lambda I_{n}+A$ is normal.
+
+\textbf{(b)} If $U\in\mathbb{C}^{n\times n}$ is a unitary matrix, then the
+matrix $UAU^{\ast}$ is normal.
+\end{proposition}
+
+\begin{proof}
+We have $AA^{\ast}=A^{\ast}A$ (since $A$ is normal).
+
+\textbf{(a)} Let $\lambda\in\mathbb{C}$. Then,%
+\[
+\left(  \lambda I_{n}+A\right)  ^{\ast}=\left(  \lambda I_{n}\right)  ^{\ast
+}+A^{\ast}=\overline{\lambda}I_{n}+A^{\ast}.
+\]
+Hence,%
+\[
+\left(  \lambda I_{n}+A\right)  \left(  \lambda I_{n}+A\right)  ^{\ast
+}=\left(  \lambda I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast
+}\right)  =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
+}A+AA^{\ast}%
+\]
+and similarly%
+\[
+\left(  \lambda I_{n}+A\right)  ^{\ast}\left(  \lambda I_{n}+A\right)
+=\overline{\lambda}\lambda I_{n}+\lambda A^{\ast}+\overline{\lambda}A+A^{\ast
+}A.
+\]
+The right hand sides are equal, since $\lambda\overline{\lambda}%
+=\overline{\lambda}\lambda$ and $AA^{\ast}=A^{\ast}A$. Thus, the left hand
+sides are equal, too. In other words,%
+\[
+\left(  \lambda I_{n}+A\right)  \left(  \lambda I_{n}+A\right)  ^{\ast
+}=\left(  \lambda I_{n}+A\right)  ^{\ast}\left(  \lambda I_{n}+A\right)  .
+\]
+So $\lambda I_{n}+A$ is normal.
+
+\textbf{(b)} Let $U$ be a unitary matrix. Then, $U^{\ast}U=UU^{\ast}=I_{n}$.
+Now,%
+\[
+\left(  UAU^{\ast}\right)  ^{\ast}=\underbrace{\left(  U^{\ast}\right)
+^{\ast}}_{=U}A^{\ast}U^{\ast}=UA^{\ast}U^{\ast}.
+\]
+Thus,%
+\[
+\left(  UAU^{\ast}\right)  \left(  UAU^{\ast}\right)  ^{\ast}=\left(
+UAU^{\ast}\right)  \left(  UA^{\ast}U^{\ast}\right)  =UA\underbrace{U^{\ast}%
+U}_{=I_{n}}A^{\ast}U^{\ast}=UAA^{\ast}U^{\ast}.
+\]
+Similarly,%
+\[
+\left(  UAU^{\ast}\right)  ^{\ast}\left(  UAU^{\ast}\right)  =UA^{\ast
+}AU^{\ast}.
+\]
+Again, the right hand sides are equal, since $AA^{\ast}=A^{\ast}A$. So the
+left hand sides are equal, and this shows that $UAU^{\ast}$ is normal.
+\end{proof}
+
+We will now show the following:
+
+\begin{lemma}
+Let $T\in\mathbb{C}^{n\times n}$ be a triangular matrix. Then, $T$ is normal
+if and only if $T$ is diagonal.
+\end{lemma}
+
+\begin{proof}
+$\Longleftarrow:$ If $T$ is diagonal, then $T$ is normal, as we have already seen.
+
+$\Longrightarrow:$ Assume that $T$ is normal. We must show that $T$ is diagonal.
+
+WLOG assume that $T$ is upper-triangular (since the other case is analogous). 
+
+Write $T$ in the form%
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+t_{1,1} & t_{1,2} & \cdots & t_{1,n}\\
+& t_{2,2} & \cdots & t_{2,n}\\
+&  & \ddots & \vdots\\
+&  &  & t_{n,n}%
+\end{array}
+\right)  ,
+\]
+where the invisible entries are $0$'s. (We can do this, since $T$ is
+upper-triangular.) Thus,%
+\[
+T^{\ast}=\left(
+\begin{array}
+[c]{cccc}%
+\overline{t_{1,1}} &  &  & \\
+\overline{t_{1,2}} & \overline{t_{2,2}} &  & \\
+\vdots & \vdots & \ddots & \\
+\overline{t_{1,n}} & \overline{t_{2,n}} & \cdots & \overline{t_{n,n}}%
+\end{array}
+\right)  .
+\]
+
+
+Since $T$ is normal, we have $TT^{\ast}=T^{\ast}T$. Now let's look at the
+entries of this matrix. We have%
+\begin{align*}
+\left(  TT^{\ast}\right)  _{1,1}  & =t_{1,1}\overline{t_{1,1}}+t_{1,2}%
+\overline{t_{1,2}}+\cdots+t_{1,n}\overline{t_{1,n}}=\left\vert t_{1,1}%
+\right\vert ^{2}+\left\vert t_{1,2}\right\vert ^{2}+\cdots+\left\vert
+t_{1,n}\right\vert ^{2},\ \ \ \ \ \ \ \ \ \ \text{but}\\
+\left(  T^{\ast}T\right)  _{1,1}  & =\overline{t_{1,1}}t_{1,1}=\left\vert
+t_{1,1}\right\vert ^{2}.
+\end{align*}
+However, the left hand sides of these must be equal, since $TT^{\ast}=T^{\ast
+}T$. Thus, the right hand sides are equal too. That is,%
+\[
+\left\vert t_{1,1}\right\vert ^{2}+\left\vert t_{1,2}\right\vert ^{2}%
++\cdots+\left\vert t_{1,n}\right\vert ^{2}=\left\vert t_{1,1}\right\vert ^{2}.
+\]
+Thus, $\left\vert t_{1,2}\right\vert ^{2}+\cdots+\left\vert t_{1,n}\right\vert
+^{2}=0$, so that $t_{1,2}=t_{1,3}=\cdots=t_{1,n}=0$ (because $\left\vert
+t_{1,i}\right\vert ^{2}\geq0$ for all $i$).
+
+We continue with the $2,2$-entries:%
+\begin{align*}
+\left(  TT^{\ast}\right)  _{2,2}  & =t_{2,2}\overline{t_{2,2}}+t_{2,3}%
+\overline{t_{2,3}}+\cdots+t_{2,n}\overline{t_{2,n}}=\left\vert t_{2,2}%
+\right\vert ^{2}+\left\vert t_{2,3}\right\vert ^{2}+\cdots+\left\vert
+t_{2,n}\right\vert ^{2}\ \ \ \ \ \ \ \ \ \ \text{and}\\
+\left(  T^{\ast}T\right)  _{2,2}  & =\overline{t_{1,2}}t_{1,2}+\overline
+{t_{2,2}}t_{2,2}=\underbrace{\left\vert t_{1,2}\right\vert ^{2}}%
+_{\substack{=0\\\text{(since }t_{1,2}=0\text{)}}}+\left\vert t_{2,2}%
+\right\vert ^{2}=\left\vert t_{2,2}\right\vert ^{2}.
+\end{align*}
+Comparing these equalities, we get%
+\[
+\left\vert t_{2,2}\right\vert ^{2}+\left\vert t_{2,3}\right\vert ^{2}%
++\cdots+\left\vert t_{2,n}\right\vert ^{2}=\left\vert t_{2,2}\right\vert ^{2}.
+\]
+As before, this lets us conclude that $t_{2,3}=t_{2,4}=\cdots=t_{2,n}=0$.
+
+Keep going like this to prove that
+\[
+t_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i<j.
+\]
+Strictly speaking, this is a strong induction on $i$. In the induction step,
+use the fact that $t_{k,i}=0$ for all $k<i$ (this follows from the induction hypothesis).
+
+This shows that $T$ is a diagonal matrix, qed.
+\end{proof}
+
+\subsection{The spectral theorem}
+
+The spectral theorem provides an answer to the question \textquotedblleft what
+are normal matrices \textbf{really}?\textquotedblright.
+
+\begin{theorem}
+[spectral theorem for normal matrices]Let $A\in\mathbb{C}^{n\times n}$ be a
+normal matrix. Then:
+
+\textbf{(a)} There exists a unitary matrix $U\in\operatorname*{U}%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ and a diagonal matrix $D\in
+\mathbb{C}^{n\times n}$ such that
+\[
+A=UDU^{\ast}.
+\]
+In other words, $A$ is unitarily similar to a diagonal matrix.
+
+\textbf{(b)} Let $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)
+$ be a unitary matrix and $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix
+such that $A=UDU^{\ast}$. Then, the diagonal entries of $D$ are the
+eigenvalues of $A$. Moreover, the columns of $U$ are eigenvectors of $A$.
+Thus, there exists an orthonormal basis of $\mathbb{C}^{n}$ consisting of
+eigenvectors of $A$.
+\end{theorem}
+
+\begin{proof}
+\textbf{(a)} The Schur triangularization theorem tells us that we can write
+$A$ in the form%
+\[
+A=UTU^{\ast}%
+\]
+for a unitary matrix $U$ and an upper-triangular matrix $T$. Consider these
+$U$ and $T$. If we can show that $T$ is diagonal, then we are done.
+
+From $A=UTU^{\ast}$, we see that $A$ is unitarily equivalent to $T$. Thus, $T$
+is unitarily equivalent to $A$. Hence, our proposition above yields that $T$
+is normal, since $A$ is normal. Now, the Lemma we just proved yields that $T$
+is diagonal (because $T$ is triangular and normal). So part \textbf{(a)} is proven.
+
+\textbf{(b)} The matrix $D$ is unitarily similar to $A$ (since $A=UDU^{\ast}%
+$), thus similar to $A$. Hence, $D$ has the same eigenvalues as $A$. However,
+$D$ is a diagonal matrix, so its eigenvalues are its diagonal entries. So the
+diagonal entries of $D$ must be the eigenvalues of $A$.
+
+What about $U$ ? The columns of $U$ are $Ue_{1},Ue_{2},\ldots,Ue_{n}$, where
+$\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ is the standard basis of
+$\mathbb{C}^{n}$.
+
+[In general, for example, $\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{array}
+\right)  e_{2}=\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+0\\
+1\\
+0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+b\\
+e\\
+h
+\end{array}
+\right)  $.]
+
+Now, I claim that each $Ue_{i}$ is an eigenvector of $A$. Indeed,
+\[
+\underbrace{A}_{=UDU^{\ast}}\cdot Ue_{i}=UD\underbrace{U^{\ast}U}_{=I_{n}%
+}e_{i}=U\underbrace{De_{i}}_{\substack{=\lambda e_{i}\\\text{where }%
+\lambda\text{ is the }\left(  i,i\right)  \text{-th entry of }D\\\text{(since
+}D\text{ is diagonal)}}}=U\cdot\lambda e_{i}=\lambda\cdot Ue_{i}.
+\]
+
+
+Thus, we conclude that the $n$ columns of $U$ are eigenvectors of $A$.
+
+Since $U$ is unitary, these $n$ columns form an orthonormal basis of
+$\mathbb{C}^{n}$. Thus, we have found an orthonormal basis of $\mathbb{C}^{n}$
+that consists of eigenvectors of $A$. Qed.
+\end{proof}
+
+The decomposition $A=UDU^{\ast}$ in the spectral theorem (or, to be more
+precise, the pair $\left(  U,D\right)  $) is called a \textbf{spectral
+decomposition} of $A$.
+
+Only normal matrices have a spectral decomposition:
+
+\begin{corollary}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is normal if and only if it
+is unitarily similar to a diagonal matrix.
+\end{corollary}
+
+\begin{proof}
+$\Longrightarrow:$ This is just part \textbf{(a)} of the spectral theorem.
+
+$\Longleftarrow:$ Assume that $A$ is unitarily similar to a diagonal matrix.
+Thus, $A$ is unitarily similar to a normal matrix (since diagonal matrices are
+normal), and thus itself normal. Qed.
+\end{proof}
+
+We can similarly characterize Hermitian matrices:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix, and let $\left(
+U,D\right)  $ be a spectral decomposition of $A$. Then, the diagonal entries
+of $D$ are real.
+\end{proposition}
+
+\begin{proof}
+We have $A=UDU^{\ast}$, thus $A^{\ast}=\left(  UDU^{\ast}\right)  ^{\ast
+}=UD^{\ast}U^{\ast}$. However, since $A$ is Hermitian, we have $A^{\ast}=A$.
+In other words, $UD^{\ast}U^{\ast}=UDU^{\ast}$. We can cancel $U$ and
+$U^{\ast}$ from this equality (since $U$ is unitary), and get $D^{\ast}=D$.
+Since $D$ is diagonal, this is simply saying that each diagonal entry of $D$
+equals its own conjugate, i.e., is real.
+\end{proof}
+
+\begin{corollary}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is Hermitian if and only if
+it is unitarily similar to a diagonal matrix with real entries.
+\end{corollary}
+
+\begin{proof}
+$\Longrightarrow:$ Follows from the preceding proposition + the spectral theorem.
+
+$\Longleftarrow:$ If $A$ is unitarily similar to a diagonal matrix with real
+entries, then $A=UDU^{\ast}$ where $D$ is a diagonal matrix with real entries.
+Thus, $A^{\ast}=UD^{\ast}U^{\ast}$. However, $D^{\ast}=D$. So it follows that
+$A^{\ast}=A$, so $A$ is Hermitian.
+\end{proof}
+
+The corollary we just proved is the complex analogue of the classical
+\textquotedblleft real spectral theorem\textquotedblright, which says that a
+symmetric matrix $A\in\mathbb{R}^{n\times n}$ is similar to a diagonal matrix
+with real entries via an orthogonal matrix with real entries.
+
+Similarly, we can handle skew-Hermitian matrices:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a skew-Hermitian matrix, and let $\left(
+U,D\right)  $ be a spectral decomposition of $A$. Then, the diagonal entries
+of $D$ are purely imaginary.
+\end{proposition}
+
+\begin{corollary}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is skew-Hermitian if and
+only if it is unitarily similar to a diagonal matrix with purely imaginary entries.
+\end{corollary}
+
+Likewise, we can handle unitary matrices:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a unitary matrix, and let $\left(
+U,D\right)  $ be a spectral decomposition of $A$. Then, the diagonal entries
+of $D$ are complex numbers with absolute value $1$.
+\end{proposition}
+
+\begin{corollary}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is unitary if and only if
+it is unitarily similar to a diagonal matrix whose diagonal entries have
+absolute value $1$.
+\end{corollary}
+
+
+
+
+\end{document}

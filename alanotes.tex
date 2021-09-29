@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Tuesday, September 28, 2021 23:42:36}
+%TCIDATA{LastRevised=Wednesday, September 29, 2021 14:09:49}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -550,7 +550,7 @@ Here, $\operatorname*{Re}z$ denotes the real part of any complex number $z$.
 \end{exercise}
 
 One of the most famous properties of the inner product is the
-\emph{Cauchy--Schwarz inequality}:
+\emph{Cauchy--Schwarz inequality} (see \cite{Steele04} for various applications):
 
 \begin{theorem}
 [Cauchy--Schwarz inequality]\label{thm.unitary.innerprod.cs}Let $x\in
@@ -3755,8 +3755,9 @@ upper-triangular matrix $T\in\mathbb{C}^{n\times n}$ such that $A=UTU^{\ast}$.
 In other words, $A$ is unitarily similar to some upper-triangular matrix.
 \end{theorem}
 
-The factorization $A=UTU^{\ast}$ in Theorem \ref{thm.schurtri.schurtri} is
-called a \emph{Schur triangularization} of $A$. It is usually not unique.
+The factorization $A=UTU^{\ast}$ in Theorem \ref{thm.schurtri.schurtri} (or,
+to be more precise, the pair $\left(  U,T\right)  $) is called a \emph{Schur
+triangularization} of $A$. It is usually not unique.
 
 \begin{example}
 Let $A=\left(
@@ -3795,6 +3796,17 @@ n$-matrix will be more complicated, involving roots of $n$-th degree polynomials
 \end{proof}
 
 \begin{exercise}
+\label{exe.schurtri.schurtri.one2x2}\fbox{2} Find a Schur triangularization of
+the matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+i & 1
+\end{array}
+\right)  $.
+\end{exercise}
+
+\begin{exercise}
 \label{exe.schurtri.schurtri.one3x3}\fbox{3} Find a Schur triangularization of
 the matrix $\left(
 \begin{array}
@@ -3806,6 +3818,97 @@ the matrix $\left(
 \right)  $.
 \end{exercise}
 
+One remark is in order about the $T$ in a Schur triangularization:
+
+\begin{proposition}
+\label{prop.schurtri.schurtri.T-diag}Let $A\in\mathbb{C}^{n\times n}$. Let
+$\left(  U,T\right)  $ be a Schur triangularization of $A$. Then, the diagonal
+entries of $T$ are the eigenvalues of $A$ (with their algebraic multiplicities).
+\end{proposition}
+
+\begin{proof}
+We assumed that $\left(  U,T\right)  $ is a Schur triangularization of $A$.
+Hence, we have $A=UTU^{\ast}$, and the matrix $U$ is unitary whereas the
+matrix $T$ is upper-triangular. From $A=UTU^{\ast}$, we conclude that $T$ is
+unitarily similar to $A$ (by Definition \ref{def.schurtri.unisim.def}, since
+$U$ is unitary). Hence, $T$ is similar to $A$ (by Proposition
+\ref{prop.schurtri.unisim.sim}). Thus, Proposition
+\ref{prop.schurtri.similar.same} \textbf{(e)} shows that the matrices $T$ and
+$A$ have the same eigenvalues with the same algebraic multiplicities (and the
+same geometric multiplicities, but we don't need to know this). In other
+words, the eigenvalues of $T$ are the eigenvalues of $A$ (with the same
+algebraic multiplicities).
+
+However, the matrix $T$ is upper-triangular. Thus, the eigenvalues of $T$
+(with algebraic multiplicities) are the diagonal entries of $T$ (this is a
+well-known fact\footnote{Here is a \textit{proof:} The matrix $T$ is
+upper-triangular; thus, it has the form
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+T_{1,1} & T_{1,2} & \cdots & T_{1,n}\\
+0 & T_{2,2} & \cdots & T_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & T_{n,n}%
+\end{array}
+\right)  .
+\]
+Thus, if $t$ is an indeterminate, then
+\begin{align*}
+tI_{n}-T  & =t\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & T_{n,n}%
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cccc}%
+T_{1,1} & T_{1,2} & \cdots & T_{1,n}\\
+0 & T_{2,2} & \cdots & T_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & T_{n,n}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+t-T_{1,1} & -T_{1,2} & \cdots & -T_{1,n}\\
+0 & t-T_{2,2} & \cdots & -T_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & t-T_{n,n}%
+\end{array}
+\right)  .
+\end{align*}
+This is still an upper-triangular matrix; thus, its determinant is the product
+of its diagonal entries. That is, we have%
+\[
+\det\left(  tI_{n}-T\right)  =\left(  t-T_{1,1}\right)  \left(  t-T_{2,2}%
+\right)  \cdots\left(  t-T_{n,n}\right)  .
+\]
+Therefore, $T_{1,1},T_{2,2},\ldots,T_{n,n}$ are the roots of the polynomial
+$\det\left(  tI_{n}-T\right)  $ (with multiplicities).
+\par
+However, $\det\left(  tI_{n}-T\right)  $ is the characteristic polynomial of
+$T$. Thus, the roots of this polynomial $\det\left(  tI_{n}-T\right)  $ are
+the eigenvalues of $T$ (with algebraic multiplicities). Since we know that the
+roots of this polynomial are $T_{1,1},T_{2,2},\ldots,T_{n,n}$, we thus
+conclude that $T_{1,1},T_{2,2},\ldots,T_{n,n}$ are the eigenvalues of $T$
+(with algebraic multiplicities). In other words, the diagonal entries of $T$
+are the eigenvalues of $T$ (with algebraic multiplicities). Qed.}). Since we
+know that the eigenvalues of $T$ are the eigenvalues of $A$ (with the same
+algebraic multiplicities), we thus conclude that the eigenvalues of $A$ (with
+algebraic multiplicities) are the diagonal entries of $T$. This proves
+Proposition \ref{prop.schurtri.schurtri.T-diag}.
+\end{proof}
+
+We will see several applications of Theorem \ref{thm.schurtri.schurtri} in
+this chapter. First, however, let us generalize this theorem from the case of
+a single matrix to the case of several matrices that pairwise commute.
+
 \subsection{Commuting matrices}
 
 \begin{definition}
@@ -3814,8 +3917,9 @@ Two $n\times n$-matrices $A$ and $B$ are said to \emph{commute} if $AB=BA$.
 
 Examples of commuting matrices are easy to find; e.g., any two powers of a
 single matrix commute (i.e., we have $A^{k}A^{\ell}=A^{\ell}A^{k}$ for any
-$n\times n$-matrix $A$ and any $k,\ell\in\mathbb{N}$). But there are many more
-situations in which matrices commute. In this section, we shall extend Schur
+$n\times n$-matrix $A$ and any $k,\ell\in\mathbb{N}$). Also, any two diagonal
+matrices (of the same size) commute. But there are many more situations in
+which matrices commute. In this section, we shall extend Schur
 triangularization from a single matrix to a family of commuting matrices.
 
 First, we need a lemma (\cite[Lemma 1.3.19]{HorJoh13}) which says that any
@@ -3905,7 +4009,7 @@ Indeed, $B^{\ast}=\left(
 0 & 0\\
 -i & 0
 \end{array}
-\right)  $ satisfies $BB^{\ast}\neq B^{\ast}B$, as can easily be verified.
+\right)  $ and thus $BB^{\ast}\neq B^{\ast}B$, as can easily be verified.
 
 \textbf{(c)} Let $a,b\in\mathbb{C}$ be arbitrary, and let $C=\left(
 \begin{array}
@@ -3959,8 +4063,8 @@ For example, the matrix $\left(
 
 In contrast, a square matrix $S\in\mathbb{C}^{n\times n}$ is skew-Hermitian if
 and only if $S^{\ast}=-S$ (by Definition \ref{def.unitary.skew-herm}).
-Finally, a matrix $U\in\mathbb{C}^{n\times n}$ is unitary if and only if
-$UU^{\ast}=U^{\ast}U=I_{n}$ (by Theorem \ref{thm.unitary.unitary.eqs},
+Finally, a square matrix $U\in\mathbb{C}^{n\times n}$ is unitary if and only
+if $UU^{\ast}=U^{\ast}U=I_{n}$ (by Theorem \ref{thm.unitary.unitary.eqs},
 equivalence $\mathcal{A}\Longleftrightarrow\mathcal{C}$). Having recalled all
 these concepts, we can state the following:
 
@@ -4016,7 +4120,7 @@ Unlike the unitary matrices, the normal matrices are not closed under multiplica
 $A,B\in\mathbb{C}^{2\times2}$ such that neither $A+B$ nor $AB$ is normal.
 \end{exercise}
 
-Here are some more ways to construct normal matrices out of existing normal matrices:
+Here are two more ways to construct normal matrices out of existing normal matrices:
 
 \begin{proposition}
 \label{prop.schurtri.normal.conj}Let $A\in\mathbb{C}^{n\times n}$ be a normal matrix.
@@ -4093,6 +4197,44 @@ $UAU^{\ast}$ is normal. This proves Proposition
 \ref{prop.schurtri.normal.conj} \textbf{(b)}.
 \end{proof}
 
+Here is another normality-preserving way to transform matrices:
+
+\begin{definition}
+\label{def.schurtri.normal.p(A)}Let $\mathbb{F}$ be a field. Let
+$A\in\mathbb{F}^{n\times n}$ be a square matrix. Let $p\left(  X\right)  $ be
+a polynomial in a single indeterminate $X$ with coefficients in $\mathbb{F}$.
+Write $p\left(  X\right)  $ in the form $p\left(  X\right)  =a_{0}X^{0}%
++a_{1}X^{1}+\cdots+a_{d}X^{d}$, where $a_{0},a_{1},\ldots,a_{d}\in\mathbb{F}$.
+
+Then, $p\left(  A\right)  $ denotes the matrix $a_{0}A^{0}+a_{1}A^{1}%
++\cdots+a_{d}A^{d}\in\mathbb{F}^{n\times n}$.
+\end{definition}
+
+For instance, if $p\left(  X\right)  =X^{3}-2X^{2}+1$, then $p\left(
+A\right)  =A^{3}-2A^{2}+A^{0}=A^{3}-2A^{2}+I_{n}$.
+
+\begin{proposition}
+\label{prop.schurtri.normal.p(A)nor}Let $A\in\mathbb{C}^{n\times n}$ be a
+normal matrix. Let $p\left(  X\right)  $ be a polynomial in a single
+indeterminate $X$ with coefficients in $\mathbb{C}$. Then, the matrix
+$p\left(  A\right)  $ is normal.
+\end{proposition}
+
+\begin{exercise}
+\label{exe.schurtri.normal.p(A)nor}\fbox{3} Prove Proposition
+\ref{prop.schurtri.normal.p(A)nor}.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.schurtri.normal.isometry}\fbox{2} Generalizing Proposition
+\ref{prop.schurtri.normal.conj} \textbf{(b)}, we might claim the following:
+
+Let $A\in\mathbb{C}^{k\times k}$ be a normal matrix. Let $U\in\mathbb{C}%
+^{n\times k}$ be an isometry. Then, the matrix $UAU^{\ast}$ is normal.
+
+Is this generalization correct?
+\end{exercise}
+
 We will now prove an innocent-looking property of normal matrices that will
 turn out crucial in characterizing them:
 
@@ -4110,6 +4252,34 @@ So let us assume that $T$ is normal. We shall show that $T$ is diagonal.
 
 TODO:\ Scribe!
 \end{proof}
+
+For the next exercise, we recall the notion of a \emph{nilpotent matrix}:
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. A square matrix $A\in\mathbb{F}^{n\times n}$ is
+said to be \emph{nilpotent} if there exists some nonnegative integer $m$ such
+that $A^{m}=0$.
+\end{definition}
+
+For example, the matrix $\left(
+\begin{array}
+[c]{cc}%
+6 & 9\\
+-4 & -6
+\end{array}
+\right)  $ is nilpotent, since $\left(
+\begin{array}
+[c]{cc}%
+6 & 9\\
+-4 & -6
+\end{array}
+\right)  ^{2}=0$. Also, every strictly upper-triangular matrix and every
+strictly lower-triangular matrix is nilpotent.
+
+\begin{exercise}
+\label{exe.schurtri.normal.nilp}\fbox{2} Let $A\in\mathbb{C}^{n\times n}$ be a
+normal square matrix that is nilpotent. Prove that $A=0$.
+\end{exercise}
 
 \subsection{The spectral theorem}
 
@@ -4147,6 +4317,65 @@ unique (e.g., we can replace $U$ by $\lambda U$ whenever $\lambda\in
 \mathbb{C}$ satisfies $\left\vert \lambda\right\vert =1$; this does not change
 $UDU^{\ast}$).
 
+Note that Theorem \ref{thm.schurtri.normal.spectral} \textbf{(b)} has a
+converse, which helps finding spectral decompositions in practice if one
+doesn't want to go through the trouble of Schur triangularization:
+
+\begin{proposition}
+\label{prop.schurtri.normal.converse}Let $A\in\mathbb{C}^{n\times n}$. Let
+$U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ be a unitary
+matrix and $D\in\mathbb{C}^{n\times n}$ a diagonal matrix. Assume that for
+each $i\in\left[  n\right]  $, we have $AU_{\bullet,i}=D_{i,i}U_{\bullet,i}$
+(that is, the $i$-th column of $U_{\bullet,i}$ is an eigenvector of $A$ for
+the eigenvalue $D_{i,i}$). Then, $A=UDU^{\ast}$, so that $\left(  U,D\right)
+$ is a spectral decomposition of $A$.
+\end{proposition}
+
+\begin{exercise}
+\fbox{2} Prove Proposition \ref{prop.schurtri.normal.converse}.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.schurtri.normal.examples}\fbox{5} \textbf{(a)} Find a spectral
+decomposition of the normal matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1+i\\
+1+i & 1
+\end{array}
+\right)  $.
+
+\textbf{(b)} Find a spectral decomposition of the Hermitian matrix $\left(
+\begin{array}
+[c]{cc}%
+0 & -i\\
+i & 0
+\end{array}
+\right)  $.
+
+\textbf{(c)} Find a spectral decomposition of the skew-Hermitian matrix
+$\left(
+\begin{array}
+[c]{cc}%
+0 & i\\
+i & 0
+\end{array}
+\right)  $.
+
+\textbf{(d)} Find a spectral decomposition of the unitary matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & -1
+\end{array}
+\right)  $.
+\end{exercise}
+
+\begin{exercise}
+\fbox{2} Describe all spectral decompositions of the $n\times n$ identity
+matrix $I_{n}$.
+\end{exercise}
+
 Only normal matrices can have a spectral decomposition. Indeed, if some
 $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ can be written as
 $A=UDU^{\ast}$ for some unitary $U$ and some diagonal $D$, then $D$ is normal
@@ -4165,7 +4394,7 @@ diagonal matrix.
 TODO: Scribe!
 \end{proof}
 
-We can similarly characterize Hermitian matrices:
+The spectral decomposition of a Hermitian matrix has a special property:
 
 \begin{proposition}
 \label{prop.schurtri.normal.hermitian-spec}Let $A\in\mathbb{C}^{n\times n}$ be
@@ -4176,6 +4405,9 @@ of $A$. Then, the diagonal entries of $D$ are real.
 \begin{proof}
 TODO: Scribe!
 \end{proof}
+
+This allows us to characterize Hermitian matrices in a similar way as normal
+matrices were characterized by Corollary \ref{cor.schurtri.normal.normal-iff}:
 
 \begin{corollary}
 \label{cor.schurtri.normal.hermitian-iff}An $n\times n$-matrix $A\in
@@ -4225,6 +4457,19 @@ diagonal matrix whose all diagonal entries have absolute value $1$.
 \label{exe.schurtri.normal.unitary}\fbox{2} Prove Proposition
 \ref{prop.schurtri.normal.unitary-spec} and Corollary
 \ref{cor.schurtri.normal.unitary-iff}.
+\end{exercise}
+
+\begin{exercise}
+\fbox{2} Prove the following generalization of Theorem
+\ref{thm.schurtri.normal.spectral}:
+
+Let $\mathcal{F}$ be a subset of $\mathbb{C}^{n\times n}$ such that any matrix
+in $\mathcal{F}$ is normal, and such that any two matrices in $\mathcal{F}$
+commute (i.e., any $A\in\mathcal{F}$ and $B\in\mathcal{F}$ satisfy $AB=BA$).
+
+Then, there exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ such that for each $A\in\mathcal{F}$, the matrix
+$UAU^{\ast}$ is diagonal.
 \end{exercise}
 
 \newpage
