@@ -1,0 +1,622 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, September 22, 2021 11:50:51}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 2}
+
+\section{Unitary matrices ([HorJoh13, \S 2.1]) (cont'd)}
+
+\textbf{Recall:}
+
+\begin{itemize}
+\item An $n\times k$-matrix $A$ is said to be an \textbf{isometry} if
+$A^{\ast}A=I_{k}$. (The notation $I_{k}$ means the $k\times k$ identity matrix.)
+
+\item An $n\times k$-matrix $A$ is an isometry if and only if its columns form
+an orthonormal tuple of vectors.
+\end{itemize}
+
+\subsection{Unitary matrices}
+
+\begin{definition}
+A matrix $U\in\mathbb{C}^{n\times k}$ is said to be \textbf{unitary} if both
+$U$ and $U^{\ast}$ are isometries.
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & -1
+\end{array}
+\right)  $ is unitary. Indeed, it is easy to see that $A$ is an isometry, but
+$A^{\ast}$ is therefore also an isometry, since $A^{\ast}=A$. Thus, $A$ is unitary.
+
+\textbf{(b)} A $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+\lambda
+\end{array}
+\right)  $ is unitary if and only if $\left\vert \lambda\right\vert =1$.
+
+\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is an
+isometry and thus unitary.
+
+\textbf{(d)} Let $n\in\mathbb{N}$. Let $\sigma$ be a permutation of $\left[
+n\right]  =\left\{  1,2,\ldots,n\right\}  $. That is, $\sigma$ is a bijective
+map from $\left[  n\right]  $ to $\left[  n\right]  $.
+
+Let $P_{\sigma}$ be the \textbf{permutation matrix} of $\sigma$; this is the
+$n\times n$-matrix whose $\left(  \sigma\left(  j\right)  ,j\right)  $-th
+entry is $1$ for all $j\in\left[  n\right]  $, and whose all other entries are
+$0$.
+
+For instance, if $n=3$ and $\sigma=\left(
+\begin{array}
+[c]{ccc}%
+1 & 2 & 3\\
+2 & 3 & 1
+\end{array}
+\right)  $, then%
+\[
+P_{\sigma}=\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{array}
+\right)  .
+\]
+
+
+The permutation matrix $P_{\sigma}$ is always unitary (for any $n$ and any
+$\sigma$). Indeed, the inverse of $P_{\sigma}$ is $P_{\sigma^{-1}}$, but the
+conjugate transpose of $P_{\sigma}$ is also $P_{\sigma^{-1}}$. Thus,
+$P_{\sigma}^{\ast}=P_{\sigma}^{-1}$, so $P_{\sigma}^{\ast}P_{\sigma}=I_{n}$.
+This shows that $P_{\sigma}$ is an isometry. Similarly, $P_{\sigma}P_{\sigma
+}^{\ast}=I_{n}$, so that $P_{\sigma}^{\ast}$ is an isometry, and thus
+$P_{\sigma}$ is unitary\textbf{.}
+
+\textbf{(e)} A diagonal matrix $\operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  =\left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1} & 0 & \cdots & 0\\
+0 & \lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_{n}%
+\end{array}
+\right)  $ is unitary if and only if%
+\[
+\left\vert \lambda_{1}\right\vert =\left\vert \lambda_{2}\right\vert
+=\cdots=\left\vert \lambda_{n}\right\vert =1.
+\]
+Indeed,
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1} & 0 & \cdots & 0\\
+0 & \lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_{n}%
+\end{array}
+\right)  ^{\ast}\left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1} & 0 & \cdots & 0\\
+0 & \lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_{n}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+\overline{\lambda_{1}} & 0 & \cdots & 0\\
+0 & \overline{\lambda_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \overline{\lambda_{n}}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1} & 0 & \cdots & 0\\
+0 & \lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_{n}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+\overline{\lambda_{1}}\lambda_{1} & 0 & \cdots & 0\\
+0 & \overline{\lambda_{2}}\lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \overline{\lambda_{n}}\lambda_{n}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+\left\vert \lambda_{1}\right\vert ^{2} & 0 & \cdots & 0\\
+0 & \left\vert \lambda_{2}\right\vert ^{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \left\vert \lambda_{n}\right\vert ^{2}%
+\end{array}
+\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{theorem}
+Let $U\in\mathbb{C}^{n\times k}$ be a matrix. The following six statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{A}$: The matrix $U$ is unitary.
+
+\item $\mathcal{B}$: The matrices $U$ and $U^{\ast}$ are isometries.
+
+\item $\mathcal{C}$: We have $UU^{\ast}=I_{n}$ and $U^{\ast}U=I_{k}$.
+
+\item $\mathcal{D}$: The matrix $U$ is square (that is, $n=k$) and invertible
+and satisfies $U^{-1}=U^{\ast}$.
+
+\item $\mathcal{E}$: The columns of $U$ form an orthonormal basis of
+$\mathbb{C}^{n}$.
+
+\item $\mathcal{F}$: The matrix $U$ is square (that is, $n=k$) and is an isometry.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+$\mathcal{A}\Longleftrightarrow\mathcal{B}$ follows from the def of
+\textquotedblleft unitary\textquotedblright.
+
+$\mathcal{B}\Longleftrightarrow\mathcal{C}$ follows from the def of
+\textquotedblleft isometry\textquotedblright, since $\left(  U^{\ast}\right)
+^{\ast}=U$.
+
+$\mathcal{D}\Longrightarrow\mathcal{C}$ is obvious.
+
+$\mathcal{C}\Longrightarrow\mathcal{D}$ follows from the fact that any
+invertible matrix is square.
+
+The other implications are a bit harder:
+
+\begin{itemize}
+\item $\mathcal{D}\Longrightarrow\mathcal{E}$: Assume that $\mathcal{D}$
+holds. Thus, $U$ is an isometry (since $U^{\ast}U=I_{k}$). So, from a result
+from last time, we see that the columns of $U$ form an orthonormal tuple of
+vectors. But they also form a basis of $\mathbb{C}^{n}$, because $U$ is
+invertible. So $\mathcal{E}$ holds.
+
+\item $\mathcal{E}\Longrightarrow\mathcal{D}$: Assume that $\mathcal{E}$
+holds. Then, the columns of $U$ form an orthonormal basis, hence an
+orthonormal tuple. Thus, $U$ is an isometry (by what we know from last
+lecture). Furthermore, the columns of $U$ form a basis, so there are precisely
+$n$ of them (since any basis of $\mathbb{C}^{n}$ has $n$ vectors). This shows
+that $U$ is square. Finally, $U$ is invertible, since its columns form a
+basis. So $\mathcal{D}$ holds.
+
+\item $\mathcal{D}\Longrightarrow\mathcal{F}$: Easy.
+
+\item $\mathcal{F}\Longrightarrow\mathcal{D}$: It is known that a square
+matrix $A$ that is left invertible (i.e., there is a matrix $B$ such that
+$BA=I$) is always invertible. Since $U$ is an isometry, we have $U^{\ast
+}U=I_{k}$, so that $U$ is left-invertible. Thus, $U$ is invertible, and its
+inverse is $U^{-1}=U^{\ast}$. So $\mathcal{D}$ holds.
+\end{itemize}
+
+This proves $\mathcal{A}\Longleftrightarrow\mathcal{B}\Longleftrightarrow
+\mathcal{C}\Longleftrightarrow\mathcal{D}\Longleftrightarrow\mathcal{E}%
+\Longleftrightarrow\mathcal{F}$.
+\end{proof}
+
+This theorem shows that any unitary matrix is square. In contrast, an isometry
+can be a tall matrix (but not a wide matrix).
+
+The set of all unitary $n\times n$-matrices is called the $n$\textbf{-th
+unitary group}, and is denoted $\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $. It is a group under multiplication. 
+
+If $U$ is a unitary matrix, then $\left\vert \det U\right\vert =1$ and any
+eigenvalue $\lambda$ of $U$ has $\left\vert \lambda\right\vert =1$.
+
+\subsubsection{Block matrices}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times p}$, $B\in\mathbb{C}^{n\times q}$, $C\in
+\mathbb{C}^{m\times p}$, $D\in\mathbb{C}^{m\times q}$ be four matrices. Then,
+$\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  $ means the matrix%
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+A_{1,1} & A_{1,2} & \cdots & B_{1,1} & B_{1,2} & \cdots\\
+A_{2,1} & A_{2,2} & \cdots & B_{2,1} & B_{2,2} & \cdots\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots\\
+C_{1,1} & C_{1,2} & \cdots & D_{1,1} & D_{1,2} & \cdots\\
+C_{2,1} & C_{2,2} & \cdots & D_{2,1} & D_{2,2} & \cdots\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots
+\end{array}
+\right)  \in\mathbb{C}^{\left(  n+m\right)  \times\left(  p+q\right)  }%
+\]
+(where $M_{i,j}$ means the $\left(  i,j\right)  $-th entry of a matrix $M$).
+
+This matrix is called the \textbf{block matrix} formed of $A$, $B$, $C$ and
+$D$.
+\end{definition}
+
+Similar notations will be used to glue together more than $4$ matrices.
+
+This block matrix notation is more than just a convenient notation. Indeed,
+multiplication of matrices plays along with it:
+
+\begin{proposition}
+For any matrices $A,B,C,D,A^{\prime},B^{\prime},C^{\prime},D^{\prime}$, we
+have%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & B\\
+C & D
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+A^{\prime} & B^{\prime}\\
+C^{\prime} & D^{\prime}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+AA^{\prime}+BC^{\prime} & AB^{\prime}+BD^{\prime}\\
+CA^{\prime}+DC^{\prime} & CB^{\prime}+DD^{\prime}%
+\end{array}
+\right)  ,
+\]
+provided that the block matrices and the products make sense.
+\end{proposition}
+
+Again, a similar rule holds for larger block matrices.
+
+A particularly well-behaved family of block matrices are the
+\textbf{block-diagonal matrices}. These are the block matrices of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  n,n\right)
+\end{array}
+\right)  ,
+\]
+where each $A\left(  i,i\right)  $ is a square matrix, and where the $0$'s
+mean zero matrices of appropriate dimension.
+
+These block-diagonal matrices can be muliplied \textquotedblleft diagonal
+block by diagonal block\textquotedblright:%
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  n,n\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & B\left(  2,2\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & B\left(  n,n\right)
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)  B\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  B\left(  2,2\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  n,n\right)  B\left(  n,n\right)
+\end{array}
+\right)  ,
+\end{align*}
+provided that
+\[
+\text{size of }A\left(  i,i\right)  =\text{size of }B\left(  i,i\right)
+\text{ for each }i.
+\]
+
+
+\textbf{Example:} $\left(
+\begin{array}
+[c]{ccc}%
+a & 0 & 0\\
+0 & b & c\\
+0 & d & e
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+a^{\prime} & 0 & 0\\
+0 & b^{\prime} & c^{\prime}\\
+0 & d^{\prime} & e^{\prime}%
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{ccc}%
+aa^{\prime} & 0 & 0\\
+0 & cd^{\prime}+bb^{\prime} & ce^{\prime}+bc^{\prime}\\
+0 & d^{\prime}e+db^{\prime} & e^{\prime}e+dc^{\prime}%
+\end{array}
+\right)  \allowbreak$
+
+\textbf{Non-example:} $\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 0\\
+0 & 2 & 3\\
+0 & 1 & 4
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+1 & 2 & 0\\
+4 & 3 & 0\\
+0 & 0 & 1
+\end{array}
+\right)  =\allowbreak\left(
+\begin{array}
+[c]{ccc}%
+1 & 2 & 0\\
+8 & 6 & 3\\
+4 & 3 & 4
+\end{array}
+\right)  $
+
+\begin{proposition}
+Let $A_{1},A_{2},\ldots,A_{u}$ be a bunch of square matrices. Then, the
+block-diagonal matrix $\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  $ is unitary if and only $A_{1},A_{2},\ldots,A_{u}$ are unitary.
+\end{proposition}
+
+\subsection{The Gram--Schmidt process}
+
+\begin{theorem}
+[Gram--Schmidt process]Let $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ be a
+linearly independent tuple of vectors in $\mathbb{C}^{n}$.
+
+Then, there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $
+of vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+
+Furthermore, such a tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ can be
+constructed by the following recursive process:
+
+\begin{itemize}
+\item For each $p\in\left[  m\right]  $, if the first $p-1$ entries
+$z_{1},z_{2},\ldots,z_{p-1}$ of this tuple have already been constructed, then
+we define the $p$-th entry $z_{p}$ by%
+\[
+z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}.
+\]
+(Note that when $p=1$, the sum on the RHS is an empty sum, so this equality
+simply becomes $z_{1}=v_{1}$.)
+\end{itemize}
+\end{theorem}
+
+Roughly speaking, the claim of this theorem is that if we start with any
+linearly independent tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of
+vectors in $\mathbb{C}^{n}$, then we can make this tuple orthogonal by
+tweaking it as follows:
+
+\begin{itemize}
+\item we leave $v_{1}$ unchanged;
+
+\item we modify $v_{2}$ by subtracting an appropriate scalar multiple of
+$v_{1}$;
+
+\item we modify $v_{3}$ by subtracting an appropriate linear combination of
+$v_{1}$ and $v_{2}$;
+
+\item and so on.
+\end{itemize}
+
+The above recursive formula tells us which scalar multiples / linear
+combinations to take.
+
+\begin{example}%
+\begin{align*}
+z_{1}  & =v_{1};\\
+z_{2}  & =v_{2}-\dfrac{\left\langle v_{2},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1};\\
+z_{3}  & =v_{3}-\dfrac{\left\langle v_{3},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}-\dfrac{\left\langle v_{3},z_{2}\right\rangle
+}{\left\langle z_{2},z_{2}\right\rangle }z_{2};\\
+& \ldots
+\end{align*}
+
+\end{example}
+
+
+\end{document}

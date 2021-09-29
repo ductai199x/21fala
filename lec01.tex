@@ -1,0 +1,712 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, September 20, 2021 11:50:38}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 1}
+
+Chris volunteered to scribe Lecture 3.
+
+\section{Unitary matrices ([HorJoh13, \S 2.1])}
+
+\subsection{Inner product}
+
+For any $z\in\mathbb{C}$, we let $\overline{z}$ be the complex conjugate of
+$z$. So $\overline{a+bi}=a-bi$ if $a,b\in\mathbb{R}$. 
+
+\begin{definition}
+For any two vectors $u=\left(
+\begin{array}
+[c]{c}%
+u_{1}\\
+u_{2}\\
+\vdots\\
+u_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$ and $v=\left(
+\begin{array}
+[c]{c}%
+v_{1}\\
+v_{2}\\
+\vdots\\
+v_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$, we define the scalar%
+\[
+\left\langle u,v\right\rangle :=u_{1}\overline{v_{1}}+u_{2}\overline{v_{2}%
+}+\cdots+u_{n}\overline{v_{n}}\in\mathbb{C}.
+\]
+This scalar $\left\langle u,v\right\rangle $ is called the \textbf{inner
+product} (or \textbf{dot product}) of $u$ and $v$.
+\end{definition}
+
+For example,%
+\begin{align*}
+\left\langle \left(
+\begin{array}
+[c]{c}%
+1+i\\
+2+3i
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+-i\\
+4+i
+\end{array}
+\right)  \right\rangle  & =\left(  1+i\right)  \overline{\left(  -i\right)
+}+\left(  2+3i\right)  \overline{\left(  4+i\right)  }\\
+& =\left(  1+i\right)  i+\left(  2+3i\right)  \left(  4-i\right)
+=\cdots=10+11i.
+\end{align*}
+
+
+\begin{definition}
+For any column vector $v=\left(
+\begin{array}
+[c]{c}%
+v_{1}\\
+v_{2}\\
+\vdots\\
+v_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$, we define the row vector%
+\[
+v^{\ast}:=\left(
+\begin{array}
+[c]{cccc}%
+\overline{v_{1}} & \overline{v_{2}} & \cdots & \overline{v_{n}}%
+\end{array}
+\right)  .
+\]
+
+\end{definition}
+
+\begin{proposition}
+Let $u,v\in\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} We have $\left\langle u,v\right\rangle =\overline{\left\langle
+v,u\right\rangle }$.
+
+\textbf{(b)} We have $\left\langle u,v\right\rangle =v^{\ast}u$.
+
+\textbf{(c)} We have $\left\langle u+u^{\prime},v\right\rangle =\left\langle
+u,v\right\rangle +\left\langle u^{\prime},v\right\rangle $ for any $u^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(d)} We have $\left\langle u,v+v^{\prime}\right\rangle =\left\langle
+u,v\right\rangle +\left\langle u,v^{\prime}\right\rangle $ for any $v^{\prime
+}\in\mathbb{C}^{n}$.
+
+\textbf{(e)} We have $\left\langle \lambda u,v\right\rangle =\lambda
+\left\langle u,v\right\rangle $ for any $\lambda\in\mathbb{C}$.
+
+\textbf{(f)} We have $\left\langle u,\lambda v\right\rangle =\overline
+{\lambda}\left\langle u,v\right\rangle $ for any $\lambda\in\mathbb{C}$.
+\end{proposition}
+
+\begin{proposition}
+Let $x\in\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} The number $\left\langle x,x\right\rangle $ is a nonnegative real.
+
+\textbf{(b)} If $x$ is nonzero, then $\left\langle x,x\right\rangle $ is a
+positive real.
+\end{proposition}
+
+\begin{proof}%
+\[
+\left\langle x,x\right\rangle =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
+}+\cdots+x_{n}\overline{x_{n}}=\left\vert x_{1}\right\vert ^{2}+\left\vert
+x_{2}\right\vert ^{2}+\cdots+\left\vert x_{n}\right\vert ^{2},
+\]
+since $z\overline{z}=\left\vert z\right\vert ^{2}$ for any $z\in\mathbb{C}$.
+Note that $\left\vert x_{1}\right\vert ,\left\vert x_{2}\right\vert
+,\ldots,\left\vert x_{n}\right\vert $ are reals. Thus, $\left\vert
+x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}+\cdots+\left\vert
+x_{n}\right\vert ^{2}$ is clearly a nonnegative real. Furthermore, if $x$ is
+nonzero, then at least one $x_{i}$ is nonzero, and therefore $\left\vert
+x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}+\cdots+\left\vert
+x_{n}\right\vert ^{2}$ is positive.
+\end{proof}
+
+\begin{definition}
+Let $x\in\mathbb{C}^{n}$. We define the \textbf{length} (aka \textbf{norm}) of
+$x$ to be the nonnegative real number%
+\[
+\left\vert \left\vert x\right\vert \right\vert :=\sqrt{\left\langle
+x,x\right\rangle }.
+\]
+
+\end{definition}
+
+For example, if $x=\left(  1,1\right)  $, then $\left\langle x,x\right\rangle
+=1\overline{1}+1\overline{1}=2$, so $\left\vert \left\vert x\right\vert
+\right\vert =\sqrt{2}$.
+
+\begin{proposition}
+For any $\lambda\in\mathbb{C}$ and $x\in\mathbb{C}^{n}$, we have $\left\vert
+\left\vert \lambda x\right\vert \right\vert =\left\vert \lambda\right\vert
+\cdot\left\vert \left\vert x\right\vert \right\vert $.
+\end{proposition}
+
+\subsection{Orthogonality and orthonormality}
+
+\begin{definition}
+Let $x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$ be two vectors. We say that
+$x$ is \textbf{orthogonal} to $y$ if and only if $\left\langle
+x,y\right\rangle =0$. The shorthand for this is \textquotedblleft$x\perp
+y$\textquotedblright. (%
+%TCIMACRO{\TEXTsymbol{\backslash}}%
+%BeginExpansion
+$\backslash$%
+%EndExpansion
+perp)
+\end{definition}
+
+The relation $\perp$ is symmetric:
+
+\begin{proposition}
+Let $x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$ be two vectors. Then,
+$x\perp y$ if and only if $y\perp x$.
+\end{proposition}
+
+\begin{proof}
+Recall that $\left\langle u,v\right\rangle =\overline{\left\langle
+v,u\right\rangle }$.
+\end{proof}
+
+\begin{definition}
+Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ be a tuple of vectors in
+$\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
+is \textbf{orthogonal} if we have%
+\[
+u_{p}\perp u_{q}\ \ \ \ \ \ \ \ \ \ \text{for all }p\neq q.
+\]
+
+
+\textbf{(b)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
+is \textbf{orthonormal} if it is orthogonal and%
+\[
+\left\vert \left\vert u_{1}\right\vert \right\vert =\left\vert \left\vert
+u_{2}\right\vert \right\vert =\cdots=\left\vert \left\vert u_{k}\right\vert
+\right\vert =1.
+\]
+
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The tuple%
+\[
+\left(  \left(
+\begin{array}
+[c]{c}%
+1\\
+0\\
+0
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+0\\
+1\\
+0
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+0\\
+0\\
+1
+\end{array}
+\right)  \right)
+\]
+is orthonormal.
+
+\textbf{(b)} More generally: Let $n\in\mathbb{N}$. Let $e_{1},e_{2}%
+,\ldots,e_{n}\in\mathbb{C}^{n}$ be the vectors defined by%
+\[
+e_{i}=\left(
+\begin{array}
+[c]{c}%
+0\\
+0\\
+\vdots\\
+0\\
+1\\
+0\\
+0\\
+\vdots\\
+0
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{with the }1\text{ being in the }i\text{-th
+position.}%
+\]
+Then, the tuple $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ is orthonormal. It
+is furthermore a basis of $\mathbb{C}^{n}$, and is known as the
+\textbf{standard basis}.
+
+\textbf{(c)} The pair $\left(  \left(
+\begin{array}
+[c]{c}%
+1\\
+-i\\
+2
+\end{array}
+\right)  ,\ \ \left(
+\begin{array}
+[c]{c}%
+0\\
+2i\\
+1
+\end{array}
+\right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthogonal, but not orthonormal.
+
+\textbf{(d)} The pair $\left(  \dfrac{1}{\sqrt{6}}\left(
+\begin{array}
+[c]{c}%
+1\\
+-i\\
+2
+\end{array}
+\right)  ,\ \ \dfrac{1}{\sqrt{5}}\left(
+\begin{array}
+[c]{c}%
+0\\
+2i\\
+1
+\end{array}
+\right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthonormal.
+\end{example}
+
+\begin{proposition}
+Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ be an orthogonal tuple of
+nonzero vectors in $\mathbb{C}^{n}$. Then, the tuple%
+\[
+\left(  \dfrac{1}{\left\vert \left\vert u_{1}\right\vert \right\vert }%
+u_{1},\ \ \dfrac{1}{\left\vert \left\vert u_{2}\right\vert \right\vert }%
+u_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert u_{k}\right\vert
+\right\vert }u_{k}\right)
+\]
+is orthonormal.
+\end{proposition}
+
+\begin{proposition}
+Any orthogonal tuple of nonzero vectors in $\mathbb{C}^{n}$ is linearly independent.
+\end{proposition}
+
+\begin{proof}
+See notes.
+\end{proof}
+
+\begin{lemma}
+Let $k<n$. Let $a_{1},a_{2},\ldots,a_{k}$ be $k$ vectors in $\mathbb{C}^{n}$.
+Then, there exists a nonzero vector $b$ that is orthogonal to each of
+$a_{1},a_{2},\ldots,a_{k}$.
+\end{lemma}
+
+\begin{proof}
+(See notes for details.) Write each vector $a_{i}$ as $a_{i}=\left(
+\begin{array}
+[c]{c}%
+a_{i,1}\\
+a_{i,2}\\
+\vdots\\
+a_{i,n}%
+\end{array}
+\right)  $. Let $b=\left(
+\begin{array}
+[c]{c}%
+b_{1}\\
+b_{2}\\
+\vdots\\
+b_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}$ be a vector whose entries are so far undetermined.
+To ensure that $b$ is orthogonal to $a_{i}$, we need $\left\langle
+b,a_{i}\right\rangle =0$. In other words, we need%
+\[
+b_{1}\overline{a_{i,1}}+b_{2}\overline{a_{i,2}}+\cdots+b_{n}\overline{a_{i,n}%
+}=0.
+\]
+This has to hold for each $i\in\left[  k\right]  :=\left\{  1,2,\ldots
+,k\right\}  $. This is a system of $k$ homogeneous linear equations in the $n$
+unknowns $b_{1},b_{2},\ldots,b_{n}$. Since there are fewer equations than
+there are unknowns, there exists a nonzero solution. IOW, there exists a
+nonzero vector $b$ orthogonal to all of $a_{i}$.
+\end{proof}
+
+\subsection{Conjugate transposes}
+
+Generalizing our notation $v^{\ast}$, we can define $A^{\ast}$ for any matrix
+$A$:
+
+\begin{definition}
+Let $A=\left(
+\begin{array}
+[c]{ccc}%
+a_{1,1} & \cdots & a_{1,m}\\
+\vdots & \ddots & \vdots\\
+a_{n,1} & \cdots & a_{n,m}%
+\end{array}
+\right)  $ be any matrix. Then, we define the matrix%
+\[
+A^{\ast}=\left(
+\begin{array}
+[c]{ccc}%
+\overline{a_{1,1}} & \cdots & \overline{a_{n,1}}\\
+\vdots & \ddots & \vdots\\
+\overline{a_{1,m}} & \cdots & \overline{a_{n,m}}%
+\end{array}
+\right)  .
+\]
+This matrix $A^{\ast}$ is called the \textbf{conjugate transpose} of $A$.
+\end{definition}
+
+IOW, $A^{\ast}$ is obtained from $A$ by transposing the matrix and conjugating
+all entries.
+
+\begin{example}%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+1+i & 2-3i & i\\
+6 & 0 & 10+i
+\end{array}
+\right)  ^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1-i & 6\\
+2+3i & 0\\
+-i & 10-i
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+\begin{proposition}
+\textbf{(a)} If $A,B\in\mathbb{C}^{n\times m}$ are two matrices, then $\left(
+A+B\right)  ^{\ast}=A^{\ast}+B^{\ast}$.
+
+\textbf{(b)} If $A$ is a matrix and $\lambda\in\mathbb{C}$, then $\left(
+\lambda A\right)  ^{\ast}=\overline{\lambda}A^{\ast}$.
+
+\textbf{(c)} If $A$ and $B$ are two matrices that can be multiplied, then
+$\left(  AB\right)  ^{\ast}=B^{\ast}A^{\ast}$.
+
+\textbf{(d)} If $A$ is any matrix, then $\left(  A^{\ast}\right)  ^{\ast}=A$.
+\end{proposition}
+
+\subsection{Isometries}
+
+\begin{definition}
+An $n\times k$-matrix $A$ is said to be an \textbf{isometry} if $A^{\ast
+}A=I_{k}$. (The notation $I_{k}$ means the $k\times k$ identity matrix.)
+\end{definition}
+
+\begin{proposition}
+An $n\times k$-matrix $A$ is an isometry if and only if its columns form an
+orthonormal tuple of vectors.
+\end{proposition}
+
+\begin{proof}
+Let $A$ be an $n\times k$-matrix, and let $a_{1},a_{2},\ldots,a_{k}$ be its
+$k$ columns. Thus,%
+\[
+A=\left(
+\begin{array}
+[c]{ccc}%
+\mid &  & \mid\\
+a_{1} & \cdots & a_{k}\\
+\mid &  & \mid
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and therefore}\ \ \ \ \ \ \ \ \ \ A^{\ast
+}=\left(
+\begin{array}
+[c]{ccc}%
+- & a_{1}^{\ast} & -\\
+& \vdots & \\
+- & a_{k}^{\ast} & -
+\end{array}
+\right)  .
+\]
+Hence,%
+\begin{align*}
+A^{\ast}A  & =\left(
+\begin{array}
+[c]{ccc}%
+- & a_{1}^{\ast} & -\\
+& \vdots & \\
+- & a_{k}^{\ast} & -
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+\mid &  & \mid\\
+a_{1} & \cdots & a_{k}\\
+\mid &  & \mid
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{ccc}%
+a_{1}^{\ast}a_{1} & \cdots & a_{1}^{\ast}a_{k}\\
+\vdots & \ddots & \vdots\\
+a_{k}^{\ast}a_{1} & \cdots & a_{k}^{\ast}a_{k}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccc}%
+\left\vert \left\vert a_{1}\right\vert \right\vert ^{2} & \cdots &
+\left\langle a_{1},a_{k}\right\rangle \\
+\vdots & \ddots & \vdots\\
+\left\langle a_{k},a_{1}\right\rangle  & \cdots & \left\vert \left\vert
+a_{k}\right\vert \right\vert ^{2}%
+\end{array}
+\right)  .
+\end{align*}
+On the other hand,%
+\[
+I_{k}=\left(
+\begin{array}
+[c]{ccc}%
+1 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 1
+\end{array}
+\right)  .
+\]
+Thus, $A^{\ast}A=I_{k}$ holds if and only if we have%
+\[
+\left\langle a_{p},a_{q}\right\rangle =0\ \ \ \ \ \ \ \ \ \ \text{for all
+}p\neq q
+\]
+and%
+\[
+\left\vert \left\vert a_{p}\right\vert \right\vert ^{2}%
+=1\ \ \ \ \ \ \ \ \ \ \text{for each }p.
+\]
+IOW, it holds if and only if we have%
+\[
+a_{p}\perp a_{q}\ \ \ \ \ \ \ \ \ \ \text{for all }p\neq q
+\]
+and%
+\[
+\left\vert \left\vert a_{1}\right\vert \right\vert =\left\vert \left\vert
+a_{2}\right\vert \right\vert =\cdots=\left\vert \left\vert a_{k}\right\vert
+\right\vert =1.
+\]
+IOW, it holds if and only if $\left(  a_{1},a_{2},\ldots,a_{k}\right)  $ is
+orthonormal. Qed.
+\end{proof}
+
+Isometries are called isometries because they preserve lengths:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times k}$ be an isometry. Then, each $x\in
+\mathbb{C}^{k}$ satisfies $\left\vert \left\vert Ax\right\vert \right\vert
+=\left\vert \left\vert x\right\vert \right\vert $.
+\end{proposition}
+
+\begin{proof}
+We have $A^{\ast}A=I_{k}$ (since $A$ is an isometry). Let $x\in\mathbb{C}^{k}%
+$. By definition, $\left\vert \left\vert Ax\right\vert \right\vert
+=\sqrt{\left\langle Ax,Ax\right\rangle }$, so that%
+\begin{align*}
+\left\vert \left\vert Ax\right\vert \right\vert ^{2}  & =\left\langle
+Ax,Ax\right\rangle =\underbrace{\left(  Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast
+}}Ax\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\langle u,v\right\rangle
+=v^{\ast}u\right)  \\
+& =x^{\ast}\underbrace{A^{\ast}A}_{=I_{k}}x=x^{\ast}x=\left\langle
+x,x\right\rangle =\left\vert \left\vert x\right\vert \right\vert ^{2}.
+\end{align*}
+Hence, $\left\vert \left\vert Ax\right\vert \right\vert =\left\vert \left\vert
+x\right\vert \right\vert $.
+\end{proof}
+
+\subsection{Unitary matrices}
+
+\begin{definition}
+A matrix $U\in\mathbb{C}^{n\times k}$ is said to be \textbf{unitary} if both
+$U$ and $U^{\ast}$ are isometries.
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & -1
+\end{array}
+\right)  $ is unitary. Indeed, it is easy to see that $A$ is an isometry, but
+$A^{\ast}$ is therefore also an isometry, since $A^{\ast}=A$. Thus, $A$ is unitary.
+
+\textbf{(b)} A $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+\lambda
+\end{array}
+\right)  $ is unitary if and only if $\left\vert \lambda\right\vert =1$.
+
+\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is an
+isometry and thus unitary.
+\end{example}
+
+
+\end{document}

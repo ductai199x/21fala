@@ -1,0 +1,506 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, September 27, 2021 11:50:44}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 4}
+
+\section{Schur triangularization (cont'd)}
+
+\subsection{Schur triangularization}
+
+We are now ready for one more matrix decomposition, the so-called
+\textbf{Schur triangularization} (aka \textbf{Schur decomposition}):
+
+\begin{theorem}
+[Schur triangularization theorem]Let $A\in\mathbb{C}^{n\times n}$. Then, there
+exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ and an upper-triangular matrix $T\in\mathbb{C}^{n\times
+n}$ such that $A=UTU^{\ast}$.
+
+In other words, $A$ is unitary similar to some upper-triangular matrix.
+\end{theorem}
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & 3\\
+-3 & 7
+\end{array}
+\right)  $. Then, a Schur triangularization of $A$ is $A=UTU^{\ast}$, where%
+\[
+U=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ T=\left(
+\begin{array}
+[c]{cc}%
+4 & 6\\
+0 & 4
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+\begin{proof}
+Induction on $n$.
+
+\textit{Base case} ($n=0$) is trivial.
+
+\textit{Induction step:} (From $n-1$ to $n$:)
+
+Suppose that we have proved the theorem for $\left(  n-1\right)  \times\left(
+n-1\right)  $-matrices.
+
+Let us now prove it for $n\times n$-matrices.
+
+So let $A\in\mathbb{C}^{n\times n}$. Since $n>0$, this matrix $A$ has at least
+one eigenvalue (by the FTA).
+
+Fix some eigenvalue $\lambda$ of $A$, and let $x\neq0$ be an eigenvector for
+this eigenvalue.
+
+Let $u_{1}=\dfrac{1}{\left\vert \left\vert x\right\vert \right\vert }x$.
+Choose vectors $u_{2},u_{3},\ldots,u_{n}$ such that $\left(  u_{1}%
+,u_{2},\ldots,u_{n}\right)  $ is an orthonormal basis of $\mathbb{C}^{n}$. (We
+can do this, by a lemma from the lectures before.)
+
+Let $U$ be the matrix with columns $u_{1},u_{2},\ldots,u_{n}$. Then, $U$ is
+unitary (by Theorem 1.5.3 $\mathcal{E}\Longrightarrow\mathcal{A}$). Hence,
+$U^{\ast}$ is unitary.
+
+Now, by standard properties of matrix multiplication, we have%
+\[
+\left(  AU\right)  _{\bullet,1}=A\underbrace{U_{\bullet,1}}_{=u_{1}}%
+=Au_{1}=\lambda u_{1}%
+\]
+(since $u_{1}$, being a scalar multiple of $x$, is an eigenvector of $A$ for
+eigenvalue $\lambda$). Thus,%
+\begin{align*}
+\left(  U^{\ast}AU\right)  _{\bullet,1}  & =U^{\ast}\left(  AU\right)
+_{\bullet,1}=U^{\ast}\lambda u_{1}=\lambda U^{\ast}\underbrace{u_{1}%
+}_{=U_{\bullet,1}}\\
+& =\lambda\underbrace{U^{\ast}U_{\bullet,1}}_{=\left(  U^{\ast}U\right)
+_{\bullet,1}}=\lambda\left(  \underbrace{U^{\ast}U}_{=I_{n}}\right)
+_{\bullet,1}=\lambda\left(  I_{n}\right)  _{\bullet,1}.
+\end{align*}
+In other words,%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & \ast & \ast & \cdots & \ast\\
+0 & \ast & \ast & \cdots & \ast\\
+0 & \ast & \ast & \cdots & \ast\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & \ast & \ast & \cdots & \ast
+\end{array}
+\right)  ,
+\]
+where the asterisk ($\ast$) means an entry that you don't know or don't care about.
+
+Let us write this in block-matrix notation:%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda & p\\
+0 & B
+\end{array}
+\right)  ,
+\]
+where $p\in\mathbb{C}^{1\times\left(  n-1\right)  }$ is a row vector and
+$B\in\mathbb{C}^{\left(  n-1\right)  \times\left(  n-1\right)  }$ is a matrix.
+(The \textquotedblleft$0$\textquotedblright\ here is actually the zero vector
+in $\mathbb{C}^{n-1}$.)
+
+Now, by the induction hypothesis, $B$ is unitary similar to an
+upper-triangular matrix. In other words, there is a unitary matrix
+$V\in\mathbb{C}^{\left(  n-1\right)  \times\left(  n-1\right)  }$ and an
+upper-triangular $S$ such that $VBV^{\ast}=S$. Consider these $V$ and $S$.
+
+Now, let $W=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  $. This is a block-diagonal matrix, with $\left(
+\begin{array}
+[c]{c}%
+1
+\end{array}
+\right)  $ and $V$ being its diagonal blocks. Hence, $W^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  $. Moreover, $W$ is a unitary matrix (since it is a block-diagonal
+matrix whose diagonal blocks are unitary). Thus, $WU^{\ast}$ is unitary (being
+the product of the two unitary matrices $W$ and $U^{\ast}$).
+
+Now,%
+\begin{align*}
+& \underbrace{W}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  }\underbrace{U^{\ast}AU}_{=\left(
+\begin{array}
+[c]{cc}%
+\lambda & p\\
+0 & B
+\end{array}
+\right)  }\underbrace{W^{\ast}}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  }\\
+& =\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda & p\\
+0 & B
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cc}%
+1\cdot\lambda\cdot1 & 1\cdot p\cdot V^{\ast}\\
+V\cdot0\cdot1 & V\cdot B\cdot V^{\ast}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda & pV^{\ast}\\
+0 & VBV^{\ast}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda & pV^{\ast}\\
+0 & S
+\end{array}
+\right)  .
+\end{align*}
+This matrix is upper-triangular (since $S$ is upper-triangular). However,
+$WU^{\ast}AUW^{\ast}$ is unitary similar to $A$, because%
+\[
+WU^{\ast}A\underbrace{UW^{\ast}}_{\substack{=U^{\ast\ast}W^{\ast}\\=\left(
+WU^{\ast}\right)  ^{\ast}}}=\underbrace{WU^{\ast}}_{\text{unitary}}A\left(
+WU^{\ast}\right)  ^{\ast}.
+\]
+Thus, we have found an upper-triangular matrix (namely, $WU^{\ast}AUW^{\ast}$)
+that is unitary similar to $A$. Qed.
+\end{proof}
+
+So much for making a single matrix triangular.
+
+Can we make a whole bunch of matrices triangular simultaneously (using the
+same unitary $U$)?
+
+Recall that two square matrices $A$ and $B$ are said to \emph{commute} if
+$AB=BA$. For example, any two powers of a single matrix commute (because if
+$A$ is a square matrix, then $A^{k}A^{\ell}=A^{\ell}A^{k}$).
+
+\begin{lemma}
+Let $n>0$. Let $\mathcal{F}$ be a subset of $\mathbb{C}^{n\times n}$. Assume
+that any two matrices in $\mathcal{F}$ commute (i.e., for any $A,B\in
+\mathcal{F}$, we have $AB=BA$).
+
+Then, there exists a nonzero $x\in\mathbb{C}^{n}$ such that $x$ is an
+eigenvector of each $A\in\mathcal{F}$.
+\end{lemma}
+
+In short: A family of pairwise commuting matrices always has a common eigenvector.
+
+\begin{proof}
+An $\mathcal{F}$\textbf{-invariant subspace} of $\mathbb{C}^{n}$ shall mean a
+vector subspace $V$ of $\mathbb{C}^{n}$ such that%
+\[
+AV\subseteq V\ \ \ \ \ \ \ \ \ \ \text{for each }A\in\mathcal{F}.
+\]
+Here,%
+\[
+AV:=\left\{  Av\ \mid\ v\in V\right\}  .
+\]
+
+
+For example, $\left\{  0\right\}  $ and $\mathbb{C}^{n}$ itself are two
+$\mathcal{F}$-invariant subspaces. There might be further $\mathcal{F}%
+$-invariant subspaces between these two.
+
+[\textbf{Example:} If $n=2$ and $\mathcal{F}=\left\{  \left(
+\begin{array}
+[c]{cc}%
+1 & a\\
+0 & 2
+\end{array}
+\right)  \ \mid\ a\in\mathbb{R}\right\}  $, then $\operatorname*{span}\left(
+e_{1}\right)  $ is an $\mathcal{F}$-invariant subspace.]
+
+Let $W$ be an $\mathcal{F}$-invariant subspace of $\mathbb{C}^{n}$ that has
+lowest possible positive dimension.
+
+We will show that each $x\in W$ is an eigenvector of each $A\in\mathcal{F}$.
+
+Indeed, fix any $A\in\mathcal{F}$. Then, $AW\subseteq W$ (since $W$ is
+$\mathcal{F}$-invariant). Thus, $A$ restricts to a $\mathbb{C}$-linear map
+$A\mid_{W}:W\rightarrow W$. Since $\dim W>0$, this $\mathbb{C}$-linear map
+$A\mid_{W}$ has an eigenvalue $\lambda$ and a corresponding nonzero
+eigenvector $w\neq0$. So $w\in W$ is a nonzero vector satisfying $Aw=\lambda
+w$.
+
+Let%
+\[
+W_{A,\lambda}:=\left\{  y\in W\ \mid\ Ay=\lambda y\right\}  .
+\]
+This $W_{A,\lambda}$ is a vector subspace of $W$. It has positive dimension,
+because it contains the nonzero vector $w$. Furthermore, I claim that this
+subspace $W_{A,\lambda}$ is $\mathcal{F}$-invariant.
+
+[\textit{Proof:} Let $B\in\mathcal{F}$ be arbitrary. We must prove that
+$BW_{A,\lambda}\subseteq W_{A,\lambda}$. In other words, we must prove that
+$Bz\in W_{A,\lambda}$ for each $z\in W_{A,\lambda}$.
+
+Indeed, let $z\in W_{A,\lambda}$. Then, we must show that $Bz\in W_{A,\lambda
+}$. It is clear that $Bz\in W$, since $z\in W_{A,\lambda}\subseteq W$ and
+because $W$ is $\mathcal{F}$-invariant. Furthermore, we have $ABz=\lambda Bz$
+because%
+\[
+\underbrace{AB}_{=BA}z=B\underbrace{Az}_{\substack{=\lambda z\\\text{(since
+}z\in W_{A,\lambda}\text{)}}}=B\lambda z=\lambda Bz.
+\]
+So we conclude that $Bz\in W_{A,\lambda}$. This shows that $W_{A,\lambda}$ is
+$\mathcal{F}$-invariant.]
+
+So $W_{A,\lambda}$ is an $\mathcal{F}$-invariant subspace of $\mathbb{C}^{n}$
+of positive dimension that is a subspace of $W$. However, $W$ is an
+$\mathcal{F}$-invariant subspace of smallest positive dimension. Thus,
+$W_{A,\lambda}$ must have the same dimension as $W$. Hence, $W_{A,\lambda}=W$
+(since a subspace of $W$ having the same dimension as $W$ must just be $W$
+itself). This shows that any vector in $W$ is an eigenvector of $A$ (since it
+belongs to $W_{A,\lambda}=\left\{  y\in W\ \mid\ Ay=\lambda y\right\}  $).
+
+Forget that we fixed $A$. We thus have shown that any vector in $W$ is an
+eigenvector of each $A\in\mathcal{F}$. Since $W$ has positive dimension, there
+exists some nonzero vector in $W$. Thus, this vector is an eigenvector of each
+$A\in\mathcal{F}$. This proves the lemma.
+\end{proof}
+
+\begin{theorem}
+[Schur triangularization for many commuting matrices]Let $\mathcal{F}$ be a
+subset of $\mathbb{C}^{n\times n}$. Assume that any two matrices in
+$\mathcal{F}$ commute (i.e., for any $A,B\in\mathcal{F}$, we have $AB=BA$).
+
+Then, there exists a unitary $n\times n$-matrix $U$ such that%
+\[
+UAU^{\ast}\text{ is upper-triangular for all }A\in\mathcal{F}.
+\]
+
+\end{theorem}
+
+\begin{proof}
+Same induction as for the previous theorem. But now, instead of picking an
+eigenvector of a single matrix $A$, we pick a common eigenvector for all
+matrices in $\mathcal{F}$. The existence of such an eigenvector is guaranteed
+by the preceding lemma.
+\end{proof}
+
+Note that the theorem has no converse. Indeed, it is well possible that a set
+$\mathcal{F}$ of matrices can be simultaneously triangularized by one and the
+same unitary matrix $U$, but these matrices do not pairwise commute. For
+example, $\mathcal{F}=\left\{  \left(
+\begin{array}
+[c]{ccc}%
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{array}
+\right)  \right\}  $.
+
+
+
+
+\end{document}

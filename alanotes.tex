@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, September 24, 2021 15:15:52}
+%TCIDATA{LastRevised=Tuesday, September 28, 2021 22:29:36}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -470,22 +470,27 @@ x_{1} & x_{2} & \cdots & x_{n}%
 \end{array}
 \right)  ^{T}$. Then, the definition of $\left\langle x,x\right\rangle $
 yields%
-\begin{align*}
+\begin{align}
 \left\langle x,x\right\rangle  &  =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
-}+\cdots+x_{n}\overline{x_{n}}\\
+}+\cdots+x_{n}\overline{x_{n}}\nonumber\\
 &  =\left\vert x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}%
-+\cdots+\left\vert x_{n}\right\vert ^{2},
-\end{align*}
++\cdots+\left\vert x_{n}\right\vert ^{2}%
+,\label{pf.prop.unitary.innerprod.pos.1}%
+\end{align}
 since any complex number $z$ satisfies $z\overline{z}=\left\vert z\right\vert
-^{2}$. Since the absolute values $\left\vert x_{1}\right\vert ,\left\vert
+^{2}$. Since all the absolute values $\left\vert x_{1}\right\vert ,\left\vert
 x_{2}\right\vert ,\ldots,\left\vert x_{n}\right\vert $ are real, this yields
 immediately that $\left\langle x,x\right\rangle $ is a nonnegative real. Thus,
 Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved.
-Furthermore, if $x\neq0$, then at least one $i\in\left[  n\right]  $ satisfies
-$x_{i}\neq0$ and therefore $\left\vert x_{i}\right\vert ^{2}>0$; but this
-entails $\left\langle x,x\right\rangle =\left\vert x_{1}\right\vert
+
+\textbf{(b)} Assume that $x\neq0$. Thus, at least one $i\in\left[  n\right]  $
+satisfies $x_{i}\neq0$ and therefore $\left\vert x_{i}\right\vert ^{2}>0$.
+This entails $\left\langle x,x\right\rangle =\left\vert x_{1}\right\vert
 ^{2}+\left\vert x_{2}\right\vert ^{2}+\cdots+\left\vert x_{n}\right\vert
-^{2}>0$. This proves Proposition \ref{prop.unitary.innerprod.pos} \textbf{(b)}.
+^{2}>0$ (because a sum of nonnegative reals that has at least one positive
+addend is always $>0$). In view of (\ref{pf.prop.unitary.innerprod.pos.1}),
+this rewrites as $\left\langle x,x\right\rangle >0$. This proves Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)}.
 \end{proof}
 
 \begin{definition}
@@ -564,7 +569,7 @@ $\left(  x,y\right)  $ of vectors is linearly dependent.
 \end{theorem}
 
 \begin{proof}
-[Prof of Theorem \ref{thm.unitary.innerprod.cs}.]If $x=0$, then Theorem
+[Proof of Theorem \ref{thm.unitary.innerprod.cs}.]If $x=0$, then Theorem
 \ref{thm.unitary.innerprod.cs} is obvious (because the inequality in part
 \textbf{(a)} simplifies to $0\geq0$, and since the pair $\left(  0,y\right)  $
 of vectors is always linearly dependent). Hence, for the rest of this proof,
@@ -582,8 +587,8 @@ y,x\right\rangle }=\left\langle x,y\right\rangle $ (by Proposition
 Now, Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} (applied to
 $bx-ay$ instead of $x$) yields that
 \begin{equation}
-\left\langle bx-ay,bx-ay\right\rangle \geq
-0.\label{pf.thm.unitary.innerprod.cs.main}%
+\left\langle bx-ay,bx-ay\right\rangle \geq0.
+\label{pf.thm.unitary.innerprod.cs.main}%
 \end{equation}
 Since%
 \begin{align*}
@@ -597,7 +602,7 @@ ay,bx-ay\right\rangle }_{\substack{=\left\langle ay,bx\right\rangle
 \text{by Proposition \ref{prop.unitary.innerprod.props} \textbf{(g)}}\right)
 \\
 &  =\left\langle bx,bx\right\rangle -\left\langle bx,ay\right\rangle -\left(
-\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right)  \\
+\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right) \\
 &  =\underbrace{\left\langle bx,bx\right\rangle }_{\substack{=b\left\langle
 x,bx\right\rangle \\\text{(by Proposition \ref{prop.unitary.innerprod.props}
 \textbf{(e)})}}}+\underbrace{\left\langle ay,ay\right\rangle }%
@@ -1449,14 +1454,15 @@ entails $U^{\ast}U=I_{k}$, which shows that $U$ is an isometry).
 
 \item $\mathcal{F}\Longrightarrow\mathcal{D}$\textit{:} Assume that statement
 $\mathcal{F}$ holds. Thus, $U$ is an isometry; that is, we have $U^{\ast
-}U=I_{k}=I_{n}$ (since $k=n$). However, it is known\footnote{One part of the
-infamous \textquotedblleft inverse matrix theorem\textquotedblright\ that
-lists many equivalent conditions for invertibility.} that a square matrix $A$
-that has a left inverse (i.e., a further square matrix $B$ satisfying $BA=I$)
-must be invertible. We can apply this to the square matrix $U$ (which has a
-left inverse, since $U^{\ast}U=I_{n}$), and thus conclude that $U$ is
-invertible. Hence, from $U^{\ast}U=I_{n}$, we obtain $U^{-1}=U^{\ast}$.
-Therefore, statement $\mathcal{D}$ holds. We have thus proved the implication
+}U=I_{k}=I_{n}$ (since $k=n$). However, it is known\footnote{This is one part
+of the infamous \textquotedblleft inverse matrix theorem\textquotedblright%
+\ that lists many equivalent conditions for invertibility. See, for example,
+\cite[Chapter 2, Proposition 3.8]{Treil15}.} that a square matrix $A$ that has
+a left inverse (i.e., a further square matrix $B$ satisfying $BA=I$) must be
+invertible. We can apply this to the square matrix $U$ (which has a left
+inverse, since $U^{\ast}U=I_{n}$), and thus conclude that $U$ is invertible.
+Hence, from $U^{\ast}U=I_{n}$, we obtain $U^{-1}=U^{\ast}$. Therefore,
+statement $\mathcal{D}$ holds. We have thus proved the implication
 $\mathcal{F}\Longrightarrow\mathcal{D}$.
 \end{itemize}
 
@@ -1567,9 +1573,9 @@ unitary group (i.e., the set of all unitary $n\times n$-matrices).}%
 \left\{  \text{skew-Hermitian matrices in }\mathbb{C}^{n\times n}\right\}   &
 \rightarrow\left\{  U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}%
 \right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  ,\\
-S  &  \mapsto\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}+S\right)  ;
+S &  \mapsto\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}+S\right)  .
 \end{align*}
-this map is known as the \emph{Cayley parametrization} of the unitary matrices
+This map is known as the \emph{Cayley parametrization} of the unitary matrices
 (and can be seen as an $n$-dimensional generalization of the stereographic
 projection from the imaginary axis to the unit circle -- which is what it does
 for $n=1$). Exercise \ref{exe.unitary.skew-herm.1} \textbf{(e)} shows that it
@@ -1589,8 +1595,8 @@ matrix. Prove the following:
 \textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
 each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
 
-\textbf{(b)} If $A$ is invertible, then the matrix $\lambda A+I_{n}$ is
-invertible for all but finitely many $\lambda\in\mathbb{C}$.
+\textbf{(b)} The matrix $\lambda A+I_{n}$ is invertible for all but finitely
+many $\lambda\in\mathbb{C}$.
 
 [\textbf{Hint:} The determinant $\det\left(  \lambda A+I_{n}\right)  $ is a
 polynomial function in $\lambda$.]
@@ -1812,8 +1818,10 @@ formed out of the matrices $A\left(  i,j\right)  $; the single matrices
 $A\left(  i,j\right)  $ are called its \emph{blocks}.
 
 One of the most useful properties of block matrices is that they can be
-multiplied block by block (i.e., by the same formula as for regular matrices)
-if the products make sense. More precisely, the following holds:
+multiplied \textquotedblleft as if the blocks were numbers\textquotedblright%
+\ (i.e., by the same formula as for regular matrices), provided that the
+products make sense. Let us state this more precisely -- first for the case of
+four blocks:
 
 \begin{proposition}
 \label{prop.blockmatrix.mult-2x2}Let $\mathbb{F}$ be a field. Let $n$,
@@ -1848,11 +1856,67 @@ CA^{\prime}+DC^{\prime} & CB^{\prime}+DD^{\prime}%
 
 \end{proposition}
 
-Note that the products on the right hand side are products of matrices, so the
-order of their factors is important (e.g., we cannot replace $AA^{\prime}$ by
-$A^{\prime}A$), since matrix multiplication is not commutative. So our block
-matrices can be multiplied block by block, but only if you keep the factors in
-their natural order!
+For comparison, here is the formula for the product of two $2\times2$-matrices
+(consisting of numbers, not blocks):%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+a^{\prime} & b^{\prime}\\
+c^{\prime} & d^{\prime}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+aa^{\prime}+bc^{\prime} & ab^{\prime}+bd^{\prime}\\
+ca^{\prime}+dc^{\prime} & cb^{\prime}+dd^{\prime}%
+\end{array}
+\right)
+\]
+(for any $a,b,c,d,a^{\prime},b^{\prime},c^{\prime},d^{\prime}\in\mathbb{F}$).
+Thus, Proposition \ref{prop.blockmatrix.mult-2x2} is saying that the same
+formula can be used to multiply block matrices made of appropriately sized
+blocks. Thus, roughly speaking, we can multiply block matrices
+\textquotedblleft as if the blocks were numbers\textquotedblright. To be fully
+honest, two caveats apply here:
+
+\begin{itemize}
+\item In the formula for $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+a^{\prime} & b^{\prime}\\
+c^{\prime} & d^{\prime}%
+\end{array}
+\right)  $, we can write the right hand side in many different ways: e.g., we
+can replace $aa^{\prime}$ by $a^{\prime}a$, because multiplication of numbers
+is commutative. In contrast, multiplication of matrices is not commutative, so
+that we cannot replace $AA^{\prime}$ by $A^{\prime}A$ in Proposition
+\ref{prop.blockmatrix.mult-2x2}. Thus, we can multiply block matrices
+\textquotedblleft as if the blocks were numbers\textquotedblright, but we have
+to keep the blocks in the correct order (viz., in the order in which they
+appear on the left hand side).
+
+\item We cannot use Proposition \ref{prop.blockmatrix.mult-2x2} to multiply
+two arbitrary block matrices; indeed, Proposition
+\ref{prop.blockmatrix.mult-2x2} requires the blocks to have \textquotedblleft
+matching\textquotedblright\ dimensions. For example, $A$ must have as many
+columns as $A^{\prime}$ has rows (this is enforced by the assumptions
+$A\in\mathbb{F}^{n\times m}$ and $A^{\prime}\in\mathbb{F}^{m\times\ell}$). If
+this wasn't the case, then the product $AA^{\prime}$ on the right hand side
+wouldn't even make sense!
+\end{itemize}
 
 \begin{proof}
 [Proof of Proposition \ref{prop.blockmatrix.mult-2x2}.]Just check that each
@@ -2012,19 +2076,19 @@ d^{\prime} & e^{\prime}%
 \left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  & 0\\
+A\left(  1,1\right)   & 0\\
 0 & A\left(  2,2\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cc}%
-B\left(  1,1\right)  & 0\\
+B\left(  1,1\right)   & 0\\
 0 & B\left(  2,2\right)
 \end{array}
 \right)  =\left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  B\left(  1,1\right)  & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)   & 0\\
 0 & A\left(  2,2\right)  B\left(  2,2\right)
 \end{array}
 \right)  ,
@@ -2049,10 +2113,10 @@ a^{\prime} & 0 & 0\\
 \begin{array}
 [c]{ccc}%
 aa^{\prime} & 0 & 0\\
-0 & cd^{\prime}+bb^{\prime} & ce^{\prime}+bc^{\prime}\\
-0 & ed^{\prime}+db^{\prime} & ee^{\prime}+dc^{\prime}%
+0 & bb^{\prime}+cd^{\prime} & bc^{\prime}+ce^{\prime}\\
+0 & db^{\prime}+ed^{\prime} & dc^{\prime}+ee^{\prime}%
 \end{array}
-\right)  \allowbreak.
+\right)  .
 \]
 
 \end{example}
@@ -2107,7 +2171,7 @@ A_{1}^{\ast} & 0 & \cdots & 0\\
 Multiplying this equality by (\ref{pf.prop.blockmatrix.unitary-diag.A=}), we
 obtain%
 \begin{align*}
-A^{\ast}A  &  =\left(
+A^{\ast}A &  =\left(
 \begin{array}
 [c]{cccc}%
 A_{1}^{\ast} & 0 & \cdots & 0\\
@@ -2123,7 +2187,7 @@ A_{1} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A_{u}%
 \end{array}
-\right) \\
+\right)  \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
@@ -2170,18 +2234,18 @@ I_{n_{1}} & 0 & \cdots & 0\\
 \]
 holds, i.e., if and only if we have $A_{i}^{\ast}A_{i}=I_{n_{i}}$ for each
 $i\in\left[  u\right]  $. Likewise, we can see that $AA^{\ast}=I_{N}$ holds if
-and only if $A_{i}A_{i}^{\ast}=I_{n_{i}}$ for each $i\in\left[  u\right]  $.
-Hence, we have the following chain of equivalences:%
+and only if we have $A_{i}A_{i}^{\ast}=I_{n_{i}}$ for each $i\in\left[
+u\right]  $. Hence, we have the following chain of equivalences:%
 \begin{align*}
-&  \ \left(  A\text{ is unitary}\right) \\
+&  \ \left(  A\text{ is unitary}\right)  \\
 &  \Longleftrightarrow\ \left(  AA^{\ast}=I_{N}\text{ and }A^{\ast}%
-A=I_{N}\right) \\
+A=I_{N}\right)  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
 }\mathcal{A}\Longleftrightarrow\mathcal{C}\text{ in Theorem
-\ref{thm.unitary.unitary.eqs}}\right) \\
+\ref{thm.unitary.unitary.eqs}}\right)  \\
 &  \Longleftrightarrow\ \left(  \text{we have }A_{i}A_{i}^{\ast}=I_{n_{i}%
 }\text{ and }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[  u\right]
-\right) \\
+\right)  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
@@ -2192,12 +2256,12 @@ u\right]  \text{, and since we have}\\
 \text{we have }A_{i}^{\ast}A_{i}=I_{n_{i}}\text{ for each }i\in\left[
 u\right]
 \end{array}
-\right) \\
+\right)  \\
 &  \Longleftrightarrow\ \left(  \text{the matrix }A_{i}\text{ is unitary for
-each }i\in\left[  u\right]  \right) \\
+each }i\in\left[  u\right]  \right)  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by the equivalence
 }\mathcal{C}\Longleftrightarrow\mathcal{A}\text{ in Theorem
-\ref{thm.unitary.unitary.eqs}}\right) \\
+\ref{thm.unitary.unitary.eqs}}\right)  \\
 &  \Longleftrightarrow\ \left(  \text{all }u\text{ matrices }A_{1}%
 ,A_{2},\ldots,A_{u}\text{ are unitary}\right)  .
 \end{align*}
@@ -2205,7 +2269,18 @@ But this is precisely what we need to show. Thus, Proposition
 \ref{prop.blockmatrix.unitary-diag} is proven.
 \end{proof}
 
-\subsection{The Gram--Schmidt process}
+\subsection{The Gram--Schmidt process}%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 3 starts here.}\\\hline\hline
+\end{tabular}
+\ \ \
+\]
+
+
+We now come to one of the most crucial algorithms in linear algebra.
 
 \begin{theorem}
 [Gram--Schmidt process]\label{thm.unitary.gs}Let $\left(  v_{1},v_{2}%
@@ -2995,9 +3070,10 @@ $ of vectors in $\mathbb{C}^{n}$ that satisfies%
 \end{corollary}
 
 \begin{proof}
-[Proof of Corollary \ref{cor.unitary.gs-2nor}.]Theorem \ref{thm.unitary.gs-2}
-shows that there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots
-,z_{m}\right)  $ of nonzero vectors in $\mathbb{C}^{n}$ that satisfies%
+[Proof of Corollary \ref{cor.unitary.gs-2nor}.]We have $m\leq n$. Hence,
+Theorem \ref{thm.unitary.gs-2} shows that there is an orthogonal tuple
+$\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ of nonzero vectors in
+$\mathbb{C}^{n}$ that satisfies%
 \[
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
 \operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
@@ -3100,18 +3176,18 @@ A=\underbrace{\left(
 \end{example}
 
 \begin{proof}
-[Proof of Theorem \ref{thm.unitary.QR1} (sketched).]Recall that $A_{\bullet
-,1},A_{\bullet,2},\ldots,A_{\bullet,m}$ denote the $m$ columns of the matrix
-$A$. Applying Corollary \ref{cor.unitary.gs-2nor} to $\left(  v_{1}%
-,v_{2},\ldots,v_{m}\right)  =\left(  A_{\bullet,1},A_{\bullet,2}%
-,\ldots,A_{\bullet,m}\right)  $, we conclude that there is an orthonormal
-tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)  $ of vectors in $\mathbb{C}%
-^{n}$ that satisfies%
+[Proof of Theorem \ref{thm.unitary.QR1}.]Recall that $A_{\bullet,1}%
+,A_{\bullet,2},\ldots,A_{\bullet,m}$ denote the $m$ columns of the matrix $A$.
+We have $m\leq n$ (since $n\geq m$). Hence, applying Corollary
+\ref{cor.unitary.gs-2nor} to $\left(  v_{1},v_{2},\ldots,v_{m}\right)
+=\left(  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet,m}\right)  $, we
+conclude that there is an orthonormal tuple $\left(  q_{1},q_{2},\ldots
+,q_{m}\right)  $ of vectors in $\mathbb{C}^{n}$ that satisfies%
 \begin{align}
 \operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet
 ,j}\right\}   &  \subseteq\operatorname*{span}\left\{  q_{1},q_{2}%
-,\ldots,q_{j}\right\} \label{pf.thm.unitary.QR1.spansequal}\\
-\ \ \ \ \ \ \ \ \ \ \text{for all }j  &  \in\left[  m\right]  .\nonumber
+,\ldots,q_{j}\right\}  \label{pf.thm.unitary.QR1.spansequal}\\
+\ \ \ \ \ \ \ \ \ \ \text{for all }j &  \in\left[  m\right]  .\nonumber
 \end{align}
 Consider this tuple $\left(  q_{1},q_{2},\ldots,q_{m}\right)  $. Let
 $Q\in\mathbb{C}^{n\times m}$ be the matrix whose columns are $q_{1}%
@@ -3119,8 +3195,8 @@ $Q\in\mathbb{C}^{n\times m}$ be the matrix whose columns are $q_{1}%
 \ref{prop.unitary.innerprod.isometry.2}, since its columns form an orthonormal
 tuple). The definition of $Q$ shows that%
 \begin{equation}
-Q_{\bullet,i}=q_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]  .
-\label{pf.thm.unitary.QR1.Qbull}%
+Q_{\bullet,i}=q_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
+.\label{pf.thm.unitary.QR1.Qbull}%
 \end{equation}
 
 
@@ -3128,19 +3204,19 @@ Now, let $j\in\left[  m\right]  $. Then,%
 \[
 A_{\bullet,j}\in\operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet
 ,2},\ldots,A_{\bullet,j}\right\}  \subseteq\operatorname*{span}\left\{
-q_{1},q_{2},\ldots,q_{j}\right\}
+q_{1},q_{2},\ldots,q_{j}\right\}  \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.thm.unitary.QR1.spansequal})}\right)  .
 \]
-(by (\ref{pf.thm.unitary.QR1.spansequal})). In other words, there exist
-scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}\in\mathbb{C}$ such that $A_{\bullet
-,j}=\sum_{i=1}^{j}r_{i,j}q_{i}$. Consider these scalars $r_{1,j}%
-,r_{2,j},\ldots,r_{j,j}$. Also, set
+In other words, there exist scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}%
+\in\mathbb{C}$ such that $A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}$. Consider
+these scalars $r_{1,j},r_{2,j},\ldots,r_{j,j}$. Also, set
 \begin{equation}
-r_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for each integer }i>j.
-\label{pf.thm.unitary.QR1.triang}%
+r_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for each integer }%
+i>j.\label{pf.thm.unitary.QR1.triang}%
 \end{equation}
 Thus,%
 \begin{equation}
-A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}=\sum_{i=1}^{m}r_{i,j}q_{i}
+A_{\bullet,j}=\sum_{i=1}^{j}r_{i,j}q_{i}=\sum_{i=1}^{m}r_{i,j}q_{i}%
 \label{pf.thm.unitary.QR1.col=}%
 \end{equation}
 (since $\sum_{i=1}^{m}r_{i,j}q_{i}=\sum_{i=1}^{j}r_{i,j}q_{i}+\sum_{i=j+1}%
@@ -3152,23 +3228,34 @@ defined scalars $r_{1,j},r_{2,j},r_{3,j},\ldots\in\mathbb{C}$ that satisfy
 (\ref{pf.thm.unitary.QR1.triang}) and (\ref{pf.thm.unitary.QR1.col=}).
 
 Now, let $R\in\mathbb{C}^{m\times m}$ be the $m\times m$-matrix whose $\left(
-i,j\right)  $-th entry is $r_{i,j}$ for each $i,j\in\left[  n\right]  $. This
+i,j\right)  $-th entry is $r_{i,j}$ for each $i,j\in\left[  m\right]  $. This
 matrix $R$ is upper-triangular, because of (\ref{pf.thm.unitary.QR1.triang}).
-The definition of $R$ yields%
+The definition of $R$ yields\footnote{Recall that $M_{i,j}$ is our general
+notation for the $\left(  i,j\right)  $-th entry of a matrix $M$.}%
 \begin{equation}
-R_{i,j}=r_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]  .
-\label{pf.thm.unitary.QR1.Rij=}%
+R_{i,j}=r_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]
+.\label{pf.thm.unitary.QR1.Rij=}%
 \end{equation}
 Furthermore, for each $j\in\left[  m\right]  $, we have%
 \begin{align*}
-A_{\bullet,j}  &  =\sum_{i=1}^{m}\underbrace{r_{i,j}}_{\substack{=R_{i,j}%
-\\\text{(by (\ref{pf.thm.unitary.QR1.Rij=}))}}}\underbrace{q_{i}%
+A_{\bullet,j} &  =\sum_{i=1}^{m}\underbrace{r_{i,j}}_{\substack{=R_{i,j}%
+\\\text{(by (\ref{pf.thm.unitary.QR1.Rij=}))}}}\ \ \underbrace{q_{i}%
 }_{\substack{=Q_{\bullet,i}\\\text{(by (\ref{pf.thm.unitary.QR1.Qbull}))}%
-}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.QR1.col=})}\right)
-\\
+}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.QR1.col=}%
+)}\right)  \\
 &  =\sum_{i=1}^{m}R_{i,j}Q_{\bullet,i}=\left(  QR\right)  _{\bullet,j}%
 \end{align*}
-(by the definition of the product of two matrices). In other words, $A=QR$.
+(by the definition of the product of two matrices\footnote{Actually, let's be
+a bit more explicit here: The standard definition of the product of two
+matrices yields%
+\[
+\left(  QR\right)  _{k,j}=\sum_{i=1}^{m}\underbrace{Q_{k,i}R_{i,j}}%
+_{=R_{i,j}Q_{k,i}}=\sum_{i=1}^{m}R_{i,j}Q_{k,i}\ \ \ \ \ \ \ \ \ \ \text{for
+each }k\in\left[  n\right]  .
+\]
+In other words, $\left(  QR\right)  _{\bullet,j}=\sum_{i=1}^{m}R_{i,j}%
+Q_{\bullet,i}$, which is precisely what we are claiming.}). In other words,
+$A=QR$.
 
 Thus, we have found an isometry $Q\in\mathbb{C}^{n\times m}$ and an
 upper-triangular matrix $R\in\mathbb{C}^{m\times m}$ such that $A=QR$. This
@@ -3198,15 +3285,20 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 
 \section{Schur triangularization (\cite[Chapter 2]{HorJoh13})}
 
+
+
 \begin{noncompile}%
 \[%
 \begin{tabular}
 [c]{||l||}\hline\hline
 \textbf{Old lecture 2 starts here.}\\\hline\hline
 \end{tabular}
+\ \ \
 \]
 
 \end{noncompile}
+
+
 
 \subsection{Similarity of matrices}
 
@@ -3256,7 +3348,7 @@ The matrix $\left(
 The relation \textquotedblleft similar\textquotedblright\ is easily seen to be
 an equivalence relation:\footnote{Algebraists will recognize the relation
 \textquotedblleft similar\textquotedblright\ (for matrices in $\mathbb{F}%
-^{n\times n}$) as just being the conjugacy relation in the ring $\mathbb{C}%
+^{n\times n}$) as just being the conjugacy relation in the ring $\mathbb{F}%
 ^{n\times n}$ of all $n\times n$-matrices.}
 
 \begin{proposition}
@@ -3643,6 +3735,16 @@ $W^{-1}=W^{\ast}$. Hence, $B=WA\underbrace{W^{\ast}}_{=W^{-1}}=WAW^{-1}$. But
 this shows that $A$ is similar to $B$. Thus, Proposition
 \ref{prop.schurtri.unisim.sim} is proven.
 \end{proof}
+
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 4 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
 
 \subsection{Schur triangularization}
 

@@ -1,0 +1,728 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, September 24, 2021 11:51:58}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 3}
+
+\section{Unitary matrices ([HorJoh13, \S 2.1]) (cont'd)}
+
+\subsection{Administrativa}
+
+Next topics after today:
+
+\begin{itemize}
+\item Normal matrices and the spectral thm for them (lec 4)
+%TCIMACRO{\TEXTsymbol{<}}%
+%BeginExpansion
+$<$%
+%EndExpansion
+-- Scribe: Phil (on Monday)
+
+\item The Cayley--Hamilton theorem (lec 5)
+%TCIMACRO{\TEXTsymbol{<}}%
+%BeginExpansion
+$<$%
+%EndExpansion
+-- Scribe: Atharv (on Wednesday)
+
+\item Sylvester's equation $AX-XB=C$ (lec 5--6)
+%TCIMACRO{\TEXTsymbol{<}}%
+%BeginExpansion
+$<$%
+%EndExpansion
+-- Scribe: Hunter (on Friday)
+
+\item Jordan canonical form (lec 6--7)
+%TCIMACRO{\TEXTsymbol{<}}%
+%BeginExpansion
+$<$%
+%EndExpansion
+-- Scribe: Juliane 
+\end{itemize}
+
+Who scribes?
+
+\subsection{The Gram--Schmidt process (cont'd)}
+
+\begin{theorem}
+[Gram--Schmidt process]Let $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ be a
+linearly independent tuple of vectors in $\mathbb{C}^{n}$.
+
+Then, there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $
+of vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+
+Furthermore, such a tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ can be
+constructed by the following recursive process:
+
+\begin{itemize}
+\item For each $p\in\left[  m\right]  $, if the first $p-1$ entries
+$z_{1},z_{2},\ldots,z_{p-1}$ of this tuple have already been constructed, then
+we define the $p$-th entry $z_{p}$ by%
+\[
+z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}.
+\]
+(Note that when $p=1$, the sum on the RHS is an empty sum, so this equality
+simply becomes $z_{1}=v_{1}$.)
+\end{itemize}
+\end{theorem}
+
+Roughly speaking, the claim of this theorem is that if we start with any
+linearly independent tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of
+vectors in $\mathbb{C}^{n}$, then we can make this tuple orthogonal by
+tweaking it as follows:
+
+\begin{itemize}
+\item we leave $v_{1}$ unchanged;
+
+\item we modify $v_{2}$ by subtracting an appropriate scalar multiple of
+$v_{1}$;
+
+\item we modify $v_{3}$ by subtracting an appropriate linear combination of
+$v_{1}$ and $v_{2}$;
+
+\item and so on.
+\end{itemize}
+
+The above recursive formula tells us which scalar multiples / linear
+combinations to take.
+
+\begin{example}%
+\begin{align*}
+z_{1}  &  =v_{1};\\
+z_{2}  &  =v_{2}-\dfrac{\left\langle v_{2},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1};\\
+z_{3}  &  =v_{3}-\dfrac{\left\langle v_{3},z_{1}\right\rangle }{\left\langle
+z_{1},z_{1}\right\rangle }z_{1}-\dfrac{\left\langle v_{3},z_{2}\right\rangle
+}{\left\langle z_{2},z_{2}\right\rangle }z_{2};\\
+&  \ldots
+\end{align*}
+
+
+See the notes for an actual example (with numbers).
+\end{example}
+
+\begin{proof}
+We must show three things:
+
+\begin{enumerate}
+\item The $z_{1},z_{2},\ldots,z_{m}$ constructed by the recursive process exist.
+
+\item They satisfy $\operatorname*{span}\left\{  v_{1},v_{2},\ldots
+,v_{j}\right\}  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots
+,z_{j}\right\}  $ for all $j\in\left[  m\right]  $.
+
+\item The tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ is orthogonal.
+\end{enumerate}
+
+We will first prove statements 1 and 2 in lockstep:
+
+\begin{statement}
+\textit{Claim 1:} For each $p\in\left\{  0,1,\ldots,m\right\}  $, the vectors
+$z_{1},z_{2},\ldots,z_{p}$ are well-defined and satisfy%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
+\]
+
+\end{statement}
+
+[\textit{Proof of Claim 1:} We induct on $p$. The \textit{base case} ($p=0$)
+is obvious.
+
+For the \textit{induction step}, we fix $p\in\left[  m\right]  $, and we
+assume that the claim holds for $p-1$. In other words, we assume that the
+vectors $z_{1},z_{2},\ldots,z_{p-1}$ are well-defined and satisfy%
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}  . \label{1}%
+\end{equation}
+
+
+We must show that the vectors $z_{1},z_{2},\ldots,z_{p}$ are well-defined and
+satisfy%
+\begin{equation}
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}
+=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  . \label{2}%
+\end{equation}
+
+
+First, we use (1) to conclude that $\left(  z_{1},z_{2},\ldots,z_{p-1}\right)
+$ is linearly independent, since their span has dimension $p-1$. Thus, in
+particular, for each $k\in\left[  p-1\right]  $, we have $z_{k}\neq0$, so that
+$\left\langle z_{k},z_{k}\right\rangle >0$. Thus, in the equality%
+\begin{equation}
+z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}, \label{3}%
+\end{equation}
+the denominators are nonzero, so that $z_{p}$ is well-defined. Thus,
+$z_{1},z_{2},\ldots,z_{p}$ are well-defined.
+
+Now, (2) follows from (1) and (3). (See the notes for details.) So the
+induction is complete, and Claim 1 is proven.]
+
+Now it remains to prove statement 3:
+
+\begin{statement}
+\textit{Claim 2:} For any $j\in\left\{  0,1,\ldots,m\right\}  $, the tuple
+$\left(  z_{1},z_{2},\ldots,z_{j}\right)  $ is orthogonal.
+\end{statement}
+
+[\textit{Proof of Claim 2:} Induct on $j$. The \textit{base case} is trivial.
+
+\textit{Induction step:} Let $p\in\left[  m\right]  $. Assume (as the IH) that
+Claim 2 holds for $j=p-1$. We must show that it holds for $j=p$.
+
+By our IH, the tuple $\left(  z_{1},z_{2},\ldots,z_{p-1}\right)  $ is
+orthogonal. It thus remains to show that $z_{p}$ is orthogonal to each $z_{a}$
+with $a\in\left[  p-1\right]  $. To that purpose, we fix some $a\in\left[
+p-1\right]  $, and we shall show that $\left\langle z_{p},z_{a}\right\rangle
+=0$. To wit:%
+\begin{align*}
+\left\langle z_{p},z_{a}\right\rangle  &  =\left\langle v_{p}-\sum_{k=1}%
+^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle }{\left\langle z_{k}%
+,z_{k}\right\rangle }z_{k},z_{a}\right\rangle \ \ \ \ \ \ \ \ \ \ \left(
+\text{since }z_{p}=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}\right) \\
+&  =\left\langle v_{p},z_{a}\right\rangle -\sum_{k=1}^{p-1}\dfrac{\left\langle
+v_{p},z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle
+}\underbrace{\left\langle z_{k},z_{a}\right\rangle }_{\substack{=0\text{
+unless }k=a\\\text{(because the tuple }\left(  z_{1},z_{2},\ldots
+,z_{p-1}\right)  \\\text{is orthogonal)}}}\\
+&  =\left\langle v_{p},z_{a}\right\rangle -\dfrac{\left\langle v_{p}%
+,z_{a}\right\rangle }{\left\langle z_{a},z_{a}\right\rangle }\left\langle
+z_{a},z_{a}\right\rangle =0,
+\end{align*}
+so that $z_{p}\perp z_{a}$, as desired. This completes the induction.]
+
+With Claim 1 and Claim 2 proved, the proof of the theorem is complete.
+\end{proof}
+
+What if the original tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ is not
+linearly independent? We can adapt our above theorem to this case:
+
+\begin{theorem}
+[Gram--Schmidt process, take 2]Let $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $
+be any tuple of vectors in $\mathbb{C}^{n}$ with $m\leq n$.
+
+Then, there is an orthogonal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $
+of nonzero vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+
+Furthermore, such a tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)  $ can be
+constructed by the following recursive process:
+
+\begin{itemize}
+\item For each $p\in\left[  m\right]  $, if the first $p-1$ entries
+$z_{1},z_{2},\ldots,z_{p-1}$ of this tuple have already been constructed, then
+we define the $p$-th entry $z_{p}$ as follows:
+
+\begin{itemize}
+\item If $v_{p}-\sum\limits_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}\neq0$, then
+we set%
+\[
+z_{p}:=v_{p}-\sum_{k=1}^{p-1}\dfrac{\left\langle v_{p},z_{k}\right\rangle
+}{\left\langle z_{k},z_{k}\right\rangle }z_{k}.
+\]
+
+
+\item If $v_{p}-\sum\limits_{k=1}^{p-1}\dfrac{\left\langle v_{p}%
+,z_{k}\right\rangle }{\left\langle z_{k},z_{k}\right\rangle }z_{k}=0$, then we
+pick an arbitrary nonzero vector $b$ that is orthogonal to all of $z_{1}%
+,z_{2},\ldots,z_{p-1}$ (such a $b$ exists, as previously shown), and we set%
+\[
+z_{p}:=b.
+\]
+
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+This requires a variant of the proof of the previous theorem; see the notes.
+\end{proof}
+
+\begin{corollary}
+Let $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ be any tuple of vectors in
+$\mathbb{C}^{n}$ with $m\leq n$.
+
+Then, there is an orthonormal tuple $\left(  z_{1},z_{2},\ldots,z_{m}\right)
+$ of nonzero vectors in $\mathbb{C}^{n}$ that satisfies%
+\[
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{j}\right\}  \subseteq
+\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{j}\right\}
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+
+\end{corollary}
+
+\begin{proof}
+Use the previous theorem to obtain an orthogonal tuple $\left(  z_{1}%
+,z_{2},\ldots,z_{m}\right)  $ with this property. Then, replace it by $\left(
+\dfrac{1}{\left\vert \left\vert z_{1}\right\vert \right\vert }z_{1}%
+,\ \ \dfrac{1}{\left\vert \left\vert z_{2}\right\vert \right\vert }%
+z_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert z_{m}\right\vert
+\right\vert }z_{m}\right)  $.
+\end{proof}
+
+\subsection{QR factorization}
+
+Recall that an isometry is a matrix whose columns form an orthonormal tuple.
+
+\begin{theorem}
+[QR factorization, isometry version]Let $A\in\mathbb{C}^{n\times m}$ satisfy
+$n\geq m$. Then, there exists an isometry $Q\in\mathbb{C}^{n\times m}$ and an
+upper-triangular matrix $R\in\mathbb{C}^{m\times m}$ such that $A=QR$.
+\end{theorem}
+
+The pair $\left(  Q,R\right)  $ in this theorem is called a \textbf{QR
+factorization} of $A$.
+
+\begin{example}
+Let%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & 1 & 2\\
+1 & -2 & 0 & 2\\
+1 & 0 & 1 & 0\\
+1 & -2 & 0 & 0
+\end{array}
+\right)  \in\mathbb{C}^{4\times4}.
+\]
+Then, one QR factorization of $A$ is%
+\[
+A=\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+1/2 & 1/2 & 1/2 & 1/2\\
+1/2 & -1/2 & 1/2 & -1/2\\
+1/2 & 1/2 & -1/2 & -1/2\\
+1/2 & -1/2 & -1/2 & 1/2
+\end{array}
+\right)  }_{=Q}\underbrace{\left(
+\begin{array}
+[c]{cccc}%
+2 & -2 & 1 & 0\\
+0 & 2 & 1 & 2\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 2
+\end{array}
+\right)  }_{=R}.
+\]
+There are others.
+\end{example}
+
+\begin{proof}
+[Proof of Theorem.]Let $A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet,m}$
+denote the $m$ columns of $A$.
+
+Applying the previous corollary to $\left(  v_{1},v_{2},\ldots,v_{m}\right)
+=\left(  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet,m}\right)  $, we
+conclude that there exists an orthonormal tuple $\left(  q_{1},q_{2}%
+,\ldots,q_{m}\right)  $ of vectors in $\mathbb{C}^{n}$ such that%
+\[
+\operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet,2},\ldots,A_{\bullet
+,j}\right\}  \subseteq\operatorname*{span}\left\{  q_{1},q_{2},\ldots
+,q_{j}\right\}  \ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]  .
+\]
+Consider this tuple. Let $Q\in\mathbb{C}^{n\times m}$ be the matrix whose
+columns are $q_{1},q_{2},\ldots,q_{m}$. Then, $Q$ is an isometry.
+
+Now, I claim that $A=QR$ for some upper-triangular $R$. Indeed, for each
+$j\in\left[  m\right]  $, we have%
+\[
+A_{\bullet,j}\in\operatorname*{span}\left\{  A_{\bullet,1},A_{\bullet
+,2},\ldots,A_{\bullet,j}\right\}  \subseteq\operatorname*{span}\left\{
+q_{1},q_{2},\ldots,q_{j}\right\}  ,
+\]
+so that%
+\[
+A_{\bullet,j}=r_{1,j}q_{1}+r_{2,j}q_{2}+\cdots+r_{j,j}q_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for some }r_{1,j},r_{2,j},\ldots,r_{j,j}%
+\in\mathbb{C}.
+\]
+This shows that $A=QR$ for the upper-triangular matrix%
+\[
+R=\left(
+\begin{array}
+[c]{cccc}%
+r_{1,1} & r_{1,2} & \cdots & r_{1,m}\\
+0 & r_{2,2} & \cdots & r_{2,m}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & r_{m,m}%
+\end{array}
+\right)  .
+\]
+
+\end{proof}
+
+\section{Schur triangularization}
+
+\subsection{Similarity of matrices}
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. Let $A$ and $B$ be two $n\times n$-matrices over
+$\mathbb{F}$. We say that $A$ is \textbf{similar} to $B$ if there exists an
+invertible matrix $W\in\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$.
+\end{definition}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  $ is similar to the matrix $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  $, since
+\[
+\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  =W\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  W^{-1}\ \ \ \ \ \ \ \ \ \ \text{for }W=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+\begin{remark}
+If you think of matrices as representing linear maps, then similarity has a
+much more fundamental meaning: A matrix is similar to another if and only if
+the two matrices represent the same endomorphism of $\mathbb{F}^{n}$ (i.e.,
+linear map $\mathbb{F}^{n}\rightarrow\mathbb{F}^{n}$) with respect to two bases.
+\end{remark}
+
+The relation \textquotedblleft similar\textquotedblright\ is an equivalence
+relation: i.e., it is
+
+\begin{itemize}
+\item \textbf{reflexive:} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar
+to itself.
+
+\item \textbf{symmetric:} If $A$ is similar to $B$, then $B$ is similar to $A$.
+
+\item \textbf{transitive:} If $A$ is similar to $B$, and $B$ is similar to
+$C$, then $A$ is similar to $C$.
+\end{itemize}
+
+To check these, recall that $\left(  UV\right)  ^{-1}=V^{-1}U^{-1}$.
+
+Because of the symmetry of the relation \textquotedblleft
+similar\textquotedblright, we often say \textquotedblleft$A$ and $B$ are
+similar\textquotedblright\ instead of saying \textquotedblleft$A$ is similar
+to $B$\textquotedblright.
+
+Similar matrices have a lot in common:
+
+\begin{proposition}
+Let $A$ and $B$ be two similar matrices. Then:
+
+\textbf{(a)} $A$ and $B$ have the same rank.
+
+\textbf{(b)} $A$ and $B$ have the same nullity.
+
+\textbf{(c)} $A$ and $B$ have the same determinant.
+
+\textbf{(d)} $A$ and $B$ have the same characteristic polynomial.
+
+\textbf{(e)} $A$ and $B$ have the same eigenvalues, with the same algebraic
+multiplicities and the same geometric multiplicities.
+
+\textbf{(f)} For any $k\in\mathbb{N}$, the matrices $A^{k}$ and $B^{k}$ are similar.
+\end{proposition}
+
+\begin{proof}
+See notes.
+\end{proof}
+
+There is a notation $A\sim B$ for \textquotedblleft$A$ and $B$ are
+similar\textquotedblright.
+
+\subsection{Unitary similarity}
+
+\begin{definition}
+Let $A$ and $B$ be two matrices in $\mathbb{C}^{n\times n}$. We say that $A$
+is \textbf{unitary similar} to $B$ if there exists a \textbf{unitary} matrix
+$W\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ such that
+$B=WA\underbrace{W^{\ast}}_{=W^{-1}}$.
+
+We write \textquotedblleft$A\overset{\text{us}}{\sim}B$\textquotedblright\ for
+\textquotedblleft$A$ is unitary similar to $B$\textquotedblright.
+\end{definition}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  $ is unitary similar to the matrix $\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  $, since
+\[
+\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
+\right)  =W\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  W^{\ast}\ \ \ \ \ \ \ \ \ \ \text{for }W=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+-1 & 1
+\end{array}
+\right)  \in\operatorname*{U}\nolimits_{2}\left(  \mathbb{C}\right)  .
+\]
+
+\end{example}
+
+It is clear that any two unitary similar matrices are similar. The converse is
+not true (exercise).
+
+\textquotedblleft Unitary similar\textquotedblright, just like
+\textquotedblleft similar\textquotedblright, is an equivalence relation.
+
+\subsection{Schur triangularization}
+
+We are now ready for one more matrix decomposition, the so-called
+\textbf{Schur triangularization} (aka \textbf{Schur decomposition}):
+
+\begin{theorem}
+[Schur triangularization theorem]Let $A\in\mathbb{C}^{n\times n}$. Then, there
+exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ and an upper-triangular matrix $T\in\mathbb{C}^{n\times
+n}$ such that $A=UTU^{\ast}$.
+
+In other words, $A$ is unitary similar to some upper-triangular matrix.
+\end{theorem}
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & 3\\
+-3 & 7
+\end{array}
+\right)  $. Then, a Schur triangularization of $A$ is $A=UTU^{\ast}$, where%
+\[
+U=\dfrac{1}{\sqrt{2}}\left(
+\begin{array}
+[c]{cc}%
+1 & -1\\
+1 & 1
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ T=\left(
+\begin{array}
+[c]{cc}%
+4 & 6\\
+0 & 4
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+\begin{proof}
+Next time.
+\end{proof}
+
+
+\end{document}
