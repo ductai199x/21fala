@@ -1,0 +1,698 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, October 01, 2021 11:51:08}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 6}
+
+\section{Schur triangularization (cont'd)}
+
+\subsection{Application: Cayley--Hamilton theorem}
+
+Let us recall some properties of the characteristic polynomial of an $n\times
+n$-matrix $A$:
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix over $\mathbb{F}$.
+
+The \textbf{characteristic polynomial} $p_{A}$ of $A$ is defined to be the
+polynomial%
+\[
+\det\left(  tI_{n}-A\right)  \in\underbrace{\mathbb{F}\left[  t\right]
+}_{\substack{\text{ring of all polynomials}\\\text{in the indeterminate
+}t\\\text{with coefficients in }\mathbb{F}}}.
+\]
+
+\end{definition}
+
+\begin{example}
+Let $n=2$ and $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $. Then,%
+\begin{align*}
+tI_{n}-A  & =tI_{2}-A=t\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cc}%
+t & 0\\
+0 & t
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+p_{A}  & =\det\left(  tI_{n}-A\right)  =\det\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  =\left(  t-a\right)  \left(  t-d\right)  -\left(  -b\right)  \left(
+-c\right)  \\
+& =t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{example}
+Let $n=3$ and $A=\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+a^{\prime} & b^{\prime} & c^{\prime}\\
+a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
+\end{array}
+\right)  $. Then,%
+\[
+tI_{n}-A=tI_{3}-A=\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right)  ,
+\]
+so that%
+\begin{align*}
+p_{A}  & =\det\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right)  \\
+& =\allowbreak t^{3}-\left(  a+b^{\prime}+c^{\prime\prime}\right)
+t^{2}+\left(  ab^{\prime}-ba^{\prime}+ac^{\prime\prime}-ca^{\prime\prime
+}+b^{\prime}c^{\prime\prime}-b^{\prime\prime}c^{\prime}\right)  \allowbreak
+t\\
+& \ \ \ \ \ \ \ \ \ \ -\left(  \allowbreak ab^{\prime}c^{\prime\prime
+}-ab^{\prime\prime}c^{\prime}-ba^{\prime}c^{\prime\prime}+ba^{\prime\prime
+}c^{\prime}+ca^{\prime}b^{\prime\prime}-\allowbreak ca^{\prime\prime}%
+b^{\prime}\right)  .
+\end{align*}
+
+\end{example}
+
+By the way, some authors define $p_{A}$ to be $\det\left(  A-tI_{n}\right)  $
+instead of $\det\left(  tI_{n}-A\right)  $. This differs from our definition
+only by a factor of $\left(  -1\right)  ^{n}$, so the difference is insignificant.
+
+\begin{proposition}
+[properties of the char. poly.]Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
+
+\textbf{(a)} The characteristic polynomial $p_{A}$ is a monic polynomial in
+$t$ of degree $n$. (That is, its leading term is $t^{n}$.)
+
+\textbf{(b)} The constant term of $p_{A}$ is $\left(  -1\right)  ^{n}\det A$.
+
+\textbf{(c)} The $t^{n-1}$-coefficient of $p_{A}$ is $-\operatorname*{Tr}A$.
+(Recall that $\operatorname*{Tr}A$ is defined to be the sum of all diagonal
+entries of $A$; this is known as the \textbf{trace} of $A$.)
+\end{proposition}
+
+\begin{proof}
+All of this should be more or less clear from the examples. Part \textbf{(b)}
+follows from observing that the constant term of $p_{A}$ is $p_{A}\left(
+0\right)  =\det\left(  0I_{n}-A\right)  =\det\left(  -A\right)  =\left(
+-1\right)  ^{n}\det A$.
+
+For details, I'll give references in the notes.
+\end{proof}
+
+\begin{theorem}
+[Cayley--Hamilton theorem]Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,%
+\[
+p_{A}\left(  A\right)  =0.
+\]
+(The \textquotedblleft$0$\textquotedblright\ on the RHS is the zero matrix.)
+\end{theorem}
+
+\begin{example}
+Let $n=2$ and $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $. Then, as we know,%
+\[
+p_{A}=t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
+\]
+Thus,%
+\begin{align*}
+p_{A}\left(  A\right)    & =A^{2}-\left(  a+d\right)  A+\left(  ad-bc\right)
+I_{2}\\
+& =\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  ^{2}-\left(  a+d\right)  \left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  +\left(  ad-bc\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+0 & 0
+\end{array}
+\right)  =0.
+\end{align*}
+
+\end{example}
+
+\begin{remark}
+You cannot argue that $p_{A}\left(  A\right)  =\det\left(  AI_{n}-A\right)  $
+\textquotedblleft by substituting $A$ for $t$ into $p_{A}=\det\left(
+tI_{n}-A\right)  $\textquotedblright. Indeed, $tI_{n}-A$ is a matrix whose
+entries are polynomials in $t$. If you substitute $A$ for $t$ into it, it will
+become a matrix whose entries are matrices. First of all, it is not quite
+clear how to take the determinant of such a matrix; second, this matrix is not
+$AI_{n}-A$. For example, for $n=2$, plugging $A$ for $t$ in $tI_{n}-A$ gives%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  -a & -b\\
+-c & \left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  -d
+\end{array}
+\right)  ,
+\]
+which doesn't quite look like $AI_{n}-A$ (which is the zero matrix). There
+\textbf{is} a correct proof of the Cayley--Hamilton theorem along the lines of
+\textquotedblleft substituting $A$ for $t$\textquotedblright, but it requires
+a lot of work.
+\end{remark}
+
+There are various proofs of the Cayley--Hamilton theorem (I'll give references
+in the notes). We will here only prove it for $\mathbb{F}=\mathbb{C}$:
+
+\begin{proof}
+[Proof of the Cayley--Hamilton theorem for $\mathbb{F}=\mathbb{C}$.] Assume
+that $\mathbb{F}=\mathbb{C}$. The Schur triangularization theorem shows that
+$A$ is unitarily similar to an upper-triangular matrix. Hence, $A$ is similar
+to an upper-triangular matrix (because unitarily similar matrices always are
+similar). In other words, there exists an invertible matrix $U$ and an
+upper-triangular matrix $T$ such that $A=UTU^{-1}$. Consider these $U$ and $T$.
+
+Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
+of $T$. Then, by Proposition 2.3.4, these diagonal entries $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$ (with
+algebraic multipliticies). Hence,%
+\[
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{n}\right)
+\]
+(since $p_{A}$ is monic, and the roots of $p_{A}$ are precisely the
+eigenvalues of $A$ with algebraic multiplicities).
+
+Now, substituting $A$ for $t$ in the polynomial identity $p_{A}=\left(
+t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)  \cdots\left(
+t-\lambda_{n}\right)  $, we obtain
+\[
+p_{A}\left(  A\right)  =\left(  A-\lambda_{1}I_{n}\right)  \left(
+A-\lambda_{2}I_{n}\right)  \cdots\left(  A-\lambda_{n}I_{n}\right)  .
+\]
+For each $i\in\left[  n\right]  $, we have%
+\[
+\underbrace{A}_{=UTU^{-1}}-\lambda_{i}\underbrace{I_{n}}_{=UU^{-1}}%
+=UTU^{-1}-\lambda_{i}UU^{-1}=U\left(  T-\lambda_{i}I_{n}\right)  U^{-1}.
+\]
+Hence, the above equality becomes%
+\begin{align*}
+p_{A}\left(  A\right)    & =\left(  A-\lambda_{1}I_{n}\right)  \left(
+A-\lambda_{2}I_{n}\right)  \cdots\left(  A-\lambda_{n}I_{n}\right)  \\
+& =U\left(  T-\lambda_{1}I_{n}\right)  \underbrace{U^{-1}U}_{=I_{n}}\left(
+T-\lambda_{2}I_{n}\right)  U^{-1}\cdots U\left(  T-\lambda_{n}I_{n}\right)
+U^{-1}\\
+& =U\left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda_{2}I_{n}\right)
+\cdots\left(  T-\lambda_{n}I_{n}\right)  U^{-1}.
+\end{align*}
+Thus, it suffices to show that%
+\[
+\left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda_{2}I_{n}\right)
+\cdots\left(  T-\lambda_{n}I_{n}\right)  =0.
+\]
+
+
+Let us show this on an example for $n=3$:%
+\begin{align*}
+& \ \ T=\left(
+\begin{array}
+[c]{ccc}%
+\lambda_{1} & \ast & \ast\\
+0 & \lambda_{2} & \ast\\
+0 & 0 & \lambda_{3}%
+\end{array}
+\right)  \\
+& \Longrightarrow\ \text{\ }T-\lambda_{1}I_{n}=\left(
+\begin{array}
+[c]{ccc}%
+0 & \ast & \ast\\
+0 & \lambda_{2}-\lambda_{1} & \ast\\
+0 & 0 & \lambda_{3}-\lambda_{1}%
+\end{array}
+\right)  \\
+& \Longrightarrow\ \ \left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda
+_{2}I_{n}\right)  =\left(
+\begin{array}
+[c]{ccc}%
+0 & \ast & \ast\\
+0 & \lambda_{2}-\lambda_{1} & \ast\\
+0 & 0 & \lambda_{3}-\lambda_{1}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+\lambda_{1}-\lambda_{2} & \ast & \ast\\
+0 & 0 & \ast\\
+0 & 0 & \lambda_{3}-\lambda_{1}%
+\end{array}
+\right)  \\
+&
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\left(
+%
+\begin{array}
+[c]{ccc}%
+0 & 0 & \ast\\
+0 & 0 & \ast\\
+0 & 0 & \ast
+\end{array}
+\right)  \\
+& \Longrightarrow\ \left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda
+_{2}I_{n}\right)  \left(  T-\lambda_{3}I_{n}\right)  =\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & \ast\\
+0 & 0 & \ast\\
+0 & 0 & \ast
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+\lambda_{1}-\lambda_{3} & \ast & \ast\\
+0 & \lambda_{2}-\lambda_{3} & \ast\\
+0 & 0 & 0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}
+\right)  .
+\end{align*}
+
+
+The general proof follows the same pattern: Every time you add a new factor,
+one more column of your matrix becomes $0$. Formally speaking, this means that
+you are proving the following fact by induction on $j$:
+
+For each $j\in\left\{  0,1,\ldots,n\right\}  $, the first $j$ columns of the
+matrix%
+\[
+\left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda_{2}I_{n}\right)
+\cdots\left(  T-\lambda_{j}I_{n}\right)
+\]
+are $0$.
+
+Once this is proved, we can apply this to $j=n$, and conclude that the first
+$n$ columns of the matrix%
+\[
+\left(  T-\lambda_{1}I_{n}\right)  \left(  T-\lambda_{2}I_{n}\right)
+\cdots\left(  T-\lambda_{n}I_{n}\right)
+\]
+are $0$. But this means that the whole matrix is $0$, qed.
+\end{proof}
+
+\subsection{Sylvester's equation}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$. Then, the \textbf{spectrum} of $A$ is
+defined to be the set of all eigenvalues of $A$. This spectrum is denoted by
+$\sigma\left(  A\right)  $ (or by $\operatorname*{spec}A$).
+\end{definition}
+
+\begin{theorem}
+Let $A$ be an $n\times n$-matrix, and let $B$ be an $m\times m$-matrix (both
+with complex entries). Let $C$ be an $n\times m$-matrix. Then, the following
+statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{U}$: There is a \textbf{unique} matrix $X\in\mathbb{C}%
+^{n\times m}$ such that $AX-XB=C$.
+
+\item $\mathcal{V}$: We have $\sigma\left(  A\right)  \cap\sigma\left(
+B\right)  =\varnothing$.
+\end{itemize}
+\end{theorem}
+
+\begin{example}
+Let us take $n=1$ and $m=1$. In this case, $A$, $B$ and $C$ are $1\times
+1$-matrices, so we can view them as scalars. Let us therefore write $a$, $b$
+and $c$ for them. Then, the theorem says that the following statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{U}$: There is a \textbf{unique} complex number $x$ such that
+$ax-xb=c$.
+
+\item $\mathcal{V}$: We have $\left\{  a\right\}  \cap\left\{  b\right\}
+=\varnothing$ (that is, $a\neq b$).
+\end{itemize}
+
+This is not surprising, because the equation $ax-xb=c$ has a unique solution
+(namely, $x=\dfrac{c}{a-b}$) when $a\neq b$, and otherwise has either none or
+infinitely many solution.
+\end{example}
+
+The equation $AX-XB=C$ in the Theorem is known as \textbf{Sylvester's
+equation}. Because the $X$ is on different sides in $AX$ and in $XB$, it
+cannot be factored out (matrices do not generally commute).
+
+\begin{proof}
+[Proof of the $\mathcal{V}\Longrightarrow\mathcal{U}$ part of the theorem.]
+First, observe that the matrix space $\mathbb{C}^{n\times m}$ is itself a
+$\mathbb{C}$-vector space of dimension $nm$.
+
+Consider the map%
+\begin{align*}
+L:\mathbb{C}^{n\times m}  & \rightarrow\mathbb{C}^{n\times m},\\
+X  & \mapsto AX-XB.
+\end{align*}
+This map $L$ is linear, because%
+\begin{align*}
+L\left(  \alpha X+\beta Y\right)    & =A\left(  \alpha X+\beta Y\right)
+-\left(  \alpha X+\beta Y\right)  B\\
+& =\alpha AX+\beta AY-\alpha XB-\beta YB\\
+& =\alpha\left(  AX-XB\right)  +\beta\left(  AY-YB\right)  =\alpha L\left(
+X\right)  +\beta L\left(  Y\right)  .
+\end{align*}
+
+
+Thus, $L$ is a linear map between two vector spaces that have the same
+(finite) dimension. Hence, we have the following equivalence:
+\begin{align*}
+& \ \left(  L\text{ is surjective (= onto)}\right)  \\
+& \Longleftrightarrow\ \left(  L\text{ is injective (= one-to-one)}\right)
+\ \\
+& \Longleftrightarrow\ \left(  L\text{ is bijective (= invertible)}\right)  .
+\end{align*}
+
+
+Now, statement $\mathcal{U}$ is saying that the matrix $C$ has a
+\textbf{unique} preimage under $L$ (that is, there exists a unique
+$X\in\mathbb{C}^{n\times m}$ such that $L\left(  X\right)  =C$). As we know
+from general properties of linear maps, this is true whenever $L$ is
+bijective, and false otherwise. So statement $\mathcal{U}$ is equivalent to
+$L$ being bijective.
+
+Now, let us prove that $\mathcal{V}\Longrightarrow\mathcal{U}$. To wit, we
+will show that $L$ is \textbf{injective}. This will imply that $L$ is
+bijective (by the above equivalence), and therefore statement $\mathcal{U}$
+will follow.
+
+In order to prove that a linear map is injective, it suffices to show that its
+kernel (= nullspace) is $0$. So let $X\in\operatorname*{Ker}L$; we will show
+that $X=0$.
+
+From $X\in\operatorname*{Ker}L$, we get $L\left(  X\right)  =0$. Since
+$L\left(  X\right)  =AX-XB$, this means that $AX-XB=0$. In other words,
+$AX=XB$. Hence,%
+\[
+A^{2}X=A\underbrace{AX}_{=XB}=\underbrace{AX}_{=XB}B=XBB=XB^{2}.
+\]
+Similarly,%
+\[
+A^{3}X=XB^{3},\ \ \ \ \ \ \ \ \ \ A^{4}X=XB^{4},\ \ \ \ \ \ \ \ \ \ A^{5}%
+X=XB^{5},\ \ \ \ \ \ \ \ \ \ \ldots.
+\]
+That is,%
+\[
+A^{k}X=XB^{k}\ \ \ \ \ \ \ \ \ \ \text{for each }k\in\mathbb{N}.
+\]
+(Strictly speaking, this is proved by induction on $k$.)
+
+Therefore, I claim that%
+\[
+f\left(  A\right)  X=Xf\left(  B\right)  \ \ \ \ \ \ \ \ \ \ \text{for any
+polynomial }f\in\mathbb{C}\left[  t\right]  .
+\]
+(Indeed, if we write the polynomial $f$ as $f=\sum\limits_{k=0}^{m}f_{k}t^{k}$
+with $f_{k}\in\mathbb{C}$, then%
+\[
+f\left(  A\right)  X=\sum\limits_{k=0}^{m}f_{k}\underbrace{A^{k}X}_{=XB^{k}%
+}=\sum\limits_{k=0}^{m}f_{k}XB^{k}=X\underbrace{\sum\limits_{k=0}^{m}%
+f_{k}B^{k}}_{=f\left(  B\right)  }=Xf\left(  B\right)  ,
+\]
+as desired.)
+
+Apply this claim to $f=p_{A}$. We obtain%
+\[
+p_{A}\left(  A\right)  X=Xp_{A}\left(  B\right)  =X\left(  B-\lambda_{1}%
+I_{n}\right)  \left(  B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda
+_{n}I_{n}\right)  ,
+\]
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$
+(with algebraic multiplicities), because%
+\[
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{n}\right)  .
+\]
+Thus,%
+\[
+X\left(  B-\lambda_{1}I_{n}\right)  \left(  B-\lambda_{2}I_{n}\right)
+\cdots\left(  B-\lambda_{n}I_{n}\right)  =\underbrace{p_{A}\left(  A\right)
+}_{\substack{=0\\\text{(by Cayley--Hamilton)}}}X=0.
+\]
+We want to prove that $X=0$. This would follow from this equation if we knew
+that the factors
+\[
+B-\lambda_{1}I_{n},\ B-\lambda_{2}I_{n},\ \ldots,\ B-\lambda_{n}I_{n}%
+\]
+are invertible (because then we can cancel these factors). However, they are
+indeed invertible, because each $\lambda_{i}$ is an eigenvalue of $A$ and
+therefore \textbf{not} an eigenvalue of $B$ (since $\sigma\left(  A\right)
+\cap\sigma\left(  B\right)  =\varnothing$). This completes the proof of
+$\mathcal{V}\Longrightarrow\mathcal{U}$.
+\end{proof}
+
+Maybe $\mathcal{U}\Longrightarrow\mathcal{V}$ will be homework. Also a nice
+exercise(?):%
+\[
+\sigma\left(  L\right)  =\sigma\left(  A\right)  -\sigma\left(  B\right)
+=\left\{  \lambda-\mu\ \mid\ \lambda\in\sigma\left(  A\right)  \text{ and }%
+\mu\in\sigma\left(  B\right)  \right\}  .
+\]
+
+
+
+\end{document}

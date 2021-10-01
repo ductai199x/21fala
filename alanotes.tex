@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Wednesday, September 29, 2021 14:09:49}
+%TCIDATA{LastRevised=Friday, October 01, 2021 14:07:28}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -706,6 +706,31 @@ $x\neq0$, the linear dependence of the pair $\left(  x,y\right)  $ yields that
 $y=\lambda x$ for some $\lambda\in\mathbb{C}$). Thus, Theorem
 \ref{thm.unitary.innerprod.cs} \textbf{(b)} is proven.
 \end{proof}
+
+Using Theorem \ref{thm.unitary.innerprod.cs} and Exercise
+\ref{exe.unitary.innerprod.x+y}, we can easily obtain the following:
+
+\begin{theorem}
+[triangle inequality]\label{thm.unitary.innerprod.norm-tria} Let
+$x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Then:
+
+\textbf{(a)} The inequality $\left\vert \left\vert x\right\vert \right\vert
++\left\vert \left\vert y\right\vert \right\vert \geq\left\vert \left\vert
+x+y\right\vert \right\vert $ holds.
+
+\textbf{(b)} This inequality becomes an equality if and only if we have $y=0$
+or $x=\lambda y$ for some nonnegative real $x$.
+\end{theorem}
+
+\begin{exercise}
+\label{exe.unitary.innerprod.norm-tria}\fbox{3} Prove Theorem
+\ref{thm.unitary.innerprod.norm-tria}.
+\end{exercise}
+
+Theorem \ref{thm.unitary.innerprod.norm-tria} \textbf{(a)} is the reason why
+the map $\mathbb{C}^{n}\rightarrow\mathbb{R},\ x\mapsto\left\vert \left\vert
+x\right\vert \right\vert $ is called a \textquotedblleft
+norm\textquotedblright.
 
 \subsection{Orthogonality and orthonormality}
 
@@ -3421,6 +3446,9 @@ algebraic multiplicities and with the same geometric multiplicities.
 
 \textbf{(f)} For any $k\in\mathbb{N}$, the matrix $A^{k}$ is similar to
 $B^{k}$.
+
+\textbf{(g)} For any $\lambda\in\mathbb{F}$, the matrix $\lambda I_{n}-A$ is
+similar to $\lambda I_{n}-B$.
 \end{proposition}
 
 \begin{proof}
@@ -3536,6 +3564,16 @@ middle cancel out}\right) \\
 
 A less handwavy proof of $B^{k}=WA^{k}W^{-1}$ would proceed by induction on
 $k$. As it is completely straightforward, I leave it to the reader.
+
+\textbf{(g)} Let $\lambda\in\mathbb{F}$. Then,
+\begin{align*}
+\lambda\underbrace{I_{n}}_{\substack{=WW^{-1}\\=WI_{n}W^{-1}}}-\underbrace{B}%
+_{=WAW^{-1}}  &  =\underbrace{\lambda WI_{n}}_{=W\left(  \lambda I_{n}\right)
+}W^{-1}-WAW^{-1}=W\left(  \lambda I_{n}\right)  W^{-1}-WAW^{-1}\\
+&  =W\left(  \lambda I_{n}-A\right)  W^{-1}.
+\end{align*}
+This shows that the matrices $\lambda I_{n}-A$ and $\lambda I_{n}-B$ are
+similar. Thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(g)} is proven.
 \end{proof}
 
 Note that neither part \textbf{(a)}, nor part \textbf{(b)}, nor part
@@ -3826,18 +3864,23 @@ $\left(  U,T\right)  $ be a Schur triangularization of $A$. Then, the diagonal
 entries of $T$ are the eigenvalues of $A$ (with their algebraic multiplicities).
 \end{proposition}
 
+Instead of proving this directly, let us show a more general result:
+
+\begin{proposition}
+\label{prop.schurtri.similar.T-diag}Let $\mathbb{F}$ be a field. Let
+$A\in\mathbb{F}^{n\times n}$ and $T\in\mathbb{F}^{n\times n}$ be two similar
+matrices. Assume that $T$ is upper-triangular. Then, the diagonal entries of
+$T$ are the eigenvalues of $A$ (with their algebraic multiplicities).
+\end{proposition}
+
 \begin{proof}
-We assumed that $\left(  U,T\right)  $ is a Schur triangularization of $A$.
-Hence, we have $A=UTU^{\ast}$, and the matrix $U$ is unitary whereas the
-matrix $T$ is upper-triangular. From $A=UTU^{\ast}$, we conclude that $T$ is
-unitarily similar to $A$ (by Definition \ref{def.schurtri.unisim.def}, since
-$U$ is unitary). Hence, $T$ is similar to $A$ (by Proposition
-\ref{prop.schurtri.unisim.sim}). Thus, Proposition
-\ref{prop.schurtri.similar.same} \textbf{(e)} shows that the matrices $T$ and
-$A$ have the same eigenvalues with the same algebraic multiplicities (and the
-same geometric multiplicities, but we don't need to know this). In other
-words, the eigenvalues of $T$ are the eigenvalues of $A$ (with the same
-algebraic multiplicities).
+[Proof of Proposition \ref{prop.schurtri.similar.T-diag}.]We have assumed that
+$A$ and $T$ are similar. In other words, $T$ is similar to $A$. Thus,
+Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} shows that the
+matrices $T$ and $A$ have the same eigenvalues with the same algebraic
+multiplicities (and the same geometric multiplicities, but we don't need to
+know this). In other words, the eigenvalues of $T$ are the eigenvalues of $A$
+(with the same algebraic multiplicities).
 
 However, the matrix $T$ is upper-triangular. Thus, the eigenvalues of $T$
 (with algebraic multiplicities) are the diagonal entries of $T$ (this is a
@@ -3856,13 +3899,13 @@ T_{1,1} & T_{1,2} & \cdots & T_{1,n}\\
 \]
 Thus, if $t$ is an indeterminate, then
 \begin{align*}
-tI_{n}-T  & =t\left(
+tI_{n}-T  &  =t\left(
 \begin{array}
 [c]{cccc}%
 1 & 0 & \cdots & 0\\
 0 & 1 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
-0 & 0 & \cdots & T_{n,n}%
+0 & 0 & \cdots & 1
 \end{array}
 \right)  -\left(
 \begin{array}
@@ -3872,8 +3915,8 @@ T_{1,1} & T_{1,2} & \cdots & T_{1,n}\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & T_{n,n}%
 \end{array}
-\right)  \\
-& =\left(
+\right) \\
+&  =\left(
 \begin{array}
 [c]{cccc}%
 t-T_{1,1} & -T_{1,2} & \cdots & -T_{1,n}\\
@@ -3902,6 +3945,19 @@ are the eigenvalues of $T$ (with algebraic multiplicities). Qed.}). Since we
 know that the eigenvalues of $T$ are the eigenvalues of $A$ (with the same
 algebraic multiplicities), we thus conclude that the eigenvalues of $A$ (with
 algebraic multiplicities) are the diagonal entries of $T$. This proves
+Proposition \ref{prop.schurtri.similar.T-diag}.
+\end{proof}
+
+\begin{proof}
+[Proof of Proposition \ref{prop.schurtri.schurtri.T-diag}.]We assumed that
+$\left(  U,T\right)  $ is a Schur triangularization of $A$. Hence, we have
+$A=UTU^{\ast}$, and the matrix $U$ is unitary whereas the matrix $T$ is
+upper-triangular. From $A=UTU^{\ast}$, we conclude that $T$ is unitarily
+similar to $A$ (by Definition \ref{def.schurtri.unisim.def}, since $U$ is
+unitary). Hence, $T$ is similar to $A$ (by Proposition
+\ref{prop.schurtri.unisim.sim}). Therefore, Proposition
+\ref{prop.schurtri.similar.T-diag} shows that the diagonal entries of $T$ are
+the eigenvalues of $A$ (with their algebraic multiplicities). This proves
 Proposition \ref{prop.schurtri.schurtri.T-diag}.
 \end{proof}
 
@@ -4326,9 +4382,9 @@ doesn't want to go through the trouble of Schur triangularization:
 $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ be a unitary
 matrix and $D\in\mathbb{C}^{n\times n}$ a diagonal matrix. Assume that for
 each $i\in\left[  n\right]  $, we have $AU_{\bullet,i}=D_{i,i}U_{\bullet,i}$
-(that is, the $i$-th column of $U_{\bullet,i}$ is an eigenvector of $A$ for
-the eigenvalue $D_{i,i}$). Then, $A=UDU^{\ast}$, so that $\left(  U,D\right)
-$ is a spectral decomposition of $A$.
+(that is, the $i$-th column of $U$ is an eigenvector of $A$ for the eigenvalue
+$D_{i,i}$). Then, $A=UDU^{\ast}$, so that $\left(  U,D\right)  $ is a spectral
+decomposition of $A$.
 \end{proposition}
 
 \begin{exercise}
@@ -4471,6 +4527,18 @@ Then, there exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
 \mathbb{C}\right)  $ such that for each $A\in\mathcal{F}$, the matrix
 $UAU^{\ast}$ is diagonal.
 \end{exercise}
+
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 3 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
+
+\subsection{Application: ...}
 
 \newpage
 
