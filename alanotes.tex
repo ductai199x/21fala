@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 01, 2021 14:07:28}
+%TCIDATA{LastRevised=Friday, October 01, 2021 21:04:52}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4533,12 +4533,632 @@ $UAU^{\ast}$ is diagonal.
 \[%
 \begin{tabular}
 [c]{||l||}\hline\hline
-\textbf{Lecture 3 starts here.}\\\hline\hline
+\textbf{Lecture 6 starts here.}\\\hline\hline
 \end{tabular}
+\
 \]
 
 
-\subsection{Application: ...}
+\subsection{The Cayley--Hamilton theorem}
+
+We will now digress to state the famous Cayley--Hamilton theorem, and to prove
+it at least for matrices with complex entries. This will serve as a reminder
+of an important theorem, and also as an illustration of how Schur
+triangularization can be applied.
+
+Let us first recall some properties of the characteristic polynomial of an
+$n\times n$-matrix $A$, starting with its definition:
+
+\begin{definition}
+\label{def.schurtri.ch.pA}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
+
+The \emph{characteristic polynomial} of $A$ is defined to be the polynomial%
+\[
+\det\left(  tI_{n}-A\right)  \ \ \ \ \ \ \ \ \ \ \text{in the indeterminate
+}t\text{ with coefficients in }\mathbb{F}.
+\]
+This polynomial is denoted by $p_{A}$. (Some authors write $\chi_{A}$ instead.)
+\end{definition}
+
+\begin{example}
+\label{exa.schurtri.ch.pA.2x2}Let $n=2$ and $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $. Then,%
+\begin{align*}
+tI_{n}-A  &  =tI_{2}-A=t\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+t & 0\\
+0 & t
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  =\left(  t-a\right)  \left(  t-d\right)  -\left(  -b\right)  \left(
+-c\right) \\
+&  =t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{example}
+\label{exa.schurtri.ch.pA.3x3}Let $n=3$ and $A=\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+a^{\prime} & b^{\prime} & c^{\prime}\\
+a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
+\end{array}
+\right)  $. Then,%
+\begin{align*}
+tI_{n}-A  &  =tI_{3}-A=t\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+a^{\prime} & b^{\prime} & c^{\prime}\\
+a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right) \\
+&  =t^{3}-\left(  a+b^{\prime}+c^{\prime\prime}\right)  t^{2}+\left(
+ab^{\prime}-ba^{\prime}+ac^{\prime\prime}-ca^{\prime\prime}+b^{\prime
+}c^{\prime\prime}-b^{\prime\prime}c^{\prime}\right)  t\\
+&  \ \ \ \ \ \ \ \ \ \ -\left(  ab^{\prime}c^{\prime\prime}-ab^{\prime\prime
+}c^{\prime}-ba^{\prime}c^{\prime\prime}+ba^{\prime\prime}c^{\prime}%
++ca^{\prime}b^{\prime\prime}-ca^{\prime\prime}b^{\prime}\right)  .
+\end{align*}
+
+\end{example}
+
+(Two quick warnings: Some authors define the characteristic polynomial $p_{A}$
+of a matrix $A$ to be $\det\left(  A-tI_{n}\right)  $ instead of $\det\left(
+tI_{n}-A\right)  $. This differs from our definition only by a factor of
+$\left(  -1\right)  ^{n}$, which is immaterial for most properties of the
+characteristic polynomial but still can cause the occasional confusion. Some
+other common notations for $p_{A}$ are $\chi_{A}$ and $c_{A}$.)
+
+The patterns you might have spotted in Example \ref{exa.schurtri.ch.pA.2x2}
+and in Example \ref{exa.schurtri.ch.pA.3x3} are not accidental. Indeed, the
+coefficients of the characteristic polynomial of any square matrix can be
+expressed explicitly, if you consider sums of determinants to be explicit:
+
+\begin{proposition}
+\label{prop.schurtri.ch.props}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
+
+\textbf{(a)} The characteristic polynomial $p_{A}$ is a monic polynomial in
+$t$ of degree $n$. (That is, its leading term is $t^{n}$.)
+
+\textbf{(b)} The constant term of the polynomial $p_{A}$ is $\left(
+-1\right)  ^{n}\det A$.
+
+\textbf{(c)} The $t^{n-1}$-coefficient of the polynomial $p_{A}$ is
+$-\operatorname*{Tr}A$. (Recall that $\operatorname*{Tr}A$ is defined to be
+the sum of all diagonal entries of $A$; this sum is known as the \emph{trace}
+of $A$.)
+
+\textbf{(d)} More generally: Let $k\in\left\{  0,1,\ldots,n\right\}  $. Then,
+the $t^{n-k}$-coefficient of the polynomial $p_{A}$ is $\left(  -1\right)
+^{k}$ times the sum of all principal $k\times k$-minors of $A$. (Recall that a
+\emph{principal }$k\times k$\emph{-minor} of $A$ means the determinant of a
+submatrix of $A$, where the submatrix is defined by removing some $n-k$ rows
+and the corresponding $n-k$ columns from $A$. For example, the principal
+$2\times2$-minors of a $3\times3$-matrix $A$ are $\det\left(
+\begin{array}
+[c]{cc}%
+A_{1,1} & A_{1,2}\\
+A_{2,1} & A_{2,2}%
+\end{array}
+\right)  $, $\det\left(
+\begin{array}
+[c]{cc}%
+A_{1,1} & A_{1,3}\\
+A_{3,1} & A_{3,3}%
+\end{array}
+\right)  $ and $\det\left(
+\begin{array}
+[c]{cc}%
+A_{2,2} & A_{2,3}\\
+A_{3,2} & A_{3,3}%
+\end{array}
+\right)  $.) In other words, the $t^{n-k}$-coefficient of $p_{A}$ is
+\[
+\left(  -1\right)  ^{k}\sum_{1\leq i_{1}<i_{2}<\cdots<i_{k}\leq n}\det\left(
+\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1},i_{2}%
+,\ldots,i_{k}}A\right)  ,
+\]
+where $\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1}%
+,i_{2},\ldots,i_{k}}A$ denotes the $k\times k$-matrix whose $\left(
+u,v\right)  $-th entry is $A_{i_{u},i_{v}}$ for all $u,v\in\left[  k\right]  $.
+\end{proposition}
+
+\begin{proof}
+[Proof sketch.] We have $A=\left(
+\begin{array}
+[c]{cccc}%
+A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
+A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
+\end{array}
+\right)  $, so that%
+\begin{align*}
+tI_{n}-A &  =t\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cccc}%
+A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
+A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+t-A_{1,1} & -A_{1,2} & \cdots & -A_{1,n}\\
+-A_{2,1} & t-A_{2,2} & \cdots & -A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+-A_{n,1} & -A_{n,2} & \cdots & t-A_{n,n}%
+\end{array}
+\right)  .
+\end{align*}
+The determinant $\det\left(  tI_{n}-A\right)  $ of this matrix is a sum of
+certain products of its entries\footnote{Here, we are using the \emph{Leibniz
+formula} for the determinant of a matrix, which says that $\det B=\sum
+_{\sigma\in S_{n}}\left(  -1\right)  ^{\sigma}B_{1,\sigma\left(  1\right)
+}B_{2,\sigma\left(  2\right)  }\cdots B_{n,\sigma\left(  n\right)  }$ for each
+$n\times n$-matrix $B$. (We are applying this to $B=tI_{n}-A$.)}. One of these
+products is%
+\begin{align*}
+& \left(  t-A_{1,1}\right)  \left(  t-A_{2,2}\right)  \cdots\left(
+t-A_{n,n}\right)  \\
+& =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
+\text{terms with lower powers of }t\right)  .
+\end{align*}
+None of the other products appearing in this sum includes any power of $t$
+higher than $t^{n-2}$ (because the product picks out at least two entries of
+$A$ that lie outside of the main diagonal, and thus contain no $t$ whatsoever;
+the remaining factors of the product contribute at most $t^{n-2}$). Hence, the
+entire determinant $\det\left(  tI_{n}-A\right)  $ can be written as
+\[
+\det\left(  tI_{n}-A\right)  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots
++A_{n,n}\right)  t^{n-1}+\left(  \text{terms with lower powers of }t\right)  .
+\]
+In other words,%
+\[
+p_{A}=t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
+\text{terms with lower powers of }t\right)
+\]
+(since $p_{A}=\det\left(  tI_{n}-A\right)  $). This yields parts \textbf{(a)}
+and \textbf{(c)} of Proposition \ref{prop.schurtri.ch.props}.
+
+To prove Proposition \ref{prop.schurtri.ch.props} \textbf{(b)}, we substitute
+$0$ for $t$ in the polynomial identity $p_{A}=\det\left(  tI_{n}-A\right)  $.
+We obtain%
+\[
+p_{A}\left(  0\right)  =\det\left(  0I_{n}-A\right)  =\det\left(  -A\right)
+=\left(  -1\right)  ^{n}\det A.
+\]
+Since $p_{A}\left(  0\right)  $ is the constant term of $p_{A}$ (in fact, if
+$f$ is any polynomial, then $f\left(  0\right)  $ is the constant term of
+$f$), we thus conclude that the constant term of $p_{A}$ is $\left(
+-1\right)  ^{n}\det A$. This proves Proposition \ref{prop.schurtri.ch.props}
+\textbf{(b).}
+
+Finally, Proposition \ref{prop.schurtri.ch.props} \textbf{(d)} can be
+established through a more accurate combinatorial analysis of the products
+that sum up to $\det\left(  tI_{n}-A\right)  $. See \cite[Proposition
+6.4.29]{21s} for the details. (A combinatorially prepared reader might see the
+idea from Example \ref{exa.schurtri.ch.pA.3x3}.)
+
+We note that parts \textbf{(a)}, \textbf{(b)} and \textbf{(c)} of Proposition
+\ref{prop.schurtri.ch.props} can all be derived from part \textbf{(d)} as well.
+\end{proof}
+
+In Definition \ref{def.schurtri.normal.p(A)}, we have learnt how to substitute
+a square matrix into a polynomial. Something peculiar happens when a matrix is
+substituted into its own characteristic polynomial:
+
+\begin{theorem}
+[Cayley--Hamilton theorem]\label{thm.schurtri.ch.ch}Let $\mathbb{F}$ be a
+field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,%
+\[
+p_{A}\left(  A\right)  =0.
+\]
+(The \textquotedblleft$0$\textquotedblright\ on the right hand side here means
+the zero matrix $0_{2\times2}$.)
+\end{theorem}
+
+\begin{example}
+Let $n=2$ and $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $. Then, as we know from Example \ref{exa.schurtri.ch.pA.2x2}, we
+have%
+\[
+p_{A}=t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
+\]
+Thus,%
+\begin{align*}
+p_{A}\left(  A\right)   &  =A^{2}-\left(  a+d\right)  A+\left(  ad-bc\right)
+I_{2}\\
+&  =\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  ^{2}-\left(  a+d\right)  \left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  +\left(  ad-bc\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+0 & 0\\
+0 & 0
+\end{array}
+\right)  =0.
+\end{align*}
+Thus, we have verified Theorem \ref{thm.schurtri.ch.ch} for $n=2$.
+\end{example}
+
+\begin{remark}
+\label{rmk.schurtri.ch.not-that-easy}It is tempting to \textquotedblleft
+prove\textquotedblright\ Theorem \ref{thm.schurtri.ch.ch} by arguing that
+$p_{A}\left(  A\right)  =\det\left(  AI_{n}-A\right)  $ holds
+\textquotedblleft by substituting $A$ for $t$ into $p_{A}=\det\left(
+tI_{n}-A\right)  $\textquotedblright. Unfortunately, such an argument is
+unjustified. Indeed, $tI_{n}-A$ is a matrix whose entries are polynomials in
+$t$. If you substitute $A$ for $t$ into it, it will become a matrix whose
+entries are matrices. This poses two problems: First, it is unclear how to
+take the determinant of such a matrix; second, this matrix is not $AI_{n}-A$.
+For example, for $n=2$, substituting $A$ for $t$ in $tI_{n}-A$ gives%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  -a & -b\\
+-c & \left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  -d
+\end{array}
+\right)  ,
+\]
+which can be made sense of (if we treat the $a,b,c,d$ as multiples of $I_{2}%
+$), but which is certainly not the same as $AI_{n}-A$ (which is the zero
+matrix). There \textbf{is} a correct proof of the Cayley--Hamilton theorem
+along the lines of \textquotedblleft substituting $A$ for $t$%
+\textquotedblright, but it requires a lot of additional work (see
+\url{https://math.stackexchange.com/questions/1141648/} for some discussion of this).
+\end{remark}
+
+Various proofs of Theorem \ref{thm.schurtri.ch.ch} are found across the
+literature; see \cite[after Theorem 2.6]{trach} for a list of references
+(Theorem \ref{thm.schurtri.ch.ch} is \cite[Theorem 2.5]{trach}). I can
+particularly recommend the algebraic proofs given in \cite[Chapter Five,
+Section IV, Lemma 1.9]{Heffer20}, \cite[\S 4, Theorem 1]{Mate16} and
+\cite{Shurma15}, and the combinatorial proof shown in \cite{Straub83} and
+\cite[\S 3]{Zeilbe}. Here, however, I will show a proof of Theorem
+\ref{thm.schurtri.ch.ch} in the particular case when $\mathbb{F}=\mathbb{C}$:
+
+\begin{proof}
+[Proof of Theorem \ref{thm.schurtri.ch.ch} for $\mathbb{F}=\mathbb{C}$.]
+Assume that $\mathbb{F}=\mathbb{C}$. The Schur triangularization theorem
+(Theorem \ref{thm.schurtri.schurtri}) shows that $A$ is unitarily similar to
+an upper-triangular matrix. Hence, $A$ is similar to an upper-triangular
+matrix (because unitarily similar matrices always are similar). In other
+words, there exist an invertible matrix $U$ and an upper-triangular matrix $T$
+such that $A=UTU^{-1}$. Consider these $U$ and $T$.
+
+Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
+of $T$. Then, by Proposition \ref{prop.schurtri.similar.T-diag}, these
+diagonal entries $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
+eigenvalues of $A$ (with algebraic multipliticies). Hence,%
+\[
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{n}\right)
+\]
+(since $p_{A}$ is monic, and the roots of $p_{A}$ are precisely the
+eigenvalues of $A$ with algebraic multiplicities).
+
+TODO: Scribe!
+\end{proof}
+
+The Cayley--Hamilton theorem has an interesting consequence: it yields that
+the inverse of an invertible matrix can be written as a polynomial applied to
+this matrix. (However, the specific polynomial that needs to be applied
+depends on this matrix.) In more detail:
+
+\begin{exercise}
+\fbox{3} Let $\mathbb{F}$ be a field. Let $n$ be a positive integer. Let
+$A\in\mathbb{F}^{n\times n}$ be an invertible matrix with entries in
+$\mathbb{F}$. Prove that there exists a polynomial $f$ of degree $n-1$ in the
+single indeterminate $t$ over $\mathbb{F}$ such that $A^{-1}=f\left(
+A\right)  $.
+\end{exercise}
+
+For example, for $n=2$, we have $A^{-1}=uI_{2}-vA$ with $u=\dfrac
+{\operatorname*{Tr}A}{\det A}$ and $v=\dfrac{1}{\det A}$.
+
+Another consequence of Cayley--Hamilton is that the powers of a given square
+matrix $A\in\mathbb{F}^{n\times n}$ span a vector space of dimension $\leq n$:
+
+\begin{exercise}
+\fbox{3} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be a
+square matrix with entries in $\mathbb{F}$. Prove that for any nonnegative
+integer $k$, the power $A^{k}$ can be written as an $\mathbb{F}$-linear
+combination of the first $n$ powers $A^{0},A^{1},\ldots,A^{n-1}$.
+\end{exercise}
+
+Yet another rather curious consequence is an application to linearly recurrent
+sequences. We recall what these are:
+
+\begin{definition}
+Let $a_{1},a_{2},\ldots,a_{k}$ be $k$ numbers. A sequence $\left(  x_{0}%
+,x_{1},x_{2},\ldots\right)  $ of numbers is said to be $\left(  a_{1}%
+,a_{2},\ldots,a_{k}\right)  $\emph{-recurrent} if each integer $i\geq k$
+satisfies%
+\[
+x_{i}=a_{1}x_{i-1}+a_{2}x_{i-2}+\cdots+a_{k}x_{i-k}.
+\]
+
+\end{definition}
+
+For instance, the famous Fibonacci sequence $\left(  f_{0},f_{1},f_{2}%
+,\ldots\right)  $ (defined by the starting values $f_{0}=0$ and $f_{1}=1$ and
+the recurrence $f_{i}=f_{i-1}+f_{i-2}$) is $\left(  1,1\right)  $-recurrent
+(by its very definition). Now, it is a simple exercise to check that the
+\textquotedblleft even-indexed Fibonacci sequence\textquotedblright\ $\left(
+f_{0},f_{2},f_{4},f_{6},\ldots\right)  $ and the \textquotedblleft odd-indexed
+Fibonacci sequence\textquotedblright\ $\left(  f_{1},f_{3},f_{5},f_{7}%
+,\ldots\right)  $ themselves follow a simple recursion; to wit, they are both
+$\left(  3,-1\right)  $-recurrent (check this!). Likewise, the
+\textquotedblleft multiples-of-$3$-indexed Fibonacci
+sequence\textquotedblright\ $\left(  f_{0},f_{3},f_{6},f_{9},\ldots\right)  $
+as well as its companions $\left(  f_{1},f_{4},f_{7},f_{10},\ldots\right)  $
+and $\left(  f_{2},f_{5},f_{8},f_{11},\ldots\right)  $ are $\left(
+4,1\right)  $-recurrent. This generalizes:
+
+\begin{exercise}
+\fbox{5} Let $a_{1},a_{2},\ldots,a_{k}$ be $k$ numbers. Let $\left(
+x_{0},x_{1},x_{2},\ldots\right)  $ be any $\left(  a_{1},a_{2},\ldots
+,a_{k}\right)  $-recurrent sequence of numbers. Let $d$ be a positive integer.
+Show that there exist $k$ integers $b_{1},b_{2},\ldots,b_{k}$ such that each
+$i\geq kd$ satisfies%
+\[
+x_{i}=b_{1}x_{i-d}+b_{2}x_{i-2d}+\cdots+b_{k}x_{i-kd}.
+\]
+(This means that the sequences $\left(  x_{0+u},x_{d+u},x_{2d+u}%
+,x_{3d+u},\ldots\right)  $ are $\left(  b_{1},b_{2},\ldots,b_{k}\right)
+$-recurrent for all $u\geq0$.)
+
+[\textbf{Hint:} For each $j\geq0$, define the column vector $v_{j}$ by
+$v_{j}=\left(
+\begin{array}
+[c]{c}%
+x_{j}\\
+x_{j+1}\\
+\vdots\\
+x_{j+k-1}%
+\end{array}
+\right)  \in\mathbb{R}^{k}$. Let $A$ be the matrix $\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 1\\
+a_{k} & a_{k-1} & a_{k-2} & \cdots & a_{1}%
+\end{array}
+\right)  $. Start by showing that $Av_{j}=v_{j+1}$ for each $j\geq0$.]
+\end{exercise}
+
+\subsection{Sylvester's equation}
+
+We shall next see another application of the Cayley--Hamilton theorem. First,
+a notation:
+
+\begin{definition}
+\label{def.schurtri.syl.spec}Let $A\in\mathbb{C}^{n\times n}$. Then, the
+\emph{spectrum} of $A$ is defined to be the set of all eigenvalues of $A$.
+This spectrum is denoted by $\sigma\left(  A\right)  $.
+\end{definition}
+
+Some authors write $\operatorname*{spec}A$ instead of $\sigma\left(  A\right)
+$. (Some also define it to be a multiset rather than a set; however, the set
+suffices for our purposes.)
+
+We now claim the following:
+
+\begin{theorem}
+\label{thm.schurtri.syl.equivalence}Let $A\in\mathbb{C}^{n\times n}$ be an
+$n\times n$-matrix, and let $B\in\mathbb{C}^{m\times m}$ be an $m\times
+m$-matrix (both with complex entries). Let $C\in\mathbb{C}^{n\times m}$ be an
+$n\times m$-matrix. Then, the following two statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{U}$: There is a \textbf{unique} matrix $X\in\mathbb{C}%
+^{n\times m}$ such that $AX-XB=C$.
+
+\item $\mathcal{V}$: We have $\sigma\left(  A\right)  \cap\sigma\left(
+B\right)  =\varnothing$.
+\end{itemize}
+\end{theorem}
+
+\begin{example}
+Let us take $n=1$ and $m=1$, and see what Theorem
+\ref{thm.schurtri.syl.equivalence} becomes. In this case, the matrices $A$,
+$B$ and $C$ are $1\times1$-matrices, so we can view them as scalars. Let us
+therefore write $a$, $b$ and $c$ for them. Then, Theorem
+\ref{thm.schurtri.syl.equivalence} says that the following two statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{U}$: There is a \textbf{unique} complex number $x$ such that
+$ax-xb=c$.
+
+\item $\mathcal{V}$: We have $\left\{  a\right\}  \cap\left\{  b\right\}
+=\varnothing$ (that is, $a\neq b$).
+\end{itemize}
+
+This is not surprising, because the linear equation $ax-xb=c$ has a unique
+solution (namely, $x=\dfrac{c}{a-b}$) when $a\neq b$, and otherwise has either
+none or infinitely many solutions.
+\end{example}
+
+The equation $AX-XB=C$ in Theorem \ref{thm.schurtri.syl.equivalence} is known
+as \emph{Sylvester's equation}. It is much harder than the superficially
+similar equations $AX-BX=C$ and $XA-XB=C$ (see Exercise
+\ref{exe.schurtri.syl.AX-BX} for the first of these). In fact, since the $X$
+is on different sides in $AX$ and in $XB$, it cannot be factored out from
+$AX-XB$ (matrices do not generally commute).
+
+\begin{exercise}
+\label{exe.schurtri.syl.AX-BX}\fbox{2} Let $A\in\mathbb{C}^{n\times m}$,
+$B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{m\times p}$ be three complex
+matrices. Prove that there exists a unique matrix $X\in\mathbb{C}^{n\times m}$
+such that $AX-BX=C$ if and only if each column of $C$ belongs to the image (=
+column space) of $A-B$.
+\end{exercise}
+
+\begin{proof}
+[Proof of the $\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
+\ref{thm.schurtri.syl.equivalence}.] First, we observe that the matrix space
+$\mathbb{C}^{n\times m}$ is itself a $\mathbb{C}$-vector space of dimension
+$nm$.
+
+Consider the map%
+\begin{align*}
+L:\mathbb{C}^{n\times m} &  \rightarrow\mathbb{C}^{n\times m},\\
+X &  \mapsto AX-XB.
+\end{align*}
+This map $L$ is linear, because for any $\alpha,\beta\in\mathbb{C}$ and any
+$X,Y\in\mathbb{C}^{n\times m}$, we have%
+\begin{align*}
+L\left(  \alpha X+\beta Y\right)   &  =A\left(  \alpha X+\beta Y\right)
+-\left(  \alpha X+\beta Y\right)  B\\
+&  =\alpha AX+\beta AY-\alpha XB-\beta YB\\
+&  =\alpha\underbrace{\left(  AX-XB\right)  }_{=L\left(  X\right)  }%
++\beta\underbrace{\left(  AY-YB\right)  }_{=L\left(  Y\right)  }=\alpha
+L\left(  X\right)  +\beta L\left(  Y\right)  .
+\end{align*}
+
+
+TODO: Scribe!
+\end{proof}
+
+\begin{exercise}
+\label{exe.schurtri.syl.sigA-B}\fbox{5} Let $A$, $B$ and $C$ be as in Theorem
+\ref{thm.schurtri.syl.equivalence}.
+
+\textbf{(a)} Let the linear map $L$ be as in the above proof of the
+$\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
+\ref{thm.schurtri.syl.equivalence}. Prove that if $\lambda\in\sigma\left(
+A\right)  $ and $\mu\in\sigma\left(  B\right)  $, then $\lambda-\mu$ is an
+eigenvalue of $L$ (that is, there exists a nonzero matrix $X\in\mathbb{C}%
+^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$).
+
+\textbf{(b)} Prove the implication $\mathcal{U}\Longrightarrow\mathcal{V}$ in
+Theorem \ref{thm.schurtri.syl.equivalence} (thus completing the proof of the theorem).
+\end{exercise}
+
+We note that more can be said: If $A$, $B$ and $C$ are as in Theorem
+\ref{thm.schurtri.syl.equivalence}, and if $L$ is as in the above proof, then
+\textbf{all} eigenvalues of $L$ have the form $\lambda-\mu$ for $\lambda
+\in\sigma\left(  A\right)  $ and $\mu\in\sigma\left(  B\right)  $. But this
+seems harder to prove at this point.
 
 \newpage
 
@@ -4615,6 +5235,10 @@ numbering is guaranteed to match that in the citations above, see
 \bibitem[Grinbe19]{trach}Darij Grinberg, \textit{The trace Cayley-Hamilton
 theorem}, 14 July 2019.\newline\url{https://www.cip.ifi.lmu.de/~grinberg/algebra/trach.pdf}
 
+\bibitem[Grinbe21]{21f}Darij Grinberg, \textit{An Introduction to Algebraic
+Combinatorics [Math 701, Spring 2021 lecture notes]}, 10 September
+2021.\newline\url{https://www.cip.ifi.lmu.de/~grinberg/t/21s/lecs.pdf}
+
 \bibitem[Heffer20]{Heffer20}Jim Hefferon, \textit{Linear Algebra}, 4th edition
 2020.\newline\url{http://joshua.smcvt.edu/linearalgebra}
 
@@ -4662,6 +5286,9 @@ Loehr, \textit{Advanced Linear Algebra}, CRC Press 2014}.
 Markushevich, \textit{Recursion sequences}, Mir Publishers, Moscow, 2nd
 printing 1983}.
 
+\bibitem[Mate16]{Mate16}Attila M\'{a}t\'{e}, \textit{The Cayley-Hamilton
+Theorem}, version 28 March 2016.\newline\url{http://www.sci.brooklyn.cuny.edu/~mate/misc/cayley_hamilton.pdf}
+
 \bibitem[Melian01]{Melian01}Mar\'{\i}a Victoria Meli\'{a}n, \textit{Linear
 recurrence relations with constant coefficients}, 9 April 2001.\newline\url{http://matematicas.uam.es/~mavi.melian/CURSO_15_16/web_Discreta/recurrence.pdf}
 
@@ -4679,6 +5306,16 @@ Szeg\H{o}, \textit{Problems and Theorems in Analysis I}, Springer 1978
 and Theorems in Linear Algebra}}}, Translations of Mathematical Monographs,
 vol. \#134, AMS 1994.
 
+\bibitem[Shurma15]{Shurma15}Jerry Shurman, \textit{The Cayley-Hamilton theorem
+via multilinear algebra}, \url{http://people.reed.edu/~jerry/332/28ch.pdf} .
+Part of the collection \textit{Course Materials for Mathematics 332: Algebra},
+available at \url{http://people.reed.edu/~jerry/332/mat.html} 
+
+\bibitem[Silves00]{Silvest}%
+\href{https://web.archive.org/web/20140505161153/http://www.mth.kcl.ac.uk/~jrs/gazette/blocks.pdf}{John
+R. Silvester, \textit{Determinants of Block Matrices}, The Mathematical
+Gazette, Vol. 84, No. 501 (Nov., 2000), pp. 460--467.}
+
 \bibitem[Steele04]{Steele04}%
 \href{http://www.ma.huji.ac.il/~ehudf/courses/Ineq09/The Cauchy-Schwarz Master Class .pdf}{J.
 Michael Steele, \textit{The Cauchy--Schwarz Master Class: An Introduction to
@@ -4689,6 +5326,10 @@ for errata.
 
 \bibitem[Steinb06]{Steinb06}Mark Steinberger, \textit{Algebra}, 31 August
 2006.\newline\url{https://web.archive.org/web/20180821125315/https://www.albany.edu/~mark/algebra.pdf}
+
+\bibitem[Straub83]{Straub83}Howard Straubing, \textit{A combinatorial proof of
+the Cayley-Hamilton theorem}, Discrete Mathematics, Volume 43, Issues 2--3,
+1983, pp. 273--279.\newline\url{https://doi.org/10.1016/0012-365X(83)90164-4}
 
 \bibitem[Strick20]{Strick20}Neil Strickland, \textit{Linear mathematics for
 applications}, 11 February 2020.\newline\url{https://neilstrickland.github.io/linear_maths/notes/linear_maths.pdf}
@@ -4712,6 +5353,11 @@ New York, 1987.}
 
 \bibitem[Woerde16]{Woerde16}Hugo J. Woerdeman, \textit{Advanced Linear
 Algebra}, CRC Press 2016.
+
+\bibitem[Zeilbe85]{Zeilbe}%
+\href{http://www.math.rutgers.edu/~zeilberg/mamarimY/DM85.pdf}{Doron
+Zeilberger, \textit{A combinatorial approach to matrix algebra}, Discrete
+Mathematics 56 (1985), pp. 61--72.}
 
 \bibitem[Zill17]{Zill17}Dennis G. Zill, \textit{A First Course in Differential
 Equations with Modeling Applications}, Cengage 2017.
