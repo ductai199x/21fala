@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 01, 2021 21:04:52}
+%TCIDATA{LastRevised=Monday, October 04, 2021 09:14:59}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4735,7 +4735,7 @@ u,v\right)  $-th entry is $A_{i_{u},i_{v}}$ for all $u,v\in\left[  k\right]  $.
 \end{proposition}
 
 \begin{proof}
-[Proof sketch.] We have $A=\left(
+[Proof sketch.]We have $A=\left(
 \begin{array}
 [c]{cccc}%
 A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
@@ -4745,7 +4745,7 @@ A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
 \end{array}
 \right)  $, so that%
 \begin{align*}
-tI_{n}-A &  =t\left(
+tI_{n}-A  &  =t\left(
 \begin{array}
 [c]{cccc}%
 1 & 0 & \cdots & 0\\
@@ -4761,7 +4761,7 @@ A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
 \vdots & \vdots & \ddots & \vdots\\
 A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
@@ -4780,9 +4780,9 @@ _{\sigma\in S_{n}}\left(  -1\right)  ^{\sigma}B_{1,\sigma\left(  1\right)
 $n\times n$-matrix $B$. (We are applying this to $B=tI_{n}-A$.)}. One of these
 products is%
 \begin{align*}
-& \left(  t-A_{1,1}\right)  \left(  t-A_{2,2}\right)  \cdots\left(
-t-A_{n,n}\right)  \\
-& =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
+&  \left(  t-A_{1,1}\right)  \left(  t-A_{2,2}\right)  \cdots\left(
+t-A_{n,n}\right) \\
+&  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
 \text{terms with lower powers of }t\right)  .
 \end{align*}
 None of the other products appearing in this sum includes any power of $t$
@@ -4792,7 +4792,8 @@ the remaining factors of the product contribute at most $t^{n-2}$). Hence, the
 entire determinant $\det\left(  tI_{n}-A\right)  $ can be written as
 \[
 \det\left(  tI_{n}-A\right)  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots
-+A_{n,n}\right)  t^{n-1}+\left(  \text{terms with lower powers of }t\right)  .
++A_{n,n}\right)  t^{n-1}+\left(  \text{terms with lower powers of }t\right)
+.
 \]
 In other words,%
 \[
@@ -4873,7 +4874,7 @@ c & d
 1 & 0\\
 0 & 1
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -4935,13 +4936,13 @@ Section IV, Lemma 1.9]{Heffer20}, \cite[\S 4, Theorem 1]{Mate16} and
 \ref{thm.schurtri.ch.ch} in the particular case when $\mathbb{F}=\mathbb{C}$:
 
 \begin{proof}
-[Proof of Theorem \ref{thm.schurtri.ch.ch} for $\mathbb{F}=\mathbb{C}$.]
-Assume that $\mathbb{F}=\mathbb{C}$. The Schur triangularization theorem
-(Theorem \ref{thm.schurtri.schurtri}) shows that $A$ is unitarily similar to
-an upper-triangular matrix. Hence, $A$ is similar to an upper-triangular
-matrix (because unitarily similar matrices always are similar). In other
-words, there exist an invertible matrix $U$ and an upper-triangular matrix $T$
-such that $A=UTU^{-1}$. Consider these $U$ and $T$.
+[Proof of Theorem \ref{thm.schurtri.ch.ch} for $\mathbb{F}=\mathbb{C}$.]Assume
+that $\mathbb{F}=\mathbb{C}$. The Schur triangularization theorem (Theorem
+\ref{thm.schurtri.schurtri}) shows that $A$ is unitarily similar to an
+upper-triangular matrix. Hence, $A$ is similar to an upper-triangular matrix
+(because unitarily similar matrices always are similar). In other words, there
+exist an invertible matrix $U$ and an upper-triangular matrix $T$ such that
+$A=UTU^{-1}$. Consider these $U$ and $T$.
 
 Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
 of $T$. Then, by Proposition \ref{prop.schurtri.similar.T-diag}, these
@@ -5107,22 +5108,22 @@ $AX-XB$ (matrices do not generally commute).
 
 \begin{exercise}
 \label{exe.schurtri.syl.AX-BX}\fbox{2} Let $A\in\mathbb{C}^{n\times m}$,
-$B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{m\times p}$ be three complex
-matrices. Prove that there exists a unique matrix $X\in\mathbb{C}^{n\times m}$
+$B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{n\times p}$ be three complex
+matrices. Prove that there exists a unique matrix $X\in\mathbb{C}^{m\times p}$
 such that $AX-BX=C$ if and only if each column of $C$ belongs to the image (=
 column space) of $A-B$.
 \end{exercise}
 
 \begin{proof}
 [Proof of the $\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
-\ref{thm.schurtri.syl.equivalence}.] First, we observe that the matrix space
+\ref{thm.schurtri.syl.equivalence}.]First, we observe that the matrix space
 $\mathbb{C}^{n\times m}$ is itself a $\mathbb{C}$-vector space of dimension
 $nm$.
 
 Consider the map%
 \begin{align*}
-L:\mathbb{C}^{n\times m} &  \rightarrow\mathbb{C}^{n\times m},\\
-X &  \mapsto AX-XB.
+L:\mathbb{C}^{n\times m}  &  \rightarrow\mathbb{C}^{n\times m},\\
+X  &  \mapsto AX-XB.
 \end{align*}
 This map $L$ is linear, because for any $\alpha,\beta\in\mathbb{C}$ and any
 $X,Y\in\mathbb{C}^{n\times m}$, we have%
@@ -5235,7 +5236,7 @@ numbering is guaranteed to match that in the citations above, see
 \bibitem[Grinbe19]{trach}Darij Grinberg, \textit{The trace Cayley-Hamilton
 theorem}, 14 July 2019.\newline\url{https://www.cip.ifi.lmu.de/~grinberg/algebra/trach.pdf}
 
-\bibitem[Grinbe21]{21f}Darij Grinberg, \textit{An Introduction to Algebraic
+\bibitem[Grinbe21]{21s}Darij Grinberg, \textit{An Introduction to Algebraic
 Combinatorics [Math 701, Spring 2021 lecture notes]}, 10 September
 2021.\newline\url{https://www.cip.ifi.lmu.de/~grinberg/t/21s/lecs.pdf}
 
@@ -5309,7 +5310,7 @@ vol. \#134, AMS 1994.
 \bibitem[Shurma15]{Shurma15}Jerry Shurman, \textit{The Cayley-Hamilton theorem
 via multilinear algebra}, \url{http://people.reed.edu/~jerry/332/28ch.pdf} .
 Part of the collection \textit{Course Materials for Mathematics 332: Algebra},
-available at \url{http://people.reed.edu/~jerry/332/mat.html} 
+available at \url{http://people.reed.edu/~jerry/332/mat.html}
 
 \bibitem[Silves00]{Silvest}%
 \href{https://web.archive.org/web/20140505161153/http://www.mth.kcl.ac.uk/~jrs/gazette/blocks.pdf}{John
