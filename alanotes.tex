@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, October 04, 2021 09:14:59}
+%TCIDATA{LastRevised=Monday, October 04, 2021 20:54:13}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -399,39 +399,39 @@ y^{\ast}:=\left(
 
 \begin{proposition}
 \label{prop.unitary.innerprod.props}Let $x\in\mathbb{C}^{n}$ and
-$y\in\mathbb{C}^{n}$. Then:
+$y\in\mathbb{C}^{n}$. Then: \medskip
 
-\textbf{(a)} We have $\left\langle x,y\right\rangle =y^{\ast}x$.
+\textbf{(a)} We have $\left\langle x,y\right\rangle =y^{\ast}x$. \medskip
 
 \textbf{(b)} We have $\left\langle x,y\right\rangle =\overline{\left\langle
-y,x\right\rangle }$.
+y,x\right\rangle }$. \medskip
 
 \textbf{(c)} We have $\left\langle x+x^{\prime},y\right\rangle =\left\langle
 x,y\right\rangle +\left\langle x^{\prime},y\right\rangle $ for any $x^{\prime
-}\in\mathbb{C}^{n}$.
+}\in\mathbb{C}^{n}$. \medskip
 
 \textbf{(d)} We have $\left\langle x,y+y^{\prime}\right\rangle =\left\langle
 x,y\right\rangle +\left\langle x,y^{\prime}\right\rangle $ for any $y^{\prime
-}\in\mathbb{C}^{n}$.
+}\in\mathbb{C}^{n}$. \medskip
 
 \textbf{(e)} We have $\left\langle \lambda x,y\right\rangle =\lambda
-\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$.
+\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$. \medskip
 
 \textbf{(f)} We have $\left\langle x,\lambda y\right\rangle =\overline
-{\lambda}\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$.
+{\lambda}\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$. \medskip
 
 \textbf{(g)} We have $\left\langle x-x^{\prime},y\right\rangle =\left\langle
 x,y\right\rangle -\left\langle x^{\prime},y\right\rangle $ for any $x^{\prime
-}\in\mathbb{C}^{n}$.
+}\in\mathbb{C}^{n}$. \medskip
 
 \textbf{(h)} We have $\left\langle x,y-y^{\prime}\right\rangle =\left\langle
 x,y\right\rangle -\left\langle x,y^{\prime}\right\rangle $ for any $y^{\prime
-}\in\mathbb{C}^{n}$.
+}\in\mathbb{C}^{n}$. \medskip
 
 \textbf{(i)} We have $\left\langle \sum_{i=1}^{k}\lambda_{i}x_{i}%
 ,y\right\rangle =\sum_{i=1}^{k}\lambda_{i}\left\langle x_{i},y\right\rangle $
 for any $k\in\mathbb{N}$, any $x_{1},x_{2},\ldots,x_{k}\in\mathbb{C}^{n}$ and
-any $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}\in\mathbb{C}$.
+any $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}\in\mathbb{C}$. \medskip
 
 \textbf{(j)} We have $\left\langle x,\sum_{i=1}^{k}\lambda_{i}y_{i}%
 \right\rangle =\sum_{i=1}^{k}\overline{\lambda_{i}}\left\langle x,y_{i}%
@@ -455,9 +455,10 @@ Parts \textbf{(i)} and \textbf{(j)} follow from parts \textbf{(c)},
 \end{proof}
 
 \begin{proposition}
-\label{prop.unitary.innerprod.pos}Let $x\in\mathbb{C}^{n}$. Then:
+\label{prop.unitary.innerprod.pos}Let $x\in\mathbb{C}^{n}$. Then:  \medskip
 
-\textbf{(a)} The number $\left\langle x,x\right\rangle $ is a nonnegative real.
+\textbf{(a)} The number $\left\langle x,x\right\rangle $ is a nonnegative
+real. \medskip
 
 \textbf{(b)} We have $\left\langle x,x\right\rangle >0$ whenever $x\neq0$.
 \end{proposition}
@@ -474,14 +475,14 @@ yields%
 \left\langle x,x\right\rangle  &  =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
 }+\cdots+x_{n}\overline{x_{n}}\nonumber\\
 &  =\left\vert x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}%
-+\cdots+\left\vert x_{n}\right\vert ^{2},
-\label{pf.prop.unitary.innerprod.pos.1}%
++\cdots+\left\vert x_{n}\right\vert ^{2}%
+,\label{pf.prop.unitary.innerprod.pos.1}%
 \end{align}
 since any complex number $z$ satisfies $z\overline{z}=\left\vert z\right\vert
 ^{2}$. Since all the absolute values $\left\vert x_{1}\right\vert ,\left\vert
 x_{2}\right\vert ,\ldots,\left\vert x_{n}\right\vert $ are real, this yields
 immediately that $\left\langle x,x\right\rangle $ is a nonnegative real. Thus,
-Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved.
+Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved.  \medskip
 
 \textbf{(b)} Assume that $x\neq0$. Thus, at least one $i\in\left[  n\right]  $
 satisfies $x_{i}\neq0$ and therefore $\left\vert x_{i}\right\vert ^{2}>0$.
@@ -587,8 +588,8 @@ y,x\right\rangle }=\left\langle x,y\right\rangle $ (by Proposition
 Now, Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} (applied to
 $bx-ay$ instead of $x$) yields that
 \begin{equation}
-\left\langle bx-ay,bx-ay\right\rangle \geq0.
-\label{pf.thm.unitary.innerprod.cs.main}%
+\left\langle bx-ay,bx-ay\right\rangle \geq
+0.\label{pf.thm.unitary.innerprod.cs.main}%
 \end{equation}
 Since%
 \begin{align*}
@@ -602,7 +603,7 @@ ay,bx-ay\right\rangle }_{\substack{=\left\langle ay,bx\right\rangle
 \text{by Proposition \ref{prop.unitary.innerprod.props} \textbf{(g)}}\right)
 \\
 &  =\left\langle bx,bx\right\rangle -\left\langle bx,ay\right\rangle -\left(
-\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right) \\
+\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right)  \\
 &  =\underbrace{\left\langle bx,bx\right\rangle }_{\substack{=b\left\langle
 x,bx\right\rangle \\\text{(by Proposition \ref{prop.unitary.innerprod.props}
 \textbf{(e)})}}}+\underbrace{\left\langle ay,ay\right\rangle }%
@@ -682,7 +683,7 @@ square roots on both sides of this inequality, and obtain $\left\vert
 $\left\vert \left\vert x\right\vert \right\vert \cdot\left\vert \left\vert
 y\right\vert \right\vert \geq\left\vert \left\langle x,y\right\rangle
 \right\vert $ (since $\overline{b}=\left\langle x,y\right\rangle $). This
-proves Theorem \ref{thm.unitary.innerprod.cs} \textbf{(a)}.
+proves Theorem \ref{thm.unitary.innerprod.cs} \textbf{(a)}.  \medskip
 
 \textbf{(b)} Our above proof of the inequality $\left\vert \left\vert
 x\right\vert \right\vert \cdot\left\vert \left\vert y\right\vert \right\vert
@@ -757,7 +758,7 @@ Follows from Proposition \ref{prop.unitary.innerprod.props} \textbf{(b)}.
 
 \begin{definition}
 \label{def.unitary.innerprod.orth-n}Let $\left(  u_{1},u_{2},\ldots
-,u_{k}\right)  $ be a tuple of vectors in $\mathbb{C}^{n}$. Then:
+,u_{k}\right)  $ be a tuple of vectors in $\mathbb{C}^{n}$. Then: \medskip
 
 \textbf{(a)} We say that the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $
 is \emph{orthogonal} if we have
@@ -783,7 +784,7 @@ $\mathbb{C}^{n}$: A set $\left\{  u_{1},u_{2},\ldots,u_{k}\right\}  $ of
 vectors in $\mathbb{C}^{n}$ (with $u_{1},u_{2},\ldots,u_{k}$ being distinct)
 is said to be \emph{orthogonal} (or \emph{orthonormal}, respectively) if and
 only if the tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthogonal
-(resp., orthonormal).
+(resp., orthonormal). \medskip
 
 \textbf{(d)} Sometimes, we (sloppily) say \textquotedblleft the vectors
 $u_{1},u_{2},\ldots,u_{k}$ are orthogonal\textquotedblright\ when we mean
@@ -815,7 +816,7 @@ orthonormal\textquotedblright.
 1
 \end{array}
 \right)  \right)  $ of vectors in $\mathbb{C}^{3}$ is orthonormal. It is also
-a basis of $\mathbb{C}^{3}$, and known as the \emph{standard basis}.
+a basis of $\mathbb{C}^{3}$, and known as the \emph{standard basis}. \medskip
 
 \textbf{(b)} More generally: Let $n\in\mathbb{N}$. Let $e_{1},e_{2}%
 ,\ldots,e_{n}\in\mathbb{C}^{n}$ be the vectors defined by%
@@ -830,7 +831,7 @@ position;}\\\text{all other entries are }0}}.
 \]
 Then, $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ is an orthonormal basis of
 $\mathbb{C}^{n}$, and is known as the \emph{standard basis} of $\mathbb{C}%
-^{n}$.
+^{n}$. \medskip
 
 \textbf{(c)} The pair $\left(  \left(
 \begin{array}
@@ -1184,20 +1185,20 @@ transpose\textquotedblright\ instead.
 Some authors use the alternative notation $A^{\dag}$ (read \textquotedblleft%
 $A$ dagger\textquotedblright) for $A^{\ast}$. (The Wikipedia suggests calling
 it the \textquotedblleft bedaggered matrix $A$\textquotedblright, although I
-am not aware of anyone using this terminology outside of the Wikipedia.)
+am not aware of anyone using this terminology outside of the Wikipedia.) \medskip
 
 The following rules for conjugate transposes are straightforward to check:
 
 \begin{proposition}
 \label{prop.unitary.(AB)*}\textbf{(a)} If $A\in\mathbb{C}^{n\times m}$ and
 $B\in\mathbb{C}^{n\times m}$ are two matrices, then $\left(  A+B\right)
-^{\ast}=A^{\ast}+B^{\ast}$.
+^{\ast}=A^{\ast}+B^{\ast}$. \medskip
 
 \textbf{(b)} If $A\in\mathbb{C}^{n\times m}$ and $\lambda\in\mathbb{C}$, then
-$\left(  \lambda A\right)  ^{\ast}=\overline{\lambda}A^{\ast}$.
+$\left(  \lambda A\right)  ^{\ast}=\overline{\lambda}A^{\ast}$. \medskip
 
 \textbf{(c)} If $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times k}$
-are two matrices, then $\left(  AB\right)  ^{\ast}=B^{\ast}A^{\ast}$.
+are two matrices, then $\left(  AB\right)  ^{\ast}=B^{\ast}A^{\ast}$. \medskip
 
 \textbf{(d)} If $A\in\mathbb{C}^{n\times m}$, then $\left(  A^{\ast}\right)
 ^{\ast}=A$.
@@ -1374,7 +1375,7 @@ said to be \emph{unitary} if and only if both $U$ and $U^{\ast}$ are isometries.
 \end{array}
 \right)  $ is unitary. Indeed, it is easy to see that $A^{\ast}A=I_{2}$, so
 that $A$ is an isometry. Thus, $A^{\ast}$ is an isometry as well, since
-$A^{\ast}=A$. Hence, $A$ is unitary.
+$A^{\ast}=A$. Hence, $A$ is unitary. \medskip
 
 \textbf{(b)} A $1\times1$-matrix $\left(
 \begin{array}
@@ -1382,9 +1383,9 @@ $A^{\ast}=A$. Hence, $A$ is unitary.
 \lambda
 \end{array}
 \right)  \in\mathbb{C}^{1\times1}$ is unitary if and only if $\left\vert
-\lambda\right\vert =1$.
+\lambda\right\vert =1$. \medskip
 
-\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is unitary.
+\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is unitary. \medskip
 
 \textbf{(d)} Let $n\in\mathbb{N}$, and let $\sigma$ be a permutation of
 $\left[  n\right]  $ (that is, a bijective map from $\left[  n\right]  $ to
@@ -1409,7 +1410,7 @@ The permutation matrix $P_{\sigma}$ is always unitary (for any $n$ and any
 permutation $\sigma$). Indeed, its conjugate transpose $\left(  P_{\sigma
 }\right)  ^{\ast}$ is easily seen to be the permutation matrix $P_{\sigma
 ^{-1}}$ of the inverse permutation $\sigma^{-1}$; but this latter permutation
-matrix $P_{\sigma^{-1}}$ is also the inverse of $P_{\sigma}$.
+matrix $P_{\sigma^{-1}}$ is also the inverse of $P_{\sigma}$. \medskip
 
 \textbf{(e)} A diagonal matrix $\operatorname*{diag}\left(  \lambda
 _{1},\lambda_{2},\ldots,\lambda_{n}\right)  \in\mathbb{C}^{n\times n}$ is
@@ -1508,10 +1509,11 @@ an isometry. Show that $n\geq k$.
 \begin{exercise}
 \label{exe.unitary.group}\fbox{3} \textbf{(a)} Prove that the product $AB$ of
 two isometries $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times k}$
-is always an isometry.
+is always an isometry. \medskip
 
 \textbf{(b)} Prove that the product $AB$ of two unitary matrices
-$A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ is always unitary.
+$A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ is always
+unitary. \medskip
 
 \textbf{(c)} Prove that the inverse of a unitary matrix $A\in\mathbb{C}%
 ^{n\times n}$ is always unitary.
@@ -1524,9 +1526,9 @@ denoted by $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $.
 
 \begin{exercise}
 \label{exe.unitary.det-eval}\fbox{2} Let $U\in\mathbb{C}^{n\times n}$ be a
-unitary matrix.
+unitary matrix. \medskip
 
-\textbf{(a)} Prove that $\left\vert \det U\right\vert =1$.
+\textbf{(a)} Prove that $\left\vert \det U\right\vert =1$. \medskip
 
 \textbf{(b)} Prove that any eigenvalue $\lambda$ of $U$ satisfies $\left\vert
 \lambda\right\vert =1$.
@@ -1567,25 +1569,25 @@ i & 1\\
 
 \begin{exercise}
 \fbox{5} \label{exe.unitary.skew-herm.1}Let $S\in\mathbb{C}^{n\times n}$ be a
-skew-Hermitian matrix.
+skew-Hermitian matrix. \medskip
 
-\textbf{(a)} Prove that the matrix $I_{n}-S$ is invertible.
+\textbf{(a)} Prove that the matrix $I_{n}-S$ is invertible. \medskip
 
 [\textbf{Hint:} Show first that the matrix $I_{n}+S^{\ast}S$ is invertible,
 since each nonzero vector $v\in\mathbb{C}^{n}$ satisfies $v^{\ast}\left(
 I_{n}+S^{\ast}S\right)  v=\underbrace{\left\langle v,v\right\rangle }%
 _{>0}+\underbrace{\left\langle Sv,Sv\right\rangle }_{\geq0}>0$. Then, expand
-the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.]
+the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.] \medskip
 
 \textbf{(b)} Prove that the matrices $I_{n}+S$ and $\left(  I_{n}-S\right)
 ^{-1}$ commute (i.e., satisfy $\left(  I_{n}+S\right)  \cdot\left(
 I_{n}-S\right)  ^{-1}=\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}%
-+S\right)  $).
++S\right)  $). \medskip
 
 \textbf{(c)} Prove that the matrix $U:=\left(  I_{n}-S\right)  ^{-1}%
-\cdot\left(  I_{n}+S\right)  $ is unitary.
+\cdot\left(  I_{n}+S\right)  $ is unitary. \medskip
 
-\textbf{(d)} Prove that the matrix $U+I_{n}$ is invertible.
+\textbf{(d)} Prove that the matrix $U+I_{n}$ is invertible. \medskip
 
 \textbf{(e)} Prove that $S=\left(  U-I_{n}\right)  \cdot\left(  U+I_{n}%
 \right)  ^{-1}$.
@@ -1615,16 +1617,16 @@ rigorous way to state this:
 
 \begin{exercise}
 \label{exe.unitary.skew-herm.2}\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be a
-matrix. Prove the following:
+matrix. Prove the following: \medskip
 
 \textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
-each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
+each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$. \medskip
 
 \textbf{(b)} The matrix $\lambda A+I_{n}$ is invertible for all but finitely
-many $\lambda\in\mathbb{C}$.
+many $\lambda\in\mathbb{C}$. \medskip
 
 [\textbf{Hint:} The determinant $\det\left(  \lambda A+I_{n}\right)  $ is a
-polynomial function in $\lambda$.]
+polynomial function in $\lambda$.] \medskip
 
 \textbf{(c)} The set $\left\{  U\in\operatorname*{U}\nolimits_{n}\left(
 \mathbb{C}\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  $ is
@@ -1651,7 +1653,7 @@ real entries) is orthogonal if and only if it is unitary.
 triple $\left(  p,q,r\right)  $ of positive integers satisfying $p^{2}%
 +q^{2}=r^{2}$. (In other words, it is a triple of positive integers that are
 the sides of a right-angled triangle.) Two famous Pythagorean triples are
-$\left(  3,4,5\right)  $ and $\left(  5,12,13\right)  $.
+$\left(  3,4,5\right)  $ and $\left(  5,12,13\right)  $. \medskip
 
 \textbf{(a)} Prove that a triple $\left(  p,q,r\right)  $ of positive integers
 is Pythagorean if and only if the matrix $\left(
@@ -1660,7 +1662,7 @@ is Pythagorean if and only if the matrix $\left(
 p/r & -q/r\\
 q/r & p/r
 \end{array}
-\right)  $ is unitary.
+\right)  $ is unitary. \medskip
 
 \textbf{(b)} Let $\left(
 \begin{array}
@@ -1670,11 +1672,11 @@ c & d
 \end{array}
 \right)  $ be any unitary matrix with rational entries. Assume that $a$ and
 $c$ are positive, and write $a$ and $c$ as $p/r$ and $q/r$ for some positive
-integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple.
+integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple. \medskip
 
 \textbf{(c)} Find infinitely many Pythagorean triples that are pairwise
 non-proportional (i.e., no two of them are obtained from one another just by
-multiplying all three entries by the same number.)
+multiplying all three entries by the same number.) \medskip
 
 [\textbf{Hint:} Use the $S\mapsto U$ construction from Exercise
 \ref{exe.unitary.skew-herm.1}.]
@@ -1840,7 +1842,7 @@ I_{2} & 0_{2\times2} & 0_{2\times2}\\
 In Definition \ref{def.blockmatrix.uxv}, the big matrix
 (\ref{eq.def.blockmatrix.uxv.blockmat}) is called the \emph{block matrix}
 formed out of the matrices $A\left(  i,j\right)  $; the single matrices
-$A\left(  i,j\right)  $ are called its \emph{blocks}.
+$A\left(  i,j\right)  $ are called its \emph{blocks}. \medskip
 
 One of the most useful properties of block matrices is that they can be
 multiplied \textquotedblleft as if the blocks were numbers\textquotedblright%
@@ -2728,10 +2730,10 @@ combination of $z_{1},z_{2},\ldots,z_{p-1}$). Hence, Lemma
 $) yields%
 \begin{align*}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},v_{p}\right\}   &
-=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\} \\
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\}  \\
 &  =\underbrace{\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}%
 \right\}  }_{=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-}+\operatorname*{span}\left\{  z_{p}\right\} \\
+}+\operatorname*{span}\left\{  z_{p}\right\}  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
@@ -2739,15 +2741,15 @@ $) yields%
 A+\operatorname*{span}B\\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
-\right) \\
+\right)  \\
 &  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-+\operatorname*{span}\left\{  z_{p}\right\} \\
-&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\} \\
++\operatorname*{span}\left\{  z_{p}\right\}  \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\}  \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{since }\operatorname*{span}A+\operatorname*{span}B=\operatorname*{span}%
-\left(  A\cup B\right) \\
+\left(  A\cup B\right)  \\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
 \right)  .
@@ -2755,7 +2757,7 @@ A+\operatorname*{span}B\\
 In other words, $\operatorname*{span}\left\{  v_{1},v_{2},\ldots
 ,v_{p}\right\}  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots
 ,z_{p}\right\}  $. Thus, the induction step is complete, so that Claim 1 is
-proved by induction.]
+proved by induction.]  \medskip
 
 Claim 1 (applied to $p=m$) shows that the vectors $z_{1},z_{2},\ldots,z_{m}$
 are well-defined. In other words, the tuple $\left(  z_{1},z_{2},\ldots
@@ -2865,7 +2867,7 @@ Thus, $z_{b}\perp z_{a}$, so that $z_{a}\perp z_{b}$ (by Proposition
 \ref{prop.unitary.innerprod.orth-symm}).
 
 As explained above, this completes our proof of the fact that Claim 2 holds
-for $j=p$. Thus, the induction step is complete, and Claim 2 is proven.]
+for $j=p$. Thus, the induction step is complete, and Claim 2 is proven.] \medskip
 
 Now, applying Claim 2 to $j=m$, we obtain that the tuple $\left(  z_{1}%
 ,z_{2},\ldots,z_{m}\right)  $ is orthogonal. Thus, the proof of Theorem
@@ -3017,10 +3019,10 @@ Hence, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 2.
 We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, for
 each $i\in\left[  p-1\right]  $, we have%
 \begin{align*}
-v_{i}  &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\} \\
+v_{i} &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right) \\
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right)  \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
 \end{align*}
 In other words, all $p-1$ vectors $v_{1},v_{2},\ldots,v_{p-1}$ belong to
@@ -3031,7 +3033,7 @@ conclude that all $p$ vectors $v_{1},v_{2},\ldots,v_{p}$ belong to
 $\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Therefore,
 $\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p}\right\}  \subseteq
 \operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  $. Thus, the
-induction step is complete, so that Claim 1 is proved by induction.]
+induction step is complete, so that Claim 1 is proved by induction.] \medskip
 
 It now remains to show that the tuple $\left(  z_{1},z_{2},\ldots
 ,z_{m}\right)  $ is orthogonal. We shall achieve this by showing the following claim:
@@ -3073,7 +3075,7 @@ vector in $\mathbb{C}^{n}$ that is orthogonal to each of $z_{1},z_{2}%
 ,\ldots,z_{p-1}$. This shows that $z_{p}$ is orthogonal to each of
 $z_{1},z_{2},\ldots,z_{p-1}$. But as we explained above, this is exactly what
 we need to show. Thus, Claim 2 holds for $j=p$. The induction step is
-complete, and Claim 2 is proved.]
+complete, and Claim 2 is proved.] \medskip
 
 Now, applying Claim 2 to $j=m$, we obtain that the tuple $\left(  z_{1}%
 ,z_{2},\ldots,z_{m}\right)  $ is orthogonal. Thus, the proof of Theorem
@@ -3321,7 +3323,7 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 
 \end{noncompile}
 
-\subsection{Similarity of matrices}
+\subsection{\label{sec.schur.similar}Similarity of matrices}
 
 Next, let us recall the notion of similar matrices:
 
@@ -3373,12 +3375,12 @@ an equivalence relation:\footnote{Algebraists will recognize the relation
 ^{n\times n}$ of all $n\times n$-matrices.}
 
 \begin{proposition}
-\label{prop.schurtri.similar.eqrel}Let $\mathbb{F}$ be a field. Then:
+\label{prop.schurtri.similar.eqrel}Let $\mathbb{F}$ be a field. Then: \medskip
 
-\textbf{(a)} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar to itself.
+\textbf{(a)} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar to itself. \medskip
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{F}^{n\times n}$ such
-that $A$ is similar to $B$, then $B$ is similar to $A$.
+that $A$ is similar to $B$, then $B$ is similar to $A$. \medskip
 
 \textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{F}^{n\times
 n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$, then
@@ -3386,7 +3388,7 @@ $A$ is similar to $C$.
 \end{proposition}
 
 \begin{proof}
-\textbf{(a)} This follows from $A=I_{n}AI_{n}^{-1}$.
+\textbf{(a)} This follows from $A=I_{n}AI_{n}^{-1}$. \medskip
 
 \textbf{(b)} Let $A$ and $B$ be two matrices in $\mathbb{F}^{n\times n}$ such
 that $A$ is similar to $B$. Thus, there exists an invertible matrix
@@ -3394,7 +3396,7 @@ $W\in\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$. From
 $B=WAW^{-1}$, we obtain $BW=WA$, so that $W^{-1}BW=A$. Thus, $A=W^{-1}%
 B\underbrace{W}_{=\left(  W^{-1}\right)  ^{-1}}=W^{-1}B\left(  W^{-1}\right)
 ^{-1}$. Since $W^{-1}$ is invertible, this shows that $B$ is similar to $A$.
-This proves Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}.
+This proves Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}. \medskip
 
 \textbf{(c)} Let $A$, $B$ and $C$ be three matrices in $\mathbb{F}^{n\times
 n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$. Thus,
@@ -3431,21 +3433,21 @@ Similar matrices have a lot in common. Here is a selection of invariants:
 \begin{proposition}
 \label{prop.schurtri.similar.same}Let $\mathbb{F}$ be a field. Let
 $A\in\mathbb{F}^{n\times n}$ and $B\in\mathbb{F}^{n\times n}$ be two similar
-matrices. Then:
+matrices. Then: \medskip
 
-\textbf{(a)} The matrices $A$ and $B$ have the same rank.
+\textbf{(a)} The matrices $A$ and $B$ have the same rank. \medskip
 
-\textbf{(b)} The matrices $A$ and $B$ have the same nullity.
+\textbf{(b)} The matrices $A$ and $B$ have the same nullity. \medskip
 
-\textbf{(c)} The matrices $A$ and $B$ have the same determinant.
+\textbf{(c)} The matrices $A$ and $B$ have the same determinant. \medskip
 
-\textbf{(d)} The matrices $A$ and $B$ have the same characteristic polynomial.
+\textbf{(d)} The matrices $A$ and $B$ have the same characteristic polynomial. \medskip
 
 \textbf{(e)} The matrices $A$ and $B$ have the same eigenvalues, with the same
-algebraic multiplicities and with the same geometric multiplicities.
+algebraic multiplicities and with the same geometric multiplicities. \medskip
 
 \textbf{(f)} For any $k\in\mathbb{N}$, the matrix $A^{k}$ is similar to
-$B^{k}$.
+$B^{k}$. \medskip
 
 \textbf{(g)} For any $\lambda\in\mathbb{F}$, the matrix $\lambda I_{n}-A$ is
 similar to $\lambda I_{n}-B$.
@@ -3453,7 +3455,7 @@ similar to $\lambda I_{n}-B$.
 
 \begin{proof}
 Since $A$ is similar to $B$, there exists an invertible matrix $W\in
-\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$.
+\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$. \medskip
 
 \textbf{(b)} Consider the kernels\footnote{Recall that \textquotedblleft
 kernel\textquotedblright\ is a synonym for \textquotedblleft
@@ -3464,32 +3466,33 @@ that $\underbrace{B}_{=WAW^{-1}}Wv=WA\underbrace{W^{-1}W}_{=I_{n}%
 }v=W\underbrace{Av}_{=0}=0$ and therefore $Wv\in\operatorname*{Ker}B$). Thus,
 we have found a linear map%
 \begin{align*}
-\operatorname*{Ker}A  &  \rightarrow\operatorname*{Ker}B,\\
-v  &  \mapsto Wv.
+\operatorname*{Ker}A &  \rightarrow\operatorname*{Ker}B,\\
+v &  \mapsto Wv.
 \end{align*}
-This yields $\dim\left(  \operatorname*{Ker}A\right)  \leq\dim\left(
-\operatorname*{Ker}B\right)  $. But $A$ and $B$ play symmetric roles in our
-situation (since the relation \textquotedblleft similar\textquotedblright\ is
-symmetric), so that we can use the same reasoning to obtain $\dim\left(
-\operatorname*{Ker}B\right)  \leq\dim\left(  \operatorname*{Ker}A\right)  $.
-Combining these two inequalities, we obtain $\dim\left(  \operatorname*{Ker}%
-A\right)  =\dim\left(  \operatorname*{Ker}B\right)  $. In other words, $A$ and
-$B$ have the same nullity. This proves Proposition
-\ref{prop.schurtri.similar.same} \textbf{(b)}.
+This linear map is furthermore injective (because $W$ is invertible, so that
+$Wu=Wv$ entails $u=v$). Hence, we obtain $\dim\left(  \operatorname*{Ker}%
+A\right)  \leq\dim\left(  \operatorname*{Ker}B\right)  $. But $A$ and $B$ play
+symmetric roles in our situation (since the relation \textquotedblleft
+similar\textquotedblright\ is symmetric), so that we can use the same
+reasoning to obtain $\dim\left(  \operatorname*{Ker}B\right)  \leq\dim\left(
+\operatorname*{Ker}A\right)  $. Combining these two inequalities, we obtain
+$\dim\left(  \operatorname*{Ker}A\right)  =\dim\left(  \operatorname*{Ker}%
+B\right)  $. In other words, $A$ and $B$ have the same nullity. This proves
+Proposition \ref{prop.schurtri.similar.same} \textbf{(b)}. \medskip
 
 \textbf{(a)} The rank of an $n\times n$-matrix equals $n$ minus its nullity
 (by the rank-nullity theorem). Hence, two $n\times n$-matrices that have the
 same nullity must also have the same rank. Thus, Proposition
 \ref{prop.schurtri.similar.same} \textbf{(a)} follows from Proposition
-\ref{prop.schurtri.similar.same} \textbf{(b)}.
+\ref{prop.schurtri.similar.same} \textbf{(b)}. \medskip
 
 \textbf{(c)} From $B=WAW^{-1}$, we obtain%
 \begin{align*}
-\det B  &  =\det\left(  WAW^{-1}\right)  =\det W\cdot\det A\cdot
+\det B &  =\det\left(  WAW^{-1}\right)  =\det W\cdot\det A\cdot
 \underbrace{\det\left(  W^{-1}\right)  }_{=\left(  \det W\right)  ^{-1}}\\
 &  =\det W\cdot\det A\cdot\left(  \det W\right)  ^{-1}=\det A.
 \end{align*}
-This proves Proposition \ref{prop.schurtri.similar.same} \textbf{(c)}.
+This proves Proposition \ref{prop.schurtri.similar.same} \textbf{(c)}. \medskip
 
 \textbf{(d)} The characteristic polynomial of an $n\times n$-matrix $M$ is
 defined to be $\det\left(  tI_{n}-M\right)  $ (where $t$ is the
@@ -3501,7 +3504,7 @@ show that $\det\left(  tI_{n}-A\right)  =\det\left(  tI_{n}-B\right)  $.
 However, we have%
 \begin{align*}
 t\underbrace{I_{n}}_{\substack{=WW^{-1}\\=WI_{n}W^{-1}}}-\underbrace{B}%
-_{=WAW^{-1}}  &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
+_{=WAW^{-1}} &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
 W^{-1}-WAW^{-1}=W\left(  tI_{n}\right)  W^{-1}-WAW^{-1}\\
 &  =W\left(  tI_{n}-A\right)  W^{-1}.
 \end{align*}
@@ -3514,7 +3517,7 @@ W^{-1}\right)  =\det W\cdot\det\left(  tI_{n}-A\right)  \cdot\underbrace{\det
 ^{-1}=\det\left(  tI_{n}-A\right)  .
 \end{align*}
 Thus, $\det\left(  tI_{n}-A\right)  =\det\left(  tI_{n}-B\right)  $, and
-Proposition \ref{prop.schurtri.similar.same} \textbf{(d)} is proven.
+Proposition \ref{prop.schurtri.similar.same} \textbf{(d)} is proven. \medskip
 
 \textbf{(e)} The eigenvalues of a matrix, with their algebraic multiplicities,
 are the roots of the characteristic polynomial. Thus, from Proposition
@@ -3534,7 +3537,7 @@ I_{n}\right)  \right)  $.
 We have%
 \begin{align*}
 \underbrace{B}_{=WAW^{-1}}-\lambda\underbrace{I_{n}}_{\substack{=WW^{-1}%
-\\=WI_{n}W^{-1}}}  &  =WAW^{-1}-\underbrace{\lambda WI_{n}}_{=W\left(  \lambda
+\\=WI_{n}W^{-1}}} &  =WAW^{-1}-\underbrace{\lambda WI_{n}}_{=W\left(  \lambda
 I_{n}\right)  }W^{-1}=WAW^{-1}-W\left(  \lambda I_{n}\right)  W^{-1}\\
 &  =W\left(  A-\lambda I_{n}\right)  W^{-1}.
 \end{align*}
@@ -3544,7 +3547,7 @@ shows that these two matrices $A-\lambda I_{n}$ and $B-\lambda I_{n}$ have the
 same nullity. In other words, $\dim\left(  \operatorname*{Ker}\left(
 A-\lambda I_{n}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(
 B-\lambda I_{n}\right)  \right)  $. This is exactly what we needed to show;
-thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} is proven.
+thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} is proven. \medskip
 
 \textbf{(f)} Let $k\in\mathbb{N}$. We claim that $B^{k}=WA^{k}W^{-1}$. Once
 this is proved, it will clearly follow that $A^{k}$ is similar to $B^{k}$.
@@ -3563,7 +3566,7 @@ middle cancel out}\right) \\
 (To be precise, this works for $k\geq1$; but the case $k=0$ is trivial.)
 
 A less handwavy proof of $B^{k}=WA^{k}W^{-1}$ would proceed by induction on
-$k$. As it is completely straightforward, I leave it to the reader.
+$k$. As it is completely straightforward, I leave it to the reader. \medskip
 
 \textbf{(g)} Let $\lambda\in\mathbb{F}$. Then,
 \begin{align*}
@@ -3730,10 +3733,10 @@ equivalence relation:
 
 \begin{proposition}
 \label{prop.schurtri.unisim.eqrel}\textbf{(a)} Any matrix $A\in\mathbb{C}%
-^{n\times n}$ is unitarily similar to itself.
+^{n\times n}$ is unitarily similar to itself. \medskip
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{C}^{n\times n}$ such
-that $A$ is unitarily similar to $B$, then $B$ is unitarily similar to $A$.
+that $A$ is unitarily similar to $B$, then $B$ is unitarily similar to $A$. \medskip
 
 \textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{C}^{n\times
 n}$ such that $A$ is unitarily similar to $B$ and such that $B$ is unitarily
@@ -4050,7 +4053,7 @@ its conjugate transpose is $A^{\ast}=\left(
 1 & 1\\
 -1 & 1
 \end{array}
-\right)  $, and it is easily seen that $AA^{\ast}=A^{\ast}A=2I_{2}$.
+\right)  $, and it is easily seen that $AA^{\ast}=A^{\ast}A=2I_{2}$. \medskip
 
 \textbf{(b)} Let $B=\left(
 \begin{array}
@@ -4065,7 +4068,7 @@ Indeed, $B^{\ast}=\left(
 0 & 0\\
 -i & 0
 \end{array}
-\right)  $ and thus $BB^{\ast}\neq B^{\ast}B$, as can easily be verified.
+\right)  $ and thus $BB^{\ast}\neq B^{\ast}B$, as can easily be verified. \medskip
 
 \textbf{(c)} Let $a,b\in\mathbb{C}$ be arbitrary, and let $C=\left(
 \begin{array}
@@ -4126,11 +4129,12 @@ these concepts, we can state the following:
 
 \begin{proposition}
 \label{prop.schurtri.normal.classes}\textbf{(a)} Every Hermitian matrix
-$H\in\mathbb{C}^{n\times n}$ is normal.
+$H\in\mathbb{C}^{n\times n}$ is normal. \medskip
 
-\textbf{(b)} Every skew-Hermitian matrix $S\in\mathbb{C}^{n\times n}$ is normal.
+\textbf{(b)} Every skew-Hermitian matrix $S\in\mathbb{C}^{n\times n}$ is
+normal. \medskip
 
-\textbf{(c)} Every unitary matrix $U\in\mathbb{C}^{n\times n}$ is normal.
+\textbf{(c)} Every unitary matrix $U\in\mathbb{C}^{n\times n}$ is normal. \medskip
 
 \textbf{(d)} Every diagonal matrix $D\in\mathbb{C}^{n\times n}$ is normal.
 \end{proposition}
@@ -4140,13 +4144,13 @@ $H\in\mathbb{C}^{n\times n}$ is normal.
 $H^{\ast}=H$ (by the definition of \textquotedblleft
 Hermitian\textquotedblright). Hence, $H\underbrace{H^{\ast}}_{=H}%
 =\underbrace{H}_{=H^{\ast}}H=H^{\ast}H$. In other words, $H$ is normal. This
-proves Proposition \ref{prop.schurtri.normal.classes} \textbf{(a)}.
+proves Proposition \ref{prop.schurtri.normal.classes} \textbf{(a)}. \medskip
 
 \textbf{(b)} This is analogous to part \textbf{(a)}, except for a minus sign
-that appears and disappears again.
+that appears and disappears again. \medskip
 
 \textbf{(c)} This is clear, since $UU^{\ast}=U^{\ast}U=I_{n}$ entails
-$UU^{\ast}=U^{\ast}U$.
+$UU^{\ast}=U^{\ast}U$. \medskip
 
 \textbf{(d)} Let $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix. Write $D$
 in the form $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
@@ -4179,17 +4183,18 @@ $A,B\in\mathbb{C}^{2\times2}$ such that neither $A+B$ nor $AB$ is normal.
 Here are two more ways to construct normal matrices out of existing normal matrices:
 
 \begin{proposition}
-\label{prop.schurtri.normal.conj}Let $A\in\mathbb{C}^{n\times n}$ be a normal matrix.
+\label{prop.schurtri.normal.conj}Let $A\in\mathbb{C}^{n\times n}$ be a normal
+matrix. \medskip
 
 \textbf{(a)} If $\lambda\in\mathbb{C}$ is arbitrary, then the matrix $\lambda
-I_{n}+A$ is normal.
+I_{n}+A$ is normal. \medskip
 
 \textbf{(b)} If $U\in\mathbb{C}^{n\times n}$ is a unitary matrix, then the
 matrix $UAU^{\ast}$ is normal.
 \end{proposition}
 
 \begin{proof}
-We have $AA^{\ast}=A^{\ast}A$ (since $A$ is normal).
+We have $AA^{\ast}=A^{\ast}A$ (since $A$ is normal). \medskip
 
 \textbf{(a)} Let $\lambda\in\mathbb{C}$ be arbitrary. Then, Proposition
 \ref{prop.unitary.(AB)*} \textbf{(a)} yields%
@@ -4203,8 +4208,8 @@ I_{n}+A^{\ast}.
 Hence,
 \begin{align*}
 \left(  \lambda I_{n}+A\right)  \underbrace{\left(  \lambda I_{n}+A\right)
-^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}}  &  =\left(  \lambda
-I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right) \\
+^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}} &  =\left(  \lambda
+I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right)  \\
 &  =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
 }A+AA^{\ast}.
 \end{align*}
@@ -4220,7 +4225,7 @@ Hence, so are the left hand sides. In other words, $\left(  \lambda
 I_{n}+A\right)  \left(  \lambda I_{n}+A\right)  ^{\ast}=\left(  \lambda
 I_{n}+A\right)  ^{\ast}\left(  \lambda I_{n}+A\right)  $. In other words, the
 matrix $\lambda I_{n}+A$ is normal. This proves Proposition
-\ref{prop.schurtri.normal.conj} \textbf{(a)}.
+\ref{prop.schurtri.normal.conj} \textbf{(a)}. \medskip
 
 \textbf{(b)} Let $U\in\mathbb{C}^{n\times n}$ be a unitary matrix. Thus,
 $UU^{\ast}=U^{\ast}U=I_{n}$ (by the $\mathcal{A}\Longleftrightarrow
@@ -4344,7 +4349,7 @@ so-called \emph{spectral theorem}:
 
 \begin{theorem}
 [spectral theorem for normal matrices]\label{thm.schurtri.normal.spectral}Let
-$A\in\mathbb{C}^{n\times n}$ be a normal matrix. Then:
+$A\in\mathbb{C}^{n\times n}$ be a normal matrix. Then: \medskip
 
 \textbf{(a)} There exists a unitary matrix $U\in\operatorname*{U}%
 \nolimits_{n}\left(  \mathbb{C}\right)  $ and a diagonal matrix $D\in
@@ -4352,7 +4357,7 @@ $A\in\mathbb{C}^{n\times n}$ be a normal matrix. Then:
 \[
 A=UDU^{\ast}.
 \]
-In other words, $A$ is unitarily similar to a diagonal matrix.
+In other words, $A$ is unitarily similar to a diagonal matrix. \medskip
 
 \textbf{(b)} Let $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)
 $ be a unitary matrix, and $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix
@@ -4399,7 +4404,7 @@ decomposition of the normal matrix $\left(
 1 & 1+i\\
 1+i & 1
 \end{array}
-\right)  $.
+\right)  $. \medskip
 
 \textbf{(b)} Find a spectral decomposition of the Hermitian matrix $\left(
 \begin{array}
@@ -4407,7 +4412,7 @@ decomposition of the normal matrix $\left(
 0 & -i\\
 i & 0
 \end{array}
-\right)  $.
+\right)  $. \medskip
 
 \textbf{(c)} Find a spectral decomposition of the skew-Hermitian matrix
 $\left(
@@ -4416,7 +4421,7 @@ $\left(
 0 & i\\
 i & 0
 \end{array}
-\right)  $.
+\right)  $. \medskip
 
 \textbf{(d)} Find a spectral decomposition of the unitary matrix $\left(
 \begin{array}
@@ -4535,16 +4540,15 @@ $UAU^{\ast}$ is diagonal.
 [c]{||l||}\hline\hline
 \textbf{Lecture 6 starts here.}\\\hline\hline
 \end{tabular}
-\
 \]
 
 
 \subsection{The Cayley--Hamilton theorem}
 
-We will now digress to state the famous Cayley--Hamilton theorem, and to prove
-it at least for matrices with complex entries. This will serve as a reminder
-of an important theorem, and also as an illustration of how Schur
-triangularization can be applied.
+We will now state the famous Cayley--Hamilton theorem, and to prove it at
+least for matrices with complex entries. This will serve as a reminder of an
+important theorem (which will soon be used), and also as an illustration of
+how Schur triangularization can be applied.
 
 Let us first recall some properties of the characteristic polynomial of an
 $n\times n$-matrix $A$, starting with its definition:
@@ -4686,18 +4690,18 @@ expressed explicitly, if you consider sums of determinants to be explicit:
 
 \begin{proposition}
 \label{prop.schurtri.ch.props}Let $\mathbb{F}$ be a field. Let $A\in
-\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$. \medskip
 
 \textbf{(a)} The characteristic polynomial $p_{A}$ is a monic polynomial in
-$t$ of degree $n$. (That is, its leading term is $t^{n}$.)
+$t$ of degree $n$. (That is, its leading term is $t^{n}$.) \medskip
 
 \textbf{(b)} The constant term of the polynomial $p_{A}$ is $\left(
--1\right)  ^{n}\det A$.
+-1\right)  ^{n}\det A$. \medskip
 
 \textbf{(c)} The $t^{n-1}$-coefficient of the polynomial $p_{A}$ is
 $-\operatorname*{Tr}A$. (Recall that $\operatorname*{Tr}A$ is defined to be
 the sum of all diagonal entries of $A$; this sum is known as the \emph{trace}
-of $A$.)
+of $A$.) \medskip
 
 \textbf{(d)} More generally: Let $k\in\left\{  0,1,\ldots,n\right\}  $. Then,
 the $t^{n-k}$-coefficient of the polynomial $p_{A}$ is $\left(  -1\right)
@@ -4972,7 +4976,7 @@ A\right)  $.
 \end{exercise}
 
 For example, for $n=2$, we have $A^{-1}=uI_{2}-vA$ with $u=\dfrac
-{\operatorname*{Tr}A}{\det A}$ and $v=\dfrac{1}{\det A}$.
+{\operatorname*{Tr}A}{\det A}$ and $v=\dfrac{1}{\det A}$. \medskip
 
 Another consequence of Cayley--Hamilton is that the powers of a given square
 matrix $A\in\mathbb{F}^{n\times n}$ span a vector space of dimension $\leq n$:
@@ -5035,7 +5039,7 @@ x_{j+1}\\
 \vdots\\
 x_{j+k-1}%
 \end{array}
-\right)  \in\mathbb{R}^{k}$. Let $A$ be the matrix $\left(
+\right)  \in\mathbb{R}^{k}$. Let $A$ be the $k\times k$-matrix $\left(
 \begin{array}
 [c]{ccccc}%
 0 & 1 & 0 & \cdots & 0\\
@@ -5044,7 +5048,8 @@ x_{j+k-1}%
 0 & 0 & 0 & \cdots & 1\\
 a_{k} & a_{k-1} & a_{k-2} & \cdots & a_{1}%
 \end{array}
-\right)  $. Start by showing that $Av_{j}=v_{j+1}$ for each $j\geq0$.]
+\right)  \in\mathbb{R}^{k\times k}$. Start by showing that $Av_{j}=v_{j+1}$
+for each $j\geq0$.]
 \end{exercise}
 
 \subsection{Sylvester's equation}
@@ -5142,14 +5147,14 @@ TODO: Scribe!
 
 \begin{exercise}
 \label{exe.schurtri.syl.sigA-B}\fbox{5} Let $A$, $B$ and $C$ be as in Theorem
-\ref{thm.schurtri.syl.equivalence}.
+\ref{thm.schurtri.syl.equivalence}. \medskip
 
 \textbf{(a)} Let the linear map $L$ be as in the above proof of the
 $\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
 \ref{thm.schurtri.syl.equivalence}. Prove that if $\lambda\in\sigma\left(
 A\right)  $ and $\mu\in\sigma\left(  B\right)  $, then $\lambda-\mu$ is an
 eigenvalue of $L$ (that is, there exists a nonzero matrix $X\in\mathbb{C}%
-^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$).
+^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$). \medskip
 
 \textbf{(b)} Prove the implication $\mathcal{U}\Longrightarrow\mathcal{V}$ in
 Theorem \ref{thm.schurtri.syl.equivalence} (thus completing the proof of the theorem).
@@ -5159,7 +5164,331 @@ We note that more can be said: If $A$, $B$ and $C$ are as in Theorem
 \ref{thm.schurtri.syl.equivalence}, and if $L$ is as in the above proof, then
 \textbf{all} eigenvalues of $L$ have the form $\lambda-\mu$ for $\lambda
 \in\sigma\left(  A\right)  $ and $\mu\in\sigma\left(  B\right)  $. But this
-seems harder to prove at this point.
+seems harder to prove at this point. \medskip
+
+%
+
+\[%
+\begin{tabular}
+[c]{||l||}\hline\hline
+\textbf{Lecture 7 starts here.}\\\hline\hline
+\end{tabular}
+\]
+
+
+We shall next prove a somewhat surprising consequence of Theorem
+\ref{thm.schurtri.syl.equivalence}: a similarity criterion for certain block matrices:
+
+\begin{corollary}
+\label{cor.schurtri.block-sim}Let $A\in\mathbb{C}^{n\times n}$, $B\in
+\mathbb{C}^{m\times m}$ and $C\in\mathbb{C}^{n\times m}$ be three matrices
+such that $\sigma\left(  A\right)  \cap\sigma\left(  B\right)  =\varnothing$.
+Then, the two $\left(  n+m\right)  \times\left(  n+m\right)  $-matrices%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)
+\]
+(written in block matrix notation) are similar.
+\end{corollary}
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{cc}%
+1 & 3\\
+0 & 1
+\end{array}
+\right)  $ and $B=\left(
+\begin{array}
+[c]{c}%
+2
+\end{array}
+\right)  $ and $C=\left(
+\begin{array}
+[c]{c}%
+7\\
+9
+\end{array}
+\right)  $. Then, Corollary \ref{cor.schurtri.block-sim} says that the
+matrices%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+1 & 3 & 7\\
+0 & 1 & 9\\
+0 & 0 & 2
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{ccc}%
+1 & 3 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{array}
+\right)
+\]
+are similar.
+\end{example}
+
+\begin{proof}
+[Proof of Corollary \ref{cor.schurtri.block-sim}.] Theorem
+\ref{thm.schurtri.syl.equivalence} (specifically, its $\mathcal{V}%
+\Longrightarrow\mathcal{U}$ direction) shows that there is a unique matrix
+$X\in\mathbb{C}^{n\times m}$ such that $AX-XB=C$. Consider this $X$.
+
+Now, let $S=\left(
+\begin{array}
+[c]{cc}%
+I_{n} & X\\
+0 & I_{m}%
+\end{array}
+\right)  $. (This is an $\left(  n+m\right)  \times\left(  n+m\right)
+$-matrix written in block matrix notation.) Now, I claim that this matrix $S$
+is invertible and that%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  =S\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  S^{-1}.
+\]
+Once this claim is proved, the claim of Corollary \ref{cor.schurtri.block-sim}
+will follow (by the definition of \textquotedblleft similar\textquotedblright).
+
+To see that $S$ is invertible, we construct an inverse. Namely, we set
+$S^{\prime}=\left(
+\begin{array}
+[c]{cc}%
+I_{n} & -X\\
+0 & I_{m}%
+\end{array}
+\right)  $ (again an $\left(  n+m\right)  \times\left(  n+m\right)  $-matrix).
+Then, the definitions of $S$ and $S^{\prime}$ yield%
+\begin{align*}
+SS^{\prime} &  =\left(
+\begin{array}
+[c]{cc}%
+I_{n} & X\\
+0 & I_{m}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+I_{n} & -X\\
+0 & I_{m}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+I_{n}I_{n}+X\cdot0 & I_{n}\left(  -X\right)  +XI_{m}\\
+0I_{n}+I_{m}\cdot0 & 0\left(  -X\right)  +I_{m}I_{m}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.blockmatrix.mult-2x2}}\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+I_{n} & 0\\
+0 & I_{m}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since }I_{n}I_{n}+X\cdot0=I_{n}\text{ and }I_{n}\left(  -X\right)
++XI_{m}=-X+X=0\\
+\text{and }0I_{n}+I_{m}\cdot0=0\text{ and }0\left(  -X\right)  +I_{m}%
+I_{m}=I_{m}%
+\end{array}
+\right)  \\
+&  =I_{n+m}%
+\end{align*}
+and similarly $S^{\prime}S=I_{n+m}$. Thus, the matrices $S$ and $S^{\prime}$
+are mutually inverse. Hence, $S$ is invertible.
+
+It remains to check that%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  =S\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  S^{-1}.\label{pf.cor.schurtri.block-sim.4}%
+\end{equation}
+To do so, it suffices to check the equivalent identity%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  S=S\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  \label{pf.cor.schurtri.block-sim.5}%
+\end{equation}
+(indeed, these two identities are equivalent, since $S$ is invertible). This
+we do by computing both sides and comparing: Namely, the definition of $S$
+yields%
+\begin{align*}
+\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  S  & =\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+I_{n} & X\\
+0 & I_{m}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cc}%
+AI_{n}+0\cdot0 & A\cdot X+0\cdot I_{m}\\
+0I_{n}+B\cdot0 & 0X+BI_{m}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.blockmatrix.mult-2x2}}\right)  \\
+& =\left(
+\begin{array}
+[c]{cc}%
+A & AX\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by the obvious simplifications}%
+\right)
+\end{align*}
+and%
+\begin{align*}
+S\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)   &  =\left(
+\begin{array}
+[c]{cc}%
+I_{n} & X\\
+0 & I_{m}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+I_{n}A+X\cdot0 & I_{n}C+XB\\
+0A+I_{m}\cdot0 & 0C+I_{m}\cdot B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.blockmatrix.mult-2x2}}\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+A & C+XB\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by the obvious simplifications}%
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+A & AX\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \ \left(  \text{since }AX-XB=C\text{ entails
+}C+XB=AX\right)  .
+\end{align*}
+Comparing these two equalities yields (\ref{pf.cor.schurtri.block-sim.5}).
+Thus, we obtain (\ref{pf.cor.schurtri.block-sim.4}) (by multiplying both sides
+with $S^{-1}$ from the right). But this shows that the two matrices $\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)  $ are similar. This proves Corollary \ref{cor.schurtri.block-sim}.
+\end{proof}
+
+\section{The Jordan canonical form (\cite[Chapter 3]{HorJoh13})}
+
+This chapter is devoted to the \emph{Jordan canonical form} (and some of its
+variants), which is a normal form for $n\times n$-matrices over $\mathbb{C}$
+with respect to similarity. This means that each $n\times n$-matrix is similar
+to a more-or-less unique matrix of a certain kind (namely, a block-diagonal
+matrix made of a specific type of blocks), called its \textquotedblleft Jordan
+canonical form\textquotedblright.
+
+\subsection{Similarity redux}
+
+We have already discussed some properties of similar matrices in Section
+\ref{sec.schur.similar}. Let us recall some of them and state a couple trivial
+corollaries. More importantly, however, let us introduce a notation for similarity:
+
+\begin{definition}
+\label{def.jordan.sim.notation}Let $A$ and $B$ be two matrices in
+$\mathbb{C}^{n\times n}$. We will write \textquotedblleft$A\sim B$%
+\textquotedblright\ for \textquotedblleft$A$ is similar to $B$%
+\textquotedblright.
+\end{definition}
+
+This notation is similar to our old notation \textquotedblleft%
+$A\overset{\operatorname*{us}}{\sim}B$\textquotedblright\ for
+\textquotedblleft$A$ is similar to $B$\textquotedblright\ (and in fact, the
+latter was chosen in analogy to the former).
+
+[...]
 
 \newpage
 
