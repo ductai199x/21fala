@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Tuesday, October 05, 2021 23:57:43}
+%TCIDATA{LastRevised=Wednesday, October 06, 2021 00:19:50}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -240,6 +240,19 @@ is the number in the square. A \fbox{1} is a warm-up question whose solution
 you will probably see right after reading; a \fbox{3} typically requires some
 thinking or work; a \fbox{5} requires both; higher values tend to involve some
 creativity or research.
+
+\subsection{Scribes}
+
+Parts of these notes were scribed by Math 504 students. I thank the following
+students for their help:%
+\[%
+\begin{tabular}
+[c]{c|c}%
+scribe & sections\\\hline\hline
+Hunter Wages & proof of Theorem \ref{thm.schurtri.syl.equivalence}%
+\end{tabular}
+\]
+
 
 \newpage
 
@@ -4738,22 +4751,22 @@ Here is another normality-preserving way to transform matrices:
 
 \begin{definition}
 \label{def.schurtri.normal.p(A)}Let $\mathbb{F}$ be a field. Let
-$A\in\mathbb{F}^{n\times n}$ be a square matrix. Let $p\left(  X\right)  $ be
-a polynomial in a single indeterminate $X$ with coefficients in $\mathbb{F}$.
-Write $p\left(  X\right)  $ in the form $p\left(  X\right)  =a_{0}X^{0}%
-+a_{1}X^{1}+\cdots+a_{d}X^{d}$, where $a_{0},a_{1},\ldots,a_{d}\in\mathbb{F}$.
+$A\in\mathbb{F}^{n\times n}$ be a square matrix. Let $p\left(  x\right)  $ be
+a polynomial in a single indeterminate $x$ with coefficients in $\mathbb{F}$.
+Write $p\left(  x\right)  $ in the form $p\left(  x\right)  =a_{0}x^{0}%
++a_{1}x^{1}+\cdots+a_{d}x^{d}$, where $a_{0},a_{1},\ldots,a_{d}\in\mathbb{F}$.
 
 Then, $p\left(  A\right)  $ denotes the matrix $a_{0}A^{0}+a_{1}A^{1}%
 +\cdots+a_{d}A^{d}\in\mathbb{F}^{n\times n}$.
 \end{definition}
 
-For instance, if $p\left(  X\right)  =X^{3}-2X^{2}+1$, then $p\left(
+For instance, if $p\left(  x\right)  =x^{3}-2x^{2}+1$, then $p\left(
 A\right)  =A^{3}-2A^{2}+A^{0}=A^{3}-2A^{2}+I_{n}$.
 
 \begin{proposition}
 \label{prop.schurtri.normal.p(A)nor}Let $A\in\mathbb{C}^{n\times n}$ be a
-normal matrix. Let $p\left(  X\right)  $ be a polynomial in a single
-indeterminate $X$ with coefficients in $\mathbb{C}$. Then, the matrix
+normal matrix. Let $p\left(  x\right)  $ be a polynomial in a single
+indeterminate $x$ with coefficients in $\mathbb{C}$. Then, the matrix
 $p\left(  A\right)  $ is normal.
 \end{proposition}
 
@@ -5316,6 +5329,75 @@ such that $AX-BX=C$ if and only if each column of $C$ belongs to the image (=
 column space) of $A-B$.
 \end{exercise}
 
+We shall prove only the $\mathcal{V}\Longrightarrow\mathcal{U}$ part of
+Theorem \ref{thm.schurtri.syl.equivalence}; the opposite direction will be
+left as an exercise (Exercise \ref{exe.schurtri.syl.sigA-B} \textbf{(b)}). Our
+proof of $\mathcal{V}\Longrightarrow\mathcal{U}$ will rely on the following lemma:
+
+\begin{lemma}
+\label{lem.schurtri.syl.AX=XB}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$, $B\in\mathbb{F}^{m\times m}$ and $X\in\mathbb{F}%
+^{n\times m}$ be three matrices such that $AX=XB$. Then: \medskip
+
+\textbf{(a)} We have $A^{k}X=XB^{k}$ for each $k\in\mathbb{N}$. \medskip
+
+\textbf{(b)} Let $p$ be a polynomial in a single indeterminate $x$ with
+coefficients in $\mathbb{F}$. Then, $p\left(  A\right)  X=Xp\left(  B\right)
+$.
+\end{lemma}
+
+\begin{proof}
+[Proof of Lemma \ref{lem.schurtri.syl.AX=XB}.] \textbf{(a)} Intuitively, this
+is easy: For instance, if $k=4$, then this is saying that $A^{4}X=XB^{4}$, but
+this follows from
+\[
+A^{4}B=AAA\underbrace{AB}_{=BA}=AA\underbrace{AB}_{=BA}A=A\underbrace{AB}%
+_{=BA}AA=\underbrace{AB}_{=BA}AAA=BAAAA=BA^{4}.
+\]
+
+
+Formally, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)} is proved by
+induction on $k$:
+
+\textit{Induction base:} We have $A^{0}X=XB^{0}$, since both sides of this
+equation equal $X$. Thus, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)}
+holds for $k=0$.
+
+\textit{Induction step:} Let $\ell\in\mathbb{N}$. Assume (as the induction
+hypothesis) that Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)} holds for
+$k=\ell$. We must prove that Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)}
+holds for $k=\ell+1$.
+
+We have assumed that Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)} holds for
+$k=\ell$. In other words, $A^{\ell}X=XB^{\ell}$. Thus,%
+\[
+\underbrace{A^{\ell+1}}_{=AA^{\ell}}X=A\underbrace{A^{\ell}X}_{=XB^{\ell}%
+}=\underbrace{AX}_{=XB}B^{\ell}=X\underbrace{BB^{\ell}}_{=B^{\ell+1}}%
+=XB^{\ell+1}.
+\]
+In other words, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(a)} holds for
+$k=\ell+1$. This completes the induction step; thus, Lemma
+\ref{lem.schurtri.syl.AX=XB} \textbf{(a)} is proven. \medskip
+
+\textbf{(b)} Write the polynomial $p$ in the form $p\left(  x\right)
+=\sum_{k=0}^{d}p_{k}x^{k}$ for some coefficients $p_{0},p_{1},\ldots,p_{d}%
+\in\mathbb{F}$. Then, Definition \ref{def.schurtri.normal.p(A)} yields%
+\[
+p\left(  A\right)  =\sum_{k=0}^{d}p_{k}A^{k}\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ p\left(  B\right)  =\sum_{k=0}^{d}p_{k}B^{k}.
+\]
+Hence,%
+\begin{align*}
+p\left(  A\right)  X  & =\left(  \sum_{k=0}^{d}p_{k}A^{k}\right)  X=\sum
+_{k=0}^{d}p_{k}\underbrace{A^{k}X}_{\substack{=XB^{k}\\\text{(by Lemma
+\ref{lem.schurtri.syl.AX=XB} \textbf{(a)})}}}=\sum_{k=0}^{d}p_{k}%
+XB^{k}\ \ \ \ \ \ \ \ \ \ \text{and}\\
+Xp\left(  B\right)    & =X\sum_{k=0}^{d}p_{k}B^{k}=\sum_{k=0}^{d}p_{k}XB^{k}.
+\end{align*}
+Comparing these two equalities, we find $p\left(  A\right)  X=Xp\left(
+B\right)  $. Thus, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} is proven.
+\end{proof}
+
 \begin{proof}
 [Proof of the $\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
 \ref{thm.schurtri.syl.equivalence}.]First, we observe that the matrix space
@@ -5324,8 +5406,8 @@ $nm$.
 
 Consider the map%
 \begin{align*}
-L:\mathbb{C}^{n\times m}  &  \rightarrow\mathbb{C}^{n\times m},\\
-X  &  \mapsto AX-XB.
+L:\mathbb{C}^{n\times m} &  \rightarrow\mathbb{C}^{n\times m},\\
+X &  \mapsto AX-XB.
 \end{align*}
 This map $L$ is linear, because for any $\alpha,\beta\in\mathbb{C}$ and any
 $X,Y\in\mathbb{C}^{n\times m}$, we have%
@@ -5339,7 +5421,99 @@ L\left(  X\right)  +\beta L\left(  Y\right)  .
 \end{align*}
 
 
-TODO: Scribe!
+Now, assume that statement $\mathcal{V}$ holds. That is, we have
+$\sigma\left(  A\right)  \cap\sigma\left(  B\right)  =\varnothing$. We shall
+now show that $\operatorname*{Ker}L=0$. This will then yield that $L$ is bijective.
+
+Indeed, let $X\in\operatorname*{Ker}L$. Thus, $X\in\mathbb{C}^{n\times m}$ and
+$L\left(  X\right)  =0$. However, the definition of $L$ yields $L\left(
+X\right)  =AX-XB$. Therefore, $AX-XB=L\left(  X\right)  =0$. In other words,
+$AX=XB$. Hence, we can apply Lemma \ref{lem.schurtri.syl.AX=XB}.
+
+Apply Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} to $p=p_{A}$. This
+yields $p_{A}\left(  A\right)  X=Xp_{A}\left(  B\right)  $. However, Theorem
+\ref{thm.schurtri.ch.ch} \textbf{(a)} yields $p_{A}\left(  A\right)  =0$, so
+that $p_{A}\left(  A\right)  X=0X=0$. Comparing this with $p_{A}\left(
+A\right)  X=Xp_{A}\left(  B\right)  $, we obtain $Xp_{A}\left(  B\right)  =0$.
+
+We shall show that the matrix $p_{A}\left(  B\right)  $ is invertible. Indeed,
+Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(a)} shows that the polynomial
+$p_{A}$ factors into $n$ linear terms:%
+\begin{equation}
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{n}\right)
+,\label{pf.thm.schurtri.syl.equivalence.pA=prod}%
+\end{equation}
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{C}$ are its roots.
+Moreover, these roots $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
+eigenvalues of $A$ (by Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(b)});
+thus, $\left\{  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right\}
+=\sigma\left(  A\right)  $.
+
+Substituting the matrix $B$ for $t$ on both sides of the equality
+(\ref{pf.thm.schurtri.syl.equivalence.pA=prod}), we obtain%
+\begin{equation}
+p_{A}\left(  B\right)  =\left(  B-\lambda_{1}I_{n}\right)  \left(
+B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda_{n}I_{n}\right)
+.\label{pf.thm.schurtri.syl.equivalence.pAB=prod}%
+\end{equation}
+(Note that we have tacitly using a not-completely-trivial fact here: that if
+$f_{1},f_{2},\ldots,f_{k}$ are several polynomials and $C$ is an $n\times
+n$-matrix, then $\left(  f_{1}f_{2}\cdots f_{k}\right)  \left(  C\right)
+=f_{1}\left(  C\right)  \cdot f_{2}\left(  C\right)  \cdot\cdots\cdot
+f_{k}\left(  C\right)  $. We have applied this fact to $C=B$ and $k=n$ and
+$f_{i}=t-\lambda_{i}$ here. This fact is fairly straightforward to show:
+Induct on $k$ to reduce it to the case of $k=2$; in that case, write
+everything out explicitly in terms of coefficients, like in our proof of Lemma
+\ref{lem.schurtri.syl.AX=XB} \textbf{(b)}.)
+
+Now, let $i\in\left[  n\right]  $. Then, $\lambda_{i}\in\left\{  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right\}  =\sigma\left(  A\right)  $.
+Therefore, $\lambda_{i}\notin\sigma\left(  B\right)  $ (since having
+$\lambda_{i}\in\sigma\left(  B\right)  $ would yield $\lambda_{i}\in
+\sigma\left(  A\right)  \cap\sigma\left(  B\right)  $, which would contradict
+$\sigma\left(  A\right)  \cap\sigma\left(  B\right)  =\varnothing$). In other
+words, $\lambda_{i}$ is not an eigenvalue of $B$. In other words, $\det\left(
+\lambda_{i}I_{n}-B\right)  \neq0$ (by the definition of an eigenvalue). Hence,
+the matrix $\lambda_{i}I_{n}-B$ is invertible. In other words, the matrix
+$B-\lambda_{i}I_{n}$ is invertible.
+
+Forget that we fixed $i$. We thus have shown that the matrix $B-\lambda
+_{i}I_{n}$ is invertible for each $i\in\left[  n\right]  $. In other words,
+the $n$ matrices $B-\lambda_{1}I_{n},B-\lambda_{2}I_{n},\ldots,B-\lambda
+_{n}I_{n}$ are invertible. Hence, their product $\left(  B-\lambda_{1}%
+I_{n}\right)  \left(  B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda
+_{n}I_{n}\right)  $ is invertible as well. In view of
+(\ref{pf.thm.schurtri.syl.equivalence.pAB=prod}), this shows that
+$p_{A}\left(  B\right)  $ is invertible. Hence, from $Xp_{A}\left(  B\right)
+=0$, we conclude that $X=0$.
+
+Now, forget that we fixed $X$. We thus have shown that $X=0$ for each
+$X\in\operatorname*{Ker}L$. In other words, $\operatorname*{Ker}L=0$. Hence,
+the linear map $L$ is injective.
+
+However, it is well-known that an injective linear map between two
+finite-dimensional vector spaces of the same dimension is necessarily
+bijective\footnote{Indeed, let $f:U\rightarrow V$ be an injective linear map
+between two finite-dimensional vector spaces of the same dimension. We must
+show that $f$ is bijective. The rank-nullity theorem yields%
+\[
+\dim U=\underbrace{\dim\left(  \operatorname*{Ker}f\right)  }%
+_{\substack{=0\\\text{(since }f\text{ is injective,}\\\text{so that
+}\operatorname*{Ker}f=0\text{)}}}+\dim\left(  \operatorname{Im}f\right)
+=\dim\left(  \operatorname{Im}f\right)  ,
+\]
+so that $\dim\left(  \operatorname{Im}f\right)  =\dim U=\dim V$ (since $U$ and
+$V$ have the same dimension), and therefore $\operatorname{Im}f=V$ (because
+$\operatorname{Im}f$ is a subspace of $V$). This shows that $f$ is surjective.
+Since $f$ is also injective, we thus conclude that $f$ is bijective.}. Hence,
+$L$ is bijective (since $L$ is an injective linear map between $\mathbb{C}%
+^{n\times m}$ and $\mathbb{C}^{n\times m}$). Therefore, there exists a
+\textbf{unique} matrix $X\in\mathbb{C}^{n\times m}$ such that $L\left(
+X\right)  =C$. In other words, there is a \textbf{unique} matrix
+$X\in\mathbb{C}^{n\times m}$ such that $AX-XB=C$ (since $L\left(  X\right)
+=AX-XB$). In other words, statement $\mathcal{U}$ holds. Thus, the implication
+$\mathcal{V}\Longrightarrow\mathcal{U}$ is proven.
 \end{proof}
 
 \begin{exercise}
