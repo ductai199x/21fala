@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, October 04, 2021 20:54:13}
+%TCIDATA{LastRevised=Tuesday, October 05, 2021 23:57:43}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -418,7 +418,8 @@ x,y\right\rangle +\left\langle x,y^{\prime}\right\rangle $ for any $y^{\prime
 \left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$. \medskip
 
 \textbf{(f)} We have $\left\langle x,\lambda y\right\rangle =\overline
-{\lambda}\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$. \medskip
+{\lambda}\left\langle x,y\right\rangle $ for any $\lambda\in\mathbb{C}$.
+\medskip
 
 \textbf{(g)} We have $\left\langle x-x^{\prime},y\right\rangle =\left\langle
 x,y\right\rangle -\left\langle x^{\prime},y\right\rangle $ for any $x^{\prime
@@ -455,7 +456,7 @@ Parts \textbf{(i)} and \textbf{(j)} follow from parts \textbf{(c)},
 \end{proof}
 
 \begin{proposition}
-\label{prop.unitary.innerprod.pos}Let $x\in\mathbb{C}^{n}$. Then:  \medskip
+\label{prop.unitary.innerprod.pos}Let $x\in\mathbb{C}^{n}$. Then: \medskip
 
 \textbf{(a)} The number $\left\langle x,x\right\rangle $ is a nonnegative
 real. \medskip
@@ -475,14 +476,14 @@ yields%
 \left\langle x,x\right\rangle  &  =x_{1}\overline{x_{1}}+x_{2}\overline{x_{2}%
 }+\cdots+x_{n}\overline{x_{n}}\nonumber\\
 &  =\left\vert x_{1}\right\vert ^{2}+\left\vert x_{2}\right\vert ^{2}%
-+\cdots+\left\vert x_{n}\right\vert ^{2}%
-,\label{pf.prop.unitary.innerprod.pos.1}%
++\cdots+\left\vert x_{n}\right\vert ^{2},
+\label{pf.prop.unitary.innerprod.pos.1}%
 \end{align}
 since any complex number $z$ satisfies $z\overline{z}=\left\vert z\right\vert
 ^{2}$. Since all the absolute values $\left\vert x_{1}\right\vert ,\left\vert
 x_{2}\right\vert ,\ldots,\left\vert x_{n}\right\vert $ are real, this yields
 immediately that $\left\langle x,x\right\rangle $ is a nonnegative real. Thus,
-Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved.  \medskip
+Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} is proved. \medskip
 
 \textbf{(b)} Assume that $x\neq0$. Thus, at least one $i\in\left[  n\right]  $
 satisfies $x_{i}\neq0$ and therefore $\left\vert x_{i}\right\vert ^{2}>0$.
@@ -588,8 +589,8 @@ y,x\right\rangle }=\left\langle x,y\right\rangle $ (by Proposition
 Now, Proposition \ref{prop.unitary.innerprod.pos} \textbf{(a)} (applied to
 $bx-ay$ instead of $x$) yields that
 \begin{equation}
-\left\langle bx-ay,bx-ay\right\rangle \geq
-0.\label{pf.thm.unitary.innerprod.cs.main}%
+\left\langle bx-ay,bx-ay\right\rangle \geq0.
+\label{pf.thm.unitary.innerprod.cs.main}%
 \end{equation}
 Since%
 \begin{align*}
@@ -603,7 +604,7 @@ ay,bx-ay\right\rangle }_{\substack{=\left\langle ay,bx\right\rangle
 \text{by Proposition \ref{prop.unitary.innerprod.props} \textbf{(g)}}\right)
 \\
 &  =\left\langle bx,bx\right\rangle -\left\langle bx,ay\right\rangle -\left(
-\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right)  \\
+\left\langle ay,bx\right\rangle -\left\langle ay,ay\right\rangle \right) \\
 &  =\underbrace{\left\langle bx,bx\right\rangle }_{\substack{=b\left\langle
 x,bx\right\rangle \\\text{(by Proposition \ref{prop.unitary.innerprod.props}
 \textbf{(e)})}}}+\underbrace{\left\langle ay,ay\right\rangle }%
@@ -683,7 +684,7 @@ square roots on both sides of this inequality, and obtain $\left\vert
 $\left\vert \left\vert x\right\vert \right\vert \cdot\left\vert \left\vert
 y\right\vert \right\vert \geq\left\vert \left\langle x,y\right\rangle
 \right\vert $ (since $\overline{b}=\left\langle x,y\right\rangle $). This
-proves Theorem \ref{thm.unitary.innerprod.cs} \textbf{(a)}.  \medskip
+proves Theorem \ref{thm.unitary.innerprod.cs} \textbf{(a)}. \medskip
 
 \textbf{(b)} Our above proof of the inequality $\left\vert \left\vert
 x\right\vert \right\vert \cdot\left\vert \left\vert y\right\vert \right\vert
@@ -1185,7 +1186,8 @@ transpose\textquotedblright\ instead.
 Some authors use the alternative notation $A^{\dag}$ (read \textquotedblleft%
 $A$ dagger\textquotedblright) for $A^{\ast}$. (The Wikipedia suggests calling
 it the \textquotedblleft bedaggered matrix $A$\textquotedblright, although I
-am not aware of anyone using this terminology outside of the Wikipedia.) \medskip
+am not aware of anyone using this terminology outside of the Wikipedia.)
+\medskip
 
 The following rules for conjugate transposes are straightforward to check:
 
@@ -1385,7 +1387,8 @@ $A^{\ast}=A$. Hence, $A$ is unitary. \medskip
 \right)  \in\mathbb{C}^{1\times1}$ is unitary if and only if $\left\vert
 \lambda\right\vert =1$. \medskip
 
-\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is unitary. \medskip
+\textbf{(c)} For any $n\in\mathbb{N}$, the identity matrix $I_{n}$ is unitary.
+\medskip
 
 \textbf{(d)} Let $n\in\mathbb{N}$, and let $\sigma$ be a permutation of
 $\left[  n\right]  $ (that is, a bijective map from $\left[  n\right]  $ to
@@ -1577,7 +1580,8 @@ skew-Hermitian matrix. \medskip
 since each nonzero vector $v\in\mathbb{C}^{n}$ satisfies $v^{\ast}\left(
 I_{n}+S^{\ast}S\right)  v=\underbrace{\left\langle v,v\right\rangle }%
 _{>0}+\underbrace{\left\langle Sv,Sv\right\rangle }_{\geq0}>0$. Then, expand
-the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.] \medskip
+the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.]
+\medskip
 
 \textbf{(b)} Prove that the matrices $I_{n}+S$ and $\left(  I_{n}-S\right)
 ^{-1}$ commute (i.e., satisfy $\left(  I_{n}+S\right)  \cdot\left(
@@ -1620,7 +1624,8 @@ rigorous way to state this:
 matrix. Prove the following: \medskip
 
 \textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
-each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$. \medskip
+each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
+\medskip
 
 \textbf{(b)} The matrix $\lambda A+I_{n}$ is invertible for all but finitely
 many $\lambda\in\mathbb{C}$. \medskip
@@ -1672,7 +1677,8 @@ c & d
 \end{array}
 \right)  $ be any unitary matrix with rational entries. Assume that $a$ and
 $c$ are positive, and write $a$ and $c$ as $p/r$ and $q/r$ for some positive
-integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple. \medskip
+integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple.
+\medskip
 
 \textbf{(c)} Find infinitely many Pythagorean triples that are pairwise
 non-proportional (i.e., no two of them are obtained from one another just by
@@ -2730,10 +2736,10 @@ combination of $z_{1},z_{2},\ldots,z_{p-1}$). Hence, Lemma
 $) yields%
 \begin{align*}
 \operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},v_{p}\right\}   &
-=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\}  \\
+=\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1},z_{p}\right\} \\
 &  =\underbrace{\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}%
 \right\}  }_{=\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-}+\operatorname*{span}\left\{  z_{p}\right\}  \\
+}+\operatorname*{span}\left\{  z_{p}\right\} \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
@@ -2741,15 +2747,15 @@ $) yields%
 A+\operatorname*{span}B\\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-+\operatorname*{span}\left\{  z_{p}\right\}  \\
-&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\}  \\
++\operatorname*{span}\left\{  z_{p}\right\} \\
+&  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1},z_{p}\right\} \\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{since }\operatorname*{span}A+\operatorname*{span}B=\operatorname*{span}%
-\left(  A\cup B\right)  \\
+\left(  A\cup B\right) \\
 \text{for any two sets }A\text{ and }B\text{ of vectors}%
 \end{array}
 \right)  .
@@ -2757,7 +2763,7 @@ A+\operatorname*{span}B\\
 In other words, $\operatorname*{span}\left\{  v_{1},v_{2},\ldots
 ,v_{p}\right\}  =\operatorname*{span}\left\{  z_{1},z_{2},\ldots
 ,z_{p}\right\}  $. Thus, the induction step is complete, so that Claim 1 is
-proved by induction.]  \medskip
+proved by induction.] \medskip
 
 Claim 1 (applied to $p=m$) shows that the vectors $z_{1},z_{2},\ldots,z_{m}$
 are well-defined. In other words, the tuple $\left(  z_{1},z_{2},\ldots
@@ -2867,7 +2873,8 @@ Thus, $z_{b}\perp z_{a}$, so that $z_{a}\perp z_{b}$ (by Proposition
 \ref{prop.unitary.innerprod.orth-symm}).
 
 As explained above, this completes our proof of the fact that Claim 2 holds
-for $j=p$. Thus, the induction step is complete, and Claim 2 is proven.] \medskip
+for $j=p$. Thus, the induction step is complete, and Claim 2 is proven.]
+\medskip
 
 Now, applying Claim 2 to $j=m$, we obtain that the tuple $\left(  z_{1}%
 ,z_{2},\ldots,z_{m}\right)  $ is orthogonal. Thus, the proof of Theorem
@@ -3019,10 +3026,10 @@ Hence, (\ref{pf.thm.unitary.gs-2.5a}) is proved in Case 2.
 We have now proved (\ref{pf.thm.unitary.gs-2.5a}) in both cases. However, for
 each $i\in\left[  p-1\right]  $, we have%
 \begin{align*}
-v_{i} &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
-\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \\
+v_{i}  &  \in\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\}  \subseteq
+\operatorname*{span}\left\{  v_{1},v_{2},\ldots,v_{p-1}\right\} \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p-1}\right\}
-\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right)  \\
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by (\ref{pf.thm.unitary.gs-2.4})}\right) \\
 &  \subseteq\operatorname*{span}\left\{  z_{1},z_{2},\ldots,z_{p}\right\}  .
 \end{align*}
 In other words, all $p-1$ vectors $v_{1},v_{2},\ldots,v_{p-1}$ belong to
@@ -3312,13 +3319,458 @@ R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
 
 \section{Schur triangularization (\cite[Chapter 2]{HorJoh13})}
 
+In this chapter, we will meet \emph{Schur triangularization}: a way to
+transform an arbitrary $n\times n$-matrix with complex entries into an
+upper-triangular matrix by conjugating it (i.e., multiplying it by an
+invertible matrix $W$ on the left and simultaneously by its inverse $W^{-1}$
+on the right). This is both of theoretical and of practical significance, but
+we will focus on the theoretical applications.
+
+Before we get to Schur triangularization, we will have to set some groundwork.\setcounter{subsection}{-1}
+
+\subsection{Reminders on the characteristic polynomial and eigenvalues}
+
+First, let us recall some properties of the characteristic polynomial of an
+$n\times n$-matrix $A$, starting with its definition:
+
+\begin{definition}
+\label{def.schurtri.ch.pA}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
+
+The \emph{characteristic polynomial} of $A$ is defined to be the polynomial%
+\[
+\det\left(  tI_{n}-A\right)  \ \ \ \ \ \ \ \ \ \ \text{in the indeterminate
+}t\text{ with coefficients in }\mathbb{F}.
+\]
+(Note that $tI_{n}-A$ is an $n\times n$-matrix whose entries are polynomials
+in $t$. Thus, its determinant $\det\left(  tI_{n}-A\right)  $ is itself a
+polynomial in $t$.)
+
+The characteristic polynomial of $A$ is denoted by $p_{A}$.
+\end{definition}
+
+\begin{example}
+\label{exa.schurtri.ch.pA.2x2}Let $n=2$ and $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $. Then,%
+\begin{align*}
+tI_{n}-A  &  =tI_{2}-A=t\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+t & 0\\
+0 & t
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
+\begin{array}
+[c]{cc}%
+t-a & -b\\
+-c & t-d
+\end{array}
+\right)  =\left(  t-a\right)  \left(  t-d\right)  -\left(  -b\right)  \left(
+-c\right) \\
+&  =t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{example}
+\label{exa.schurtri.ch.pA.3x3}Let $n=3$ and $A=\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+a^{\prime} & b^{\prime} & c^{\prime}\\
+a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
+\end{array}
+\right)  $. Then,%
+\begin{align*}
+tI_{n}-A &  =tI_{3}-A=t\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{ccc}%
+a & b & c\\
+a^{\prime} & b^{\prime} & c^{\prime}\\
+a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+p_{A} &  =\det\left(  tI_{n}-A\right)  =\det\left(
+\begin{array}
+[c]{ccc}%
+t-a & -b & -c\\
+-a^{\prime} & t-b^{\prime} & -c^{\prime}\\
+-a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
+\end{array}
+\right)  \\
+&  =t^{3}-\left(  a+b^{\prime}+c^{\prime\prime}\right)  t^{2}+\left(
+ab^{\prime}-ba^{\prime}+ac^{\prime\prime}-ca^{\prime\prime}+b^{\prime
+}c^{\prime\prime}-b^{\prime\prime}c^{\prime}\right)  t\\
+&  \ \ \ \ \ \ \ \ \ \ -\left(  ab^{\prime}c^{\prime\prime}-ab^{\prime\prime
+}c^{\prime}-ba^{\prime}c^{\prime\prime}+ba^{\prime\prime}c^{\prime}%
++ca^{\prime}b^{\prime\prime}-ca^{\prime\prime}b^{\prime}\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{example}
+If $n=1$ and $A=\left(
+\begin{array}
+[c]{c}%
+a
+\end{array}
+\right)  $, then $tI_{n}-A=\left(
+\begin{array}
+[c]{c}%
+t-a
+\end{array}
+\right)  $ and thus $p_{A}=t-a$.
+\end{example}
+
+\begin{example}
+If $n=0$ and $A=\left(  {}\right)  $, then $tI_{n}-A=\left(  {}\right)  $ and
+thus $p_{A}=1$ (since the determinant of the $0\times0$-matrix $\left(
+{}\right)  $ is defined to be $1$).
+\end{example}
+
+\begin{remark}
+\label{rmk.schurtri.ch.conventions}\textbf{(a)} Some authors define the
+characteristic polynomial $p_{A}$ of an $n\times n$-matrix $A$ to be
+$\det\left(  A-tI_{n}\right)  $ instead of $\det\left(  tI_{n}-A\right)  $.
+This differs from our definition only by a factor of $\left(  -1\right)  ^{n}%
+$, which is immaterial for most properties of the characteristic polynomial
+but still can cause the occasional confusion. \medskip
+
+\textbf{(b)} Some other common notations for $p_{A}$ are $\chi_{A}$ and
+$c_{A}$.
+\end{remark}
+
+The patterns you might have spotted in Example \ref{exa.schurtri.ch.pA.2x2}
+and in Example \ref{exa.schurtri.ch.pA.3x3} are not accidental. Indeed, the
+coefficients of the characteristic polynomial of any square matrix can be
+expressed explicitly, if you consider sums of determinants to be explicit:
+
+\begin{proposition}
+\label{prop.schurtri.ch.props}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$. \medskip
+
+\textbf{(a)} The characteristic polynomial $p_{A}$ is a monic polynomial in
+$t$ of degree $n$. (That is, its leading term is $t^{n}$.) \medskip
+
+\textbf{(b)} The constant term of the polynomial $p_{A}$ is $\left(
+-1\right)  ^{n}\det A$. \medskip
+
+\textbf{(c)} The $t^{n-1}$-coefficient of the polynomial $p_{A}$ is
+$-\operatorname*{Tr}A$. (Recall that $\operatorname*{Tr}A$ is defined to be
+the sum of all diagonal entries of $A$; this sum is known as the \emph{trace}
+of $A$.) \medskip
+
+\textbf{(d)} More generally: Let $k\in\left\{  0,1,\ldots,n\right\}  $. Then,
+the $t^{n-k}$-coefficient of the polynomial $p_{A}$ is $\left(  -1\right)
+^{k}$ times the sum of all principal $k\times k$-minors of $A$. (Recall that a
+$k\times k$\emph{-minor} of $A$ means the determinant of a $k\times
+k$-submatrix of $A$. This $k\times k$-minor is said to be \emph{principal} if
+the $k\times k$-submatrix is obtained by removing some $n-k$ rows and the
+corresponding $n-k$ columns from $A$. For example, the principal $2\times
+2$-minors of a $3\times3$-matrix $A$ are $\det\left(
+\begin{array}
+[c]{cc}%
+A_{1,1} & A_{1,2}\\
+A_{2,1} & A_{2,2}%
+\end{array}
+\right)  $, $\det\left(
+\begin{array}
+[c]{cc}%
+A_{1,1} & A_{1,3}\\
+A_{3,1} & A_{3,3}%
+\end{array}
+\right)  $ and $\det\left(
+\begin{array}
+[c]{cc}%
+A_{2,2} & A_{2,3}\\
+A_{3,2} & A_{3,3}%
+\end{array}
+\right)  $.) In other words, the $t^{n-k}$-coefficient of $p_{A}$ is
+\[
+\left(  -1\right)  ^{k}\sum_{1\leq i_{1}<i_{2}<\cdots<i_{k}\leq n}\det\left(
+\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1},i_{2}%
+,\ldots,i_{k}}A\right)  ,
+\]
+where $\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1}%
+,i_{2},\ldots,i_{k}}A$ denotes the $k\times k$-matrix whose $\left(
+u,v\right)  $-th entry is $A_{i_{u},i_{v}}$ for all $u,v\in\left[  k\right]  $.
+\end{proposition}
+
+\begin{proof}
+[Proof sketch.]We have $A=\left(
+\begin{array}
+[c]{cccc}%
+A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
+A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
+\end{array}
+\right)  $, so that%
+\begin{align*}
+tI_{n}-A  &  =t\left(
+\begin{array}
+[c]{cccc}%
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{array}
+\right)  -\left(
+\begin{array}
+[c]{cccc}%
+A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
+A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+t-A_{1,1} & -A_{1,2} & \cdots & -A_{1,n}\\
+-A_{2,1} & t-A_{2,2} & \cdots & -A_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+-A_{n,1} & -A_{n,2} & \cdots & t-A_{n,n}%
+\end{array}
+\right)  .
+\end{align*}
+The determinant $\det\left(  tI_{n}-A\right)  $ of this matrix is a sum of
+certain products of its entries\footnote{Here, we are using the \emph{Leibniz
+formula} for the determinant of a matrix, which says that $\det B=\sum
+_{\sigma\in S_{n}}\left(  -1\right)  ^{\sigma}B_{1,\sigma\left(  1\right)
+}B_{2,\sigma\left(  2\right)  }\cdots B_{n,\sigma\left(  n\right)  }$ for each
+$n\times n$-matrix $B$. (We are applying this to $B=tI_{n}-A$.)}. One of these
+products is%
+\begin{align*}
+&  \left(  t-A_{1,1}\right)  \left(  t-A_{2,2}\right)  \cdots\left(
+t-A_{n,n}\right) \\
+&  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
+\text{terms with lower powers of }t\right)  .
+\end{align*}
+None of the other products appearing in this sum includes any power of $t$
+higher than $t^{n-2}$ (because the product picks out at least two entries of
+$A$ that lie outside of the main diagonal, and thus contain no $t$ whatsoever;
+the remaining factors of the product contribute at most $t^{n-2}$). Hence, the
+entire determinant $\det\left(  tI_{n}-A\right)  $ can be written as
+\[
+\det\left(  tI_{n}-A\right)  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots
++A_{n,n}\right)  t^{n-1}+\left(  \text{terms with lower powers of }t\right)
+.
+\]
+In other words,%
+\[
+p_{A}=t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
+\text{terms with lower powers of }t\right)
+\]
+(since $p_{A}=\det\left(  tI_{n}-A\right)  $). This yields parts \textbf{(a)}
+and \textbf{(c)} of Proposition \ref{prop.schurtri.ch.props}.
+
+To prove Proposition \ref{prop.schurtri.ch.props} \textbf{(b)}, we substitute
+$0$ for $t$ in the polynomial identity $p_{A}=\det\left(  tI_{n}-A\right)  $.
+We obtain%
+\[
+p_{A}\left(  0\right)  =\det\left(  0I_{n}-A\right)  =\det\left(  -A\right)
+=\left(  -1\right)  ^{n}\det A.
+\]
+Since $p_{A}\left(  0\right)  $ is the constant term of $p_{A}$ (in fact, if
+$f$ is any polynomial, then $f\left(  0\right)  $ is the constant term of
+$f$), we thus conclude that the constant term of $p_{A}$ is $\left(
+-1\right)  ^{n}\det A$. This proves Proposition \ref{prop.schurtri.ch.props}
+\textbf{(b).}
+
+Finally, Proposition \ref{prop.schurtri.ch.props} \textbf{(d)} can be
+established through a more accurate combinatorial analysis of the products
+that sum up to $\det\left(  tI_{n}-A\right)  $. See \cite[Proposition
+6.4.29]{21s} for the details. (A combinatorially prepared reader might glean
+the idea from Example \ref{exa.schurtri.ch.pA.3x3}.)
+
+We note that parts \textbf{(a)}, \textbf{(b)} and \textbf{(c)} of Proposition
+\ref{prop.schurtri.ch.props} can all be derived from part \textbf{(d)} as well.
+\end{proof}
+
+Next, we recall some basic notions around the eigenvalues of a matrix:
+
+\begin{definition}
+\label{def.schurtri.ch.evals}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix, and let $\lambda
+\in\mathbb{F}$. \medskip
+
+\textbf{(a)} We say that $\lambda$ is an \emph{eigenvalue} of $A$ if and only
+if $\det\left(  \lambda I_{n}-A\right)  =0$. In other words, $\lambda$ is an
+\emph{eigenvalue} of $A$ if and only if $\lambda$ is a root of the
+characteristic polynomial $p_{A}=\det\left(  tI_{n}-A\right)  $. \medskip
+
+\textbf{(b)} The $\lambda$\emph{-eigenspace} of $A$ is defined to be the set
+of all vectors $v\in\mathbb{F}^{n}$ satisfying $Av=\lambda v$. In other words,
+it is the kernel $\operatorname*{Ker}\left(  \lambda I_{n}-A\right)
+=\operatorname*{Ker}\left(  A-\lambda I_{n}\right)  $. Thus, it is a vector
+subspace of $\mathbb{F}^{n}$. The elements of this $\lambda$-eigenspace are
+called the $\lambda$\emph{-eigenvectors} of $A$ (or the \emph{eigenvectors} of
+$A$ for eigenvalue $\lambda$). (Some authors exclude the zero vector $0$ from
+being an eigenvector; we allow it. Thus, $0$ is a $\lambda$-eigenvector for
+any $\lambda$, even if $\lambda$ is not an eigenvalue.) \medskip
+
+\textbf{(c)} The \emph{algebraic multiplicity} of $\lambda$ as an eigenvalue
+of $A$ is defined to be the multiplicity of $\lambda$ as a root of $p_{A}$.
+(If $\lambda$ is not an eigenvalue of $A$, then this is $0$.) \medskip
+
+\textbf{(d)} The \emph{geometric multiplicity} of $\lambda$ as an eigenvalue
+of $A$ is defined to be $\dim\left(  \operatorname*{Ker}\left(  A-\lambda
+I_{n}\right)  \right)  $. In other words, it is the dimension of the $\lambda
+$-eigenspace of $A$. In other words, it is the maximum number of linearly
+independent $\lambda$-eigenvectors. (If $\lambda$ is not an eigenvalue of $A$,
+then this is $0$.)
+\end{definition}
+
+It can be shown that if $A\in\mathbb{F}^{n\times n}$ is a matrix and
+$\lambda\in\mathbb{F}$ is arbitrary, then the geometric multiplicity of
+$\lambda$ as an eigenvalue of $A$ is always $\leq$ to the algebraic
+multiplicity of $\lambda$ as an eigenvalue of $A$. The two multiplicities can
+be equal, but don't have to be.
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 0\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{array}
+\right)  \in\mathbb{C}^{3\times3}$. Then, the only eigenvalue of $A$ is $1$.
+Its algebraic multiplicity is $3$, while its geometric multiplicity is $2$.
+\end{example}
+
+\begin{theorem}
+\label{thm.schurtri.ch.fta-cons}Let $A\in\mathbb{C}^{n\times n}$ be an
+$n\times n$-matrix with complex entries. Then:
+
+\textbf{(a)} Its characteristic polynomial $p_{A}$ factors into $n$ linear
+terms:%
+\begin{equation}
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{n}\right)  ,\label{eq.schurtri.ch.pA-factors}%
+\end{equation}
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{C}$ are its roots
+(with their algebraic multiplicities). \medskip
+
+\textbf{(b)} These roots $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
+eigenvalues of $A$, appearing with their algebraic multiplicities. \medskip
+
+\textbf{(c)} The sum of the algebraic multiplicities of all eigenvalues of $A$
+is $n$. \medskip
+
+\textbf{(d)} The sum of all eigenvalues of $A$ (with their algebraic
+multiplicities) is $\operatorname*{Tr}A$ (that is, the trace of $A$). \medskip
+
+\textbf{(e)} The product of all eigenvalues of $A$ (with their algebraic
+multiplicities) is $\det A$.
+\end{theorem}
+
+\begin{proof}
+The polynomial $p_{A}$ is a monic polynomial of degree $n$ (by Proposition
+\ref{prop.schurtri.ch.props} \textbf{(a)}), and therefore factors into linear
+terms (by
+\href{https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra}{the
+Fundamental Theorem of Algebra}). This proves Theorem
+\ref{thm.schurtri.ch.fta-cons} \textbf{(a)}. \medskip
+
+\textbf{(b)} This follows from the definition of eigenvalues and algebraic
+multiplicities. \medskip
+
+\textbf{(c)} This follows from part \textbf{(b)}. \medskip
+
+\textbf{(d)} Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the roots of
+$p_{A}$ (with their algebraic multiplicities). Then, these roots are the
+eigenvalues of $A$, appearing with their algebraic multiplicities (by Theorem
+\ref{thm.schurtri.ch.fta-cons} \textbf{(b)}). Hence, their sum $\lambda
+_{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$
+(with their algebraic multiplicities). On the other hand, we know from Theorem
+\ref{thm.schurtri.ch.fta-cons} \textbf{(a)} that the equality
+(\ref{eq.schurtri.ch.pA-factors}) holds. Comparing the coefficients of
+$t^{n-1}$ on both sides of this equality, we obtain%
+\begin{align*}
+\left(  \text{the coefficient of }t^{n-1}\text{ in }p_{A}\right)    & =\left(
+\text{the coefficient of }t^{n-1}\text{ in }\left(  t-\lambda_{1}\right)
+\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{n}\right)  \right)  \\
+& =-\left(  \lambda_{1}+\lambda_{2}+\cdots+\lambda_{n}\right)  .
+\end{align*}
+However, Proposition \ref{prop.schurtri.ch.props} \textbf{(c)} yields
+\[
+\left(  \text{the coefficient of }t^{n-1}\text{ in }p_{A}\right)
+=-\operatorname*{Tr}A.
+\]
+Comparing these two equalities, we obtain $-\left(  \lambda_{1}+\lambda
+_{2}+\cdots+\lambda_{n}\right)  =-\operatorname*{Tr}A$. In other words,
+$\lambda_{1}+\lambda_{2}+\cdots+\lambda_{n}=\operatorname*{Tr}A$. This proves
+Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(d)} (since $\lambda
+_{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$). \medskip
+
+\textbf{(e)} This is similar to part \textbf{(d)}, except that we have to
+compare the coefficients of $t^{0}$ (instead of $t^{n-1}$) on both sides of
+(\ref{eq.schurtri.ch.pA-factors}), and we have to use Proposition
+\ref{prop.schurtri.ch.props} \textbf{(b)} (instead of Proposition
+\ref{prop.schurtri.ch.props} \textbf{(c)}).
+\end{proof}
+
 \begin{noncompile}%
 \[%
 \begin{tabular}
 [c]{||l||}\hline\hline
 \textbf{Old lecture 2 starts here.}\\\hline\hline
 \end{tabular}
-\ \ \
+\
 \]
 
 \end{noncompile}
@@ -3332,6 +3784,9 @@ Next, let us recall the notion of similar matrices:
 be two matrices in $\mathbb{F}^{n\times n}$. We say that $A$ is \emph{similar}
 to $B$ if there exists an invertible matrix $W\in\mathbb{F}^{n\times n}$ such
 that $B=WAW^{-1}$.
+
+We write \textquotedblleft$A\sim B$\textquotedblright\ for \textquotedblleft%
+$A$ is similar to $B$\textquotedblright.
 \end{definition}
 
 \begin{example}
@@ -3365,19 +3820,31 @@ The matrix $\left(
 1 & 1\\
 -1 & 1
 \end{array}
+\right)  $. In other words, we have $\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+1 & 1
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cc}%
+2 & 0\\
+0 & 0
+\end{array}
 \right)  $.
 \end{example}
 
-The relation \textquotedblleft similar\textquotedblright\ is easily seen to be
-an equivalence relation:\footnote{Algebraists will recognize the relation
-\textquotedblleft similar\textquotedblright\ (for matrices in $\mathbb{F}%
-^{n\times n}$) as just being the conjugacy relation in the ring $\mathbb{F}%
-^{n\times n}$ of all $n\times n$-matrices.}
+The relation $\sim$\ is easily seen to be an equivalence
+relation:\footnote{Algebraists will recognize the relation $\sim$\ (for
+matrices in $\mathbb{F}^{n\times n}$) as just being the conjugacy relation in
+the ring $\mathbb{F}^{n\times n}$ of all $n\times n$-matrices.}
 
 \begin{proposition}
 \label{prop.schurtri.similar.eqrel}Let $\mathbb{F}$ be a field. Then: \medskip
 
-\textbf{(a)} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar to itself. \medskip
+\textbf{(a)} Any matrix $A\in\mathbb{F}^{n\times n}$ is similar to itself.
+\medskip
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{F}^{n\times n}$ such
 that $A$ is similar to $B$, then $B$ is similar to $A$. \medskip
@@ -3396,7 +3863,8 @@ $W\in\mathbb{F}^{n\times n}$ such that $B=WAW^{-1}$. Consider this $W$. From
 $B=WAW^{-1}$, we obtain $BW=WA$, so that $W^{-1}BW=A$. Thus, $A=W^{-1}%
 B\underbrace{W}_{=\left(  W^{-1}\right)  ^{-1}}=W^{-1}B\left(  W^{-1}\right)
 ^{-1}$. Since $W^{-1}$ is invertible, this shows that $B$ is similar to $A$.
-This proves Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}. \medskip
+This proves Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}.
+\medskip
 
 \textbf{(c)} Let $A$, $B$ and $C$ be three matrices in $\mathbb{F}^{n\times
 n}$ such that $A$ is similar to $B$ and such that $B$ is similar to $C$. Thus,
@@ -3418,9 +3886,8 @@ that $VU$ is invertible). This shows that $A$ is similar to $C$. This proves
 Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(c)}.
 \end{proof}
 
-Since the relation \textquotedblleft similar\textquotedblright\ is symmetric
-(by Proposition \ref{prop.schurtri.similar.eqrel} \textbf{(b)}), we can make
-the following definition:
+Since the relation $\sim$\ is symmetric (by Proposition
+\ref{prop.schurtri.similar.eqrel} \textbf{(b)}), we can make the following definition:
 
 \begin{definition}
 Let $\mathbb{F}$ be a field. Let $A$ and $B$ be two matrices in $\mathbb{F}%
@@ -3441,7 +3908,8 @@ matrices. Then: \medskip
 
 \textbf{(c)} The matrices $A$ and $B$ have the same determinant. \medskip
 
-\textbf{(d)} The matrices $A$ and $B$ have the same characteristic polynomial. \medskip
+\textbf{(d)} The matrices $A$ and $B$ have the same characteristic polynomial.
+\medskip
 
 \textbf{(e)} The matrices $A$ and $B$ have the same eigenvalues, with the same
 algebraic multiplicities and with the same geometric multiplicities. \medskip
@@ -3466,8 +3934,8 @@ that $\underbrace{B}_{=WAW^{-1}}Wv=WA\underbrace{W^{-1}W}_{=I_{n}%
 }v=W\underbrace{Av}_{=0}=0$ and therefore $Wv\in\operatorname*{Ker}B$). Thus,
 we have found a linear map%
 \begin{align*}
-\operatorname*{Ker}A &  \rightarrow\operatorname*{Ker}B,\\
-v &  \mapsto Wv.
+\operatorname*{Ker}A  &  \rightarrow\operatorname*{Ker}B,\\
+v  &  \mapsto Wv.
 \end{align*}
 This linear map is furthermore injective (because $W$ is invertible, so that
 $Wu=Wv$ entails $u=v$). Hence, we obtain $\dim\left(  \operatorname*{Ker}%
@@ -3488,20 +3956,22 @@ same nullity must also have the same rank. Thus, Proposition
 
 \textbf{(c)} From $B=WAW^{-1}$, we obtain%
 \begin{align*}
-\det B &  =\det\left(  WAW^{-1}\right)  =\det W\cdot\det A\cdot
+\det B  &  =\det\left(  WAW^{-1}\right)  =\det W\cdot\det A\cdot
 \underbrace{\det\left(  W^{-1}\right)  }_{=\left(  \det W\right)  ^{-1}}\\
 &  =\det W\cdot\det A\cdot\left(  \det W\right)  ^{-1}=\det A.
 \end{align*}
-This proves Proposition \ref{prop.schurtri.similar.same} \textbf{(c)}. \medskip
+This proves Proposition \ref{prop.schurtri.similar.same} \textbf{(c)}.
+\medskip
 
 \textbf{(d)} The characteristic polynomial of an $n\times n$-matrix $M$ is
 defined to be $\det\left(  tI_{n}-M\right)  $ (where $t$ is the
-indeterminate)\footnote{At least this is one popular definition. Another one
-is $\det\left(  M-tI_{n}\right)  $. However, the two definitions differ only
-in a factor of $\left(  -1\right)  ^{n}$, so they behave almost completely the
-same (and our argument works equally well for either of them).}. Thus, we must
-show that $\det\left(  tI_{n}-A\right)  =\det\left(  tI_{n}-B\right)  $.
-However, we have%
+indeterminate)\footnote{At least this is our definition. As we already
+mentioned in Remark \ref{rmk.schurtri.ch.conventions} \textbf{(a)}, another
+popular definition is $\det\left(  M-tI_{n}\right)  $. However, the two
+definitions differ only in a factor of $\left(  -1\right)  ^{n}$, so they
+behave almost completely the same (and our argument works equally well for
+either of them).}. Thus, we must show that $\det\left(  tI_{n}-A\right)
+=\det\left(  tI_{n}-B\right)  $. However, we have%
 \begin{align*}
 t\underbrace{I_{n}}_{\substack{=WW^{-1}\\=WI_{n}W^{-1}}}-\underbrace{B}%
 _{=WAW^{-1}} &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
@@ -3537,7 +4007,7 @@ I_{n}\right)  \right)  $.
 We have%
 \begin{align*}
 \underbrace{B}_{=WAW^{-1}}-\lambda\underbrace{I_{n}}_{\substack{=WW^{-1}%
-\\=WI_{n}W^{-1}}} &  =WAW^{-1}-\underbrace{\lambda WI_{n}}_{=W\left(  \lambda
+\\=WI_{n}W^{-1}}}  &  =WAW^{-1}-\underbrace{\lambda WI_{n}}_{=W\left(  \lambda
 I_{n}\right)  }W^{-1}=WAW^{-1}-W\left(  \lambda I_{n}\right)  W^{-1}\\
 &  =W\left(  A-\lambda I_{n}\right)  W^{-1}.
 \end{align*}
@@ -3547,7 +4017,8 @@ shows that these two matrices $A-\lambda I_{n}$ and $B-\lambda I_{n}$ have the
 same nullity. In other words, $\dim\left(  \operatorname*{Ker}\left(
 A-\lambda I_{n}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(
 B-\lambda I_{n}\right)  \right)  $. This is exactly what we needed to show;
-thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} is proven. \medskip
+thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(e)} is proven.
+\medskip
 
 \textbf{(f)} Let $k\in\mathbb{N}$. We claim that $B^{k}=WA^{k}W^{-1}$. Once
 this is proved, it will clearly follow that $A^{k}$ is similar to $B^{k}$.
@@ -3727,16 +4198,16 @@ The matrix $\left(
 \right)  $, but not unitarily similar to it.
 \end{example}
 
-Just like the relation \textquotedblleft similar\textquotedblright, the
-relation \textquotedblleft unitarily similar\textquotedblright\ is an
-equivalence relation:
+Just like the relation $\sim$, the relation $\overset{\operatorname*{us}%
+}{\sim}$\ is an equivalence relation:
 
 \begin{proposition}
 \label{prop.schurtri.unisim.eqrel}\textbf{(a)} Any matrix $A\in\mathbb{C}%
 ^{n\times n}$ is unitarily similar to itself. \medskip
 
 \textbf{(b)} If $A$ and $B$ are two matrices in $\mathbb{C}^{n\times n}$ such
-that $A$ is unitarily similar to $B$, then $B$ is unitarily similar to $A$. \medskip
+that $A$ is unitarily similar to $B$, then $B$ is unitarily similar to $A$.
+\medskip
 
 \textbf{(c)} If $A$, $B$ and $C$ are three matrices in $\mathbb{C}^{n\times
 n}$ such that $A$ is unitarily similar to $B$ and such that $B$ is unitarily
@@ -4068,7 +4539,8 @@ Indeed, $B^{\ast}=\left(
 0 & 0\\
 -i & 0
 \end{array}
-\right)  $ and thus $BB^{\ast}\neq B^{\ast}B$, as can easily be verified. \medskip
+\right)  $ and thus $BB^{\ast}\neq B^{\ast}B$, as can easily be verified.
+\medskip
 
 \textbf{(c)} Let $a,b\in\mathbb{C}$ be arbitrary, and let $C=\left(
 \begin{array}
@@ -4134,7 +4606,8 @@ $H\in\mathbb{C}^{n\times n}$ is normal. \medskip
 \textbf{(b)} Every skew-Hermitian matrix $S\in\mathbb{C}^{n\times n}$ is
 normal. \medskip
 
-\textbf{(c)} Every unitary matrix $U\in\mathbb{C}^{n\times n}$ is normal. \medskip
+\textbf{(c)} Every unitary matrix $U\in\mathbb{C}^{n\times n}$ is normal.
+\medskip
 
 \textbf{(d)} Every diagonal matrix $D\in\mathbb{C}^{n\times n}$ is normal.
 \end{proposition}
@@ -4153,16 +4626,19 @@ that appears and disappears again. \medskip
 $UU^{\ast}=U^{\ast}U$. \medskip
 
 \textbf{(d)} Let $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix. Write $D$
-in the form $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
-,\ldots,\lambda_{n}\right)  $ for some $\lambda_{1},\lambda_{2},\ldots
-,\lambda_{n}\in\mathbb{C}$. Then, $D^{\ast}=\operatorname*{diag}\left(
-\overline{\lambda_{1}},\overline{\lambda_{2}},\ldots,\overline{\lambda_{n}%
-}\right)  $. Hence,
+in the form
+\[
+D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }\lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}\in\mathbb{C}.
+\]
+Then, $D^{\ast}=\operatorname*{diag}\left(  \overline{\lambda_{1}}%
+,\overline{\lambda_{2}},\ldots,\overline{\lambda_{n}}\right)  $. Hence,
 \begin{align*}
-DD^{\ast}  &  =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
+DD^{\ast} &  =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
 },\lambda_{2}\overline{\lambda_{2}},\ldots,\lambda_{n}\overline{\lambda_{n}%
 }\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
-D^{\ast}D  &  =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
+D^{\ast}D &  =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
 _{1},\overline{\lambda_{2}}\lambda_{2},\ldots,\overline{\lambda_{n}}%
 \lambda_{n}\right)  .
 \end{align*}
@@ -4208,8 +4684,8 @@ I_{n}+A^{\ast}.
 Hence,
 \begin{align*}
 \left(  \lambda I_{n}+A\right)  \underbrace{\left(  \lambda I_{n}+A\right)
-^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}} &  =\left(  \lambda
-I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right)  \\
+^{\ast}}_{=\overline{\lambda}I_{n}+A^{\ast}}  &  =\left(  \lambda
+I_{n}+A\right)  \left(  \overline{\lambda}I_{n}+A^{\ast}\right) \\
 &  =\lambda\overline{\lambda}I_{n}+\lambda A^{\ast}+\overline{\lambda
 }A+AA^{\ast}.
 \end{align*}
@@ -4339,7 +4815,7 @@ strictly lower-triangular matrix is nilpotent.
 
 \begin{exercise}
 \label{exe.schurtri.normal.nilp}\fbox{2} Let $A\in\mathbb{C}^{n\times n}$ be a
-normal square matrix that is nilpotent. Prove that $A=0$.
+normal matrix that is nilpotent. Prove that $A=0$.
 \end{exercise}
 
 \subsection{The spectral theorem}
@@ -4423,7 +4899,8 @@ i & 0
 \end{array}
 \right)  $. \medskip
 
-\textbf{(d)} Find a spectral decomposition of the unitary matrix $\left(
+\textbf{(d)} Find a spectral decomposition of the unitary matrix $\dfrac
+{1}{\sqrt{2}}\left(
 \begin{array}
 [c]{cc}%
 1 & 1\\
@@ -4549,286 +5026,6 @@ We will now state the famous Cayley--Hamilton theorem, and to prove it at
 least for matrices with complex entries. This will serve as a reminder of an
 important theorem (which will soon be used), and also as an illustration of
 how Schur triangularization can be applied.
-
-Let us first recall some properties of the characteristic polynomial of an
-$n\times n$-matrix $A$, starting with its definition:
-
-\begin{definition}
-\label{def.schurtri.ch.pA}Let $\mathbb{F}$ be a field. Let $A\in
-\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$.
-
-The \emph{characteristic polynomial} of $A$ is defined to be the polynomial%
-\[
-\det\left(  tI_{n}-A\right)  \ \ \ \ \ \ \ \ \ \ \text{in the indeterminate
-}t\text{ with coefficients in }\mathbb{F}.
-\]
-This polynomial is denoted by $p_{A}$. (Some authors write $\chi_{A}$ instead.)
-\end{definition}
-
-\begin{example}
-\label{exa.schurtri.ch.pA.2x2}Let $n=2$ and $A=\left(
-\begin{array}
-[c]{cc}%
-a & b\\
-c & d
-\end{array}
-\right)  $. Then,%
-\begin{align*}
-tI_{n}-A  &  =tI_{2}-A=t\left(
-\begin{array}
-[c]{cc}%
-1 & 0\\
-0 & 1
-\end{array}
-\right)  -\left(
-\begin{array}
-[c]{cc}%
-a & b\\
-c & d
-\end{array}
-\right) \\
-&  =\left(
-\begin{array}
-[c]{cc}%
-t & 0\\
-0 & t
-\end{array}
-\right)  -\left(
-\begin{array}
-[c]{cc}%
-a & b\\
-c & d
-\end{array}
-\right)  =\left(
-\begin{array}
-[c]{cc}%
-t-a & -b\\
--c & t-d
-\end{array}
-\right)  ,
-\end{align*}
-so that%
-\begin{align*}
-p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
-\begin{array}
-[c]{cc}%
-t-a & -b\\
--c & t-d
-\end{array}
-\right)  =\left(  t-a\right)  \left(  t-d\right)  -\left(  -b\right)  \left(
--c\right) \\
-&  =t^{2}-\left(  a+d\right)  t+\left(  ad-bc\right)  .
-\end{align*}
-
-\end{example}
-
-\begin{example}
-\label{exa.schurtri.ch.pA.3x3}Let $n=3$ and $A=\left(
-\begin{array}
-[c]{ccc}%
-a & b & c\\
-a^{\prime} & b^{\prime} & c^{\prime}\\
-a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
-\end{array}
-\right)  $. Then,%
-\begin{align*}
-tI_{n}-A  &  =tI_{3}-A=t\left(
-\begin{array}
-[c]{ccc}%
-1 & 0 & 0\\
-0 & 1 & 0\\
-0 & 0 & 1
-\end{array}
-\right)  -\left(
-\begin{array}
-[c]{ccc}%
-a & b & c\\
-a^{\prime} & b^{\prime} & c^{\prime}\\
-a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
-\end{array}
-\right) \\
-&  =\left(
-\begin{array}
-[c]{ccc}%
-t-a & -b & -c\\
--a^{\prime} & t-b^{\prime} & -c^{\prime}\\
--a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
-\end{array}
-\right)  ,
-\end{align*}
-so that%
-\begin{align*}
-p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
-\begin{array}
-[c]{ccc}%
-t-a & -b & -c\\
--a^{\prime} & t-b^{\prime} & -c^{\prime}\\
--a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
-\end{array}
-\right) \\
-&  =t^{3}-\left(  a+b^{\prime}+c^{\prime\prime}\right)  t^{2}+\left(
-ab^{\prime}-ba^{\prime}+ac^{\prime\prime}-ca^{\prime\prime}+b^{\prime
-}c^{\prime\prime}-b^{\prime\prime}c^{\prime}\right)  t\\
-&  \ \ \ \ \ \ \ \ \ \ -\left(  ab^{\prime}c^{\prime\prime}-ab^{\prime\prime
-}c^{\prime}-ba^{\prime}c^{\prime\prime}+ba^{\prime\prime}c^{\prime}%
-+ca^{\prime}b^{\prime\prime}-ca^{\prime\prime}b^{\prime}\right)  .
-\end{align*}
-
-\end{example}
-
-(Two quick warnings: Some authors define the characteristic polynomial $p_{A}$
-of a matrix $A$ to be $\det\left(  A-tI_{n}\right)  $ instead of $\det\left(
-tI_{n}-A\right)  $. This differs from our definition only by a factor of
-$\left(  -1\right)  ^{n}$, which is immaterial for most properties of the
-characteristic polynomial but still can cause the occasional confusion. Some
-other common notations for $p_{A}$ are $\chi_{A}$ and $c_{A}$.)
-
-The patterns you might have spotted in Example \ref{exa.schurtri.ch.pA.2x2}
-and in Example \ref{exa.schurtri.ch.pA.3x3} are not accidental. Indeed, the
-coefficients of the characteristic polynomial of any square matrix can be
-expressed explicitly, if you consider sums of determinants to be explicit:
-
-\begin{proposition}
-\label{prop.schurtri.ch.props}Let $\mathbb{F}$ be a field. Let $A\in
-\mathbb{F}^{n\times n}$ be an $n\times n$-matrix over $\mathbb{F}$. \medskip
-
-\textbf{(a)} The characteristic polynomial $p_{A}$ is a monic polynomial in
-$t$ of degree $n$. (That is, its leading term is $t^{n}$.) \medskip
-
-\textbf{(b)} The constant term of the polynomial $p_{A}$ is $\left(
--1\right)  ^{n}\det A$. \medskip
-
-\textbf{(c)} The $t^{n-1}$-coefficient of the polynomial $p_{A}$ is
-$-\operatorname*{Tr}A$. (Recall that $\operatorname*{Tr}A$ is defined to be
-the sum of all diagonal entries of $A$; this sum is known as the \emph{trace}
-of $A$.) \medskip
-
-\textbf{(d)} More generally: Let $k\in\left\{  0,1,\ldots,n\right\}  $. Then,
-the $t^{n-k}$-coefficient of the polynomial $p_{A}$ is $\left(  -1\right)
-^{k}$ times the sum of all principal $k\times k$-minors of $A$. (Recall that a
-\emph{principal }$k\times k$\emph{-minor} of $A$ means the determinant of a
-submatrix of $A$, where the submatrix is defined by removing some $n-k$ rows
-and the corresponding $n-k$ columns from $A$. For example, the principal
-$2\times2$-minors of a $3\times3$-matrix $A$ are $\det\left(
-\begin{array}
-[c]{cc}%
-A_{1,1} & A_{1,2}\\
-A_{2,1} & A_{2,2}%
-\end{array}
-\right)  $, $\det\left(
-\begin{array}
-[c]{cc}%
-A_{1,1} & A_{1,3}\\
-A_{3,1} & A_{3,3}%
-\end{array}
-\right)  $ and $\det\left(
-\begin{array}
-[c]{cc}%
-A_{2,2} & A_{2,3}\\
-A_{3,2} & A_{3,3}%
-\end{array}
-\right)  $.) In other words, the $t^{n-k}$-coefficient of $p_{A}$ is
-\[
-\left(  -1\right)  ^{k}\sum_{1\leq i_{1}<i_{2}<\cdots<i_{k}\leq n}\det\left(
-\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1},i_{2}%
-,\ldots,i_{k}}A\right)  ,
-\]
-where $\operatorname*{sub}\nolimits_{i_{1},i_{2},\ldots,i_{k}}^{i_{1}%
-,i_{2},\ldots,i_{k}}A$ denotes the $k\times k$-matrix whose $\left(
-u,v\right)  $-th entry is $A_{i_{u},i_{v}}$ for all $u,v\in\left[  k\right]  $.
-\end{proposition}
-
-\begin{proof}
-[Proof sketch.]We have $A=\left(
-\begin{array}
-[c]{cccc}%
-A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
-A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
-\vdots & \vdots & \ddots & \vdots\\
-A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
-\end{array}
-\right)  $, so that%
-\begin{align*}
-tI_{n}-A  &  =t\left(
-\begin{array}
-[c]{cccc}%
-1 & 0 & \cdots & 0\\
-0 & 1 & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots\\
-0 & 0 & \cdots & 1
-\end{array}
-\right)  -\left(
-\begin{array}
-[c]{cccc}%
-A_{1,1} & A_{1,2} & \cdots & A_{1,n}\\
-A_{2,1} & A_{2,2} & \cdots & A_{2,n}\\
-\vdots & \vdots & \ddots & \vdots\\
-A_{n,1} & A_{n,2} & \cdots & A_{n,n}%
-\end{array}
-\right) \\
-&  =\left(
-\begin{array}
-[c]{cccc}%
-t-A_{1,1} & -A_{1,2} & \cdots & -A_{1,n}\\
--A_{2,1} & t-A_{2,2} & \cdots & -A_{2,n}\\
-\vdots & \vdots & \ddots & \vdots\\
--A_{n,1} & -A_{n,2} & \cdots & t-A_{n,n}%
-\end{array}
-\right)  .
-\end{align*}
-The determinant $\det\left(  tI_{n}-A\right)  $ of this matrix is a sum of
-certain products of its entries\footnote{Here, we are using the \emph{Leibniz
-formula} for the determinant of a matrix, which says that $\det B=\sum
-_{\sigma\in S_{n}}\left(  -1\right)  ^{\sigma}B_{1,\sigma\left(  1\right)
-}B_{2,\sigma\left(  2\right)  }\cdots B_{n,\sigma\left(  n\right)  }$ for each
-$n\times n$-matrix $B$. (We are applying this to $B=tI_{n}-A$.)}. One of these
-products is%
-\begin{align*}
-&  \left(  t-A_{1,1}\right)  \left(  t-A_{2,2}\right)  \cdots\left(
-t-A_{n,n}\right) \\
-&  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
-\text{terms with lower powers of }t\right)  .
-\end{align*}
-None of the other products appearing in this sum includes any power of $t$
-higher than $t^{n-2}$ (because the product picks out at least two entries of
-$A$ that lie outside of the main diagonal, and thus contain no $t$ whatsoever;
-the remaining factors of the product contribute at most $t^{n-2}$). Hence, the
-entire determinant $\det\left(  tI_{n}-A\right)  $ can be written as
-\[
-\det\left(  tI_{n}-A\right)  =t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots
-+A_{n,n}\right)  t^{n-1}+\left(  \text{terms with lower powers of }t\right)
-.
-\]
-In other words,%
-\[
-p_{A}=t^{n}-\left(  A_{1,1}+A_{2,2}+\cdots+A_{n,n}\right)  t^{n-1}+\left(
-\text{terms with lower powers of }t\right)
-\]
-(since $p_{A}=\det\left(  tI_{n}-A\right)  $). This yields parts \textbf{(a)}
-and \textbf{(c)} of Proposition \ref{prop.schurtri.ch.props}.
-
-To prove Proposition \ref{prop.schurtri.ch.props} \textbf{(b)}, we substitute
-$0$ for $t$ in the polynomial identity $p_{A}=\det\left(  tI_{n}-A\right)  $.
-We obtain%
-\[
-p_{A}\left(  0\right)  =\det\left(  0I_{n}-A\right)  =\det\left(  -A\right)
-=\left(  -1\right)  ^{n}\det A.
-\]
-Since $p_{A}\left(  0\right)  $ is the constant term of $p_{A}$ (in fact, if
-$f$ is any polynomial, then $f\left(  0\right)  $ is the constant term of
-$f$), we thus conclude that the constant term of $p_{A}$ is $\left(
--1\right)  ^{n}\det A$. This proves Proposition \ref{prop.schurtri.ch.props}
-\textbf{(b).}
-
-Finally, Proposition \ref{prop.schurtri.ch.props} \textbf{(d)} can be
-established through a more accurate combinatorial analysis of the products
-that sum up to $\det\left(  tI_{n}-A\right)  $. See \cite[Proposition
-6.4.29]{21s} for the details. (A combinatorially prepared reader might see the
-idea from Example \ref{exa.schurtri.ch.pA.3x3}.)
-
-We note that parts \textbf{(a)}, \textbf{(b)} and \textbf{(c)} of Proposition
-\ref{prop.schurtri.ch.props} can all be derived from part \textbf{(d)} as well.
-\end{proof}
 
 In Definition \ref{def.schurtri.normal.p(A)}, we have learnt how to substitute
 a square matrix into a polynomial. Something peculiar happens when a matrix is
@@ -5154,7 +5351,8 @@ $\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
 \ref{thm.schurtri.syl.equivalence}. Prove that if $\lambda\in\sigma\left(
 A\right)  $ and $\mu\in\sigma\left(  B\right)  $, then $\lambda-\mu$ is an
 eigenvalue of $L$ (that is, there exists a nonzero matrix $X\in\mathbb{C}%
-^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$). \medskip
+^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$).
+\medskip
 
 \textbf{(b)} Prove the implication $\mathcal{U}\Longrightarrow\mathcal{V}$ in
 Theorem \ref{thm.schurtri.syl.equivalence} (thus completing the proof of the theorem).
@@ -5243,7 +5441,7 @@ are similar.
 \end{example}
 
 \begin{proof}
-[Proof of Corollary \ref{cor.schurtri.block-sim}.] Theorem
+[Proof of Corollary \ref{cor.schurtri.block-sim}.]Theorem
 \ref{thm.schurtri.syl.equivalence} (specifically, its $\mathcal{V}%
 \Longrightarrow\mathcal{U}$ direction) shows that there is a unique matrix
 $X\in\mathbb{C}^{n\times m}$ such that $AX-XB=C$. Consider this $X$.
@@ -5285,7 +5483,7 @@ I_{n} & -X\\
 \right)  $ (again an $\left(  n+m\right)  \times\left(  n+m\right)  $-matrix).
 Then, the definitions of $S$ and $S^{\prime}$ yield%
 \begin{align*}
-SS^{\prime} &  =\left(
+SS^{\prime}  &  =\left(
 \begin{array}
 [c]{cc}%
 I_{n} & X\\
@@ -5297,7 +5495,7 @@ I_{n} & X\\
 I_{n} & -X\\
 0 & I_{m}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -5305,7 +5503,7 @@ I_{n}I_{n}+X\cdot0 & I_{n}\left(  -X\right)  +XI_{m}\\
 0I_{n}+I_{m}\cdot0 & 0\left(  -X\right)  +I_{m}I_{m}%
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
-\ref{prop.blockmatrix.mult-2x2}}\right)  \\
+\ref{prop.blockmatrix.mult-2x2}}\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -5320,7 +5518,7 @@ I_{n} & 0\\
 \text{and }0I_{n}+I_{m}\cdot0=0\text{ and }0\left(  -X\right)  +I_{m}%
 I_{m}=I_{m}%
 \end{array}
-\right)  \\
+\right) \\
 &  =I_{n+m}%
 \end{align*}
 and similarly $S^{\prime}S=I_{n+m}$. Thus, the matrices $S$ and $S^{\prime}$
@@ -5340,7 +5538,7 @@ A & 0\\
 A & C\\
 0 & B
 \end{array}
-\right)  S^{-1}.\label{pf.cor.schurtri.block-sim.4}%
+\right)  S^{-1}. \label{pf.cor.schurtri.block-sim.4}%
 \end{equation}
 To do so, it suffices to check the equivalent identity%
 \begin{equation}
@@ -5368,7 +5566,7 @@ yields%
 A & 0\\
 0 & B
 \end{array}
-\right)  S  & =\left(
+\right)  S  &  =\left(
 \begin{array}
 [c]{cc}%
 A & 0\\
@@ -5380,16 +5578,16 @@ A & 0\\
 I_{n} & X\\
 0 & I_{m}%
 \end{array}
-\right)  \\
-& =\left(
+\right) \\
+&  =\left(
 \begin{array}
 [c]{cc}%
 AI_{n}+0\cdot0 & A\cdot X+0\cdot I_{m}\\
 0I_{n}+B\cdot0 & 0X+BI_{m}%
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
-\ref{prop.blockmatrix.mult-2x2}}\right)  \\
-& =\left(
+\ref{prop.blockmatrix.mult-2x2}}\right) \\
+&  =\left(
 \begin{array}
 [c]{cc}%
 A & AX\\
@@ -5418,7 +5616,7 @@ I_{n} & X\\
 A & C\\
 0 & B
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -5426,7 +5624,7 @@ I_{n}A+X\cdot0 & I_{n}C+XB\\
 0A+I_{m}\cdot0 & 0C+I_{m}\cdot B
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
-\ref{prop.blockmatrix.mult-2x2}}\right)  \\
+\ref{prop.blockmatrix.mult-2x2}}\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -5434,7 +5632,7 @@ A & C+XB\\
 0 & B
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by the obvious simplifications}%
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -5470,23 +5668,9 @@ to a more-or-less unique matrix of a certain kind (namely, a block-diagonal
 matrix made of a specific type of blocks), called its \textquotedblleft Jordan
 canonical form\textquotedblright.
 
-\subsection{Similarity redux}
-
-We have already discussed some properties of similar matrices in Section
-\ref{sec.schur.similar}. Let us recall some of them and state a couple trivial
-corollaries. More importantly, however, let us introduce a notation for similarity:
-
-\begin{definition}
-\label{def.jordan.sim.notation}Let $A$ and $B$ be two matrices in
-$\mathbb{C}^{n\times n}$. We will write \textquotedblleft$A\sim B$%
-\textquotedblright\ for \textquotedblleft$A$ is similar to $B$%
-\textquotedblright.
-\end{definition}
-
-This notation is similar to our old notation \textquotedblleft%
-$A\overset{\operatorname*{us}}{\sim}B$\textquotedblright\ for
-\textquotedblleft$A$ is similar to $B$\textquotedblright\ (and in fact, the
-latter was chosen in analogy to the former).
+We recall that the notation \textquotedblleft$A\sim B$\textquotedblright%
+\ (where $A$ and $B$ are two $n\times n$-matrices) means that the matrices $A$
+and $B$ are similar.
 
 [...]
 
