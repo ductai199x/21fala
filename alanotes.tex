@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Wednesday, October 06, 2021 00:19:50}
+%TCIDATA{LastRevised=Thursday, October 07, 2021 00:50:55}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -3429,7 +3429,7 @@ a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
 \end{array}
 \right)  $. Then,%
 \begin{align*}
-tI_{n}-A &  =tI_{3}-A=t\left(
+tI_{n}-A  &  =tI_{3}-A=t\left(
 \begin{array}
 [c]{ccc}%
 1 & 0 & 0\\
@@ -3443,7 +3443,7 @@ a & b & c\\
 a^{\prime} & b^{\prime} & c^{\prime}\\
 a^{\prime\prime} & b^{\prime\prime} & c^{\prime\prime}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{ccc}%
@@ -3455,14 +3455,14 @@ t-a & -b & -c\\
 \end{align*}
 so that%
 \begin{align*}
-p_{A} &  =\det\left(  tI_{n}-A\right)  =\det\left(
+p_{A}  &  =\det\left(  tI_{n}-A\right)  =\det\left(
 \begin{array}
 [c]{ccc}%
 t-a & -b & -c\\
 -a^{\prime} & t-b^{\prime} & -c^{\prime}\\
 -a^{\prime\prime} & -b^{\prime\prime} & t-c^{\prime\prime}%
 \end{array}
-\right)  \\
+\right) \\
 &  =t^{3}-\left(  a+b^{\prime}+c^{\prime\prime}\right)  t^{2}+\left(
 ab^{\prime}-ba^{\prime}+ac^{\prime\prime}-ca^{\prime\prime}+b^{\prime
 }c^{\prime\prime}-b^{\prime\prime}c^{\prime}\right)  t\\
@@ -3713,7 +3713,7 @@ $n\times n$-matrix with complex entries. Then:
 terms:%
 \begin{equation}
 p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
-\cdots\left(  t-\lambda_{n}\right)  ,\label{eq.schurtri.ch.pA-factors}%
+\cdots\left(  t-\lambda_{n}\right)  , \label{eq.schurtri.ch.pA-factors}%
 \end{equation}
 where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{C}$ are its roots
 (with their algebraic multiplicities). \medskip
@@ -3728,7 +3728,10 @@ is $n$. \medskip
 multiplicities) is $\operatorname*{Tr}A$ (that is, the trace of $A$). \medskip
 
 \textbf{(e)} The product of all eigenvalues of $A$ (with their algebraic
-multiplicities) is $\det A$.
+multiplicities) is $\det A$. \medskip
+
+\textbf{(f)} If $n>0$, then the matrix $A$ has at least one eigenvalue and at
+least one nonzero eigenvector.
 \end{theorem}
 
 \begin{proof}
@@ -3754,10 +3757,10 @@ _{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$
 (\ref{eq.schurtri.ch.pA-factors}) holds. Comparing the coefficients of
 $t^{n-1}$ on both sides of this equality, we obtain%
 \begin{align*}
-\left(  \text{the coefficient of }t^{n-1}\text{ in }p_{A}\right)    & =\left(
+\left(  \text{the coefficient of }t^{n-1}\text{ in }p_{A}\right)   &  =\left(
 \text{the coefficient of }t^{n-1}\text{ in }\left(  t-\lambda_{1}\right)
-\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{n}\right)  \right)  \\
-& =-\left(  \lambda_{1}+\lambda_{2}+\cdots+\lambda_{n}\right)  .
+\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{n}\right)  \right) \\
+&  =-\left(  \lambda_{1}+\lambda_{2}+\cdots+\lambda_{n}\right)  .
 \end{align*}
 However, Proposition \ref{prop.schurtri.ch.props} \textbf{(c)} yields
 \[
@@ -3768,13 +3771,28 @@ Comparing these two equalities, we obtain $-\left(  \lambda_{1}+\lambda
 _{2}+\cdots+\lambda_{n}\right)  =-\operatorname*{Tr}A$. In other words,
 $\lambda_{1}+\lambda_{2}+\cdots+\lambda_{n}=\operatorname*{Tr}A$. This proves
 Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(d)} (since $\lambda
-_{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$). \medskip
+_{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$).
+\medskip
 
 \textbf{(e)} This is similar to part \textbf{(d)}, except that we have to
 compare the coefficients of $t^{0}$ (instead of $t^{n-1}$) on both sides of
 (\ref{eq.schurtri.ch.pA-factors}), and we have to use Proposition
 \ref{prop.schurtri.ch.props} \textbf{(b)} (instead of Proposition
-\ref{prop.schurtri.ch.props} \textbf{(c)}).
+\ref{prop.schurtri.ch.props} \textbf{(c)}).\medskip
+
+\textbf{(f)} Assume that $n>0$. Thus, $n\geq1$. However, Theorem
+\ref{thm.schurtri.ch.fta-cons} \textbf{(b)} shows that $A$ has exactly $n$
+eigenvalues, counted with algebraic multiplicities. Hence, $A$ has at least
+one eigenvalue $\lambda$ (since $n\geq1$). Consider this $\lambda$. Since
+$\lambda$ is an eigenvalue of $A$, we have $\det\left(  \lambda I_{n}%
+-A\right)  =0$. Hence, the $n\times n$-matrix $\lambda I_{n}-A$ is singular,
+so that its kernel $\operatorname*{Ker}\left(  \lambda I_{n}-A\right)  $ is
+nonzero. In other words, there exists a nonzero vector $v\in
+\operatorname*{Ker}\left(  \lambda I_{n}-A\right)  $. This vector $v$ must be
+a $\lambda$-eigenvector of $A$ (since $v\in\operatorname*{Ker}\left(  \lambda
+I_{n}-A\right)  $). Hence, the matrix $A$ has a nonzero eigenvector (namely,
+$v$). This completes the proof of Theorem \ref{thm.schurtri.ch.fta-cons}
+\textbf{(f)}.
 \end{proof}
 
 \begin{noncompile}%
@@ -3987,7 +4005,7 @@ either of them).}. Thus, we must show that $\det\left(  tI_{n}-A\right)
 =\det\left(  tI_{n}-B\right)  $. However, we have%
 \begin{align*}
 t\underbrace{I_{n}}_{\substack{=WW^{-1}\\=WI_{n}W^{-1}}}-\underbrace{B}%
-_{=WAW^{-1}} &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
+_{=WAW^{-1}}  &  =\underbrace{tWI_{n}}_{=W\left(  tI_{n}\right)  }%
 W^{-1}-WAW^{-1}=W\left(  tI_{n}\right)  W^{-1}-WAW^{-1}\\
 &  =W\left(  tI_{n}-A\right)  W^{-1}.
 \end{align*}
@@ -4648,10 +4666,10 @@ _{2},\ldots,\lambda_{n}\in\mathbb{C}.
 Then, $D^{\ast}=\operatorname*{diag}\left(  \overline{\lambda_{1}}%
 ,\overline{\lambda_{2}},\ldots,\overline{\lambda_{n}}\right)  $. Hence,
 \begin{align*}
-DD^{\ast} &  =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
+DD^{\ast}  &  =\operatorname*{diag}\left(  \lambda_{1}\overline{\lambda_{1}%
 },\lambda_{2}\overline{\lambda_{2}},\ldots,\lambda_{n}\overline{\lambda_{n}%
 }\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
-D^{\ast}D &  =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
+D^{\ast}D  &  =\operatorname*{diag}\left(  \overline{\lambda_{1}}\lambda
 _{1},\overline{\lambda_{2}}\lambda_{2},\ldots,\overline{\lambda_{n}}%
 \lambda_{n}\right)  .
 \end{align*}
@@ -5178,11 +5196,11 @@ this matrix. (However, the specific polynomial that needs to be applied
 depends on this matrix.) In more detail:
 
 \begin{exercise}
-\fbox{3} Let $\mathbb{F}$ be a field. Let $n$ be a positive integer. Let
-$A\in\mathbb{F}^{n\times n}$ be an invertible matrix with entries in
-$\mathbb{F}$. Prove that there exists a polynomial $f$ of degree $n-1$ in the
-single indeterminate $t$ over $\mathbb{F}$ such that $A^{-1}=f\left(
-A\right)  $.
+\label{exe.schurtri.ch.inverse-poly}\fbox{3} Let $\mathbb{F}$ be a field. Let
+$n$ be a positive integer. Let $A\in\mathbb{F}^{n\times n}$ be an invertible
+matrix with entries in $\mathbb{F}$. Prove that there exists a polynomial $f$
+of degree $n-1$ in the single indeterminate $t$ over $\mathbb{F}$ such that
+$A^{-1}=f\left(  A\right)  $.
 \end{exercise}
 
 For example, for $n=2$, we have $A^{-1}=uI_{2}-vA$ with $u=\dfrac
@@ -5192,10 +5210,11 @@ Another consequence of Cayley--Hamilton is that the powers of a given square
 matrix $A\in\mathbb{F}^{n\times n}$ span a vector space of dimension $\leq n$:
 
 \begin{exercise}
-\fbox{3} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be a
-square matrix with entries in $\mathbb{F}$. Prove that for any nonnegative
-integer $k$, the power $A^{k}$ can be written as an $\mathbb{F}$-linear
-combination of the first $n$ powers $A^{0},A^{1},\ldots,A^{n-1}$.
+\label{exe.schurtri.ch.powers-span}\fbox{3} Let $\mathbb{F}$ be a field. Let
+$A\in\mathbb{F}^{n\times n}$ be a square matrix with entries in $\mathbb{F}$.
+Prove that for any nonnegative integer $k$, the power $A^{k}$ can be written
+as an $\mathbb{F}$-linear combination of the first $n$ powers $A^{0}%
+,A^{1},\ldots,A^{n-1}$.
 \end{exercise}
 
 Yet another rather curious consequence is an application to linearly recurrent
@@ -5228,11 +5247,11 @@ and $\left(  f_{2},f_{5},f_{8},f_{11},\ldots\right)  $ are $\left(
 4,1\right)  $-recurrent. This generalizes:
 
 \begin{exercise}
-\fbox{5} Let $a_{1},a_{2},\ldots,a_{k}$ be $k$ numbers. Let $\left(
-x_{0},x_{1},x_{2},\ldots\right)  $ be any $\left(  a_{1},a_{2},\ldots
-,a_{k}\right)  $-recurrent sequence of numbers. Let $d$ be a positive integer.
-Show that there exist $k$ integers $b_{1},b_{2},\ldots,b_{k}$ such that each
-$i\geq kd$ satisfies%
+\label{exe.schurtri.ch.lin-rec-kd}\fbox{5} Let $a_{1},a_{2},\ldots,a_{k}$ be
+$k$ numbers. Let $\left(  x_{0},x_{1},x_{2},\ldots\right)  $ be any $\left(
+a_{1},a_{2},\ldots,a_{k}\right)  $-recurrent sequence of numbers. Let $d$ be a
+positive integer. Show that there exist $k$ integers $b_{1},b_{2},\ldots
+,b_{k}$ such that each $i\geq kd$ satisfies%
 \[
 x_{i}=b_{1}x_{i-d}+b_{2}x_{i-2d}+\cdots+b_{k}x_{i-kd}.
 \]
@@ -5347,7 +5366,7 @@ $.
 \end{lemma}
 
 \begin{proof}
-[Proof of Lemma \ref{lem.schurtri.syl.AX=XB}.] \textbf{(a)} Intuitively, this
+[Proof of Lemma \ref{lem.schurtri.syl.AX=XB}.]\textbf{(a)} Intuitively, this
 is easy: For instance, if $k=4$, then this is saying that $A^{4}X=XB^{4}$, but
 this follows from
 \[
@@ -5388,11 +5407,11 @@ p\left(  A\right)  =\sum_{k=0}^{d}p_{k}A^{k}\ \ \ \ \ \ \ \ \ \ \text{and}%
 \]
 Hence,%
 \begin{align*}
-p\left(  A\right)  X  & =\left(  \sum_{k=0}^{d}p_{k}A^{k}\right)  X=\sum
-_{k=0}^{d}p_{k}\underbrace{A^{k}X}_{\substack{=XB^{k}\\\text{(by Lemma
+p\left(  A\right)  X  &  =\left(  \sum_{k=0}^{d}p_{k}A^{k}\right)
+X=\sum_{k=0}^{d}p_{k}\underbrace{A^{k}X}_{\substack{=XB^{k}\\\text{(by Lemma
 \ref{lem.schurtri.syl.AX=XB} \textbf{(a)})}}}=\sum_{k=0}^{d}p_{k}%
 XB^{k}\ \ \ \ \ \ \ \ \ \ \text{and}\\
-Xp\left(  B\right)    & =X\sum_{k=0}^{d}p_{k}B^{k}=\sum_{k=0}^{d}p_{k}XB^{k}.
+Xp\left(  B\right)   &  =X\sum_{k=0}^{d}p_{k}B^{k}=\sum_{k=0}^{d}p_{k}XB^{k}.
 \end{align*}
 Comparing these two equalities, we find $p\left(  A\right)  X=Xp\left(
 B\right)  $. Thus, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} is proven.
@@ -5406,8 +5425,8 @@ $nm$.
 
 Consider the map%
 \begin{align*}
-L:\mathbb{C}^{n\times m} &  \rightarrow\mathbb{C}^{n\times m},\\
-X &  \mapsto AX-XB.
+L:\mathbb{C}^{n\times m}  &  \rightarrow\mathbb{C}^{n\times m},\\
+X  &  \mapsto AX-XB.
 \end{align*}
 This map $L$ is linear, because for any $\alpha,\beta\in\mathbb{C}$ and any
 $X,Y\in\mathbb{C}^{n\times m}$, we have%
@@ -5430,7 +5449,7 @@ $L\left(  X\right)  =0$. However, the definition of $L$ yields $L\left(
 X\right)  =AX-XB$. Therefore, $AX-XB=L\left(  X\right)  =0$. In other words,
 $AX=XB$. Hence, we can apply Lemma \ref{lem.schurtri.syl.AX=XB}.
 
-Apply Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} to $p=p_{A}$. This
+Thus, Lemma \ref{lem.schurtri.syl.AX=XB} \textbf{(b)} (applied to $p=p_{A}$)
 yields $p_{A}\left(  A\right)  X=Xp_{A}\left(  B\right)  $. However, Theorem
 \ref{thm.schurtri.ch.ch} \textbf{(a)} yields $p_{A}\left(  A\right)  =0$, so
 that $p_{A}\left(  A\right)  X=0X=0$. Comparing this with $p_{A}\left(
@@ -5441,8 +5460,8 @@ Theorem \ref{thm.schurtri.ch.fta-cons} \textbf{(a)} shows that the polynomial
 $p_{A}$ factors into $n$ linear terms:%
 \begin{equation}
 p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
-\cdots\left(  t-\lambda_{n}\right)
-,\label{pf.thm.schurtri.syl.equivalence.pA=prod}%
+\cdots\left(  t-\lambda_{n}\right)  ,
+\label{pf.thm.schurtri.syl.equivalence.pA=prod}%
 \end{equation}
 where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{C}$ are its roots.
 Moreover, these roots $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
@@ -5454,8 +5473,8 @@ Substituting the matrix $B$ for $t$ on both sides of the equality
 (\ref{pf.thm.schurtri.syl.equivalence.pA=prod}), we obtain%
 \begin{equation}
 p_{A}\left(  B\right)  =\left(  B-\lambda_{1}I_{n}\right)  \left(
-B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda_{n}I_{n}\right)
-.\label{pf.thm.schurtri.syl.equivalence.pAB=prod}%
+B-\lambda_{2}I_{n}\right)  \cdots\left(  B-\lambda_{n}I_{n}\right)  .
+\label{pf.thm.schurtri.syl.equivalence.pAB=prod}%
 \end{equation}
 (Note that we have tacitly using a not-completely-trivial fact here: that if
 $f_{1},f_{2},\ldots,f_{k}$ are several polynomials and $C$ is an $n\times
@@ -5476,7 +5495,8 @@ $\sigma\left(  A\right)  \cap\sigma\left(  B\right)  =\varnothing$). In other
 words, $\lambda_{i}$ is not an eigenvalue of $B$. In other words, $\det\left(
 \lambda_{i}I_{n}-B\right)  \neq0$ (by the definition of an eigenvalue). Hence,
 the matrix $\lambda_{i}I_{n}-B$ is invertible. In other words, the matrix
-$B-\lambda_{i}I_{n}$ is invertible.
+$B-\lambda_{i}I_{n}$ is invertible (since $B-\lambda_{i}I_{n}=-\left(
+\lambda_{i}I_{n}-B\right)  $).
 
 Forget that we fixed $i$. We thus have shown that the matrix $B-\lambda
 _{i}I_{n}$ is invertible for each $i\in\left[  n\right]  $. In other words,
@@ -5494,14 +5514,15 @@ the linear map $L$ is injective.
 
 However, it is well-known that an injective linear map between two
 finite-dimensional vector spaces of the same dimension is necessarily
-bijective\footnote{Indeed, let $f:U\rightarrow V$ be an injective linear map
-between two finite-dimensional vector spaces of the same dimension. We must
-show that $f$ is bijective. The rank-nullity theorem yields%
+bijective\footnote{\textit{Proof.} Let $f:U\rightarrow V$ be an injective
+linear map between two finite-dimensional vector spaces of the same dimension.
+We must show that $f$ is bijective. We have $\operatorname*{Ker}f=0$ (since
+$f$ is injective) and thus $\dim\left(  \operatorname*{Ker}f\right)  =0$. The
+rank-nullity theorem yields%
 \[
-\dim U=\underbrace{\dim\left(  \operatorname*{Ker}f\right)  }%
-_{\substack{=0\\\text{(since }f\text{ is injective,}\\\text{so that
-}\operatorname*{Ker}f=0\text{)}}}+\dim\left(  \operatorname{Im}f\right)
-=\dim\left(  \operatorname{Im}f\right)  ,
+\dim U=\underbrace{\dim\left(  \operatorname*{Ker}f\right)  }_{\substack{=0}%
+}+\dim\left(  \operatorname{Im}f\right)  =\dim\left(  \operatorname{Im}%
+f\right)  ,
 \]
 so that $\dim\left(  \operatorname{Im}f\right)  =\dim U=\dim V$ (since $U$ and
 $V$ have the same dimension), and therefore $\operatorname{Im}f=V$ (because
@@ -5536,9 +5557,7 @@ We note that more can be said: If $A$, $B$ and $C$ are as in Theorem
 \ref{thm.schurtri.syl.equivalence}, and if $L$ is as in the above proof, then
 \textbf{all} eigenvalues of $L$ have the form $\lambda-\mu$ for $\lambda
 \in\sigma\left(  A\right)  $ and $\mu\in\sigma\left(  B\right)  $. But this
-seems harder to prove at this point. \medskip
-
-%
+seems harder to prove at this point. \medskip%
 
 \[%
 \begin{tabular}
@@ -5845,6 +5864,581 @@ canonical form\textquotedblright.
 We recall that the notation \textquotedblleft$A\sim B$\textquotedblright%
 \ (where $A$ and $B$ are two $n\times n$-matrices) means that the matrices $A$
 and $B$ are similar.
+
+\subsection{Jordan cells}
+
+The building blocks for the Jordan canonical form are the so-called Jordan
+cells. Let us define them:
+
+\begin{definition}
+\label{def.jnf.jcell}A \emph{Jordan cell} is an $m\times m$-matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 & 0 & \cdots & 0\\
+0 & \lambda & 1 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }m>0\text{ and some }\lambda
+\in\mathbb{C}.
+\]
+In other words, it is an $m\times m$-matrix
+
+\begin{itemize}
+\item whose diagonal entries are $\lambda$,
+
+\item whose entries directly above the diagonal (i.e., just one step upwards
+from a diagonal entry) are $1$, and
+
+\item whose all remaining entries are $0$.
+\end{itemize}
+
+\noindent In formal terms, it is the $m\times m$-matrix $A$ whose entries are
+given by the rule%
+\[
+A_{i,j}=%
+\begin{cases}
+\lambda, & \text{if }i=j;\\
+1, & \text{if }i=j-1;\\
+0, & \text{otherwise}%
+\end{cases}
+\ \ \ \ \ \ \ \ \ \ \text{for all }i\in\left[  m\right]  \text{ and }%
+j\in\left[  m\right]  .
+\]
+
+
+To be specific, this matrix is called the \emph{Jordan cell of size }$m$\emph{
+at eigenvalue }$\lambda$. It is denoted by $J_{m}\left(  \lambda\right)  $.
+\end{definition}
+
+\begin{example}
+\textbf{(a)} The Jordan cell of size $3$ at eigenvalue $-5$ is%
+\[
+J_{3}\left(  -5\right)  =\left(
+\begin{array}
+[c]{ccc}%
+-5 & 1 & 0\\
+0 & -5 & 1\\
+0 & 0 & -5
+\end{array}
+\right)  .
+\]
+
+
+\textbf{(b)} The Jordan cell of size $2$ at eigenvalue $\pi$ is%
+\[
+J_{2}\left(  \pi\right)  =\left(
+\begin{array}
+[c]{cc}%
+\pi & 1\\
+0 & \pi
+\end{array}
+\right)  .
+\]
+
+
+\textbf{(c)} For any $\lambda\in\mathbb{C}$, the Jordan cell of size $1$ at
+eigenvalue $\lambda$ is the $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+\lambda
+\end{array}
+\right)  $.
+\end{example}
+
+While the Jordan cell $J_{m}\left(  \lambda\right)  $ depends on both $m$ and
+$\lambda$, its dependence on $k$ is not very substantial:
+
+\begin{proposition}
+\label{prop.jnf.jcell-lambda}Let $m$ be a positive integer, and let
+$\lambda\in\mathbb{C}$. Then,%
+\[
+J_{m}\left(  \lambda\right)  =J_{m}\left(  0\right)  +\lambda I_{m}.
+\]
+
+\end{proposition}
+
+\begin{proof}
+Definition \ref{def.jnf.jcell} yields%
+\begin{equation}
+J_{m}\left(  \lambda\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 & 0 & \cdots & 0\\
+0 & \lambda & 1 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  \label{pf.prop.jnf.jcell-lambda.1}%
+\end{equation}
+and%
+\begin{equation}
+J_{m}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  . \label{pf.prop.jnf.jcell-lambda.2}%
+\end{equation}
+On the other hand,%
+\[
+\lambda I_{m}=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 0 & 0 & \cdots & 0\\
+0 & \lambda & 0 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  .
+\]
+Adding this equality to (\ref{pf.prop.jnf.jcell-lambda.2}), we obtain%
+\begin{align*}
+J_{m}\left(  0\right)  +\lambda I_{m}  &  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  +\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 0 & 0 & \cdots & 0\\
+0 & \lambda & 0 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 & 0 & \cdots & 0\\
+0 & \lambda & 1 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  =J_{m}\left(  \lambda\right)
+\end{align*}
+(by (\ref{pf.prop.jnf.jcell-lambda.1})). This proves Proposition
+\ref{prop.jnf.jcell-lambda}.
+\end{proof}
+
+Thanks to Proposition \ref{prop.jnf.jcell-lambda}, we can reduce many
+questions about $J_{m}\left(  \lambda\right)  $ to the corresponding questions
+about $J_{m}\left(  0\right)  $. Let us compute the powers of $J_{m}\left(
+0\right)  $:
+
+\begin{proposition}
+\label{prop.jnf.jcell0-powers}Let $m$ be a positive integer. Let
+$B=J_{m}\left(  0\right)  $. Let $p\in\mathbb{N}$. Then:
+
+\textbf{(a)} The entries of the $m\times m$-matrix $B^{p}$ are given by%
+\[
+\left(  B^{p}\right)  _{i,j}=%
+\begin{cases}
+1, & \text{if }i=j-p;\\
+0, & \text{otherwise}%
+\end{cases}
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  m\right]  .
+\]
+
+
+\textbf{(b)} We have $B^{p}=0$ if $p\geq m$.
+
+\textbf{(c)} We have $\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)
+\right)  =p$ if $p\leq m$.
+
+\textbf{(d)} We have $\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)
+\right)  =m$ if $p\geq m$.
+\end{proposition}
+
+\begin{example}
+For $m=4$, the matrix $B=J_{4}\left(  0\right)  $ from Proposition
+\ref{prop.jnf.jcell0-powers} satisfies%
+\begin{align*}
+B  &  =\left(
+\begin{array}
+[c]{cccc}%
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ B^{2}=\left(
+\begin{array}
+[c]{cccc}%
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  ,\\
+B^{3}  &  =\left(
+\begin{array}
+[c]{cccc}%
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ B^{4}=\left(
+\begin{array}
+[c]{cccc}%
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right)  =0.
+\end{align*}
+Thus, as we go from $B$ to $B^{2}$ to $B^{3}$ to $B^{4}$, the $1$s in the
+cells directly above the main diagonal recede further and further upwards,
+until they eventually disappear beyond the borders of the matrix. (It is
+actually better to start this sequence with $B^{0}$ rather than $B$, so that
+the $1$s start on the main diagonal.) Proposition \ref{prop.jnf.jcell0-powers}
+\textbf{(a)} is merely a formal way of stating this phenomenon. Parts
+\textbf{(b)}, \textbf{(c)} and \textbf{(d)} of Proposition
+\ref{prop.jnf.jcell0-powers} follow easily from part \textbf{(a)}.
+\end{example}
+
+\begin{proof}
+[Proof of Proposition \ref{prop.jnf.jcell0-powers}.]We have%
+\begin{equation}
+B=J_{m}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \label{pf.prop.jnf.jcell0-powers.B=}%
+\end{equation}
+(by the definition of $J_{m}\left(  0\right)  $). \medskip
+
+\textbf{(a)} We can prove Proposition \ref{prop.jnf.jcell0-powers}
+\textbf{(a)} by induction on $p$, using the definition of matrix
+multiplication (and the fact that $B^{q+1}=B^{q}B$ for each $q\in\mathbb{N}$).
+However, there is a more elegant proof using the action of $B$ on basis
+vectors: \medskip
+
+Forget that we fixed $p$. For each $i\in\left[  m\right]  $, let $e_{i}$ be
+the column vector in $\mathbb{F}^{m}$ whose $i$-th entry is $1$ while all its
+other entries are $0$. That is,
+\[
+e_{i}=\left(
+\begin{array}
+[c]{ccccccccc}%
+0 & 0 & \cdots & 0 & 1 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  ^{T},
+\]
+where the $1$ is in the $i$-th position. The vectors $e_{1},e_{2},\ldots
+,e_{m}$ are the standard basis vectors of $\mathbb{F}^{m}$. It is well-known
+that every $m\times m$-matrix $C\in\mathbb{F}^{m\times m}$ satisfies%
+\begin{equation}
+C_{\bullet,i}=Ce_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
+. \label{pf.prop.jnf.jcell0-powers.a.coli}%
+\end{equation}
+(Recall that $C_{\bullet,i}$ denotes the $i$-th column of $C$.)
+
+We have so far defined the vectors $e_{i}$ only for $i\in\left[  m\right]  $.
+Now, for each integer $i\notin\left[  m\right]  $, we define $e_{i}$ to be the
+zero vector $0\in\mathbb{F}^{m}$. Thus, we have defined a vector $e_{i}%
+\in\mathbb{F}^{m}$ for each $i\in\mathbb{Z}$ (although it is nonzero only when
+$i\in\left[  m\right]  $). In particular, $e_{0}=0$ (since $0\notin\left[
+m\right]  $). Note that we have%
+\begin{equation}
+\left(  \text{the }k\text{-th entry of the column vector }e_{i}\right)  =%
+\begin{cases}
+1, & \text{if }k=i;\\
+0, & \text{otherwise}%
+\end{cases}
+\label{pf.prop.jnf.jcell0-powers.a.ient}%
+\end{equation}
+for each $i\in\mathbb{Z}$ and each $k\in\left[  m\right]  $%
+\ \ \ \ \footnote{\textit{Proof.} If $i\in\left[  m\right]  $, then the
+equality (\ref{pf.prop.jnf.jcell0-powers.a.ient}) follows from the definition
+of $e_{i}$. On the other hand, if $i\notin\left[  m\right]  $, then $e_{i}=0$
+(by definition), so that both sides of the equality
+(\ref{pf.prop.jnf.jcell0-powers.a.ient}) are $0$ (since we don't have $k=i$
+(because $k\in\left[  m\right]  $ and $i\notin\left[  m\right]  $), and thus
+we have $%
+\begin{cases}
+1, & \text{if }k=i;\\
+0, & \text{otherwise}%
+\end{cases}
+\ \ =0$). Thus, the equality (\ref{pf.prop.jnf.jcell0-powers.a.ient}) holds in
+either case.}.
+
+Now, from (\ref{pf.prop.jnf.jcell0-powers.B=}), we see that the columns of the
+matrix $B$ are $0,e_{1},e_{2},\ldots,e_{m-1}$ in this order. In other words,
+the columns of $B$ are $e_{0},e_{1},e_{2},\ldots,e_{m-1}$ in this order (since
+$e_{0}=0$). In other words, we have%
+\[
+B_{\bullet,i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
+\]
+(since $B_{\bullet,i}$ denotes the $i$-th column of $B$). However,
+(\ref{pf.prop.jnf.jcell0-powers.a.coli}) (applied to $C=B$) shows that we have%
+\[
+B_{\bullet,i}=Be_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
+.
+\]
+Comparing these two equalities, we obtain%
+\begin{equation}
+Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
+.\label{pf.prop.jnf.jcell0-powers.a.Bei}%
+\end{equation}
+However, this equality also holds for all $i\leq0$ (because if $i\leq0$, then
+both $e_{i}$ and $e_{i-1}$ equal the zero vector $0$ (since $i\notin\left[
+m\right]  $ and $i-1\notin\left[  m\right]  $), and therefore this equality
+boils down to $B\cdot0=0$). Thus,
+\begin{equation}
+Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each integer }i\leq
+m.\label{pf.prop.jnf.jcell0-powers.a.Bei2}%
+\end{equation}
+
+
+Now, we claim that%
+\begin{equation}
+B^{p}e_{i}=e_{i-p}\ \ \ \ \ \ \ \ \ \ \text{for each }p\in\mathbb{N}\text{ and
+}i\in\left[  m\right]  . \label{pf.prop.jnf.jcell0-powers.a.Bpei}%
+\end{equation}
+
+
+[\textit{Proof of (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}):} We induct on $p$:
+
+\textit{Induction base:} We have $B^{0}=I_{m}$ and thus $B^{0}e_{i}=I_{m}%
+e_{i}=e_{i}=e_{i-0}$ for each $i\in\left[  m\right]  $. In other words,
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) holds for $p=0$.
+
+\textit{Induction step:} Let $q\in\mathbb{N}$. Assume that
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) holds for $p=q$. We must prove that
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) holds for $p=q+1$.
+
+We have assumed that (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) holds for $p=q$.
+In other words, we have $B^{q}e_{i}=e_{i-q}$ for each $i\in\left[  m\right]
+$. Now, let $i\in\left[  m\right]  $ be arbitrary. As we have just seen, we
+have $B^{q}e_{i}=e_{i-q}$. However, from $q\geq0$, we obtain $i-q\leq i\leq m$
+(since $i\in\left[  m\right]  $). Thus,
+(\ref{pf.prop.jnf.jcell0-powers.a.Bei2}) (applied to $i-q$ instead of $i$)
+yields $Be_{i-q}=e_{i-q-1}$. Now,%
+\[
+\underbrace{B^{q+1}}_{=BB^{q}}e_{i}=B\underbrace{B^{q}e_{i}}_{=e_{i-q}%
+}=Be_{i-q}=e_{i-q-1}=e_{i-\left(  q+1\right)  }.
+\]
+
+
+Forget that we fixed $i$. We thus have shown that $B^{q+1}e_{i}=e_{i-\left(
+q+1\right)  }$ for each $i\in\left[  m\right]  $. In other words,
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) holds for $p=q+1$. This completes the
+induction step. Thus, (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) is proved.]
+\medskip
+
+Now, let $p\in\mathbb{N}$ and let $i,j\in\left[  m\right]  $. Then,%
+\begin{align*}
+\left(  B^{p}\right)  _{\bullet,j} &  =B^{p}e_{j}\ \ \ \ \ \ \ \ \ \ \left(
+\text{by (\ref{pf.prop.jnf.jcell0-powers.a.coli}), applied to }B^{p}\text{ and
+}j\text{ instead of }C\text{ and }i\right)  \\
+&  =e_{j-p}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}), applied to }j\text{ instead of
+}i\right)  .
+\end{align*}
+Furthermore,%
+\begin{align*}
+\left(  B^{p}\right)  _{i,j} &  =\left(  \text{the }i\text{-th entry of the
+column vector }\underbrace{\left(  B^{p}\right)  _{\bullet,j}}_{=e_{j-p}%
+}\right)  \\
+&  =\left(  \text{the }i\text{-th entry of the column vector }e_{j-p}\right)
+\\
+&  =%
+\begin{cases}
+1, & \text{if }i=j-p;\\
+0, & \text{otherwise}%
+\end{cases}
+\end{align*}
+(by (\ref{pf.prop.jnf.jcell0-powers.a.ient}), applied to $i$ and $j-p$ instead
+of $k$ and $i$). This proves Proposition \ref{prop.jnf.jcell0-powers}
+\textbf{(a)}. \medskip
+
+\textbf{(b)} Assume that $p\geq m$. Let $i,j\in\left[  m\right]  $ be
+arbitrary. Then, $i\geq1$ and $j\leq m$. Hence, $\underbrace{j}_{\leq m}-p\leq
+m-p\leq0$ (since $p\geq m$), so that $0\geq j-p$. On the other hand,
+$i\geq1>0\geq j-p$. Therefore, $i\neq j-p$. However, Proposition
+\ref{prop.jnf.jcell0-powers} \textbf{(a)} yields
+\[
+\left(  B^{p}\right)  _{i,j}=%
+\begin{cases}
+1, & \text{if }i=j-p;\\
+0, & \text{otherwise}%
+\end{cases}
+\ \ =0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }i\neq j-p\right)  .
+\]
+
+
+Forget that we fixed $i$ and $j$. We thus have shown that $\left(
+B^{p}\right)  _{i,j}=0$ for all $i,j\in\left[  m\right]  $. In other words,
+all entries of the matrix $B^{p}$ equal $0$. Thus, $B^{p}=0$. This proves
+Proposition \ref{prop.jnf.jcell0-powers} \textbf{(b)}. \medskip
+
+\textbf{(c)} Assume that $p\leq m$. We shall use the column vectors $e_{i}%
+\in\mathbb{F}^{m}$ that were defined for all $i\in\mathbb{Z}$ in our above
+proof of Proposition \ref{prop.jnf.jcell0-powers} \textbf{(a)}.
+
+Let $v=\left(
+\begin{array}
+[c]{c}%
+v_{1}\\
+v_{2}\\
+\vdots\\
+v_{m}%
+\end{array}
+\right)  \in\mathbb{F}^{m}$ be a column vector. Thus,
+\[
+v=\left(
+\begin{array}
+[c]{c}%
+v_{1}\\
+v_{2}\\
+\vdots\\
+v_{m}%
+\end{array}
+\right)  =v_{1}e_{1}+v_{2}e_{2}+\cdots+v_{m}e_{m}=\sum_{i=1}^{m}v_{i}e_{i}.
+\]
+Hence,%
+\begin{align*}
+B^{p}v  & =B^{p}\cdot\sum_{i=1}^{m}v_{i}e_{i}=\sum_{i=1}^{m}v_{i}%
+\underbrace{B^{p}e_{i}}_{\substack{=e_{i-p}\\\text{(by
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}))}}}=\sum_{i=1}^{m}v_{i}e_{i-p}\\
+& =\sum_{i=1}^{p}v_{i}\underbrace{e_{i-p}}_{\substack{=0\\\text{(since
+}i-p\notin\left[  m\right]  \\\text{(because }i\leq p\text{ and thus }%
+i-p\leq0\text{))}}}+\sum_{i=p+1}^{m}v_{i}e_{i-p}=\underbrace{\sum_{i=1}%
+^{p}v_{i}0}_{=0}+\sum_{i=p+1}^{m}v_{i}e_{i-p}\\
+& =\sum_{i=p+1}^{m}v_{i}e_{i-p}=\sum_{j=1}^{m-p}v_{j+p}e_{j}%
+\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{here, we have substituted }j+p\text{ for }i\\
+\text{in the sum}%
+\end{array}
+\right)  \\
+& =v_{p+1}e_{1}+v_{p+2}e_{2}+\cdots+v_{m}e_{m-p}=\left(
+\begin{array}
+[c]{c}%
+v_{p+1}\\
+v_{p+2}\\
+\vdots\\
+v_{m}\\
+0\\
+0\\
+\vdots\\
+0
+\end{array}
+\right)  .
+\end{align*}
+Thus, $B^{p}v=0$ holds if and only if $v_{p+1}=v_{p+2}=\cdots=v_{m}=0$. In
+other words, $B^{p}v=0$ holds if and only if $v\in\operatorname*{span}\left(
+e_{1},e_{2},\ldots,e_{p}\right)  $ (because $v_{p+1}=v_{p+2}=\cdots=v_{m}=0$
+is equivalent to $v\in\operatorname*{span}\left(  e_{1},e_{2},\ldots
+,e_{p}\right)  $).
+
+Now, forget that we fixed $v$. We thus have shown that a vector $v\in
+\mathbb{F}^{m}$ satisfies $B^{p}v=0$ if and only if $v\in\operatorname*{span}%
+\left(  e_{1},e_{2},\ldots,e_{p}\right)  $. Thus,
+\[
+\operatorname*{Ker}\left(  B^{p}\right)  =\operatorname*{span}\left(
+e_{1},e_{2},\ldots,e_{p}\right)
+\]
+(since $\operatorname*{Ker}\left(  B^{p}\right)  $ is defined as the set of
+all vectors $v\in\mathbb{F}^{m}$ satisfying $B^{p}v=0$). Therefore,%
+\[
+\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =\dim\left(
+\operatorname*{span}\left(  e_{1},e_{2},\ldots,e_{p}\right)  \right)  =p
+\]
+(since $\operatorname*{span}\left(  e_{1},e_{2},\ldots,e_{p}\right)  $ is
+clearly a $p$-dimensional subspace of $\mathbb{F}^{m}$). This proves
+Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)}. \medskip
+
+\textbf{(d)} Assume that $p\geq m$. Then, Proposition
+\ref{prop.jnf.jcell0-powers} \textbf{(b)} yields $B^{p}=0$. Hence,
+$\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =\dim
+\underbrace{\left(  \operatorname*{Ker}0\right)  }_{=\mathbb{F}^{m}}%
+=\dim\left(  \mathbb{F}^{m}\right)  =0$. Thus, Proposition
+\ref{prop.jnf.jcell0-powers} \textbf{(d)} is proven.
+\end{proof}
+
+\begin{proposition}
+\label{prop.jnf.jcell.multiplicity}Let $m$ be a positive integer, and let
+$\lambda\in\mathbb{C}$. The only eigenvalue of the matrix $J_{m}\left(
+\lambda\right)  $ is $\lambda$. This eigenvalue has algebraic multiplicity $m$
+and geometric multiplicity $1$.
+\end{proposition}
+
+\begin{proof}
+The definition of $J_{m}\left(  \lambda\right)  $ yields%
+\[
+J_{m}\left(  \lambda\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 & 0 & \cdots & 0\\
+0 & \lambda & 1 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  .
+\]
+This matrix is upper-triangular, so its characteristic polynomial is%
+\[
+p_{J_{m}\left(  \lambda\right)  }=\left(  t-\lambda\right)  \left(
+t-\lambda\right)  \cdots\left(  t-\lambda\right)  =\left(  t-\lambda\right)
+^{m}.
+\]
+Thus, the only root of this polynomial is $\lambda$. In other words, the only
+eigenvalue of this matrix $J_{m}\left(  \lambda\right)  $ is $\lambda$. Its
+algebraic multiplicity is $m$ (since this is its multiplicity as a root of
+$p_{J_{m}\left(  \lambda\right)  }$). It remains to show that its geometric
+multiplicity is $1$.
+
+Since the geometric multiplicity of $\lambda$ is defined as $\dim\left(
+\operatorname*{Ker}\left(  J_{m}\left(  \lambda\right)  -\lambda I_{m}\right)
+\right)  $, this means that it remains to show that $\dim\left(
+\operatorname*{Ker}\left(  J_{m}\left(  \lambda\right)  -\lambda I_{m}\right)
+\right)  =1$.
+
+Let $B=J_{m}\left(  0\right)  $. Proposition \ref{prop.jnf.jcell0-powers}
+\textbf{(c)} (applied to $p=1$) yields $\dim\left(  \operatorname*{Ker}\left(
+B^{1}\right)  \right)  =1$ (since $1\leq m$). In other words, $\dim\left(
+\operatorname*{Ker}B\right)  =1$.
+
+Proposition \ref{prop.jnf.jcell-lambda} yields%
+\[
+J_{m}\left(  \lambda\right)  =\underbrace{J_{m}\left(  0\right)  }%
+_{=B}+\lambda I_{m}=B+\lambda I_{m},
+\]
+so that $J_{m}\left(  \lambda\right)  -\lambda I_{m}=B$. Hence,
+\[
+\dim\left(  \operatorname*{Ker}\underbrace{\left(  J_{m}\left(  \lambda
+\right)  -\lambda I_{m}\right)  }_{=B}\right)  =\dim\left(
+\operatorname*{Ker}B\right)  =1.
+\]
+This completes our proof of Proposition \ref{prop.jnf.jcell.multiplicity}.
+\end{proof}
 
 [...]
 

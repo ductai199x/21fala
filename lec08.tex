@@ -1,0 +1,904 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, October 06, 2021 11:50:22}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 8}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{The Jordan canonical form (aka Jordan normal form) (cont'd)}
+
+\textbf{Recall from last lecture:}
+
+\begin{definition}
+A \textbf{Jordan cell} is a $m\times m$-matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 & 0 & \cdots & 0\\
+0 & \lambda & 1 & \cdots & 0\\
+0 & 0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & \lambda
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }m>0\text{ and some }\lambda
+\in\mathbb{C}.
+\]
+So its diagonal entries are $\lambda$; its entries directly above the diagonal
+are $1$; all its other entries are $0$. In formal terms, it is the $m\times
+m$-matrix $A$ whose entries are given by the rule%
+\[
+A_{i,j}=%
+\begin{cases}
+\lambda, & \text{if }i=j;\\
+1, & \text{if }i=j-1;\\
+0, & \text{otherwise.}%
+\end{cases}
+\]
+
+
+Specifically, this matrix is called the \textbf{Jordan cell of size }$m$
+\textbf{at eigenvalue }$\lambda$. It is denoted by $J_{m}\left(
+\lambda\right)  $.
+\end{definition}
+
+\begin{definition}
+A \textbf{Jordan matrix} is a block-diagonal matrix whose diagonal blocks are
+Jordan cells. In other words, it is a matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  ,
+\]
+where $n_{1},n_{2},\ldots,n_{k}$ are positive integers and $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{k}$ are scalars in $\mathbb{C}$ (not
+necessarily distinct, but not necessarily equal either).
+\end{definition}
+
+We claimed:
+
+\begin{theorem}
+[Jordan canonical form theorem]Let $A$ be an $n\times n$-matrix over
+$\mathbb{C}$. Then, there exists a Jordan matrix $J$ such that $A\sim J$.
+Furthermore, this $J$ is unique up to the order of the diagonal blocks.
+\end{theorem}
+
+\begin{definition}
+The matrix $J$ in this theorem is called a \textbf{Jordan canonical form} of
+$A$ (or a \textbf{Jordan normal form} of $A$).
+\end{definition}
+
+\begin{proposition}
+Let $A$ be an $n\times n$-matrix, and let $J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ be its Jordan canonical form. Then:
+
+\textbf{(a)} We have $\sigma\left(  A\right)  =\left\{  \lambda_{1}%
+,\lambda_{2},\ldots,\lambda_{k}\right\}  $.
+
+\textbf{(b)} The geometric multiplicity of an eigenvalue $\lambda$ of $A$ is
+the number of Jordan cells of $A$ at eigenvalue $\lambda$. In other words, it
+is the number of $i\in\left[  k\right]  $ satisfying $\lambda_{i}=\lambda$.
+
+\textbf{(c)} The algebraic multiplicity of an eigenvalue $\lambda$ of $A$ is
+the \textbf{sum} of the sizes of all Jordan cells of $A$ at eigenvalue
+$\lambda$. In other words, it is $\sum\limits_{\substack{i\in\left[  k\right]
+;\\\lambda_{i}=\lambda}}n_{i}$.
+\end{proposition}
+
+Now, let us improve on this result somewhat:
+
+\begin{proposition}
+Let $A$ be an $n\times n$-matrix, and let $J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ be its Jordan canonical form. Let $\lambda\in\mathbb{C}$ and
+$m\geq1$. Then,%
+\begin{align*}
+& \left(  \text{the number of }i\in\left[  k\right]  \text{ such that }%
+\lambda_{i}=\lambda\text{ and }n_{i}\geq m\right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{m}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{m-1}\right)  \right)  .
+\end{align*}
+
+\end{proposition}
+
+This proposition gives us a way to tell how many Jordan blocks of the Jordan
+form of $A$ have eigenvalue $\lambda$ and size $\geq m$. As a consequence,
+this number is uniquely determined by $A$ and $\lambda$. Hence, the whole
+structure of $J$ is determined uniquely by $A$, up to the order of the Jordan
+blocks. This shows the \textquotedblleft uniqueness\textquotedblright\ part of
+the Jordan canonical form theorem, as long as we can prove the proposition.
+
+\begin{example}
+Let $A$ be an $8\times8$-matrix. Assume that we know that $A$ has
+
+\begin{itemize}
+\item $1$ Jordan block of size $\geq1$ for eigenvalue $17$;
+
+\item $0$ Jordan blocks of size $\geq2$ for eigenvalue $17$;
+
+\item $3$ Jordan blocks of size $\geq1$ for eigenvalue $35$;
+
+\item $1$ Jordan block of size $\geq2$ for eigenvalue $35$;
+
+\item $0$ Jordan blocks of size $\geq3$ for eigenvalue $35$;
+
+\item $1$ Jordan block of size $\geq1$ for eigenvalue $59$;
+
+\item $1$ Jordan block of size $\geq2$ for eigenvalue $59$;
+
+\item $1$ Jordan block of size $\geq3$ for eigenvalue $59$;
+
+\item $0$ Jordan blocks of size $\geq4$ for eigenvalue $59$;
+
+\item $0$ Jordan blocks of size $\geq1$ for eigenvalue $\lambda$ whenever
+$\lambda\notin\left\{  17,35,59\right\}  $.
+\end{itemize}
+
+(This is the sort of information you can obtain from $A$ using the preceding proposition.)
+
+How does the Jordan canonical form of $A$ look like? It is the block-diagonal
+matrix%
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+J_{1}\left(  17\right)   &  &  &  & \\
+& J_{2}\left(  35\right)   &  &  & \\
+&  & J_{1}\left(  35\right)   &  & \\
+&  &  & J_{1}\left(  35\right)   & \\
+&  &  &  & J_{3}\left(  59\right)
+\end{array}
+\right)
+\]
+(where all invisible entries are $0$s), or one that is obtained from it by
+permuting the diagonal blocks.
+\end{example}
+
+Let us prove the proposition:
+
+\begin{proof}
+[Proof of Proposition.] We have $A\sim J$, so that $A-\lambda I_{n}\sim
+J-\lambda I_{n}$, so that $\left(  A-\lambda I_{n}\right)  ^{m}\sim\left(
+J-\lambda I_{n}\right)  ^{m}$ and therefore%
+\[
+\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{m}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  \left(
+J-\lambda I_{n}\right)  ^{m}\right)  \right)  .
+\]
+However%
+\begin{align*}
+J-\lambda I_{n}  & =\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  -\lambda I_{n}\\
+& =\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}-\lambda\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}-\lambda\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}-\lambda\right)
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+\left(  J-\lambda I_{n}\right)  ^{m}  & =\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}-\lambda\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}-\lambda\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}-\lambda\right)
+\end{array}
+\right)  ^{m}\\
+& =\left(
+\begin{array}
+[c]{cccc}%
+\left(  J_{n_{1}}\left(  \lambda_{1}-\lambda\right)  \right)  ^{m} & 0 &
+\cdots & 0\\
+0 & \left(  J_{n_{2}}\left(  \lambda_{2}-\lambda\right)  \right)  ^{m} &
+\cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \left(  J_{n_{k}}\left(  \lambda_{k}-\lambda\right)  \right)
+^{m}%
+\end{array}
+\right)  \\
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{because multiplication of block-diagonal matrices}\\
+\text{means that respective blocks get multiplied}%
+\end{array}
+\right)  .
+\end{align*}
+Thus,%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
+^{m}\right)  \right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+\left(  J_{n_{1}}\left(  \lambda_{1}-\lambda\right)  \right)  ^{m} & 0 &
+\cdots & 0\\
+0 & \left(  J_{n_{2}}\left(  \lambda_{2}-\lambda\right)  \right)  ^{m} &
+\cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \left(  J_{n_{k}}\left(  \lambda_{k}-\lambda\right)  \right)
+^{m}%
+\end{array}
+\right)  \right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(  \left(  J_{n_{1}}\left(  \lambda
+_{1}-\lambda\right)  \right)  ^{m}\right)  \right)  +\dim\left(
+\operatorname*{Ker}\left(  \left(  J_{n_{2}}\left(  \lambda_{2}-\lambda
+\right)  \right)  ^{m}\right)  \right)  +\cdots+\dim\left(
+\operatorname*{Ker}\left(  \left(  J_{n_{k}}\left(  \lambda_{k}-\lambda
+\right)  \right)  ^{m}\right)  \right)  \\
+& =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  \left(  J_{n_{i}%
+}\left(  \lambda_{i}-\lambda\right)  \right)  ^{m}\right)  \right)  .
+\end{align*}
+
+
+Now, fix $i\in\left[  k\right]  $. If $\lambda_{i}\neq\lambda$, then
+$J_{n_{i}}\left(  \lambda_{i}-\lambda\right)  $ is a triangular matrix with
+nonzero entries on the diagonal (in fact, the diagonal entries are all
+$\lambda_{i}-\lambda\neq0$), and thus has determinant $\neq0$ and therefore is
+invertible. Hence, in this case, its power $\left(  J_{n_{i}}\left(
+\lambda_{i}-\lambda\right)  \right)  ^{m}$ is also invertible, so it has
+nullity $0$. Thus,%
+\[
+\text{if }\lambda_{i}\neq\lambda\text{, then }\dim\left(  \operatorname*{Ker}%
+\left(  \left(  J_{n_{i}}\left(  \lambda_{i}-\lambda\right)  \right)
+^{m}\right)  \right)  =0\text{.}%
+\]
+
+
+Now consider the case when $\lambda_{i}=\lambda$. Then, $J_{n_{i}}\left(
+\lambda_{i}-\lambda\right)  =J_{n_{i}}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  $. Let me call this matrix $B$. From last time, we know that
+\[
+\dim\left(  \operatorname*{Ker}\left(  B^{m}\right)  \right)  =%
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}.
+\end{cases}
+\]
+Thus,%
+\[
+\dim\left(  \operatorname*{Ker}\left(  \left(  J_{n_{i}}\left(  \lambda
+_{i}-\lambda\right)  \right)  ^{m}\right)  \right)  =%
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}%
+\end{cases}
+\ \ \ \ \ \ \ \ \ \ \text{in this case.}%
+\]
+
+
+Now let us see what this means for our sum:%
+\begin{align*}
+& \sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  \left(  J_{n_{i}%
+}\left(  \lambda_{i}-\lambda\right)  \right)  ^{m}\right)  \right)  \\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}.
+\end{cases}
+\end{align*}
+So%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{m}\right)  \right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
+^{m}\right)  \right)  \\
+& =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  \left(  J_{n_{i}%
+}\left(  \lambda_{i}-\lambda\right)  \right)  ^{m}\right)  \right)  \\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}.
+\end{cases}
+\end{align*}
+The same argument, applied to $m-1$ instead of $m$, yields%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{m-1}\right)  \right)  \\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+m-1; & \text{if }m-1\leq n_{i};\\
+n_{i}, & \text{if }m-1>n_{i}.
+\end{cases}
+\end{align*}
+Subtracting these two equalities, we obtain%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{m}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{m-1}\right)  \right)  \\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}%
+\end{cases}
+-\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+m-1; & \text{if }m-1\leq n_{i};\\
+n_{i}, & \text{if }m-1>n_{i}%
+\end{cases}
+\\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}%
+}\underbrace{\left(
+\begin{cases}
+m, & \text{if }m\leq n_{i};\\
+n_{i}, & \text{if }m>n_{i}%
+\end{cases}
+-%
+\begin{cases}
+m-1; & \text{if }m-1\leq n_{i};\\
+n_{i}, & \text{if }m-1>n_{i}%
+\end{cases}
+\right)  }_{\substack{=%
+\begin{cases}
+1, & \text{if }m\leq n_{i};\\
+0, & \text{if }m>n_{i}%
+\end{cases}
+\\\text{(this can be directly checked in each}\\\text{of the three cases
+}m\leq n_{i}\text{ and }m=n_{i}+1\text{ and }m>n_{i}+1\text{)}}}\\
+& =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+1, & \text{if }m\leq n_{i};\\
+0, & \text{if }m>n_{i}%
+\end{cases}
+\\
+& =\left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }m\leq n_{i}\right)  \\
+& =\left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}\geq m\right)  .
+\end{align*}
+Thus, the proposition follows.
+\end{proof}
+
+So we are done proving the uniqueness part of the JCF theorem.
+(\textquotedblleft JCF\textquotedblright\ is short for \textquotedblleft
+Jordan Canonical Form\textquotedblright.)
+
+Let us now approach the existence part.
+
+\subsection{Proof of the existence part of the JCF}
+
+\subsubsection{Step 1: Schur triangularization}
+
+We have an $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$, and we want to
+make it into a Jordan matrix by conjugation.
+
+First, we make it upper-triangular by conjugation. We know that this is
+possible by the Schur triangularization theorem, but we are a bit pickier now.
+To wit, we want the triangular matrix $T$ to have the property that equal
+eigenvalues form contiguous blocks on the main diagonal. For instance, we
+don't want%
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+1 & \ast & \ast & \ast\\
+& 2 & \ast & \ast\\
+&  & 1 & \ast\\
+&  &  & 2
+\end{array}
+\right)  .
+\]
+Instead, we want%
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+1 & \ast & \ast & \ast\\
+& 1 & \ast & \ast\\
+&  & 2 & \ast\\
+&  &  & 2
+\end{array}
+\right)  .
+\]
+To this purpose, we need a stronger version of Schur triangularization:
+
+\begin{theorem}
+[Schur triangularization with perscribed diagonal]Let $A\in\mathbb{C}^{n\times
+n}$ be an $n\times n$-matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$
+be its eigenvalues (listed with their algebraic multiplicities). Then, there
+exists an upper-triangular matrix $T$ such that $A\overset{\operatorname*{us}%
+}{\sim}T$ (this means \textquotedblleft$A$ is unitarily similar to
+$T$\textquotedblright) and such that the diagonal entries of $T$ are
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ in this order.
+\end{theorem}
+
+\begin{proof}
+We proceed as in the proof of the original Schur triangularization theorem,
+but we pay some attention to the eigenvectors that we pick. That proof
+constructed $T$ recursively, starting by picking an eigenvalue $\lambda$ of
+$A$ and a corresponding $\lambda$-eigenvector $x\neq0$, and then finding a
+unitary matrix $U$ such that%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda & p\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }p\in\mathbb{C}^{1\times\left(
+n-1\right)  }\text{ and }B\in\mathbb{C}^{\left(  n-1\right)  \times\left(
+n-1\right)  }.
+\]
+Then, the algorithm was applied recursively to $B$.
+
+Now, we perform this algorithm, but we make sure to pick $\lambda=\lambda_{1}%
+$. Thus,%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  ,
+\]
+which is a good start. Now we want to apply the IH (= induction hypothesis) to
+$B$. To that purpose, we need to know that the eigenvalues of $B$ are
+$\lambda_{2},\lambda_{3},\ldots,\lambda_{n}$ (with algebraic multiplicities).
+In other words, we need to know that%
+\[
+p_{B}\left(  t\right)  =\left(  t-\lambda_{2}\right)  \left(  t-\lambda
+_{3}\right)  \cdots\left(  t-\lambda_{n}\right)  .
+\]
+
+
+Now, I need a lemma about determinants:
+
+\begin{lemma}
+Let $\mathbb{F}$ be a field. Let $X\in\mathbb{F}^{n\times n}$, $Y\in
+\mathbb{F}^{n\times m}$ and $Z\in\mathbb{F}^{m\times m}$ be three matrices.
+Then,%
+\[
+\det\left(
+\begin{array}
+[c]{cc}%
+X & Y\\
+0 & Z
+\end{array}
+\right)  =\det X\cdot\det Z.
+\]
+
+\end{lemma}
+
+For example,%
+\[
+\det\left(
+\begin{array}
+[c]{cccc}%
+a & b & c & d\\
+a^{\prime} & b^{\prime} & c^{\prime} & d^{\prime}\\
+0 & 0 & c^{\prime\prime} & d^{\prime\prime}\\
+0 & 0 & c^{\prime\prime\prime} & d^{\prime\prime\prime}%
+\end{array}
+\right)  =\det\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+a^{\prime} & b^{\prime}%
+\end{array}
+\right)  \cdot\det\left(
+\begin{array}
+[c]{cc}%
+c^{\prime\prime} & d^{\prime\prime}\\
+c^{\prime\prime\prime} & d^{\prime\prime\prime}%
+\end{array}
+\right)  .
+\]
+
+
+Now, since $U$ is unitary, we have $A\overset{\operatorname*{us}}{\sim}%
+U^{\ast}AU$ and thus $A\sim U^{\ast}AU$. Thus,%
+\begin{align*}
+p_{A}  & =p_{U^{\ast}AU}=\det\left(  tI_{n}-U^{\ast}AU\right)  =\det\left(
+tI_{n}-\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  \right)  \\
+& \ \ \ \ \ \ \ \ \ \ \left(  \text{since }U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  \right)  \\
+& =\det\left(
+\begin{array}
+[c]{cc}%
+t-\lambda_{1} & -p\\
+0 & tI_{n-1}-B
+\end{array}
+\right)  \\
+& =\underbrace{\det\left(
+\begin{array}
+[c]{c}%
+t-\lambda_{1}%
+\end{array}
+\right)  }_{t-\lambda_{1}}\cdot\underbrace{\det\left(  tI_{n-1}-B\right)
+}_{=p_{B}}\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{by the lemma, or by Laplace}\\
+\text{expansion along the }1\text{st column}%
+\end{array}
+\right)  \\
+& =\left(  t-\lambda_{1}\right)  \cdot p_{B},
+\end{align*}
+so that%
+\[
+\left(  t-\lambda_{1}\right)  \cdot p_{B}=p_{A}=\left(  t-\lambda_{1}\right)
+\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{n}\right)  .
+\]
+Now, we can cancel $t-\lambda_{1}$ (since this is a nonzero polynomial), and
+this becomes%
+\[
+p_{B}=\left(  t-\lambda_{2}\right)  \left(  t-\lambda_{3}\right)
+\cdots\left(  t-\lambda_{n}\right)  ,
+\]
+exactly as we wanted to show.
+\end{proof}
+
+\subsection{Step 2: Separating distinct eigenvalues}
+
+Recall the corollary from last time:
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$, $B\in\mathbb{C}^{m\times m}$ and
+$C\in\mathbb{C}^{n\times m}$ be three matrices such that $\sigma\left(
+A\right)  \cap\sigma\left(  B\right)  =\varnothing$. Then, the two $\left(
+n+m\right)  \times\left(  n+m\right)  $-matrices%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+A & C\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{cc}%
+A & 0\\
+0 & B
+\end{array}
+\right)
+\]
+(written in block-matrix notation) are similar.
+\end{corollary}
+
+Let us use this corollary to show that for any numbers $a,b,c,\ldots
+,p\in\mathbb{C}$, we have%
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a & b & c & d & e\\
+& 1 & f & g & h & i\\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \\
+&  &  & 2 & m & \\
+&  &  &  & 2 & \\
+&  &  &  &  & 3
+\end{array}
+\right)
+\]
+(where invisible cells contain $0$s). Indeed, the triangular matrices $\left(
+%
+\begin{array}
+[c]{cc}%
+1 & a\\
+& 1
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{cccc}%
+2 & j & k & \ell\\
+& 2 & m & n\\
+&  & 2 & p\\
+&  &  & 3
+\end{array}
+\right)  $ have disjoint spectra (i.e., they have no eigenvalues in common),
+because their diagonals have no entries in common. So, by the corollary,
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a & b & c & d & e\\
+& 1 & f & g & h & i\\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  .
+\]
+Now, the triangular matrices $\left(
+\begin{array}
+[c]{ccccc}%
+1 & a &  &  & \\
+& 1 &  &  & \\
+&  & 2 & j & k\\
+&  &  & 2 & m\\
+&  &  &  & 2
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{c}%
+3
+\end{array}
+\right)  $ have disjoint spectra, so the corollary yields%
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \\
+&  &  & 2 & m & \\
+&  &  &  & 2 & \\
+&  &  &  &  & 3
+\end{array}
+\right)  .
+\]
+Since $\sim$ is an equivalence relation, we can combine the two similarities,
+and my claim follows.
+
+So when we have a triangular matrix where the diagonal has no interleaving
+values (i.e., there is never a $\mu$ between two $\lambda$'s on the diagonal
+when $\mu\neq\lambda$), we can \textquotedblleft clean out\textquotedblright%
+\ all the above-diagonal entries that correspond to different diagonal entries
+(i.e., that lie above a different diagonal entry than they stand to the right
+of) by conjugating with an appropriate matrix.
+
+Now, combining this with the Schur triangularization theorem (in its
+above-stated stronger version), we obtain the following:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Then, $A$ is
+similar to a block-diagonal matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  ,
+\]
+where each $B_{i}$ is an upper-triangular matrix with all entries on its
+diagonal being equal.
+\end{proposition}
+
+This is not yet a Jordan canonical form, but it is already somewhat close. At
+least, we have separated out all the distinct eigenvalues of $A$. We now only
+need to care about the matrices $B_{1},B_{2},\ldots,B_{k}$, each of which has
+only one distinct eigenvalue. Our next goal is to break up these matrices
+$B_{1},B_{2},\ldots,B_{k}$ into Jordan cells (using conjugation).
+\end{document}
