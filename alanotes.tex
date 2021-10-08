@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 08, 2021 08:48:22}
+%TCIDATA{LastRevised=Friday, October 08, 2021 15:01:43}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -1382,7 +1382,8 @@ said to be \emph{unitary} if and only if both $U$ and $U^{\ast}$ are isometries.
 
 
 \begin{example}
-\textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}}\left(
+\label{exa.unitary.unitary.exas}\textbf{(a)} The matrix $A=\dfrac{1}{\sqrt{2}%
+}\left(
 \begin{array}
 [c]{cc}%
 1 & 1\\
@@ -4428,6 +4429,106 @@ eigenvalues etc. are properties of the endomorphism rather than properties of
 the matrix.
 \end{remark}
 
+Two diagonal matrices are similar whenever they have the same diagonal entries
+up to order. In other words:
+
+\begin{proposition}
+\label{prop.schurtri.similar.diag}Let $\mathbb{F}$ be a field. Let
+$n\in\mathbb{N}$. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in
+\mathbb{F}$. Let $\sigma$ be a permutation of $\left[  n\right]  $ (that is, a
+bijective map from $\left[  n\right]  $ to $\left[  n\right]  $). Then,%
+\[
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+\sim\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  }%
+,\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)
+}\right)  .
+\]
+
+\end{proposition}
+
+\begin{example}
+For $n=3$, Proposition \ref{prop.schurtri.similar.diag} claims that
+$\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\lambda_{3}\right)
+\sim\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  }%
+,\lambda_{\sigma\left(  2\right)  },\lambda_{\sigma\left(  3\right)  }\right)
+$. For example, if $\sigma$ is the permutation of $\left[  3\right]  $ that
+sends $1,2,3$ to $2,3,1$, respectively, then this is saying that
+$\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\lambda_{3}\right)
+\sim\operatorname*{diag}\left(  \lambda_{2},\lambda_{3},\lambda_{1}\right)  $.
+In other words,%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+\lambda_{1} & 0 & 0\\
+0 & \lambda_{2} & 0\\
+0 & 0 & \lambda_{3}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{ccc}%
+\lambda_{3} & 0 & 0\\
+0 & \lambda_{1} & 0\\
+0 & 0 & \lambda_{2}%
+\end{array}
+\right)  .
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of Proposition \ref{prop.schurtri.similar.diag}.] Let $P_{\sigma}%
+\in\mathbb{F}^{n\times n}$ be the permutation matrix of $\sigma$ (defined in
+Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). We recall that the
+$\left(  i,j\right)  $-th entry of this matrix $P_{\sigma}$ is $%
+\begin{cases}
+\lambda_{i}, & \text{if }i=\sigma\left(  j\right)  ;\\
+0, & \text{if }i\neq\sigma\left(  j\right)
+\end{cases}
+$ for any $i,j\in\left[  n\right]  $.
+
+Now, it is easy to see that%
+\begin{equation}
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+\cdot P_{\sigma}=P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda
+_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots
+,\lambda_{\sigma\left(  n\right)  }\right)
+.\label{pf.prop.schurtri.similar.diag.1}%
+\end{equation}
+(Indeed, it is straightforward to see that for any $i,j\in\left[  n\right]  $,
+both matrices $\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \cdot P_{\sigma}$ and $P_{\sigma}\cdot
+\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  },\lambda
+_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)  }\right)
+$ have the same $\left(  i,j\right)  $-th entry, namely $%
+\begin{cases}
+\lambda_{i}, & \text{if }i=\sigma\left(  j\right)  ;\\
+0, & \text{if }i\neq\sigma\left(  j\right)  .
+\end{cases}
+$)
+
+Since the permutation matrix $P_{\sigma}$ is invertible, we can multiply both
+sides of (\ref{pf.prop.schurtri.similar.diag.1}) by $P_{\sigma}^{-1}$ from the
+right, and thus we obtain
+\[
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+=P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)
+},\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)
+}\right)  \cdot P_{\sigma}^{-1}.
+\]
+This shows that $\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \sim\operatorname*{diag}\left(  \lambda
+_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots
+,\lambda_{\sigma\left(  n\right)  }\right)  $. Thus, Proposition
+\ref{prop.schurtri.similar.diag} is proven.
+\end{proof}
+
+Proposition \ref{prop.schurtri.similar.diag} actually has a converse: If two
+diagonal matrices are similar, then they have the same diagonal entries up to
+order. This follows easily from Proposition \ref{prop.schurtri.similar.same}
+\textbf{(e)}, because the diagonal entries of a diagonal matrix are its
+eigenvalues (with their algebraic multiplicities).
+
 \subsection{Unitary similarity}
 
 Unitary similarity is a more restrictive form of similarity, even though it is
@@ -6102,7 +6203,8 @@ A & AX\\
 \end{align*}
 Comparing these two equalities yields (\ref{pf.cor.schurtri.block-sim.5}).
 Thus, we obtain (\ref{pf.cor.schurtri.block-sim.4}) (by multiplying both sides
-with $S^{-1}$ from the right). But this shows that the two matrices $\left(
+of (\ref{pf.cor.schurtri.block-sim.5}) with $S^{-1}$ from the right). But this
+shows that the two matrices $\left(
 \begin{array}
 [c]{cc}%
 A & C\\
@@ -6765,8 +6867,8 @@ diagonal blocks are Jordan cells. In other words, it is a matrix of the form%
 \left(
 \begin{array}
 [c]{cccc}%
-J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
-0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
 \end{array}
@@ -6836,7 +6938,7 @@ A Jordan canonical form of $\left(
 \right)  $ is a Jordan matrix (it can be written as $\left(
 \begin{array}
 [c]{cc}%
-J_{1}\left(  2\right)   & 0\\
+J_{1}\left(  2\right)  & 0\\
 0 & J_{2}\left(  1\right)
 \end{array}
 \right)  $) and it can be checked that%
