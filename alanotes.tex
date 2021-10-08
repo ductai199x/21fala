@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Thursday, October 07, 2021 00:50:55}
+%TCIDATA{LastRevised=Thursday, October 07, 2021 21:46:20}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -1706,6 +1706,8 @@ ones, using the notion of block matrices, which we shall now introduce.
 
 \subsection{Block matrices}
 
+\subsubsection{Definition}
+
 \begin{definition}
 \label{def.blockmats.2x2}Let $\mathbb{F}$ be a field. Let $n,m,p,q\in
 \mathbb{N}$. Let $A\in\mathbb{F}^{n\times p}$, $B\in\mathbb{F}^{n\times q}$,
@@ -1861,7 +1863,9 @@ I_{2} & 0_{2\times2} & 0_{2\times2}\\
 In Definition \ref{def.blockmatrix.uxv}, the big matrix
 (\ref{eq.def.blockmatrix.uxv.blockmat}) is called the \emph{block matrix}
 formed out of the matrices $A\left(  i,j\right)  $; the single matrices
-$A\left(  i,j\right)  $ are called its \emph{blocks}. \medskip
+$A\left(  i,j\right)  $ are called its \emph{blocks}.
+
+\subsubsection{Multiplying block matrices}
 
 One of the most useful properties of block matrices is that they can be
 multiplied \textquotedblleft as if the blocks were numbers\textquotedblright%
@@ -2026,6 +2030,9 @@ Just like Proposition \ref{prop.blockmatrix.mult-2x2}, but with more indices.
 In short, fun!
 \end{proof}
 
+\subsubsection{Block-diagonal matrices}
+
+\begin{definition}
 \emph{Block-diagonal matrices} are block matrices of the form
 (\ref{eq.def.blockmatrix.uxv.blockmat}), where
 
@@ -2043,8 +2050,8 @@ In other words, block-diagonal matrices are block matrices of the form%
 \left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)  & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)  & \cdots & 0\\
+A\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)   & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)
 \end{array}
@@ -2052,10 +2059,12 @@ A\left(  1,1\right)  & 0 & \cdots & 0\\
 \]
 where $A\left(  1,1\right)  ,A\left(  2,2\right)  ,\ldots,A\left(  u,u\right)
 $ are arbitrary square matrices, and where each \textquotedblleft%
-$0$\textquotedblright\ means a zero matrix of appropriate dimensions. As an
-easy consequence of Proposition \ref{prop.blockmatrix.mult-uxv}, we obtain a
-multiplication rule for block-diagonal matrices that looks exactly like
-multiplication of usual diagonal matrices:
+$0$\textquotedblright\ means a zero matrix of appropriate dimensions.
+\end{definition}
+
+As an easy consequence of Proposition \ref{prop.blockmatrix.mult-uxv}, we
+obtain a multiplication rule for block-diagonal matrices that looks exactly
+like multiplication of usual diagonal matrices:
 
 \begin{corollary}
 \label{cor.blockmatrix.mult-diag}Let $u\in\mathbb{N}$. Let $n_{1},n_{2}%
@@ -2066,25 +2075,25 @@ Then,%
 &  \left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)  & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)  & \cdots & 0\\
+A\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)   & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cccc}%
-B\left(  1,1\right)  & 0 & \cdots & 0\\
-0 & B\left(  2,2\right)  & \cdots & 0\\
+B\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & B\left(  2,2\right)   & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & B\left(  u,u\right)
 \end{array}
-\right) \\
+\right)  \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)  B\left(  1,1\right)  & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)  B\left(  2,2\right)  & \cdots & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  B\left(  2,2\right)   & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)  B\left(  u,u\right)
 \end{array}
@@ -2122,19 +2131,19 @@ d^{\prime} & e^{\prime}%
 \left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  & 0\\
+A\left(  1,1\right)   & 0\\
 0 & A\left(  2,2\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cc}%
-B\left(  1,1\right)  & 0\\
+B\left(  1,1\right)   & 0\\
 0 & B\left(  2,2\right)
 \end{array}
 \right)  =\left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  B\left(  1,1\right)  & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)   & 0\\
 0 & A\left(  2,2\right)  B\left(  2,2\right)
 \end{array}
 \right)  ,
@@ -2166,6 +2175,262 @@ aa^{\prime} & 0 & 0\\
 \]
 
 \end{example}
+
+Corollary \ref{cor.blockmatrix.mult-diag} can be stated (somewhat imprecisely)
+as follows: To multiply two block-diagonal matrices, we just multiply
+respective blocks with each other. The same applies to addition instead of
+multiplication. Thus, one can think of the diagonal blocks in a block-diagonal
+matrix as separate matrices, which are stuck together in a block-diagonal
+shape but don't interfere with each other.
+
+Taking powers of block-diagonal matrices follows the same paradigm:
+
+\begin{corollary}
+\label{cor.blockmatrix.powt-diag}Let $u\in\mathbb{N}$. Let $n_{1},n_{2}%
+,\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let $A\left(
+i,i\right)  $ be an $n_{i}\times n_{i}$-matrix. Then,%
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccc}%
+A\left(  1,1\right)   & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A\left(  u,u\right)
+\end{array}
+\right)  ^{k}\\
+& =\left(
+\begin{array}
+[c]{cccc}%
+\left(  A\left(  1,1\right)  \right)  ^{k} & 0 & \cdots & 0\\
+0 & \left(  A\left(  2,2\right)  \right)  ^{k} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \left(  A\left(  u,u\right)  \right)  ^{k}%
+\end{array}
+\right)
+\end{align*}
+for any $k\in\mathbb{N}$. (Here, each \textquotedblleft$0$\textquotedblright%
+\ means a zero matrix of appropriate dimensions.)
+\end{corollary}
+
+\begin{proof}
+Straightforward induction on $k$. The base case ($k=0$) says that%
+\[
+I_{n_{1}+n_{2}+\cdots+n_{u}}=\left(
+\begin{array}
+[c]{cccc}%
+I_{n_{1}} & 0 & \cdots & 0\\
+0 & I_{n_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & I_{n_{u}}%
+\end{array}
+\right)  ,
+\]
+which should be fairly clear. The induction step is an easy application of
+Corollary \ref{cor.blockmatrix.mult-diag}.
+\end{proof}
+
+Finally, the \textquotedblleft diagonal blocks stuck
+together\textquotedblright\ philosophy for block-diagonal matrices holds for
+nullities as well. To wit, the nullity of a block-diagonal matrix is the sum
+of the nullities of its diagonal blocks. In other words:
+
+\begin{proposition}
+\label{prop.blockmatrix.nullity-diag}Let $u\in\mathbb{N}$. Let $n_{1}%
+,n_{2},\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let
+$A_{i}$ be an $n_{i}\times n_{i}$-matrix. Then,%
+\begin{align}
+& \dim\left(  \operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  \right)  \nonumber\\
+& =\dim\left(  \operatorname*{Ker}\left(  A_{1}\right)  \right)  +\dim\left(
+\operatorname*{Ker}\left(  A_{2}\right)  \right)  +\cdots+\dim\left(
+\operatorname*{Ker}\left(  A_{u}\right)  \right)
+.\label{eq.prop.blockmatrix.nullity-diag.clm}%
+\end{align}
+
+\end{proposition}
+
+\begin{proof}
+Let $\mathbb{F}$ be the field that our matrices are defined over. If
+$v_{\left\langle 1\right\rangle },v_{\left\langle 2\right\rangle }%
+,\ldots,v_{\left\langle u\right\rangle }$ are $u$ column vectors (of whatever
+sizes), then $\left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  $ shall mean the big column vector obtained by stacking these $u$
+column vectors $v_{\left\langle 1\right\rangle },v_{\left\langle
+2\right\rangle },\ldots,v_{\left\langle u\right\rangle }$ atop one another.
+(This is the particular case of the block matrix notation from Definition
+\ref{def.blockmatrix.uxv} for $v=1$ and $p_{1}=1$.) It is easy to see (e.g.,
+using Proposition \ref{prop.blockmatrix.mult-uxv}) that if $v_{\left\langle
+1\right\rangle },v_{\left\langle 2\right\rangle },\ldots,v_{\left\langle
+u\right\rangle }$ are $u$ column vectors with $v_{\left\langle i\right\rangle
+}\in\mathbb{F}^{n_{i}}$ for each $i\in\left[  u\right]  $, then
+\begin{equation}
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+A_{1}v_{\left\langle 1\right\rangle }\\
+A_{2}v_{\left\langle 2\right\rangle }\\
+\vdots\\
+A_{u}v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  .\label{pf.prop.blockmatrix.nullity-diag.1}%
+\end{equation}
+
+
+Let $N:=n_{1}+n_{2}+\cdots+n_{u}$. Any vector $v\in\mathbb{F}^{N}$ can be
+uniquely written in block-matrix notation as $\left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  $, where each $v_{\left\langle i\right\rangle }$ is a vector in
+$\mathbb{F}^{n_{i}}$. (To wit, we just subdivide $v$ into blocks of sizes
+$n_{1},n_{2},\ldots,n_{u}$ from top to bottom; the topmost block will be
+$v_{\left\langle 1\right\rangle }$, the second-topmost will be
+$v_{\left\langle 2\right\rangle }$, and so on. Formally speaking, for each
+$i\in\left[  u\right]  $, we set $N_{i}:=n_{1}+n_{2}+\cdots+n_{i-1}$, and we
+let $v_{\left\langle i\right\rangle }$ be the column vector in $\mathbb{F}%
+^{n_{i}}$ whose entries are the $\left(  N_{i}+1\right)  $-st, $\left(
+N_{i}+2\right)  $-nd, $\ldots$, $\left(  N_{i}+n_{i}\right)  $-th entries of
+$v$.)
+
+Now, consider a vector $v\in\mathbb{F}^{N}$ that is written in block-matrix
+notation $\left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  $, where each $v\left[  i\right]  $ is a vector in $\mathbb{F}%
+^{n_{i}}$. Then,
+\begin{align*}
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  v  & =\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{c}%
+A_{1}v_{\left\langle 1\right\rangle }\\
+A_{2}v_{\left\langle 2\right\rangle }\\
+\vdots\\
+A_{u}v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.prop.blockmatrix.nullity-diag.1})}\right)  .
+\end{align*}
+Hence, $\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  v=0$ holds if and only if $A_{i}v_{\left\langle i\right\rangle }=0$
+holds for each $i\in\left[  u\right]  $. In other words, $v\in
+\operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  $ holds if and only if $v_{\left\langle i\right\rangle }%
+\in\operatorname*{Ker}\left(  A_{i}\right)  $ holds for each $i\in\left[
+u\right]  $. In other words, the vectors in $\operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  $ are precisely the vectors of the form $\left(
+\begin{array}
+[c]{c}%
+v_{\left\langle 1\right\rangle }\\
+v_{\left\langle 2\right\rangle }\\
+\vdots\\
+v_{\left\langle u\right\rangle }%
+\end{array}
+\right)  $, where $v_{\left\langle i\right\rangle }\in\operatorname*{Ker}%
+\left(  A_{i}\right)  $ for each $i\in\left[  u\right]  $. Thus,%
+\[
+\operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{u}%
+\end{array}
+\right)  \cong\operatorname*{Ker}\left(  A_{1}\right)  \oplus
+\operatorname*{Ker}\left(  A_{2}\right)  \oplus\cdots\oplus\operatorname*{Ker}%
+\left(  A_{u}\right)
+\]
+as vector spaces. By taking dimensions on both sides, this yields
+(\ref{eq.prop.blockmatrix.nullity-diag.clm}).
+\end{proof}
+
+\subsubsection{Unitarity}
 
 Now, we claim that a block-diagonal matrix is unitary if and only if its
 diagonal blocks are unitary:
@@ -6201,16 +6466,16 @@ B_{\bullet,i}=Be_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
 \]
 Comparing these two equalities, we obtain%
 \begin{equation}
-Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]
-.\label{pf.prop.jnf.jcell0-powers.a.Bei}%
+Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  m\right]  .
+\label{pf.prop.jnf.jcell0-powers.a.Bei}%
 \end{equation}
 However, this equality also holds for all $i\leq0$ (because if $i\leq0$, then
 both $e_{i}$ and $e_{i-1}$ equal the zero vector $0$ (since $i\notin\left[
 m\right]  $ and $i-1\notin\left[  m\right]  $), and therefore this equality
 boils down to $B\cdot0=0$). Thus,
 \begin{equation}
-Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each integer }i\leq
-m.\label{pf.prop.jnf.jcell0-powers.a.Bei2}%
+Be_{i}=e_{i-1}\ \ \ \ \ \ \ \ \ \ \text{for each integer }i\leq m.
+\label{pf.prop.jnf.jcell0-powers.a.Bei2}%
 \end{equation}
 
 
@@ -6252,18 +6517,18 @@ induction step. Thus, (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}) is proved.]
 
 Now, let $p\in\mathbb{N}$ and let $i,j\in\left[  m\right]  $. Then,%
 \begin{align*}
-\left(  B^{p}\right)  _{\bullet,j} &  =B^{p}e_{j}\ \ \ \ \ \ \ \ \ \ \left(
+\left(  B^{p}\right)  _{\bullet,j}  &  =B^{p}e_{j}\ \ \ \ \ \ \ \ \ \ \left(
 \text{by (\ref{pf.prop.jnf.jcell0-powers.a.coli}), applied to }B^{p}\text{ and
-}j\text{ instead of }C\text{ and }i\right)  \\
+}j\text{ instead of }C\text{ and }i\right) \\
 &  =e_{j-p}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
 (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}), applied to }j\text{ instead of
 }i\right)  .
 \end{align*}
 Furthermore,%
 \begin{align*}
-\left(  B^{p}\right)  _{i,j} &  =\left(  \text{the }i\text{-th entry of the
+\left(  B^{p}\right)  _{i,j}  &  =\left(  \text{the }i\text{-th entry of the
 column vector }\underbrace{\left(  B^{p}\right)  _{\bullet,j}}_{=e_{j-p}%
-}\right)  \\
+}\right) \\
 &  =\left(  \text{the }i\text{-th entry of the column vector }e_{j-p}\right)
 \\
 &  =%
@@ -6322,22 +6587,22 @@ v_{m}%
 \]
 Hence,%
 \begin{align*}
-B^{p}v  & =B^{p}\cdot\sum_{i=1}^{m}v_{i}e_{i}=\sum_{i=1}^{m}v_{i}%
+B^{p}v  &  =B^{p}\cdot\sum_{i=1}^{m}v_{i}e_{i}=\sum_{i=1}^{m}v_{i}%
 \underbrace{B^{p}e_{i}}_{\substack{=e_{i-p}\\\text{(by
 (\ref{pf.prop.jnf.jcell0-powers.a.Bpei}))}}}=\sum_{i=1}^{m}v_{i}e_{i-p}\\
-& =\sum_{i=1}^{p}v_{i}\underbrace{e_{i-p}}_{\substack{=0\\\text{(since
+&  =\sum_{i=1}^{p}v_{i}\underbrace{e_{i-p}}_{\substack{=0\\\text{(since
 }i-p\notin\left[  m\right]  \\\text{(because }i\leq p\text{ and thus }%
 i-p\leq0\text{))}}}+\sum_{i=p+1}^{m}v_{i}e_{i-p}=\underbrace{\sum_{i=1}%
 ^{p}v_{i}0}_{=0}+\sum_{i=p+1}^{m}v_{i}e_{i-p}\\
-& =\sum_{i=p+1}^{m}v_{i}e_{i-p}=\sum_{j=1}^{m-p}v_{j+p}e_{j}%
+&  =\sum_{i=p+1}^{m}v_{i}e_{i-p}=\sum_{j=1}^{m-p}v_{j+p}e_{j}%
 \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{here, we have substituted }j+p\text{ for }i\\
 \text{in the sum}%
 \end{array}
-\right)  \\
-& =v_{p+1}e_{1}+v_{p+2}e_{2}+\cdots+v_{m}e_{m-p}=\left(
+\right) \\
+&  =v_{p+1}e_{1}+v_{p+2}e_{2}+\cdots+v_{m}e_{m-p}=\left(
 \begin{array}
 [c]{c}%
 v_{p+1}\\
@@ -6439,6 +6704,8 @@ so that $J_{m}\left(  \lambda\right)  -\lambda I_{m}=B$. Hence,
 \]
 This completes our proof of Proposition \ref{prop.jnf.jcell.multiplicity}.
 \end{proof}
+
+\subsection{Jordan canonical form: the statement}
 
 [...]
 
