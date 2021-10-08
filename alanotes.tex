@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Thursday, October 07, 2021 21:46:20}
+%TCIDATA{LastRevised=Friday, October 08, 2021 08:48:22}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -2050,8 +2050,8 @@ In other words, block-diagonal matrices are block matrices of the form%
 \left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)   & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)   & \cdots & 0\\
+A\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)
 \end{array}
@@ -2075,25 +2075,25 @@ Then,%
 &  \left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)   & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)   & \cdots & 0\\
+A\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cccc}%
-B\left(  1,1\right)   & 0 & \cdots & 0\\
-0 & B\left(  2,2\right)   & \cdots & 0\\
+B\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & B\left(  2,2\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & B\left(  u,u\right)
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)  B\left(  1,1\right)   & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)  B\left(  2,2\right)   & \cdots & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  B\left(  2,2\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)  B\left(  u,u\right)
 \end{array}
@@ -2131,19 +2131,19 @@ d^{\prime} & e^{\prime}%
 \left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)   & 0\\
+A\left(  1,1\right)  & 0\\
 0 & A\left(  2,2\right)
 \end{array}
 \right)  \left(
 \begin{array}
 [c]{cc}%
-B\left(  1,1\right)   & 0\\
+B\left(  1,1\right)  & 0\\
 0 & B\left(  2,2\right)
 \end{array}
 \right)  =\left(
 \begin{array}
 [c]{cc}%
-A\left(  1,1\right)  B\left(  1,1\right)   & 0\\
+A\left(  1,1\right)  B\left(  1,1\right)  & 0\\
 0 & A\left(  2,2\right)  B\left(  2,2\right)
 \end{array}
 \right)  ,
@@ -2190,16 +2190,16 @@ Taking powers of block-diagonal matrices follows the same paradigm:
 ,\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let $A\left(
 i,i\right)  $ be an $n_{i}\times n_{i}$-matrix. Then,%
 \begin{align*}
-& \left(
+&  \left(
 \begin{array}
 [c]{cccc}%
-A\left(  1,1\right)   & 0 & \cdots & 0\\
-0 & A\left(  2,2\right)   & \cdots & 0\\
+A\left(  1,1\right)  & 0 & \cdots & 0\\
+0 & A\left(  2,2\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A\left(  u,u\right)
 \end{array}
 \right)  ^{k}\\
-& =\left(
+&  =\left(
 \begin{array}
 [c]{cccc}%
 \left(  A\left(  1,1\right)  \right)  ^{k} & 0 & \cdots & 0\\
@@ -2240,7 +2240,7 @@ of the nullities of its diagonal blocks. In other words:
 ,n_{2},\ldots,n_{u}\in\mathbb{N}$. For each $i\in\left[  u\right]  $, let
 $A_{i}$ be an $n_{i}\times n_{i}$-matrix. Then,%
 \begin{align}
-& \dim\left(  \operatorname*{Ker}\left(
+&  \dim\left(  \operatorname*{Ker}\left(
 \begin{array}
 [c]{cccc}%
 A_{1} & 0 & \cdots & 0\\
@@ -2248,11 +2248,11 @@ A_{1} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A_{u}%
 \end{array}
-\right)  \right)  \nonumber\\
-& =\dim\left(  \operatorname*{Ker}\left(  A_{1}\right)  \right)  +\dim\left(
+\right)  \right) \nonumber\\
+&  =\dim\left(  \operatorname*{Ker}\left(  A_{1}\right)  \right)  +\dim\left(
 \operatorname*{Ker}\left(  A_{2}\right)  \right)  +\cdots+\dim\left(
-\operatorname*{Ker}\left(  A_{u}\right)  \right)
-.\label{eq.prop.blockmatrix.nullity-diag.clm}%
+\operatorname*{Ker}\left(  A_{u}\right)  \right)  .
+\label{eq.prop.blockmatrix.nullity-diag.clm}%
 \end{align}
 
 \end{proposition}
@@ -2303,7 +2303,7 @@ A_{2}v_{\left\langle 2\right\rangle }\\
 \vdots\\
 A_{u}v_{\left\langle u\right\rangle }%
 \end{array}
-\right)  .\label{pf.prop.blockmatrix.nullity-diag.1}%
+\right)  . \label{pf.prop.blockmatrix.nullity-diag.1}%
 \end{equation}
 
 
@@ -2347,7 +2347,7 @@ A_{1} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & A_{u}%
 \end{array}
-\right)  v  & =\left(
+\right)  v  &  =\left(
 \begin{array}
 [c]{cccc}%
 A_{1} & 0 & \cdots & 0\\
@@ -2363,8 +2363,8 @@ v_{\left\langle 2\right\rangle }\\
 \vdots\\
 v_{\left\langle u\right\rangle }%
 \end{array}
-\right)  \\
-& =\left(
+\right) \\
+&  =\left(
 \begin{array}
 [c]{c}%
 A_{1}v_{\left\langle 1\right\rangle }\\
@@ -6214,6 +6214,55 @@ eigenvalue $\lambda$ is the $1\times1$-matrix $\left(
 \right)  $.
 \end{example}
 
+\begin{remark}
+We will chiefly use Jordan cells as building blocks for the Jordan normal
+form. However, they are of some independent interest. In particular, they
+serve as matrix representations for several useful linear maps.
+
+For example, fix $m\in\mathbb{N}$, and let $P_{m}$ be the $\mathbb{C}$-vector
+space of all polynomials in a single variable $t$ of degree $<m$ (with complex
+coefficients). Then, $P_{m}$ has a basis $\left(  t^{0},t^{1},\ldots
+,t^{m-1}\right)  $. The derivative operator $\dfrac{d}{dt}:P_{m}\rightarrow
+P_{m}$ (which sends each polynomial $f\in P_{m}$ to its derivative $f^{\prime
+}$) is a $\mathbb{C}$-linear map that is represented by the matrix%
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+0 & 1 & 0 & 0 & \cdots & 0\\
+0 & 0 & 2 & 0 & \cdots & 0\\
+0 & 0 & 0 & 3 & \cdots & 0\\
+0 & 0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)
+\]
+with respect to this basis. This matrix has the numbers $1,2,\ldots,m-1$ in
+the cells directly above the main diagonal, and $0$s everywhere else. It is
+not quite a Jordan cell. However, if we instead use the basis $\left(
+\dfrac{t^{0}}{0!},\dfrac{t^{1}}{1!},\ldots,\dfrac{t^{m-1}}{\left(  m-1\right)
+!}\right)  $, then the operator $\dfrac{d}{dt}$ is represented by the matrix
+\[
+\left(
+\begin{array}
+[c]{cccccc}%
+0 & 1 & 0 & 0 & \cdots & 0\\
+0 & 0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)
+\]
+which is precisely the Jordan cell $J_{m}\left(  0\right)  $. (This basis is
+just a rescaled version of the basis $\left(  t^{0},t^{1},\ldots
+,t^{m-1}\right)  $, where the rescaling factors have been chosen to
+\textquotedblleft normalize\textquotedblright\ the $1,2,\ldots,m-1$ entries to
+be $1$s.)
+\end{remark}
+
 While the Jordan cell $J_{m}\left(  \lambda\right)  $ depends on both $m$ and
 $\lambda$, its dependence on $k$ is not very substantial:
 
@@ -6705,7 +6754,128 @@ so that $J_{m}\left(  \lambda\right)  -\lambda I_{m}=B$. Hence,
 This completes our proof of Proposition \ref{prop.jnf.jcell.multiplicity}.
 \end{proof}
 
-\subsection{Jordan canonical form: the statement}
+\subsection{Jordan canonical form: the theorem}
+
+Let us now build larger matrices out of Jordan cells:
+
+\begin{definition}
+\label{def.jnf.jmat}A \emph{Jordan matrix} means a block-diagonal matrix whose
+diagonal blocks are Jordan cells. In other words, it is a matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  ,
+\]
+where $n_{1},n_{2},\ldots,n_{k}$ are positive integers and $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{k}$ are scalars in $\mathbb{C}$ (not
+necessarily distinct, but not necessarily equal either).
+\end{definition}
+
+We claim the following:\footnote{Recall that \textquotedblleft$A\sim
+B$\textquotedblright\ means that the matrix $A$ is similar to the matrix $B$.}
+
+\begin{theorem}
+[Jordan canonical form theorem]\label{thm.jnf.jnf}Let $A$ be an $n\times
+n$-matrix over $\mathbb{C}$. Then:
+
+\textbf{(a)} There exists a Jordan matrix $J$ such that $A\sim J$.
+
+\textbf{(b)} This Jordan matrix $J$ is unique up to the order of the diagonal blocks.
+\end{theorem}
+
+This theorem is useful partly (but not only) because it allows to reduce
+questions about general square matrices to questions about Jordan matrices.
+And the latter can usually further be reduced to questions about Jordan cells,
+because a block-diagonal matrix \textquotedblleft behaves like its diagonal
+blocks are separate\textquotedblright\ (see, e.g., the discussion before
+Proposition \ref{prop.blockmatrix.nullity-diag}).
+
+\begin{definition}
+\label{def.jnf.jnf}Let $A$ be an $n\times n$-matrix over $\mathbb{C}$. Theorem
+\ref{thm.jnf.jnf} \textbf{(a)} says that there exists a Jordan matrix $J$ such
+that $A\sim J$. Such a matrix $J$ is called a \emph{Jordan canonical form} of
+$A$ (or a \emph{Jordan normal form} of $A$).
+
+We often use the definite article (\textquotedblleft the Jordan canonical form
+of $A$\textquotedblright), because Theorem \ref{thm.jnf.jnf} \textbf{(b)} says
+that $J$ is \textquotedblleft more or less unique\textquotedblright. (Strictly
+speaking, of course, it is not entirely appropriate.)
+
+We often abbreviate \textquotedblleft Jordan canonical form\textquotedblright%
+\ as \textquotedblleft JCF\textquotedblright.
+\end{definition}
+
+\begin{example}
+A Jordan canonical form of $\left(
+\begin{array}
+[c]{ccc}%
+1 & 2 & 3\\
+0 & 2 & 5\\
+0 & 0 & 1
+\end{array}
+\right)  $ is $\left(
+\begin{array}
+[c]{ccc}%
+2 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{array}
+\right)  $. Indeed, $\left(
+\begin{array}
+[c]{ccc}%
+2 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{array}
+\right)  $ is a Jordan matrix (it can be written as $\left(
+\begin{array}
+[c]{cc}%
+J_{1}\left(  2\right)   & 0\\
+0 & J_{2}\left(  1\right)
+\end{array}
+\right)  $) and it can be checked that%
+\[
+\left(
+\begin{array}
+[c]{ccc}%
+1 & 2 & 3\\
+0 & 2 & 5\\
+0 & 0 & 1
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{ccc}%
+2 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{array}
+\right)  .
+\]
+We can swap the two Jordan cells in this Jordan matrix, and obtain another
+Jordan canonical form of the same matrix: $\left(
+\begin{array}
+[c]{ccc}%
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{array}
+\right)  $.
+\end{example}
+
+TODO: Explain why swapping these Jordan cells gives a similar matrix.
+
+\begin{example}
+If $D$ is a diagonal matrix, then $D$ itself is a Jordan canonical form of
+$D$. Indeed, each diagonal entry $\lambda$ of $D$ can be viewed as a Jordan
+cell of size $1$ (namely, $J_{1}\left(  \lambda\right)  $), so that $D$ is a
+Jordan matrix.
+\end{example}
 
 [...]
 
