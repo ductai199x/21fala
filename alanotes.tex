@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 08, 2021 15:01:43}
+%TCIDATA{LastRevised=Friday, October 08, 2021 23:35:10}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4215,7 +4215,10 @@ algebraic multiplicities and with the same geometric multiplicities. \medskip
 $B^{k}$. \medskip
 
 \textbf{(g)} For any $\lambda\in\mathbb{F}$, the matrix $\lambda I_{n}-A$ is
-similar to $\lambda I_{n}-B$.
+similar to $\lambda I_{n}-B$.\medskip
+
+\textbf{(h)} For any $\lambda\in\mathbb{F}$, the matrix $A-\lambda I_{n}$ is
+similar to $B-\lambda I_{n}$.
 \end{proposition}
 
 \begin{proof}
@@ -4344,7 +4347,12 @@ _{=WAW^{-1}}  &  =\underbrace{\lambda WI_{n}}_{=W\left(  \lambda I_{n}\right)
 &  =W\left(  \lambda I_{n}-A\right)  W^{-1}.
 \end{align*}
 This shows that the matrices $\lambda I_{n}-A$ and $\lambda I_{n}-B$ are
-similar. Thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(g)} is proven.
+similar. Thus, Proposition \ref{prop.schurtri.similar.same} \textbf{(g)} is
+proven.\medskip
+
+\textbf{(h)} This differs from part \textbf{(g)} only in that the subtrahend
+and the minuend trade places. The proof is entirely analogous to part
+\textbf{(g)}.
 \end{proof}
 
 Note that neither part \textbf{(a)}, nor part \textbf{(b)}, nor part
@@ -4477,7 +4485,7 @@ In other words,%
 \end{example}
 
 \begin{proof}
-[Proof of Proposition \ref{prop.schurtri.similar.diag}.] Let $P_{\sigma}%
+[Proof of Proposition \ref{prop.schurtri.similar.diag}.]Let $P_{\sigma}%
 \in\mathbb{F}^{n\times n}$ be the permutation matrix of $\sigma$ (defined in
 Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). We recall that the
 $\left(  i,j\right)  $-th entry of this matrix $P_{\sigma}$ is $%
@@ -4492,20 +4500,24 @@ Now, it is easy to see that%
 \operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
 \cdot P_{\sigma}=P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda
 _{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots
-,\lambda_{\sigma\left(  n\right)  }\right)
-.\label{pf.prop.schurtri.similar.diag.1}%
+,\lambda_{\sigma\left(  n\right)  }\right)  .
+\label{pf.prop.schurtri.similar.diag.1}%
 \end{equation}
-(Indeed, it is straightforward to see that for any $i,j\in\left[  n\right]  $,
-both matrices $\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
-,\ldots,\lambda_{n}\right)  \cdot P_{\sigma}$ and $P_{\sigma}\cdot
-\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  },\lambda
-_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)  }\right)
-$ have the same $\left(  i,j\right)  $-th entry, namely $%
+
+
+[\textit{Proof of (\ref{pf.prop.schurtri.similar.diag.1}):} It is
+straightforward to see that for any $i,j\in\left[  n\right]  $, both matrices
+$\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  \cdot P_{\sigma}$ and $P_{\sigma}\cdot\operatorname*{diag}\left(
+\lambda_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  }%
+,\ldots,\lambda_{\sigma\left(  n\right)  }\right)  $ have the same $\left(
+i,j\right)  $-th entry, namely $%
 \begin{cases}
 \lambda_{i}, & \text{if }i=\sigma\left(  j\right)  ;\\
 0, & \text{if }i\neq\sigma\left(  j\right)  .
 \end{cases}
-$)
+$\ \ Thus, these two matrices are equal. This proves
+(\ref{pf.prop.schurtri.similar.diag.1}).] \medskip
 
 Since the permutation matrix $P_{\sigma}$ is invertible, we can multiply both
 sides of (\ref{pf.prop.schurtri.similar.diag.1}) by $P_{\sigma}^{-1}$ from the
@@ -4528,6 +4540,105 @@ diagonal matrices are similar, then they have the same diagonal entries up to
 order. This follows easily from Proposition \ref{prop.schurtri.similar.same}
 \textbf{(e)}, because the diagonal entries of a diagonal matrix are its
 eigenvalues (with their algebraic multiplicities).
+
+An analogue of Proposition \ref{prop.schurtri.similar.diag} holds for
+block-diagonal matrices:
+
+\begin{proposition}
+\label{prop.schurtri.similar.block-diag}Let $\mathbb{F}$ be a field. Let
+$n\in\mathbb{N}$. For each $i\in\left[  n\right]  $, let $A_{i}$ be an
+$n_{i}\times n_{i}$-matrix. Let $\sigma$ be a permutation of $\left[
+n\right]  $ (that is, a bijective map from $\left[  n\right]  $ to $\left[
+n\right]  $). Then,%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{n}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccc}%
+A_{\sigma\left(  1\right)  } & 0 & \cdots & 0\\
+0 & A_{\sigma\left(  2\right)  } & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{\sigma\left(  n\right)  }%
+\end{array}
+\right)  .
+\]
+
+\end{proposition}
+
+\begin{proof}
+This can be proved similarly to how we proved Proposition
+\ref{prop.schurtri.similar.diag}, except that now, instead of the permutation
+matrix $P_{\sigma}$, we need to use a \textquotedblleft block permutation
+matrix\textquotedblright\ $\mathbf{P}_{\sigma}$. This matrix $\mathbf{P}%
+_{\sigma}$ is defined to be the matrix that is written as%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+P\left(  1,1\right)  & P\left(  1,2\right)  & \cdots & P\left(  1,n\right) \\
+P\left(  2,1\right)  & P\left(  2,2\right)  & \cdots & P\left(  2,n\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+P\left(  n,1\right)  & P\left(  n,2\right)  & \cdots & P\left(  n,n\right)
+\end{array}
+\right)
+\]
+in block-matrix notation, where the $\left(  i,j\right)  $-th block $P\left(
+i,j\right)  $ is defined by\footnote{We let $0_{u\times v}$ denote the zero
+matrix of size $u\times v$.}%
+\[
+P\left(  i,j\right)  :=%
+\begin{cases}
+I_{n_{i}}, & \text{if }i=\sigma\left(  j\right)  ;\\
+0_{n_{i}\times n_{\sigma\left(  j\right)  }}, & \text{if }i\neq\sigma\left(
+j\right)  .
+\end{cases}
+\]
+For example, if $n=2$ and if $\sigma$ is the permutation of $\left[  2\right]
+$ that swaps $1$ with $2$, and if $n_{1}=1$ and $n_{2}=2$, then $\mathbf{P}%
+_{\sigma}=\left(
+\begin{array}
+[c]{cc}%
+0 & I_{1}\\
+I_{2} & 0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{array}
+\right)  $. The formula analogous to (\ref{pf.prop.schurtri.similar.diag.1})
+is%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{n}%
+\end{array}
+\right)  \cdot\mathbf{P}_{\sigma}=\mathbf{P}_{\sigma}\cdot\left(
+\begin{array}
+[c]{cccc}%
+A_{\sigma\left(  1\right)  } & 0 & \cdots & 0\\
+0 & A_{\sigma\left(  2\right)  } & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{\sigma\left(  n\right)  }%
+\end{array}
+\right)
+\]
+this time; its proof is easy with the help of Proposition
+\ref{prop.blockmatrix.mult-uxv}.
+\end{proof}
 
 \subsection{Unitary similarity}
 
@@ -6879,6 +6990,8 @@ _{1},\lambda_{2},\ldots,\lambda_{k}$ are scalars in $\mathbb{C}$ (not
 necessarily distinct, but not necessarily equal either).
 \end{definition}
 
+We note that any Jordan matrix is upper-triangular. \medskip
+
 We claim the following:\footnote{Recall that \textquotedblleft$A\sim
 B$\textquotedblright\ means that the matrix $A$ is similar to the matrix $B$.}
 
@@ -6898,6 +7011,14 @@ because a block-diagonal matrix \textquotedblleft behaves like its diagonal
 blocks are separate\textquotedblright\ (see, e.g., the discussion before
 Proposition \ref{prop.blockmatrix.nullity-diag}).
 
+Note that we cannot hope for the matrix $J$ in Theorem \ref{thm.jnf.jnf} to be
+fully unique, unless it has only one diagonal block (i.e., unless $k=1$).
+Indeed, Proposition \ref{prop.blockmatrix.mult-uxv} shows that if we permute
+the diagonal blocks $J_{n_{1}}\left(  \lambda_{1}\right)  ,J_{n_{2}}\left(
+\lambda_{2}\right)  ,\ldots,J_{n_{k}}\left(  \lambda_{k}\right)  $, then the
+matrix stays similar to $A$. Thus, the order of these diagonal blocks can be
+chosen arbitrary.
+
 \begin{definition}
 \label{def.jnf.jnf}Let $A$ be an $n\times n$-matrix over $\mathbb{C}$. Theorem
 \ref{thm.jnf.jnf} \textbf{(a)} says that there exists a Jordan matrix $J$ such
@@ -6908,6 +7029,10 @@ We often use the definite article (\textquotedblleft the Jordan canonical form
 of $A$\textquotedblright), because Theorem \ref{thm.jnf.jnf} \textbf{(b)} says
 that $J$ is \textquotedblleft more or less unique\textquotedblright. (Strictly
 speaking, of course, it is not entirely appropriate.)
+
+The diagonal blocks $J_{n_{1}}\left(  \lambda_{1}\right)  ,J_{n_{2}}\left(
+\lambda_{2}\right)  ,\ldots,J_{n_{k}}\left(  \lambda_{k}\right)  $ of $J$ are
+called the \emph{Jordan blocks} (or \emph{Jordan cells}) of $A$.
 
 We often abbreviate \textquotedblleft Jordan canonical form\textquotedblright%
 \ as \textquotedblleft JCF\textquotedblright.
@@ -6970,14 +7095,184 @@ Jordan canonical form of the same matrix: $\left(
 \right)  $.
 \end{example}
 
-TODO: Explain why swapping these Jordan cells gives a similar matrix.
-
 \begin{example}
 If $D$ is a diagonal matrix, then $D$ itself is a Jordan canonical form of
 $D$. Indeed, each diagonal entry $\lambda$ of $D$ can be viewed as a Jordan
 cell of size $1$ (namely, $J_{1}\left(  \lambda\right)  $), so that $D$ is a
 Jordan matrix.
 \end{example}
+
+\subsection{Jordan canonical form: proof of uniqueness}
+
+We shall approach the proof of Theorem \ref{thm.jnf.jnf} slowly, making sure
+to record all auxiliary results obtained on the way (as they are themselves
+rather useful). We first try to explore how much of the structure of the
+Jordan normal form $J$ can be read off the matrix $A$. This will lead us to
+the proof of the uniqueness part (i.e., part \textbf{(b)}) of Theorem
+\ref{thm.jnf.jnf}.
+
+We start with an example:
+
+\begin{example}
+\label{exa.jnf.unique.exa1}Let $A\in\mathbb{C}^{7\times7}$. Suppose that
+$A\sim J$ with%
+\[
+J=\left(
+\begin{array}
+[c]{ccc}%
+J_{2}\left(  8\right)  & 0 & 0\\
+0 & J_{3}\left(  8\right)  & 0\\
+0 & 0 & J_{2}\left(  9\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccccccc}%
+8 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 8 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 8 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 8 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 8 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 9 & 1\\
+0 & 0 & 0 & 0 & 0 & 0 & 9
+\end{array}
+\right)  .
+\]
+How are the structural elements of this matrix $J$ (that is, the diagonal
+entries $8$ and $9$ and the sizes $2,3,2$ of the diagonal blocks) reflected in
+the matrix $A$ ?
+
+First, the matrix $J$ is a Jordan matrix, and thus upper-triangular. Hence,
+Proposition \ref{prop.schurtri.similar.T-diag} (applied to $T=J$) shows that
+the diagonal entries of $J$ are the eigenvalues of $A$ (with their algebraic
+multiplicities). Thus, the eigenvalues of $A$ are $8$ and $9$, with respective
+algebraic multiplicities $5$ and $2$.
+
+Now, what about the geometric multiplicities? That is, what are $\dim\left(
+\operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  $ and $\dim\left(
+\operatorname*{Ker}\left(  A-9I_{7}\right)  \right)  $ ?
+
+From $A\sim J$, we obtain $A-8I_{7}\sim J-8I_{7}$ (by Proposition
+\ref{prop.schurtri.similar.same} \textbf{(h)}, applied to $B=J$ and
+$\lambda=8$ and $n=7$). Thus, Proposition \ref{prop.schurtri.similar.same}
+\textbf{(b)} (applied to $A-8I_{7}$, $J-8I_{7}$ and $7$ instead of $A$, $B$
+and $8$) yields that the matrices $A-8I_{7}$ and $J-8I_{7}$ have the same
+nullity. In other words,%
+\begin{align*}
+\dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)   &
+=\dim\left(  \operatorname*{Ker}\left(  J-8I_{7}\right)  \right)  \\
+&  =\dim\left(  \operatorname*{Ker}\left(
+\begin{array}
+[c]{ccc}%
+J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
+0 & J_{3}\left(  8\right)  -8I_{3} & 0\\
+0 & 0 & J_{2}\left(  9\right)  -8I_{2}%
+\end{array}
+\right)  \right)
+\end{align*}
+(since%
+\begin{align*}
+J-8I_{7}  & =\left(
+\begin{array}
+[c]{ccc}%
+J_{2}\left(  8\right)   & 0 & 0\\
+0 & J_{3}\left(  8\right)   & 0\\
+0 & 0 & J_{2}\left(  9\right)
+\end{array}
+\right)  -8I_{7}\\
+& =\left(
+\begin{array}
+[c]{ccc}%
+J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
+0 & J_{3}\left(  8\right)  -8I_{3} & 0\\
+0 & 0 & J_{2}\left(  9\right)  -8I_{2}%
+\end{array}
+\right)
+\end{align*}
+). Thus,%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(
+\begin{array}
+[c]{ccc}%
+J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
+0 & J_{3}\left(  8\right)  -8I_{3} & 0\\
+0 & 0 & J_{2}\left(  9\right)  -8I_{2}%
+\end{array}
+\right)  \right)  \\
+& =\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
+-8I_{2}\right)  \right)  +\dim\left(  \operatorname*{Ker}\left(  J_{3}\left(
+8\right)  -8I_{3}\right)  \right)  +\dim\left(  \operatorname*{Ker}\left(
+J_{2}\left(  9\right)  -8I_{2}\right)  \right)
+\end{align*}
+(by Proposition \ref{prop.blockmatrix.nullity-diag}). Now, let us find the
+three dimensions on the right hand side.
+
+Proposition \ref{prop.jnf.jcell-lambda} yields $J_{2}\left(  8\right)
+=J_{2}\left(  0\right)  +2I_{2}$, so that $J_{2}\left(  8\right)
+-8I_{2}=J_{2}\left(  0\right)  $. Hence,%
+\[
+\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)  -8I_{2}\right)
+\right)  =\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  0\right)
+\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  \left(  J_{2}\left(
+0\right)  \right)  ^{1}\right)  \right)  =1
+\]
+(by Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)}, applied to $m=2$
+and $p=1$, because the matrix $J_{2}\left(  0\right)  $ is what is called $B$
+in this proposition). Similarly, $\dim\left(  \operatorname*{Ker}\left(
+J_{3}\left(  8\right)  -8I_{3}\right)  \right)  =1$. On the other hand, the
+matrix $J_{2}\left(  9\right)  -8I_{2}=\left(
+\begin{array}
+[c]{cc}%
+1 & 1\\
+0 & 1
+\end{array}
+\right)  $ is an upper-triangular matrix with $1$'s on its main diagonal;
+thus, its determinant is $1\cdot1=1\neq0$, so that it is nonsingular. Hence,
+$\operatorname*{Ker}\left(  J_{2}\left(  9\right)  -8I_{2}\right)  =0$, so
+that $\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  9\right)
+-8I_{2}\right)  \right)  =0$. Thus, our above computation of $\dim\left(
+\operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  $ becomes%
+\begin{align*}
+& \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  \\
+& =\underbrace{\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
+-8I_{2}\right)  \right)  }_{=1}+\underbrace{\dim\left(  \operatorname*{Ker}%
+\left(  J_{3}\left(  8\right)  -8I_{3}\right)  \right)  }_{=1}%
++\underbrace{\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  9\right)
+-8I_{2}\right)  \right)  }_{=0}\\
+& =1+1+0=2.
+\end{align*}
+Looking back, we see that this comes from the fact that exactly $2$ of the
+diagonal blocks in the Jordan canonical form $J$ are Jordan cells at
+eigenvalue $8$.
+\end{example}
+
+Generalizing this reasoning, we obtain the following:
+
+\begin{proposition}
+\label{prop.jnf.unique.mults}Let $A$ be an $n\times n$-matrix, and let
+$J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ be its Jordan canonical form. Then: \medskip
+
+\textbf{(a)} We have $\sigma\left(  A\right)  =\left\{  \lambda_{1}%
+,\lambda_{2},\ldots,\lambda_{k}\right\}  $. \medskip
+
+\textbf{(b)} The geometric multiplicity of a number $\lambda\in\mathbb{C}$ as
+an eigenvalue of $A$ is the number of Jordan cells of $A$ at eigenvalue
+$\lambda$. In other words, it is the number of $i\in\left[  k\right]  $
+satisfying $\lambda_{i}=\lambda$. \medskip
+
+\textbf{(c)} The algebraic multiplicity of a number $\lambda\in\mathbb{C}$ as
+an eigenvalue of $A$ is the \textbf{sum} of the sizes of all Jordan cells of
+$A$ at eigenvalue $\lambda$. In other words, it is $\sum
+\limits_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}n_{i}$.
+\end{proposition}
 
 [...]
 
