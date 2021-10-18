@@ -1,0 +1,622 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, October 15, 2021 11:50:39}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 11}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{Powers and the Jordan canonical form}
+
+Let $n\in\mathbb{N}$ and $A\in\mathbb{C}^{n\times n}$. Assume that we know the
+JCF $J$ of $A$ and an invertible matrix $S$ such that
+\[
+A=SJS^{-1}.
+\]
+Then, it is fairly easy to compute all powers $A^{m}$ of $A$. Indeed, recall that
+
+\begin{itemize}
+\item $\left(  SJS^{-1}\right)  ^{m}=SJ^{m}S^{-1}$ for any $m\in\mathbb{N}$.
+
+\item $\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  ^{m}=\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{m} &  &  & \\
+& A_{2}^{m} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}^{m}%
+\end{array}
+\right)  $ for any $m\in\mathbb{N}$.
+\end{itemize}
+
+Thus, it suffices to compute the $m$-th power of any Jordan cell $J_{k}\left(
+\lambda\right)  $.
+
+So let us consider a Jordan cell
+\[
+C:=J_{5}\left(  \lambda\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 &  &  & \\
+& \lambda & 1 &  & \\
+&  & \lambda & 1 & \\
+&  &  & \lambda & 1\\
+&  &  &  & \lambda
+\end{array}
+\right)  .
+\]
+Then,%
+\begin{align*}
+C^{2}  & =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{2} & 2\lambda & 1 &  & \\
+& \lambda^{2} & 2\lambda & 1 & \\
+&  & \lambda^{2} & 2\lambda & 1\\
+&  &  & \lambda^{2} & 2\lambda\\
+&  &  &  & \lambda^{2}%
+\end{array}
+\right)  ;\ \ \ \ \ \ \ \ \ \ C^{3}=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{3} & 3\lambda^{2} & 3\lambda & 1 & \\
+& \lambda^{3} & 3\lambda^{2} & 3\lambda & 1\\
+&  & \lambda^{3} & 3\lambda^{2} & 3\lambda\\
+&  &  & \lambda^{3} & 3\lambda^{2}\\
+&  &  &  & \lambda^{3}%
+\end{array}
+\right)  ;\\
+C^{4}  & =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{4} & 4\lambda^{3} & 6\lambda^{2} & 4\lambda & 1\\
+& \lambda^{4} & 4\lambda^{3} & 6\lambda^{2} & 4\lambda\\
+&  & \lambda^{4} & 4\lambda^{3} & 6\lambda^{2}\\
+&  &  & \lambda^{4} & 4\lambda^{3}\\
+&  &  &  & \lambda^{4}%
+\end{array}
+\right)  ;\ \ \ \ \ \ \ \ \ \ C^{5}=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{5} & 5\lambda^{4} & 10\lambda^{3} & 10\lambda^{2} & 5\lambda\\
+& \lambda^{5} & 5\lambda^{4} & 10\lambda^{3} & 10\lambda^{2}\\
+&  & \lambda^{5} & 5\lambda^{4} & 10\lambda^{3}\\
+&  &  & \lambda^{5} & 5\lambda^{4}\\
+&  &  &  & \lambda^{5}%
+\end{array}
+\right)  .
+\end{align*}
+In general:
+
+\begin{theorem}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $C=J_{k}\left(  \lambda\right)  $.
+Let $m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
+whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$.
+(Here, we follow the convention that $\dbinom{n}{\ell}:=0$ when $\ell
+\notin\mathbb{N}$. Also, recall that $\dbinom{n}{\ell}=0$ when $n\in
+\mathbb{N}$ and $\ell>n$.)
+\end{theorem}
+
+\begin{proof}
+[First proof.] Induct on $m$ and use $C^{m}=CC^{m-1}$ as well as Pascal's
+recursion%
+\[
+\dbinom{n}{\ell}=\dbinom{n-1}{\ell}+\dbinom{n-1}{\ell-1}.
+\]
+
+\end{proof}
+
+\begin{proof}
+[Second proof.] Set $B:=J_{k}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}
+& 1 &  &  & \\
+&  & 1 &  & \\
+&  &  & 1 & \\
+&  &  &  & 1\\
+&  &  &  &
+\end{array}
+\right)  $. We know all powers of $B$ already: $B^{i}$ has $1$s $i$ steps
+above the main diagonal, and $0$s everywhere else.
+
+However, $C=B+\lambda I_{k}$. The matrices $\lambda I_{k}$ and $B$ commute
+(i.e., we have $B\cdot\lambda I_{k}=\lambda I_{k}\cdot B$). It is a general
+fact that if $X$ and $Y$ are two commuting $n\times n$-matrices, then the
+binomial formula%
+\[
+\left(  X+Y\right)  ^{m}=\sum_{i=0}^{m}\dbinom{m}{i}X^{i}Y^{m-i}.
+\]
+(This can be proved in the same way as for numbers, because the commutativity
+of $X$ and $Y$ lets you move any $X$es past any $Y$s.) Applying this formula
+to $X=B$ and $Y=\lambda I_{k}$, we obtain%
+\begin{align*}
+\left(  B+\lambda I_{k}\right)  ^{m}  & =\sum_{i=0}^{m}\dbinom{m}{i}%
+B^{i}\underbrace{\left(  \lambda I_{k}\right)  ^{m-i}}_{=\lambda^{m-i}I_{k}%
+}=\sum_{i=0}^{m}\dbinom{m}{i}\lambda^{m-i}B^{i}\\
+& =\left(
+\begin{array}
+[c]{ccccccc}%
+\lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} & \cdots
+& \cdots & \cdots & \cdots\\
+& \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots & \cdots\\
+&  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots\\
+&  &  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \cdots & \cdots\\
+&  &  &  & \lambda^{m} & \cdots & \vdots\\
+&  &  &  &  & \ddots & \vdots\\
+&  &  &  &  &  & \lambda^{m}%
+\end{array}
+\right)  ,
+\end{align*}
+which is precisely the matrix claimed in the theorem.
+\end{proof}
+
+Now we know how to take powers of Jordan cells, and therefore how to take
+powers of any matrix that we know how to bring to a Jordan canonical form.
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$. Then, $\lim\limits_{m\rightarrow\infty}%
+A^{m}=0$ if and only if all eigenvalues of $A$ have absolute value $<1$.
+\end{corollary}
+
+\begin{proof}
+$\Longrightarrow:$ Suppose that $\lim\limits_{m\rightarrow\infty}A^{m}=0$, but
+$A$ has an eigenvalue $\lambda$ of absolute value $\geq1$. We want a contradiction.
+
+Consider a nonzero eigenvector $x$ for eigenvalue $\lambda$. Thus, $Ax=\lambda
+x$. Then, $A^{2}x=\lambda^{2}x$ (since $A^{2}x=A\underbrace{Ax}_{=\lambda
+x}=\lambda\underbrace{Ax}_{=\lambda x}=\lambda\lambda x=\lambda^{2}x$) and
+similarly $A^{3}x=\lambda^{3}x$ and $A^{4}x=\lambda^{4}x$ and so on. Thus,
+\[
+A^{m}x=\lambda^{m}x\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\mathbb{N}.
+\]
+
+
+Now, as $m\rightarrow\infty$, the vector $A^{m}x$ goes to $0$ (since
+$A^{m}\rightarrow0$), but the vector $\lambda^{m}x$ does not (since $x\neq0$
+and $\left\vert \lambda\right\vert \geq1$). Contradiction.
+
+$\Longleftarrow:$ Suppose that all eigenvalues of $A$ have absolute value $<1$.
+
+Let $A=SJS^{-1}$ be the Jordan canonical form of $A$. Write $J$ as $\left(
+\begin{array}
+[c]{ccc}%
+J_{1} &  & \\
+& \ddots & \\
+&  & J_{p}%
+\end{array}
+\right)  $, where each $J_{i}$ is a Jordan cell.
+
+It suffices to show that $\lim\limits_{n\rightarrow\infty}J_{i}^{m}=0$.
+
+Write $J_{i}$ as $J_{k}\left(  \lambda\right)  $, with $\left\vert
+\lambda\right\vert <1$. The preceding theorem then tells us that%
+\[
+J_{i}^{m}=\left(
+\begin{array}
+[c]{ccccccc}%
+\lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} & \cdots
+& \cdots & \cdots & \cdots\\
+& \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots & \cdots\\
+&  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots\\
+&  &  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \cdots & \cdots\\
+&  &  &  & \lambda^{m} & \cdots & \vdots\\
+&  &  &  &  & \ddots & \vdots\\
+&  &  &  &  &  & \lambda^{m}%
+\end{array}
+\right)  .
+\]
+Look closely at this matrix. We need to show that for each $i,j\in\left[
+k\right]  $, we have%
+\[
+\lim\limits_{m\rightarrow\infty}\dbinom{m}{j-i}\lambda^{m-j+i}=0.
+\]
+However, this is a standard asymptotics argument:%
+\[
+\underbrace{\dbinom{m}{j-i}}_{\substack{=\dfrac{m\left(  m-1\right)  \left(
+m-2\right)  \cdots\left(  m-j+i\right)  }{\left(  j-i\right)  !}\\\text{(for
+}i\leq j\text{; otherwise the claim is trivial)}}}\underbrace{\lambda^{m-j+i}%
+}_{\substack{\text{exponential in }m\text{,}\\\text{with quotient }%
+\lambda\text{ having absolute value }\left\vert \lambda\right\vert
+<1}}\rightarrow0
+\]
+because exponential functions with a quotient of absolute value $<1$ converge
+to $0$ faster than polynomials can go to $\infty$. 
+\end{proof}
+
+\subsection{The minimal polynomial}
+
+\textbf{Recall:} A polynomial $p\left(  t\right)  \in\mathbb{F}\left[
+t\right]  $ (where $\mathbb{F}$ is any field, and $t$ is an indeterminate) is
+said to be \textbf{monic} if its leading coefficient is $1$ -- that is, if it
+can be written in the form%
+\[
+p\left(  t\right)  =t^{m}+p_{m-1}t^{m-1}+p_{m-2}t^{m-2}+\cdots+p_{0}%
+t^{0}\ \ \ \ \ \ \ \ \ \ \text{for some }m\in\mathbb{N}\text{ and }p_{0}%
+,p_{1},\ldots,p_{m-1}\in\mathbb{F}.
+\]
+
+
+\begin{definition}
+Given a matrix $A\in\mathbb{F}^{n\times n}$ and a polynomial $p\left(
+t\right)  \in\mathbb{F}\left[  t\right]  $, we saay that $p\left(  t\right)  $
+\textbf{annihilates} $A$ if $p\left(  A\right)  =0$.
+\end{definition}
+
+The Cayley--Hamilton theorem says that the characteristic polynomial $p_{A}$
+of a square matrix $A$ always annihilates $A$. However, often there are
+matrices that are annihilated by other -- sometimes simpler -- polynomials.
+
+\begin{example}
+The identity matrix $I_{n}$ is annihilated by the polynomial $p\left(
+t\right)  :=t-1$, because%
+\[
+p\left(  I_{n}\right)  =I_{n}-I_{n}=0.
+\]
+
+\end{example}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=t^{2}$,
+since its square is $0$.
+\end{example}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{ccc}%
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=t^{2}$,
+since its square is $0$.
+\end{example}
+
+\begin{example}
+The diagonal matrix $\left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=\left(
+t-2\right)  \left(  t-3\right)  $, since%
+\begin{align*}
+& \left(  \left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  -2I_{n}\right)  \left(  \left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  -3I_{n}\right)  \\
+& =\left(
+\begin{array}
+[c]{ccc}
+&  & \\
+&  & \\
+&  & 1
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+-1 &  & \\
+& -1 & \\
+&  &
+\end{array}
+\right)  =0.
+\end{align*}
+
+\end{example}
+
+\begin{theorem}
+Given an $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$. Then, there is a
+\textbf{unique} monic polynomial $q_{A}\left(  t\right)  $ of minimum degree
+that annihilates $A$.
+\end{theorem}
+
+\begin{proof}
+The Cayley--Hamilton theorem shows that $p_{A}$ annihilates $A$. Since $p_{A}$
+is monic, we thus conclude that there exists \textbf{some} monic polynomial
+that annihilates $A$. Hence, there exists such a polynomial of minimum degree.
+
+It remains to show that it is unique. To do so, we let $q_{A}$ and
+$\widetilde{q}_{A}$ be two monic polynomials of minimum degree that annihilate
+$A$. Our goal then is to show that $q_{A}=\widetilde{q}_{A}$.
+
+Indeed, if $q_{A}\neq\widetilde{q}_{A}$, then the difference $q_{A}%
+-\widetilde{q}_{A}$ is a polynomial of smaller degree that annihilates $A$
+(indeed, it is of smaller degree because $q_{A}$ and $\widetilde{q}_{A}$ are
+monic of the same degree and thus lose their leading terms upon subtraction;
+it annihilates $A$ because $\left(  q_{A}-\widetilde{q}_{A}\right)  \left(
+A\right)  =q_{A}\left(  A\right)  -\widetilde{q}_{A}\left(  A\right)
+=0-0=0$). By scaling this difference appropriately, we can make it monic
+(since it is nonzero), and then get a contradiction to the minimality of
+$q_{A}$'s degree. This concludes the proof.
+\end{proof}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
+theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
+t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
+will be denoted $q_{A}\left(  t\right)  $ and will be called the
+\textbf{minimal polynomial} of $A$.
+\end{definition}
+
+\begin{example}
+Let $A$ be the diagonal matrix $\left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  $. Then,%
+\[
+q_{A}\left(  t\right)  =\left(  t-2\right)  \left(  t-3\right)  .
+\]
+Indeed, we already know that the monic polynomial $\left(  t-2\right)  \left(
+t-3\right)  $ annihilates $A$. If there was any monic polynomial of smaller
+degree that would annihilate $A$, then it would have the form $t-\lambda$ for
+some $\lambda\in\mathbb{C}$, but $\lambda$ cannot be $2$ and $3$ at the same time.
+
+For comparison: $p_{A}\left(  t\right)  =\left(  t-2\right)  ^{2}\left(
+t-3\right)  $.
+\end{example}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
+t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
+annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
+$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
+some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
+\end{theorem}
+
+\begin{proof}
+$\Longrightarrow:$ Assume that $f$ annihilates $A$. Thus, $f\left(  A\right)
+=0$. WLOG, assume that $f\neq0$. Thus, we can make $f$ monic by scaling it.
+Thus, $\deg f\geq\deg q_{A}$ (since $q_{A}$ had minimum degree). Hence, we can
+divide $f$ by $q_{A}$ with remainder, obtaining%
+\[
+f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  +r\left(
+t\right)  ,
+\]
+where $g\left(  t\right)  $ and $r\left(  t\right)  $ are two polynomials with
+$\deg r<\deg q_{A}$. Substituting $A$ for $t$ in this equality, we obtain%
+\[
+f\left(  A\right)  =\underbrace{q_{A}\left(  A\right)  }%
+_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}\cdot
+g\left(  A\right)  +r\left(  A\right)  =r\left(  A\right)  ,
+\]
+so that $r\left(  A\right)  =f\left(  A\right)  =0$. In other words, $r$
+annihilates $A$. Since $\deg r<\deg q_{A}$, this entails that $r=0$ (since
+otherwise, scaling $r$ to make it monic would contradict the minimality of
+$\deg q_{A}$). Thus,%
+\[
+f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)
++\underbrace{r\left(  t\right)  }_{=0}=q_{A}\left(  t\right)  \cdot g\left(
+t\right)  .
+\]
+Thus, $f$ is a multiple of $q_{A}$.
+
+$\Longleftarrow:$ Easy and LTTR.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
+\mid p_{A}\left(  t\right)  $.
+\end{corollary}
+
+\begin{proof}
+Apply the previous theorem to $f=p_{A}$, recalling that $p_{A}$ annihilates
+$A$.
+\end{proof}
+
+The corollary yields that any root of $q_{A}$ must be a root of $p_{A}$, that
+is, an eigenvalue of $A$. Conversely, we can show that any eigenvalue of $A$
+is a root of $q_{A}$ (but we don't know with which multiplicity):
+
+\begin{proposition}
+If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
+=0$.
+\end{proposition}
+
+\begin{proof}
+Let $\lambda\in\sigma\left(  A\right)  $. Thus, there exists a nonzero
+eigenvector $x$ for $\lambda$.
+
+Then, $Ax=\lambda x$. As we have seen above, this entails $A^{m}x=\lambda
+^{m}x$ for each $m\in\mathbb{N}$. Therefore, $f\left(  A\right)  x=f\left(
+\lambda\right)  x$ for each polynomial $f\left(  t\right)  \in\mathbb{C}%
+\left[  t\right]  $ (because you can write $f\left(  t\right)  $ as
+$f_{0}t^{0}+f_{1}t^{1}+\cdots+f_{p}t^{p}$, and then apply $A^{m}x=\lambda
+^{m}x$ to each of $m=0,1,\ldots,p$). Hence, $q_{A}\left(  A\right)
+x=q_{A}\left(  \lambda\right)  x$, so that%
+\[
+q_{A}\left(  \lambda\right)  x=\underbrace{q_{A}\left(  A\right)
+}_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}x=0.
+\]
+Since $x\neq0$, this entails $q_{A}\left(  \lambda\right)  =0$, qed.
+\end{proof}
+
+
+\end{document}

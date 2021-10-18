@@ -1,0 +1,555 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, October 18, 2021 11:49:08}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 12}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{The minimal polynomial (cont'd)}
+
+Recall from last lecture:
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
+theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
+t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
+will be denoted $q_{A}\left(  t\right)  $ and will be called the
+\textbf{minimal polynomial} of $A$.
+\end{definition}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
+t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
+annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
+$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
+some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
+\end{theorem}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
+\mid p_{A}\left(  t\right)  $.
+\end{corollary}
+
+\begin{proposition}
+If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
+=0$.
+\end{proposition}
+
+Combining the Corollary with the Proposition, we see that the roots of
+$q_{A}\left(  t\right)  $ are precisely the eigenvalues of $A$; we just don't
+know yet with which multiplicities they appear as roots. In other words, we
+have
+\[
+q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
+t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ are the distinct
+eigenvalues of $A$, and the $k_{1},k_{2},\ldots,k_{p}$ are positive integers;
+but we don't know these $k_{1},k_{2},\ldots,k_{p}$ yet. So let us find them.
+We will use some lemmas for this.
+
+\begin{lemma}
+Let $A$ and $B$ be two similar $n\times n$-matrices. Then, $q_{A}\left(
+t\right)  =q_{B}\left(  t\right)  $.
+\end{lemma}
+
+\begin{proof}
+This is obvious from the viewpoint of endomorphisms. For a pedestrian proof,
+you can just argue that a polynomial $f$ annihilates $A$ if and only if it
+annihilates $B$. But this is easy: We have $A=SBS^{-1}$ for some invertible
+$S$ (since $A$ and $B$ are similar), and therefore every polynomial $f$
+satisfies
+\[
+f\left(  A\right)  =f\left(  SBS^{-1}\right)  =Sf\left(  B\right)  S^{-1}%
+\]
+and therefore $f\left(  A\right)  =0$ holds if and only if $f\left(  B\right)
+=0$.
+\end{proof}
+
+We recall the notion of the lcm (= least common multiple) of several
+polynomials. It is defined as one would expect: If $p_{1},p_{2},\ldots,p_{m}$
+are $m$ nonzero polynomials (in a single indeterminate $t$), then
+$\operatorname{lcm}\left(  p_{1},p_{2},\ldots,p_{m}\right)  $ is the monic
+polynomial of smallest degree that is a common multiple of $p_{1},p_{2}%
+,\ldots,p_{m}$. For example,%
+\begin{align*}
+\operatorname{lcm}\left(  t^{2}-1,\ t^{3}-1\right)    & =\operatorname{lcm}%
+\left(  \left(  t-1\right)  \left(  t+1\right)  ,\ \left(  t-1\right)  \left(
+t^{2}+t+1\right)  \right)  \\
+& =\allowbreak\left(  t-1\right)  \left(  t+1\right)  \left(  t+t^{2}%
++1\right)  =\allowbreak t^{4}+t^{3}-t-1.
+\end{align*}
+(Again, the lcm of several polynomials is unique. This can be shown in the
+same way that we used to prove uniqueness of the minimal polynomial.)
+
+\begin{lemma}
+Let $A_{1},A_{2},\ldots,A_{m}$ be $m$ square matrices. Let%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  .
+\]
+Then,%
+\[
+q_{A}=\operatorname{lcm}\left(  q_{A_{1}},\ q_{A_{2}},\ \ldots,\ q_{A_{m}%
+}\right)  .
+\]
+
+\end{lemma}
+
+\begin{proof}
+For any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+\[
+f\left(  A\right)  =f\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+f\left(  A_{1}\right)   &  &  & \\
+& f\left(  A_{2}\right)   &  & \\
+&  & \ddots & \\
+&  &  & f\left(  A_{m}\right)
+\end{array}
+\right)
+\]
+(indeed, the last equality follows from%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  ^{k}=\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{k} &  &  & \\
+& A_{2}^{k} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}^{k}%
+\end{array}
+\right)
+\]
+and from the fact that a polynomial $f$ is just a $\mathbb{C}$-linear
+combination of $t^{k}$s). Thus, $f\left(  A\right)  =0$ holds if and only if%
+\[
+f\left(  A_{1}\right)  =0\text{ and }f\left(  A_{2}\right)  =0\text{ and
+}\cdots\text{ and }f\left(  A_{m}\right)  =0.
+\]
+However, $f\left(  A\right)  =0$ holds if and only if $f$ is a multiple of
+$q_{A}$, whereas $f\left(  A_{i}\right)  =0$ holds if and only if $f$ is a
+multiple of $q_{A_{i}}$. Thus, the previous sentence says that $f$ is a
+multiple of $q_{A}$ if and only if $f$ is a multiple of all of the $q_{A_{i}}%
+$s. In other words, the multiples of $q_{A}$ are precisely the common multiple
+of all the $q_{A_{i}}$s. But this is the universal property of the lcm. So
+$q_{A}$ is the lcm of the $q_{A_{i}}$s.
+\end{proof}
+
+\begin{lemma}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
+Then,%
+\[
+q_{A}=\left(  t-\lambda\right)  ^{k}.
+\]
+
+\end{lemma}
+
+\begin{proof}
+It is easy to see that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  $,
+because for a polynomial $f$ to annihilate $A-\lambda I_{k}$ is the same as
+for the polynomial $f\left(  t-\lambda\right)  $ to annihilate $A$. So we need
+to find $q_{A-\lambda I_{k}}$. Recall that
+\[
+A-\lambda I_{k}=J_{k}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}
+& 1 &  &  & \\
+&  & 1 &  & \\
+&  &  &  & \\
+&  &  & \ddots & \\
+&  &  &  &
+\end{array}
+\right)  .
+\]
+Therefore, for any polynomial $f=f_{0}t^{0}+f_{1}t^{1}+f_{2}t^{2}+\cdots$, we
+have%
+\[
+f\left(  A-\lambda I_{k}\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+f_{0} & f_{1} & f_{2} & \cdots & f_{k-1}\\
+& f_{0} & f_{1} & \cdots & f_{k-2}\\
+&  & f_{0} & \cdots & f_{k-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & f_{0}%
+\end{array}
+\right)  .
+\]
+So $f\left(  A-\lambda I_{k}\right)  =0$ if and only if $f_{0}=f_{1}%
+=\cdots=f_{k-1}=0$, i.e., if and only if the first $k$ coefficients of $f$ are
+$0$. Now, the monic polynomial of smallest degree whose first $k$ coefficients
+are $0$ is the polynomial $t^{k}$. So the monic polynomial $f$ of smallest
+degree that satisfies $f\left(  A-\lambda I_{k}\right)  =0$ is $t^{k}$. In
+other words, $q_{A-\lambda I_{k}}=t^{k}$.
+
+Now, recall that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  =\left(
+t-\lambda\right)  ^{k}$ (since $q_{A-\lambda I_{k}}=t^{k}$). Qed.
+\end{proof}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $J$ be the
+Jordan canonical form of $A$. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$
+be the distinct eigenvalues of $A$. Then,%
+\[
+q_{A}=\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(  t-\lambda_{2}\right)
+^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where $k_{i}$ is the size of the largest Jordan cell at eigenvalue
+$\lambda_{i}$ in $J$.
+\end{theorem}
+
+\begin{example}
+Let $A$ have Jordan canonical form%
+\[
+J=\left(
+\begin{array}
+[c]{cccccccc}%
+5 & 1 &  &  &  &  &  & \\
+& 5 & 1 &  &  &  &  & \\
+&  & 5 &  &  &  &  & \\
+&  &  & 5 & 1 &  &  & \\
+&  &  &  & 5 &  &  & \\
+&  &  &  &  & 2 &  & \\
+&  &  &  &  &  & 2 & 1\\
+&  &  &  &  &  &  & 2
+\end{array}
+\right)  .
+\]
+Then,%
+\[
+q_{A}=\left(  t-5\right)  ^{3}\left(  t-2\right)  ^{2}.
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of the Theorem.] We have $A\sim J$, so that $q_{A}=q_{J}$ (by our first lemma).
+
+Recall that $J$ is a Jordan matrix, i.e., a block-diagonal matrix whose
+diagonal blocks are Jordan cells $J_{1},J_{2},\ldots,J_{m}$. Thus, by our
+second lemma, we have%
+\begin{align*}
+q_{J}  & =\operatorname{lcm}\left(  q_{J_{1}},\ q_{J_{2}},\ \ldots,\ q_{J_{m}%
+}\right)  \\
+& =\operatorname{lcm}\left(  \left(  t-\lambda_{J_{1}}\right)  ^{k_{J_{1}}%
+},\ \left(  t-\lambda_{J_{2}}\right)  ^{k_{J_{2}}},\ \ldots,\ \left(
+t-\lambda_{J_{m}}\right)  ^{k_{J_{m}}}\right)  ,
+\end{align*}
+where each $J_{i}$ has eigenvalue $\lambda_{J_{i}}$ and size $k_{J_{i}}$ (by
+our third lemma). This lcm must be divisible by each $t-\lambda$ at least as
+often as each of the $\left(  t-\lambda_{J_{i}}\right)  ^{k_{J_{i}}}$s is;
+i.e., it must be divisible by $\left(  t-\lambda\right)  ^{k}$, where $k$ is
+the largest size of a Jordan cell of $J$ at eigenvalue $\lambda$. So the lcm
+is the product of these $\left(  t-\lambda\right)  ^{k}$s. But this is
+precisely our claim.
+\end{proof}
+
+\subsection{Application of functions to matrices}
+
+Consider a square matrix $A\in\mathbb{C}^{n\times n}$. We have already defined
+what it means to apply a polynomial $f$ to $A$: We just write $f$ as $\sum
+_{i}f_{i}t^{i}$, and substitute $A$ for $t$.
+
+Can we do the same with non-polynomial functions $f$ ? For example, can we
+define $\exp A$ or $\sin A$ ?
+
+One option to do so is to follow the same rule as for polynomials, but using
+the Taylor series for $f$. For example, since $\exp$ has Taylor series $\exp
+t=\sum_{i\in\mathbb{N}}\dfrac{t^{i}}{i!}$, we can set%
+\[
+\exp A=\sum_{i\in\mathbb{N}}\dfrac{A^{i}}{i!}.
+\]
+This indeed works for $\exp$ and for $\sin$, as the sums you get always
+converge. But it doesn't generally work, e.g., for $f=\tan t$, since its
+Taylor series only converges in a certain neighborhood of $0$. Is this the
+best we can do?
+
+There is a different approach that gives a more general definition.
+
+\begin{lemma}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
+Then, for any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+\[
+f\left(  A\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \dfrac{f^{\prime\prime}\left(  \lambda\right)  }{2!} &
+\cdots & \dfrac{f^{\left(  k-1\right)  }\left(  \lambda\right)  }{\left(
+k-1\right)  !}\\
+& \dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \cdots & \dfrac{f^{\left(  k-2\right)  }\left(
+\lambda\right)  }{\left(  k-2\right)  !}\\
+&  & \dfrac{f\left(  \lambda\right)  }{0!} & \cdots & \dfrac{f^{\left(
+k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & \dfrac{f\left(  \lambda\right)  }{0!}%
+\end{array}
+\right)
+\]
+
+\end{lemma}
+
+\begin{proof}
+Exercise.
+\end{proof}
+
+Now, we aim to define $f\left(  A\right)  $ by the above formula, at least
+when $A$ is a Jordan cell. This only requires $f$ to be $\left(  k-1\right)
+$-times differentiable at $\lambda$. 
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix that has minimal
+polynomial%
+\[
+q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
+t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where the $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ are the distinct
+eigenvalues of $A$.
+
+Let $f$ be a function from $\mathbb{C}$ to $\mathbb{C}$ that is defined at
+each of the numbers $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ and is
+holomorphic at each of them, or at least $\left(  k_{i}-1\right)  $-times
+differentiable at each $\lambda_{i}$ if $\lambda_{i}$ is real. Then, we can
+define an $n\times n$-matrix $f\left(  A\right)  \in\mathbb{C}^{n\times n}$ as
+follows: Write $A=SJS^{-1}$, where $J$ is a Jordan matrix and $S$ is
+invertible. Write $J$ as $\left(
+\begin{array}
+[c]{cccc}%
+J_{1} &  &  & \\
+& J_{2} &  & \\
+&  & \ddots & \\
+&  &  & J_{m}%
+\end{array}
+\right)  $, where the $J_{1},J_{2},\ldots,J_{m}$ are Jordan cells. Then, we
+set%
+\begin{align*}
+f\left(  A\right)    & :=Sf\left(  J\right)  S^{-1}%
+,\ \ \ \ \ \ \ \ \ \ \text{where}\\
+f\left(  J\right)    & :=\left(
+\begin{array}
+[c]{cccc}%
+f\left(  J_{1}\right)   &  &  & \\
+& f\left(  J_{2}\right)   &  & \\
+&  & \ddots & \\
+&  &  & f\left(  J_{m}\right)
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ \text{where}\\
+f\left(  J_{k}\left(  \lambda\right)  \right)    & :=\left(
+\begin{array}
+[c]{ccccc}%
+\dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \dfrac{f^{\prime\prime}\left(  \lambda\right)  }{2!} &
+\cdots & \dfrac{f^{\left(  k-1\right)  }\left(  \lambda\right)  }{\left(
+k-1\right)  !}\\
+& \dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \cdots & \dfrac{f^{\left(  k-2\right)  }\left(
+\lambda\right)  }{\left(  k-2\right)  !}\\
+&  & \dfrac{f\left(  \lambda\right)  }{0!} & \cdots & \dfrac{f^{\left(
+k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & \dfrac{f\left(  \lambda\right)  }{0!}%
+\end{array}
+\right)  .
+\end{align*}
+
+\end{definition}
+
+\begin{theorem}
+This definition is actually well-defined. That is, the value $f\left(
+A\right)  $ does not depend on the choice of $S$ and $J$.
+\end{theorem}
+
+\begin{exercise}
+Prove this.
+\end{exercise}
+
+\subsection{The companion matrix}
+
+For each $n\times n$-matrix $A$, we have defined its characteristic polynomial
+$p_{A}$ and its minimal polynomial $q_{A}$. What variety of polynomials do we
+get this way? Do all characteristic polynomials share some property, or can
+any monic polynomial be a characteristic polynomial? The same question for
+minimal polynomials?
+
+
+\end{document}

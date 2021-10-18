@@ -1,0 +1,484 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, October 13, 2021 11:47:13}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%TCIDATA{ComputeDefs=
+%$A=\left(
+%\begin{array}
+%[c]{cccccc}%
+%0 & 1 & 0 & -1 & 1 & -1\\
+%0 & 1 & 1 & -2 & 2 & -2\\
+%0 & 1 & 0 & -1 & 2 & -2\\
+%0 & 1 & 0 & -1 & 2 & -2\\
+%0 & 1 & 0 & -1 & 1 & -1\\
+%0 & 1 & 0 & -1 & 1 & -1
+%\end{array}
+%\right)  $
+%$S=\left(
+%\begin{array}
+%[c]{ccc}%
+%0 & 1 & 0\\
+%1 & 0 & 0\\
+%-1 & 0 & 1
+%\end{array}
+%\right)  $
+%}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 10}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{Step 3: Strictly upper-triangular matrices redux}
+
+Let us fill in what we couldn't back in Lecture 9.
+
+Consider a strictly upper-triangular $n\times n$-matrix $A$ (that is, an
+upper-triangular matrix whose diagonal entries are $0$ as well).
+
+We want to find a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of
+$\mathbb{C}^{n}$ such that for each $i\in\left[  n\right]  $, the vector
+$As_{i}$ is either $s_{i-1}$ or $0$. (When $i=1$, this vector has to be $0$,
+since there is no $s_{0}$.) In fact, if $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ is such a basis, then the matrix $S:=\left(
+\begin{array}
+[c]{cccc}%
+s_{1} & s_{2} & \cdots & s_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n\times n}$ is invertible and satisfies%
+\begin{align*}
+AS  & =\left(  \text{a matrix whose }i\text{-th column is either }%
+s_{i-1}\text{ or }0\text{ for each }i\right)  \\
+& =S\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{for example}\right)  ,
+\end{align*}
+so that%
+\[
+S^{-1}AS=\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  =\left(  \text{a Jordan matrix}\right)  .
+\]
+So $A$ is similar to a Jordan matrix.
+
+How do we find such a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ ?
+
+(The following proof is due to Terence Tao.)
+
+We define an \textbf{orbit} to be a tuple of the form $\left(  v,Av,A^{2}%
+v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{C}^{n}$ satisfies $A^{k+1}v=0$.
+Note that for each $v\in\mathbb{C}^{n}$, there is an orbit that starts with
+$v$, since $A^{n}=0$.
+
+The \textbf{concatenation} of some tuples $\left(  a_{1},a_{2},\ldots
+,a_{k}\right)  $ and $\left(  b_{1},b_{2},\ldots,b_{\ell}\right)  $ and
+$\left(  c_{1},c_{2},\ldots,c_{m}\right)  $ is $\left(  a_{1},a_{2}%
+,\ldots,a_{k},b_{1},b_{2},\ldots,b_{\ell},c_{1},c_{2},\ldots,c_{m}\right)  $.
+
+Now, I claim:
+
+\begin{lemma}
+[orbit basis lemma]There exists a basis of $\mathbb{C}^{n}$ that is a
+concatenation of orbits.
+\end{lemma}
+
+Once this lemma is proved, we will be done, because reading such a basis
+backwards gives us exactly the basis  $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ we are looking for. For example, if our basis that is a
+concatenation of orbits is%
+\[
+\left(  u,Au,A^{2}u,\ \ v,Av,A^{2}v,A^{3}v,\ \ w,Aw\right)
+\]
+(with $A^{3}u=0$ and $A^{4}v=0$ and $A^{2}w=0$), then reading it backwards
+gives
+\[
+\left(  Aw,w,\ \ A^{3}v,A^{2}v,Av,v,\ \ A^{2}u,Au,u\right)  ,
+\]
+which is a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{C}%
+^{n}$ such that for each $i\in\left[  n\right]  $, the vector $As_{i}$ is
+either $s_{i-1}$ or $0$.
+
+\begin{proof}
+[Proof of the Lemma.] It is easy to find a finite \textbf{spanning set} of
+$\mathbb{C}^{n}$ that is a concatenation of orbits. Indeed, we can start with
+the standard basis $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $, and extend it
+to the list%
+\begin{align*}
+& (e_{1},Ae_{1},A^{2}e_{1},\ldots,A^{n-1}e_{1},\\
+& \ e_{2},Ae_{2},A^{2}e_{2},\ldots,A^{n-1}e_{2},\\
+& \ \ldots,\\
+& \ e_{n},Ae_{n},A^{2}e_{n},\ldots,A^{n-1}e_{n}).
+\end{align*}
+This is clearly a spanning set of $\mathbb{C}^{n}$ (since $e_{1},e_{2}%
+,\ldots,e_{n}$ already span $\mathbb{C}^{n}$), and also a concatenation of
+orbits (since $A^{n}=0$).
+
+Now, we will gradually shorten this spanning set (i.e., replace it by smaller
+ones) until we get a basis. We have to do this in such a way that it remains a
+spanning set throughout the process, and that it remains a concatenation of
+orbits throughout the process.
+
+For the sake of concreteness, let us assume that our spanning set is%
+\[
+\left(  x,Ax,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  ,
+\]
+with $A^{2}x=0$ and $A^{3}y=0$ and $A^{4}z=0$ and $Aw=0$. If this spanning set
+is linearly independent, then it is already a basis, and we are done. So
+assume that it isn't. Thus, there exists some linear dependence relation --
+say,%
+\[
+3x+4Ax+5Ay+6A^{2}y+7A^{2}z+8w=0.
+\]
+Apply $A$ to this relation:%
+\begin{align*}
+3Ax+4A^{2}x+5A^{2}y+6A^{3}y+7A^{3}z+8Aw  & =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}%
+\\
+3Ax+5A^{2}y+7A^{3}z  & =0.
+\end{align*}
+Apply $A$ to this relation:%
+\begin{align*}
+3A^{2}x+5A^{3}y+7A^{4}z  & =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}\\
+0  & =0.
+\end{align*}
+We have gone too far, so let us revert to the previous equation:%
+\[
+3Ax+5A^{2}y+7A^{3}z=0.
+\]
+So this is a linear dependence relation between the \textbf{final} vectors of
+the orbits in our spanning set. (\textquotedblleft Final\textquotedblright%
+\ means the last vector in the orbit.) Factoring out an $A$ in this relation,
+we obtain%
+\[
+A\left(  3x+5Ay+7A^{2}z\right)  =0.
+\]
+So the $1$-tuple $\left(  3x+5Ay+7A^{2}z\right)  $ is an orbit.
+
+Now, let us replace the orbit $\left(  x,Ax\right)  $ in our spanning set
+$\left(  x,Ax,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  $ by the
+orbit $\left(  3x+5Ay+7A^{2}z\right)  $. We get
+\[
+\left(  3x+5Ay+7A^{2}z,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  .
+\]
+This is still a concatenation of orbits, since the $1$-tuple $\left(
+3x+5Ay+7A^{2}z\right)  $ is an orbit. Furthermore, this is still a spanning
+set of $\mathbb{C}^{n}$; why? Because we removed the dependent vector $Ax$
+(this is a combination of the other vectors, because $3Ax+5A^{2}y+7A^{3}z=0$)
+and we replaced $x$ by $3x+5Ay+7A^{2}z$ (which does not change the span,
+because $Ay$ and $A^{2}z$ are still in the spanning set).
+
+This example generalizes. In the general case, you have a spanning set that is
+a concatenation of orbits:%
+\[
+\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
+}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)  .
+\]
+If it is a basis, you are done. If not, you pick a linear dependence relation:%
+\[
+\sum_{i,j}\lambda_{i,j}A^{j}v_{i}=0.
+\]
+By multiplying this by $A$ an appropriate amount of times (namely, you keep
+multiplying until it becomes $0=0$, and then you take a step back), you obtain
+a linear dependence relation that involves only the \textbf{final} vectors of
+the orbits (i.e., the vectors $A^{m_{1}}v_{1},\ A^{m_{2}}v_{2},\ \ldots
+,\ A^{m_{k}}v_{k}$). So it will look like this:%
+\[
+\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{k}A^{m_{k}}v_{k}=0.
+\]
+Assume WLOG that the first $p$ of the $\mu_{1},\mu_{2},\ldots,\mu_{k}$ are
+nonzero, while the remaining $k-p$ are $0$. So the relation becomes%
+\[
+\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0,
+\]
+with $\mu_{1},\mu_{2},\ldots,\mu_{p}$ being nonzero. Assume WLOG that
+$m_{1}=\min\left\{  m_{1},m_{2},\ldots,m_{p}\right\}  $, and factor out
+$A^{m_{1}}$ from this relation. This yields%
+\[
+A^{m_{1}}\left(  \mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
+_{p}A^{m_{p}-m_{1}}v_{p}\right)  =0.
+\]
+Now, set $w_{1}=\mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
+_{p}A^{m_{p}-m_{1}}v_{p}$. Thus, $A^{m_{1}}w_{1}=0$. Hence, $\left(
+w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1}\right)  $ is an orbit of
+length $m_{1}$. Now, replace the orbit $\left(  v_{1},Av_{1},\ldots,A^{m_{1}%
+}v_{1}\right)  $ in the spanning set%
+\[
+\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
+}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
+\]
+by the shorter orbit $\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}%
+w_{1}\right)  $. The resulting list%
+\[
+\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1},\ v_{2},Av_{2}%
+,\ldots,A^{m_{2}}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
+\]
+is still a concatenation of orbits. Also, it still spans $\mathbb{C}^{n}$,
+because%
+\begin{align*}
+w_{1}  & =\underbrace{\mu_{1}}_{\neq0}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}%
++\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p};\\
+Aw_{1}  & =\underbrace{\mu_{1}}_{\neq0}Av_{1}+\mu_{2}A^{m_{2}-m_{1}+1}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}+1}v_{p};\\
+& \ldots;\\
+A^{m_{1}}v_{1}  & =-\left(  \mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}%
+v_{p}\right)  \\
+& \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\mu_{1}A^{m_{1}}v_{1}+\mu
+_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0\right)  .
+\end{align*}
+
+
+So we have found a spanning set of $\mathbb{C}^{n}$ that is still a
+concatenation of orbits, but is shorter (it has one less vector). Doing this
+repeatedly, we will eventually obtain a basis (since we cannot keep making a
+finite list shorter and shorter indefinitely). This proves the lemma.
+\end{proof}
+
+As we said, the lemma gives us a basis $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ such that $As_{i}$ is either $s_{i-1}$ or $0$; and that shows
+that $A$ is similar to a Jordan matrix. This completes the proof of the
+existence part of the Jordan canonical form.
+
+\begin{example}
+Let
+\[
+A=\left(
+\begin{array}
+[c]{cccccc}%
+0 & 1 & 0 & -1 & 1 & -1\\
+0 & 1 & 1 & -2 & 2 & -2\\
+0 & 1 & 0 & -1 & 2 & -2\\
+0 & 1 & 0 & -1 & 2 & -2\\
+0 & 1 & 0 & -1 & 1 & -1\\
+0 & 1 & 0 & -1 & 1 & -1
+\end{array}
+\right)  .
+\]
+This is not strictly upper-triangular, but it is nilpotent, with $A^{3}=0$, so
+the above argument goes equally well with this $A$. 
+
+Let us try to find a basis of $\mathbb{C}^{6}$ that is a concatenation of orbits.
+
+We begin with the spanning set%
+\[
+\left(  e_{1},Ae_{1},A^{2}e_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots
+,\ \ e_{6},Ae_{6},A^{2}e_{6}\right)  .
+\]
+It has lots of linear dependencies. For one, $Ae_{1}=0$. Multiplying it by $A$
+gives $A^{2}e_{1}=0$, so we can replace $\left(  e_{1},Ae_{1},A^{2}%
+e_{1}\right)  $ by $\left(  e_{1},Ae_{1}\right)  $. So our spanning set
+becomes%
+\[
+\left(  e_{1},Ae_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots,\ \ e_{6}%
+,Ae_{6},A^{2}e_{6}\right)  .
+\]
+One more step of the same form gives%
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots,\ \ e_{6},Ae_{6}%
+,A^{2}e_{6}\right)  .
+\]
+
+
+Now, observe that $Ae_{3}=e_{2}$. That is, $e_{2}-Ae_{3}=0$. Multiplying it by
+$A^{2}$, we obtain $A^{2}e_{2}=0$ (since $A^{2}\cdot Ae_{3}=A^{3}e_{3}=0$). So
+we replace the orbit $\left(  e_{2},Ae_{2},A^{2}e_{2}\right)  $ by $\left(
+e_{2},Ae_{2}\right)  $. So we get the spanning set
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},\ \ e_{3},Ae_{3},A^{2}e_{3},\ \ e_{4}%
+,Ae_{4},A^{2}e_{4},\ \ e_{5},Ae_{5},A^{2}e_{5},\ \ e_{6},Ae_{6},A^{2}%
+e_{6}\right)  .
+\]
+
+
+We observe that%
+\[
+Ae_{2}=e_{1}+e_{2}+e_{3}+e_{4}+e_{5}+e_{6}.
+\]
+In other words,%
+\[
+Ae_{2}-e_{1}-e_{2}-e_{3}-e_{4}-e_{5}-e_{6}=0.
+\]
+Multiplying this by $A^{2}$, we obtain%
+\[
+-A^{2}e_{3}-A^{2}e_{4}-A^{2}e_{5}-A^{2}e_{6}=0.
+\]
+In other words,%
+\[
+A^{2}\left(  -e_{3}-e_{4}-e_{5}-e_{6}\right)  =0.
+\]
+Thus, we set $w_{1}:=-e_{3}-e_{4}-e_{5}-e_{6}$, and we replace $\left(
+e_{3},Ae_{3},A^{2}e_{3}\right)  $ by $\left(  w_{1},Aw_{1}\right)  $. So we
+get the spanning set
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},\ \ w_{1},Aw_{1},\ \ e_{4},Ae_{4},A^{2}%
+e_{4},\ \ e_{5},Ae_{5},A^{2}e_{5},\ \ e_{6},Ae_{6},A^{2}e_{6}\right)  .
+\]
+Keep making these steps. Eventually, there will be no more linear
+dependencies, so we will have a basis.
+\end{example}
+
+
+\end{document}
