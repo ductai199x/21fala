@@ -1,0 +1,638 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, October 20, 2021 11:50:12}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 13}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{The companion matrix}
+
+For each $n\times n$-matrix $A$, we have defined its characteristic polynomial
+$p_{A}$ and its minimal polynomial $q_{A}$. What variety of polynomials do we
+get this way? Do all characteristic polynomials share some property, or can
+any monic polynomial be a characteristic polynomial? The same question for
+minimal polynomials?
+
+Poll:
+
+\begin{enumerate}
+\item Any monic polynomial can be a characteristic polynomial.
+
+\item Characteristic polynomials have some special property among monic polynomials.
+\end{enumerate}
+
+The answer is 1.
+
+\begin{definition}
+Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$.
+
+Let $p\left(  t\right)  =t^{n}+p_{n-1}t^{n-1}+p_{n-2}t^{n-2}+\cdots+p_{1}%
+t^{1}+p_{0}t^{0}$ be a monic polynomial of degree $n$ with coefficients in
+$\mathbb{F}$. Then, the \textbf{companion matrix} of $p\left(  t\right)  $ is
+defined to be the matrix%
+\[
+C_{p}:=\left(
+\begin{array}
+[c]{cccccc}%
+0 &  &  & \cdots &  & -p_{0}\\
+1 & 0 &  & \cdots &  & -p_{1}\\
+& 1 & 0 & \cdots &  & -p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & 0 & -p_{n-2}\\
+&  &  & \cdots & 1 & -p_{n-1}%
+\end{array}
+\right)  \in\mathbb{F}^{n\times n}.
+\]
+This is the $n\times n$-matrix whose first $n-1$ columns are the standard
+basis vectors $e_{2},e_{3},\ldots,e_{n}$, and whose last column is $\left(
+-p_{0},-p_{1},\ldots,-p_{n-1}\right)  ^{T}$.
+\end{definition}
+
+\begin{proposition}
+For any monic polynomial $p\left(  t\right)  $, we have%
+\[
+p_{C_{p}}\left(  t\right)  =q_{C_{p}}\left(  t\right)  =p\left(  t\right)  .
+\]
+(The two $p$'s in \textquotedblleft$p_{C_{p}}$\textquotedblright\ stand for
+different things: The first stands for \textquotedblleft characteristic
+polynomial\textquotedblright, while the second is the $p\left(  t\right)  $ we
+have given.)
+\end{proposition}
+
+\begin{proof}
+Let us first show that $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. To
+do so, we induct on $n$. Recall that%
+\begin{align*}
+p_{C_{p}}\left(  t\right)    & =\det\left(  tI_{n}-C_{p}\right)  \\
+& =\det\left(
+\begin{array}
+[c]{cccccc}%
+t &  &  & \cdots &  & p_{0}\\
+-1 & t &  & \cdots &  & p_{1}\\
+& -1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & t & p_{n-2}\\
+&  &  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right)  .
+\end{align*}
+We compute this determinant by Laplace expansion along the first row:%
+\begin{align*}
+& \det\left(
+\begin{array}
+[c]{cccccc}%
+t &  &  & \cdots &  & p_{0}\\
+-1 & t &  & \cdots &  & p_{1}\\
+& -1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & t & p_{n-2}\\
+&  &  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right)  \\
+& =t\ \underbrace{\det\left(
+\begin{array}
+[c]{ccccc}%
+t &  & \cdots &  & p_{1}\\
+-1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+&  & \cdots & t & p_{n-2}\\
+&  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right)  }_{\substack{=t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}%
+t^{0}\\\text{(by the induction hypothesis)}}}+\left(  -1\right)  ^{n+1}%
+p_{0}\ \underbrace{\det\left(
+\begin{array}
+[c]{ccccc}%
+-1 & t &  & \cdots & \\
+& -1 & t & \cdots & \\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+&  &  & \cdots & t\\
+&  &  & \cdots & -1
+\end{array}
+\right)  }_{\substack{=\left(  -1\right)  ^{n-1}\\\text{(since this matrix is
+upper-triangular}\\\text{of size }n-1\text{)}}}\\
+& =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
++\underbrace{\left(  -1\right)  ^{n+1}p_{0}\left(  -1\right)  ^{n-1}}_{=p_{0}%
+}\\
+& =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
++p_{0}\\
+& =t^{n}+p_{n-1}t^{n-1}+p_{2}t^{2}+p_{1}t^{1}+p_{0}=p\left(  t\right)  .
+\end{align*}
+
+
+Thus, $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $ is proved.
+
+Now, let us show that $q_{C_{p}}\left(  t\right)  =p\left(  t\right)  $.
+Indeed, both $q_{C_{p}}\left(  t\right)  $ and $p\left(  t\right)  $ are monic
+polynomials, and we know from last lecture that $q_{C_{p}}\left(  t\right)
+\mid p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. Hence, if $q_{C_{p}%
+}\left(  t\right)  \neq p\left(  t\right)  $, then $q_{C_{p}}\left(  t\right)
+$ is a proper divisor of $p\left(  t\right)  $, thus has degree $<n$ (since
+$p\left(  t\right)  $ has degree $n$). So we just need to rule out the
+possibility that $q_{C_{p}}\left(  t\right)  $ has degree $<n$.
+
+Indeed, assume (for the sake of contradiction) that $q_{C_{p}}\left(
+t\right)  $ has degree $<n$. Thus, $q_{C_{p}}\left(  t\right)  =a_{k}%
+t^{k}+a_{k-1}t^{k-1}+\cdots+a_{0}t^{0}$ with $k<n$ and $a_{k}=1$ (since
+$q_{C_{p}}$ is monic of degree $<n$). However, the definition of $q_{C_{p}}$
+yields $q_{C_{p}}\left(  C_{p}\right)  =0$. In other words,%
+\[
+a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0.
+\]
+
+
+However, let us look at what $C_{p}$ does to the standard basis vector
+$e_{1}=\left(  1,0,0,0,\ldots,0\right)  ^{T}$. We have%
+\begin{align*}
+C_{p}^{0}e_{1}  & =e_{1};\\
+C_{p}^{1}e_{1}  & =C_{p}e_{1}=e_{2};\\
+C_{p}^{2}e_{1}  & =C_{p}e_{2}=e_{3};\\
+& \ldots;\\
+C_{p}^{n-1}e_{1}  & =e_{n}.
+\end{align*}
+Thus, applying our equality%
+\[
+a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0
+\]
+to $e_{1}$, we obtain%
+\[
+a_{k}e_{k+1}+a_{k-1}e_{k}+\cdots+a_{0}e_{1}=0\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }k<n\right)  .
+\]
+But this is absurd, since $e_{1},e_{2},\ldots,e_{n}$ are linearly independent.
+So we found a contradiction, and thus we conclude that $q_{C_{p}}\left(
+t\right)  $ has degree $\geq n$. So, by the above, we obtain $q_{C_{p}}\left(
+t\right)  =p\left(  t\right)  $.
+\end{proof}
+
+\begin{remark}
+For algebraists: The companion matrix $C_{p}$ has a natural meaning. To wit,
+consider the quotient ring $\mathbb{F}\left[  t\right]  /\left(  p\left(
+t\right)  \right)  $ as an $n$-dimensional $\mathbb{F}$-vector space with
+basis $\left(  \overline{t^{0}},\overline{t^{1}},\ldots,\overline{t^{n-1}%
+}\right)  $. Then, the companion matrix $C_{p}$ represents the endomorphism
+\textquotedblleft multiply by $t$\textquotedblright\ (that is, the
+endomorphism that sends each $\overline{f\left(  t\right)  }$ to
+$\overline{t\cdot f\left(  t\right)  }$) in this basis.
+\end{remark}
+
+\subsection{The Jordan--Chevalley decomposition}
+
+Recall that:
+
+\begin{itemize}
+\item A matrix $A\in\mathbb{C}^{n\times n}$ is said to be
+\textbf{diagonalizable} if it is similar to a diagonal matrix.
+
+\item A matrix $A\in\mathbb{C}^{n\times n}$ is said to be \textbf{nilpotent}
+if some power of it is the zero matrix (i.e., if $A^{k}=0$ for some
+$k\in\mathbb{N}$). Actually (this will be a HW problem), for an $n\times
+n$-matrix $A$ to be nilpotent, it is necessary and sufficient that $A^{n}=0$.
+\end{itemize}
+
+\begin{theorem}
+[Jordan--Chevalley decomposition]Let $A\in\mathbb{C}^{n\times n}$ be an
+$n\times n$-matrix.
+
+\textbf{(a)} Then, there exists a unique pair $\left(  D,N\right)  $
+consisting of
+
+\begin{itemize}
+\item a diagonalizable matrix $D\in\mathbb{C}^{n\times n}$ and
+
+\item a nilpotent matrix $N\in\mathbb{C}^{n\times n}$
+\end{itemize}
+
+such that $DN=ND$ and $A=D+N$.
+
+\textbf{(b)} Both $D$ and $N$ in this pair can be written as polynomials in
+$A$. In other words, there exist two polynomials $f,g\in\mathbb{C}\left[
+t\right]  $ such that $D=f\left(  A\right)  $ and $N=g\left(  A\right)  $.
+\end{theorem}
+
+The pair $\left(  D,N\right)  $ in this theorem is known as the
+\textbf{Jordan--Chevalley decomposition} (or the \textbf{Dunford
+decomposition}) of $A$.
+
+\begin{proof}
+[Partial proof.] We will show the following two claims:
+
+\begin{statement}
+\textit{Claim 1:} There exists a pair $\left(  D,N\right)  $ as in part
+\textbf{(a)} of the theorem.
+\end{statement}
+
+\begin{statement}
+\textit{Claim 2:} The $D$ and $N$ in this particular pair can be written as
+polynomials in $A$.
+\end{statement}
+
+To prove both Claims 1 and 2, we can WLOG assume that $A$ is a Jordan matrix.
+Indeed, if $A=SJS^{-1}$ for some invertible $S$, and if $\left(  D^{\prime
+},N^{\prime}\right)  $ is a Jordan--Chevalley decomposition of $J$, then
+$\left(  SD^{\prime}S^{-1},SN^{\prime}S^{-1}\right)  $ is a Jordan--Chevalley
+decomposition of $A$. Conjugation of matrices preserves all the properties we
+need (such as being a polynomial, commuting, etc.), so we only need to prove
+the claims for $J$.
+
+So we WLOG assume that $A$ is a Jordan matrix. Thus,%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  \lambda_{1}\right)   &  &  & \\
+& J_{k_{2}}\left(  \lambda_{2}\right)   &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  \lambda_{p}\right)
+\end{array}
+\right)
+\]
+for some $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ and some $k_{1}%
+,k_{2},\ldots,k_{p}$. Now, we want to decompose this $A$ as $D+N$ with $D$
+diagonal and $N$ nilpotent and $DN=ND$. We do this by setting%
+\[
+D:=\left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1}I_{k_{1}} &  &  & \\
+& \lambda_{2}I_{k_{2}} &  & \\
+&  & \ddots & \\
+&  &  & \lambda_{p}I_{k_{p}}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ N:=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  0\right)   &  &  & \\
+& J_{k_{2}}\left(  0\right)   &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  0\right)
+\end{array}
+\right)  .
+\]
+It is easy to check that $A=D+N$ and $DN=ND$ (since block-diagonal matrices
+can be multiplied block by block). Clearly, $D$ is diagonalizable (since $D$
+is diagonal) and $N$ is nilpotent (since $N$ is strictly upper-triangular).
+Thus, Claim 1 is proved.
+
+Now, we need to prove Claim 2 -- i.e., we need to prove that $D$ and $N$ can
+be written as polynomials in $A$. Since $A=D+N$, it suffices to show this for
+$D$ (since $N=A-D$).
+
+Our above construction of $D$ shows that $D$ is simply $A$ with its
+non-diagonal entries removed. Let $\mu_{1},\mu_{2},\ldots,\mu_{m}$ be the
+\textbf{distinct} eigenvalues (i.e., diagonal entries) of $A$. For each
+$i\in\left[  m\right]  $, let $\ell_{i}$ be the size of the largest Jordan
+block of $A$ at eigenvalue $\mu_{i}$. (Thus, the minimal polynomial of $A$ is
+$\prod\limits_{i=1}^{m}\left(  t-\mu_{i}\right)  ^{\ell_{i}}$.)
+
+Now, define the polynomial%
+\[
+f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}\in\mathbb{C}\left[
+t\right]  ,
+\]
+where the product sign $\prod\limits_{j\neq i}$ means a product over all
+$j\in\left[  m\right]  $ except for $j=i$. We claim that $f\left(  A\right)
+=D$. In other words, we claim that applying $f$ to $A$ has the effect of
+cleaning out all off-diagonal entries (while the diagonal entries remain as
+they are).
+
+To prove this claim, we recall that%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  \lambda_{1}\right)   &  &  & \\
+& J_{k_{2}}\left(  \lambda_{2}\right)   &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  \lambda_{p}\right)
+\end{array}
+\right)  .
+\]
+Hence,%
+\[
+f\left(  A\right)  =\left(
+\begin{array}
+[c]{cccc}%
+f\left(  J_{k_{1}}\left(  \lambda_{1}\right)  \right)   &  &  & \\
+& f\left(  J_{k_{2}}\left(  \lambda_{2}\right)  \right)   &  & \\
+&  & \ddots & \\
+&  &  & f\left(  J_{k_{p}}\left(  \lambda_{p}\right)  \right)
+\end{array}
+\right)  .
+\]
+So we need to show that%
+\[
+f\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)  =\lambda_{u}I_{k_{u}%
+}\ \ \ \ \ \ \ \ \ \ \text{for each }u\in\left[  p\right]  .
+\]
+To prove this, we fix a $u\in\left[  p\right]  $, and we set $B:=J_{k_{u}%
+}\left(  \lambda_{u}\right)  $. Thus, $B=J_{k}\left(  \mu_{v}\right)  $ for
+some $v\in\left[  p\right]  $ and some positive $k\leq\ell_{v}$.
+
+Substituting $B$ for $t$ into%
+\[
+f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}},
+\]
+we obtain%
+\[
+f\left(  B\right)  =\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}.
+\]
+We take a closer look at the addends of the sum. For each $i\in\left[
+m\right]  $ that is distinct from $v$, the product $\prod\limits_{j\neq
+i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}$ contains a
+factor $\left(  \dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}\right)  ^{\ell_{v}}=0$,
+because the $k\times k$-matrix $\dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}$ is
+strictly upper-triangular and $k\leq\ell_{v}$. So the entire addend $\mu
+_{i}\prod\limits_{j\neq i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)
+^{\ell_{j}}$ is $0$ whenever $i$ is distinct from $v$. Thus, all these addends
+disappear except for the addend for $i=v$. So the above formula for $f\left(
+B\right)  $ simplifies to%
+\[
+f\left(  B\right)  =\mu_{v}\prod\limits_{j\neq v}\left(  \dfrac{B-\mu_{j}%
+I}{\mu_{v}-\mu_{j}}\right)  ^{\ell_{j}}.
+\]
+This should be $\mu_{v}I$.
+
+I'm just seeing this isn't exactly the case. TODO: Fix this.
+
+[Alternatively, use the Chinese Remainder Theorem for polynomials to find a
+polynomial $f$ that satisfies $f\left(  J_{k_{u}}\left(  \lambda_{u}\right)
+\right)  =\lambda_{u}I_{k_{u}}$. This polynomial $f$ should satisfy
+$f\equiv\left(  t-\lambda_{u}\right)  ^{k_{u}}+\lambda_{u}$ for each $u$.]
+\end{proof}
+
+\subsection{The real Jordan canonical form}
+
+Given a matrix $A\in\mathbb{R}^{n\times n}$ with real entries, its Jordan
+canonical form doesn't necessarily have real entries. Indeed, the eigenvalues
+of $A$ don't have to be real. Sometimes, we want to find a \textquotedblleft
+simple\textquotedblright\ form for $A$ that does have real entries. What
+follows is a way to tweak the Jordan canonical form to this use case.
+
+We observe the following:
+
+\begin{lemma}
+Let $A\in\mathbb{R}^{n\times n}$ and $\lambda\in\mathbb{C}$. Then, the
+\textquotedblleft Jordan structure of $A$ at $\lambda$\textquotedblright%
+\ (meaning the multiset of the sizes of the Jordan blocks of $A$ at $\lambda$)
+equals the Jordan structure of $A$ at $\overline{\lambda}$. In other words,
+for each $p>0$, we have%
+\begin{align*}
+& \left(  \text{the number of Jordan blocks of }A\text{ at }\lambda\text{
+having size }p\right)  \\
+& =\left(  \text{the number of Jordan blocks of }A\text{ at }\overline
+{\lambda}\text{ having size }p\right)  .
+\end{align*}
+
+
+In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
+{\lambda}$ come in pairs of equal sizes.
+\end{lemma}
+
+\begin{proof}
+HW.
+\end{proof}
+
+So we can try to combine each Jordan block at $\lambda$ with an equally sized
+Jordan block at $\overline{\lambda}$ and hope that something real comes out
+somehow, in the same way as $\left(  t-\lambda\right)  \left(  t-\overline
+{\lambda}\right)  =t^{2}-2\operatorname*{Re}\lambda+\left\vert \lambda
+\right\vert ^{2}\in\mathbb{R}\left[  t\right]  $.
+
+How to do this?%
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccccccc}%
+\lambda & 1 &  &  &  &  &  & \\
+& \lambda & \ddots &  &  &  &  & \\
+&  & \ddots & 1 &  &  &  & \\
+&  &  & \lambda &  &  &  & \\
+&  &  &  & \overline{\lambda} & 1 &  & \\
+&  &  &  &  & \overline{\lambda} & \ddots & \\
+&  &  &  &  &  & \ddots & 1\\
+&  &  &  &  &  &  & \overline{\lambda}%
+\end{array}
+\right)  \\
+& \sim\left(
+\begin{array}
+[c]{cccccccc}%
+\lambda &  & 1 &  &  &  &  & \\
+& \overline{\lambda} &  & 1 &  &  &  & \\
+&  & \lambda &  & 1 &  &  & \\
+&  &  & \overline{\lambda} &  & 1 &  & \\
+&  &  &  & \ddots &  &  & \\
+&  &  &  &  & \ddots &  & \\
+&  &  &  &  &  & \lambda & \\
+&  &  &  &  &  &  & \overline{\lambda}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+L & I_{2} &  & \\
+& L & I_{2} & \\
+&  & \ddots & \\
+&  &  & L
+\end{array}
+\right)  ,
+\end{align*}
+where $L$ is the $2\times2$-matrix $\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  $. However,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+-b & a
+\end{array}
+\right)  ,
+\]
+where $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}\lambda$ (so that
+$\lambda=a+bi$). (HW!) So our matrix is similar to%
+\[
+\left(
+\begin{array}
+[c]{cccccccc}%
+a & b & 1 &  &  &  &  & \\
+-b & a &  & 1 &  &  &  & \\
+&  & a & b & 1 &  &  & \\
+&  & -b & a &  & 1 &  & \\
+&  &  &  & \ddots &  &  & \\
+&  &  &  &  & \ddots &  & \\
+&  &  &  &  &  & a & b\\
+&  &  &  &  &  & -b & a
+\end{array}
+\right)  .
+\]
+
+
+
+\end{document}

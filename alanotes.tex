@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 08, 2021 23:35:10}
+%TCIDATA{LastRevised=Friday, October 22, 2021 08:03:13}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -2337,8 +2337,8 @@ v_{\left\langle 2\right\rangle }\\
 \vdots\\
 v_{\left\langle u\right\rangle }%
 \end{array}
-\right)  $, where each $v\left[  i\right]  $ is a vector in $\mathbb{F}%
-^{n_{i}}$. Then,
+\right)  $, where each $v_{\left\langle i\right\rangle }$ is a vector in
+$\mathbb{F}^{n_{i}}$. Then,
 \begin{align*}
 \left(
 \begin{array}
@@ -4135,7 +4135,9 @@ The matrix $\left(
 The relation $\sim$\ is easily seen to be an equivalence
 relation:\footnote{Algebraists will recognize the relation $\sim$\ (for
 matrices in $\mathbb{F}^{n\times n}$) as just being the conjugacy relation in
-the ring $\mathbb{F}^{n\times n}$ of all $n\times n$-matrices.}
+the ring $\mathbb{F}^{n\times n}$ of all $n\times n$-matrices. (The meaning of
+the word \textquotedblleft conjugacy\textquotedblright\ here has nothing to do
+with conjugates of complex numbers or with the conjugate transpose!)}
 
 \begin{proposition}
 \label{prop.schurtri.similar.eqrel}Let $\mathbb{F}$ be a field. Then: \medskip
@@ -7159,7 +7161,7 @@ and $8$) yields that the matrices $A-8I_{7}$ and $J-8I_{7}$ have the same
 nullity. In other words,%
 \begin{align*}
 \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)   &
-=\dim\left(  \operatorname*{Ker}\left(  J-8I_{7}\right)  \right)  \\
+=\dim\left(  \operatorname*{Ker}\left(  J-8I_{7}\right)  \right) \\
 &  =\dim\left(  \operatorname*{Ker}\left(
 \begin{array}
 [c]{ccc}%
@@ -7171,15 +7173,15 @@ J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
 \end{align*}
 (since%
 \begin{align*}
-J-8I_{7}  & =\left(
+J-8I_{7}  &  =\left(
 \begin{array}
 [c]{ccc}%
-J_{2}\left(  8\right)   & 0 & 0\\
-0 & J_{3}\left(  8\right)   & 0\\
+J_{2}\left(  8\right)  & 0 & 0\\
+0 & J_{3}\left(  8\right)  & 0\\
 0 & 0 & J_{2}\left(  9\right)
 \end{array}
 \right)  -8I_{7}\\
-& =\left(
+&  =\left(
 \begin{array}
 [c]{ccc}%
 J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
@@ -7190,16 +7192,16 @@ J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
 \end{align*}
 ). Thus,%
 \begin{align*}
-& \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  \\
-& =\dim\left(  \operatorname*{Ker}\left(
+&  \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right) \\
+&  =\dim\left(  \operatorname*{Ker}\left(
 \begin{array}
 [c]{ccc}%
 J_{2}\left(  8\right)  -8I_{2} & 0 & 0\\
 0 & J_{3}\left(  8\right)  -8I_{3} & 0\\
 0 & 0 & J_{2}\left(  9\right)  -8I_{2}%
 \end{array}
-\right)  \right)  \\
-& =\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
+\right)  \right) \\
+&  =\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
 -8I_{2}\right)  \right)  +\dim\left(  \operatorname*{Ker}\left(  J_{3}\left(
 8\right)  -8I_{3}\right)  \right)  +\dim\left(  \operatorname*{Ker}\left(
 J_{2}\left(  9\right)  -8I_{2}\right)  \right)
@@ -7233,13 +7235,13 @@ that $\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  9\right)
 -8I_{2}\right)  \right)  =0$. Thus, our above computation of $\dim\left(
 \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  $ becomes%
 \begin{align*}
-& \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right)  \\
-& =\underbrace{\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
+&  \dim\left(  \operatorname*{Ker}\left(  A-8I_{7}\right)  \right) \\
+&  =\underbrace{\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  8\right)
 -8I_{2}\right)  \right)  }_{=1}+\underbrace{\dim\left(  \operatorname*{Ker}%
 \left(  J_{3}\left(  8\right)  -8I_{3}\right)  \right)  }_{=1}%
 +\underbrace{\dim\left(  \operatorname*{Ker}\left(  J_{2}\left(  9\right)
 -8I_{2}\right)  \right)  }_{=0}\\
-& =1+1+0=2.
+&  =1+1+0=2.
 \end{align*}
 Looking back, we see that this comes from the fact that exactly $2$ of the
 diagonal blocks in the Jordan canonical form $J$ are Jordan cells at
@@ -7273,6 +7275,2664 @@ an eigenvalue of $A$ is the \textbf{sum} of the sizes of all Jordan cells of
 $A$ at eigenvalue $\lambda$. In other words, it is $\sum
 \limits_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}n_{i}$.
 \end{proposition}
+
+\begin{proof}
+TODO: Scribe?
+\end{proof}
+
+With some more effort, we can obtain a more precise result:
+
+\begin{proposition}
+\label{prop.jnf.unique.cellsizes}Let $A$ be an $n\times n$-matrix, and let
+$J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ be its Jordan canonical form. Let $\lambda\in\mathbb{C}$. Let $p$
+be a positive integer. Then,%
+\begin{align*}
+&  \left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}\geq p\right) \\
+&  =\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  .
+\end{align*}
+
+\end{proposition}
+
+\begin{proof}
+We have $A\sim J$, so that $A-\lambda I_{n}\sim J-\lambda I_{n}$ (by
+Proposition \ref{prop.schurtri.similar.same} \textbf{(h)}, applied to $B=J$),
+and therefore $\left(  A-\lambda I_{n}\right)  ^{p}\sim\left(  J-\lambda
+I_{n}\right)  ^{p}$ (by Proposition \ref{prop.schurtri.similar.same}
+\textbf{(f)}, applied to $A-\lambda I_{n}$ and $B-\lambda I_{n}$ and $p$
+instead of $A$, $B$ and $k$). Hence,%
+\begin{equation}
+\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  \left(
+J-\lambda I_{n}\right)  ^{p}\right)  \right)
+.\label{pf.prop.jnf.unique.cellsizes.dimKer1}%
+\end{equation}
+
+
+For each $i\in\left[  k\right]  $, we set
+\begin{equation}
+M_{i}:=J_{n_{i}}\left(  \lambda_{i}-\lambda\right)
+.\label{pf.prop.jnf.unique.cellsizes.Mi=}%
+\end{equation}
+
+
+However, for each $i\in\left[  k\right]  $, we have%
+\begin{equation}
+J_{n_{i}}\left(  \lambda_{i}\right)  -\lambda I_{n_{i}}=J_{n_{i}}\left(
+\lambda_{i}-\lambda\right)  \label{pf.prop.jnf.unique.cellsizes.J-lam}%
+\end{equation}
+(because the two Jordan cells $J_{n_{i}}\left(  \lambda_{i}\right)  $ and
+$J_{n_{i}}\left(  \lambda_{i}-\lambda\right)  $ differ only in their diagonal
+entries, which are $\lambda_{i}$ in the former matrix and $\lambda_{i}%
+-\lambda$ in the latter). Comparing this with
+(\ref{pf.prop.jnf.unique.cellsizes.Mi=}), we obtain%
+\begin{equation}
+J_{n_{i}}\left(  \lambda_{i}\right)  -\lambda I_{n_{i}}=M_{i}%
+\label{pf.prop.jnf.unique.cellsizes.J-lam2}%
+\end{equation}
+for each $i\in\left[  k\right]  $.
+
+Now, we have%
+\begin{align*}
+J &  =\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
+\lambda I_{n} &  =\left(
+\begin{array}
+[c]{cccc}%
+\lambda I_{n_{1}} & 0 & \cdots & 0\\
+0 & \lambda I_{n_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda I_{n_{k}}%
+\end{array}
+\right)  .
+\end{align*}
+Subtracting these two equalities from one another, we obtain%
+\begin{align*}
+J-\lambda I_{n} &  =\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  -\lambda I_{n_{1}} & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  -\lambda I_{n_{2}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)  -\lambda I_{n_{k}}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+M_{1} & 0 & \cdots & 0\\
+0 & M_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & M_{k}%
+\end{array}
+\right)
+\end{align*}
+(by (\ref{pf.prop.jnf.unique.cellsizes.J-lam})). Hence,%
+\[
+\left(  J-\lambda I_{n}\right)  ^{p}=\left(
+\begin{array}
+[c]{cccc}%
+M_{1} & 0 & \cdots & 0\\
+0 & M_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & M_{k}%
+\end{array}
+\right)  ^{p}=\left(
+\begin{array}
+[c]{cccc}%
+M_{1}^{p} & 0 & \cdots & 0\\
+0 & M_{2}^{p} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & M_{k}^{p}%
+\end{array}
+\right)
+\]
+(by Corollary \ref{cor.blockmatrix.powt-diag}). Thus,%
+\begin{align}
+&  \dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
+^{p}\right)  \right)  \nonumber\\
+&  =\dim\left(  \operatorname*{Ker}\left(
+\begin{array}
+[c]{cccc}%
+M_{1}^{p} & 0 & \cdots & 0\\
+0 & M_{2}^{p} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & M_{k}^{p}%
+\end{array}
+\right)  \right)  \nonumber\\
+&  =\dim\left(  \operatorname*{Ker}\left(  M_{1}^{p}\right)  \right)
++\dim\left(  \operatorname*{Ker}\left(  M_{2}^{p}\right)  \right)
++\cdots+\dim\left(  \operatorname*{Ker}\left(  M_{k}^{p}\right)  \right)
+\nonumber\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
+\ref{prop.blockmatrix.nullity-diag}}\right)  \nonumber\\
+&  =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
+\right)  \label{pf.prop.jnf.unique.cellsizes.1}%
+\end{align}
+
+
+Now, fix an $i\in\left[  k\right]  $ satisfying $\lambda_{i}\neq\lambda$.
+Thus, $\lambda_{i}-\lambda\neq0$. The matrix $J_{n_{i}}\left(  \lambda
+_{i}-\lambda\right)  $ is upper-triangular, and its diagonal entries are all
+$\lambda_{i}-\lambda$. Hence, its determinant is $\det\left(  J_{n_{i}}\left(
+\lambda_{i}-\lambda\right)  \right)  =\left(  \lambda_{i}-\lambda\right)
+^{n_{i}}\neq0$ (since $\lambda_{i}-\lambda\neq0$). Therefore, this matrix
+$J_{n_{i}}\left(  \lambda_{i}-\lambda\right)  $ is invertible. In other words,
+the matrix $M_{i}$ is invertible (since $M_{i}=J_{n_{i}}\left(  \lambda
+_{i}-\lambda\right)  $). Hence, its $p$-th power $M_{i}^{p}$ is also
+invertible, and therefore has nullity $0$. In other words, $\dim\left(
+\operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)  =0$.
+
+Forget that we fixed $i$. We thus have shown that if $i\in\left[  k\right]  $
+satisfies $\lambda_{i}\neq\lambda$, then
+\begin{equation}
+\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)
+=0\text{.}\label{pf.prop.jnf.unique.cellsizes.nullity0}%
+\end{equation}
+Hence, (\ref{pf.prop.jnf.unique.cellsizes.1}) becomes%
+\begin{align}
+&  \dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
+^{p}\right)  \right)  \nonumber\\
+&  =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
+\right)  \nonumber\\
+&  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}\neq\lambda
+}}\underbrace{\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
+\right)  }_{\substack{=0\\\text{(by
+(\ref{pf.prop.jnf.unique.cellsizes.nullity0}))}}}+\sum_{\substack{i\in\left[
+k\right]  ;\\\lambda_{i}=\lambda}}\dim\left(  \operatorname*{Ker}\left(
+M_{i}^{p}\right)  \right)  \nonumber\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{since each }%
+i\in\left[  k\right]  \text{ satisfies either }\lambda_{i}\neq\lambda\text{ or
+}\lambda_{i}=\lambda\right)  \nonumber\\
+&  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}\dim\left(
+\operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)
+.\label{pf.prop.jnf.unique.cellsizes.2}%
+\end{align}
+
+
+Now, let us fix some $i\in\left[  k\right]  $ satisfying $\lambda_{i}=\lambda
+$. Then, $\lambda_{i}-\lambda=0$. Hence, $J_{n_{i}}\left(  \lambda_{i}%
+-\lambda\right)  =J_{n_{i}}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  $. Let us denote this matrix $J_{n_{i}}\left(  0\right)  $ by $B$.
+Then, Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)} (applied to
+$m=n_{i}$) shows that we have
+\[
+\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)
+=p\ \ \ \ \ \ \ \ \ \ \text{if }p\leq n_{i}.
+\]
+On the other hand, Proposition \ref{prop.jnf.jcell0-powers} \textbf{(c)}
+(applied to $m=n_{i}$) shows that we have
+\[
+\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =n_{i}%
+\ \ \ \ \ \ \ \ \ \ \text{if }p>n_{i}.
+\]
+Combining these two equalities, we obtain
+\[
+\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)  \right)  =%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p\geq n_{i}.
+\end{cases}
+\]
+\footnote{Note that the two cases $p\leq n_{i}$ and $p\geq n_{i}$ are not
+mutually exclusive: They overlap when $p=n_{i}$. (But the answers in this case
+are identical.)} In other words,%
+\begin{equation}
+\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)  =%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p\geq n_{i}%
+\end{cases}
+\label{pf.prop.jnf.unique.cellsizes.nullity1}%
+\end{equation}
+(since $B=J_{n_{i}}\left(  0\right)  =J_{n_{i}}\left(  \lambda_{i}%
+-\lambda\right)  =M_{i}$ (by (\ref{pf.prop.jnf.unique.cellsizes.Mi=}))).
+
+Now, forget that we fixed $i$. We thus have proved
+(\ref{pf.prop.jnf.unique.cellsizes.nullity0}) for each $i\in\left[  k\right]
+$ satisfying $\lambda_{i}=\lambda$. Therefore,
+(\ref{pf.prop.jnf.unique.cellsizes.2}) becomes%
+\[
+\dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
+^{p}\right)  \right)  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda
+_{i}=\lambda}}\underbrace{\dim\left(  \operatorname*{Ker}\left(  M_{i}%
+^{p}\right)  \right)  }_{\substack{=%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p\geq n_{i}%
+\end{cases}
+\\\text{(by (\ref{pf.prop.jnf.unique.cellsizes.nullity1}))}}}=\sum
+_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p\geq n_{i}.
+\end{cases}
+\]
+Thus, (\ref{pf.prop.jnf.unique.cellsizes.dimKer1}) becomes%
+\[
+\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  \left(
+J-\lambda I_{n}\right)  ^{p}\right)  \right)  =\sum_{\substack{i\in\left[
+k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p>n_{i}.
+\end{cases}
+\]
+However, we can also apply the same argument to $p-1$ instead of $p$ (since
+$p-1\in\mathbb{N}$). Thus, we obtain%
+\[
+\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p-1}\right)  \right)  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda
+_{i}=\lambda}}%
+\begin{cases}
+p-1; & \text{if }p-1\leq n_{i};\\
+n_{i}, & \text{if }p-1\geq n_{i}.
+\end{cases}
+\]
+Subtracting these two equalities, we obtain%
+\begin{align*}
+&  \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  \\
+&  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p>n_{i}%
+\end{cases}
+-\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+p-1; & \text{if }p-1\leq n_{i};\\
+n_{i}, & \text{if }p-1\geq n_{i}%
+\end{cases}
+\\
+&  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda
+}}\underbrace{\left(
+\begin{cases}
+p, & \text{if }p\leq n_{i};\\
+n_{i}, & \text{if }p>n_{i}%
+\end{cases}
+-%
+\begin{cases}
+p-1; & \text{if }p-1\leq n_{i};\\
+n_{i}, & \text{if }p-1\geq n_{i}%
+\end{cases}
+\right)  }_{\substack{=%
+\begin{cases}
+1, & \text{if }p\leq n_{i};\\
+0, & \text{if }p>n_{i}%
+\end{cases}
+\\\text{(this can be directly checked in each}\\\text{of the two cases }p\leq
+n_{i}\text{ and }p>n_{i}\text{)}}}\\
+&  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+1, & \text{if }p\leq n_{i};\\
+0, & \text{if }p>n_{i}%
+\end{cases}
+=\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
+\begin{cases}
+1, & \text{if }n_{i}\geq p;\\
+0, & \text{if }n_{i}<p
+\end{cases}
+\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since the condition }p\leq n_{i}\text{ is equivalent to }n_{i}\geq
+p\text{,}\\
+\text{and since the condition }p>n_{i}\text{ is equivalent to }n_{i}<p
+\end{array}
+\right)  \\
+&  =\left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}\geq p\right)
+\end{align*}
+(because the sum has an addend equal to $1$ for each $i\in\left[  k\right]  $
+satisfying $\lambda_{i}=\lambda$ and $n_{i}\geq p$, whereas all remaining
+addends of this sum are $0$). Thus, Proposition
+\ref{prop.jnf.unique.cellsizes} is proved.
+\end{proof}
+
+\begin{corollary}
+\label{cor.jnf.unique.cellsizes=}Let $A$ be an $n\times n$-matrix, and let
+$J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ be its Jordan canonical form. Let $\lambda\in\mathbb{C}$. Let $p$
+be a positive integer. Then,%
+\begin{align*}
+&  \left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}=p\right)  \\
+&  =2\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  \\
+&  \ \ \ \ \ \ \ \ \ \ -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  -\dim\left(
+\operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p+1}\right)
+\right)  .
+\end{align*}
+
+\end{corollary}
+
+\begin{proof}
+An integer $z$ equals $p$ if and only if it satisfies $z\geq p$ but does not
+satisfy $z\geq p+1$. Hence, an $i\in\left[  k\right]  $ satisfies $n_{i}=p$ if
+and only if it satisfies $n_{i}\geq p$ but does not satisfy $n_{i}\geq p+1$.
+Thus,%
+\begin{align*}
+&  \left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}=p\right) \\
+&  =\underbrace{\left(  \text{the number of }i\in\left[  k\right]  \text{ such
+that }\lambda_{i}=\lambda\text{ and }n_{i}\geq p\right)  }_{\substack{=\dim
+\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  \\\text{(by Proposition
+\ref{prop.jnf.unique.cellsizes})}}}\\
+&  \ \ \ \ \ \ \ \ \ \ -\underbrace{\left(  \text{the number of }i\in\left[
+k\right]  \text{ such that }\lambda_{i}=\lambda\text{ and }n_{i}\geq
+p+1\right)  }_{\substack{=\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p+1}\right)  \right)  -\dim\left(
+\operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p}\right)
+\right)  \\\text{(by Proposition \ref{prop.jnf.unique.cellsizes}%
+,}\\\text{applied to }p+1\text{ instead of }p\text{)}}}\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{because any }%
+i\in\left[  k\right]  \text{ satisfying }n_{i}\geq p+1\text{ must also satisfy
+}n_{i}\geq p\right) \\
+&  =\left(  \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda
+I_{n}\right)  ^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(
+\left(  A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ -\left(  \dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p+1}\right)  \right)  -\dim\left(
+\operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p}\right)
+\right)  \right) \\
+&  =2\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  -\dim\left(
+\operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p+1}\right)
+\right)  .
+\end{align*}
+This proves Corollary \ref{cor.jnf.unique.cellsizes=}.
+\end{proof}
+
+Now, we can easily prove Theorem \ref{thm.jnf.jnf} \textbf{(b)}:
+
+\begin{proof}
+[Proof of Theorem \ref{thm.jnf.jnf} \textbf{(b)}.]Let $A\in\mathbb{C}^{n\times
+n}$ be an $n\times n$-matrix. Let $J$ be a Jordan matrix such that $A\sim J$.
+Write $J$ as $J=\left(
+\begin{array}
+[c]{cccc}%
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
+\end{array}
+\right)  $ as in Corollary \ref{cor.jnf.unique.cellsizes=}. Then, the Jordan
+blocks of $J$ are $J_{n_{1}}\left(  \lambda_{1}\right)  ,J_{n_{2}}\left(
+\lambda_{2}\right)  ,\ldots,J_{n_{k}}\left(  \lambda_{k}\right)  $. Hence, for
+any $\lambda\in\mathbb{C}$ and any positive integer $p$, we have%
+\begin{align*}
+&  \left(  \text{the number of Jordan blocks of }J\text{ of size }p\text{ at
+eigenvalue }\lambda\right) \\
+&  =\left(  \text{the number of }i\in\left[  k\right]  \text{ such that
+}\lambda_{i}=\lambda\text{ and }n_{i}=p\right) \\
+&  =2\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
+^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  -\dim\left(
+\operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p+1}\right)
+\right)  .
+\end{align*}
+Therefore, this number is uniquely determined by $A$, $\lambda$ and $p$.
+Hence, the whole structure of $J$ is determined uniquely by $A$, up to the
+order of the Jordan blocks. This proves Theorem \ref{thm.jnf.jnf} \textbf{(b)}.
+\end{proof}
+
+\begin{example}
+Let $A$ be an $8\times8$-matrix. Assume that we know that the Jordan canonical
+form of $A$ has
+
+\begin{itemize}
+\item $1$ Jordan block of size $1$ at eigenvalue $17$;
+
+\item $2$ Jordan blocks of size $1$ at eigenvalue $35$;
+
+\item $1$ Jordan block of size $2$ at eigenvalue $35$;
+
+\item $1$ Jordan block of size $3$ at eigenvalue $59$;
+
+\item no Jordan blocks of other sizes or at other eigenvalues.
+\end{itemize}
+
+Then, the Jordan canonical form of $A$ must be the block-diagonal matrix%
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+J_{1}\left(  17\right)  & 0 & 0 & 0 & 0\\
+0 & J_{2}\left(  35\right)  & 0 & 0 & 0\\
+0 & 0 & J_{1}\left(  35\right)  & 0 & 0\\
+0 & 0 & 0 & J_{1}\left(  35\right)  & 0\\
+0 & 0 & 0 & 0 & J_{3}\left(  59\right)
+\end{array}
+\right)
+\]
+or one that is obtained from it by permuting the diagonal blocks.
+\end{example}
+
+Let us now approach the existence of the Jordan canonical form (Theorem
+\ref{thm.jnf.jnf} \textbf{(a)}).
+
+\subsection{Jordan canonical form: proof of existence}
+
+We will prove the existence of the Jordan canonical form in several steps,
+each of which will bring our matrix $A$ \textquotedblleft
+closer\textquotedblright\ to a Jordan matrix. Along the way, we will obtain
+several results of independent interest.
+
+\subsubsection{Step 1: Schur triangularization}
+
+Our first step will be a slightly stronger version of Schur triangularization.
+As we recall, the Schur triangularization theorem (Theorem
+\ref{thm.schurtri.schurtri}) tells us that if $A\in\mathbb{C}^{n\times n}$ is
+an $n\times n$-matrix, then $A$ is unitarily similar to an upper-triangular
+matrix $T$. The diagonal entries of the latter matrix $T$ will be the
+eigenvalues of $A$ in some order (by Proposition
+\ref{prop.schurtri.schurtri.T-diag}). However, let us now be a bit pickier. To
+wit, we now want the triangular matrix $T$ to have the property that equal
+eigenvalues come in contiguous runs on the main diagonal. In other words, we
+want $T$ to have the property that if two diagonal entries of $T$ are equal,
+then all the diagonal entries between them are also equal to them. For
+instance, if the eigenvalues of $A$ are $1,1,2,2$, we don't want\footnote{In
+the following equation, an empty cell of the matrix must be filled with a $0$,
+whereas a \textquotedblleft$\ast$\textquotedblright\ in a cell means that any
+arbitrary value can go into that cell.}%
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+1 & \ast & \ast & \ast\\
+& 2 & \ast & \ast\\
+&  & 1 & \ast\\
+&  &  & 2
+\end{array}
+\right)  ,
+\]
+but instead we want%
+\[
+T=\left(
+\begin{array}
+[c]{cccc}%
+1 & \ast & \ast & \ast\\
+& 1 & \ast & \ast\\
+&  & 2 & \ast\\
+&  &  & 2
+\end{array}
+\right)  .
+\]
+To this purpose, we need a stronger version of Schur triangularization:
+
+\begin{theorem}
+[Schur triangularization with perscribed diagonal]%
+\label{thm.jnf.schurtri-diag}Let $A\in\mathbb{C}^{n\times n}$ be an $n\times
+n$-matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be its eigenvalues
+(listed with their algebraic multiplicities). Then, there exists an
+upper-triangular matrix $T$ such that $A\overset{\operatorname*{us}}{\sim}T$
+(this means \textquotedblleft$A$ is unitarily similar to $T$\textquotedblright%
+, as we recall) and such that the diagonal entries of $T$ are $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}$ in this order.
+\end{theorem}
+
+\begin{proof}
+TODO: Scribe!
+
+We proceed as in the proof of Theorem \ref{thm.schurtri.schurtri}, but we pay
+some attention to the eigenvectors that we pick. That proof constructed $T$
+recursively, starting by picking an eigenvalue $\lambda$ of $A$ and a
+corresponding $\lambda$-eigenvector $x\neq0$, and then finding a unitary
+matrix $U$ such that%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda & p\\
+0 & B
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }p\in\mathbb{C}^{1\times\left(
+n-1\right)  }\text{ and }B\in\mathbb{C}^{\left(  n-1\right)  \times\left(
+n-1\right)  }.
+\]
+Then, the algorithm was applied recursively to $B$.
+
+Now, we perform this algorithm, but we make sure to pick $\lambda=\lambda_{1}%
+$. Thus,%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  ,
+\]
+which is a good start. Now we want to apply the IH (= induction hypothesis) to
+$B$. To that purpose, we need to know that the eigenvalues of $B$ are
+$\lambda_{2},\lambda_{3},\ldots,\lambda_{n}$ (with algebraic multiplicities).
+In other words, we need to know that%
+\[
+p_{B}\left(  t\right)  =\left(  t-\lambda_{2}\right)  \left(  t-\lambda
+_{3}\right)  \cdots\left(  t-\lambda_{n}\right)  .
+\]
+
+
+Now, since $U$ is unitary, we have $A\overset{\operatorname*{us}}{\sim}%
+U^{\ast}AU$ and thus $A\sim U^{\ast}AU$. Thus,%
+\begin{align*}
+p_{A}  &  =p_{U^{\ast}AU}=\det\left(  tI_{n}-U^{\ast}AU\right)  =\det\left(
+tI_{n}-\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  \right) \\
+&  =\det\left(
+\begin{array}
+[c]{cc}%
+t-\lambda_{1} & -p\\
+0 & tI_{n-1}-B
+\end{array}
+\right) \\
+&  =\left(  t-\lambda_{1}\right)  \cdot\underbrace{\det\left(  tI_{n-1}%
+-B\right)  }_{=p_{B}}\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{here, we applied Laplace expansion along the}\\
+\text{first column to compute the determinant}\\
+\text{(noticing that this column has only one nonzero entry)}%
+\end{array}
+\right) \\
+&  =\left(  t-\lambda_{1}\right)  \cdot p_{B},
+\end{align*}
+so that%
+\[
+\left(  t-\lambda_{1}\right)  \cdot p_{B}=p_{A}=\left(  t-\lambda_{1}\right)
+\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{n}\right)  .
+\]
+Now, we can cancel $t-\lambda_{1}$ (since this is a nonzero polynomial), and
+this becomes%
+\[
+p_{B}=\left(  t-\lambda_{2}\right)  \left(  t-\lambda_{3}\right)
+\cdots\left(  t-\lambda_{n}\right)  ,
+\]
+exactly as we wanted to show.
+\end{proof}
+
+\begin{noncompile}
+The following lemma was originally used in the above proof:
+
+\begin{lemma}
+Let $\mathbb{F}$ be a field. Let $X\in\mathbb{F}^{n\times n}$, $Y\in
+\mathbb{F}^{n\times m}$ and $Z\in\mathbb{F}^{m\times m}$ be three matrices.
+Then,$\det\left(
+\begin{array}
+[c]{cc}%
+X & Y\\
+0 & Z
+\end{array}
+\right)  =\det X\cdot\det Z.$
+\end{lemma}
+
+For example,%
+\[
+\det\left(
+\begin{array}
+[c]{cccc}%
+a & b & c & d\\
+a^{\prime} & b^{\prime} & c^{\prime} & d^{\prime}\\
+0 & 0 & c^{\prime\prime} & d^{\prime\prime}\\
+0 & 0 & c^{\prime\prime\prime} & d^{\prime\prime\prime}%
+\end{array}
+\right)  =\det\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+a^{\prime} & b^{\prime}%
+\end{array}
+\right)  \cdot\det\left(
+\begin{array}
+[c]{cc}%
+c^{\prime\prime} & d^{\prime\prime}\\
+c^{\prime\prime\prime} & d^{\prime\prime\prime}%
+\end{array}
+\right)  .
+\]
+
+\end{noncompile}
+
+\subsubsection{Step 2: Separating distinct eigenvalues}
+
+Theorem \ref{thm.jnf.schurtri-diag} brings any $n\times n$-matrix
+$A\in\mathbb{C}^{n\times n}$ to a certain simplified form (upper-triangular
+with eigenvalues placed contiguously on the diagonal) that is not yet a Jordan
+canonical form, but already has some of its aspects. We will now transform it
+further to get a bit closer to a Jordan canonical form. To wit, we will get
+rid of some of the entries above the diagonal (or, to be more precise, we will
+turn them into $0$). Let us demonstrate this on an example:
+
+\begin{example}
+\label{exa.jnf.step2}Let $a,b,c,\ldots,p\in\mathbb{C}$ be any numbers. We
+shall now show that%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a & b & c & d & e\\
+& 1 & f & g & h & i\\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \\
+&  &  & 2 & m & \\
+&  &  &  & 2 & \\
+&  &  &  &  & 3
+\end{array}
+\right)  \label{eq.exa.jnf.step2.1}%
+\end{equation}
+(where the entries in the empty cells are understood to be $0$s).
+
+Indeed, the triangular matrices $\left(
+\begin{array}
+[c]{cc}%
+1 & a\\
+& 1
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{cccc}%
+2 & j & k & \ell\\
+& 2 & m & n\\
+&  & 2 & p\\
+&  &  & 3
+\end{array}
+\right)  $ have disjoint spectra (i.e., they have no eigenvalues in common),
+because their diagonals have no entries in common. So, by Corollary
+\ref{cor.schurtri.block-sim}, we have%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a & b & c & d & e\\
+& 1 & f & g & h & i\\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  . \label{eq.exa.jnf.step2.2}%
+\end{equation}
+Furthermore, the triangular matrices $\left(
+\begin{array}
+[c]{ccccc}%
+1 & a &  &  & \\
+& 1 &  &  & \\
+&  & 2 & j & k\\
+&  &  & 2 & m\\
+&  &  &  & 2
+\end{array}
+\right)  $ and $\left(
+\begin{array}
+[c]{c}%
+3
+\end{array}
+\right)  $ have disjoint spectra, so Corollary \ref{cor.schurtri.block-sim}
+yields%
+\begin{equation}
+\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \ell\\
+&  &  & 2 & m & n\\
+&  &  &  & 2 & p\\
+&  &  &  &  & 3
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccc}%
+1 & a &  &  &  & \\
+& 1 &  &  &  & \\
+&  & 2 & j & k & \\
+&  &  & 2 & m & \\
+&  &  &  & 2 & \\
+&  &  &  &  & 3
+\end{array}
+\right)  . \label{eq.exa.jnf.step2.3}%
+\end{equation}
+Since $\sim$ is an equivalence relation, we can combine the two similarities
+(\ref{eq.exa.jnf.step2.2}) and (\ref{eq.exa.jnf.step2.3}), and we conclude
+that the claim (\ref{eq.exa.jnf.step2.1}) holds.
+\end{example}
+
+This example generalizes:
+
+\begin{theorem}
+\label{thm.jnf.step2-T}Let $T\in\mathbb{C}^{n\times n}$ be an upper-triangular
+matrix. Assume that the diagonal entries of $T$ come in contiguous runs (i.e.,
+if $i,j\in\left[  n\right]  $ satisfy $i<j$ and $T_{i,i}=T_{j,j}$, then
+$T_{i,i}=T_{i+1,i+1}=T_{i+2,i+2}=\cdots=T_{j,j}$). Let $S$ be the matrix
+obtained from $T$ by setting all entries $T_{i,j}$ with $T_{i,i}\neq T_{j,j}$
+to $0$. In other words, let $S\in\mathbb{C}^{n\times n}$ be the $n\times
+n$-matrix defined by setting%
+\[
+S_{i,j}=%
+\begin{cases}
+T_{i,j}, & \text{if }T_{i,i}=T_{j,j};\\
+0, & \text{otherwise}%
+\end{cases}
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  n\right]  .
+\]
+Then, $T\sim S$.
+\end{theorem}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+Roughly speaking, Theorem \ref{thm.jnf.step2-T} says that whenever we have an
+upper-triangular matrix $T$ whose diagonal has no interlaced values (i.e.,
+there is never a $\mu$ between two $\lambda$'s on the diagonal when $\mu
+\neq\lambda$), we can \textquotedblleft clean out\textquotedblright\ all the
+above-diagonal entries that correspond to different diagonal entries (i.e.,
+all above-diagonal entries $T_{i,j}$ with $T_{i,i}\neq T_{j,j}$) by a
+similarity (i.e., if we set all these entries to $0$, the resulting matrix
+will be similar to $T$).
+
+Now, combining this with Theorem \ref{thm.jnf.schurtri-diag}, we obtain the following:
+
+\begin{proposition}
+\label{prop.jnf.step2}Let $A\in\mathbb{C}^{n\times n}$ be an $n\times
+n$-matrix. Then, $A$ is similar to a block-diagonal matrix of the form%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  ,
+\]
+where each $B_{i}$ is an upper-triangular matrix such that all entries on the
+diagonal of $B_{i}$ are equal.
+\end{proposition}
+
+\begin{proof}
+TODO: Scribe!
+\end{proof}
+
+\subsubsection{Step 3: Strictly upper-triangular matrices}
+
+The block-diagonal matrix in Proposition \ref{prop.jnf.step2} is not yet a
+Jordan canonical form, but it is already somewhat close. At least, we have
+separated out all the distinct eigenvalues of $A$ and \textquotedblleft
+cleaned out the space between them\textquotedblright. We now can work with the
+matrices $B_{1},B_{2},\ldots,B_{k}$ separately; each of these matrices has one
+distinct eigenvalue. Our next goal is to show that each of these matrices
+$B_{1},B_{2},\ldots,B_{k}$ is similar to a Jordan matrix. (This will easily
+yield that the total block-diagonal matrix $\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  $ is similar to a Jordan matrix, and therefore the same holds for $A$.)
+
+[...]
+
+TODO: Polish from here!
+
+TODO: Avoid or explain the notion of \textquotedblleft
+conjugation\textquotedblright.
+
+TODO: Empty cells = $0$ entries.
+
+For each $i\in\left[  k\right]  $, the matrix $B_{i}$ has all its diagonal
+entries equal. Let's say they all equal $\mu_{i}$. Thus, $B_{i}-\mu_{i}I$ is a
+strictly upper-triangular matrix. (Recall: a \emph{strictly upper-triangular}
+matrix is an upper-triangular matrix whose diagonal entries are $0$.)
+
+So we need to find a way to decompose a strictly upper-triangular matrix into
+Jordan cells.
+
+Call the upper-triangular matrix $A$ instead of $A_{i}-\mu_{i}I$. Forget about
+the original matrix $A$.
+
+\bigskip
+
+So we have a strictly upper-triangular matrix $A\in\mathbb{C}^{n\times n}$. We
+want to prove that $A$ is similar to a Jordan matrix.
+
+We begin by trying some examples:\newline
+
+\begin{example}
+Let $n=2$. Then, $A=\left(
+\begin{array}
+[c]{cc}%
+0 & a\\
+0 & 0
+\end{array}
+\right)  $ for some $a\in\mathbb{C}$.
+
+We are looking for an invertible matrix $S\in\mathbb{C}^{2\times2}$ such that
+$S^{-1}AS$ is a Jordan matrix.
+
+If $a=0$, then this is obvious (just take $S=I_{2}$), since $A=\left(
+\begin{array}
+[c]{cc}%
+J_{1}\left(  0\right)  & \\
+& J_{1}\left(  0\right)
+\end{array}
+\right)  $ is already a Jordan matrix.
+
+Now assume $a\neq0$.
+
+Consider our unknown invertible matrix $S$. Let $s_{1}$ and $s_{2}$ be its
+columns. Then, $s_{1}$ and $s_{2}$ are linearly independent (since $S$ is
+invertible). Moreover, we want $S^{-1}AS=\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $. In other words, we want $AS=S\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $. However, $S=\left(
+\begin{array}
+[c]{cc}%
+s_{1} & s_{2}%
+\end{array}
+\right)  $ (in block-matrix notation), so $S\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+0 & s_{1}%
+\end{array}
+\right)  $. Thus our equation $AS=S\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $ is equivalent to%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+As_{1} & As_{2}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+0 & s_{1}%
+\end{array}
+\right)  .
+\]
+In other words, $As_{1}=0$ and $As_{2}=s_{1}$.
+
+So we are looking for two linearly independent vectors $s_{1},s_{2}%
+\in\mathbb{C}^{2}$ such that $As_{1}=0$ and $As_{2}=s_{1}$.
+
+One way to do so is to pick some nonzero vector $s_{1}\in\operatorname*{Ker}%
+A$, and then define $s_{2}$ to be some preimage of $s_{1}$ under $A$. (It can
+be shown that such preimage exists.) This way, however, does not generalize to
+higher $n$.
+
+Another (better) way is to start by picking $s_{2}\in\mathbb{C}^{2}%
+\setminus\operatorname*{Ker}A$ and then setting $s_{1}=As_{2}$. We claim that
+$s_{1}$ and $s_{2}$ are linearly independent, and that $As_{1}=0$.
+
+To show that $As_{1}=0$, we just observe that $As_{1}=\underbrace{AA}%
+_{=A^{2}=0}s_{2}=0$.
+
+To show that $s_{1}$ and $s_{2}$ are linearly independent, we argue as
+follows: Let $\lambda_{1},\lambda_{2}\in\mathbb{C}$ be such that $\lambda
+_{1}s_{1}+\lambda_{2}s_{2}=0$. Applying $A$ to this, we obtain $A\cdot\left(
+\lambda_{1}s_{1}+\lambda_{2}s_{2}\right)  =A\cdot0=0$. However,%
+\[
+A\cdot\left(  \lambda_{1}s_{1}+\lambda_{2}s_{2}\right)  =\lambda
+_{1}\underbrace{As_{1}}_{=0}+\lambda_{2}\underbrace{As_{2}}_{=s_{1}}%
+=\lambda_{2}s_{1},
+\]
+so this becomes $\lambda_{2}s_{1}=0$. However, $s_{1}\neq0$ (because
+$s_{1}=As_{2}$ but $s_{2}\notin\operatorname*{Ker}A$). Hence, $\lambda_{2}=0$.
+Now, $\lambda_{1}s_{1}+\lambda_{2}s_{2}=0$ becomes $\lambda_{1}s_{1}=0$. Since
+$s_{1}\neq0$, this yields $\lambda_{1}=0$. Now both $\lambda_{i}$s are $0$, qed.
+\end{example}
+
+\begin{example}
+Let $n=3$ and $A=\left(
+\begin{array}
+[c]{ccc}
+& 1 & 1\\
+&  & 0\\
+&  &
+\end{array}
+\right)  $.
+
+Our first method above doesn't work, because most vectors in
+$\operatorname*{Ker}A$ do not have preimages under $A$.
+
+However, our second method can be made to work:
+
+We pick a vector $s_{3}\notin\operatorname*{Ker}A$. To wit, we pick
+$s_{3}=e_{3}=\left(
+\begin{array}
+[c]{c}%
+0\\
+0\\
+1
+\end{array}
+\right)  $. Then, $As_{3}=e_{1}$. Set $s_{2}=As_{3}=e_{1}$. Note that
+$s_{2}\in\operatorname*{Ker}A$. Let $s_{1}$ be another nonzero vector in
+$\operatorname*{Ker}A$, namely $e_{2}-e_{3}$.{} These three vectors
+$s_{1},s_{2},s_{3}$ are linearly independent and satisfy $As_{1}=0$ and
+$As_{2}=0$ and $As_{3}=s_{2}$.
+
+So $S=\left(
+\begin{array}
+[c]{ccc}%
+0 & 1 & 0\\
+1 & 0 & 0\\
+-1 & 0 & 1
+\end{array}
+\right)  $. And indeed, $S^{-1}AS=\allowbreak\left(
+\begin{array}
+[c]{ccc}%
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{array}
+\right)  $ is a Jordan matrix.
+\end{example}
+
+So what is the general algorithm here? Can we always find $n$ linearly
+independent vectors $s_{1},s_{2},\ldots,s_{n}$ such that each $As_{i}$ is
+either $0$ or $s_{i-1}$ ?
+
+\bigskip
+
+Consider a strictly upper-triangular $n\times n$-matrix $A$ (that is, an
+upper-triangular matrix whose diagonal entries are $0$ as well).
+
+We want to find a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of
+$\mathbb{C}^{n}$ such that for each $i\in\left[  n\right]  $, the vector
+$As_{i}$ is either $s_{i-1}$ or $0$. (When $i=1$, this vector has to be $0$,
+since there is no $s_{0}$.) In fact, if $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ is such a basis, then the matrix $S:=\left(
+\begin{array}
+[c]{cccc}%
+s_{1} & s_{2} & \cdots & s_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n\times n}$ is invertible and satisfies%
+\begin{align*}
+AS  &  =\left(  \text{a matrix whose }i\text{-th column is either }%
+s_{i-1}\text{ or }0\text{ for each }i\right) \\
+&  =S\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{for example}\right)  ,
+\end{align*}
+so that%
+\[
+S^{-1}AS=\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  =\left(  \text{a Jordan matrix}\right)  .
+\]
+So $A$ is similar to a Jordan matrix.
+
+How do we find such a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ ?
+
+(The following proof is due to Terence Tao \cite{Tao07}.)
+
+We define an \textbf{orbit} to be a tuple of the form $\left(  v,Av,A^{2}%
+v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{C}^{n}$ satisfies $A^{k+1}v=0$.
+Note that for each $v\in\mathbb{C}^{n}$, there is an orbit that starts with
+$v$, since $A^{n}=0$.
+
+The \textbf{concatenation} of some tuples $\left(  a_{1},a_{2},\ldots
+,a_{k}\right)  $ and $\left(  b_{1},b_{2},\ldots,b_{\ell}\right)  $ and
+$\left(  c_{1},c_{2},\ldots,c_{m}\right)  $ is $\left(  a_{1},a_{2}%
+,\ldots,a_{k},b_{1},b_{2},\ldots,b_{\ell},c_{1},c_{2},\ldots,c_{m}\right)  $.
+
+Now, I claim:
+
+\begin{lemma}
+[orbit basis lemma]There exists a basis of $\mathbb{C}^{n}$ that is a
+concatenation of orbits.
+\end{lemma}
+
+Once this lemma is proved, we will be done, because reading such a basis
+backwards gives us exactly the basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)
+$ we are looking for. For example, if our basis that is a concatenation of
+orbits is%
+\[
+\left(  u,Au,A^{2}u,\ \ v,Av,A^{2}v,A^{3}v,\ \ w,Aw\right)
+\]
+(with $A^{3}u=0$ and $A^{4}v=0$ and $A^{2}w=0$), then reading it backwards
+gives
+\[
+\left(  Aw,w,\ \ A^{3}v,A^{2}v,Av,v,\ \ A^{2}u,Au,u\right)  ,
+\]
+which is a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{C}%
+^{n}$ such that for each $i\in\left[  n\right]  $, the vector $As_{i}$ is
+either $s_{i-1}$ or $0$.
+
+\begin{proof}
+[Proof of the Lemma.]It is easy to find a finite \textbf{spanning set} of
+$\mathbb{C}^{n}$ that is a concatenation of orbits. Indeed, we can start with
+the standard basis $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $, and extend it
+to the list%
+\begin{align*}
+&  (e_{1},Ae_{1},A^{2}e_{1},\ldots,A^{n-1}e_{1},\\
+&  \ e_{2},Ae_{2},A^{2}e_{2},\ldots,A^{n-1}e_{2},\\
+&  \ \ldots,\\
+&  \ e_{n},Ae_{n},A^{2}e_{n},\ldots,A^{n-1}e_{n}).
+\end{align*}
+This is clearly a spanning set of $\mathbb{C}^{n}$ (since $e_{1},e_{2}%
+,\ldots,e_{n}$ already span $\mathbb{C}^{n}$), and also a concatenation of
+orbits (since $A^{n}=0$).
+
+Now, we will gradually shorten this spanning set (i.e., replace it by smaller
+ones) until we get a basis. We have to do this in such a way that it remains a
+spanning set throughout the process, and that it remains a concatenation of
+orbits throughout the process.
+
+For the sake of concreteness, let us assume that our spanning set is%
+\[
+\left(  x,Ax,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  ,
+\]
+with $A^{2}x=0$ and $A^{3}y=0$ and $A^{4}z=0$ and $Aw=0$. If this spanning set
+is linearly independent, then it is already a basis, and we are done. So
+assume that it isn't. Thus, there exists some linear dependence relation --
+say,%
+\[
+3x+4Ax+5Ay+6A^{2}y+7A^{2}z+8w=0.
+\]
+Apply $A$ to this relation:%
+\begin{align*}
+3Ax+4A^{2}x+5A^{2}y+6A^{3}y+7A^{3}z+8Aw  &  =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}%
+\\
+3Ax+5A^{2}y+7A^{3}z  &  =0.
+\end{align*}
+Apply $A$ to this relation:%
+\begin{align*}
+3A^{2}x+5A^{3}y+7A^{4}z  &  =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}\\
+0  &  =0.
+\end{align*}
+We have gone too far, so let us revert to the previous equation:%
+\[
+3Ax+5A^{2}y+7A^{3}z=0.
+\]
+So this is a linear dependence relation between the \textbf{final} vectors of
+the orbits in our spanning set. (\textquotedblleft Final\textquotedblright%
+\ means the last vector in the orbit.) Factoring out an $A$ in this relation,
+we obtain%
+\[
+A\left(  3x+5Ay+7A^{2}z\right)  =0.
+\]
+So the $1$-tuple $\left(  3x+5Ay+7A^{2}z\right)  $ is an orbit.
+
+Now, let us replace the orbit $\left(  x,Ax\right)  $ in our spanning set
+$\left(  x,Ax,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  $ by the
+orbit $\left(  3x+5Ay+7A^{2}z\right)  $. We get
+\[
+\left(  3x+5Ay+7A^{2}z,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  .
+\]
+This is still a concatenation of orbits, since the $1$-tuple $\left(
+3x+5Ay+7A^{2}z\right)  $ is an orbit. Furthermore, this is still a spanning
+set of $\mathbb{C}^{n}$; why? Because we removed the dependent vector $Ax$
+(this is a combination of the other vectors, because $3Ax+5A^{2}y+7A^{3}z=0$)
+and we replaced $x$ by $3x+5Ay+7A^{2}z$ (which does not change the span,
+because $Ay$ and $A^{2}z$ are still in the spanning set).
+
+This example generalizes. In the general case, you have a spanning set that is
+a concatenation of orbits:%
+\[
+\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
+}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)  .
+\]
+If it is a basis, you are done. If not, you pick a linear dependence relation:%
+\[
+\sum_{i,j}\lambda_{i,j}A^{j}v_{i}=0.
+\]
+By multiplying this by $A$ an appropriate amount of times (namely, you keep
+multiplying until it becomes $0=0$, and then you take a step back), you obtain
+a linear dependence relation that involves only the \textbf{final} vectors of
+the orbits (i.e., the vectors $A^{m_{1}}v_{1},\ A^{m_{2}}v_{2},\ \ldots
+,\ A^{m_{k}}v_{k}$). So it will look like this:%
+\[
+\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{k}A^{m_{k}}v_{k}=0.
+\]
+Assume WLOG that the first $p$ of the $\mu_{1},\mu_{2},\ldots,\mu_{k}$ are
+nonzero, while the remaining $k-p$ are $0$. So the relation becomes%
+\[
+\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0,
+\]
+with $\mu_{1},\mu_{2},\ldots,\mu_{p}$ being nonzero. Assume WLOG that
+$m_{1}=\min\left\{  m_{1},m_{2},\ldots,m_{p}\right\}  $, and factor out
+$A^{m_{1}}$ from this relation. This yields%
+\[
+A^{m_{1}}\left(  \mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
+_{p}A^{m_{p}-m_{1}}v_{p}\right)  =0.
+\]
+Now, set $w_{1}=\mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
+_{p}A^{m_{p}-m_{1}}v_{p}$. Thus, $A^{m_{1}}w_{1}=0$. Hence, $\left(
+w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1}\right)  $ is an orbit of
+length $m_{1}$. Now, replace the orbit $\left(  v_{1},Av_{1},\ldots,A^{m_{1}%
+}v_{1}\right)  $ in the spanning set%
+\[
+\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
+}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
+\]
+by the shorter orbit $\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}%
+w_{1}\right)  $. The resulting list%
+\[
+\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1},\ v_{2},Av_{2}%
+,\ldots,A^{m_{2}}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
+\]
+is still a concatenation of orbits. Also, it still spans $\mathbb{C}^{n}$,
+because%
+\begin{align*}
+w_{1}  &  =\underbrace{\mu_{1}}_{\neq0}v_{1}+\mu_{2}A^{m_{2}-m_{1}}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p};\\
+Aw_{1}  &  =\underbrace{\mu_{1}}_{\neq0}Av_{1}+\mu_{2}A^{m_{2}-m_{1}+1}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}+1}v_{p};\\
+&  \ldots;\\
+A^{m_{1}}v_{1}  &  =-\left(  \mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}%
+}v_{p}\right) \\
+&  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\mu_{1}A^{m_{1}}v_{1}+\mu
+_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0\right)  .
+\end{align*}
+
+
+So we have found a spanning set of $\mathbb{C}^{n}$ that is still a
+concatenation of orbits, but is shorter (it has one less vector). Doing this
+repeatedly, we will eventually obtain a basis (since we cannot keep making a
+finite list shorter and shorter indefinitely). This proves the lemma.
+\end{proof}
+
+As we said, the lemma gives us a basis $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ such that $As_{i}$ is either $s_{i-1}$ or $0$; and that shows
+that $A$ is similar to a Jordan matrix. This completes the proof of the
+existence part of the Jordan canonical form.
+
+\begin{example}
+Let
+\[
+A=\left(
+\begin{array}
+[c]{cccccc}%
+0 & 1 & 0 & -1 & 1 & -1\\
+0 & 1 & 1 & -2 & 2 & -2\\
+0 & 1 & 0 & -1 & 2 & -2\\
+0 & 1 & 0 & -1 & 2 & -2\\
+0 & 1 & 0 & -1 & 1 & -1\\
+0 & 1 & 0 & -1 & 1 & -1
+\end{array}
+\right)  .
+\]
+This is not strictly upper-triangular, but it is nilpotent, with $A^{3}=0$, so
+the above argument goes equally well with this $A$.
+
+Let us try to find a basis of $\mathbb{C}^{6}$ that is a concatenation of orbits.
+
+We begin with the spanning set%
+\[
+\left(  e_{1},Ae_{1},A^{2}e_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots
+,\ \ e_{6},Ae_{6},A^{2}e_{6}\right)  .
+\]
+It has lots of linear dependencies. For one, $Ae_{1}=0$. Multiplying it by $A$
+gives $A^{2}e_{1}=0$, so we can replace $\left(  e_{1},Ae_{1},A^{2}%
+e_{1}\right)  $ by $\left(  e_{1},Ae_{1}\right)  $. So our spanning set
+becomes%
+\[
+\left(  e_{1},Ae_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots,\ \ e_{6}%
+,Ae_{6},A^{2}e_{6}\right)  .
+\]
+One more step of the same form gives%
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},A^{2}e_{2},\ \ \ldots,\ \ e_{6},Ae_{6}%
+,A^{2}e_{6}\right)  .
+\]
+
+
+Now, observe that $Ae_{3}=e_{2}$. That is, $e_{2}-Ae_{3}=0$. Multiplying it by
+$A^{2}$, we obtain $A^{2}e_{2}=0$ (since $A^{2}\cdot Ae_{3}=A^{3}e_{3}=0$). So
+we replace the orbit $\left(  e_{2},Ae_{2},A^{2}e_{2}\right)  $ by $\left(
+e_{2},Ae_{2}\right)  $. So we get the spanning set
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},\ \ e_{3},Ae_{3},A^{2}e_{3},\ \ e_{4}%
+,Ae_{4},A^{2}e_{4},\ \ e_{5},Ae_{5},A^{2}e_{5},\ \ e_{6},Ae_{6},A^{2}%
+e_{6}\right)  .
+\]
+
+
+We observe that%
+\[
+Ae_{2}=e_{1}+e_{2}+e_{3}+e_{4}+e_{5}+e_{6}.
+\]
+In other words,%
+\[
+Ae_{2}-e_{1}-e_{2}-e_{3}-e_{4}-e_{5}-e_{6}=0.
+\]
+Multiplying this by $A^{2}$, we obtain%
+\[
+-A^{2}e_{3}-A^{2}e_{4}-A^{2}e_{5}-A^{2}e_{6}=0.
+\]
+In other words,%
+\[
+A^{2}\left(  -e_{3}-e_{4}-e_{5}-e_{6}\right)  =0.
+\]
+Thus, we set $w_{1}:=-e_{3}-e_{4}-e_{5}-e_{6}$, and we replace $\left(
+e_{3},Ae_{3},A^{2}e_{3}\right)  $ by $\left(  w_{1},Aw_{1}\right)  $. So we
+get the spanning set
+\[
+\left(  e_{1},\ \ e_{2},Ae_{2},\ \ w_{1},Aw_{1},\ \ e_{4},Ae_{4},A^{2}%
+e_{4},\ \ e_{5},Ae_{5},A^{2}e_{5},\ \ e_{6},Ae_{6},A^{2}e_{6}\right)  .
+\]
+Keep making these steps. Eventually, there will be no more linear
+dependencies, so we will have a basis.
+\end{example}
+
+\subsection{Powers and the Jordan canonical form}
+
+Let $n\in\mathbb{N}$ and $A\in\mathbb{C}^{n\times n}$. Assume that we know the
+JCF $J$ of $A$ and an invertible matrix $S$ such that
+\[
+A=SJS^{-1}.
+\]
+Then, it is fairly easy to compute all powers $A^{m}$ of $A$. Indeed, recall that
+
+\begin{itemize}
+\item $\left(  SJS^{-1}\right)  ^{m}=SJ^{m}S^{-1}$ for any $m\in\mathbb{N}$.
+
+\item $\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  ^{m}=\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{m} &  &  & \\
+& A_{2}^{m} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}^{m}%
+\end{array}
+\right)  $ for any $m\in\mathbb{N}$.
+\end{itemize}
+
+Thus, it suffices to compute the $m$-th power of any Jordan cell $J_{k}\left(
+\lambda\right)  $.
+
+So let us consider a Jordan cell
+\[
+C:=J_{5}\left(  \lambda\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda & 1 &  &  & \\
+& \lambda & 1 &  & \\
+&  & \lambda & 1 & \\
+&  &  & \lambda & 1\\
+&  &  &  & \lambda
+\end{array}
+\right)  .
+\]
+Then,%
+\begin{align*}
+C^{2}  &  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{2} & 2\lambda & 1 &  & \\
+& \lambda^{2} & 2\lambda & 1 & \\
+&  & \lambda^{2} & 2\lambda & 1\\
+&  &  & \lambda^{2} & 2\lambda\\
+&  &  &  & \lambda^{2}%
+\end{array}
+\right)  ;\ \ \ \ \ \ \ \ \ \ C^{3}=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{3} & 3\lambda^{2} & 3\lambda & 1 & \\
+& \lambda^{3} & 3\lambda^{2} & 3\lambda & 1\\
+&  & \lambda^{3} & 3\lambda^{2} & 3\lambda\\
+&  &  & \lambda^{3} & 3\lambda^{2}\\
+&  &  &  & \lambda^{3}%
+\end{array}
+\right)  ;\\
+C^{4}  &  =\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{4} & 4\lambda^{3} & 6\lambda^{2} & 4\lambda & 1\\
+& \lambda^{4} & 4\lambda^{3} & 6\lambda^{2} & 4\lambda\\
+&  & \lambda^{4} & 4\lambda^{3} & 6\lambda^{2}\\
+&  &  & \lambda^{4} & 4\lambda^{3}\\
+&  &  &  & \lambda^{4}%
+\end{array}
+\right)  ;\ \ \ \ \ \ \ \ \ \ C^{5}=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda^{5} & 5\lambda^{4} & 10\lambda^{3} & 10\lambda^{2} & 5\lambda\\
+& \lambda^{5} & 5\lambda^{4} & 10\lambda^{3} & 10\lambda^{2}\\
+&  & \lambda^{5} & 5\lambda^{4} & 10\lambda^{3}\\
+&  &  & \lambda^{5} & 5\lambda^{4}\\
+&  &  &  & \lambda^{5}%
+\end{array}
+\right)  .
+\end{align*}
+In general:
+
+\begin{theorem}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $C=J_{k}\left(  \lambda\right)  $.
+Let $m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
+whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$.
+(Here, we follow the convention that $\dbinom{n}{\ell}:=0$ when $\ell
+\notin\mathbb{N}$. Also, recall that $\dbinom{n}{\ell}=0$ when $n\in
+\mathbb{N}$ and $\ell>n$.)
+\end{theorem}
+
+\begin{proof}
+[First proof.]Induct on $m$ and use $C^{m}=CC^{m-1}$ as well as Pascal's
+recursion%
+\[
+\dbinom{n}{\ell}=\dbinom{n-1}{\ell}+\dbinom{n-1}{\ell-1}.
+\]
+
+\end{proof}
+
+\begin{proof}
+[Second proof.]Set $B:=J_{k}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}
+& 1 &  &  & \\
+&  & 1 &  & \\
+&  &  & 1 & \\
+&  &  &  & 1\\
+&  &  &  &
+\end{array}
+\right)  $. We know all powers of $B$ already: $B^{i}$ has $1$s $i$ steps
+above the main diagonal, and $0$s everywhere else.
+
+However, $C=B+\lambda I_{k}$. The matrices $\lambda I_{k}$ and $B$ commute
+(i.e., we have $B\cdot\lambda I_{k}=\lambda I_{k}\cdot B$). It is a general
+fact that if $X$ and $Y$ are two commuting $n\times n$-matrices, then the
+binomial formula%
+\[
+\left(  X+Y\right)  ^{m}=\sum_{i=0}^{m}\dbinom{m}{i}X^{i}Y^{m-i}.
+\]
+(This can be proved in the same way as for numbers, because the commutativity
+of $X$ and $Y$ lets you move any $X$es past any $Y$s.) Applying this formula
+to $X=B$ and $Y=\lambda I_{k}$, we obtain%
+\begin{align*}
+\left(  B+\lambda I_{k}\right)  ^{m}  &  =\sum_{i=0}^{m}\dbinom{m}{i}%
+B^{i}\underbrace{\left(  \lambda I_{k}\right)  ^{m-i}}_{=\lambda^{m-i}I_{k}%
+}=\sum_{i=0}^{m}\dbinom{m}{i}\lambda^{m-i}B^{i}\\
+&  =\left(
+\begin{array}
+[c]{ccccccc}%
+\lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} & \cdots
+& \cdots & \cdots & \cdots\\
+& \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots & \cdots\\
+&  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots\\
+&  &  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \cdots & \cdots\\
+&  &  &  & \lambda^{m} & \cdots & \vdots\\
+&  &  &  &  & \ddots & \vdots\\
+&  &  &  &  &  & \lambda^{m}%
+\end{array}
+\right)  ,
+\end{align*}
+which is precisely the matrix claimed in the theorem.
+\end{proof}
+
+Now we know how to take powers of Jordan cells, and therefore how to take
+powers of any matrix that we know how to bring to a Jordan canonical form.
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$. Then, $\lim\limits_{m\rightarrow\infty}%
+A^{m}=0$ if and only if all eigenvalues of $A$ have absolute value $<1$.
+\end{corollary}
+
+\begin{proof}
+$\Longrightarrow:$ Suppose that $\lim\limits_{m\rightarrow\infty}A^{m}=0$, but
+$A$ has an eigenvalue $\lambda$ of absolute value $\geq1$. We want a contradiction.
+
+Consider a nonzero eigenvector $x$ for eigenvalue $\lambda$. Thus, $Ax=\lambda
+x$. Then, $A^{2}x=\lambda^{2}x$ (since $A^{2}x=A\underbrace{Ax}_{=\lambda
+x}=\lambda\underbrace{Ax}_{=\lambda x}=\lambda\lambda x=\lambda^{2}x$) and
+similarly $A^{3}x=\lambda^{3}x$ and $A^{4}x=\lambda^{4}x$ and so on. Thus,
+\[
+A^{m}x=\lambda^{m}x\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\mathbb{N}.
+\]
+
+
+Now, as $m\rightarrow\infty$, the vector $A^{m}x$ goes to $0$ (since
+$A^{m}\rightarrow0$), but the vector $\lambda^{m}x$ does not (since $x\neq0$
+and $\left\vert \lambda\right\vert \geq1$). Contradiction.
+
+$\Longleftarrow:$ Suppose that all eigenvalues of $A$ have absolute value $<1$.
+
+Let $A=SJS^{-1}$ be the Jordan canonical form of $A$. Write $J$ as $\left(
+\begin{array}
+[c]{ccc}%
+J_{1} &  & \\
+& \ddots & \\
+&  & J_{p}%
+\end{array}
+\right)  $, where each $J_{i}$ is a Jordan cell.
+
+It suffices to show that $\lim\limits_{n\rightarrow\infty}J_{i}^{m}=0$.
+
+Write $J_{i}$ as $J_{k}\left(  \lambda\right)  $, with $\left\vert
+\lambda\right\vert <1$. The preceding theorem then tells us that%
+\[
+J_{i}^{m}=\left(
+\begin{array}
+[c]{ccccccc}%
+\lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} & \cdots
+& \cdots & \cdots & \cdots\\
+& \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots & \cdots\\
+&  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
+\cdots & \cdots\\
+&  &  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \cdots & \cdots\\
+&  &  &  & \lambda^{m} & \cdots & \vdots\\
+&  &  &  &  & \ddots & \vdots\\
+&  &  &  &  &  & \lambda^{m}%
+\end{array}
+\right)  .
+\]
+Look closely at this matrix. We need to show that for each $i,j\in\left[
+k\right]  $, we have%
+\[
+\lim\limits_{m\rightarrow\infty}\dbinom{m}{j-i}\lambda^{m-j+i}=0.
+\]
+However, this is a standard asymptotics argument:%
+\[
+\underbrace{\dbinom{m}{j-i}}_{\substack{=\dfrac{m\left(  m-1\right)  \left(
+m-2\right)  \cdots\left(  m-j+i\right)  }{\left(  j-i\right)  !}\\\text{(for
+}i\leq j\text{; otherwise the claim is trivial)}}}\underbrace{\lambda^{m-j+i}%
+}_{\substack{\text{exponential in }m\text{,}\\\text{with quotient }%
+\lambda\text{ having absolute value }\left\vert \lambda\right\vert
+<1}}\rightarrow0
+\]
+because exponential functions with a quotient of absolute value $<1$ converge
+to $0$ faster than polynomials can go to $\infty$.
+\end{proof}
+
+\subsection{The minimal polynomial}
+
+\textbf{Recall:} A polynomial $p\left(  t\right)  \in\mathbb{F}\left[
+t\right]  $ (where $\mathbb{F}$ is any field, and $t$ is an indeterminate) is
+said to be \textbf{monic} if its leading coefficient is $1$ -- that is, if it
+can be written in the form%
+\[
+p\left(  t\right)  =t^{m}+p_{m-1}t^{m-1}+p_{m-2}t^{m-2}+\cdots+p_{0}%
+t^{0}\ \ \ \ \ \ \ \ \ \ \text{for some }m\in\mathbb{N}\text{ and }p_{0}%
+,p_{1},\ldots,p_{m-1}\in\mathbb{F}.
+\]
+
+
+\begin{definition}
+Given a matrix $A\in\mathbb{F}^{n\times n}$ and a polynomial $p\left(
+t\right)  \in\mathbb{F}\left[  t\right]  $, we saay that $p\left(  t\right)  $
+\textbf{annihilates} $A$ if $p\left(  A\right)  =0$.
+\end{definition}
+
+The Cayley--Hamilton theorem says that the characteristic polynomial $p_{A}$
+of a square matrix $A$ always annihilates $A$. However, often there are
+matrices that are annihilated by other -- sometimes simpler -- polynomials.
+
+\begin{example}
+The identity matrix $I_{n}$ is annihilated by the polynomial $p\left(
+t\right)  :=t-1$, because%
+\[
+p\left(  I_{n}\right)  =I_{n}-I_{n}=0.
+\]
+
+\end{example}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=t^{2}$,
+since its square is $0$.
+\end{example}
+
+\begin{example}
+The matrix $\left(
+\begin{array}
+[c]{ccc}%
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=t^{2}$,
+since its square is $0$.
+\end{example}
+
+\begin{example}
+The diagonal matrix $\left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=\left(
+t-2\right)  \left(  t-3\right)  $, since%
+\begin{align*}
+&  \left(  \left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  -2I_{n}\right)  \left(  \left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  -3I_{n}\right) \\
+&  =\left(
+\begin{array}
+[c]{ccc}
+&  & \\
+&  & \\
+&  & 1
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccc}%
+-1 &  & \\
+& -1 & \\
+&  &
+\end{array}
+\right)  =0.
+\end{align*}
+
+\end{example}
+
+\begin{theorem}
+Given an $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$. Then, there is a
+\textbf{unique} monic polynomial $q_{A}\left(  t\right)  $ of minimum degree
+that annihilates $A$.
+\end{theorem}
+
+\begin{proof}
+The Cayley--Hamilton theorem shows that $p_{A}$ annihilates $A$. Since $p_{A}$
+is monic, we thus conclude that there exists \textbf{some} monic polynomial
+that annihilates $A$. Hence, there exists such a polynomial of minimum degree.
+
+It remains to show that it is unique. To do so, we let $q_{A}$ and
+$\widetilde{q}_{A}$ be two monic polynomials of minimum degree that annihilate
+$A$. Our goal then is to show that $q_{A}=\widetilde{q}_{A}$.
+
+Indeed, if $q_{A}\neq\widetilde{q}_{A}$, then the difference $q_{A}%
+-\widetilde{q}_{A}$ is a polynomial of smaller degree that annihilates $A$
+(indeed, it is of smaller degree because $q_{A}$ and $\widetilde{q}_{A}$ are
+monic of the same degree and thus lose their leading terms upon subtraction;
+it annihilates $A$ because $\left(  q_{A}-\widetilde{q}_{A}\right)  \left(
+A\right)  =q_{A}\left(  A\right)  -\widetilde{q}_{A}\left(  A\right)
+=0-0=0$). By scaling this difference appropriately, we can make it monic
+(since it is nonzero), and then get a contradiction to the minimality of
+$q_{A}$'s degree. This concludes the proof.
+\end{proof}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
+theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
+t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
+will be denoted $q_{A}\left(  t\right)  $ and will be called the
+\textbf{minimal polynomial} of $A$.
+\end{definition}
+
+\begin{example}
+Let $A$ be the diagonal matrix $\left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  $. Then,%
+\[
+q_{A}\left(  t\right)  =\left(  t-2\right)  \left(  t-3\right)  .
+\]
+Indeed, we already know that the monic polynomial $\left(  t-2\right)  \left(
+t-3\right)  $ annihilates $A$. If there was any monic polynomial of smaller
+degree that would annihilate $A$, then it would have the form $t-\lambda$ for
+some $\lambda\in\mathbb{C}$, but $\lambda$ cannot be $2$ and $3$ at the same time.
+
+For comparison: $p_{A}\left(  t\right)  =\left(  t-2\right)  ^{2}\left(
+t-3\right)  $.
+\end{example}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
+t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
+annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
+$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
+some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
+\end{theorem}
+
+\begin{proof}
+$\Longrightarrow:$ Assume that $f$ annihilates $A$. Thus, $f\left(  A\right)
+=0$. WLOG, assume that $f\neq0$. Thus, we can make $f$ monic by scaling it.
+Thus, $\deg f\geq\deg q_{A}$ (since $q_{A}$ had minimum degree). Hence, we can
+divide $f$ by $q_{A}$ with remainder, obtaining%
+\[
+f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  +r\left(
+t\right)  ,
+\]
+where $g\left(  t\right)  $ and $r\left(  t\right)  $ are two polynomials with
+$\deg r<\deg q_{A}$. Substituting $A$ for $t$ in this equality, we obtain%
+\[
+f\left(  A\right)  =\underbrace{q_{A}\left(  A\right)  }%
+_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}\cdot
+g\left(  A\right)  +r\left(  A\right)  =r\left(  A\right)  ,
+\]
+so that $r\left(  A\right)  =f\left(  A\right)  =0$. In other words, $r$
+annihilates $A$. Since $\deg r<\deg q_{A}$, this entails that $r=0$ (since
+otherwise, scaling $r$ to make it monic would contradict the minimality of
+$\deg q_{A}$). Thus,%
+\[
+f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)
++\underbrace{r\left(  t\right)  }_{=0}=q_{A}\left(  t\right)  \cdot g\left(
+t\right)  .
+\]
+Thus, $f$ is a multiple of $q_{A}$.
+
+$\Longleftarrow:$ Easy and LTTR.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
+\mid p_{A}\left(  t\right)  $.
+\end{corollary}
+
+\begin{proof}
+Apply the previous theorem to $f=p_{A}$, recalling that $p_{A}$ annihilates
+$A$.
+\end{proof}
+
+The corollary yields that any root of $q_{A}$ must be a root of $p_{A}$, that
+is, an eigenvalue of $A$. Conversely, we can show that any eigenvalue of $A$
+is a root of $q_{A}$ (but we don't know with which multiplicity):
+
+\begin{proposition}
+If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
+=0$.
+\end{proposition}
+
+\begin{proof}
+Let $\lambda\in\sigma\left(  A\right)  $. Thus, there exists a nonzero
+eigenvector $x$ for $\lambda$.
+
+Then, $Ax=\lambda x$. As we have seen above, this entails $A^{m}x=\lambda
+^{m}x$ for each $m\in\mathbb{N}$. Therefore, $f\left(  A\right)  x=f\left(
+\lambda\right)  x$ for each polynomial $f\left(  t\right)  \in\mathbb{C}%
+\left[  t\right]  $ (because you can write $f\left(  t\right)  $ as
+$f_{0}t^{0}+f_{1}t^{1}+\cdots+f_{p}t^{p}$, and then apply $A^{m}x=\lambda
+^{m}x$ to each of $m=0,1,\ldots,p$). Hence, $q_{A}\left(  A\right)
+x=q_{A}\left(  \lambda\right)  x$, so that%
+\[
+q_{A}\left(  \lambda\right)  x=\underbrace{q_{A}\left(  A\right)
+}_{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}x=0.
+\]
+Since $x\neq0$, this entails $q_{A}\left(  \lambda\right)  =0$, qed.
+\end{proof}
+
+\subsection{The minimal polynomial (cont'd)}
+
+Recall from last lecture:
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
+theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
+t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
+will be denoted $q_{A}\left(  t\right)  $ and will be called the
+\textbf{minimal polynomial} of $A$.
+\end{definition}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
+t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
+annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
+$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
+some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
+\end{theorem}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
+\mid p_{A}\left(  t\right)  $.
+\end{corollary}
+
+\begin{proposition}
+If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
+=0$.
+\end{proposition}
+
+Combining the Corollary with the Proposition, we see that the roots of
+$q_{A}\left(  t\right)  $ are precisely the eigenvalues of $A$; we just don't
+know yet with which multiplicities they appear as roots. In other words, we
+have
+\[
+q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
+t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ are the distinct
+eigenvalues of $A$, and the $k_{1},k_{2},\ldots,k_{p}$ are positive integers;
+but we don't know these $k_{1},k_{2},\ldots,k_{p}$ yet. So let us find them.
+We will use some lemmas for this.
+
+\begin{lemma}
+Let $A$ and $B$ be two similar $n\times n$-matrices. Then, $q_{A}\left(
+t\right)  =q_{B}\left(  t\right)  $.
+\end{lemma}
+
+\begin{proof}
+This is obvious from the viewpoint of endomorphisms. For a pedestrian proof,
+you can just argue that a polynomial $f$ annihilates $A$ if and only if it
+annihilates $B$. But this is easy: We have $A=SBS^{-1}$ for some invertible
+$S$ (since $A$ and $B$ are similar), and therefore every polynomial $f$
+satisfies
+\[
+f\left(  A\right)  =f\left(  SBS^{-1}\right)  =Sf\left(  B\right)  S^{-1}%
+\]
+and therefore $f\left(  A\right)  =0$ holds if and only if $f\left(  B\right)
+=0$.
+\end{proof}
+
+We recall the notion of the lcm (= least common multiple) of several
+polynomials. It is defined as one would expect: If $p_{1},p_{2},\ldots,p_{m}$
+are $m$ nonzero polynomials (in a single indeterminate $t$), then
+$\operatorname{lcm}\left(  p_{1},p_{2},\ldots,p_{m}\right)  $ is the monic
+polynomial of smallest degree that is a common multiple of $p_{1},p_{2}%
+,\ldots,p_{m}$. For example,%
+\begin{align*}
+\operatorname{lcm}\left(  t^{2}-1,\ t^{3}-1\right)   &  =\operatorname{lcm}%
+\left(  \left(  t-1\right)  \left(  t+1\right)  ,\ \left(  t-1\right)  \left(
+t^{2}+t+1\right)  \right) \\
+&  =\allowbreak\left(  t-1\right)  \left(  t+1\right)  \left(  t+t^{2}%
++1\right)  =\allowbreak t^{4}+t^{3}-t-1.
+\end{align*}
+(Again, the lcm of several polynomials is unique. This can be shown in the
+same way that we used to prove uniqueness of the minimal polynomial.)
+
+\begin{lemma}
+Let $A_{1},A_{2},\ldots,A_{m}$ be $m$ square matrices. Let%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  .
+\]
+Then,%
+\[
+q_{A}=\operatorname{lcm}\left(  q_{A_{1}},\ q_{A_{2}},\ \ldots,\ q_{A_{m}%
+}\right)  .
+\]
+
+\end{lemma}
+
+\begin{proof}
+For any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+\[
+f\left(  A\right)  =f\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+f\left(  A_{1}\right)  &  &  & \\
+& f\left(  A_{2}\right)  &  & \\
+&  & \ddots & \\
+&  &  & f\left(  A_{m}\right)
+\end{array}
+\right)
+\]
+(indeed, the last equality follows from%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}%
+\end{array}
+\right)  ^{k}=\left(
+\begin{array}
+[c]{cccc}%
+A_{1}^{k} &  &  & \\
+& A_{2}^{k} &  & \\
+&  & \ddots & \\
+&  &  & A_{m}^{k}%
+\end{array}
+\right)
+\]
+and from the fact that a polynomial $f$ is just a $\mathbb{C}$-linear
+combination of $t^{k}$s). Thus, $f\left(  A\right)  =0$ holds if and only if%
+\[
+f\left(  A_{1}\right)  =0\text{ and }f\left(  A_{2}\right)  =0\text{ and
+}\cdots\text{ and }f\left(  A_{m}\right)  =0.
+\]
+However, $f\left(  A\right)  =0$ holds if and only if $f$ is a multiple of
+$q_{A}$, whereas $f\left(  A_{i}\right)  =0$ holds if and only if $f$ is a
+multiple of $q_{A_{i}}$. Thus, the previous sentence says that $f$ is a
+multiple of $q_{A}$ if and only if $f$ is a multiple of all of the $q_{A_{i}}%
+$s. In other words, the multiples of $q_{A}$ are precisely the common multiple
+of all the $q_{A_{i}}$s. But this is the universal property of the lcm. So
+$q_{A}$ is the lcm of the $q_{A_{i}}$s.
+\end{proof}
+
+\begin{lemma}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
+Then,%
+\[
+q_{A}=\left(  t-\lambda\right)  ^{k}.
+\]
+
+\end{lemma}
+
+\begin{proof}
+It is easy to see that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  $,
+because for a polynomial $f$ to annihilate $A-\lambda I_{k}$ is the same as
+for the polynomial $f\left(  t-\lambda\right)  $ to annihilate $A$. So we need
+to find $q_{A-\lambda I_{k}}$. Recall that
+\[
+A-\lambda I_{k}=J_{k}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}
+& 1 &  &  & \\
+&  & 1 &  & \\
+&  &  &  & \\
+&  &  & \ddots & \\
+&  &  &  &
+\end{array}
+\right)  .
+\]
+Therefore, for any polynomial $f=f_{0}t^{0}+f_{1}t^{1}+f_{2}t^{2}+\cdots$, we
+have%
+\[
+f\left(  A-\lambda I_{k}\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+f_{0} & f_{1} & f_{2} & \cdots & f_{k-1}\\
+& f_{0} & f_{1} & \cdots & f_{k-2}\\
+&  & f_{0} & \cdots & f_{k-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & f_{0}%
+\end{array}
+\right)  .
+\]
+So $f\left(  A-\lambda I_{k}\right)  =0$ if and only if $f_{0}=f_{1}%
+=\cdots=f_{k-1}=0$, i.e., if and only if the first $k$ coefficients of $f$ are
+$0$. Now, the monic polynomial of smallest degree whose first $k$ coefficients
+are $0$ is the polynomial $t^{k}$. So the monic polynomial $f$ of smallest
+degree that satisfies $f\left(  A-\lambda I_{k}\right)  =0$ is $t^{k}$. In
+other words, $q_{A-\lambda I_{k}}=t^{k}$.
+
+Now, recall that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  =\left(
+t-\lambda\right)  ^{k}$ (since $q_{A-\lambda I_{k}}=t^{k}$). Qed.
+\end{proof}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $J$ be the
+Jordan canonical form of $A$. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$
+be the distinct eigenvalues of $A$. Then,%
+\[
+q_{A}=\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(  t-\lambda_{2}\right)
+^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where $k_{i}$ is the size of the largest Jordan cell at eigenvalue
+$\lambda_{i}$ in $J$.
+\end{theorem}
+
+\begin{example}
+Let $A$ have Jordan canonical form%
+\[
+J=\left(
+\begin{array}
+[c]{cccccccc}%
+5 & 1 &  &  &  &  &  & \\
+& 5 & 1 &  &  &  &  & \\
+&  & 5 &  &  &  &  & \\
+&  &  & 5 & 1 &  &  & \\
+&  &  &  & 5 &  &  & \\
+&  &  &  &  & 2 &  & \\
+&  &  &  &  &  & 2 & 1\\
+&  &  &  &  &  &  & 2
+\end{array}
+\right)  .
+\]
+Then,%
+\[
+q_{A}=\left(  t-5\right)  ^{3}\left(  t-2\right)  ^{2}.
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of the Theorem.]We have $A\sim J$, so that $q_{A}=q_{J}$ (by our first lemma).
+
+Recall that $J$ is a Jordan matrix, i.e., a block-diagonal matrix whose
+diagonal blocks are Jordan cells $J_{1},J_{2},\ldots,J_{m}$. Thus, by our
+second lemma, we have%
+\begin{align*}
+q_{J}  &  =\operatorname{lcm}\left(  q_{J_{1}},\ q_{J_{2}},\ \ldots
+,\ q_{J_{m}}\right) \\
+&  =\operatorname{lcm}\left(  \left(  t-\lambda_{J_{1}}\right)  ^{k_{J_{1}}%
+},\ \left(  t-\lambda_{J_{2}}\right)  ^{k_{J_{2}}},\ \ldots,\ \left(
+t-\lambda_{J_{m}}\right)  ^{k_{J_{m}}}\right)  ,
+\end{align*}
+where each $J_{i}$ has eigenvalue $\lambda_{J_{i}}$ and size $k_{J_{i}}$ (by
+our third lemma). This lcm must be divisible by each $t-\lambda$ at least as
+often as each of the $\left(  t-\lambda_{J_{i}}\right)  ^{k_{J_{i}}}$s is;
+i.e., it must be divisible by $\left(  t-\lambda\right)  ^{k}$, where $k$ is
+the largest size of a Jordan cell of $J$ at eigenvalue $\lambda$. So the lcm
+is the product of these $\left(  t-\lambda\right)  ^{k}$s. But this is
+precisely our claim.
+\end{proof}
+
+\subsection{Application of functions to matrices}
+
+Consider a square matrix $A\in\mathbb{C}^{n\times n}$. We have already defined
+what it means to apply a polynomial $f$ to $A$: We just write $f$ as $\sum
+_{i}f_{i}t^{i}$, and substitute $A$ for $t$.
+
+Can we do the same with non-polynomial functions $f$ ? For example, can we
+define $\exp A$ or $\sin A$ ?
+
+One option to do so is to follow the same rule as for polynomials, but using
+the Taylor series for $f$. For example, since $\exp$ has Taylor series $\exp
+t=\sum_{i\in\mathbb{N}}\dfrac{t^{i}}{i!}$, we can set%
+\[
+\exp A=\sum_{i\in\mathbb{N}}\dfrac{A^{i}}{i!}.
+\]
+This indeed works for $\exp$ and for $\sin$, as the sums you get always
+converge. But it doesn't generally work, e.g., for $f=\tan t$, since its
+Taylor series only converges in a certain neighborhood of $0$. Is this the
+best we can do?
+
+There is a different approach that gives a more general definition.
+
+\begin{lemma}
+Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
+Then, for any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+\[
+f\left(  A\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+\dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \dfrac{f^{\prime\prime}\left(  \lambda\right)  }{2!} &
+\cdots & \dfrac{f^{\left(  k-1\right)  }\left(  \lambda\right)  }{\left(
+k-1\right)  !}\\
+& \dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \cdots & \dfrac{f^{\left(  k-2\right)  }\left(
+\lambda\right)  }{\left(  k-2\right)  !}\\
+&  & \dfrac{f\left(  \lambda\right)  }{0!} & \cdots & \dfrac{f^{\left(
+k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & \dfrac{f\left(  \lambda\right)  }{0!}%
+\end{array}
+\right)
+\]
+
+\end{lemma}
+
+\begin{proof}
+Exercise.
+\end{proof}
+
+Now, we aim to define $f\left(  A\right)  $ by the above formula, at least
+when $A$ is a Jordan cell. This only requires $f$ to be $\left(  k-1\right)
+$-times differentiable at $\lambda$.
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix that has minimal
+polynomial%
+\[
+q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
+t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
+\]
+where the $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ are the distinct
+eigenvalues of $A$.
+
+Let $f$ be a function from $\mathbb{C}$ to $\mathbb{C}$ that is defined at
+each of the numbers $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ and is
+holomorphic at each of them, or at least $\left(  k_{i}-1\right)  $-times
+differentiable at each $\lambda_{i}$ if $\lambda_{i}$ is real. Then, we can
+define an $n\times n$-matrix $f\left(  A\right)  \in\mathbb{C}^{n\times n}$ as
+follows: Write $A=SJS^{-1}$, where $J$ is a Jordan matrix and $S$ is
+invertible. Write $J$ as $\left(
+\begin{array}
+[c]{cccc}%
+J_{1} &  &  & \\
+& J_{2} &  & \\
+&  & \ddots & \\
+&  &  & J_{m}%
+\end{array}
+\right)  $, where the $J_{1},J_{2},\ldots,J_{m}$ are Jordan cells. Then, we
+set%
+\begin{align*}
+f\left(  A\right)   &  :=Sf\left(  J\right)  S^{-1}%
+,\ \ \ \ \ \ \ \ \ \ \text{where}\\
+f\left(  J\right)   &  :=\left(
+\begin{array}
+[c]{cccc}%
+f\left(  J_{1}\right)  &  &  & \\
+& f\left(  J_{2}\right)  &  & \\
+&  & \ddots & \\
+&  &  & f\left(  J_{m}\right)
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ \text{where}\\
+f\left(  J_{k}\left(  \lambda\right)  \right)   &  :=\left(
+\begin{array}
+[c]{ccccc}%
+\dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \dfrac{f^{\prime\prime}\left(  \lambda\right)  }{2!} &
+\cdots & \dfrac{f^{\left(  k-1\right)  }\left(  \lambda\right)  }{\left(
+k-1\right)  !}\\
+& \dfrac{f\left(  \lambda\right)  }{0!} & \dfrac{f^{\prime}\left(
+\lambda\right)  }{1!} & \cdots & \dfrac{f^{\left(  k-2\right)  }\left(
+\lambda\right)  }{\left(  k-2\right)  !}\\
+&  & \dfrac{f\left(  \lambda\right)  }{0!} & \cdots & \dfrac{f^{\left(
+k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & \dfrac{f\left(  \lambda\right)  }{0!}%
+\end{array}
+\right)  .
+\end{align*}
+
+\end{definition}
+
+\begin{theorem}
+This definition is actually well-defined. That is, the value $f\left(
+A\right)  $ does not depend on the choice of $S$ and $J$.
+\end{theorem}
+
+\begin{exercise}
+Prove this.
+\end{exercise}
+
+\subsection{The companion matrix}
+
+For each $n\times n$-matrix $A$, we have defined its characteristic polynomial
+$p_{A}$ and its minimal polynomial $q_{A}$. What variety of polynomials do we
+get this way? Do all characteristic polynomials share some property, or can
+any monic polynomial be a characteristic polynomial?
+
+The latter turns out to be true (and moreover, the same holds for the minimal
+polynomial). We shall prove this by explicitly constructing a matrix with a
+given polynomial as its characteristic polynomila.
+
+\begin{definition}
+Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$.
+
+Let $p\left(  t\right)  =t^{n}+p_{n-1}t^{n-1}+p_{n-2}t^{n-2}+\cdots+p_{1}%
+t^{1}+p_{0}t^{0}$ be a monic polynomial of degree $n$ with coefficients in
+$\mathbb{F}$. Then, the \textbf{companion matrix} of $p\left(  t\right)  $ is
+defined to be the matrix%
+\[
+C_{p}:=\left(
+\begin{array}
+[c]{cccccc}%
+0 &  &  & \cdots &  & -p_{0}\\
+1 & 0 &  & \cdots &  & -p_{1}\\
+& 1 & 0 & \cdots &  & -p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & 0 & -p_{n-2}\\
+&  &  & \cdots & 1 & -p_{n-1}%
+\end{array}
+\right)  \in\mathbb{F}^{n\times n}.
+\]
+This is the $n\times n$-matrix whose first $n-1$ columns are the standard
+basis vectors $e_{2},e_{3},\ldots,e_{n}$, and whose last column is $\left(
+-p_{0},-p_{1},\ldots,-p_{n-1}\right)  ^{T}$.
+\end{definition}
+
+\begin{proposition}
+For any monic polynomial $p\left(  t\right)  $, we have%
+\[
+p_{C_{p}}\left(  t\right)  =q_{C_{p}}\left(  t\right)  =p\left(  t\right)  .
+\]
+(The two $p$'s in \textquotedblleft$p_{C_{p}}$\textquotedblright\ stand for
+different things: The first stands for \textquotedblleft characteristic
+polynomial\textquotedblright, while the second is the $p\left(  t\right)  $ we
+have given.)
+\end{proposition}
+
+\begin{proof}
+Let us first show that $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. To
+do so, we induct on $n$. Recall that%
+\begin{align*}
+p_{C_{p}}\left(  t\right)   &  =\det\left(  tI_{n}-C_{p}\right) \\
+&  =\det\left(
+\begin{array}
+[c]{cccccc}%
+t &  &  & \cdots &  & p_{0}\\
+-1 & t &  & \cdots &  & p_{1}\\
+& -1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & t & p_{n-2}\\
+&  &  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right)  .
+\end{align*}
+We compute this determinant by Laplace expansion along the first row:%
+\begin{align*}
+&  \det\left(
+\begin{array}
+[c]{cccccc}%
+t &  &  & \cdots &  & p_{0}\\
+-1 & t &  & \cdots &  & p_{1}\\
+& -1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+&  &  & \cdots & t & p_{n-2}\\
+&  &  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right) \\
+&  =t\ \underbrace{\det\left(
+\begin{array}
+[c]{ccccc}%
+t &  & \cdots &  & p_{1}\\
+-1 & t & \cdots &  & p_{2}\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+&  & \cdots & t & p_{n-2}\\
+&  & \cdots & -1 & t+p_{n-1}%
+\end{array}
+\right)  }_{\substack{=t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}%
+t^{0}\\\text{(by the induction hypothesis)}}}+\left(  -1\right)  ^{n+1}%
+p_{0}\ \underbrace{\det\left(
+\begin{array}
+[c]{ccccc}%
+-1 & t &  & \cdots & \\
+& -1 & t & \cdots & \\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+&  &  & \cdots & t\\
+&  &  & \cdots & -1
+\end{array}
+\right)  }_{\substack{=\left(  -1\right)  ^{n-1}\\\text{(since this matrix is
+upper-triangular}\\\text{of size }n-1\text{)}}}\\
+&  =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
++\underbrace{\left(  -1\right)  ^{n+1}p_{0}\left(  -1\right)  ^{n-1}}_{=p_{0}%
+}\\
+&  =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
++p_{0}\\
+&  =t^{n}+p_{n-1}t^{n-1}+p_{2}t^{2}+p_{1}t^{1}+p_{0}=p\left(  t\right)  .
+\end{align*}
+
+
+Thus, $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $ is proved.
+
+Now, let us show that $q_{C_{p}}\left(  t\right)  =p\left(  t\right)  $.
+Indeed, both $q_{C_{p}}\left(  t\right)  $ and $p\left(  t\right)  $ are monic
+polynomials, and we know from last lecture that $q_{C_{p}}\left(  t\right)
+\mid p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. Hence, if $q_{C_{p}%
+}\left(  t\right)  \neq p\left(  t\right)  $, then $q_{C_{p}}\left(  t\right)
+$ is a proper divisor of $p\left(  t\right)  $, thus has degree $<n$ (since
+$p\left(  t\right)  $ has degree $n$). So we just need to rule out the
+possibility that $q_{C_{p}}\left(  t\right)  $ has degree $<n$.
+
+Indeed, assume (for the sake of contradiction) that $q_{C_{p}}\left(
+t\right)  $ has degree $<n$. Thus, $q_{C_{p}}\left(  t\right)  =a_{k}%
+t^{k}+a_{k-1}t^{k-1}+\cdots+a_{0}t^{0}$ with $k<n$ and $a_{k}=1$ (since
+$q_{C_{p}}$ is monic of degree $<n$). However, the definition of $q_{C_{p}}$
+yields $q_{C_{p}}\left(  C_{p}\right)  =0$. In other words,%
+\[
+a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0.
+\]
+
+
+However, let us look at what $C_{p}$ does to the standard basis vector
+$e_{1}=\left(  1,0,0,0,\ldots,0\right)  ^{T}$. We have%
+\begin{align*}
+C_{p}^{0}e_{1}  &  =e_{1};\\
+C_{p}^{1}e_{1}  &  =C_{p}e_{1}=e_{2};\\
+C_{p}^{2}e_{1}  &  =C_{p}e_{2}=e_{3};\\
+&  \ldots;\\
+C_{p}^{n-1}e_{1}  &  =e_{n}.
+\end{align*}
+Thus, applying our equality%
+\[
+a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0
+\]
+to $e_{1}$, we obtain%
+\[
+a_{k}e_{k+1}+a_{k-1}e_{k}+\cdots+a_{0}e_{1}=0\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }k<n\right)  .
+\]
+But this is absurd, since $e_{1},e_{2},\ldots,e_{n}$ are linearly independent.
+So we found a contradiction, and thus we conclude that $q_{C_{p}}\left(
+t\right)  $ has degree $\geq n$. So, by the above, we obtain $q_{C_{p}}\left(
+t\right)  =p\left(  t\right)  $.
+\end{proof}
+
+\begin{remark}
+For algebraists: The companion matrix $C_{p}$ has a natural meaning. To wit,
+consider the quotient ring $\mathbb{F}\left[  t\right]  /\left(  p\left(
+t\right)  \right)  $ as an $n$-dimensional $\mathbb{F}$-vector space with
+basis $\left(  \overline{t^{0}},\overline{t^{1}},\ldots,\overline{t^{n-1}%
+}\right)  $. Then, the companion matrix $C_{p}$ represents the endomorphism
+\textquotedblleft multiply by $t$\textquotedblright\ (that is, the
+endomorphism that sends each $\overline{f\left(  t\right)  }$ to
+$\overline{t\cdot f\left(  t\right)  }$) in this basis.
+\end{remark}
+
+\subsection{The Jordan--Chevalley decomposition}
+
+Recall that:
+
+\begin{itemize}
+\item A matrix $A\in\mathbb{C}^{n\times n}$ is said to be
+\textbf{diagonalizable} if it is similar to a diagonal matrix.
+
+\item A matrix $A\in\mathbb{C}^{n\times n}$ is said to be \textbf{nilpotent}
+if some power of it is the zero matrix (i.e., if $A^{k}=0$ for some
+$k\in\mathbb{N}$). Actually (this will be a HW problem), for an $n\times
+n$-matrix $A$ to be nilpotent, it is necessary and sufficient that $A^{n}=0$.
+\end{itemize}
+
+\begin{theorem}
+[Jordan--Chevalley decomposition]Let $A\in\mathbb{C}^{n\times n}$ be an
+$n\times n$-matrix.
+
+\textbf{(a)} Then, there exists a unique pair $\left(  D,N\right)  $
+consisting of
+
+\begin{itemize}
+\item a diagonalizable matrix $D\in\mathbb{C}^{n\times n}$ and
+
+\item a nilpotent matrix $N\in\mathbb{C}^{n\times n}$
+\end{itemize}
+
+such that $DN=ND$ and $A=D+N$.
+
+\textbf{(b)} Both $D$ and $N$ in this pair can be written as polynomials in
+$A$. In other words, there exist two polynomials $f,g\in\mathbb{C}\left[
+t\right]  $ such that $D=f\left(  A\right)  $ and $N=g\left(  A\right)  $.
+\end{theorem}
+
+The pair $\left(  D,N\right)  $ in this theorem is known as the
+\textbf{Jordan--Chevalley decomposition} (or the \textbf{Dunford
+decomposition}) of $A$.
+
+\begin{proof}
+[Partial proof.]We will show the following two claims:
+
+\begin{statement}
+\textit{Claim 1:} There exists a pair $\left(  D,N\right)  $ as in part
+\textbf{(a)} of the theorem.
+\end{statement}
+
+\begin{statement}
+\textit{Claim 2:} The $D$ and $N$ in this particular pair can be written as
+polynomials in $A$.
+\end{statement}
+
+To prove both Claims 1 and 2, we can WLOG assume that $A$ is a Jordan matrix.
+Indeed, if $A=SJS^{-1}$ for some invertible $S$, and if $\left(  D^{\prime
+},N^{\prime}\right)  $ is a Jordan--Chevalley decomposition of $J$, then
+$\left(  SD^{\prime}S^{-1},SN^{\prime}S^{-1}\right)  $ is a Jordan--Chevalley
+decomposition of $A$. Conjugation of matrices preserves all the properties we
+need (such as being a polynomial, commuting, etc.), so we only need to prove
+the claims for $J$.
+
+So we WLOG assume that $A$ is a Jordan matrix. Thus,%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  \lambda_{1}\right)  &  &  & \\
+& J_{k_{2}}\left(  \lambda_{2}\right)  &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  \lambda_{p}\right)
+\end{array}
+\right)
+\]
+for some $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ and some $k_{1}%
+,k_{2},\ldots,k_{p}$. Now, we want to decompose this $A$ as $D+N$ with $D$
+diagonal and $N$ nilpotent and $DN=ND$. We do this by setting%
+\[
+D:=\left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1}I_{k_{1}} &  &  & \\
+& \lambda_{2}I_{k_{2}} &  & \\
+&  & \ddots & \\
+&  &  & \lambda_{p}I_{k_{p}}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ N:=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  0\right)  &  &  & \\
+& J_{k_{2}}\left(  0\right)  &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  0\right)
+\end{array}
+\right)  .
+\]
+It is easy to check that $A=D+N$ and $DN=ND$ (since block-diagonal matrices
+can be multiplied block by block). Clearly, $D$ is diagonalizable (since $D$
+is diagonal) and $N$ is nilpotent (since $N$ is strictly upper-triangular).
+Thus, Claim 1 is proved.
+
+Now, we need to prove Claim 2 -- i.e., we need to prove that $D$ and $N$ can
+be written as polynomials in $A$. Since $A=D+N$, it suffices to show this for
+$D$ (since $N=A-D$).
+
+Our above construction of $D$ shows that $D$ is simply $A$ with its
+non-diagonal entries removed. Let $\mu_{1},\mu_{2},\ldots,\mu_{m}$ be the
+\textbf{distinct} eigenvalues (i.e., diagonal entries) of $A$. For each
+$i\in\left[  m\right]  $, let $\ell_{i}$ be the size of the largest Jordan
+block of $A$ at eigenvalue $\mu_{i}$. (Thus, the minimal polynomial of $A$ is
+$\prod\limits_{i=1}^{m}\left(  t-\mu_{i}\right)  ^{\ell_{i}}$.)
+
+Now, define the polynomial%
+\[
+f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}\in\mathbb{C}\left[
+t\right]  ,
+\]
+where the product sign $\prod\limits_{j\neq i}$ means a product over all
+$j\in\left[  m\right]  $ except for $j=i$. We claim that $f\left(  A\right)
+=D$. In other words, we claim that applying $f$ to $A$ has the effect of
+cleaning out all off-diagonal entries (while the diagonal entries remain as
+they are).
+
+To prove this claim, we recall that%
+\[
+A=\left(
+\begin{array}
+[c]{cccc}%
+J_{k_{1}}\left(  \lambda_{1}\right)  &  &  & \\
+& J_{k_{2}}\left(  \lambda_{2}\right)  &  & \\
+&  & \ddots & \\
+&  &  & J_{k_{p}}\left(  \lambda_{p}\right)
+\end{array}
+\right)  .
+\]
+Hence,%
+\[
+f\left(  A\right)  =\left(
+\begin{array}
+[c]{cccc}%
+f\left(  J_{k_{1}}\left(  \lambda_{1}\right)  \right)  &  &  & \\
+& f\left(  J_{k_{2}}\left(  \lambda_{2}\right)  \right)  &  & \\
+&  & \ddots & \\
+&  &  & f\left(  J_{k_{p}}\left(  \lambda_{p}\right)  \right)
+\end{array}
+\right)  .
+\]
+So we need to show that%
+\[
+f\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)  =\lambda_{u}I_{k_{u}%
+}\ \ \ \ \ \ \ \ \ \ \text{for each }u\in\left[  p\right]  .
+\]
+To prove this, we fix a $u\in\left[  p\right]  $, and we set $B:=J_{k_{u}%
+}\left(  \lambda_{u}\right)  $. Thus, $B=J_{k}\left(  \mu_{v}\right)  $ for
+some $v\in\left[  p\right]  $ and some positive $k\leq\ell_{v}$.
+
+Substituting $B$ for $t$ into%
+\[
+f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}},
+\]
+we obtain%
+\[
+f\left(  B\right)  =\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
+\dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}.
+\]
+We take a closer look at the addends of the sum. For each $i\in\left[
+m\right]  $ that is distinct from $v$, the product $\prod\limits_{j\neq
+i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}$ contains a
+factor $\left(  \dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}\right)  ^{\ell_{v}}=0$,
+because the $k\times k$-matrix $\dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}$ is
+strictly upper-triangular and $k\leq\ell_{v}$. So the entire addend $\mu
+_{i}\prod\limits_{j\neq i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)
+^{\ell_{j}}$ is $0$ whenever $i$ is distinct from $v$. Thus, all these addends
+disappear except for the addend for $i=v$. So the above formula for $f\left(
+B\right)  $ simplifies to%
+\[
+f\left(  B\right)  =\mu_{v}\prod\limits_{j\neq v}\left(  \dfrac{B-\mu_{j}%
+I}{\mu_{v}-\mu_{j}}\right)  ^{\ell_{j}}.
+\]
+This should be $\mu_{v}I$.
+
+I'm just seeing this isn't exactly the case. TODO: Fix this.
+
+[Alternatively, use the Chinese Remainder Theorem for polynomials to find a
+polynomial $f$ that satisfies $f\left(  J_{k_{u}}\left(  \lambda_{u}\right)
+\right)  =\lambda_{u}I_{k_{u}}$. This polynomial $f$ should satisfy
+$f\equiv\left(  t-\lambda_{u}\right)  ^{k_{u}}+\lambda_{u}$ for each $u$.]
+\end{proof}
+
+\subsection{The real Jordan canonical form}
+
+Given a matrix $A\in\mathbb{R}^{n\times n}$ with real entries, its Jordan
+canonical form doesn't necessarily have real entries. Indeed, the eigenvalues
+of $A$ don't have to be real. Sometimes, we want to find a \textquotedblleft
+simple\textquotedblright\ form for $A$ that does have real entries. What
+follows is a way to tweak the Jordan canonical form to this use case.
+
+We observe the following:
+
+\begin{lemma}
+Let $A\in\mathbb{R}^{n\times n}$ and $\lambda\in\mathbb{C}$. Then, the
+\textquotedblleft Jordan structure of $A$ at $\lambda$\textquotedblright%
+\ (meaning the multiset of the sizes of the Jordan blocks of $A$ at $\lambda$)
+equals the Jordan structure of $A$ at $\overline{\lambda}$. In other words,
+for each $p>0$, we have%
+\begin{align*}
+&  \left(  \text{the number of Jordan blocks of }A\text{ at }\lambda\text{
+having size }p\right) \\
+&  =\left(  \text{the number of Jordan blocks of }A\text{ at }\overline
+{\lambda}\text{ having size }p\right)  .
+\end{align*}
+
+
+In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
+{\lambda}$ come in pairs of equal sizes.
+\end{lemma}
+
+\begin{proof}
+HW.
+\end{proof}
+
+So we can try to combine each Jordan block at $\lambda$ with an equally sized
+Jordan block at $\overline{\lambda}$ and hope that something real comes out
+somehow, in the same way as $\left(  t-\lambda\right)  \left(  t-\overline
+{\lambda}\right)  =t^{2}-2\operatorname*{Re}\lambda+\left\vert \lambda
+\right\vert ^{2}\in\mathbb{R}\left[  t\right]  $.
+
+How to do this?%
+\begin{align*}
+&  \left(
+\begin{array}
+[c]{cccccccc}%
+\lambda & 1 &  &  &  &  &  & \\
+& \lambda & \ddots &  &  &  &  & \\
+&  & \ddots & 1 &  &  &  & \\
+&  &  & \lambda &  &  &  & \\
+&  &  &  & \overline{\lambda} & 1 &  & \\
+&  &  &  &  & \overline{\lambda} & \ddots & \\
+&  &  &  &  &  & \ddots & 1\\
+&  &  &  &  &  &  & \overline{\lambda}%
+\end{array}
+\right) \\
+&  \sim\left(
+\begin{array}
+[c]{cccccccc}%
+\lambda &  & 1 &  &  &  &  & \\
+& \overline{\lambda} &  & 1 &  &  &  & \\
+&  & \lambda &  & 1 &  &  & \\
+&  &  & \overline{\lambda} &  & 1 &  & \\
+&  &  &  & \ddots &  &  & \\
+&  &  &  &  & \ddots &  & \\
+&  &  &  &  &  & \lambda & \\
+&  &  &  &  &  &  & \overline{\lambda}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+L & I_{2} &  & \\
+& L & I_{2} & \\
+&  & \ddots & \\
+&  &  & L
+\end{array}
+\right)  ,
+\end{align*}
+where $L$ is the $2\times2$-matrix $\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  $. However,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+-b & a
+\end{array}
+\right)  ,
+\]
+where $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}\lambda$ (so that
+$\lambda=a+bi$). (HW!) So our matrix is similar to%
+\[
+\left(
+\begin{array}
+[c]{cccccccc}%
+a & b & 1 &  &  &  &  & \\
+-b & a &  & 1 &  &  &  & \\
+&  & a & b & 1 &  &  & \\
+&  & -b & a &  & 1 &  & \\
+&  &  &  & \ddots &  &  & \\
+&  &  &  &  & \ddots &  & \\
+&  &  &  &  &  & a & b\\
+&  &  &  &  &  & -b & a
+\end{array}
+\right)  .
+\]
+
 
 [...]
 
@@ -7452,6 +10112,9 @@ applications}, 11 February 2020.\newline\url{https://neilstrickland.github.io/li
 
 \bibitem[Swanso20]{Swanso20}Irene Swanson, \textit{Introduction with Analysis
 with Complex Numbers}, 2020.\newline\url{https://web.archive.org/web/20201012174324/https://people.reed.edu/~iswanson/analysisconstructR.pdf}
+
+\bibitem[Tao07]{Tao07}Terence Tao, \textit{The Jordan normal form and the
+Euclidean algorithm}, 12 October 2007.\newline\url{https://terrytao.wordpress.com/2007/10/12/the-jordan-normal-form-and-the-euclidean-algorithm/}
 
 \bibitem[Taylor20]{Taylor20}%
 \href{https://bookstore.ams.org/amstext-45/}{Michael Taylor, \textit{Linear
