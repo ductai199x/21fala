@@ -1,0 +1,848 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, October 22, 2021 11:49:33}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 14}
+
+\section{Jordan canonical (aka normal) form (cont'd)}
+
+\subsection{The centralizer of a matrix}
+
+Here is a fairly natural question: Which matrices commute with a given square
+matrix $A$ ?
+
+\begin{proposition}
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. Let $f$ and $g$ be two polynomials in a single variable $t$ over
+$\mathbb{F}$. Then, $f\left(  A\right)  $ commutes with $g\left(  A\right)  $.
+\end{proposition}
+
+\begin{proof}
+Write $f\left(  t\right)  $ as $f\left(  t\right)  =\sum_{i=0}^{n}f_{i}t^{i}$,
+and write $g\left(  t\right)  $ as $g\left(  t\right)  =\sum_{j=0}^{m}%
+g_{j}t^{j}$. Then,%
+\[
+f\left(  A\right)  =\sum_{i=0}^{n}f_{i}A^{i}\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ g\left(  A\right)  =\sum_{j=0}^{m}g_{j}A^{j}.
+\]
+Thus,%
+\[
+f\left(  A\right)  \cdot g\left(  A\right)  =\left(  \sum_{i=0}^{n}f_{i}%
+A^{i}\right)  \cdot\left(  \sum_{j=0}^{m}g_{j}A^{j}\right)  =\sum_{i=0}%
+^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}\underbrace{A^{i}A^{j}}_{=A^{i+j}}=\sum
+_{i=0}^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}A^{i+j}.
+\]
+A similar computation shows that%
+\[
+g\left(  A\right)  \cdot f\left(  A\right)  =\sum_{i=0}^{n}\ \ \sum_{j=0}%
+^{m}f_{i}g_{j}A^{i+j}.
+\]
+Comparing these two, we obtain $f\left(  A\right)  \cdot g\left(  A\right)
+=g\left(  A\right)  \cdot f\left(  A\right)  $, qed.
+\end{proof}
+
+Thus, in particular, $f\left(  A\right)  $ commutes with $A$ for any
+polynomial $f$ (because $A=g\left(  A\right)  $ for $g\left(  t\right)  =t$).
+
+But are there other matrices that commute with $A$ ?
+
+There certainly can be. For instance, if $A=\lambda I_{n}$ for some
+$\lambda\in\mathbb{F}$, then \textbf{every} $n\times n$-matrix commutes with
+$A$ (but very few matrices are of the form $f\left(  A\right)  $ for some
+polynomial $f$). This is, in a sense, the \textquotedblleft best case
+scentario\textquotedblright. Only for $A=\lambda I_{n}$ is it true that every
+$n\times n$-matrix commutes with $A$.
+
+Let us study the general case now.
+
+\begin{definition}
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. The
+\textbf{centralizer} of $A$ is defined to be the set of all $n\times
+n$-matrices $B\in\mathbb{F}^{n\times n}$ such that $AB=BA$. We denote this set
+by $\operatorname*{Cent}A$.
+\end{definition}
+
+We thus want to know what $\operatorname*{Cent}A$ is.
+
+We begin with some general properties:
+
+\begin{proposition}
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,
+$\operatorname*{Cent}A$ is a subset of $\mathbb{F}^{n\times n}$ that is closed
+under addition, scaling and multiplication and contains $\lambda I_{n}$ for
+all $\lambda\in\mathbb{F}$. In other words:
+
+\textbf{(a)} For any $B,C\in\operatorname*{Cent}A$, we have $B+C\in
+\operatorname*{Cent}A$.
+
+\textbf{(b)} For any $B\in\operatorname*{Cent}A$ and $\lambda\in\mathbb{F}$,
+we have $\lambda B\in\operatorname*{Cent}A$.
+
+\textbf{(c)} For any $B,C\in\operatorname*{Cent}A$, we have $BC\in
+\operatorname*{Cent}A$.
+
+\textbf{(d)} For any $\lambda\in\mathbb{F}$, we have $\lambda I_{n}%
+\in\operatorname*{Cent}A$.
+\end{proposition}
+
+This implies, in particular, that $\operatorname*{Cent}A$ is a vector subspace
+of $\mathbb{F}^{n\times n}$. Furthermore, it shows that $\operatorname*{Cent}%
+A$ is an $\mathbb{F}$-subalgebra of $\mathbb{F}^{n\times n}$ (in particular, a
+subring of $\mathbb{F}^{n\times n}$).
+
+\begin{proof}
+[Proof of the Proposition.] Let me just show part \textbf{(c)}; the other
+parts are even easier.
+
+\textbf{(c)} Let $B,C\in\operatorname*{Cent}A$. Thus, $AB=BA$ and $AC=CA$.
+Now,%
+\[
+\underbrace{AB}_{=BA}C=B\underbrace{AC}_{=CA}=BCA.
+\]
+This shows that $BC\in\operatorname*{Cent}A$. Thus, part \textbf{(c)} is proved.
+\end{proof}
+
+Now, as an example, let us compute $\operatorname*{Cent}A$ in the case when
+$A$ is a single Jordan cell $J_{n}\left(  0\right)  $. So we fix an $n>0$, and
+we set%
+\[
+A:=J_{n}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  .
+\]
+Let $B\in\mathbb{F}^{n\times n}$ be arbitrary. We want to know when
+$B\in\operatorname*{Cent}A$. In other words, we want to know when $AB=BA$.
+
+We have
+\begin{align*}
+AB  & =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccccc}%
+B_{1,1} & B_{1,2} & B_{1,3} & \cdots & B_{1,n}\\
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{ccccc}%
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)
+\end{align*}
+and%
+\begin{align*}
+BA  & =\left(
+\begin{array}
+[c]{ccccc}%
+B_{1,1} & B_{1,2} & B_{1,3} & \cdots & B_{1,n}\\
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{ccccc}%
+0 & B_{1,1} & B_{1,2} & \cdots & B_{1,n-1}\\
+0 & B_{2,1} & B_{2,2} & \cdots & B_{2,n-1}\\
+0 & B_{3,1} & B_{3,2} & \cdots & B_{3,n-1}\\
+\vdots & \vdots & \vdots & \ddots & \ddots\\
+0 & B_{n,1} & B_{n,2} & \cdots & B_{n,n-1}%
+\end{array}
+\right)  .
+\end{align*}
+Thus, $AB=BA$ holds if and only if
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & B_{1,1} & B_{1,2} & \cdots & B_{1,n-1}\\
+0 & B_{2,1} & B_{2,2} & \cdots & B_{2,n-1}\\
+0 & B_{3,1} & B_{3,2} & \cdots & B_{3,n-1}\\
+\vdots & \vdots & \vdots & \ddots & \ddots\\
+0 & B_{n,1} & B_{n,2} & \cdots & B_{n,n-1}%
+\end{array}
+\right)  ,
+\]
+i.e., if%
+\begin{align*}
+B_{2,j}  & =B_{1,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{1,0}:=0\text{);}\\
+B_{3,j}  & =B_{2,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{2,0}:=0\text{);}\\
+B_{4,j}  & =B_{3,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{3,0}:=0\text{);}\\
+& \ldots;\\
+B_{n,j}  & =B_{n-1,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[
+n\right]  \text{ (where }B_{n-1,0}:=0\text{);}\\
+0  & =B_{n,j}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n-1\right]  .
+\end{align*}
+The latter system of equations can be restated as follows:%
+\begin{align*}
+& \ldots;\\
+B_{n,n-2}  & =B_{n-1,n-3}=B_{n-2,n-4}=\cdots=B_{3,1}=0;\\
+B_{n,n-1}  & =B_{n-1,n-2}=B_{n-2,n-3}=\cdots=B_{2,1}=0;\\
+B_{n,n}  & =B_{n-1,n-1}=B_{n-2,n-2}=\cdots=B_{1,1};\\
+B_{n-1,n}  & =B_{n-2,n-1}=B_{n-3,n-2}=\cdots=B_{1,2};\\
+B_{n-2,n}  & =B_{n-3,n-1}=B_{n-4,n-2}=\cdots=B_{1,3};\\
+& \ldots.
+\end{align*}
+In other words, it means that the matrix $B$ looks as follows:%
+\[
+B=\left(
+\begin{array}
+[c]{ccccc}%
+b_{0} & b_{1} & b_{2} & \cdots & b_{n-1}\\
+& b_{0} & b_{1} & \cdots & b_{n-2}\\
+&  & b_{0} & \cdots & b_{n-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & b_{0}%
+\end{array}
+\right)
+\]
+(where the empty cells have entries equal to $0$). This is called an
+\textbf{upper-triangular Toeplitz matrix}. We can also rewrite it as%
+\[
+B=b_{0}I_{n}+b_{1}A+b_{2}A^{2}+\cdots+b_{n-1}A^{n-1}.
+\]
+
+
+So we have proved the following:
+
+\begin{theorem}
+Let $n>0$. Let $A=J_{n}\left(  0\right)  $. Then,
+\begin{align*}
+\operatorname*{Cent}A  & =\left\{  \left(
+\begin{array}
+[c]{ccccc}%
+b_{0} & b_{1} & b_{2} & \cdots & b_{n-1}\\
+& b_{0} & b_{1} & \cdots & b_{n-2}\\
+&  & b_{0} & \cdots & b_{n-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & b_{0}%
+\end{array}
+\right)  \ \mid\ b_{0},b_{1},\ldots,b_{n-1}\in\mathbb{F}\right\}  \\
+& =\left\{  b_{0}I_{n}+b_{1}A+b_{2}A^{2}+\cdots+b_{n-1}A^{n-1}\ \mid
+\ b_{0},b_{1},\ldots,b_{n-1}\in\mathbb{F}\right\}  \\
+& =\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{F}\left[  t\right]  \text{
+is a polynomial of degree }\leq n-1\right\}  .
+\end{align*}
+
+\end{theorem}
+
+So this is the worst-case scenario: The only matrices commuting with $A$ are
+the matrices of the form $f\left(  A\right)  $ (which, as we recall, must
+always commute with $A$).
+
+What happens for an arbitrary $A$ ? Is the answer closer to the best-case
+scenario or to the worst-case scenario? The answer is that the worst-case
+scenario holds for a randomly chosen matrix, but we can actually answer the
+question \textquotedblleft what is $\operatorname*{Cent}A$
+exactly\textquotedblright\ if we know the Jordan canonical form of $A$.
+
+We start with simple propositions:
+
+\begin{proposition}
+Let $A\in\mathbb{F}^{n\times n}$ and $\lambda\in\mathbb{F}$. Then,
+$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
+\end{proposition}
+
+\begin{proof}
+Exercise (diff. [1]).
+\end{proof}
+
+\begin{proposition}
+Let $A$, $B$ and $S$ be three $n\times n$-matrices such that $S$ is
+invertible. Then,
+\[
+\left(  B\in\operatorname*{Cent}A\right)  \ \Longleftrightarrow\ \left(
+SBS^{-1}\in\operatorname*{Cent}\left(  SAS^{-1}\right)  \right)  .
+\]
+
+\end{proposition}
+
+\begin{proof}
+Exercise (diff. [1]).
+\end{proof}
+
+Thus, if $A$ is a matrix with complex entries, and if we want to compute
+$\operatorname*{Cent}A$, it suffices to compute $\operatorname*{Cent}J$, where
+$J$ is the JCF of $A$.
+
+Therefore, we now focus on centralizers of Jordan matrices.
+
+\begin{proposition}
+Let $A_{1},A_{2},\ldots,A_{k}$ be square matrices with complex entries. Assume
+that the spectra of these matrices are disjoint -- i.e., if $i\neq j$, then
+$\sigma\left(  A_{i}\right)  \cap\sigma\left(  A_{j}\right)  =\varnothing$.
+
+Then,%
+\begin{align*}
+& \operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  \\
+& =\left\{  \left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  \ \mid\ B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  \text{ for
+each }i\in\left[  k\right]  \right\}  .
+\end{align*}
+
+\end{proposition}
+
+\begin{proof}
+The $\supseteq$ inclusion is obvious. We thus need to prove the $\subseteq$
+inclusion only.
+
+Let $A_{i}$ be an $n_{i}\times n_{i}$-matrix for each $i\in\left[  k\right]  $.
+
+Let $B\in\operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  $. We want to show that $B$ has the form $\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  $ where $B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  $ for each
+$i\in\left[  k\right]  $.
+
+Write $B$ as a block matrix%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  ,
+\]
+where each $B\left(  i,j\right)  $ is an $n_{i}\times n_{j}$-matrix. Then, by
+the rule for multiplying block matrices, we have%
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+A_{1}B\left(  1,1\right)   & A_{1}B\left(  1,2\right)   & \cdots &
+A_{1}B\left(  1,k\right)  \\
+A_{2}B\left(  2,1\right)   & A_{2}B\left(  2,2\right)   & \cdots &
+A_{2}B\left(  2,k\right)  \\
+\vdots & \vdots & \ddots & \vdots\\
+A_{k}B\left(  k,1\right)   & A_{k}B\left(  k,2\right)   & \cdots &
+A_{k}B\left(  k,k\right)
+\end{array}
+\right)
+\end{align*}
+and%
+\begin{align*}
+& \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  A_{1} & B\left(  1,2\right)  A_{2} & \cdots & B\left(
+1,k\right)  A_{k}\\
+B\left(  2,1\right)  A_{1} & B\left(  2,2\right)  A_{2} & \cdots & B\left(
+2,k\right)  A_{k}\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  A_{1} & B\left(  k,2\right)  A_{2} & \cdots & B\left(
+k,k\right)  A_{k}%
+\end{array}
+\right)  .
+\end{align*}
+However, these two matrices must be equal, since $\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  \in\operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  $. Thus, we have%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1}B\left(  1,1\right)   & A_{1}B\left(  1,2\right)   & \cdots &
+A_{1}B\left(  1,k\right)  \\
+A_{2}B\left(  2,1\right)   & A_{2}B\left(  2,2\right)   & \cdots &
+A_{2}B\left(  2,k\right)  \\
+\vdots & \vdots & \ddots & \vdots\\
+A_{k}B\left(  k,1\right)   & A_{k}B\left(  k,2\right)   & \cdots &
+A_{k}B\left(  k,k\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  A_{1} & B\left(  1,2\right)  A_{2} & \cdots & B\left(
+1,k\right)  A_{k}\\
+B\left(  2,1\right)  A_{1} & B\left(  2,2\right)  A_{2} & \cdots & B\left(
+2,k\right)  A_{k}\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  A_{1} & B\left(  k,2\right)  A_{2} & \cdots & B\left(
+k,k\right)  A_{k}%
+\end{array}
+\right)  .
+\]
+Comparing blocks, we can rewrite this as%
+\[
+A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  k\right]  .
+\]
+
+
+Now, let $i,j\in\left[  k\right]  $ be distinct. Consider this equality
+$A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}$. We can rewrite it as
+$A_{i}B\left(  i,j\right)  -B\left(  i,j\right)  A_{j}=0$. Thus, $B\left(
+i,j\right)  $ is an $n_{i}\times n_{j}$-matrix $X$ satisfying $A_{i}%
+X-XA_{j}=0$. However, because $\sigma\left(  A_{i}\right)  \cap\sigma\left(
+A_{j}\right)  =\varnothing$, a theorem we proved before (the Sylvester matrix
+equation) tells us that there is a \textbf{unique} $n_{i}\times n_{j}$-matrix
+$X$ satisfying $A_{i}X-XA_{j}=0$. Clearly, this unique matrix $X$ must be the
+$0$ matrix (since the $0$ matrix satisfies $A_{i}0-0A_{j}=0$). So we conclude
+that $B\left(  i,j\right)  $ is the $0$ matrix. In other words, $B\left(
+i,j\right)  =0$.
+
+So we have shown that $B\left(  i,j\right)  =0$ whenever $i$ and $j$ are
+distinct. Thus,%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   &  &  & \\
+& B\left(  2,2\right)   &  & \\
+&  & \ddots & \\
+&  &  & B\left(  k,k\right)
+\end{array}
+\right)  .
+\]
+This shows that $B$ is block-diagonal. Now, applying the equation%
+\[
+A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  k\right]
+\]
+to $j=i$, we obtain $A_{i}B\left(  i,i\right)  =B\left(  i,i\right)  A_{i}$,
+which of course means that $B\left(  i,i\right)  \in\operatorname*{Cent}%
+\left(  A_{i}\right)  $. Thus, $B$ has the form $\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  $ where $B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  $ for each
+$i\in\left[  k\right]  $. Proof complete.
+\end{proof}
+
+So we only need to compute $\operatorname*{Cent}J$ when $J$ is a Jordan matrix
+with only one eigenvalue.
+
+We can WLOG assume that this eigenvalue is $0$, since we know that
+$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
+
+So we only need to compute $\operatorname*{Cent}J$ when $J$ is a Jordan matrix
+with zeroes on its diagonal.
+
+If $J$ is just a single Jordan cell, we already know the result (by the above
+theorem which describes $\operatorname*{Cent}A$ for $A=J_{n}\left(  0\right)
+$). In the general case, we have the following:
+
+\begin{proposition}
+Let $J$ be a Jordan matrix whose Jordan blocks are%
+\[
+J_{n_{1}}\left(  0\right)  ,\ \ J_{n_{2}}\left(  0\right)  ,\ \ \ldots
+,\ \ J_{n_{k}}\left(  0\right)  .
+\]
+Let $B$ be an $n\times n$-matrix, written as a block matrix%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)   & B\left(  1,2\right)   & \cdots & B\left(  1,k\right)
+\\
+B\left(  2,1\right)   & B\left(  2,2\right)   & \cdots & B\left(  2,k\right)
+\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)   & B\left(  k,2\right)   & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  ,
+\]
+where each $B\left(  i,j\right)  $ is an $n_{i}\times n_{j}$-matrix. Then,
+$B\in\operatorname*{Cent}J$ if and only if each of the $k^{2}$ blocks
+$B\left(  i,j\right)  $ is an \textbf{upper-triangular Toeplitz matrix in the
+wide sense}.
+
+Here, we say that a matrix is an \textbf{upper-triangular Toeplitz matrix in
+the wide sense} if it
+
+\begin{itemize}
+\item has the form $\left(
+\begin{array}
+[c]{cc}%
+0 & U
+\end{array}
+\right)  $, where $U$ is an upper-triangular Toeplitz (square) matrix and $0$
+is a zero matrix, or
+
+\item has the form $\left(
+\begin{array}
+[c]{c}%
+U\\
+0
+\end{array}
+\right)  $, where $U$ is an upper-triangular Toeplitz (square) matrix and $0$
+is a zero matrix.
+\end{itemize}
+
+(The zero matrices are allowed to be empty.)
+\end{proposition}
+
+\begin{proof}
+Essentially the same argument that we used to prove the theorem about
+$J_{n}\left(  0\right)  $, just with a lot more bookkeeping involved.
+\end{proof}
+
+We can summarize our results into a single theorem:
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix with Jordan
+canonical form $J$. Then, $\operatorname*{Cent}A$ is a vector subspace of
+$\mathbb{C}^{n\times n}$ with dimension%
+\[
+\sum_{\lambda\in\sigma\left(  A\right)  }g_{\lambda}\left(  A\right)  .
+\]
+Here, for each eigenvalue $\lambda$ of $A$, the number $g_{\lambda}\left(
+A\right)  $ is a nonnegative integer defined as follows: Let $n_{1}%
+,n_{2},\ldots,n_{k}$ be the sizes of the Jordan blocks at eigenvalue $\lambda$
+that appear in $J$; then, we set%
+\[
+g_{\lambda}\left(  A\right)  :=\sum_{i=1}^{k}\ \ \sum_{j=1}^{k}\min\left\{
+n_{i},n_{j}\right\}  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+Combine our above results and count the degrees of freedom.
+\end{proof}
+
+Now, let us return to the worst-case scenario: When is $\operatorname*{Cent}%
+A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}\left[  t\right]
+\right\}  $ ? We can answer this, too, although the proof takes longer.
+
+\begin{definition}
+An $n\times n$-matrix $A\in\mathbb{F}^{n\times n}$ is said to be
+\textbf{nonderogatory} if $q_{A}=p_{A}$ (that is, the minimal polynomial of
+$A$ equals the characteristic polynomial of $A$).
+\end{definition}
+
+A randomly chosen matrix with complex entries will be nonderogatory with
+probability $1$; but there are exceptions. It is easy to see that if a matrix
+$A$ has $n$ distinct eigenvalues, then $A$ is nonderogatory, but this is not
+an \textquotedblleft if and only if\textquotedblright; a single Jordan cell is
+also nonderogatory.
+
+\begin{proposition}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is nonderogatory if and
+only if its Jordan canonical form has exactly one Jordan block for each eigenvalue.
+\end{proposition}
+
+\begin{proof}
+HW (difficulty [2]).
+\end{proof}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Then,
+\[
+\operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
+\left[  t\right]  \right\}
+\]
+if and only if $f$ is nonderogatory. Moreover, in this case,%
+\[
+\operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
+\left[  t\right]  \text{ is a polynomial of degree }\leq n-1\right\}  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+Later or exercises?
+\end{proof}
+
+
+\end{document}

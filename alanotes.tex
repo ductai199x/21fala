@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 22, 2021 08:03:13}
+%TCIDATA{LastRevised=Sunday, October 24, 2021 17:05:57}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -6351,7 +6351,8 @@ The building blocks for the Jordan canonical form are the so-called Jordan
 cells. Let us define them:
 
 \begin{definition}
-\label{def.jnf.jcell}A \emph{Jordan cell} is an $m\times m$-matrix of the form%
+\label{def.jnf.jcell}Let $\mathbb{F}$ be a field. A \emph{Jordan cell} is an
+$m\times m$-matrix of the form%
 \[
 \left(
 \begin{array}
@@ -6363,7 +6364,7 @@ cells. Let us define them:
 0 & 0 & 0 & \cdots & \lambda
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \text{for some }m>0\text{ and some }\lambda
-\in\mathbb{C}.
+\in\mathbb{F}.
 \]
 In other words, it is an $m\times m$-matrix
 
@@ -6420,7 +6421,7 @@ J_{2}\left(  \pi\right)  =\left(
 \]
 
 
-\textbf{(c)} For any $\lambda\in\mathbb{C}$, the Jordan cell of size $1$ at
+\textbf{(c)} For any $\lambda\in\mathbb{F}$, the Jordan cell of size $1$ at
 eigenvalue $\lambda$ is the $1\times1$-matrix $\left(
 \begin{array}
 [c]{c}%
@@ -6482,8 +6483,8 @@ While the Jordan cell $J_{m}\left(  \lambda\right)  $ depends on both $m$ and
 $\lambda$, its dependence on $k$ is not very substantial:
 
 \begin{proposition}
-\label{prop.jnf.jcell-lambda}Let $m$ be a positive integer, and let
-$\lambda\in\mathbb{C}$. Then,%
+\label{prop.jnf.jcell-lambda}Let $\mathbb{F}$ be a field. Let $m$ be a
+positive integer, and let $\lambda\in\mathbb{F}$. Then,%
 \[
 J_{m}\left(  \lambda\right)  =J_{m}\left(  0\right)  +\lambda I_{m}.
 \]
@@ -6572,8 +6573,8 @@ about $J_{m}\left(  0\right)  $. Let us compute the powers of $J_{m}\left(
 0\right)  $:
 
 \begin{proposition}
-\label{prop.jnf.jcell0-powers}Let $m$ be a positive integer. Let
-$B=J_{m}\left(  0\right)  $. Let $p\in\mathbb{N}$. Then:
+\label{prop.jnf.jcell0-powers}Let $\mathbb{F}$ be a field. Let $m$ be a
+positive integer. Let $B=J_{m}\left(  0\right)  $. Let $p\in\mathbb{N}$. Then:
 
 \textbf{(a)} The entries of the $m\times m$-matrix $B^{p}$ are given by%
 \[
@@ -6974,8 +6975,9 @@ This completes our proof of Proposition \ref{prop.jnf.jcell.multiplicity}.
 Let us now build larger matrices out of Jordan cells:
 
 \begin{definition}
-\label{def.jnf.jmat}A \emph{Jordan matrix} means a block-diagonal matrix whose
-diagonal blocks are Jordan cells. In other words, it is a matrix of the form%
+\label{def.jnf.jmat}Let $\mathbb{F}$ be a field. A \emph{Jordan matrix} means
+a block-diagonal matrix whose diagonal blocks are Jordan cells. In other
+words, it is a matrix of the form%
 \[
 \left(
 \begin{array}
@@ -6988,7 +6990,7 @@ J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
 \right)  ,
 \]
 where $n_{1},n_{2},\ldots,n_{k}$ are positive integers and $\lambda
-_{1},\lambda_{2},\ldots,\lambda_{k}$ are scalars in $\mathbb{C}$ (not
+_{1},\lambda_{2},\ldots,\lambda_{k}$ are scalars in $\mathbb{F}$ (not
 necessarily distinct, but not necessarily equal either).
 \end{definition}
 
@@ -6998,8 +7000,8 @@ We claim the following:\footnote{Recall that \textquotedblleft$A\sim
 B$\textquotedblright\ means that the matrix $A$ is similar to the matrix $B$.}
 
 \begin{theorem}
-[Jordan canonical form theorem]\label{thm.jnf.jnf}Let $A$ be an $n\times
-n$-matrix over $\mathbb{C}$. Then:
+[Jordan canonical form theorem]\label{thm.jnf.jnf}Let $A\in\mathbb{C}^{n\times
+n}$ be an $n\times n$-matrix over $\mathbb{C}$. Then:
 
 \textbf{(a)} There exists a Jordan matrix $J$ such that $A\sim J$.
 
@@ -7314,15 +7316,15 @@ instead of $A$, $B$ and $k$). Hence,%
 \begin{equation}
 \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
 ^{p}\right)  \right)  =\dim\left(  \operatorname*{Ker}\left(  \left(
-J-\lambda I_{n}\right)  ^{p}\right)  \right)
-.\label{pf.prop.jnf.unique.cellsizes.dimKer1}%
+J-\lambda I_{n}\right)  ^{p}\right)  \right)  .
+\label{pf.prop.jnf.unique.cellsizes.dimKer1}%
 \end{equation}
 
 
 For each $i\in\left[  k\right]  $, we set
 \begin{equation}
-M_{i}:=J_{n_{i}}\left(  \lambda_{i}-\lambda\right)
-.\label{pf.prop.jnf.unique.cellsizes.Mi=}%
+M_{i}:=J_{n_{i}}\left(  \lambda_{i}-\lambda\right)  .
+\label{pf.prop.jnf.unique.cellsizes.Mi=}%
 \end{equation}
 
 
@@ -7337,23 +7339,23 @@ entries, which are $\lambda_{i}$ in the former matrix and $\lambda_{i}%
 -\lambda$ in the latter). Comparing this with
 (\ref{pf.prop.jnf.unique.cellsizes.Mi=}), we obtain%
 \begin{equation}
-J_{n_{i}}\left(  \lambda_{i}\right)  -\lambda I_{n_{i}}=M_{i}%
+J_{n_{i}}\left(  \lambda_{i}\right)  -\lambda I_{n_{i}}=M_{i}
 \label{pf.prop.jnf.unique.cellsizes.J-lam2}%
 \end{equation}
 for each $i\in\left[  k\right]  $.
 
 Now, we have%
 \begin{align*}
-J &  =\left(
+J  &  =\left(
 \begin{array}
 [c]{cccc}%
-J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
-0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
 \end{array}
 \right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
-\lambda I_{n} &  =\left(
+\lambda I_{n}  &  =\left(
 \begin{array}
 [c]{cccc}%
 \lambda I_{n_{1}} & 0 & \cdots & 0\\
@@ -7365,7 +7367,7 @@ J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
 \end{align*}
 Subtracting these two equalities from one another, we obtain%
 \begin{align*}
-J-\lambda I_{n} &  =\left(
+J-\lambda I_{n}  &  =\left(
 \begin{array}
 [c]{cccc}%
 J_{n_{1}}\left(  \lambda_{1}\right)  -\lambda I_{n_{1}} & 0 & \cdots & 0\\
@@ -7373,7 +7375,7 @@ J_{n_{1}}\left(  \lambda_{1}\right)  -\lambda I_{n_{1}} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)  -\lambda I_{n_{k}}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cccc}%
@@ -7407,7 +7409,7 @@ M_{1}^{p} & 0 & \cdots & 0\\
 (by Corollary \ref{cor.blockmatrix.powt-diag}). Thus,%
 \begin{align}
 &  \dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
-^{p}\right)  \right)  \nonumber\\
+^{p}\right)  \right) \nonumber\\
 &  =\dim\left(  \operatorname*{Ker}\left(
 \begin{array}
 [c]{cccc}%
@@ -7416,13 +7418,13 @@ M_{1}^{p} & 0 & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & M_{k}^{p}%
 \end{array}
-\right)  \right)  \nonumber\\
+\right)  \right) \nonumber\\
 &  =\dim\left(  \operatorname*{Ker}\left(  M_{1}^{p}\right)  \right)
 +\dim\left(  \operatorname*{Ker}\left(  M_{2}^{p}\right)  \right)
 +\cdots+\dim\left(  \operatorname*{Ker}\left(  M_{k}^{p}\right)  \right)
 \nonumber\\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition
-\ref{prop.blockmatrix.nullity-diag}}\right)  \nonumber\\
+\ref{prop.blockmatrix.nullity-diag}}\right) \nonumber\\
 &  =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
 \right)  \label{pf.prop.jnf.unique.cellsizes.1}%
 \end{align}
@@ -7443,27 +7445,27 @@ invertible, and therefore has nullity $0$. In other words, $\dim\left(
 Forget that we fixed $i$. We thus have shown that if $i\in\left[  k\right]  $
 satisfies $\lambda_{i}\neq\lambda$, then
 \begin{equation}
-\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)
-=0\text{.}\label{pf.prop.jnf.unique.cellsizes.nullity0}%
+\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)  =0\text{.}
+\label{pf.prop.jnf.unique.cellsizes.nullity0}%
 \end{equation}
 Hence, (\ref{pf.prop.jnf.unique.cellsizes.1}) becomes%
 \begin{align}
 &  \dim\left(  \operatorname*{Ker}\left(  \left(  J-\lambda I_{n}\right)
-^{p}\right)  \right)  \nonumber\\
+^{p}\right)  \right) \nonumber\\
 &  =\sum_{i=1}^{k}\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
-\right)  \nonumber\\
+\right) \nonumber\\
 &  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}\neq\lambda
 }}\underbrace{\dim\left(  \operatorname*{Ker}\left(  M_{i}^{p}\right)
 \right)  }_{\substack{=0\\\text{(by
 (\ref{pf.prop.jnf.unique.cellsizes.nullity0}))}}}+\sum_{\substack{i\in\left[
 k\right]  ;\\\lambda_{i}=\lambda}}\dim\left(  \operatorname*{Ker}\left(
-M_{i}^{p}\right)  \right)  \nonumber\\
+M_{i}^{p}\right)  \right) \nonumber\\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{since each }%
 i\in\left[  k\right]  \text{ satisfies either }\lambda_{i}\neq\lambda\text{ or
-}\lambda_{i}=\lambda\right)  \nonumber\\
+}\lambda_{i}=\lambda\right) \nonumber\\
 &  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}\dim\left(
-\operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)
-.\label{pf.prop.jnf.unique.cellsizes.2}%
+\operatorname*{Ker}\left(  M_{i}^{p}\right)  \right)  .
+\label{pf.prop.jnf.unique.cellsizes.2}%
 \end{align}
 
 
@@ -7559,7 +7561,7 @@ Subtracting these two equalities, we obtain%
 \begin{align*}
 &  \dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
 ^{p}\right)  \right)  -\dim\left(  \operatorname*{Ker}\left(  \left(
-A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  \\
+A-\lambda I_{n}\right)  ^{p-1}\right)  \right) \\
 &  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
 \begin{cases}
 p, & \text{if }p\leq n_{i};\\
@@ -7607,7 +7609,7 @@ n_{i}\text{ and }p>n_{i}\text{)}}}\\
 p\text{,}\\
 \text{and since the condition }p>n_{i}\text{ is equivalent to }n_{i}<p
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(  \text{the number of }i\in\left[  k\right]  \text{ such that
 }\lambda_{i}=\lambda\text{ and }n_{i}\geq p\right)
 \end{align*}
@@ -7622,8 +7624,8 @@ addends of this sum are $0$). Thus, Proposition
 $J=\left(
 \begin{array}
 [c]{cccc}%
-J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
-0 & J_{n_{2}}\left(  \lambda_{2}\right)   & \cdots & 0\\
+J_{n_{1}}\left(  \lambda_{1}\right)  & 0 & \cdots & 0\\
+0 & J_{n_{2}}\left(  \lambda_{2}\right)  & \cdots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \cdots & J_{n_{k}}\left(  \lambda_{k}\right)
 \end{array}
@@ -7631,9 +7633,9 @@ J_{n_{1}}\left(  \lambda_{1}\right)   & 0 & \cdots & 0\\
 be a positive integer. Then,%
 \begin{align*}
 &  \left(  \text{the number of }i\in\left[  k\right]  \text{ such that
-}\lambda_{i}=\lambda\text{ and }n_{i}=p\right)  \\
+}\lambda_{i}=\lambda\text{ and }n_{i}=p\right) \\
 &  =2\dim\left(  \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)
-^{p}\right)  \right)  \\
+^{p}\right)  \right) \\
 &  \ \ \ \ \ \ \ \ \ \ -\dim\left(  \operatorname*{Ker}\left(  \left(
 A-\lambda I_{n}\right)  ^{p-1}\right)  \right)  -\dim\left(
 \operatorname*{Ker}\left(  \left(  A-\lambda I_{n}\right)  ^{p+1}\right)
@@ -7750,7 +7752,7 @@ or one that is obtained from it by permuting the diagonal blocks.
 Let us now approach the existence of the Jordan canonical form (Theorem
 \ref{thm.jnf.jnf} \textbf{(a)}).
 
-\subsection{Jordan canonical form: proof of existence}
+\subsection{\label{sect.jnf.exist}Jordan canonical form: proof of existence}
 
 We will prove the existence of the Jordan canonical form in several steps,
 each of which will bring our matrix $A$ \textquotedblleft
@@ -8118,14 +8120,16 @@ B_{1} &  &  & \\
 \right)  ,
 \]
 where each $B_{i}$ is an upper-triangular matrix such that all entries on the
-diagonal of $B_{i}$ are equal.
+diagonal of $B_{i}$ are equal. (Here, the cells that we left empty are
+understood to be filled with zero matrices.)
 \end{proposition}
 
 \begin{proof}
 TODO: Scribe!
 \end{proof}
 
-\subsubsection{Step 3: Strictly upper-triangular matrices}
+\subsubsection{\label{subsect.jnf.exist.step3}Step 3: Strictly
+upper-triangular matrices}
 
 The block-diagonal matrix in Proposition \ref{prop.jnf.step2} is not yet a
 Jordan canonical form, but it is already somewhat close. At least, we have
@@ -8144,6 +8148,121 @@ B_{1} &  &  & \\
 \end{array}
 \right)  $ is similar to a Jordan matrix, and therefore the same holds for $A$.)
 
+For each $i\in\left[  k\right]  $, the matrix $B_{i}$ has all its diagonal
+entries equal. Let us say these diagonal entries all equal $\mu_{i}$. Thus,
+$B_{i}-\mu_{i}I$ is a strictly upper-triangular matrix. (Recall: a
+\emph{strictly upper-triangular} matrix is an upper-triangular matrix whose
+diagonal entries are $0$.) We want to show that $B_{i}$ is similar to a Jordan
+matrix. Because of Proposition \ref{prop.schurtri.similar.same} \textbf{(g)},
+it will suffice to show that the strictly upper-triangular matrix $B_{i}%
+-\mu_{i}I$ is similar to a Jordan matrix (because adding $\mu_{i}I$ to a
+Jordan matrix always gives a Jordan matrix again).
+
+Thus, our goal is now to show that every strictly upper-triangular matrix $A$
+is similar to a Jordan matrix. Before we approach this goal in general, let us
+convince ourselves that it is achievable for $2\times2$-matrices.
+
+\begin{example}
+A strictly upper-triangular $2\times2$-matrix $A\in\mathbb{C}^{2\times2}$ must
+have the form $\left(
+\begin{array}
+[c]{cc}%
+0 & a\\
+0 & 0
+\end{array}
+\right)  $ for some $a\in\mathbb{C}$.
+
+\begin{itemize}
+\item If $a=0$, then $A$ is the Jordan matrix $\left(
+\begin{array}
+[c]{cc}%
+J_{1}\left(  0\right)  & \\
+& J_{1}\left(  0\right)
+\end{array}
+\right)  $.
+
+\item If $a\neq0$, then $A$ is similar to the Jordan matrix $J_{2}\left(
+0\right)  =\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  $. Indeed,
+\[
+A=\left(
+\begin{array}
+[c]{cc}%
+a & 0\\
+0 & 1
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+0 & 0
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+a & 0\\
+0 & 1
+\end{array}
+\right)  ^{-1}.
+\]
+
+\end{itemize}
+\end{example}
+
+Now, we return to the general case. Let $\mathbb{F}$ be any field. Let
+$A\in\mathbb{F}^{n\times n}$ be any strictly upper-triangular $n\times
+n$-matrix. (We don't need to restrict ourselves to the case $\mathbb{F}%
+=\mathbb{C}$ here.) We want to prove that $A$ is similar to a Jordan matrix.
+
+The key to this proof will be to restate the question in terms of certain
+bases of $\mathbb{F}^{n}$, and then to construct these bases by an iterative
+process. We begin with a few notions:
+
+\begin{convention}
+We fix a nonnegative integer $n\in\mathbb{N}$, a field $\mathbb{F}$ and a
+strictly upper-triangular matrix $A\in\mathbb{F}^{n\times n}$ for the rest of
+Subsection \ref{subsect.jnf.exist.step3}.
+\end{convention}
+
+\begin{definition}
+Let $n\in\mathbb{N}$. Let $A\in\mathbb{F}^{n\times n}$ be a matrix.
+
+\textbf{(a)} An \emph{orbit} shall mean a tuple of the form $\left(
+A^{0}v,\ A^{1}v,\ \ldots,\ A^{k}v\right)  $, where $v\in\mathbb{F}^{n}$ is a
+vector and $k\in\mathbb{N}$ is an integer satisfying $A^{k+1}v=0$.
+
+\textbf{(b)} The \emph{concatenation} of two tuples $\left(  a_{1}%
+,a_{2},\ldots,a_{k}\right)  $ and $\left(  b_{1},b_{2},\ldots,b_{\ell}\right)
+$ is defined to be the tuple $\left(  a_{1},a_{2},\ldots,a_{k},b_{1}%
+,b_{2},\ldots,b_{\ell}\right)  $. Thus, concatenation is a binary operation on
+the set of tuples. Since this operation is associative, we thus obtain the
+notion of concatenation of several tuples.
+
+\textbf{(c)} A tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
+$\mathbb{F}^{n}$ will be called \emph{forwarded} if each $i\in\left[
+m-1\right]  $ satisfies $Av_{i}=v_{i+1}$ or $Av_{i}=0$.
+
+\textbf{(d)} A tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
+$\mathbb{F}^{n}$ will be called \emph{backwarded} if each $i\in\left[
+m-1\right]  $ satisfies $Av_{i+1}=v_{i}$ or $Av_{i+1}=0$.
+
+Note that the notions of \textquotedblleft orbit\textquotedblright,
+\textquotedblleft forwarded\textquotedblright\ and \textquotedblleft
+backwarded\textquotedblright\ depend on $A$, but we do not mention $A$ since
+$A$ is fixed.
+\end{definition}
+
+Thus, a tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
+$\mathbb{F}^{n}$ is forwarded if and only if it is a concatenation of finitely
+many orbits. Moreover, a tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of
+vectors in $\mathbb{F}^{n}$ is backwarded if and only if the tuple $\left(
+v_{m},v_{m-1},\ldots,v_{1}\right)  $ is forwarded.
+
 [...]
 
 TODO: Polish from here!
@@ -8153,23 +8272,14 @@ conjugation\textquotedblright.
 
 TODO: Empty cells = $0$ entries.
 
-For each $i\in\left[  k\right]  $, the matrix $B_{i}$ has all its diagonal
-entries equal. Let's say they all equal $\mu_{i}$. Thus, $B_{i}-\mu_{i}I$ is a
-strictly upper-triangular matrix. (Recall: a \emph{strictly upper-triangular}
-matrix is an upper-triangular matrix whose diagonal entries are $0$.)
+\begin{example}
+Let $n=4$ and $A=$... (where the cells we leave empty are understood to
+contain zeroes). Then, ... find some interesting orbits and bases
 
-So we need to find a way to decompose a strictly upper-triangular matrix into
-Jordan cells.
+TODO: Scribe?
+\end{example}
 
-Call the upper-triangular matrix $A$ instead of $A_{i}-\mu_{i}I$. Forget about
-the original matrix $A$.
-
-\bigskip
-
-So we have a strictly upper-triangular matrix $A\in\mathbb{C}^{n\times n}$. We
-want to prove that $A$ is similar to a Jordan matrix.
-
-We begin by trying some examples:\newline
+We begin by finding forwarded bases in some examples:
 
 \begin{example}
 Let $n=2$. Then, $A=\left(
@@ -8326,6 +8436,9 @@ independent vectors $s_{1},s_{2},\ldots,s_{n}$ such that each $As_{i}$ is
 either $0$ or $s_{i-1}$ ?
 
 \bigskip
+
+Call the upper-triangular matrix $A$ instead of $B_{i}-\mu_{i}I$. Forget about
+the original matrix $A$.
 
 Consider a strictly upper-triangular $n\times n$-matrix $A$ (that is, an
 upper-triangular matrix whose diagonal entries are $0$ as well).
