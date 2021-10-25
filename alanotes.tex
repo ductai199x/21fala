@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Sunday, October 24, 2021 17:05:57}
+%TCIDATA{LastRevised=Monday, October 25, 2021 10:52:37}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4549,9 +4549,9 @@ block-diagonal matrices:
 \begin{proposition}
 \label{prop.schurtri.similar.block-diag}Let $\mathbb{F}$ be a field. Let
 $n\in\mathbb{N}$. For each $i\in\left[  n\right]  $, let $A_{i}$ be an
-$n_{i}\times n_{i}$-matrix. Let $\sigma$ be a permutation of $\left[
-n\right]  $ (that is, a bijective map from $\left[  n\right]  $ to $\left[
-n\right]  $). Then,%
+$n_{i}\times n_{i}$-matrix (for some $n_{i}\in\mathbb{N}$). Let $\sigma$ be a
+permutation of $\left[  n\right]  $ (that is, a bijective map from $\left[
+n\right]  $ to $\left[  n\right]  $). Then,%
 \[
 \left(
 \begin{array}
@@ -4641,6 +4641,41 @@ A_{\sigma\left(  1\right)  } & 0 & \cdots & 0\\
 this time; its proof is easy with the help of Proposition
 \ref{prop.blockmatrix.mult-uxv}.
 \end{proof}
+
+Similarity of block-diagonal matrices can also come from similarity of the
+respective blocks:
+
+\begin{proposition}
+\label{prop.blockmatrix.simi-pres}Let $\mathbb{F}$ be a field. Let
+$n\in\mathbb{N}$. For each $i\in\left[  n\right]  $, let $A_{i}$ and $B_{i}$
+be two $n_{i}\times n_{i}$-matrices (for some $n_{i}\in\mathbb{N}$) satisfying
+$A_{i}\sim B_{i}$. Then,%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1} & 0 & \cdots & 0\\
+0 & A_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_{n}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccc}%
+B_{1} & 0 & \cdots & 0\\
+0 & B_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & B_{n}%
+\end{array}
+\right)  .
+\]
+
+\end{proposition}
+
+\begin{exercise}
+\label{exe.blockmatrix.simi-pres}\fbox{2} Prove Proposition
+\ref{prop.blockmatrix.simi-pres}.
+\end{exercise}
 
 \subsection{Unitary similarity}
 
@@ -6575,6 +6610,7 @@ about $J_{m}\left(  0\right)  $. Let us compute the powers of $J_{m}\left(
 \begin{proposition}
 \label{prop.jnf.jcell0-powers}Let $\mathbb{F}$ be a field. Let $m$ be a
 positive integer. Let $B=J_{m}\left(  0\right)  $. Let $p\in\mathbb{N}$. Then:
+\medskip
 
 \textbf{(a)} The entries of the $m\times m$-matrix $B^{p}$ are given by%
 \[
@@ -6587,10 +6623,10 @@ positive integer. Let $B=J_{m}\left(  0\right)  $. Let $p\in\mathbb{N}$. Then:
 \]
 
 
-\textbf{(b)} We have $B^{p}=0$ if $p\geq m$.
+\textbf{(b)} We have $B^{p}=0$ if $p\geq m$. \medskip
 
 \textbf{(c)} We have $\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)
-\right)  =p$ if $p\leq m$.
+\right)  =p$ if $p\leq m$. \medskip
 
 \textbf{(d)} We have $\dim\left(  \operatorname*{Ker}\left(  B^{p}\right)
 \right)  =m$ if $p\geq m$.
@@ -8128,6 +8164,12 @@ understood to be filled with zero matrices.)
 TODO: Scribe!
 \end{proof}
 
+Note that we have given up unitary similarity at this point: The word
+\textquotedblleft similar\textquotedblright\ in Proposition
+\ref{prop.jnf.step2} cannot be replaced by \textquotedblleft unitarily
+similar\textquotedblright. (A counterexample is easily obtained from Exercise
+\ref{exe.schurtri.unisim.two2x2}.)
+
 \subsubsection{\label{subsect.jnf.exist.step3}Step 3: Strictly
 upper-triangular matrices}
 
@@ -8230,26 +8272,28 @@ Subsection \ref{subsect.jnf.exist.step3}.
 \end{convention}
 
 \begin{definition}
-Let $n\in\mathbb{N}$. Let $A\in\mathbb{F}^{n\times n}$ be a matrix.
-
-\textbf{(a)} An \emph{orbit} shall mean a tuple of the form $\left(
-A^{0}v,\ A^{1}v,\ \ldots,\ A^{k}v\right)  $, where $v\in\mathbb{F}^{n}$ is a
-vector and $k\in\mathbb{N}$ is an integer satisfying $A^{k+1}v=0$.
+\label{def.jnf.exist.step3.orbits-etc}\textbf{(a)} An \emph{orbit} shall mean
+a tuple of the form $\left(  A^{0}v,\ A^{1}v,\ \ldots,\ A^{k}v\right)  $,
+where $v\in\mathbb{F}^{n}$ is a vector and $k\in\mathbb{N}$ is an integer
+satisfying $A^{k+1}v=0$. (We can also write this tuple as $\left(
+v,\ Av,\ A^{2}v,\ \ldots,\ A^{k}v\right)  $.) \medskip
 
 \textbf{(b)} The \emph{concatenation} of two tuples $\left(  a_{1}%
 ,a_{2},\ldots,a_{k}\right)  $ and $\left(  b_{1},b_{2},\ldots,b_{\ell}\right)
 $ is defined to be the tuple $\left(  a_{1},a_{2},\ldots,a_{k},b_{1}%
 ,b_{2},\ldots,b_{\ell}\right)  $. Thus, concatenation is a binary operation on
 the set of tuples. Since this operation is associative, we thus obtain the
-notion of concatenation of several tuples.
+notion of concatenation of several tuples. \medskip
 
 \textbf{(c)} A tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
 $\mathbb{F}^{n}$ will be called \emph{forwarded} if each $i\in\left[
-m-1\right]  $ satisfies $Av_{i}=v_{i+1}$ or $Av_{i}=0$.
+m\right]  $ satisfies $Av_{i}=v_{i+1}$ or $Av_{i}=0$. (Here, $v_{m+1}$ is
+understood to be $0$.) \medskip
 
 \textbf{(d)} A tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
 $\mathbb{F}^{n}$ will be called \emph{backwarded} if each $i\in\left[
-m-1\right]  $ satisfies $Av_{i+1}=v_{i}$ or $Av_{i+1}=0$.
+m\right]  $ satisfies $Av_{i}=v_{i-1}$ or $Av_{i}=0$. (Here, $v_{0}$ is
+understood to be $0$.) \medskip
 
 Note that the notions of \textquotedblleft orbit\textquotedblright,
 \textquotedblleft forwarded\textquotedblright\ and \textquotedblleft
@@ -8257,18 +8301,123 @@ backwarded\textquotedblright\ depend on $A$, but we do not mention $A$ since
 $A$ is fixed.
 \end{definition}
 
-Thus, a tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
-$\mathbb{F}^{n}$ is forwarded if and only if it is a concatenation of finitely
-many orbits. Moreover, a tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of
-vectors in $\mathbb{F}^{n}$ is backwarded if and only if the tuple $\left(
-v_{m},v_{m-1},\ldots,v_{1}\right)  $ is forwarded.
+\begin{example}
+Let $p,q,r$ be three vectors in $\mathbb{F}^{n}$ satisfying $A^{3}p=0$ and
+$A^{2}q=0$ and $A^{4}r=0$. Then, the $9$-tuple
+\[
+\left(  p,\ Ap,\ A^{2}p,\ q,\ Aq,\ r,\ Ar,\ A^{2}r,\ A^{3}r\right)
+\]
+is forwarded. Indeed, if we rename this tuple as $\left(  v_{1},v_{2}%
+,\ldots,v_{9}\right)  $, then each $i\in\left\{  1,2,4,6,7,8\right\}  $
+satisfies $Av_{i}=v_{i+1}$, whereas each $i\in\left\{  3,5\right\}  $
+satisfies $Av_{i}=0$. This $9$-tuple is furthermore the concatenation of the
+orbits $\left(  p,\ Ap,\ A^{2}p\right)  $, $\left(  q,\ Aq\right)  $ and
+$\left(  r,\ Ar,\ A^{2}r,\ A^{3}r\right)  $. Reversing this $9$-tuple yields a
+new $9$-tuple%
+\[
+\left(  A^{3}r,\ A^{2}r,\ Ar,\ r,\ Aq,\ q,\ A^{2}p,\ Ap,\ p\right)  ,
+\]
+which is backwarded.
+\end{example}
+
+What we have seen in this example can be generalized:
+
+\begin{proposition}
+\label{prop.jnf.exist.step3.bwd}\textbf{(a)} A tuple $\left(  v_{1}%
+,v_{2},\ldots,v_{m}\right)  $ of vectors in $\mathbb{F}^{n}$ is forwarded if
+and only if it is a concatenation of finitely many orbits. \medskip
+
+\textbf{(b)} A tuple $\left(  v_{1},v_{2},\ldots,v_{m}\right)  $ of vectors in
+$\mathbb{F}^{n}$ is backwarded if and only if the tuple $\left(  v_{m}%
+,v_{m-1},\ldots,v_{1}\right)  $ is forwarded.
+\end{proposition}
+
+\begin{proof}
+TODO: Scribe?
+\end{proof}
+
+More importantly, backwarded tuples are closely related to Jordan forms. To wit:
+
+\begin{proposition}
+\label{prop.jnf.exist.step3.basis}Let $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ be a basis of $\mathbb{F}^{n}$. Let $S\in\mathbb{F}^{n\times
+n}$ be the $n\times n$-matrix with columns $s_{1},s_{2},\ldots,s_{n}$. Then,
+$S^{-1}AS$ is a Jordan matrix if and only if the $n$-tuple $\left(
+s_{1},s_{2},\ldots,s_{n}\right)  $ is backwarded.
+\end{proposition}
+
+\begin{proof}
+TODO: Scribe?
+
+We shall only prove the \textquotedblleft if\textquotedblright\ part, since
+this is the only part that will be used; however, the proof of the
+\textquotedblleft only if\textquotedblright\ part can essentially be obtained
+from the proof of the \textquotedblleft if\textquotedblright\ part by reading
+it in reverse.
+
+Thus, we assume that the $n$-tuple $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $
+is backwarded. In other words, each $i\in\left[  n-1\right]  $ satisfies
+\begin{equation}
+As_{i+1}=s_{i}\text{ or }As_{i+1}=0. \label{pf.prop.jnf.exist.step3.basis.fwd}%
+\end{equation}
+Our goal is to show that $S^{-1}AS$ is a Jordan matrix.
+
+First, we observe that the matrix $S$ is invertible, since its columns
+$s_{1},s_{2},\ldots,s_{n}$ form a basis of $\mathbb{F}^{n}$. For each
+$i\in\left[  n\right]  $, the $i$-th column of the matrix $S$ is $s_{i}$.
+Hence, for each $i\in\left[  n\right]  $, the $i$-th column of the matrix $AS$
+is $As_{i}$ (by the rules for multiplying matrices).
+
+We want to find a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of
+$\mathbb{F}^{n}$ such that for each $i\in\left[  n\right]  $, the vector
+$As_{i}$ is either $s_{i-1}$ or $0$. (When $i=1$, this vector has to be $0$,
+since there is no $s_{0}$.) In fact, if $\left(  s_{1},s_{2},\ldots
+,s_{n}\right)  $ is such a basis, then the matrix $S:=\left(
+\begin{array}
+[c]{cccc}%
+s_{1} & s_{2} & \cdots & s_{n}%
+\end{array}
+\right)  \in\mathbb{F}^{n\times n}$ is invertible and satisfies%
+\begin{align*}
+AS  &  =\left(  \text{a matrix whose }i\text{-th column is either }%
+s_{i-1}\text{ or }0\text{ for each }i\right) \\
+&  =S\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{for example}\right)  ,
+\end{align*}
+so that%
+\[
+S^{-1}AS=\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right)  =\left(  \text{a Jordan matrix}\right)  .
+\]
+So $A$ is similar to a Jordan matrix.
+\end{proof}
+
+Recall that our goal is to show that $A$ is similar to a Jordan matrix.
+Proposition \ref{prop.jnf.exist.step3.basis} shows us a way to this goal: We
+just need to find a basis for $\mathbb{F}^{n}$ that is forwarded. In view of
+Proposition \ref{prop.jnf.exist.step3.bwd} \textbf{(b)}, this is tantamount to
+finding a basis for $\mathbb{F}^{n}$ that is backwarded. Let us first see how
+to do so on examples:
 
 [...]
 
 TODO: Polish from here!
-
-TODO: Avoid or explain the notion of \textquotedblleft
-conjugation\textquotedblright.
 
 TODO: Empty cells = $0$ entries.
 
@@ -8288,9 +8437,9 @@ Let $n=2$. Then, $A=\left(
 0 & a\\
 0 & 0
 \end{array}
-\right)  $ for some $a\in\mathbb{C}$.
+\right)  $ for some $a\in\mathbb{F}$.
 
-We are looking for an invertible matrix $S\in\mathbb{C}^{2\times2}$ such that
+We are looking for an invertible matrix $S\in\mathbb{F}^{2\times2}$ such that
 $S^{-1}AS$ is a Jordan matrix.
 
 If $a=0$, then this is obvious (just take $S=I_{2}$), since $A=\left(
@@ -8356,14 +8505,14 @@ As_{1} & As_{2}%
 In other words, $As_{1}=0$ and $As_{2}=s_{1}$.
 
 So we are looking for two linearly independent vectors $s_{1},s_{2}%
-\in\mathbb{C}^{2}$ such that $As_{1}=0$ and $As_{2}=s_{1}$.
+\in\mathbb{F}^{2}$ such that $As_{1}=0$ and $As_{2}=s_{1}$.
 
 One way to do so is to pick some nonzero vector $s_{1}\in\operatorname*{Ker}%
 A$, and then define $s_{2}$ to be some preimage of $s_{1}$ under $A$. (It can
 be shown that such preimage exists.) This way, however, does not generalize to
 higher $n$.
 
-Another (better) way is to start by picking $s_{2}\in\mathbb{C}^{2}%
+Another (better) way is to start by picking $s_{2}\in\mathbb{F}^{2}%
 \setminus\operatorname*{Ker}A$ and then setting $s_{1}=As_{2}$. We claim that
 $s_{1}$ and $s_{2}$ are linearly independent, and that $As_{1}=0$.
 
@@ -8371,7 +8520,7 @@ To show that $As_{1}=0$, we just observe that $As_{1}=\underbrace{AA}%
 _{=A^{2}=0}s_{2}=0$.
 
 To show that $s_{1}$ and $s_{2}$ are linearly independent, we argue as
-follows: Let $\lambda_{1},\lambda_{2}\in\mathbb{C}$ be such that $\lambda
+follows: Let $\lambda_{1},\lambda_{2}\in\mathbb{F}$ be such that $\lambda
 _{1}s_{1}+\lambda_{2}s_{2}=0$. Applying $A$ to this, we obtain $A\cdot\left(
 \lambda_{1}s_{1}+\lambda_{2}s_{2}\right)  =A\cdot0=0$. However,%
 \[
@@ -8437,58 +8586,14 @@ either $0$ or $s_{i-1}$ ?
 
 \bigskip
 
-Call the upper-triangular matrix $A$ instead of $B_{i}-\mu_{i}I$. Forget about
-the original matrix $A$.
-
-Consider a strictly upper-triangular $n\times n$-matrix $A$ (that is, an
-upper-triangular matrix whose diagonal entries are $0$ as well).
-
-We want to find a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of
-$\mathbb{C}^{n}$ such that for each $i\in\left[  n\right]  $, the vector
-$As_{i}$ is either $s_{i-1}$ or $0$. (When $i=1$, this vector has to be $0$,
-since there is no $s_{0}$.) In fact, if $\left(  s_{1},s_{2},\ldots
-,s_{n}\right)  $ is such a basis, then the matrix $S:=\left(
-\begin{array}
-[c]{cccc}%
-s_{1} & s_{2} & \cdots & s_{n}%
-\end{array}
-\right)  \in\mathbb{C}^{n\times n}$ is invertible and satisfies%
-\begin{align*}
-AS  &  =\left(  \text{a matrix whose }i\text{-th column is either }%
-s_{i-1}\text{ or }0\text{ for each }i\right) \\
-&  =S\left(
-\begin{array}
-[c]{ccccc}%
-0 & 1 & 0 & 0 & 0\\
-0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & 1 & 0\\
-0 & 0 & 0 & 0 & 1\\
-0 & 0 & 0 & 0 & 0
-\end{array}
-\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{for example}\right)  ,
-\end{align*}
-so that%
-\[
-S^{-1}AS=\left(
-\begin{array}
-[c]{ccccc}%
-0 & 1 & 0 & 0 & 0\\
-0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & 1 & 0\\
-0 & 0 & 0 & 0 & 1\\
-0 & 0 & 0 & 0 & 0
-\end{array}
-\right)  =\left(  \text{a Jordan matrix}\right)  .
-\]
-So $A$ is similar to a Jordan matrix.
-
-How do we find such a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ ?
+Now, we return to the general case: How do we find a backwarded basis $\left(
+s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{F}^{n}$ ?
 
 (The following proof is due to Terence Tao \cite{Tao07}.)
 
 We define an \textbf{orbit} to be a tuple of the form $\left(  v,Av,A^{2}%
-v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{C}^{n}$ satisfies $A^{k+1}v=0$.
-Note that for each $v\in\mathbb{C}^{n}$, there is an orbit that starts with
+v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{F}^{n}$ satisfies $A^{k+1}v=0$.
+Note that for each $v\in\mathbb{F}^{n}$, there is an orbit that starts with
 $v$, since $A^{n}=0$.
 
 The \textbf{concatenation} of some tuples $\left(  a_{1},a_{2},\ldots
@@ -8499,7 +8604,7 @@ $\left(  c_{1},c_{2},\ldots,c_{m}\right)  $ is $\left(  a_{1},a_{2}%
 Now, I claim:
 
 \begin{lemma}
-[orbit basis lemma]There exists a basis of $\mathbb{C}^{n}$ that is a
+[orbit basis lemma]There exists a basis of $\mathbb{F}^{n}$ that is a
 concatenation of orbits.
 \end{lemma}
 
@@ -8515,13 +8620,13 @@ gives
 \[
 \left(  Aw,w,\ \ A^{3}v,A^{2}v,Av,v,\ \ A^{2}u,Au,u\right)  ,
 \]
-which is a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{C}%
+which is a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{F}%
 ^{n}$ such that for each $i\in\left[  n\right]  $, the vector $As_{i}$ is
 either $s_{i-1}$ or $0$.
 
 \begin{proof}
 [Proof of the Lemma.]It is easy to find a finite \textbf{spanning set} of
-$\mathbb{C}^{n}$ that is a concatenation of orbits. Indeed, we can start with
+$\mathbb{F}^{n}$ that is a concatenation of orbits. Indeed, we can start with
 the standard basis $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $, and extend it
 to the list%
 \begin{align*}
@@ -8530,8 +8635,8 @@ to the list%
 &  \ \ldots,\\
 &  \ e_{n},Ae_{n},A^{2}e_{n},\ldots,A^{n-1}e_{n}).
 \end{align*}
-This is clearly a spanning set of $\mathbb{C}^{n}$ (since $e_{1},e_{2}%
-,\ldots,e_{n}$ already span $\mathbb{C}^{n}$), and also a concatenation of
+This is clearly a spanning set of $\mathbb{F}^{n}$ (since $e_{1},e_{2}%
+,\ldots,e_{n}$ already span $\mathbb{F}^{n}$), and also a concatenation of
 orbits (since $A^{n}=0$).
 
 Now, we will gradually shorten this spanning set (i.e., replace it by smaller
@@ -8582,7 +8687,7 @@ orbit $\left(  3x+5Ay+7A^{2}z\right)  $. We get
 \]
 This is still a concatenation of orbits, since the $1$-tuple $\left(
 3x+5Ay+7A^{2}z\right)  $ is an orbit. Furthermore, this is still a spanning
-set of $\mathbb{C}^{n}$; why? Because we removed the dependent vector $Ax$
+set of $\mathbb{F}^{n}$; why? Because we removed the dependent vector $Ax$
 (this is a combination of the other vectors, because $3Ax+5A^{2}y+7A^{3}z=0$)
 and we replaced $x$ by $3x+5Ay+7A^{2}z$ (which does not change the span,
 because $Ay$ and $A^{2}z$ are still in the spanning set).
@@ -8632,7 +8737,7 @@ w_{1}\right)  $. The resulting list%
 \left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1},\ v_{2},Av_{2}%
 ,\ldots,A^{m_{2}}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
 \]
-is still a concatenation of orbits. Also, it still spans $\mathbb{C}^{n}$,
+is still a concatenation of orbits. Also, it still spans $\mathbb{F}^{n}$,
 because%
 \begin{align*}
 w_{1}  &  =\underbrace{\mu_{1}}_{\neq0}v_{1}+\mu_{2}A^{m_{2}-m_{1}}%
@@ -8647,7 +8752,7 @@ _{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0\right)  .
 \end{align*}
 
 
-So we have found a spanning set of $\mathbb{C}^{n}$ that is still a
+So we have found a spanning set of $\mathbb{F}^{n}$ that is still a
 concatenation of orbits, but is shorter (it has one less vector). Doing this
 repeatedly, we will eventually obtain a basis (since we cannot keep making a
 finite list shorter and shorter indefinitely). This proves the lemma.
@@ -8659,7 +8764,7 @@ that $A$ is similar to a Jordan matrix. This completes the proof of the
 existence part of the Jordan canonical form.
 
 \begin{example}
-Let
+Let $\mathbb{F}=\mathbb{C}$ and
 \[
 A=\left(
 \begin{array}
@@ -8676,7 +8781,7 @@ A=\left(
 This is not strictly upper-triangular, but it is nilpotent, with $A^{3}=0$, so
 the above argument goes equally well with this $A$.
 
-Let us try to find a basis of $\mathbb{C}^{6}$ that is a concatenation of orbits.
+Let us try to find a basis of $\mathbb{F}^{6}$ that is a concatenation of orbits.
 
 We begin with the spanning set%
 \[
@@ -8738,7 +8843,7 @@ dependencies, so we will have a basis.
 
 \subsection{Powers and the Jordan canonical form}
 
-Let $n\in\mathbb{N}$ and $A\in\mathbb{C}^{n\times n}$. Assume that we know the
+Let $n\in\mathbb{N}$ and $A\in\mathbb{F}^{n\times n}$. Assume that we know the
 JCF $J$ of $A$ and an invertible matrix $S$ such that
 \[
 A=SJS^{-1}.
@@ -8827,7 +8932,7 @@ C^{4}  &  =\left(
 In general:
 
 \begin{theorem}
-Let $k>0$ and $\lambda\in\mathbb{C}$. Let $C=J_{k}\left(  \lambda\right)  $.
+Let $k>0$ and $\lambda\in\mathbb{F}$. Let $C=J_{k}\left(  \lambda\right)  $.
 Let $m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
 whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$.
 (Here, we follow the convention that $\dbinom{n}{\ell}:=0$ when $\ell
@@ -9066,9 +9171,9 @@ t-2\right)  \left(  t-3\right)  $, since%
 \end{example}
 
 \begin{theorem}
-Given an $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$. Then, there is a
-\textbf{unique} monic polynomial $q_{A}\left(  t\right)  $ of minimum degree
-that annihilates $A$.
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. Then, there is a \textbf{unique} monic polynomial $q_{A}\left(
+t\right)  $ of minimum degree that annihilates $A$.
 \end{theorem}
 
 \begin{proof}
@@ -9092,7 +9197,7 @@ $q_{A}$'s degree. This concludes the proof.
 \end{proof}
 
 \begin{definition}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. The preceding
 theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
 t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
 will be denoted $q_{A}\left(  t\right)  $ and will be called the
@@ -9100,7 +9205,7 @@ will be denoted $q_{A}\left(  t\right)  $ and will be called the
 \end{definition}
 
 \begin{example}
-Let $A$ be the diagonal matrix $\left(
+Let $\mathbb{F}=\mathbb{C}$. Let $A$ be the diagonal matrix $\left(
 \begin{array}
 [c]{ccc}%
 2 &  & \\
@@ -9114,18 +9219,47 @@ q_{A}\left(  t\right)  =\left(  t-2\right)  \left(  t-3\right)  .
 Indeed, we already know that the monic polynomial $\left(  t-2\right)  \left(
 t-3\right)  $ annihilates $A$. If there was any monic polynomial of smaller
 degree that would annihilate $A$, then it would have the form $t-\lambda$ for
-some $\lambda\in\mathbb{C}$, but $\lambda$ cannot be $2$ and $3$ at the same time.
+some $\lambda\in\mathbb{F}$, but $\lambda$ cannot be $2$ and $3$ at the same time.
 
 For comparison: $p_{A}\left(  t\right)  =\left(  t-2\right)  ^{2}\left(
 t-3\right)  $.
 \end{example}
 
+\begin{exercise}
+\fbox{2} Find the minimal polynomial of a diagonal matrix whose
+\textbf{distinct} diagonal entries are $\lambda_{1},\lambda_{2},\ldots
+,\lambda_{k}$. (Each of these $\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$ can
+appear on the diagonal any positive number of times.)
+\end{exercise}
+
+\begin{exercise}
+\fbox{3} Let $\mathbb{F}$ be a field. Let $n\geq2$ be an integer. Let
+$x_{1},x_{2},\ldots,x_{n}\in\mathbb{F}$ and $y_{1},y_{2},\ldots,y_{n}%
+\in\mathbb{F}$. Let $A$ be the $n\times n$-matrix $\left(
+\begin{array}
+[c]{cccc}%
+x_{1}y_{1} & x_{1}y_{2} & \cdots & x_{1}y_{n}\\
+x_{2}y_{1} & x_{2}y_{2} & \cdots & x_{2}y_{n}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n}y_{1} & x_{n}y_{2} & \cdots & x_{n}y_{n}%
+\end{array}
+\right)  \in\mathbb{F}^{n\times n}$. \medskip
+
+\textbf{(a)} Find the minimal polynomial of $A$ under the assumption that
+$x_{1},x_{2},\ldots,x_{n}$ and $y_{1},y_{2},\ldots,y_{n}$ are nonzero.
+\medskip
+
+\textbf{(b)} What changes if we drop this assumption? \medskip
+
+[\textbf{Hint:} Compute $A^{2}$.]
+\end{exercise}
+
 \begin{theorem}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
-t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
+t\right)  \in\mathbb{F}\left[  t\right]  $ be any polynomial. Then, $f$
 annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
 $f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
-some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
+some polynomial $g\left(  t\right)  \in\mathbb{F}\left[  t\right]  $).
 \end{theorem}
 
 \begin{proof}
@@ -9159,8 +9293,8 @@ $\Longleftarrow:$ Easy and LTTR.
 \end{proof}
 
 \begin{corollary}
-Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
-\mid p_{A}\left(  t\right)  $.
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be a matrix.
+Then, $q_{A}\left(  t\right)  \mid p_{A}\left(  t\right)  $.
 \end{corollary}
 
 \begin{proof}
@@ -9173,8 +9307,8 @@ is, an eigenvalue of $A$. Conversely, we can show that any eigenvalue of $A$
 is a root of $q_{A}$ (but we don't know with which multiplicity):
 
 \begin{proposition}
-If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
-=0$.
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. If $\lambda
+\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)  =0$.
 \end{proposition}
 
 \begin{proof}
@@ -9195,40 +9329,10 @@ q_{A}\left(  \lambda\right)  x=\underbrace{q_{A}\left(  A\right)
 Since $x\neq0$, this entails $q_{A}\left(  \lambda\right)  =0$, qed.
 \end{proof}
 
-\subsection{The minimal polynomial (cont'd)}
-
-Recall from last lecture:
-
-\begin{definition}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. The preceding
-theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
-t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
-will be denoted $q_{A}\left(  t\right)  $ and will be called the
-\textbf{minimal polynomial} of $A$.
-\end{definition}
-
-\begin{theorem}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
-t\right)  \in\mathbb{C}\left[  t\right]  $ be any polynomial. Then, $f$
-annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
-$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
-some polynomial $g\left(  t\right)  \in\mathbb{C}\left[  t\right]  $).
-\end{theorem}
-
-\begin{corollary}
-Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)
-\mid p_{A}\left(  t\right)  $.
-\end{corollary}
-
-\begin{proposition}
-If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)
-=0$.
-\end{proposition}
-
 Combining the Corollary with the Proposition, we see that the roots of
-$q_{A}\left(  t\right)  $ are precisely the eigenvalues of $A$; we just don't
-know yet with which multiplicities they appear as roots. In other words, we
-have
+$q_{A}\left(  t\right)  $ are precisely the eigenvalues of $A$ (when
+$A\in\mathbb{C}^{n\times n}$); we just don't know yet with which
+multiplicities they appear as roots. In other words, we have
 \[
 q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
 t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
@@ -9239,8 +9343,9 @@ but we don't know these $k_{1},k_{2},\ldots,k_{p}$ yet. So let us find them.
 We will use some lemmas for this.
 
 \begin{lemma}
-Let $A$ and $B$ be two similar $n\times n$-matrices. Then, $q_{A}\left(
-t\right)  =q_{B}\left(  t\right)  $.
+Let $\mathbb{F}$ be a field. Let $A$ and $B$ be two similar $n\times
+n$-matrices in $\mathbb{F}^{n\times n}$. Then, $q_{A}\left(  t\right)
+=q_{B}\left(  t\right)  $.
 \end{lemma}
 
 \begin{proof}
@@ -9350,7 +9455,7 @@ $q_{A}$ is the lcm of the $q_{A_{i}}$s.
 \end{proof}
 
 \begin{lemma}
-Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
+Let $k>0$ and $\lambda\in\mathbb{F}$. Let $A=J_{k}\left(  \lambda\right)  $.
 Then,%
 \[
 q_{A}=\left(  t-\lambda\right)  ^{k}.
@@ -9508,6 +9613,10 @@ k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
 Exercise.
 \end{proof}
 
+\begin{exercise}
+\fbox{2} Prove this.
+\end{exercise}
+
 Now, we aim to define $f\left(  A\right)  $ by the above formula, at least
 when $A$ is a Jordan cell. This only requires $f$ to be $\left(  k-1\right)
 $-times differentiable at $\lambda$.
@@ -9576,7 +9685,14 @@ A\right)  $ does not depend on the choice of $S$ and $J$.
 \end{theorem}
 
 \begin{exercise}
-Prove this.
+\fbox{5} Prove this.
+
+[\textbf{Hint:} Use Hermite interpolation to find a polynomial $g\in
+\mathbb{C}\left[  t\right]  $ such that $g^{\left(  m\right)  }\left(
+\lambda\right)  =f^{\left(  m\right)  }\left(  \lambda\right)  $ for each
+$\lambda\in\sigma\left(  A\right)  $ and each $m\in\left\{  0,1,\ldots
+,m_{\lambda}-1\right\}  $, where $m_{\lambda}$ is the algebraic multiplicity
+of $\lambda$ as an eigenvalue of $A$.]
 \end{exercise}
 
 \subsection{The companion matrix}
@@ -9593,53 +9709,50 @@ given polynomial as its characteristic polynomila.
 \begin{definition}
 Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$.
 
-Let $p\left(  t\right)  =t^{n}+p_{n-1}t^{n-1}+p_{n-2}t^{n-2}+\cdots+p_{1}%
-t^{1}+p_{0}t^{0}$ be a monic polynomial of degree $n$ with coefficients in
-$\mathbb{F}$. Then, the \textbf{companion matrix} of $p\left(  t\right)  $ is
+Let $f\left(  t\right)  =t^{n}+f_{n-1}t^{n-1}+f_{n-2}t^{n-2}+\cdots+f_{1}%
+t^{1}+f_{0}t^{0}$ be a monic polynomial of degree $n$ with coefficients in
+$\mathbb{F}$. Then, the \textbf{companion matrix} of $f\left(  t\right)  $ is
 defined to be the matrix%
 \[
-C_{p}:=\left(
+C_{f}:=\left(
 \begin{array}
 [c]{cccccc}%
-0 &  &  & \cdots &  & -p_{0}\\
-1 & 0 &  & \cdots &  & -p_{1}\\
-& 1 & 0 & \cdots &  & -p_{2}\\
+0 &  &  & \cdots &  & -f_{0}\\
+1 & 0 &  & \cdots &  & -f_{1}\\
+& 1 & 0 & \cdots &  & -f_{2}\\
 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & 0 & -p_{n-2}\\
-&  &  & \cdots & 1 & -p_{n-1}%
+&  &  & \cdots & 0 & -f_{n-2}\\
+&  &  & \cdots & 1 & -f_{n-1}%
 \end{array}
 \right)  \in\mathbb{F}^{n\times n}.
 \]
 This is the $n\times n$-matrix whose first $n-1$ columns are the standard
 basis vectors $e_{2},e_{3},\ldots,e_{n}$, and whose last column is $\left(
--p_{0},-p_{1},\ldots,-p_{n-1}\right)  ^{T}$.
+-f_{0},-f_{1},\ldots,-f_{n-1}\right)  ^{T}$.
 \end{definition}
 
 \begin{proposition}
-For any monic polynomial $p\left(  t\right)  $, we have%
+For any monic polynomial $f\left(  t\right)  $, we have%
 \[
-p_{C_{p}}\left(  t\right)  =q_{C_{p}}\left(  t\right)  =p\left(  t\right)  .
+p_{C_{f}}\left(  t\right)  =q_{C_{f}}\left(  t\right)  =f\left(  t\right)  .
 \]
-(The two $p$'s in \textquotedblleft$p_{C_{p}}$\textquotedblright\ stand for
-different things: The first stands for \textquotedblleft characteristic
-polynomial\textquotedblright, while the second is the $p\left(  t\right)  $ we
-have given.)
+
 \end{proposition}
 
 \begin{proof}
-Let us first show that $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. To
+Let us first show that $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $. To
 do so, we induct on $n$. Recall that%
 \begin{align*}
-p_{C_{p}}\left(  t\right)   &  =\det\left(  tI_{n}-C_{p}\right) \\
+p_{C_{f}}\left(  t\right)   &  =\det\left(  tI_{n}-C_{f}\right) \\
 &  =\det\left(
 \begin{array}
 [c]{cccccc}%
-t &  &  & \cdots &  & p_{0}\\
--1 & t &  & \cdots &  & p_{1}\\
-& -1 & t & \cdots &  & p_{2}\\
+t &  &  & \cdots &  & f_{0}\\
+-1 & t &  & \cdots &  & f_{1}\\
+& -1 & t & \cdots &  & f_{2}\\
 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & t & p_{n-2}\\
-&  &  & \cdots & -1 & t+p_{n-1}%
+&  &  & \cdots & t & f_{n-2}\\
+&  &  & \cdots & -1 & t+f_{n-1}%
 \end{array}
 \right)  .
 \end{align*}
@@ -9648,26 +9761,26 @@ We compute this determinant by Laplace expansion along the first row:%
 &  \det\left(
 \begin{array}
 [c]{cccccc}%
-t &  &  & \cdots &  & p_{0}\\
--1 & t &  & \cdots &  & p_{1}\\
-& -1 & t & \cdots &  & p_{2}\\
+t &  &  & \cdots &  & f_{0}\\
+-1 & t &  & \cdots &  & f_{1}\\
+& -1 & t & \cdots &  & f_{2}\\
 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & t & p_{n-2}\\
-&  &  & \cdots & -1 & t+p_{n-1}%
+&  &  & \cdots & t & f_{n-2}\\
+&  &  & \cdots & -1 & t+f_{n-1}%
 \end{array}
 \right) \\
 &  =t\ \underbrace{\det\left(
 \begin{array}
 [c]{ccccc}%
-t &  & \cdots &  & p_{1}\\
--1 & t & \cdots &  & p_{2}\\
+t &  & \cdots &  & f_{1}\\
+-1 & t & \cdots &  & f_{2}\\
 \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  & \cdots & t & p_{n-2}\\
-&  & \cdots & -1 & t+p_{n-1}%
+&  & \cdots & t & f_{n-2}\\
+&  & \cdots & -1 & t+f_{n-1}%
 \end{array}
-\right)  }_{\substack{=t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}%
+\right)  }_{\substack{=t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}%
 t^{0}\\\text{(by the induction hypothesis)}}}+\left(  -1\right)  ^{n+1}%
-p_{0}\ \underbrace{\det\left(
+f_{0}\ \underbrace{\det\left(
 \begin{array}
 [c]{ccccc}%
 -1 & t &  & \cdots & \\
@@ -9678,48 +9791,48 @@ p_{0}\ \underbrace{\det\left(
 \end{array}
 \right)  }_{\substack{=\left(  -1\right)  ^{n-1}\\\text{(since this matrix is
 upper-triangular}\\\text{of size }n-1\text{)}}}\\
-&  =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
-+\underbrace{\left(  -1\right)  ^{n+1}p_{0}\left(  -1\right)  ^{n-1}}_{=p_{0}%
+&  =t\left(  t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}\right)
++\underbrace{\left(  -1\right)  ^{n+1}f_{0}\left(  -1\right)  ^{n-1}}_{=f_{0}%
 }\\
-&  =t\left(  t^{n-1}+p_{n-1}t^{n-2}+\cdots+p_{2}t^{1}+p_{1}t^{0}\right)
-+p_{0}\\
-&  =t^{n}+p_{n-1}t^{n-1}+p_{2}t^{2}+p_{1}t^{1}+p_{0}=p\left(  t\right)  .
+&  =t\left(  t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}\right)
++f_{0}\\
+&  =t^{n}+f_{n-1}t^{n-1}+f_{2}t^{2}+f_{1}t^{1}+f_{0}=f\left(  t\right)  .
 \end{align*}
 
 
-Thus, $p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $ is proved.
+Thus, $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $ is proved.
 
-Now, let us show that $q_{C_{p}}\left(  t\right)  =p\left(  t\right)  $.
-Indeed, both $q_{C_{p}}\left(  t\right)  $ and $p\left(  t\right)  $ are monic
-polynomials, and we know from last lecture that $q_{C_{p}}\left(  t\right)
-\mid p_{C_{p}}\left(  t\right)  =p\left(  t\right)  $. Hence, if $q_{C_{p}%
-}\left(  t\right)  \neq p\left(  t\right)  $, then $q_{C_{p}}\left(  t\right)
-$ is a proper divisor of $p\left(  t\right)  $, thus has degree $<n$ (since
-$p\left(  t\right)  $ has degree $n$). So we just need to rule out the
-possibility that $q_{C_{p}}\left(  t\right)  $ has degree $<n$.
+Now, let us show that $q_{C_{f}}\left(  t\right)  =f\left(  t\right)  $.
+Indeed, both $q_{C_{f}}\left(  t\right)  $ and $f\left(  t\right)  $ are monic
+polynomials, and we know from last lecture that $q_{C_{f}}\left(  t\right)
+\mid p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $. Hence, if $q_{C_{f}%
+}\left(  t\right)  \neq f\left(  t\right)  $, then $q_{C_{f}}\left(  t\right)
+$ is a proper divisor of $f\left(  t\right)  $, thus has degree $<n$ (since
+$f\left(  t\right)  $ has degree $n$). So we just need to rule out the
+possibility that $q_{C_{f}}\left(  t\right)  $ has degree $<n$.
 
-Indeed, assume (for the sake of contradiction) that $q_{C_{p}}\left(
-t\right)  $ has degree $<n$. Thus, $q_{C_{p}}\left(  t\right)  =a_{k}%
+Indeed, assume (for the sake of contradiction) that $q_{C_{f}}\left(
+t\right)  $ has degree $<n$. Thus, $q_{C_{f}}\left(  t\right)  =a_{k}%
 t^{k}+a_{k-1}t^{k-1}+\cdots+a_{0}t^{0}$ with $k<n$ and $a_{k}=1$ (since
-$q_{C_{p}}$ is monic of degree $<n$). However, the definition of $q_{C_{p}}$
-yields $q_{C_{p}}\left(  C_{p}\right)  =0$. In other words,%
+$q_{C_{f}}$ is monic of degree $<n$). However, the definition of $q_{C_{f}}$
+yields $q_{C_{f}}\left(  C_{f}\right)  =0$. In other words,%
 \[
-a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0.
+a_{k}C_{f}^{k}+a_{k-1}C_{f}^{k-1}+\cdots+a_{0}C_{f}^{0}=0.
 \]
 
 
-However, let us look at what $C_{p}$ does to the standard basis vector
+However, let us look at what $C_{f}$ does to the standard basis vector
 $e_{1}=\left(  1,0,0,0,\ldots,0\right)  ^{T}$. We have%
 \begin{align*}
-C_{p}^{0}e_{1}  &  =e_{1};\\
-C_{p}^{1}e_{1}  &  =C_{p}e_{1}=e_{2};\\
-C_{p}^{2}e_{1}  &  =C_{p}e_{2}=e_{3};\\
+C_{f}^{0}e_{1}  &  =e_{1};\\
+C_{f}^{1}e_{1}  &  =C_{f}e_{1}=e_{2};\\
+C_{f}^{2}e_{1}  &  =C_{f}e_{2}=e_{3};\\
 &  \ldots;\\
-C_{p}^{n-1}e_{1}  &  =e_{n}.
+C_{f}^{n-1}e_{1}  &  =e_{n}.
 \end{align*}
 Thus, applying our equality%
 \[
-a_{k}C_{p}^{k}+a_{k-1}C_{p}^{k-1}+\cdots+a_{0}C_{p}^{0}=0
+a_{k}C_{f}^{k}+a_{k-1}C_{f}^{k-1}+\cdots+a_{0}C_{f}^{0}=0
 \]
 to $e_{1}$, we obtain%
 \[
@@ -9727,21 +9840,37 @@ a_{k}e_{k+1}+a_{k-1}e_{k}+\cdots+a_{0}e_{1}=0\ \ \ \ \ \ \ \ \ \ \left(
 \text{since }k<n\right)  .
 \]
 But this is absurd, since $e_{1},e_{2},\ldots,e_{n}$ are linearly independent.
-So we found a contradiction, and thus we conclude that $q_{C_{p}}\left(
-t\right)  $ has degree $\geq n$. So, by the above, we obtain $q_{C_{p}}\left(
-t\right)  =p\left(  t\right)  $.
+So we found a contradiction, and thus we conclude that $q_{C_{f}}\left(
+t\right)  $ has degree $\geq n$. So, by the above, we obtain $q_{C_{f}}\left(
+t\right)  =f\left(  t\right)  $.
 \end{proof}
 
 \begin{remark}
-For algebraists: The companion matrix $C_{p}$ has a natural meaning. To wit,
-consider the quotient ring $\mathbb{F}\left[  t\right]  /\left(  p\left(
+For algebraists: The companion matrix $C_{f}$ has a natural meaning. To wit,
+consider the quotient ring $\mathbb{F}\left[  t\right]  /\left(  f\left(
 t\right)  \right)  $ as an $n$-dimensional $\mathbb{F}$-vector space with
 basis $\left(  \overline{t^{0}},\overline{t^{1}},\ldots,\overline{t^{n-1}%
-}\right)  $. Then, the companion matrix $C_{p}$ represents the endomorphism
+}\right)  $. Then, the companion matrix $C_{f}$ represents the endomorphism
 \textquotedblleft multiply by $t$\textquotedblright\ (that is, the
 endomorphism that sends each $\overline{f\left(  t\right)  }$ to
 $\overline{t\cdot f\left(  t\right)  }$) in this basis.
 \end{remark}
+
+\begin{exercise}
+\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix that has
+$n$ \textbf{distinct} eigenvalues. Prove that $A\sim C_{p_{A}}$.
+\end{exercise}
+
+\begin{exercise}
+\fbox{4} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an
+$n\times n$-matrix. Prove that $A\sim C_{p_{A}}$ if and only if there exists a
+vector $v\in\mathbb{F}^{n}$ such that
+\[
+\left(  v,\ Av,\ A^{2}v,\ \ldots,\ A^{n-1}v\right)  =\left(  A^{0}%
+v,\ A^{1}v,\ \ldots,\ A^{n-1}v\right)
+\]
+is a basis of $\mathbb{F}^{n}$.
+\end{exercise}
 
 \subsection{The Jordan--Chevalley decomposition}
 
@@ -9959,9 +10088,9 @@ In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
 {\lambda}$ come in pairs of equal sizes.
 \end{lemma}
 
-\begin{proof}
-HW.
-\end{proof}
+\begin{exercise}
+\fbox{2} Prove this lemma.
+\end{exercise}
 
 So we can try to combine each Jordan block at $\lambda$ with an equally sized
 Jordan block at $\overline{\lambda}$ and hope that something real comes out
@@ -9969,7 +10098,43 @@ somehow, in the same way as $\left(  t-\lambda\right)  \left(  t-\overline
 {\lambda}\right)  =t^{2}-2\operatorname*{Re}\lambda+\left\vert \lambda
 \right\vert ^{2}\in\mathbb{R}\left[  t\right]  $.
 
-How to do this?%
+How to do this? For Jordan blocks of size $1$, this is easy:
+
+\begin{lemma}
+Let $\lambda\in\mathbb{C}$. Let $L$ be the $2\times2$-matrix $\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  $. Let $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}%
+\lambda$ (so that $\lambda=a+bi$). Then,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda & \\
+& \overline{\lambda}%
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+-b & a
+\end{array}
+\right)  .
+\]
+
+\end{lemma}
+
+\begin{exercise}
+\fbox{2} Prove this lemma.
+\end{exercise}
+
+Now, let us see how to combine a Jordan block at $\lambda$ with an equally
+sized Jordan block at $\overline{\lambda}$ when the size is arbitrary. We can
+WLOG assume that these two Jordan blocks are adjacent (since we can permute
+the Jordan blocks at will). Thus, they look as follows together:%
 \begin{align*}
 &  \left(
 \begin{array}
@@ -10012,7 +10177,7 @@ where $L$ is the $2\times2$-matrix $\left(
 \lambda & \\
 & \overline{\lambda}%
 \end{array}
-\right)  $. However,%
+\right)  $. However, our last lemma yields%
 \[
 \left(
 \begin{array}
@@ -10029,7 +10194,7 @@ a & b\\
 \right)  ,
 \]
 where $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}\lambda$ (so that
-$\lambda=a+bi$). (HW!) So our matrix is similar to%
+$\lambda=a+bi$). So our matrix is similar to%
 \[
 \left(
 \begin{array}
@@ -10046,6 +10211,681 @@ a & b & 1 &  &  &  &  & \\
 \right)  .
 \]
 
+
+\subsection{The centralizer of a matrix}
+
+Here is a fairly natural question: Which matrices commute with a given square
+matrix $A$ ?
+
+\begin{proposition}
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. Let $f$ and $g$ be two polynomials in a single variable $t$ over
+$\mathbb{F}$. Then, $f\left(  A\right)  $ commutes with $g\left(  A\right)  $.
+\end{proposition}
+
+\begin{proof}
+Write $f\left(  t\right)  $ as $f\left(  t\right)  =\sum_{i=0}^{n}f_{i}t^{i}$,
+and write $g\left(  t\right)  $ as $g\left(  t\right)  =\sum_{j=0}^{m}%
+g_{j}t^{j}$. Then,%
+\[
+f\left(  A\right)  =\sum_{i=0}^{n}f_{i}A^{i}\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ g\left(  A\right)  =\sum_{j=0}^{m}g_{j}A^{j}.
+\]
+Thus,%
+\[
+f\left(  A\right)  \cdot g\left(  A\right)  =\left(  \sum_{i=0}^{n}f_{i}%
+A^{i}\right)  \cdot\left(  \sum_{j=0}^{m}g_{j}A^{j}\right)  =\sum_{i=0}%
+^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}\underbrace{A^{i}A^{j}}_{=A^{i+j}}=\sum
+_{i=0}^{n}\ \ \sum_{j=0}^{m}f_{i}g_{j}A^{i+j}.
+\]
+A similar computation shows that%
+\[
+g\left(  A\right)  \cdot f\left(  A\right)  =\sum_{i=0}^{n}\ \ \sum_{j=0}%
+^{m}f_{i}g_{j}A^{i+j}.
+\]
+Comparing these two, we obtain $f\left(  A\right)  \cdot g\left(  A\right)
+=g\left(  A\right)  \cdot f\left(  A\right)  $, qed.
+\end{proof}
+
+Thus, in particular, $f\left(  A\right)  $ commutes with $A$ for any
+polynomial $f$ (because $A=g\left(  A\right)  $ for $g\left(  t\right)  =t$).
+
+But are there other matrices that commute with $A$ ?
+
+There certainly can be. For instance, if $A=\lambda I_{n}$ for some
+$\lambda\in\mathbb{F}$, then \textbf{every} $n\times n$-matrix commutes with
+$A$ (but very few matrices are of the form $f\left(  A\right)  $ for some
+polynomial $f$). This is, in a sense, the \textquotedblleft best case
+scentario\textquotedblright. Only for $A=\lambda I_{n}$ is it true that every
+$n\times n$-matrix commutes with $A$.
+
+Let us study the general case now.
+
+\begin{definition}
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. The
+\textbf{centralizer} of $A$ is defined to be the set of all $n\times
+n$-matrices $B\in\mathbb{F}^{n\times n}$ such that $AB=BA$. We denote this set
+by $\operatorname*{Cent}A$.
+\end{definition}
+
+We thus want to know what $\operatorname*{Cent}A$ is.
+
+We begin with some general properties:
+
+\begin{proposition}
+Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,
+$\operatorname*{Cent}A$ is a subset of $\mathbb{F}^{n\times n}$ that is closed
+under addition, scaling and multiplication and contains $\lambda I_{n}$ for
+all $\lambda\in\mathbb{F}$. In other words:
+
+\textbf{(a)} For any $B,C\in\operatorname*{Cent}A$, we have $B+C\in
+\operatorname*{Cent}A$.
+
+\textbf{(b)} For any $B\in\operatorname*{Cent}A$ and $\lambda\in\mathbb{F}$,
+we have $\lambda B\in\operatorname*{Cent}A$.
+
+\textbf{(c)} For any $B,C\in\operatorname*{Cent}A$, we have $BC\in
+\operatorname*{Cent}A$.
+
+\textbf{(d)} For any $\lambda\in\mathbb{F}$, we have $\lambda I_{n}%
+\in\operatorname*{Cent}A$.
+\end{proposition}
+
+This implies, in particular, that $\operatorname*{Cent}A$ is a vector subspace
+of $\mathbb{F}^{n\times n}$. Furthermore, it shows that $\operatorname*{Cent}%
+A$ is an $\mathbb{F}$-subalgebra of $\mathbb{F}^{n\times n}$ (in particular, a
+subring of $\mathbb{F}^{n\times n}$).
+
+\begin{proof}
+[Proof of the Proposition.]Let me just show part \textbf{(c)}; the other parts
+are even easier.
+
+\textbf{(c)} Let $B,C\in\operatorname*{Cent}A$. Thus, $AB=BA$ and $AC=CA$.
+Now,%
+\[
+\underbrace{AB}_{=BA}C=B\underbrace{AC}_{=CA}=BCA.
+\]
+This shows that $BC\in\operatorname*{Cent}A$. Thus, part \textbf{(c)} is proved.
+\end{proof}
+
+Now, as an example, let us compute $\operatorname*{Cent}A$ in the case when
+$A$ is a single Jordan cell $J_{n}\left(  0\right)  $. So we fix an $n>0$, and
+we set%
+\[
+A:=J_{n}\left(  0\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  .
+\]
+Let $B\in\mathbb{F}^{n\times n}$ be arbitrary. We want to know when
+$B\in\operatorname*{Cent}A$. In other words, we want to know when $AB=BA$.
+
+We have
+\begin{align*}
+AB  &  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccccc}%
+B_{1,1} & B_{1,2} & B_{1,3} & \cdots & B_{1,n}\\
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{ccccc}%
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)
+\end{align*}
+and%
+\begin{align*}
+BA  &  =\left(
+\begin{array}
+[c]{ccccc}%
+B_{1,1} & B_{1,2} & B_{1,3} & \cdots & B_{1,n}\\
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{ccccc}%
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & B_{1,1} & B_{1,2} & \cdots & B_{1,n-1}\\
+0 & B_{2,1} & B_{2,2} & \cdots & B_{2,n-1}\\
+0 & B_{3,1} & B_{3,2} & \cdots & B_{3,n-1}\\
+\vdots & \vdots & \vdots & \ddots & \ddots\\
+0 & B_{n,1} & B_{n,2} & \cdots & B_{n,n-1}%
+\end{array}
+\right)  .
+\end{align*}
+Thus, $AB=BA$ holds if and only if
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+B_{2,1} & B_{2,2} & B_{2,3} & \cdots & B_{2,n}\\
+B_{3,1} & B_{3,2} & B_{3,3} & \cdots & B_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+B_{n,1} & B_{n,2} & B_{n,3} & \cdots & B_{n,n}\\
+0 & 0 & 0 & \cdots & 0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{ccccc}%
+0 & B_{1,1} & B_{1,2} & \cdots & B_{1,n-1}\\
+0 & B_{2,1} & B_{2,2} & \cdots & B_{2,n-1}\\
+0 & B_{3,1} & B_{3,2} & \cdots & B_{3,n-1}\\
+\vdots & \vdots & \vdots & \ddots & \ddots\\
+0 & B_{n,1} & B_{n,2} & \cdots & B_{n,n-1}%
+\end{array}
+\right)  ,
+\]
+i.e., if%
+\begin{align*}
+B_{2,j}  &  =B_{1,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{1,0}:=0\text{);}\\
+B_{3,j}  &  =B_{2,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{2,0}:=0\text{);}\\
+B_{4,j}  &  =B_{3,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]
+\text{ (where }B_{3,0}:=0\text{);}\\
+&  \ldots;\\
+B_{n,j}  &  =B_{n-1,j-1}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[
+n\right]  \text{ (where }B_{n-1,0}:=0\text{);}\\
+0  &  =B_{n,j}\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n-1\right]  .
+\end{align*}
+The latter system of equations can be restated as follows:%
+\begin{align*}
+&  \ldots;\\
+B_{n,n-2}  &  =B_{n-1,n-3}=B_{n-2,n-4}=\cdots=B_{3,1}=0;\\
+B_{n,n-1}  &  =B_{n-1,n-2}=B_{n-2,n-3}=\cdots=B_{2,1}=0;\\
+B_{n,n}  &  =B_{n-1,n-1}=B_{n-2,n-2}=\cdots=B_{1,1};\\
+B_{n-1,n}  &  =B_{n-2,n-1}=B_{n-3,n-2}=\cdots=B_{1,2};\\
+B_{n-2,n}  &  =B_{n-3,n-1}=B_{n-4,n-2}=\cdots=B_{1,3};\\
+&  \ldots.
+\end{align*}
+In other words, it means that the matrix $B$ looks as follows:%
+\[
+B=\left(
+\begin{array}
+[c]{ccccc}%
+b_{0} & b_{1} & b_{2} & \cdots & b_{n-1}\\
+& b_{0} & b_{1} & \cdots & b_{n-2}\\
+&  & b_{0} & \cdots & b_{n-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & b_{0}%
+\end{array}
+\right)
+\]
+(where the empty cells have entries equal to $0$). This is called an
+\textbf{upper-triangular Toeplitz matrix}. We can also rewrite it as%
+\[
+B=b_{0}I_{n}+b_{1}A+b_{2}A^{2}+\cdots+b_{n-1}A^{n-1}.
+\]
+
+
+So we have proved the following:
+
+\begin{theorem}
+Let $n>0$. Let $A=J_{n}\left(  0\right)  $. Then,
+\begin{align*}
+\operatorname*{Cent}A  &  =\left\{  \left(
+\begin{array}
+[c]{ccccc}%
+b_{0} & b_{1} & b_{2} & \cdots & b_{n-1}\\
+& b_{0} & b_{1} & \cdots & b_{n-2}\\
+&  & b_{0} & \cdots & b_{n-3}\\
+&  &  & \ddots & \vdots\\
+&  &  &  & b_{0}%
+\end{array}
+\right)  \ \mid\ b_{0},b_{1},\ldots,b_{n-1}\in\mathbb{F}\right\} \\
+&  =\left\{  b_{0}I_{n}+b_{1}A+b_{2}A^{2}+\cdots+b_{n-1}A^{n-1}\ \mid
+\ b_{0},b_{1},\ldots,b_{n-1}\in\mathbb{F}\right\} \\
+&  =\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{F}\left[  t\right]  \text{
+is a polynomial of degree }\leq n-1\right\}  .
+\end{align*}
+
+\end{theorem}
+
+So this is the worst-case scenario: The only matrices commuting with $A$ are
+the matrices of the form $f\left(  A\right)  $ (which, as we recall, must
+always commute with $A$).
+
+What happens for an arbitrary $A$ ? Is the answer closer to the best-case
+scenario or to the worst-case scenario? The answer is that the worst-case
+scenario holds for a randomly chosen matrix, but we can actually answer the
+question \textquotedblleft what is $\operatorname*{Cent}A$
+exactly\textquotedblright\ if we know the Jordan canonical form of $A$.
+
+We start with simple propositions:
+
+\begin{proposition}
+Let $A\in\mathbb{F}^{n\times n}$ and $\lambda\in\mathbb{F}$. Then,
+$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
+\end{proposition}
+
+\begin{exercise}
+\fbox{1} Prove this.
+\end{exercise}
+
+\begin{proposition}
+Let $A$, $B$ and $S$ be three $n\times n$-matrices such that $S$ is
+invertible. Then,
+\[
+\left(  B\in\operatorname*{Cent}A\right)  \ \Longleftrightarrow\ \left(
+SBS^{-1}\in\operatorname*{Cent}\left(  SAS^{-1}\right)  \right)  .
+\]
+
+\end{proposition}
+
+\begin{exercise}
+\fbox{1} Prove this.
+\end{exercise}
+
+Thus, if $A$ is a matrix with complex entries, and if we want to compute
+$\operatorname*{Cent}A$, it suffices to compute $\operatorname*{Cent}J$, where
+$J$ is the JCF of $A$.
+
+Therefore, we now focus on centralizers of Jordan matrices.
+
+\begin{proposition}
+Let $A_{1},A_{2},\ldots,A_{k}$ be square matrices with complex entries. Assume
+that the spectra of these matrices are disjoint -- i.e., if $i\neq j$, then
+$\sigma\left(  A_{i}\right)  \cap\sigma\left(  A_{j}\right)  =\varnothing$.
+
+Then,%
+\begin{align*}
+&  \operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right) \\
+&  =\left\{  \left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  \ \mid\ B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  \text{ for
+each }i\in\left[  k\right]  \right\}  .
+\end{align*}
+
+\end{proposition}
+
+\begin{proof}
+The $\supseteq$ inclusion is obvious. We thus need to prove the $\subseteq$
+inclusion only.
+
+Let $A_{i}$ be an $n_{i}\times n_{i}$-matrix for each $i\in\left[  k\right]  $.
+
+Let $B\in\operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  $. We want to show that $B$ has the form $\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  $ where $B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  $ for each
+$i\in\left[  k\right]  $.
+
+Write $B$ as a block matrix%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  ,
+\]
+where each $B\left(  i,j\right)  $ is an $n_{i}\times n_{j}$-matrix. Then, by
+the rule for multiplying block matrices, we have%
+\begin{align*}
+&  \left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+A_{1}B\left(  1,1\right)  & A_{1}B\left(  1,2\right)  & \cdots & A_{1}B\left(
+1,k\right) \\
+A_{2}B\left(  2,1\right)  & A_{2}B\left(  2,2\right)  & \cdots & A_{2}B\left(
+2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+A_{k}B\left(  k,1\right)  & A_{k}B\left(  k,2\right)  & \cdots & A_{k}B\left(
+k,k\right)
+\end{array}
+\right)
+\end{align*}
+and%
+\begin{align*}
+&  \left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  A_{1} & B\left(  1,2\right)  A_{2} & \cdots & B\left(
+1,k\right)  A_{k}\\
+B\left(  2,1\right)  A_{1} & B\left(  2,2\right)  A_{2} & \cdots & B\left(
+2,k\right)  A_{k}\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  A_{1} & B\left(  k,2\right)  A_{2} & \cdots & B\left(
+k,k\right)  A_{k}%
+\end{array}
+\right)  .
+\end{align*}
+However, these two matrices must be equal, since $\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  \in\operatorname*{Cent}\left(
+\begin{array}
+[c]{cccc}%
+A_{1} &  &  & \\
+& A_{2} &  & \\
+&  & \ddots & \\
+&  &  & A_{k}%
+\end{array}
+\right)  $. Thus, we have%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+A_{1}B\left(  1,1\right)  & A_{1}B\left(  1,2\right)  & \cdots & A_{1}B\left(
+1,k\right) \\
+A_{2}B\left(  2,1\right)  & A_{2}B\left(  2,2\right)  & \cdots & A_{2}B\left(
+2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+A_{k}B\left(  k,1\right)  & A_{k}B\left(  k,2\right)  & \cdots & A_{k}B\left(
+k,k\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  A_{1} & B\left(  1,2\right)  A_{2} & \cdots & B\left(
+1,k\right)  A_{k}\\
+B\left(  2,1\right)  A_{1} & B\left(  2,2\right)  A_{2} & \cdots & B\left(
+2,k\right)  A_{k}\\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  A_{1} & B\left(  k,2\right)  A_{2} & \cdots & B\left(
+k,k\right)  A_{k}%
+\end{array}
+\right)  .
+\]
+Comparing blocks, we can rewrite this as%
+\[
+A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  k\right]  .
+\]
+
+
+Now, let $i,j\in\left[  k\right]  $ be distinct. Consider this equality
+$A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}$. We can rewrite it as
+$A_{i}B\left(  i,j\right)  -B\left(  i,j\right)  A_{j}=0$. Thus, $B\left(
+i,j\right)  $ is an $n_{i}\times n_{j}$-matrix $X$ satisfying $A_{i}%
+X-XA_{j}=0$. However, because $\sigma\left(  A_{i}\right)  \cap\sigma\left(
+A_{j}\right)  =\varnothing$, a theorem we proved before (the Sylvester matrix
+equation) tells us that there is a \textbf{unique} $n_{i}\times n_{j}$-matrix
+$X$ satisfying $A_{i}X-XA_{j}=0$. Clearly, this unique matrix $X$ must be the
+$0$ matrix (since the $0$ matrix satisfies $A_{i}0-0A_{j}=0$). So we conclude
+that $B\left(  i,j\right)  $ is the $0$ matrix. In other words, $B\left(
+i,j\right)  =0$.
+
+So we have shown that $B\left(  i,j\right)  =0$ whenever $i$ and $j$ are
+distinct. Thus,%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  &  &  & \\
+& B\left(  2,2\right)  &  & \\
+&  & \ddots & \\
+&  &  & B\left(  k,k\right)
+\end{array}
+\right)  .
+\]
+This shows that $B$ is block-diagonal. Now, applying the equation%
+\[
+A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for all }i,j\in\left[  k\right]
+\]
+to $j=i$, we obtain $A_{i}B\left(  i,i\right)  =B\left(  i,i\right)  A_{i}$,
+which of course means that $B\left(  i,i\right)  \in\operatorname*{Cent}%
+\left(  A_{i}\right)  $. Thus, $B$ has the form $\left(
+\begin{array}
+[c]{cccc}%
+B_{1} &  &  & \\
+& B_{2} &  & \\
+&  & \ddots & \\
+&  &  & B_{k}%
+\end{array}
+\right)  $ where $B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  $ for each
+$i\in\left[  k\right]  $. Proof complete.
+\end{proof}
+
+So we only need to compute $\operatorname*{Cent}J$ when $J$ is a Jordan matrix
+with only one eigenvalue.
+
+We can WLOG assume that this eigenvalue is $0$, since we know that
+$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
+
+So we only need to compute $\operatorname*{Cent}J$ when $J$ is a Jordan matrix
+with zeroes on its diagonal.
+
+If $J$ is just a single Jordan cell, we already know the result (by the above
+theorem which describes $\operatorname*{Cent}A$ for $A=J_{n}\left(  0\right)
+$). In the general case, we have the following:
+
+\begin{proposition}
+Let $J$ be a Jordan matrix whose Jordan blocks are%
+\[
+J_{n_{1}}\left(  0\right)  ,\ \ J_{n_{2}}\left(  0\right)  ,\ \ \ldots
+,\ \ J_{n_{k}}\left(  0\right)  .
+\]
+Let $B$ be an $n\times n$-matrix, written as a block matrix%
+\[
+B=\left(
+\begin{array}
+[c]{cccc}%
+B\left(  1,1\right)  & B\left(  1,2\right)  & \cdots & B\left(  1,k\right) \\
+B\left(  2,1\right)  & B\left(  2,2\right)  & \cdots & B\left(  2,k\right) \\
+\vdots & \vdots & \ddots & \vdots\\
+B\left(  k,1\right)  & B\left(  k,2\right)  & \cdots & B\left(  k,k\right)
+\end{array}
+\right)  ,
+\]
+where each $B\left(  i,j\right)  $ is an $n_{i}\times n_{j}$-matrix. Then,
+$B\in\operatorname*{Cent}J$ if and only if each of the $k^{2}$ blocks
+$B\left(  i,j\right)  $ is an \textbf{upper-triangular Toeplitz matrix in the
+wide sense}.
+
+Here, we say that a matrix is an \textbf{upper-triangular Toeplitz matrix in
+the wide sense} if it
+
+\begin{itemize}
+\item has the form $\left(
+\begin{array}
+[c]{cc}%
+0 & U
+\end{array}
+\right)  $, where $U$ is an upper-triangular Toeplitz (square) matrix and $0$
+is a zero matrix, or
+
+\item has the form $\left(
+\begin{array}
+[c]{c}%
+U\\
+0
+\end{array}
+\right)  $, where $U$ is an upper-triangular Toeplitz (square) matrix and $0$
+is a zero matrix.
+\end{itemize}
+
+(The zero matrices are allowed to be empty.)
+\end{proposition}
+
+\begin{proof}
+Essentially the same argument that we used to prove the theorem about
+$J_{n}\left(  0\right)  $, just with a lot more bookkeeping involved.
+\end{proof}
+
+We can summarize our results into a single theorem:
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix with Jordan
+canonical form $J$. Then, $\operatorname*{Cent}A$ is a vector subspace of
+$\mathbb{C}^{n\times n}$ with dimension%
+\[
+\sum_{\lambda\in\sigma\left(  A\right)  }g_{\lambda}\left(  A\right)  .
+\]
+Here, for each eigenvalue $\lambda$ of $A$, the number $g_{\lambda}\left(
+A\right)  $ is a nonnegative integer defined as follows: Let $n_{1}%
+,n_{2},\ldots,n_{k}$ be the sizes of the Jordan blocks at eigenvalue $\lambda$
+that appear in $J$; then, we set%
+\[
+g_{\lambda}\left(  A\right)  :=\sum_{i=1}^{k}\ \ \sum_{j=1}^{k}\min\left\{
+n_{i},n_{j}\right\}  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+Combine our above results and count the degrees of freedom.
+\end{proof}
+
+Now, let us return to the worst-case scenario: When is $\operatorname*{Cent}%
+A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}\left[  t\right]
+\right\}  $ ? We can answer this, too, although the proof takes longer.
+
+\begin{definition}
+An $n\times n$-matrix $A\in\mathbb{F}^{n\times n}$ is said to be
+\textbf{nonderogatory} if $q_{A}=p_{A}$ (that is, the minimal polynomial of
+$A$ equals the characteristic polynomial of $A$).
+\end{definition}
+
+\textquotedblleft Most\textquotedblright\ matrices are nonderogatory (in the
+sense that a \textquotedblleft randomly chosen\textquotedblright\ matrix with
+complex entries will be nonderogatory with probability $1$); but there are
+exceptions. It is easy to see that if a matrix $A$ has $n$ distinct
+eigenvalues, then $A$ is nonderogatory, but this is not an \textquotedblleft
+if and only if\textquotedblright; a single Jordan cell is also nonderogatory.
+Here is a necessary and sufficient criterion:
+
+\begin{proposition}
+An $n\times n$-matrix $A\in\mathbb{C}^{n\times n}$ is nonderogatory if and
+only if its Jordan canonical form has exactly one Jordan block for each eigenvalue.
+\end{proposition}
+
+\begin{exercise}
+\fbox{2} Prove this.
+\end{exercise}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Then,
+\[
+\operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
+\left[  t\right]  \right\}
+\]
+if and only if $f$ is nonderogatory. Moreover, in this case,%
+\[
+\operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
+\left[  t\right]  \text{ is a polynomial of degree }\leq n-1\right\}  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+Later or exercises?
+\end{proof}
 
 [...]
 
