@@ -1,0 +1,609 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, October 25, 2021 11:51:12}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 15}
+
+\section{Hermitian matrices}
+
+\textbf{Recall:} A \textbf{Hermitian matrix} is an $n\times n$-matrix
+$A\in\mathbb{C}^{n\times n}$ such that $A^{\ast}=A$.
+
+Note that this is the complex analogue of real symmetric matrices
+($A\in\mathbb{R}^{n\times n}$ such that $A^{T}=A$).
+
+If $A$ is a Hermitian matrix, then $A_{i,i}\in\mathbb{R}$ and $A_{i,j}%
+=\overline{A_{j,i}}$.
+
+For instance, the matrix $\left(
+\begin{array}
+[c]{ccc}%
+-1 & i & 2\\
+-i & 5 & 1-i\\
+2 & 1+i & 0
+\end{array}
+\right)  $ is Hermitian.
+
+\subsection{Basics}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Then, the following
+are equivalent:
+
+\begin{itemize}
+\item $\mathcal{A}$: The matrix $A$ is Hermitian (i.e., we have $A^{\ast}=A$).
+
+\item $\mathcal{B}$: We have $A=UDU^{\ast}$ for some unitary $U$ and some real
+diagonal $D$ (that is, $D$ is a diagonal matrix with real entries).
+
+\item $\mathcal{C}$: The matrix $A$ is normal and its eigenvalues are real.
+
+\item $\mathcal{D}$: We have $\left\langle Ax,x\right\rangle \in\mathbb{R}$
+for each $x\in\mathbb{C}^{n}$.
+
+\item $\mathcal{E}$: The matrix $S^{\ast}AS$ is Hermitian for all
+$S\in\mathbb{C}^{n\times k}$ (for all $k\in\mathbb{N}$).
+\end{itemize}
+\end{theorem}
+
+To prove this, we will need a lemma:
+
+\begin{lemma}
+Let $M\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Assume that
+$\left\langle Mx,x\right\rangle =0$ for each $x\in\mathbb{C}^{n}$. Then, $M=0$.
+\end{lemma}
+
+\begin{proof}
+If $x\in\mathbb{C}^{n}$ has entries $x_{1},x_{2},\ldots,x_{n}$, then%
+\begin{align*}
+\left\langle Mx,x\right\rangle  & =\left\langle \left(
+\begin{array}
+[c]{c}%
+M_{1,1}x_{1}+M_{1,2}x_{2}+\cdots+M_{1,n}x_{n}\\
+M_{2,1}x_{1}+M_{2,2}x_{2}+\cdots+M_{2,n}x_{n}\\
+\vdots\\
+M_{n,1}x_{1}+M_{n,2}x_{2}+\cdots+M_{n,n}x_{n}%
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}%
+\end{array}
+\right)  \right\rangle \\
+& =\sum_{i=1}^{n}\left(  M_{i,1}x_{1}+M_{i,2}x_{2}+\cdots+M_{i,n}x_{n}\right)
+\overline{x_{i}}\\
+& =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}x_{j}\overline{x_{i}}=\sum_{i=1}%
+^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}.
+\end{align*}
+So this is always $=0$ by assumption, no matter what $x$ is. So we have shown
+that%
+\[
+\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}%
+=0\ \ \ \ \ \ \ \ \ \ \text{for every }x=\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}%
+\end{array}
+\right)  \in\mathbb{C}^{n}.
+\]
+In particular:
+
+\begin{itemize}
+\item We can apply this to $x=e_{1}=\left(  1,0,0,\ldots,0\right)  ^{T}$, and
+we obtain $M_{1,1}\cdot\overline{1}\cdot1=0$, which means $M_{1,1}=0$.
+Similarly, we can find $M_{i,i}=0$ for all $i\in\left[  n\right]  $.
+
+\item We can apply this to $x=e_{1}+e_{2}=\left(  1,1,0,0,\ldots,0\right)
+^{T}$, and we obtain
+\[
+M_{1,1}\cdot\overline{1}\cdot1+M_{1,2}\cdot\overline{1}\cdot1+M_{2,1}%
+\cdot\overline{1}\cdot1\cdot M_{2,2}\cdot\overline{1}\cdot1=0.
+\]
+This simplifies to%
+\[
+M_{1,1}+M_{1,2}+M_{2,1}+M_{2,2}=0.
+\]
+However, the previous bullet point yields $M_{1,1}=0$ and $M_{2,2}=0$, so this
+simplifies further to%
+\[
+M_{1,2}+M_{2,1}=0.
+\]
+
+
+\item We can apply this to $x=e_{1}+ie_{2}=\left(  1,i,0,0,\ldots,0\right)
+^{T}$, and we obtain
+\[
+M_{1,1}\cdot\overline{1}\cdot1+M_{1,2}\cdot\overline{1}\cdot i+M_{2,1}%
+\cdot\overline{i}\cdot1\cdot M_{2,2}\cdot\overline{i}\cdot i=0.
+\]
+This simplifies to%
+\[
+M_{1,1}+iM_{1,2}-iM_{2,1}+M_{2,2}=0.
+\]
+However, we know that $M_{1,1}=0$ and $M_{2,2}=0$, so this simplifies further
+to%
+\[
+iM_{1,2}-iM_{2,1}=0.
+\]
+Thus,
+\[
+M_{1,2}-M_{2,1}=0.
+\]
+Adding this to%
+\[
+M_{1,2}+M_{2,1}=0,
+\]
+we obtain $2M_{1,2}=0$. In other words, $M_{1,2}=0$. Similarly, we can show
+that $M_{i,j}=0$ for all $i\neq j$.
+\end{itemize}
+
+So we have now shown that all entries of $M$ are $0$. In other words, $M=0$.
+This proves the lemma.
+\end{proof}
+
+Now we can prove the theorem:
+
+\begin{proof}
+[Proof of Theorem.] The implication $\mathcal{A}\Longrightarrow\mathcal{B}$
+follows from the spectral theorem. So does the implication $\mathcal{A}%
+\Longrightarrow\mathcal{C}$. The implication $\mathcal{B}\Longrightarrow
+\mathcal{A}$ follows from a corollary of the spectral theorem. Finally,
+$\mathcal{C}\Longrightarrow\mathcal{B}$ also follows from the spectral
+theorem. So we only need to prove the equivalence $\mathcal{A}%
+\Longleftrightarrow\mathcal{D}\Longleftrightarrow\mathcal{E}$.
+
+\begin{itemize}
+\item \textit{Proof of }$\mathcal{A}\Longrightarrow\mathcal{D}$\textit{:}
+Assume that $\mathcal{A}$ holds. Thus, $A=A^{\ast}$. Now, let $x\in
+\mathbb{C}^{n}$. Then, $\left\langle Ax,x\right\rangle =\overline{\left\langle
+x,Ax\right\rangle }$ (by the rules for inner products). However, by the
+formula $\left\langle u,v\right\rangle =v^{\ast}u$, we have%
+\[
+\left\langle Ax,x\right\rangle =x^{\ast}Ax\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ \left\langle x,Ax\right\rangle =\underbrace{\left(
+Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}x=x^{\ast}\underbrace{A^{\ast}}%
+_{=A}x=x^{\ast}Ax.
+\]
+Comparing these two equalities, we see that $\left\langle Ax,x\right\rangle
+=\left\langle x,Ax\right\rangle $. Comparing this with $\left\langle
+Ax,x\right\rangle =\overline{\left\langle x,Ax\right\rangle }$, we obtain
+$\left\langle x,Ax\right\rangle =\overline{\left\langle x,Ax\right\rangle }$.
+This entails $\left\langle x,Ax\right\rangle \in\mathbb{R}$ (since the only
+complex numbers $z\in\mathbb{C}$ that satisfy $z=\overline{z}$ are the real
+numbers). Therefore, $\left\langle Ax,x\right\rangle =\left\langle
+x,Ax\right\rangle \in\mathbb{R}$. Thus, the statement $\mathcal{D}$ is proved.
+
+\item \textit{Proof of }$\mathcal{D}\Longrightarrow\mathcal{A}$\textit{:}
+Assume that $\mathcal{D}$ holds. Thus, $\left\langle Ax,x\right\rangle
+\in\mathbb{R}$ for each $x\in\mathbb{C}^{n}$. Again, we can see that each
+$x\in\mathbb{C}^{n}$ satisfies%
+\[
+\left\langle Ax,x\right\rangle =x^{\ast}Ax\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ \left\langle x,Ax\right\rangle =\underbrace{\left(
+Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}x=x^{\ast}A^{\ast}x.
+\]
+Thus, each $x\in\mathbb{C}^{n}$ satisfies%
+\begin{align*}
+x^{\ast}Ax  & =\left\langle Ax,x\right\rangle =\overline{\left\langle
+Ax,x\right\rangle }\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\langle
+Ax,x\right\rangle \in\mathbb{R}\right)  \\
+& =\left\langle x,Ax\right\rangle =x^{\ast}A^{\ast}x,
+\end{align*}
+so that
+\[
+x^{\ast}Ax-x^{\ast}A^{\ast}x=0,
+\]
+so that%
+\[
+x^{\ast}\left(  A^{\ast}-A\right)  x=0.
+\]
+Applying our Lemma to $M=A^{\ast}-A$, we thus conclude that $A^{\ast}-A=0$. In
+other words, $A^{\ast}=A$. This proves $\mathcal{A}$.
+
+\item \textit{Proof of }$\mathcal{A}\Longrightarrow\mathcal{E}$\textit{:} If
+$A$ is Hermitian, then $A^{\ast}=A$, so that%
+\[
+\left(  S^{\ast}AS\right)  ^{\ast}=S^{\ast}\underbrace{A^{\ast}}%
+_{=A}\underbrace{\left(  S^{\ast}\right)  ^{\ast}}_{=S}=S^{\ast}AS,
+\]
+and therefore $S^{\ast}AS$ is again Hermitian. This proves $\mathcal{A}%
+\Longrightarrow\mathcal{E}$.
+
+\item \textit{Proof of }$\mathcal{E}\Longrightarrow\mathcal{A}$\textit{:} If
+statement $\mathcal{E}$ holds, then we can apply it to $S=I_{n}$ (and $k=n$),
+and conclude that $I_{n}^{\ast}AI_{n}$ is Hermitian; but this is simply saying
+that $A$ is Hermitian. So $\mathcal{E}\Longrightarrow\mathcal{A}$ follows.
+\end{itemize}
+
+The theorem is proved.
+\end{proof}
+
+As a reminder: Sums of Hermitian matrices are Hermitian, but products are not
+(in general).
+
+\subsection{Definiteness}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix.
+
+\textbf{(a)} We say that $A$ is \textbf{positive semidefinite} if it satisfies%
+\[
+\left\langle Ax,x\right\rangle \geq0\ \ \ \ \ \ \ \ \ \ \text{for all }%
+x\in\mathbb{C}^{n}.
+\]
+
+
+\textbf{(b)} We say that $A$ is \textbf{positive definite} if it satisfies%
+\[
+\left\langle Ax,x\right\rangle >0\ \ \ \ \ \ \ \ \ \ \text{for all nonzero
+}x\in\mathbb{C}^{n}.
+\]
+
+
+\textbf{(c)} We say that $A$ is \textbf{negative semidefinite} if it satisfies%
+\[
+\left\langle Ax,x\right\rangle \leq0\ \ \ \ \ \ \ \ \ \ \text{for all }%
+x\in\mathbb{C}^{n}.
+\]
+
+
+\textbf{(d)} We say that $A$ is \textbf{negative definite} if it satisfies%
+\[
+\left\langle Ax,x\right\rangle <0\ \ \ \ \ \ \ \ \ \ \text{for all nonzero
+}x\in\mathbb{C}^{n}.
+\]
+
+
+\textbf{(e)} We say that $A$ is \textbf{indefinite} if it is neither positive
+semidefinite nor negative semidefinite, i.e., if there exist vectors
+$x,y\in\mathbb{C}^{n}$ such that%
+\[
+\left\langle Ax,x\right\rangle <0<\left\langle Ay,y\right\rangle .
+\]
+
+\end{definition}
+
+Here are some examples of definiteness:
+
+\begin{example}
+Let $n\in\mathbb{N}$. Let $J=\left(
+\begin{array}
+[c]{cccc}%
+1 & 1 & \cdots & 1\\
+1 & 1 & \cdots & 1\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & 1 & \cdots & 1
+\end{array}
+\right)  $. This matrix $J$ is real symmetric, thus Hermitian. Is it positive
+definite? Positive semidefinite?
+
+Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. Then,%
+\begin{align*}
+\left\langle Jx,x\right\rangle  & =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}%
+\overline{x_{i}}x_{j}=\left(  \sum_{i=1}^{n}\overline{x_{i}}\right)  \left(
+\sum_{j=1}^{n}x_{j}\right)  =\left(  \overline{\sum_{i=1}^{n}x_{i}}\right)
+\left(  \sum_{j=1}^{n}x_{j}\right)  \\
+& =\left(  \overline{\sum_{i=1}^{n}x_{i}}\right)  \left(  \sum_{i=1}^{n}%
+x_{i}\right)  =\left\vert \sum_{i=1}^{n}x_{i}\right\vert ^{2}\geq0.
+\end{align*}
+So $J$ is positive semidefinite.
+
+Is $J$ positive definite? To have $\left\langle Jx,x\right\rangle =0$ is
+equivalent to having $\sum_{i=1}^{n}x_{i}=0$. When $n=1$ (or $n=0$), this is
+equivalent to having $x=0$, so $J$ is positive definite in this case. However,
+if $n>1$, then this is not equivalent to having $x=0$, and in fact the vector
+$e_{1}-e_{2}$ is an example of a nonzero vector $x\in\mathbb{C}^{n}$ such that
+$\left\langle Jx,x\right\rangle =0$. So $J$ is not positive definite unless
+$n\leq1$.
+\end{example}
+
+\begin{example}
+Consider a diagonal matrix
+\[
+D:=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  =\left(
+\begin{array}
+[c]{cccc}%
+\lambda_{1} & 0 & \cdots & 0\\
+0 & \lambda_{2} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_{n}%
+\end{array}
+\right)
+\]
+with $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{R}$. When is $D$
+positive semidefinite?
+
+We want $\left\langle Dx,x\right\rangle \geq0$ for all $x\in\mathbb{C}^{n}$.
+Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. Then,%
+\[
+\left\langle Dx,x\right\rangle =\sum_{i=1}^{n}\lambda_{i}\overline{x_{i}}%
+x_{i}=\sum_{i=1}^{n}\lambda_{i}\left\vert x_{i}\right\vert ^{2}.
+\]
+If $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\geq0$, then we therefore
+conclude that $\left\langle Dx,x\right\rangle \geq0$, so that $D$ is positive
+semidefinite. Otherwise, $D$ is not positive semidefinite, since we can pick
+an $x=e_{j}$ where $j$ satisfies $\lambda_{i}<0$. So $D$ is positive
+semidefinite if and only if $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\geq0$.
+A similar argument shows that $D$ is positive definite if and only if
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}>0$.
+\end{example}
+
+\begin{example}
+The Hilbert matrix%
+\[
+\left(
+\begin{array}
+[c]{cccc}%
+\dfrac{1}{1} & \dfrac{1}{2} & \cdots & \dfrac{1}{n}\\
+\dfrac{1}{2} & \dfrac{1}{3} & \cdots & \dfrac{1}{n+1}\\
+\vdots & \vdots & \ddots & \vdots\\
+\dfrac{1}{n} & \dfrac{1}{n+1} & \cdots & \dfrac{1}{2n}%
+\end{array}
+\right)
+\]
+(i.e., the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is
+$\dfrac{1}{i+j-1}$) is positive definite. In other words, for any $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$, we have%
+\[
+\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}\dfrac{\overline{x_{i}}x_{j}}{i+j-1}\geq0.
+\]
+This is not obvious at all, and will be a HW exercise (with hints). More
+generally, if $a_{1},a_{2},\ldots,a_{n}$ are positive reals, then the $n\times
+n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}{a_{i}+a_{j}}$ is
+positive definite.
+\end{example}
+
+As an application of positive semidefiniteness, the Schoenberg theorem
+generalizes the triangle inequality. Recall that the triangle inequality says
+that three nonnegative real numbers $x,y,z$ are the mutual distances of $3$
+points in the plane if and only if $x\leq y+z$ and $y\leq z+x$ and $z\leq
+x+y$. In higher dimensions, the analogous criterion is the following:
+
+\begin{theorem}
+[Schoenberg's theorem]Let $n\in\mathbb{N}$ and $r\in\mathbb{N}$. Let $d_{i,j}$
+be a nonnegative real for each $i,j\in\left[  n\right]  $. Assume that
+$d_{i,i}=0$ for all $i\in\left[  n\right]  $, and furthermore $d_{i,j}%
+=d_{j,i}$ for all $i,j\in\left[  n\right]  $. Then, there exist $n$ points
+$P_{1},P_{2},\ldots,P_{n}\in\mathbb{R}^{r}$ satisfying%
+\[
+\left\vert P_{i}-P_{j}\right\vert =d_{i,j}\ \ \ \ \ \ \ \ \ \ \text{for all
+}i,j\in\left[  n\right]
+\]
+if and only if the $\left(  n-1\right)  \times\left(  n-1\right)  $-matrix
+whose $\left(  i,j\right)  $-th entry is
+\[
+d_{i,n}^{2}+d_{j,n}^{2}-d_{i,j}^{2}\ \ \ \ \ \ \ \ \ \ \text{for all }%
+i,j\in\left[  n-1\right]
+\]
+is positive semidefinite and has rank $\leq r$.
+\end{theorem}
+
+We will not prove this here.
+
+\begin{remark}
+If $A\in\mathbb{R}^{n\times n}$ and $\left\langle Ax,x\right\rangle \geq0$ for
+all $x\in\mathbb{R}^{n}$, then we \textbf{cannot} conclude that $A$ is
+positive semidefinite. The reason is that it does not follow that $A$ is
+symmetric. For example, $A=\left(
+\begin{array}
+[c]{cc}%
+2 & 1\\
+0 & 2
+\end{array}
+\right)  $ satisfies
+\[
+\left\langle Ax,x\right\rangle =2x_{1}^{2}+x_{1}x_{2}+2x_{2}^{2}=\dfrac{1}%
+{2}\left(  x_{1}+x_{2}\right)  ^{2}+\dfrac{3}{2}\left(  x_{1}^{2}+x_{2}%
+^{2}\right)  \geq0
+\]
+for each $x=\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+x_{2}%
+\end{array}
+\right)  \in\mathbb{R}^{2}$, but it is not symmetric.
+\end{remark}
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Then:
+
+\textbf{(a)} The matrix $A$ is positive semidefinite if and only if all
+eigenvalues of $A$ are nonnegative.
+
+\textbf{(b)} The matrix $A$ is positive definite if and only if all
+eigenvalues of $A$ are positive.
+
+(Recall that the eigenvalues of $A$ are reals by the spectral theorem.)
+\end{theorem}
+
+\begin{proof}
+\textbf{(a)} Assume that $A$ is positive semidefinite. Let $\lambda$ be an
+eigenvalue of $A$. Let $x\neq0$ be a corresponding eigenvector. Then,
+$Ax=\lambda x$. However, $\left\langle Ax,x\right\rangle \geq0$ since $A$ is
+positive semidefinite. So $\left\langle \lambda x,x\right\rangle \geq0$.
+However, $\left\langle \lambda x,x\right\rangle =\lambda\left\langle
+x,x\right\rangle $, so that $\lambda\left\langle x,x\right\rangle \geq0$. We
+can cancel $\left\langle x,x\right\rangle $ (since $\left\langle
+x,x\right\rangle >0$). Thus, we get $\lambda\geq0$. Therefore, all eigenvalues
+of $A$ are $\geq0$.
+
+Conversely, assume that all eigenvalues of $A$ are $\geq0$. By the spectral
+theorem, we can write $A$ as
+\[
+A=UDU^{\ast},\ \ \ \ \ \ \ \ \ \ \text{where }D=\operatorname*{diag}\left(
+\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)  ,
+\]
+where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$.
+However,
+\[
+D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  =\left(  \operatorname*{diag}\left(  \sqrt{\lambda_{1}}%
+,\sqrt{\lambda_{2}},\ldots,\sqrt{\lambda_{n}}\right)  \right)  ^{2}%
+\]
+(the square roots here are well-defined, since the $\lambda_{i}$ are
+nonnegative by assumption). ............ [To be finished]
+\end{proof}
+
+
+\end{document}
