@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 29, 2021 15:48:43}
+%TCIDATA{LastRevised=Friday, October 29, 2021 18:44:08}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -10171,7 +10171,10 @@ The pair $\left(  D,N\right)  $ in this theorem is known as the
 decomposition}) of $A$.
 
 For a complete proof of Theorem \ref{thm.jnf.jcdec.main}, see \cite[Chapter
-VII, \S 5, section 9, Theorem 1]{Bourba03}.
+VII, \S 5, section 9, Theorem 1]{Bourba03}. An outline can also be found on
+\href{https://en.wikipedia.org/wiki/Jordan-Chevalley_decomposition}{the
+Wikipedia page for \textquotedblleft Jordan--Chevalley
+decomposition\textquotedblright}.
 
 \begin{proof}
 [Partial proof of Theorem \ref{thm.jnf.jcdec.main}.]We will only show the
@@ -10537,7 +10540,7 @@ having size }p\right) \\
 
 
 In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
-{\lambda}$ come in pairs of equal sizes.
+{\lambda}$ come in pairs of equal sizes (when $\lambda\neq\overline{\lambda}$).
 \end{lemma}
 
 \begin{exercise}
@@ -10546,9 +10549,11 @@ In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
 
 So we can try to combine each Jordan block at $\lambda$ with an equally sized
 Jordan block at $\overline{\lambda}$ and hope that something real comes out
-somehow, in the same way as $\left(  t-\lambda\right)  \left(  t-\overline
-{\lambda}\right)  =t^{2}-2\operatorname*{Re}\lambda+\left\vert \lambda
-\right\vert ^{2}\in\mathbb{R}\left[  t\right]  $.
+somehow, in the same way as multiplying the complex polynomials $t-\lambda$
+and $t-\overline{\lambda}$ yields the real polynomial $\left(  t-\lambda
+\right)  \left(  t-\overline{\lambda}\right)  =t^{2}-2\left(
+\operatorname*{Re}\lambda\right)  t+\left\vert \lambda\right\vert ^{2}%
+\in\mathbb{R}\left[  t\right]  $.
 
 How to do this? For Jordan blocks of size $1$, this is easy:
 
@@ -10581,9 +10586,17 @@ a & b\\
 Now, let us see how to combine a Jordan block at $\lambda$ with an equally
 sized Jordan block at $\overline{\lambda}$ when the size is arbitrary. We can
 WLOG assume that these two Jordan blocks are adjacent (since we can permute
-the Jordan blocks at will). Thus, they look as follows together:%
-\begin{align*}
-&  \left(
+the Jordan blocks at will). Thus, they form the following matrix
+together:\footnote{Again, empty cells in matrices signify $0$s (or zero
+matrices).}%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+J_{p}\left(  \lambda\right)   & \\
+& J_{p}\left(  \overline{\lambda}\right)
+\end{array}
+\right)  =\left(
 \begin{array}
 [c]{cccccccc}%
 \lambda & 1 &  &  &  &  &  & \\
@@ -10595,29 +10608,33 @@ the Jordan blocks at will). Thus, they look as follows together:%
 &  &  &  &  &  & \ddots & 1\\
 &  &  &  &  &  &  & \overline{\lambda}%
 \end{array}
-\right) \\
-&  \sim\left(
+\right)  .
+\]
+This matrix is similar to the $2p\times2p$-matrix
+\[
+L_{p}:=\left(
 \begin{array}
 [c]{cccccccc}%
 \lambda &  & 1 &  &  &  &  & \\
 & \overline{\lambda} &  & 1 &  &  &  & \\
 &  & \lambda &  & 1 &  &  & \\
 &  &  & \overline{\lambda} &  & 1 &  & \\
-&  &  &  & \ddots &  &  & \\
-&  &  &  &  & \ddots &  & \\
+&  &  &  & \ddots &  & \ddots & \\
+&  &  &  &  & \ddots &  & \ddots\\
 &  &  &  &  &  & \lambda & \\
 &  &  &  &  &  &  & \overline{\lambda}%
 \end{array}
 \right)  =\left(
 \begin{array}
-[c]{cccc}%
-L & I_{2} &  & \\
-& L & I_{2} & \\
-&  & \ddots & \\
-&  &  & L
+[c]{ccccc}%
+L & I_{2} &  &  & \\
+& L & I_{2} &  & \\
+&  & \ddots & \ddots & \\
+&  &  & L & I_{2}\\
+&  &  &  & L
 \end{array}
 \right)  ,
-\end{align*}
+\]
 where $L$ is the $2\times2$-matrix $\left(
 \begin{array}
 [c]{cc}%
@@ -10635,7 +10652,7 @@ a & b\\
 \right)  ,
 \]
 where $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}\lambda$ (so that
-$\lambda=a+bi$). So our matrix is similar to%
+$\lambda=a+bi$). So our matrix is similar $L_{p}$ to%
 \[
 \left(
 \begin{array}
@@ -10644,14 +10661,41 @@ a & b & 1 &  &  &  &  & \\
 -b & a &  & 1 &  &  &  & \\
 &  & a & b & 1 &  &  & \\
 &  & -b & a &  & 1 &  & \\
-&  &  &  & \ddots &  &  & \\
-&  &  &  &  & \ddots &  & \\
+&  &  &  & \ddots & \ddots & \ddots & \\
+&  &  &  &  & \ddots & \ddots & \ddots\\
+&  &  &  &  &  & a & b\\
+&  &  &  &  &  & -b & a
+\end{array}
+\right)
+\]
+(why?). Hence, altogether, we obtain%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+J_{p}\left(  \lambda\right)   & \\
+& J_{p}\left(  \overline{\lambda}\right)
+\end{array}
+\right)  \sim\left(
+\begin{array}
+[c]{cccccccc}%
+a & b & 1 &  &  &  &  & \\
+-b & a &  & 1 &  &  &  & \\
+&  & a & b & 1 &  &  & \\
+&  & -b & a &  & 1 &  & \\
+&  &  &  & \ddots & \ddots & \ddots & \\
+&  &  &  &  & \ddots & \ddots & \ddots\\
 &  &  &  &  &  & a & b\\
 &  &  &  &  &  & -b & a
 \end{array}
 \right)  .
 \]
-
+The matrix on the right is a real matrix. Thus, we can replace our two Jordan
+blocks (at $\lambda$ and $\overline{\lambda}$, of equal sizes) by a real
+$2p\times2p$-matrix, obtaining a similar matrix. Performing the same procedure
+with all Jordan blocks at non-real eigenvalues, we thus obtain a
+\textquotedblleft normal form\textquotedblright\ that has real entries. See
+\cite[\S 3.4.1]{HorJoh13} for details and for further results in this direction.
 
 \subsection{The centralizer of a matrix}
 
@@ -11337,7 +11381,7 @@ if and only if $f$ is nonderogatory. Moreover, in this case,%
 Later or exercises?
 \end{proof}
 
-\section{Hermitian matrices}
+\section{Hermitian matrices  (\cite[Chapter 4]{HorJoh13})}
 
 \textbf{Recall:} A \textbf{Hermitian matrix} is an $n\times n$-matrix
 $A\in\mathbb{C}^{n\times n}$ such that $A^{\ast}=A$.
@@ -11930,7 +11974,8 @@ entries are positive reals.
 \end{theorem}
 
 \begin{example}
-For $n=1$, the theorem is trivial: In this case, $A=\left(
+\label{exa.herm.cholesky.pd.1}For $n=1$, the theorem is trivial: In this case,
+$A=\left(
 \begin{array}
 [c]{c}%
 a
@@ -12215,13 +12260,13 @@ Now, let us prove the Cholesky factorization theorem:
 [Proof of Theorem \ref{thm.herm.cholesky.pd}.]We proceed by induction on $n$.
 
 The \textit{base cases} $n=0$ and $n=1$ are essentially obvious ($n=1$ was
-done in an example).
+done in Example \ref{exa.herm.cholesky.pd.1}).
 
-\textit{Induction step:} Assume that the theorem holds for some $n$. We must
-prove that it holds for $n+1$ as well.
+\textit{Induction step:} Assume that Theorem \ref{thm.herm.cholesky.pd} holds
+for some $n$. We must prove that it holds for $n+1$ as well.
 
 Let $A\in\mathbb{C}^{\left(  n+1\right)  \times\left(  n+1\right)  }$ be a
-positive definite Hermitian matrix. Write $A$ in the form%
+positive definite Hermitian matrix. Write $A$ in the block-matrix form%
 \[
 A=\left(
 \begin{array}
@@ -12231,11 +12276,12 @@ b^{\ast} & d
 \end{array}
 \right)  ,
 \]
-where $B\in\mathbb{C}^{n\times n}$ and $b\in\mathbb{C}^{n}$. Note that the
-$b^{\ast}$ on the bottom of the right hand side is because $A$ is Hermitian,
-so all entries in the last row of $A$ are the complex conjugates of the
-corresponding entries in the last column of $A$. Also, $d=d^{\ast}$ for the
-same reason, so $d\in\mathbb{R}$. Moreover, $B$ is Hermitian (since $A$ is Hermitian).
+where $B\in\mathbb{C}^{n\times n}$ and $b\in\mathbb{C}^{n}$ and $d\in
+\mathbb{C}$. Note that the $b^{\ast}$ on the bottom of the right hand side is
+because $A$ is Hermitian, so all entries in the last row of $A$ are the
+complex conjugates of the corresponding entries in the last column of $A$.
+Also, $d=d^{\ast}$ for the same reason, so $d\in\mathbb{R}$. Moreover, $B$ is
+Hermitian (since $A$ is Hermitian).
 
 Next, we claim that $B$ is positive definite. Indeed, for any nonzero vector
 $x\in\mathbb{C}^{n}$, we have $\left\langle Bx,x\right\rangle =\left\langle
@@ -12249,10 +12295,12 @@ x\\
 definiteness of $A$. (More generally, any principal submatrix of a positive
 definite matrix is positive definite.)
 
-Therefore, by the induction hypothesis, we can apply the theorem to $B$
-instead of $A$. We conclude that $B$ can be uniquely written as a product
-$B=QQ^{\ast}$, where $Q\in\mathbb{C}^{n\times n}$ is a lower-triangular matrix
-whose diagonal entries are positive reals.
+Therefore, by the induction hypothesis, we can apply Theorem
+\ref{thm.herm.cholesky.pd} to the $n\times n$-matrix $B$ instead of $A$. We
+conclude that $B$ can be uniquely written as a product $B=QQ^{\ast}$, where
+$Q\in\mathbb{C}^{n\times n}$ is a lower-triangular matrix whose diagonal
+entries are positive reals. Consider this $Q$. Note that the matrix $Q$ is
+invertible (since it is lower-triangular and its diagonal entries are positive).
 
 Now, we want to find a vector $x\in\mathbb{C}^{n}$ and a positive real
 $\delta$ such that if we set%
@@ -12266,7 +12314,7 @@ x^{\ast} & \delta
 \right)  ,
 \]
 then $A=LL^{\ast}$. If we can find such $x$ and $\delta$, then at least the
-existence part of the theorem will be settled.
+existence part of Theorem \ref{thm.herm.cholesky.pd} will be settled.
 
 So let us set $L:=\left(
 \begin{array}
@@ -12295,7 +12343,7 @@ x^{\ast} & \delta
 Q^{\ast} & \left(  x^{\ast}\right)  ^{\ast}\\
 0 & \overline{\delta}%
 \end{array}
-\right) \\
+\right)  \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -12308,8 +12356,8 @@ x^{\ast} & \delta
 Q^{\ast} & x\\
 0 & \delta
 \end{array}
-\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\delta\in\mathbb{R}%
-\Longrightarrow\overline{\delta}=\delta\right) \\
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\delta\in\mathbb{R}\text{
+entails }\overline{\delta}=\delta\right)  \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -12332,9 +12380,8 @@ d=x^{\ast}x+\delta^{2}.
 \]
 The first of these four equations is already satisfied (we know that
 $B=QQ^{\ast}$). The second equation will be satisfied if we set $x=Q^{-1}b$.
-We can indeed set $x=Q^{-1}b$, since the matrix $Q$ is invertible (since $Q$
-is a lower-triangular matrix with positive reals on its diagonal). The third
-equation follows automatically from the second ($b=Qx$ $\Longrightarrow$
+We can indeed set $x=Q^{-1}b$, since the matrix $Q$ is invertible. The third
+equation follows automatically from the second (indeed, $b=Qx$ entails
 $b^{\ast}=\left(  Qx\right)  ^{\ast}=x^{\ast}Q^{\ast}$). Finally, the fourth
 equation rewrites as $d=\left\vert \left\vert x\right\vert \right\vert
 ^{2}+\delta^{2}$. We can satisfy it by setting $\delta=\sqrt{d-\left\vert
@@ -12356,9 +12403,9 @@ Q & 0\\
 x^{\ast} & \delta
 \end{array}
 \right)  $ for some $Q\in\mathbb{C}^{n\times n}$ and $x\in\mathbb{C}^{n}$ and
-some positive real $\delta$, where $Q$ is lower-triangular with diagonal
-entries being real. The equation $A=LL^{\ast}$ rewrites as%
-\[
+some positive real $\delta$, where $Q$ is lower-triangular with its diagonal
+entries being real. The equation $A=LL^{\ast}$ then rewrites as%
+\begin{equation}
 \left(
 \begin{array}
 [c]{cc}%
@@ -12371,15 +12418,20 @@ b^{\ast} & d
 QQ^{\ast} & Qx\\
 x^{\ast}Q^{\ast} & x^{\ast}x+\delta^{2}%
 \end{array}
-\right)  .
-\]
-Thus, $B=QQ^{\ast}$. By the induction hypothesis, the $Q$ is unique, so this
-$Q$ is exactly the $Q$ that was constructed above. Moreover, $b=Qx$, so that
-$x=Q^{-1}b$, so again our new $x$ is our old $x$. Finally, $d=x^{\ast}%
-x+\delta^{2}$ entails $\delta=\sqrt{d-\left\vert \left\vert x\right\vert
-\right\vert ^{2}}$, because $\delta$ has to be positive. So our $\delta$ is
-our old $\delta$. Thus, our $L$ is the $L$ that we constructed above. This
-proves the uniqueness of the $L$. Theorem \ref{thm.herm.cholesky.pd} is proved.
+\right)  .\label{pf.thm.herm.cholesky.pd.uniq.2}%
+\end{equation}
+Thus, in particular, $B=QQ^{\ast}$. By the induction hypothesis, the
+lower-triangular matrix $Q\in\mathbb{C}^{n\times n}$ with real diagonal
+entries that satisfies $B=QQ^{\ast}$ is unique. Hence, our new $Q$ is exactly
+the $Q$ that was constructed above. Furthermore,
+(\ref{pf.thm.herm.cholesky.pd.uniq.2}) shows that $b=Qx$, so that $x=Q^{-1}b$,
+so again our new $x$ is our old $x$. Finally,
+(\ref{pf.thm.herm.cholesky.pd.uniq.2}) yields $d=x^{\ast}x+\delta^{2}$, whence
+$\delta^{2}=d-x^{\ast}x=d-\left\vert \left\vert x\right\vert \right\vert ^{2}%
+$. Thus, $\delta=\sqrt{d-\left\vert \left\vert x\right\vert \right\vert ^{2}}%
+$, because $\delta$ has to be positive. So our $\delta$ is our old $\delta$.
+Thus, our $L$ is the $L$ that we constructed above. This proves the uniqueness
+of the $L$. Theorem \ref{thm.herm.cholesky.pd} is proved.
 \end{proof}
 
 Theorem \ref{thm.herm.cholesky.pd} can be used to prove several facts about
@@ -12391,9 +12443,9 @@ matrix. Prove that $\det A$ is a positive real.
 \end{exercise}
 
 \begin{exercise}
-\fbox{4} Let $A$ and $B$ be two positive definite Hermitian matrices in
-$\mathbb{C}^{n\times n}$. Prove that $\operatorname*{Tr}\left(  AB\right)
-\geq0$.
+\fbox{4} Let $n>0$. Let $A$ and $B$ be two positive definite Hermitian
+matrices in $\mathbb{C}^{n\times n}$. Prove that $\operatorname*{Tr}\left(
+AB\right)  >0$.
 \end{exercise}
 
 \begin{exercise}
@@ -12743,7 +12795,7 @@ subspaces of $V$ (with $k\geq1$). Let
 
 
 \textbf{(a)} Then, $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)
-\geq\delta$.
+\geq\delta$. \medskip
 
 \textbf{(b)} If $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and $\delta>0$,
 then there exists a vector $x\in S_{1}\cap S_{2}\cap\cdots\cap S_{k}$ with
@@ -12766,7 +12818,7 @@ S_{k+1}\right)  \geq\delta_{k+1}$.
 
 Then,%
 \begin{align*}
-&  \dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap S_{k+1}\right) \\
+&  \dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap S_{k+1}\right)  \\
 &  =\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k-1}\cap\left(  S_{k}\cap
 S_{k+1}\right)  \right)  .
 \end{align*}
@@ -12800,7 +12852,7 @@ S_{k}+S_{k+1}\right)  }\geq\dim\left(  S_{k}\cap S_{k+1}\right)  +\dim\left(
 S_{k}+S_{k+1}\right)  =\dim\left(  S_{k}\right)  +\dim\left(  S_{k+1}\right)
 \]
 (by the previous proposition). So the induction step is complete, and part
-\textbf{(a)} of the corollary is proved.
+\textbf{(a)} of the corollary is proved. \medskip
 
 \textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and
 $\delta>0$. Then, part \textbf{(a)} yields%
@@ -12962,7 +13014,7 @@ with the eigenvalues of $A$ and $B$.
 \begin{theorem}
 [Weyl's inequalities]\label{thm.herm.weyl-ineq}Let $A$ and $B$ be two
 Hermitian matrices in $\mathbb{C}^{n\times n}$. Let $i\in\left[  n\right]  $
-and $j\in\left\{  0,1,\ldots,n-i\right\}  $.
+and $j\in\left\{  0,1,\ldots,n-i\right\}  $. \medskip
 
 \textbf{(a)} Then,%
 \[
@@ -12979,7 +13031,7 @@ Ax=\lambda_{i+j}\left(  A\right)  x,\ \ \ \ \ \ \ \ \ \ Bx=\lambda
 _{n-j}\left(  B\right)  x,\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
 x=\lambda_{i}\left(  A+B\right)  x
 \]
-(at the same time).
+(at the same time). \medskip
 
 \textbf{(b)} Furthermore,%
 \[
@@ -13215,6 +13267,10 @@ Szeg\H{o}, \textit{Problems and Theorems in Analysis I}, Springer 1978
 \textit{\href{http://www2.math.su.se/~mleites/books/prasolov-1994-problems.pdf}{\textit{Problems
 and Theorems in Linear Algebra}}}, Translations of Mathematical Monographs,
 vol. \#134, AMS 1994.
+
+\bibitem[Shapir15]{Shapir15}Helene Shapiro, \textit{Linear Algebra and
+Matrices: Topics for a Second Course}, Pure and applied undergraduate texts
+\textbf{24}, AMS 2015.
 
 \bibitem[Shurma15]{Shurma15}Jerry Shurman, \textit{The Cayley-Hamilton theorem
 via multilinear algebra}, \url{http://people.reed.edu/~jerry/332/28ch.pdf} .
