@@ -1,0 +1,684 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, October 29, 2021 11:51:08}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 17}
+
+\section{Hermitian matrices (cont'd)}
+
+\subsection{Rayleigh quotients (cont'd)}
+
+Recall:
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix, and $x\in
+\mathbb{C}^{n}$ be a nonzero vector. Then, the \textbf{Rayleigh quotient} for
+$A$ and $x$ is defined to be the real number%
+\[
+R\left(  A,x\right)  :=\dfrac{\left\langle Ax,x\right\rangle }{\left\langle
+x,x\right\rangle }=\dfrac{x^{\ast}Ax}{x^{\ast}x}=\dfrac{x^{\ast}Ax}{\left\vert
+\left\vert x\right\vert \right\vert ^{2}}=y^{\ast}Ay,
+\]
+where $y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }$.
+\end{definition}
+
+We need to show:
+
+\begin{theorem}
+[Courant--Fisher theorem]Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the eigenvalues of
+$A$, with $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$. Then, for
+each $k\in\left[  n\right]  $, we have%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)
+\]
+and%
+\[
+\lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
+0}}\ \ R\left(  A,x\right)  .
+\]
+
+\end{theorem}
+
+To prove this theorem, we will use some elementary facts about subspaces of
+finite-dimensional vector spaces. We begin by recalling the following definition:
+
+\begin{definition}
+Let $S_{1}$ and $S_{2}$ be two subspaces of a vector space $V$. Then,
+\[
+S_{1}+S_{2}:=\left\{  s_{1}+s_{2}\ \mid\ s_{1}\in S_{1}\text{ and }s_{2}\in
+S_{2}\right\}  .
+\]
+This is again a subspace of $V$. (This is the smallest subspace of $V$ that
+contains both $S_{1}$ and $S_{2}$ as subspaces.)
+\end{definition}
+
+\begin{proposition}
+Let $\mathbb{F}$ be a field. Let $V$ be a finite-dimensional $\mathbb{F}%
+$-vector space. Let $S_{1}$ and $S_{2}$ be two subspaces of $V$. Then,%
+\[
+\dim\left(  S_{1}\cap S_{2}\right)  +\dim\left(  S_{1}+S_{2}\right)  =\dim
+S_{1}+\dim S_{2}.
+\]
+
+\end{proposition}
+
+\begin{proof}
+Pick any basis $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ of the vector space
+$S_{1}\cap S_{2}$.
+
+Then, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly independent
+list of vectors in $S_{1}$. Thus, we can extend it to a basis of $S_{1}$ by
+inserting some new vectors $y_{1},y_{2},\ldots,y_{p}$. Thus,%
+\[
+\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots,y_{p}\right)  \text{ is a
+basis of }S_{1}\text{.}%
+\]
+
+
+On the other hand, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly
+independent list of vectors in $S_{2}$. Thus, we can extend it to a basis of
+$S_{2}$ by inserting some new vectors $z_{1},z_{2},\ldots,z_{q}$. Thus,%
+\[
+\left(  x_{1},x_{2},\ldots,x_{k},z_{1},z_{2},\ldots,z_{q}\right)  \text{ is a
+basis of }S_{2}\text{.}%
+\]
+
+
+The above three bases yield $\dim\left(  S_{1}\cap S_{2}\right)  =k$ and $\dim
+S_{1}=k+p$ and $\dim S_{2}=k+q$.
+
+Now, we claim that
+\[
+\mathbf{w}:=\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots,y_{p}%
+,z_{1},z_{2},\ldots,z_{q}\right)  \text{ is a basis of }S_{1}+S_{2}.
+\]
+Once this is proved, we will conclude that $\dim\left(  S_{1}+S_{2}\right)
+=k+p+q$, and the proposition will follow by a simple computation ($k+\left(
+k+p+q\right)  =\left(  k+p\right)  +\left(  k+q\right)  $).
+
+So let us prove our claim. To prove that $\mathbf{w}$ is a basis of
+$S_{1}+S_{2}$, we need to check the following two statements:
+
+\begin{enumerate}
+\item The list $\mathbf{w}$ is linearly independent.
+
+\item The list $\mathbf{w}$ spans $S_{1}+S_{2}$.
+\end{enumerate}
+
+Proving statement 2 is easy: Any element of $S_{1}+S_{2}$ is an element of
+$S_{1}$ plus an element of $S_{2}$, and thus can be written as
+\begin{align*}
+& \left(  \text{a linear combination of }x_{1},x_{2},\ldots,x_{k},y_{1}%
+,y_{2},\ldots,y_{p}\right)  \\
+& \ \ \ \ \ \ \ \ \ \ +\left(  \text{a linear combination of }x_{1}%
+,x_{2},\ldots,x_{k},z_{1},z_{2},\ldots,z_{q}\right)  \\
+& =\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}\\
+& \ \ \ \ \ \ \ \ \ \ +\mu_{1}x_{1}+\mu_{2}x_{2}+\cdots+\mu_{k}x_{k}+\beta
+_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\\
+& =\left(  \lambda_{1}+\mu_{1}\right)  x_{1}+\left(  \lambda_{2}+\mu
+_{2}\right)  x_{2}+\cdots+\left(  \lambda_{k}+\mu_{k}\right)  x_{k}\\
+& \ \ \ \ \ \ \ \ \ \ +\alpha_{1}y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}%
+y_{p}+\beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\\
+& =\left(  \text{a linear combination of }x_{1},x_{2},\ldots,x_{k},y_{1}%
+,y_{2},\ldots,y_{p},z_{1},z_{2},\ldots,z_{q}\right)  ;
+\end{align*}
+thus it belongs to the span of $\mathbf{w}$.
+
+Let us now prove statement 1. We need to show that $\mathbf{w}$ is linearly
+independent. So let us assume that%
+\[
+\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}+\beta_{1}z_{1}+\beta_{2}%
+z_{2}+\cdots+\beta_{q}z_{q}=0
+\]
+for some coefficients $\lambda_{m},\alpha_{i},\beta_{j}$ that are not all
+equal to $0$. We want a contradiction.
+
+Let
+\[
+v:=\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}.
+\]
+Then,%
+\begin{align*}
+v  & =-\left(  \beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by the above equation}\right)  \\
+& \in S_{2}\ \ \ \ \ \ \ \ \ \ \left(  \text{since the }z_{j}\text{'s lie in
+}S_{2}\right)  .
+\end{align*}
+On the other hand, the definition of $v$ yields $v\in S_{1}$ (since the
+$x_{m}$'s and the $y_{i}$'s lie in $S_{1}$). Thus, $v$ lies in both $S_{1}$
+and $S_{2}$. This entails that $v\in S_{1}\cap S_{2}$. Since $\left(
+x_{1},x_{2},\ldots,x_{k}\right)  $ is a basis of $S_{1}\cap S_{2}$, this
+entails that%
+\[
+v=\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}\ \ \ \ \ \ \ \ \ \ \text{for
+some }\xi_{1},\xi_{2},\ldots,\xi_{k}\in\mathbb{F}.
+\]
+Comparing this with%
+\[
+v=-\left(  \beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)  ,
+\]
+we obtain%
+\[
+\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}=-\left(  \beta_{1}z_{1}%
++\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)  .
+\]
+In other words,%
+\[
+\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}+\beta_{1}z_{1}+\beta_{2}%
+z_{2}+\cdots+\beta_{q}z_{q}=0.
+\]
+Since the list $\left(  x_{1},x_{2},\ldots,x_{k},z_{1},z_{2},\ldots
+,z_{q}\right)  $ is linearly independent (being a basis of $S_{2}$), this
+entails that all coefficients $\xi_{m}$ and $\beta_{j}$ are $0$. Thus, $v=0$
+(since $v=\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}$). Now, recalling that%
+\[
+v=\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p},
+\]
+we obtain%
+\[
+\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}=0.
+\]
+Since the list $\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots
+,y_{p}\right)  $ is linearly independent (being a basis of $S_{1}$), this
+entails that all coefficients $\lambda_{m}$ and $\alpha_{i}$ are $0$.
+
+Now we know that all $\lambda_{m}$ and $\alpha_{i}$ and $\beta_{j}$ are $0$,
+which contradicts our assumption that some of them are nonzero. This completes
+the proof of Statement 1.
+
+As we said, we now conclude that $\dim\left(  S_{1}+S_{2}\right)  =k+p+q$, so
+that%
+\begin{align*}
+\underbrace{\dim\left(  S_{1}\cap S_{2}\right)  }_{=k}+\underbrace{\dim\left(
+S_{1}+S_{2}\right)  }_{=k+p+q}  & =k+\left(  k+p+q\right)  \\
+& =\underbrace{\left(  k+p\right)  }_{=\dim S_{1}}+\underbrace{\left(
+k+q\right)  }_{=\dim S_{2}}\\
+& =\dim S_{1}+\dim S_{2}.
+\end{align*}
+
+\end{proof}
+
+\begin{remark}
+A well-known fact in elementary set theory says that if $A_{1}$ and $A_{2}$
+are two finite sets, then%
+\[
+\left\vert A_{1}\cap A_{2}\right\vert +\left\vert A_{1}\cup A_{2}\right\vert
+=\left\vert A_{1}\right\vert +\left\vert A_{2}\right\vert .
+\]
+The above theorem is an analogue of this fact for vector spaces (noticing that
+the sum $S_{1}+S_{2}$ is a vector-space analogue of the union).
+
+Note, however, that the \textquotedblleft next level\textquotedblright\ of the
+above formula has no vector space analogue. We do have%
+\begin{align*}
+& \left\vert A_{1}\cup A_{2}\cup A_{3}\right\vert +\left\vert A_{1}\cap
+A_{2}\right\vert +\left\vert A_{1}\cap A_{3}\right\vert +\left\vert A_{2}\cap
+A_{3}\right\vert \\
+& =\left\vert A_{1}\right\vert +\left\vert A_{2}\right\vert +\left\vert
+A_{3}\right\vert +\left\vert A_{1}\cap A_{2}\cap A_{3}\right\vert
+\end{align*}
+for any three finite sets $A_{1},A_{2},A_{3}$, but no such relation holds for
+three subspaces of a vector space.
+\end{remark}
+
+\begin{corollary}
+Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$. Let $V$ be an
+$n$-dimensional $\mathbb{F}$-vector space. Let $S_{1},S_{2},\ldots,S_{k}$ be
+subspaces of $V$ (with $k\geq1$). Let
+\[
+\delta:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)  +\cdots
++\dim\left(  S_{k}\right)  -\left(  k-1\right)  n.
+\]
+
+
+\textbf{(a)} Then, $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)
+\geq\delta$.
+
+\textbf{(b)} If $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and $\delta>0$,
+then there exists a vector $x\in S_{1}\cap S_{2}\cap\cdots\cap S_{k}$ with
+$\left\vert \left\vert x\right\vert \right\vert =1$.
+\end{corollary}
+
+\begin{proof}
+\textbf{(a)} We induct on $k$. The \textit{base case} ($k=1$) is obvious
+(since $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)  =\dim\left(
+S_{1}\right)  =\delta$ in this case).
+
+\textit{Induction step:} Suppose the statement holds for some $k$. Now
+consider $k+1$ subspaces $S_{1},S_{2},\ldots,S_{k+1}$ of $V$, and let%
+\[
+\delta_{k+1}:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)
++\cdots+\dim\left(  S_{k+1}\right)  -kn.
+\]
+We want to prove that $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap
+S_{k+1}\right)  \geq\delta_{k+1}$.
+
+Then,%
+\begin{align*}
+& \dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap S_{k+1}\right)  \\
+& =\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k-1}\cap\left(  S_{k}\cap
+S_{k+1}\right)  \right)  .
+\end{align*}
+Now, set
+\[
+\delta_{k}:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)  +\cdots
++\dim\left(  S_{k-1}\right)  +\dim\left(  S_{k}\cap S_{k+1}\right)  -\left(
+k-1\right)  n.
+\]
+By the induction hypothesis, we have%
+\[
+\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k-1}\cap\left(  S_{k}\cap
+S_{k+1}\right)  \right)  \geq\delta_{k}.
+\]
+What remains is to show that $\delta_{k}\geq\delta_{k+1}$. Equivalently, we
+need to show that%
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  -\left(  k-1\right)  n\geq\dim\left(
+S_{k}\right)  +\dim\left(  S_{k+1}\right)  -kn.
+\]
+In other words, we need to show that%
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  +n\geq\dim\left(  S_{k}\right)
++\dim\left(  S_{k+1}\right)  .
+\]
+However, $S_{k}+S_{k+1}$ is a subspace of $V$, so its dimension is
+$\dim\left(  S_{k}+S_{k+1}\right)  \leq\dim V=n$. Therefore,
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  +\underbrace{n}_{\geq\dim\left(
+S_{k}+S_{k+1}\right)  }\geq\dim\left(  S_{k}\cap S_{k+1}\right)  +\dim\left(
+S_{k}+S_{k+1}\right)  =\dim\left(  S_{k}\right)  +\dim\left(  S_{k+1}\right)
+\]
+(by the previous proposition). So the induction step is complete, and part
+\textbf{(a)} of the corollary is proved.
+
+\textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and
+$\delta>0$. Then, part \textbf{(a)} yields%
+\[
+\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)  \geq\delta>0.
+\]
+Thus, the subspace $S_{1}\cap S_{2}\cap\cdots\cap S_{k}$ is not just $\left\{
+0\right\}  $. Therefore, it contains a nonzero vector. Scaling this vector by
+the reciprocal of its length, we obtain a vector of length $1$. This proves
+part \textbf{(b)}.
+\end{proof}
+
+Now, we get to the proof of the Courant--Fisher theorem:
+
+\begin{proof}
+[Proof of the Courant--Fisher theorem.] The spectral theorem says that
+$A=UDU^{\ast}$ for some unitary $U$ and some real diagonal matrix $D$.
+Consider these $U$ and $D$. The columns of $U$ form an orthonormal basis of
+$\mathbb{C}^{n}$ (since $U$ is unitary); let $\left(  u_{1},u_{2},\ldots
+,u_{n}\right)  $ be this basis. Then, $u_{1},u_{2},\ldots,u_{n}$ are
+eigenvectors of $A$. We WLOG assume that the corresponding eigenvalues are
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ (otherwise, permute the diagonal
+entries of $D$ and correspondingly permute the columns of $U$).
+
+Let $k\in\left[  n\right]  $.
+
+Let $S$ be a vector subspace of $\mathbb{C}^{n}$ with $\dim S=k$. Let
+$S^{\prime}=\operatorname*{span}\left(  u_{k},u_{k+1},\ldots,u_{n}\right)  $.
+Then, by the proposition, we have%
+\[
+\dim\left(  S\cap S^{\prime}\right)  +\dim\left(  S+S^{\prime}\right)
+=\underbrace{\dim S}_{=k}+\underbrace{\dim S^{\prime}}_{=n-k+1}=n+1>n\geq
+\dim\left(  S+S^{\prime}\right)
+\]
+(since $S+S^{\prime}$ is a subspace of $\mathbb{C}^{n}$). Subtracting
+$\dim\left(  S+S^{\prime}\right)  $ from this inequality, we obtain
+$\dim\left(  S\cap S^{\prime}\right)  >0$. Thus, $S\cap S^{\prime}$ contains a
+nonzero vector. Thus, $\sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  $ and $\inf\limits_{\substack{x\in S\cap
+S^{\prime};\\x\neq0}}\ \ R\left(  A,x\right)  $ are well-defined.
+
+Now,%
+\[
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq0}}\ \ R\left(
+A,x\right)  \geq\inf\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  \geq\inf\limits_{\substack{x\in S^{\prime}%
+;\\x\neq0}}\ \ R\left(  A,x\right)  .
+\]
+However, I claim that $\inf\limits_{\substack{x\in S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  =\lambda_{k}$. Indeed, any $x\in S^{\prime}$ is a
+linear combination $\alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}%
+u_{n}$ and therefore satisfies%
+\begin{align*}
+\left\langle Ax,x\right\rangle  & =\left\langle A\left(  \alpha_{k}%
+u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right)  ,\ \alpha_{k}%
+u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
+& =\left\langle \alpha_{k}Au_{k}+\alpha_{k+1}Au_{k+1}+\cdots+\alpha_{n}%
+Au_{n},\ \alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}%
+\right\rangle \\
+& =\left\langle \alpha_{k}\lambda_{k}u_{k}+\alpha_{k+1}\lambda_{k+1}%
+u_{k+1}+\cdots+\alpha_{n}\lambda_{n}u_{n},\ \alpha_{k}u_{k}+\alpha
+_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
+& =\sum_{i=k}^{n}\underbrace{\alpha_{i}\overline{\alpha_{i}}}_{=\left\vert
+\alpha_{i}\right\vert ^{2}}\lambda_{i}\ \ \ \ \ \ \ \ \ \ \left(  \text{since
+}u_{k},u_{k+1},\ldots,u_{n}\text{ are orthonormal}\right)  \\
+& =\sum_{i=k}^{n}\left\vert \alpha_{i}\right\vert ^{2}\underbrace{\lambda_{i}%
+}_{\substack{\geq\lambda_{k}\\\text{(since }\lambda_{1}\leq\lambda_{2}%
+\leq\cdots\leq\lambda_{n}\text{)}}}\geq\lambda_{k}\underbrace{\sum_{i=k}%
+^{n}\left\vert \alpha_{i}\right\vert ^{2}}_{=\left\langle x,x\right\rangle
+}=\lambda_{k}\left\langle x,x\right\rangle
+\end{align*}
+and thus $R\left(  A,x\right)  =\dfrac{\left\langle Ax,x\right\rangle
+}{\left\langle x,x\right\rangle }\geq\lambda_{k}$. So, altogether, we find%
+\[
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+Furthermore, this supremum is a maximum, because
+\begin{align*}
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)    &
+=\sup\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
+\right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\text{since }R\left(  A,x\right)  =R\left(  A,y\right)  \text{ where }%
+y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }\right)  \\
+& =\max\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
+\right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since the set of all }y\in S\text{ satisfying }\left\vert \left\vert
+y\right\vert \right\vert =1\\
+\text{is compact, and since a continuous function}\\
+\text{on a compact set always has a maximum}%
+\end{array}
+\right)  \\
+& =\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  .
+\end{align*}
+So we conclude%
+\[
+\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)
+=\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+
+
+Forget that we fixed $S$. We thus have shown that if $S$ is any $k$%
+-dimensional subspace of $\mathbb{C}^{n}$, then $\max\limits_{\substack{x\in
+S;\\x\neq0}}\ \ R\left(  A,x\right)  $ exists and satisfies
+\[
+\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+However, by choosing $S$ appropriately, we can achieve equality here; indeed,
+we have to choose $S=\operatorname*{span}\left(  u_{1},u_{2},\ldots
+,u_{k}\right)  $ for this. (Why? Because each $x\in\operatorname*{span}\left(
+u_{1},u_{2},\ldots,u_{k}\right)  $ can easily be seen to satisfy $\left\langle
+Ax,x\right\rangle \leq\lambda_{k}\left\langle x,x\right\rangle $ by a similar
+argument to the one we used above.)
+
+So $\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $ is
+$\geq\lambda_{k}$ for each $S$, but is $=\lambda_{k}$ for a certain $S$.
+Therefore, $\lambda_{k}$ is the smallest possible value of $\max
+\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $. In other
+words,%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)  .
+\]
+
+
+It remains to prove the other part of the theorem -- i.e., the equality%
+\[
+\lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
+0}}\ \ R\left(  A,x\right)  .
+\]
+One way to prove this is by arguing similarly to the above proof.
+Alternatively, we can simply apply the already proved equality%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)
+\]
+to $-A$ instead of $A$, which is a Hermitian matrix with eigenvalues%
+\[
+-\lambda_{n}\leq-\lambda_{n-1}\leq\cdots\leq-\lambda_{1}.
+\]
+Keep in mind that $-\lambda_{k}$ is not the $k$-th smallest eigenvalue of
+$-A$, but it is the $k$-th largest eigenvalue of $-A$, and thus the $\left(
+n-k+1\right)  $-st smallest eigenvalue of $-A$. Thus, we have to apply the
+equality to $-A$ and $n-k+1$ instead of $A$ and $k$. Taking negatives turns
+minima into maxima and vice versa.
+\end{proof}
+
+The Courant--Fisher theorem can be used to connect the eigenvalues of $A+B$
+with the eigenvalues of $A$ and $B$.
+
+\begin{theorem}
+[Weyl's theorem]Let $A$ and $B$ be two Hermitian matrices in $\mathbb{C}%
+^{n\times n}$. Let $i\in\left[  n\right]  $ and $j\in\left\{  0,1,\ldots
+,n-i\right\}  $.
+
+\textbf{(a)} Then,%
+\[
+\lambda_{i}\left(  A+B\right)  \leq\lambda_{i+j}\left(  A\right)
++\lambda_{n-j}\left(  B\right)  .
+\]
+Here, $\lambda_{k}\left(  C\right)  $ means the $k$-th smallest eigenvalue of
+a Hermitian matrix $C$.
+
+Moreover, this inequality becomes an equality if and only if there exists a
+nonzero vector $x\in\mathbb{C}^{n}$ satisfying
+\[
+Ax=\lambda_{i+j}\left(  A\right)  x,\ \ \ \ \ \ \ \ \ \ Bx=\lambda
+_{n-j}\left(  B\right)  x,\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
+x=\lambda_{i}\left(  A+B\right)  x
+\]
+(at the same time).
+
+\textbf{(b)} Furthermore,%
+\[
+\lambda_{i-k+1}\left(  A\right)  +\lambda_{k}\left(  B\right)  \leq\lambda
+_{i}\left(  A+B\right)  \ \ \ \ \ \ \ \ \ \ \text{for any }k\in\left[
+i\right]  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+Let $\left(  x_{1},x_{2},\ldots,x_{n}\right)  $, $\left(  y_{1},y_{2}%
+,\ldots,y_{n}\right)  $ and $\left(  z_{1},z_{2},\ldots,z_{n}\right)  $ be
+three orthonormal bases of $\mathbb{C}^{n}$ with%
+\[
+Ax_{i}=\lambda_{i}\left(  A\right)  x_{i},\ \ \ \ \ \ \ \ \ \ By_{i}%
+=\lambda_{i}\left(  B\right)  y_{i},\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
+z_{i}=\lambda_{i}\left(  A+B\right)  z_{i}%
+\]
+for all $i\in\left[  n\right]  $. (As above, we can find such bases by using
+the spectral decompositions of $A$, $B$ and $A+B$.)
+
+Let
+\begin{align*}
+S_{1}  & =\operatorname*{span}\left(  x_{1},x_{2},\ldots,x_{i+j}\right)  ;\\
+S_{2}  & =\operatorname*{span}\left(  y_{1},y_{2},\ldots,y_{n-j}\right)  ;\\
+S_{3}  & =\operatorname*{span}\left(  z_{i},z_{i+1},\ldots,z_{n}\right)  .
+\end{align*}
+Then,%
+\[
+\delta:=\underbrace{\dim\left(  S_{1}\right)  }_{=i+j}+\underbrace{\dim\left(
+S_{2}\right)  }_{=n-j}+\underbrace{\dim\left(  S_{3}\right)  }_{=n-i+1}%
+-2n=1>0.
+\]
+Hence, part \textbf{(b)} of the corollary yields that there is a length-$1$
+vector $x$ in $S_{1}\cap S_{2}\cap S_{3}$. This $x$ satisfies%
+\begin{align*}
+\lambda_{i}\left(  A+B\right)    & \leq\left\langle \left(  A+B\right)
+x,\ x\right\rangle =\left\langle Ax+Bx,\ x\right\rangle
+=\underbrace{\left\langle Ax,\ x\right\rangle }_{\leq\lambda_{i+j}\left(
+A\right)  }+\underbrace{\left\langle Bx,\ x\right\rangle }_{\leq\lambda
+_{n-j}\left(  B\right)  }\\
+& \leq\lambda_{i+j}\left(  A\right)  +\lambda_{n-j}\left(  B\right)  .
+\end{align*}
+This proves \textbf{(a)}.
+
+We leave \textbf{(b)} and \textbf{(c)} to the reader.
+\end{proof}
+
+
+\end{document}

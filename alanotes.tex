@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, October 29, 2021 02:14:24}
+%TCIDATA{LastRevised=Friday, October 29, 2021 15:48:43}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -9140,7 +9140,8 @@ However, $C=B+\lambda I_{k}$. The matrices $\lambda I_{k}$ and $B$ commute
 fact that if $X$ and $Y$ are two commuting $n\times n$-matrices, then the
 binomial formula%
 \[
-\left(  X+Y\right)  ^{m}=\sum_{i=0}^{m}\dbinom{m}{i}X^{i}Y^{m-i}.
+\left(  X+Y\right)  ^{m}=\sum_{i=0}^{m}\dbinom{m}{i}X^{i}Y^{m-i}%
+\ \ \ \ \ \ \ \ \ \ \text{holds.}%
 \]
 (This can be proved in the same way as for numbers, because the commutativity
 of $X$ and $Y$ lets you move any $X$es past any $Y$s.) Applying this formula
@@ -9603,7 +9604,7 @@ q_{A}=\operatorname{lcm}\left(  q_{A_{1}},\ q_{A_{2}},\ \ldots,\ q_{A_{m}%
 \end{lemma}
 
 \begin{proof}
-For any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+For any polynomial $f\in\mathbb{F}\left[  t\right]  $, we have%
 \[
 f\left(  A\right)  =f\left(
 \begin{array}
@@ -9643,7 +9644,7 @@ A_{1}^{k} &  &  & \\
 \end{array}
 \right)
 \]
-and from the fact that a polynomial $f$ is just a $\mathbb{C}$-linear
+and from the fact that a polynomial $f$ is just a $\mathbb{F}$-linear
 combination of $t^{k}$s). Thus, $f\left(  A\right)  =0$ holds if and only if%
 \[
 f\left(  A_{1}\right)  =0\text{ and }f\left(  A_{2}\right)  =0\text{ and
@@ -9653,9 +9654,11 @@ However, $f\left(  A\right)  =0$ holds if and only if $f$ is a multiple of
 $q_{A}$, whereas $f\left(  A_{i}\right)  =0$ holds if and only if $f$ is a
 multiple of $q_{A_{i}}$. Thus, the previous sentence says that $f$ is a
 multiple of $q_{A}$ if and only if $f$ is a multiple of all of the $q_{A_{i}}%
-$s. In other words, the multiples of $q_{A}$ are precisely the common multiple
-of all the $q_{A_{i}}$s. But this is the universal property of the lcm. So
-$q_{A}$ is the lcm of the $q_{A_{i}}$s.
+$s. In other words, the multiples of $q_{A}$ are precisely the common
+multiples of all the $q_{A_{i}}$s. Therefore, $q_{A}$ is the lcm of the
+$q_{A_{i}}$s (because the universal property of an lcm characterizes the lcm
+of the $q_{A_{i}}$s as the unique monic polynomial whose multiples are the
+common multiples of all the $q_{A_{i}}$s).
 \end{proof}
 
 \begin{lemma}
@@ -9669,7 +9672,7 @@ q_{A}=\left(  t-\lambda\right)  ^{k}.
 
 \begin{proof}
 It is easy to see that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  $,
-because for a polynomial $f\in\mathbb{C}\left[  t\right]  $ to annihilate
+because for a polynomial $f\in\mathbb{F}\left[  t\right]  $ to annihilate
 $A-\lambda I_{k}$ is the same as for the polynomial $f\left(  t-\lambda
 \right)  $ to annihilate $A$. So we need to find $q_{A-\lambda I_{k}}$. Recall
 (from Proposition \ref{prop.jnf.jcell-lambda}) that
@@ -9679,8 +9682,8 @@ A-\lambda I_{k}=J_{k}\left(  0\right)  =\left(
 [c]{ccccc}
 & 1 &  &  & \\
 &  & 1 &  & \\
-&  &  &  & \\
 &  &  & \ddots & \\
+&  &  &  & 1\\
 &  &  &  &
 \end{array}
 \right)  .
@@ -9734,15 +9737,15 @@ J=\left(
 &  & 5 &  &  &  &  & \\
 &  &  & 5 & 1 &  &  & \\
 &  &  &  & 5 &  &  & \\
-&  &  &  &  & 2 &  & \\
-&  &  &  &  &  & 2 & 1\\
-&  &  &  &  &  &  & 2
+&  &  &  &  & 8 &  & \\
+&  &  &  &  &  & 8 & 1\\
+&  &  &  &  &  &  & 8
 \end{array}
 \right)  .
 \]
 Then,%
 \[
-q_{A}=\left(  t-5\right)  ^{3}\left(  t-2\right)  ^{2}.
+q_{A}=\left(  t-5\right)  ^{3}\left(  t-8\right)  ^{2}.
 \]
 
 \end{example}
@@ -10167,27 +10170,44 @@ The pair $\left(  D,N\right)  $ in this theorem is known as the
 \textbf{Jordan--Chevalley decomposition} (or the \textbf{Dunford
 decomposition}) of $A$.
 
+For a complete proof of Theorem \ref{thm.jnf.jcdec.main}, see \cite[Chapter
+VII, \S 5, section 9, Theorem 1]{Bourba03}.
+
 \begin{proof}
-[Partial proof of Theorem \ref{thm.jnf.jcdec.main}.]We will show the following
-two claims:
+[Partial proof of Theorem \ref{thm.jnf.jcdec.main}.]We will only show the
+following claim:
 
 \begin{statement}
 \textit{Claim 1:} There exists a pair $\left(  D,N\right)  $ as in part
 \textbf{(a)} of the theorem.
 \end{statement}
 
-\begin{statement}
-\textit{Claim 2:} The $D$ and $N$ in this particular pair can be written as
-polynomials in $A$.
-\end{statement}
-
-To prove both Claims 1 and 2, we can WLOG assume that $A$ is a Jordan matrix.
-Indeed, if $A=SJS^{-1}$ for some invertible $S$, and if $\left(  D^{\prime
+To prove Claim 1 and 2, we can WLOG assume that $A$ is a Jordan matrix.
+Indeed, if $A=SJS^{-1}$ for some invertible $S\in\mathbb{C}^{n\times n}$ and
+some Jordan matrix $J\in\mathbb{C}^{n\times n}$, and if $\left(  D^{\prime
 },N^{\prime}\right)  $ is a Jordan--Chevalley decomposition of $J$, then
 $\left(  SD^{\prime}S^{-1},SN^{\prime}S^{-1}\right)  $ is a Jordan--Chevalley
-decomposition of $A$. Conjugation of matrices preserves all the properties we
-need (such as being a polynomial, commuting, etc.), so we only need to prove
-the claims for $J$.
+decomposition of $A$.
+
+\begin{noncompile}
+\textit{Claim 2:} The $D$ and $N$ in this particular pair can be written as
+polynomials in $A$.
+\end{noncompile}
+
+\begin{noncompile}
+To prove both Claims 1 and 2, we can WLOG assume that $A$ is a Jordan matrix.
+Indeed, if $A=SJS^{-1}$ for some invertible $S\in\mathbb{C}^{n\times n}$ and
+some Jordan matrix $J\in\mathbb{C}^{n\times n}$, and if $\left(  D^{\prime
+},N^{\prime}\right)  $ is a Jordan--Chevalley decomposition of $J$, then
+$\left(  SD^{\prime}S^{-1},SN^{\prime}S^{-1}\right)  $ is a Jordan--Chevalley
+decomposition of $A$. Moreover, if $D^{\prime}$ and $N^{\prime}$ can be
+written as polynomials in $J$, then $SD^{\prime}S^{-1}$ and $SN^{\prime}%
+S^{-1}$ can be written as (the same!) polynomials in $A$ (since $f\left(
+SPS^{-1}\right)  =Sf\left(  P\right)  S^{-1}$ for any matrix $P\in
+\mathbb{C}^{n\times n}$ and any polynomial $f\in\mathbb{C}\left[  t\right]
+$). Therefore, we only need to prove Claims 1 and 2 for $J$ instead of $A$; in
+other words, we can WLOG assume that $A$ itself is a Jordan matrix.
+\end{noncompile}
 
 So we WLOG assume that $A$ is a Jordan matrix. Thus,%
 \[
@@ -10202,8 +10222,11 @@ J_{k_{1}}\left(  \lambda_{1}\right)  &  &  & \\
 \right)
 \]
 for some $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$ and some $k_{1}%
-,k_{2},\ldots,k_{p}$. Now, we want to decompose this $A$ as $D+N$ with $D$
-diagonal and $N$ nilpotent and $DN=ND$. We do this by setting%
+,k_{2},\ldots,k_{p}$. (Here, empty cells are understood to be filled with zero matrices.)
+
+We want to decompose this $A$ as $D+N$, where $D\in\mathbb{C}^{n\times n}$ is
+a diagonalizable matrix and $N\in\mathbb{C}^{n\times n}$ is a nilpotent matrix
+satisfying $DN=ND$. We do this by setting%
 \[
 D:=\left(
 \begin{array}
@@ -10223,33 +10246,192 @@ J_{k_{1}}\left(  0\right)  &  &  & \\
 \end{array}
 \right)  .
 \]
-It is easy to check that $A=D+N$ and $DN=ND$ (since block-diagonal matrices
-can be multiplied block by block). Clearly, $D$ is diagonalizable (since $D$
-is diagonal) and $N$ is nilpotent (since $N$ is strictly upper-triangular).
-Thus, Claim 1 is proved.
+It is easy to check that $A=D+N$ (since $J_{k}\left(  \lambda\right)  =\lambda
+I_{k}+J_{k}\left(  0\right)  $ for each $k>0$ and $\lambda\in\mathbb{C}$) and
+$DN=ND$ (since block-diagonal matrices can be multiplied block by block, and
+since matrices of the form $\lambda I_{k}$ for $k>0$ and $\lambda\in
+\mathbb{C}$ commute with every $k\times k$-matrix). Clearly, the matrix $D$ is
+diagonalizable (since $D$ is diagonal) and the matrix $N$ is nilpotent (since
+$N$ is strictly upper-triangular). Thus, Claim 1 is proved.
 
+\begin{noncompile}
 Now, we need to prove Claim 2 -- i.e., we need to prove that $D$ and $N$ can
-be written as polynomials in $A$. Since $A=D+N$, it suffices to show this for
-$D$ (since $N=A-D$).
+be written as polynomials in $A$. We shall first piece together a polynomial
+$f\in\mathbb{C}\left[  t\right]  $ that satisfies $f\left(  D\right)  =A$. The
+construction will be somewhat similar to Lagrange interpolation: We will look
+at distinct eigenvalues one at a time, finding polynomials that have a desired
+effect for their corresponding Jordan blocks; then we will obtain our $f$ as a
+sum of these polynomials.
 
-Our above construction of $D$ shows that $D$ is simply $A$ with its
+Our above construction of $D$ shows that $D$ is simply the matrix $A$ with its
 non-diagonal entries removed. Let $\mu_{1},\mu_{2},\ldots,\mu_{m}$ be the
-\textbf{distinct} eigenvalues (i.e., diagonal entries) of $A$. For each
-$i\in\left[  m\right]  $, let $\ell_{i}$ be the size of the largest Jordan
-block of $A$ at eigenvalue $\mu_{i}$. (Thus, the minimal polynomial of $A$ is
-$\prod\limits_{i=1}^{m}\left(  t-\mu_{i}\right)  ^{\ell_{i}}$.)
+\textbf{distinct} eigenvalues (i.e., diagonal entries) of $A$. Thus, $\left\{
+\mu_{1},\mu_{2},\ldots,\mu_{m}\right\}  =\left\{  \lambda_{1},\lambda
+_{2},\ldots,\lambda_{p}\right\}  $. That is, each $\lambda_{i}$ equals
+$\mu_{j}$ for some $j\in\left[  m\right]  $, and conversely, each $\mu_{j}$
+equals $\lambda_{i}$ for some $i\in\left[  p\right]  $, but there is no 1-to-1
+correspondence in general because some of $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{p}$ can be equal. However, for each $u\in\left[  p\right]  $,
+there is a \textbf{unique} $i\in\left[  m\right]  $ satisfying $\lambda
+_{u}=\mu_{i}$ (because $\lambda_{u}\in\left\{  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{p}\right\}  =\left\{  \mu_{1},\mu_{2},\ldots,\mu_{m}\right\}
+$, and because $\mu_{1},\mu_{2},\ldots,\mu_{m}$ are distinct). We denote this
+$i$ by $\operatorname*{index}\left(  u\right)  $. Thus,
+\begin{equation}
+\lambda_{u}=\mu_{\operatorname*{index}\left(  u\right)  }%
+\ \ \ \ \ \ \ \ \ \ \text{for each }u\in\left[  p\right]  .
+\label{pf.thm.jnf.jcdec.main.c2.index}%
+\end{equation}
+
+
+For each $i\in\left[  m\right]  $, let $\ell_{i}$ be the size of the largest
+Jordan block of $J$ at eigenvalue $\mu_{i}$. (Thus, the minimal polynomial of
+$A$ is $\prod\limits_{i=1}^{m}\left(  t-\mu_{i}\right)  ^{\ell_{i}}$,
+according to Theorem \ref{thm.jnf.mipo.jnf}.)
+
+For each $j\in\left[  m\right]  $, we define a polynomial%
+\begin{equation}
+g_{j}\left(  t\right)  :=\prod\limits_{j\neq i}\left(  t-\mu_{j}\right)
+^{\ell_{j}}\in\mathbb{C}\left[  t\right]  ,
+\label{pf.thm.jnf.jcdec.main.c2.g-def}%
+\end{equation}
+where the product sign $\prod\limits_{j\neq i}$ means a product over all
+$j\in\left[  m\right]  $ except for $j=i$.
+
+It is easy to see that each $u\in\left[  p\right]  $ and each $i\in\left[
+m\right]  $ satisfy%
+\begin{equation}
+g_{i}\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)
+=0\ \ \ \ \ \ \ \ \ \ \text{if }i\neq\operatorname*{index}\left(  u\right)  .
+\label{pf.thm.jnf.jcdec.main.c2.g=0}%
+\end{equation}
+
+
+[\textit{Proof of (\ref{pf.thm.jnf.jcdec.main.c2.g=0}):} Let $u\in\left[
+p\right]  $ and $i\in\left[  m\right]  $ satisfy $i\neq\operatorname*{index}%
+\left(  u\right)  $. Let $Z:=J_{k_{u}}\left(  \lambda_{u}\right)  $ and
+$W:=J_{k_{u}}\left(  0\right)  $. Proposition \ref{prop.jnf.jcell-lambda}
+yields $Z=W+\lambda_{u}I_{k_{u}}$, so that $Z-\lambda_{u}I_{k_{u}}=W$.
+However, $W$ is a strictly upper-triangular $k_{u}\times k_{u}$-matrix. Hence,
+$W^{k_{u}}=0$ (by (\ref{eq.jnf.exist.step3.An=0}), applied to $k_{u}$ and $W$
+instead of $n$ and $A$).
+
+From (\ref{pf.thm.jnf.jcdec.main.c2.index}), we obtain $\lambda_{u}%
+=\mu_{\operatorname*{index}\left(  u\right)  }$.
+
+Recall that $\ell_{\operatorname*{index}\left(  u\right)  }$ was defined as
+the size of the largest Jordan block of $J$ at eigenvalue $\mu
+_{\operatorname*{index}\left(  u\right)  }$. In other words, $\ell
+_{\operatorname*{index}\left(  u\right)  }$ is the size of the largest Jordan
+block of $J$ at eigenvalue $\lambda_{u}$ (since $\lambda_{u}=\mu
+_{\operatorname*{index}\left(  u\right)  }$). Since $J_{k_{u}}\left(
+\lambda_{u}\right)  $ is such a Jordan block, we thus conclude that
+$\ell_{\operatorname*{index}\left(  u\right)  }\geq k_{u}$ (since $J_{k_{u}%
+}\left(  \lambda_{u}\right)  $ has size $k_{u}$). Hence, from $W^{k_{u}}=0$,
+we obtain $W^{\ell_{\operatorname*{index}\left(  u\right)  }}=0$.
+
+Substituting $Z$ for $t$ in the equality (\ref{pf.thm.jnf.jcdec.main.c2.g-def}%
+), we obtain%
+\begin{equation}
+g_{i}\left(  Z\right)  =\prod\limits_{j\neq i}\left(  Z-\mu_{j}I_{k_{u}%
+}\right)  ^{\ell_{j}}. \label{pf.thm.jnf.jcdec.main.c2.g=0.pf.1}%
+\end{equation}
+From $i\neq\operatorname*{index}\left(  u\right)  $, we see that the product
+$\prod\limits_{j\neq i}\left(  Z-\mu_{j}I_{k_{u}}\right)  ^{\ell_{j}}$ has a
+factor for $j=\operatorname*{index}\left(  u\right)  $. This factor is
+\begin{align*}
+\left(  Z-\mu_{\operatorname*{index}\left(  u\right)  }I_{k_{u}}\right)
+^{\ell_{\operatorname*{index}\left(  u\right)  }}  &  =\left(  Z-\lambda
+_{u}I_{k_{u}}\right)  ^{\ell_{\operatorname*{index}\left(  u\right)  }%
+}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\mu_{\operatorname*{index}\left(
+u\right)  }=\lambda_{u}\right) \\
+&  =W^{\ell_{\operatorname*{index}\left(  u\right)  }}%
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }Z-\lambda_{u}I_{k_{u}}=W\right) \\
+&  =0.
+\end{align*}
+Thus, the product $\prod\limits_{j\neq i}\left(  Z-\mu_{j}I_{k_{u}}\right)
+^{\ell_{j}}$ has a factor that equals $0$. Therefore, this entire product is
+$0$. Thus, (\ref{pf.thm.jnf.jcdec.main.c2.g=0.pf.1}) simplifies to
+$g_{i}\left(  Z\right)  =0$. In light of $Z=J_{k_{u}}\left(  \lambda
+_{u}\right)  $, this rewrites as $g_{i}\left(  J_{k_{u}}\left(  \lambda
+_{u}\right)  \right)  =0$. Thus, (\ref{pf.thm.jnf.jcdec.main.c2.g=0}) is
+proven.] \medskip
+
+On the other hand, for any $u\in\left[  p\right]  $, we define the
+$k_{u}\times k_{u}$-matrix%
+\begin{equation}
+G_{u}:=g_{\operatorname*{index}\left(  u\right)  }\left(  J_{k_{u}}\left(
+\lambda_{u}\right)  \right)  . \label{pf.thm.jnf.jcdec.main.c2.Gu}%
+\end{equation}
+We claim that for any $u\in\left[  p\right]  $,
+\begin{equation}
+\text{the matrix }G_{u}\text{ is invertible.}
+\label{pf.thm.jnf.jcdec.main.c2.gindu}%
+\end{equation}
+
+
+[\textit{Proof of (\ref{pf.thm.jnf.jcdec.main.c2.gindu}):} Let $u\in\left[
+p\right]  $. Let $Z:=J_{k_{u}}\left(  \lambda_{u}\right)  $. This is an
+upper-triangular matrix whose diagonal entries are $\lambda_{u},\lambda
+_{u},\ldots,\lambda_{u}$.
+
+Set $i:=\operatorname*{index}\left(  u\right)  $. Then,
+(\ref{pf.thm.jnf.jcdec.main.c2.index}) yields $\lambda_{u}=\mu_{i}$.
+
+We have $g_{i}\left(  Z\right)  =g_{\operatorname*{index}\left(  u\right)
+}\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)  $ (since
+$i=\operatorname*{index}\left(  u\right)  $ and $Z=J_{k_{u}}\left(
+\lambda_{u}\right)  $). In other words, $g_{i}\left(  Z\right)  =G_{u}$ (since
+$G_{u}=g_{\operatorname*{index}\left(  u\right)  }\left(  J_{k_{u}}\left(
+\lambda_{u}\right)  \right)  $). Thus,%
+\[
+G_{u}=g_{i}\left(  Z\right)  =\prod\limits_{j\neq i}\left(  Z-\mu_{j}I_{k_{u}%
+}\right)  ^{\ell_{j}}%
+\]
+(by substituting $Z$ for $t$ in the equality
+(\ref{pf.thm.jnf.jcdec.main.c2.g-def})). Hence, it suffices to show that the
+matrix $Z-\mu_{j}I_{k_{u}}$ is invertible for each $j\neq i$ (because a
+product of invertible matrices is always invertible).
+
+So let $j\in\left[  m\right]  $ be such that $j\neq i$. We aim to show that
+the matrix $Z-\mu_{j}I_{k_{u}}$ is invertible.
+
+We have $j\neq i$ and thus $\mu_{j}\neq\mu_{i}$ (since $\mu_{1},\mu_{2}%
+,\ldots,\mu_{m}$ are distinct). Hence, $\lambda_{u}=\mu_{i}\neq\mu_{j}$, so
+that $\lambda_{u}-\mu_{j}\neq0$. However, we know that $Z$ is an
+upper-triangular matrix whose diagonal entries are $\lambda_{u},\lambda
+_{u},\ldots,\lambda_{u}$. Thus, $Z-\mu_{j}I_{k_{u}}$ is an upper-triangular
+matrix whose diagonal entries are $\lambda_{u}-\mu_{j},\lambda_{u}-\mu
+_{j},\ldots,\lambda_{u}-\mu_{j}$. Therefore, its determinant is $\det\left(
+Z-\mu_{j}I_{k_{u}}\right)  =\left(  \lambda_{u}-\mu_{j}\right)  ^{k_{u}}\neq0$
+(since $\lambda_{u}-\mu_{j}\neq0$). Consequently, the matrix $Z-\mu
+_{j}I_{k_{u}}$ is invertible. As explained above, this completes our proof of
+(\ref{pf.thm.jnf.jcdec.main.c2.gindu}).] \medskip
+
+Now, let $u\in\left[  p\right]  $. From (\ref{pf.thm.jnf.jcdec.main.c2.gindu}%
+), we know that the $k_{u}\times k_{u}$-matrix $G_{u}$ is invertible. Hence,
+Exercise \ref{exe.schurtri.ch.inverse-poly} (applied to $k_{u}$ and $G_{u}$
+instead of $n$ and $A$) shows that there exists a polynomial $h_{u}$ of degree
+$n-1$ in the single indeterminate $t$ over $\mathbb{F}$ such that $\left(
+G_{u}\right)  ^{-1}=h_{u}\left(  G_{u}\right)  $. Consider this $h_{u}$.
+
+Thus, for each $u\in\left[  p\right]  $, we have defined a polynomial
+$h_{u}\in\mathbb{C}\left[  t\right]  $ satisfying%
+\begin{equation}
+\left(  G_{u}\right)  ^{-1}=h_{u}\left(  G_{u}\right)  .
+\label{pf.thm.jnf.jcdec.main.c2.hu}%
+\end{equation}
+
 
 Now, define the polynomial%
-\[
-f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
-\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}\in\mathbb{C}\left[
-t\right]  ,
-\]
-where the product sign $\prod\limits_{j\neq i}$ means a product over all
-$j\in\left[  m\right]  $ except for $j=i$. We claim that $f\left(  A\right)
-=D$. In other words, we claim that applying $f$ to $A$ has the effect of
-cleaning out all off-diagonal entries (while the diagonal entries remain as
-they are).
+\begin{equation}
+f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}g_{i}\left(  t\right)  \cdot
+h_{i}\left(  t\right)  \in\mathbb{C}\left[  t\right]  .
+\label{pf.thm.jnf.jcdec.main.c2.f-def}%
+\end{equation}
+We claim that $f\left(  A\right)  =D$. In other words, we claim that applying
+$f$ to $A$ has the effect of cleaning out all off-diagonal entries (while the
+diagonal entries remain as they are).
 
 To prove this claim, we recall that%
 \[
@@ -10280,42 +10462,54 @@ So we need to show that%
 f\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)  =\lambda_{u}I_{k_{u}%
 }\ \ \ \ \ \ \ \ \ \ \text{for each }u\in\left[  p\right]  .
 \]
-To prove this, we fix a $u\in\left[  p\right]  $, and we set $B:=J_{k_{u}%
-}\left(  \lambda_{u}\right)  $. Thus, $B=J_{k}\left(  \mu_{v}\right)  $ for
-some $v\in\left[  p\right]  $ and some positive $k\leq\ell_{v}$.
+But this can be proved by a straightforward computation: For each $u\in\left[
+p\right]  $, we have%
+\begin{align*}
+f\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)   &  =\sum_{i=1}^{m}%
+\mu_{i}\underbrace{g_{i}\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right)
+}_{\substack{=0\text{ if }i\neq\operatorname*{index}\left(  u\right)
+\\\text{(by (\ref{pf.thm.jnf.jcdec.main.c2.g=0}))}}}\cdot h_{i}\left(
+J_{k_{u}}\left(  \lambda_{u}\right)  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{by substituting
+}J_{k_{u}}\left(  \lambda_{u}\right)  \text{ for }t\text{ in
+(\ref{pf.thm.jnf.jcdec.main.c2.f-def})}\right) \\
+&  =\underbrace{\mu_{\operatorname*{index}\left(  u\right)  }}%
+_{\substack{=\lambda_{u}\\\text{(by (\ref{pf.thm.jnf.jcdec.main.c2.index}))}%
+}}\underbrace{g_{\operatorname*{index}\left(  u\right)  }\left(  J_{k_{u}%
+}\left(  \lambda_{u}\right)  \right)  }_{\substack{=G_{u}\\\text{(by
+(\ref{pf.thm.jnf.jcdec.main.c2.Gu}))}}}\cdot h_{\operatorname*{index}\left(
+u\right)  }\left(  J_{k_{u}}\left(  \lambda_{u}\right)  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{here, we have removed all the addends with }i\neq\operatorname*{index}%
+\left(  u\right) \\
+\text{from the sum, because all these addends are }0\text{ and thus}\\
+\text{do not affect the sum}%
+\end{array}
+\right) \\
+&  =\lambda_{u}G_{u}\cdot h_{\operatorname*{index}\left(  u\right)  }\left(
+J_{k_{u}}\left(  \lambda_{u}\right)  \right)
+\end{align*}
 
-Substituting $B$ for $t$ into%
-\[
-f\left(  t\right)  :=\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
-\dfrac{t-\mu_{j}}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}},
-\]
-we obtain%
-\[
-f\left(  B\right)  =\sum_{i=1}^{m}\mu_{i}\prod\limits_{j\neq i}\left(
-\dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}.
-\]
-We take a closer look at the addends of the sum. For each $i\in\left[
-m\right]  $ that is distinct from $v$, the product $\prod\limits_{j\neq
-i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)  ^{\ell_{j}}$ contains a
-factor $\left(  \dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}\right)  ^{\ell_{v}}=0$,
-because the $k\times k$-matrix $\dfrac{B-\mu_{v}I}{\mu_{i}-\mu_{v}}$ is
-strictly upper-triangular and $k\leq\ell_{v}$. So the entire addend $\mu
-_{i}\prod\limits_{j\neq i}\left(  \dfrac{B-\mu_{j}I}{\mu_{i}-\mu_{j}}\right)
-^{\ell_{j}}$ is $0$ whenever $i$ is distinct from $v$. Thus, all these addends
-disappear except for the addend for $i=v$. So the above formula for $f\left(
-B\right)  $ simplifies to%
-\[
-f\left(  B\right)  =\mu_{v}\prod\limits_{j\neq v}\left(  \dfrac{B-\mu_{j}%
-I}{\mu_{v}-\mu_{j}}\right)  ^{\ell_{j}}.
-\]
-This should be $\mu_{v}I$.
 
-I'm just seeing this isn't exactly the case. TODO: Fix this.
+TODO: This is not what we need. Something needs to be fixed!
 
 [Alternatively, use the Chinese Remainder Theorem for polynomials to find a
 polynomial $f$ that satisfies $f\left(  J_{k_{u}}\left(  \lambda_{u}\right)
 \right)  =\lambda_{u}I_{k_{u}}$. This polynomial $f$ should satisfy
 $f\equiv\left(  t-\lambda_{u}\right)  ^{k_{u}}+\lambda_{u}$ for each $u$.]
+
+Thus, we have constructed a polynomial $f\in\mathbb{C}\left[  t\right]  $
+satisfying $f\left(  A\right)  =D$. Therefore, $D$ can be written as a
+polynomial in $A$. Moreover, if we define a polynomial $g\in\mathbb{C}\left[
+t\right]  $ by $g\left(  t\right)  =t-f\left(  t\right)  $, then we have
+$g\left(  A\right)  =A-\underbrace{f\left(  A\right)  }_{=D}=A-D=N$ (since
+$A=D+N$), so that $N$ can be written as a polynomial in $A$ as well. This
+completes the proof of Claim 2.
+\end{noncompile}
+
+The rest of the proof of Theorem \ref{thm.jnf.jcdec.main} is omitted for now.
 \end{proof}
 
 \subsection{The real Jordan canonical form}
@@ -10520,10 +10714,10 @@ We thus want to know what $\operatorname*{Cent}A$ is.
 We begin with some general properties:
 
 \begin{proposition}
-Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then,
-$\operatorname*{Cent}A$ is a subset of $\mathbb{F}^{n\times n}$ that is closed
-under addition, scaling and multiplication and contains $\lambda I_{n}$ for
-all $\lambda\in\mathbb{F}$. In other words:
+\label{prop.jnf.cent.subalg}Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. Then, $\operatorname*{Cent}A$ is a subset of $\mathbb{F}^{n\times
+n}$ that is closed under addition, scaling and multiplication and contains
+$\lambda I_{n}$ for all $\lambda\in\mathbb{F}$. In other words:
 
 \textbf{(a)} For any $B,C\in\operatorname*{Cent}A$, we have $B+C\in
 \operatorname*{Cent}A$.
@@ -10544,8 +10738,8 @@ A$ is an $\mathbb{F}$-subalgebra of $\mathbb{F}^{n\times n}$ (in particular, a
 subring of $\mathbb{F}^{n\times n}$).
 
 \begin{proof}
-[Proof of the Proposition.]Let me just show part \textbf{(c)}; the other parts
-are even easier.
+[Proof of Proposition \ref{prop.jnf.cent.subalg}.]Let me just show part
+\textbf{(c)}; the other parts are even easier.
 
 \textbf{(c)} Let $B,C\in\operatorname*{Cent}A$. Thus, $AB=BA$ and $AC=CA$.
 Now,%
@@ -10705,7 +10899,7 @@ B=b_{0}I_{n}+b_{1}A+b_{2}A^{2}+\cdots+b_{n-1}A^{n-1}.
 So we have proved the following:
 
 \begin{theorem}
-Let $n>0$. Let $A=J_{n}\left(  0\right)  $. Then,
+\label{thm.jnf.cent.Jn0}Let $n>0$. Let $A=J_{n}\left(  0\right)  $. Then,
 \begin{align*}
 \operatorname*{Cent}A  &  =\left\{  \left(
 \begin{array}
@@ -10738,8 +10932,9 @@ exactly\textquotedblright\ if we know the Jordan canonical form of $A$.
 We start with simple propositions:
 
 \begin{proposition}
-Let $A\in\mathbb{F}^{n\times n}$ and $\lambda\in\mathbb{F}$. Then,
-$\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
+\label{prop.jnf.cent.lambda}Let $A\in\mathbb{F}^{n\times n}$ and $\lambda
+\in\mathbb{F}$. Then, $\operatorname*{Cent}\left(  A-\lambda I_{n}\right)
+=\operatorname*{Cent}A$.
 \end{proposition}
 
 \begin{exercise}
@@ -10747,8 +10942,8 @@ $\operatorname*{Cent}\left(  A-\lambda I_{n}\right)  =\operatorname*{Cent}A$.
 \end{exercise}
 
 \begin{proposition}
-Let $A$, $B$ and $S$ be three $n\times n$-matrices such that $S$ is
-invertible. Then,
+\label{prop.jnf.cent.similar}Let $A$, $B$ and $S$ be three $n\times
+n$-matrices such that $S$ is invertible. Then,
 \[
 \left(  B\in\operatorname*{Cent}A\right)  \ \Longleftrightarrow\ \left(
 SBS^{-1}\in\operatorname*{Cent}\left(  SAS^{-1}\right)  \right)  .
@@ -10764,12 +10959,14 @@ Thus, if $A$ is a matrix with complex entries, and if we want to compute
 $\operatorname*{Cent}A$, it suffices to compute $\operatorname*{Cent}J$, where
 $J$ is the JCF of $A$.
 
-Therefore, we now focus on centralizers of Jordan matrices.
+Therefore, we now focus on centralizers of Jordan matrices. One further
+simplification stems from the following proposition:
 
 \begin{proposition}
-Let $A_{1},A_{2},\ldots,A_{k}$ be square matrices with complex entries. Assume
-that the spectra of these matrices are disjoint -- i.e., if $i\neq j$, then
-$\sigma\left(  A_{i}\right)  \cap\sigma\left(  A_{j}\right)  =\varnothing$.
+\label{prop.jnf.cent.block-separate}Let $A_{1},A_{2},\ldots,A_{k}$ be square
+matrices with complex entries. Assume that the spectra of these matrices are
+disjoint -- i.e., if $i\neq j$, then $\sigma\left(  A_{i}\right)  \cap
+\sigma\left(  A_{j}\right)  =\varnothing$.
 
 Then,%
 \begin{align*}
@@ -10952,12 +11149,13 @@ $A_{i}B\left(  i,j\right)  =B\left(  i,j\right)  A_{j}$. We can rewrite it as
 $A_{i}B\left(  i,j\right)  -B\left(  i,j\right)  A_{j}=0$. Thus, $B\left(
 i,j\right)  $ is an $n_{i}\times n_{j}$-matrix $X$ satisfying $A_{i}%
 X-XA_{j}=0$. However, because $\sigma\left(  A_{i}\right)  \cap\sigma\left(
-A_{j}\right)  =\varnothing$, a theorem we proved before (the Sylvester matrix
-equation) tells us that there is a \textbf{unique} $n_{i}\times n_{j}$-matrix
-$X$ satisfying $A_{i}X-XA_{j}=0$. Clearly, this unique matrix $X$ must be the
-$0$ matrix (since the $0$ matrix satisfies $A_{i}0-0A_{j}=0$). So we conclude
-that $B\left(  i,j\right)  $ is the $0$ matrix. In other words, $B\left(
-i,j\right)  =0$.
+A_{j}\right)  =\varnothing$, a theorem we proved before (the $\mathcal{V}%
+\Longrightarrow\mathcal{U}$ direction of Theorem
+\ref{thm.schurtri.syl.equivalence}) tells us that there is a \textbf{unique}
+$n_{i}\times n_{j}$-matrix $X$ satisfying $A_{i}X-XA_{j}=0$. Clearly, this
+unique matrix $X$ must be the $0$ matrix (since the $0$ matrix satisfies
+$A_{i}0-0A_{j}=0$). So we conclude that $B\left(  i,j\right)  $ is the $0$
+matrix. In other words, $B\left(  i,j\right)  =0$.
 
 So we have shown that $B\left(  i,j\right)  =0$ whenever $i$ and $j$ are
 distinct. Thus,%
@@ -10996,7 +11194,8 @@ B_{1} &  &  & \\
 &  &  & B_{k}%
 \end{array}
 \right)  $ where $B_{i}\in\operatorname*{Cent}\left(  A_{i}\right)  $ for each
-$i\in\left[  k\right]  $. Proof complete.
+$i\in\left[  k\right]  $. This completes the proof of Proposition
+\ref{prop.jnf.cent.block-separate}.
 \end{proof}
 
 So we only need to compute $\operatorname*{Cent}J$ when $J$ is a Jordan matrix
@@ -11013,7 +11212,8 @@ theorem which describes $\operatorname*{Cent}A$ for $A=J_{n}\left(  0\right)
 $). In the general case, we have the following:
 
 \begin{proposition}
-Let $J$ be a Jordan matrix whose Jordan blocks are%
+\label{prop.jnf.cent.jordan-0}Let $J$ be a Jordan matrix whose Jordan blocks
+are%
 \[
 J_{n_{1}}\left(  0\right)  ,\ \ J_{n_{2}}\left(  0\right)  ,\ \ \ldots
 ,\ \ J_{n_{k}}\left(  0\right)  .
@@ -11061,8 +11261,8 @@ is a zero matrix.
 \end{proposition}
 
 \begin{proof}
-Essentially the same argument that we used to prove the theorem about
-$J_{n}\left(  0\right)  $, just with a lot more bookkeeping involved. See
+Essentially the same argument that we used to prove Theorem
+\ref{thm.jnf.cent.Jn0}, just with a lot more bookkeeping involved. See
 \cite[Proposition 3.1.2]{OmClVi11} for details.
 \end{proof}
 
@@ -11087,7 +11287,9 @@ n_{i},n_{j}\right\}  .
 \end{theorem}
 
 \begin{proof}
-Combine our above results and count the degrees of freedom.
+Combine Proposition \ref{prop.jnf.cent.similar}, Proposition
+\ref{prop.jnf.cent.block-separate}, Proposition \ref{prop.jnf.cent.lambda},
+and Proposition \ref{prop.jnf.cent.jordan-0}, and count the degrees of freedom.
 \end{proof}
 
 Now, let us return to the worst-case scenario: When is $\operatorname*{Cent}%
@@ -11140,8 +11342,8 @@ Later or exercises?
 \textbf{Recall:} A \textbf{Hermitian matrix} is an $n\times n$-matrix
 $A\in\mathbb{C}^{n\times n}$ such that $A^{\ast}=A$.
 
-Note that this is the complex analogue of real symmetric matrices
-($A\in\mathbb{R}^{n\times n}$ such that $A^{T}=A$).
+Note that this is the complex analogue of real symmetric matrices (i.e.,
+matrices $A\in\mathbb{R}^{n\times n}$ such that $A^{T}=A$).
 
 If $A$ is a Hermitian matrix, then $A_{i,i}\in\mathbb{R}$ and $A_{i,j}%
 =\overline{A_{j,i}}$.
@@ -11164,8 +11366,9 @@ n$-matrix. Then, the following are equivalent:
 \begin{itemize}
 \item $\mathcal{A}$: The matrix $A$ is Hermitian (i.e., we have $A^{\ast}=A$).
 
-\item $\mathcal{B}$: We have $A=UDU^{\ast}$ for some unitary $U$ and some real
-diagonal $D$ (that is, $D$ is a diagonal matrix with real entries).
+\item $\mathcal{B}$: We have $A=UDU^{\ast}$ for some unitary matrix
+$U\in\mathbb{C}^{n\times n}$ and some real diagonal matrix $D\in
+\mathbb{C}^{n\times n}$ (that is, $D$ is a diagonal matrix with real entries).
 
 \item $\mathcal{C}$: The matrix $A$ is normal and its eigenvalues are real.
 
@@ -11258,8 +11461,8 @@ x_{n}%
 \right)  \in\mathbb{C}^{n}$, we have%
 \begin{align*}
 \left\langle Mx,x\right\rangle  &  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}%
-M_{i,j}x_{j}\overline{x_{i}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
-(\ref{lem.herm.Muv})}\right) \\
+M_{i,j}x_{j}\overline{x_{i}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by Lemma
+\ref{lem.herm.Muv}}\right) \\
 &  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}%
 \end{align*}
 and therefore%
@@ -11273,7 +11476,7 @@ $x\in\mathbb{C}^{n}$). In particular:
 \begin{itemize}
 \item We can apply (\ref{pf.lem.herm.M=0.=0}) to $x=e_{1}=\left(
 1,0,0,\ldots,0\right)  ^{T}$, and we obtain $M_{1,1}\cdot\overline{1}\cdot
-1=0$, which means $M_{1,1}=0$. Similarly, we can find $M_{i,i}=0$ for all
+1=0$, which means $M_{1,1}=0$. Similarly, we can find that $M_{i,i}=0$ for all
 $i\in\left[  n\right]  $.
 
 \item We can apply (\ref{pf.lem.herm.M=0.=0}) to $x=e_{1}+e_{2}=\left(
@@ -11294,7 +11497,7 @@ M_{1,2}+M_{2,1}=0.
 
 
 \item We can apply (\ref{pf.lem.herm.M=0.=0}) to $x=e_{1}+ie_{2}=\left(
-1,i,0,0,\ldots,0\right)  ^{T}$, and we obtain
+1,i,0,0,\ldots,0\right)  ^{T}$ (where $i=\sqrt{-1}$), and we obtain
 \[
 M_{1,1}\cdot\overline{1}\cdot1+M_{1,2}\cdot\overline{1}\cdot i+M_{2,1}%
 \cdot\overline{i}\cdot1\cdot M_{2,2}\cdot\overline{i}\cdot i=0.
@@ -11343,9 +11546,10 @@ equivalence $\mathcal{A}\Longleftrightarrow\mathcal{B}\Longleftrightarrow
 \begin{itemize}
 \item \textit{Proof of }$\mathcal{A}\Longrightarrow\mathcal{D}$\textit{:}
 Assume that $\mathcal{A}$ holds. Thus, $A=A^{\ast}$. Now, let $x\in
-\mathbb{C}^{n}$. Then, $\left\langle Ax,x\right\rangle =\overline{\left\langle
-x,Ax\right\rangle }$ (by the rules for inner products). However, by the
-formula $\left\langle u,v\right\rangle =v^{\ast}u$, we have%
+\mathbb{C}^{n}$. Then, $\left\langle x,Ax\right\rangle =\overline{\left\langle
+Ax,x\right\rangle }$ (by Proposition \ref{prop.unitary.innerprod.props}
+\textbf{(b)}). However, by Proposition \ref{prop.unitary.innerprod.props}
+\textbf{(a)}, we hve%
 \[
 \left\langle Ax,x\right\rangle =x^{\ast}Ax\ \ \ \ \ \ \ \ \ \ \text{and}%
 \ \ \ \ \ \ \ \ \ \ \left\langle x,Ax\right\rangle =\underbrace{\left(
@@ -11353,17 +11557,15 @@ Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}x=x^{\ast}\underbrace{A^{\ast}}%
 _{=A}x=x^{\ast}Ax.
 \]
 Comparing these two equalities, we see that $\left\langle Ax,x\right\rangle
-=\left\langle x,Ax\right\rangle $. Comparing this with $\left\langle
-Ax,x\right\rangle =\overline{\left\langle x,Ax\right\rangle }$, we obtain
-$\left\langle x,Ax\right\rangle =\overline{\left\langle x,Ax\right\rangle }$.
-This entails $\left\langle x,Ax\right\rangle \in\mathbb{R}$ (since the only
+=\left\langle x,Ax\right\rangle =\overline{\left\langle Ax,x\right\rangle }$.
+This entails $\left\langle Ax,x\right\rangle \in\mathbb{R}$ (since the only
 complex numbers $z\in\mathbb{C}$ that satisfy $z=\overline{z}$ are the real
-numbers). Therefore, $\left\langle Ax,x\right\rangle =\left\langle
-x,Ax\right\rangle \in\mathbb{R}$. Thus, the statement $\mathcal{D}$ is proved.
+numbers). Thus, statement $\mathcal{D}$ is proved.
 
 \item \textit{Proof of }$\mathcal{D}\Longrightarrow\mathcal{A}$\textit{:}
-Assume that $\mathcal{D}$ holds. Thus, $\left\langle Ax,x\right\rangle
-\in\mathbb{R}$ for each $x\in\mathbb{C}^{n}$. Again, we can see that each
+Assume that statement $\mathcal{D}$ holds. Thus, $\left\langle
+Ax,x\right\rangle \in\mathbb{R}$ for each $x\in\mathbb{C}^{n}$. Again,
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(a)} shows that each
 $x\in\mathbb{C}^{n}$ satisfies%
 \[
 \left\langle Ax,x\right\rangle =x^{\ast}Ax\ \ \ \ \ \ \ \ \ \ \text{and}%
@@ -11375,35 +11577,37 @@ Thus, each $x\in\mathbb{C}^{n}$ satisfies%
 x^{\ast}Ax  &  =\left\langle Ax,x\right\rangle =\overline{\left\langle
 Ax,x\right\rangle }\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\langle
 Ax,x\right\rangle \in\mathbb{R}\right) \\
-&  =\left\langle x,Ax\right\rangle =x^{\ast}A^{\ast}x,
+&  =\left\langle x,Ax\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+Proposition \ref{prop.unitary.innerprod.props} \textbf{(b)}}\right) \\
+&  =x^{\ast}A^{\ast}x
 \end{align*}
-so that
+and thus%
 \[
-x^{\ast}Ax-x^{\ast}A^{\ast}x=0,
-\]
-so that%
-\[
-x^{\ast}\left(  A^{\ast}-A\right)  x=0.
+x^{\ast}\left(  A^{\ast}-A\right)  x=x^{\ast}A^{\ast}x-\underbrace{x^{\ast}%
+Ax}_{=x^{\ast}A^{\ast}x}=x^{\ast}A^{\ast}x-x^{\ast}A^{\ast}x=0.
 \]
 Applying Lemma \ref{lem.herm.M=0} to $M=A^{\ast}-A$, we thus conclude that
-$A^{\ast}-A=0$. In other words, $A^{\ast}=A$. This proves $\mathcal{A}$.
+$A^{\ast}-A=0$. In other words, $A^{\ast}=A$. This proves statement
+$\mathcal{A}$.
 
 \item \textit{Proof of }$\mathcal{A}\Longrightarrow\mathcal{E}$\textit{:} If
-$A$ is Hermitian, then $A^{\ast}=A$, so that%
+$A$ is Hermitian, then $A^{\ast}=A$, so that every matrix $S\in\mathbb{C}%
+^{n\times k}$ satisfies%
 \[
 \left(  S^{\ast}AS\right)  ^{\ast}=S^{\ast}\underbrace{A^{\ast}}%
 _{=A}\underbrace{\left(  S^{\ast}\right)  ^{\ast}}_{=S}=S^{\ast}AS,
 \]
-and therefore $S^{\ast}AS$ is again Hermitian. This proves $\mathcal{A}%
-\Longrightarrow\mathcal{E}$.
+and therefore $S^{\ast}AS$ is again Hermitian. This proves the implication
+$\mathcal{A}\Longrightarrow\mathcal{E}$.
 
 \item \textit{Proof of }$\mathcal{E}\Longrightarrow\mathcal{A}$\textit{:} If
 statement $\mathcal{E}$ holds, then we can apply it to $S=I_{n}$ (and $k=n$),
 and conclude that $I_{n}^{\ast}AI_{n}$ is Hermitian; but this is simply saying
-that $A$ is Hermitian. So $\mathcal{E}\Longrightarrow\mathcal{A}$ follows.
+that $A$ is Hermitian. So the implication $\mathcal{E}\Longrightarrow
+\mathcal{A}$ follows.
 \end{itemize}
 
-The theorem is proved.
+Theorem \ref{thm.herm.ABCDE} is thus proved.
 \end{proof}
 
 \begin{exercise}
@@ -11419,8 +11623,8 @@ The theorem is proved.
 }x\right\vert \right\vert $ for each $x\in\mathbb{C}^{n}$, then $A$ is normal.
 \end{exercise}
 
-As a reminder: Sums of Hermitian matrices are Hermitian, but products are not
-(in general).
+Let us recall again that sums of Hermitian matrices are Hermitian, but
+products are not (in general).
 
 \subsection{Definiteness}
 
@@ -11476,22 +11680,26 @@ Let $n\in\mathbb{N}$. Let $J=\left(
 1 & 1 & \cdots & 1
 \end{array}
 \right)  $. This matrix $J$ is real symmetric, thus Hermitian. Is it positive
-definite? Positive semidefinite?
+definite? Positive semidefinite? Let us see.
 
-Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. Then,%
+Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. Then,
+Lemma \ref{lem.herm.Muv} yields%
 \begin{align*}
 \left\langle Jx,x\right\rangle  &  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}%
-\overline{x_{i}}x_{j}=\left(  \sum_{i=1}^{n}\overline{x_{i}}\right)  \left(
-\sum_{j=1}^{n}x_{j}\right)  =\left(  \overline{\sum_{i=1}^{n}x_{i}}\right)
-\left(  \sum_{j=1}^{n}x_{j}\right) \\
+\overline{x_{j}}x_{i}=\left(  \sum_{j=1}^{n}\overline{x_{j}}\right)  \left(
+\sum_{i=1}^{n}x_{i}\right)  =\left(  \sum_{i=1}^{n}\overline{x_{i}}\right)
+\left(  \sum_{i=1}^{n}x_{i}\right) \\
 &  =\left(  \overline{\sum_{i=1}^{n}x_{i}}\right)  \left(  \sum_{i=1}^{n}%
 x_{i}\right)  =\left\vert \sum_{i=1}^{n}x_{i}\right\vert ^{2}\geq0.
 \end{align*}
 So $J$ is positive semidefinite.
 
-Is $J$ positive definite? To have $\left\langle Jx,x\right\rangle =0$ is
-equivalent to having $\sum_{i=1}^{n}x_{i}=0$. When $n=1$ (or $n=0$), this is
-equivalent to having $x=0$, so $J$ is positive definite in this case. However,
+Is $J$ positive definite? Again, let $x=\left(  x_{1},x_{2},\ldots
+,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. We just have shown that $\left\langle
+Jx,x\right\rangle =\left\vert \sum_{i=1}^{n}x_{i}\right\vert ^{2}$. Therefore,
+to have $\left\langle Jx,x\right\rangle =0$ is equivalent to having
+$\sum_{i=1}^{n}x_{i}=0$. When $n=1$ (or $n=0$), this is equivalent to having
+$x=0$, so we can conclude that $J$ is positive definite in this case. However,
 if $n>1$, then this is not equivalent to having $x=0$, and in fact the vector
 $e_{1}-e_{2}$ is an example of a nonzero vector $x\in\mathbb{C}^{n}$ such that
 $\left\langle Jx,x\right\rangle =0$. So $J$ is not positive definite unless
@@ -11518,8 +11726,9 @@ positive semidefinite?
 We want $\left\langle Dx,x\right\rangle \geq0$ for all $x\in\mathbb{C}^{n}$.
 Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$. Then,%
 \[
-\left\langle Dx,x\right\rangle =\sum_{i=1}^{n}\lambda_{i}\overline{x_{i}}%
-x_{i}=\sum_{i=1}^{n}\lambda_{i}\left\vert x_{i}\right\vert ^{2}.
+\left\langle Dx,x\right\rangle =\sum_{i=1}^{n}\lambda_{i}\underbrace{\overline
+{x_{i}}x_{i}}_{=\left\vert x_{i}\right\vert ^{2}}=\sum_{i=1}^{n}\lambda
+_{i}\left\vert x_{i}\right\vert ^{2}.
 \]
 If $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\geq0$, then we therefore
 conclude that $\left\langle Dx,x\right\rangle \geq0$, so that $D$ is positive
@@ -11549,10 +11758,10 @@ x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$, we have%
 \[
 \sum_{i=1}^{n}\ \ \sum_{j=1}^{n}\dfrac{\overline{x_{i}}x_{j}}{i+j-1}\geq0.
 \]
-This is not obvious at all, and will be a HW exercise (with hints). More
-generally, if $a_{1},a_{2},\ldots,a_{n}$ are positive reals, then the $n\times
-n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}{a_{i}+a_{j}}$ is
-positive definite.
+This is not obvious at all, and the proof will be the content of the next
+exercise. More generally, if $a_{1},a_{2},\ldots,a_{n}$ are positive reals,
+then the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is
+$\dfrac{1}{a_{i}+a_{j}}$ is positive definite.
 \end{example}
 
 \begin{exercise}
@@ -11567,13 +11776,16 @@ $m>0$. Also, integrating an $\mathbb{R}_{\geq0}$-valued function over $\left[
 
 Note that a Hermitian matrix $A$ is negative definite if and only if $-A$ is
 positive definite. Similarly, a Hermitian matrix $A$ is negative semidefinite
-if and only if $-A$ is positive semidefinite. (These follow easily from the definitions.)
+if and only if $-A$ is positive semidefinite. (These claims follow easily from
+the definitions.)
 
 As an application of positive semidefiniteness, the Schoenberg theorem
 generalizes the triangle inequality. Recall that the triangle inequality says
 that three nonnegative real numbers $x,y,z$ are the mutual distances of $3$
 points in the plane if and only if $x\leq y+z$ and $y\leq z+x$ and $z\leq
-x+y$. In higher dimensions, the analogous criterion is the following:
+x+y$. More generally, Schoenberg's theorem gives a criterion for when a bunch
+of nonnegative reals can be realized as mutual distances of $n$ points in an
+$r$-dimensional real vector space:
 
 \begin{theorem}
 [Schoenberg's theorem]Let $n\in\mathbb{N}$ and $r\in\mathbb{N}$. Let $d_{i,j}$
@@ -11646,7 +11858,7 @@ _{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries of $D$, so that
 $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
 _{n}\right)  $. Then, $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
 eigenvalues of $A$ (since the diagonal entries of $D$ are the eigenvalues of
-$A$).
+$A$). \medskip
 
 \textbf{(a)} $\Longrightarrow:$ Assume that $A$ is positive semidefinite. Let
 $\lambda$ be an eigenvalue of $A$. Let $x\neq0$ be a corresponding
@@ -11707,9 +11919,9 @@ invertible, thus $UE$ is invertible, thus $\left(  UE\right)  ^{\ast}$ is invert
 \subsection{The Cholesky decomposition}
 
 \begin{theorem}
-[Cholesky decomposition for positive definite matrices]Let $A\in
-\mathbb{C}^{n\times n}$ be a positive definite Hermitian matrix. Then, $A$ has
-a unique factorization of the form%
+[Cholesky decomposition for positive definite matrices]%
+\label{thm.herm.cholesky.pd}Let $A\in\mathbb{C}^{n\times n}$ be a positive
+definite Hermitian matrix. Then, $A$ has a unique factorization of the form%
 \[
 A=LL^{\ast},
 \]
@@ -11729,11 +11941,13 @@ positive definite. Thus, setting $L=\left(
 [c]{c}%
 \sqrt{a}%
 \end{array}
-\right)  $, then $A=LL^{\ast}$. Moreover, this is clearly the only choice.
+\right)  $, we obtain $A=LL^{\ast}$. Moreover, this is clearly the only choice
+for $L$.
 \end{example}
 
 \begin{example}
-Let us manually check the theorem for $n=2$. Let $A=\left(
+Let us manually verify Theorem \ref{thm.herm.cholesky.pd} for $n=2$. Let
+$A=\left(
 \begin{array}
 [c]{cc}%
 a & b\\
@@ -11888,15 +12102,18 @@ d-\left\vert x\right\vert ^{2}  &  =d-\left\vert \dfrac{c}{\lambda}\right\vert
 &  =\dfrac{ad-bc}{a}>0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }ad-bc>0\text{
 and }a>0\right)  .
 \end{align*}
-This is what we need. So the theorem is proved for $n=2$.
+This is what we need. So Theorem \ref{thm.herm.cholesky.pd} is proved for
+$n=2$.
 \end{example}
 
-To prove the theorem in general, we need a lemma that essentially generalizes
-our above argument for $d-\left\vert x\right\vert ^{2}>0$:
+To prove Theorem \ref{thm.herm.cholesky.pd} in general, we need a lemma that
+essentially generalizes our above argument for $d-\left\vert x\right\vert
+^{2}>0$:
 
 \begin{lemma}
-Let $Q\in\mathbb{C}^{n\times n}$ be a invertible matrix. Let $x\in
-\mathbb{C}^{n}$ be some column vector. Let $d\in\mathbb{R}$. Let%
+\label{lem.herm.cholesky.x2d}Let $Q\in\mathbb{C}^{n\times n}$ be a invertible
+matrix. Let $x\in\mathbb{C}^{n}$ be some column vector. Let $d\in\mathbb{R}$.
+Let%
 \[
 A:=\left(
 \begin{array}
@@ -11911,8 +12128,9 @@ x\right\vert \right\vert ^{2}<d$.
 \end{lemma}
 
 \begin{proof}
-Set $Q^{-\ast}:=\left(  Q^{-1}\right)  ^{\ast}=\left(  Q^{\ast}\right)  ^{-1}%
-$. (This is well-defined, since $Q$ is invertible.) Set $u=\left(
+[Proof of Lemma \ref{lem.herm.cholesky.x2d}.]Set $Q^{-\ast}:=\left(
+Q^{-1}\right)  ^{\ast}=\left(  Q^{\ast}\right)  ^{-1}$. (This is well-defined,
+since $Q$ is invertible.) Set $u=\left(
 \begin{array}
 [c]{c}%
 Q^{-\ast}x\\
@@ -11987,13 +12205,14 @@ matrix $A$ is positive definite (by assumption). Thus, $\left\langle
 Au,u\right\rangle >0$. Since $\left\langle Au,u\right\rangle =d-\left\vert
 \left\vert x\right\vert \right\vert ^{2}$, we thus obtain $d-\left\vert
 \left\vert x\right\vert \right\vert ^{2}>0$. In other words, $d>\left\vert
-\left\vert x\right\vert \right\vert ^{2}$. This proves the lemma.
+\left\vert x\right\vert \right\vert ^{2}$. This proves Lemma
+\ref{lem.herm.cholesky.x2d}.
 \end{proof}
 
 Now, let us prove the Cholesky factorization theorem:
 
 \begin{proof}
-[Proof of the Theorem.]We proceed by induction on $n$.
+[Proof of Theorem \ref{thm.herm.cholesky.pd}.]We proceed by induction on $n$.
 
 The \textit{base cases} $n=0$ and $n=1$ are essentially obvious ($n=1$ was
 done in an example).
@@ -12121,10 +12340,10 @@ equation rewrites as $d=\left\vert \left\vert x\right\vert \right\vert
 ^{2}+\delta^{2}$. We can satisfy it by setting $\delta=\sqrt{d-\left\vert
 \left\vert x\right\vert \right\vert ^{2}}$, as long as we can show that
 $d-\left\vert \left\vert x\right\vert \right\vert ^{2}>0$. Fortunately, we can
-indeed show this, because our Lemma yields that $\left\vert \left\vert
-x\right\vert \right\vert ^{2}<d$. Thus, we have found $x$ and $\delta$, and
-constructed a lower-triangular matrix $L$ whose diagonal entries are positive
-reals and which satisfies $A=LL^{\ast}$.
+indeed show this, because Lemma \ref{lem.herm.cholesky.x2d} yields that
+$\left\vert \left\vert x\right\vert \right\vert ^{2}<d$. Thus, we have found
+$x$ and $\delta$, and constructed a lower-triangular matrix $L$ whose diagonal
+entries are positive reals and which satisfies $A=LL^{\ast}$.
 
 It remains to show that this $L$ is unique. Indeed, we can basically read our
 argument above backwards. \textbf{If} $L\in\mathbb{C}^{\left(  n+1\right)
@@ -12160,21 +12379,36 @@ $x=Q^{-1}b$, so again our new $x$ is our old $x$. Finally, $d=x^{\ast}%
 x+\delta^{2}$ entails $\delta=\sqrt{d-\left\vert \left\vert x\right\vert
 \right\vert ^{2}}$, because $\delta$ has to be positive. So our $\delta$ is
 our old $\delta$. Thus, our $L$ is the $L$ that we constructed above. This
-proves the uniqueness of the $L$. The theorem is proved.
+proves the uniqueness of the $L$. Theorem \ref{thm.herm.cholesky.pd} is proved.
 \end{proof}
 
+Theorem \ref{thm.herm.cholesky.pd} can be used to prove several facts about
+positive definite matrices:
+
 \begin{exercise}
-Let $A\in\mathbb{C}^{n\times n}$ be a positive definite Hermitian matrix.
-Then, $\det A$ is a positive real.
+\fbox{2} Let $A\in\mathbb{C}^{n\times n}$ be a positive definite Hermitian
+matrix. Prove that $\det A$ is a positive real.
 \end{exercise}
 
 \begin{exercise}
-Let $A$ and $B$ be two positive definite Hermitian matrices in $\mathbb{C}%
-^{n\times n}$. Then, $\operatorname*{Tr}\left(  AB\right)  \geq0$.
+\fbox{4} Let $A$ and $B$ be two positive definite Hermitian matrices in
+$\mathbb{C}^{n\times n}$. Prove that $\operatorname*{Tr}\left(  AB\right)
+\geq0$.
+\end{exercise}
+
+\begin{exercise}
+\fbox{4} Let $A\in\mathbb{R}^{n\times n}$ be a symmetric matrix with real
+entries. Assume that every nonzero vector $x\in\mathbb{R}^{n}$ (with
+\textbf{real} entries) satisfies $\left\langle Ax,x\right\rangle >0$. Prove
+that $A$ is positive definite.
 \end{exercise}
 
 There is a version of Cholesky decomposition for positive semidefinite
 matrices, but this will be left to the exercises.
+
+TODO: Add exercises on Cholesky for positive semidefinite matrices.
+
+TODO: Add exercises on determinantal criteria?
 
 \subsection{Rayleigh quotients}
 
@@ -12198,7 +12432,7 @@ spectral theorem, we have $A=UDU^{\ast}$ for some unitary $U$ and some real
 diagonal matrix $D$. Consider these $U$ and $D$. We have
 $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
 _{n}\right)  $, where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
-eigenvalues of $A$. We WLOG that
+eigenvalues of $A$. We WLOG assume that
 \[
 \lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}%
 \]
@@ -12292,31 +12526,532 @@ What about the other eigenvalues? Can we characterize $\lambda_{2}$ (for
 example) in terms of Rayleigh quotients?
 
 \begin{theorem}
-[Courant--Fisher theorem]Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
-matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the eigenvalues of
-$A$, with $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$. Then, for
-each $k\in\left[  n\right]  $, we have%
-\begin{align*}
-\lambda_{k}  &  =\min\left\{  \max\left\{  R\left(  A,x\right)  \ \mid\ x\in
-S\text{ nonzero}\right\}  \ \mid\ S\subseteq\mathbb{C}^{n}\text{ is a
-}k\text{-dimensional subspace}\right\} \\
-&  =\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a subspace;}%
-\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+[Courant--Fisher theorem]\label{thm.herm.cour-fish}Let $A\in\mathbb{C}%
+^{n\times n}$ be a Hermitian matrix. Let $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$ be the eigenvalues of $A$, with $\lambda_{1}\leq
+\lambda_{2}\leq\cdots\leq\lambda_{n}$. Then, for each $k\in\left[  n\right]
+$, we have%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
 A,x\right)
-\end{align*}
+\]
 and%
-\begin{align*}
-\lambda_{k}  &  =\max\left\{  \min\left\{  R\left(  A,x\right)  \ \mid\ x\in
-S\text{ nonzero}\right\}  \ \mid\ S\subseteq\mathbb{C}^{n}\text{ is a }\left(
-n-k+1\right)  \text{-dimensional subspace}\right\} \\
-&  =\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a subspace;}%
-\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
-A,x\right)  .
-\end{align*}
+\[
+\lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
+0}}\ \ R\left(  A,x\right)  .
+\]
 
 \end{theorem}
 
-We will prove this next time.
+To prove this theorem, we will use some elementary facts about subspaces of
+finite-dimensional vector spaces. We begin by recalling the following definition:
+
+\begin{definition}
+Let $S_{1}$ and $S_{2}$ be two subspaces of a vector space $V$. Then,
+\[
+S_{1}+S_{2}:=\left\{  s_{1}+s_{2}\ \mid\ s_{1}\in S_{1}\text{ and }s_{2}\in
+S_{2}\right\}  .
+\]
+This is again a subspace of $V$. (This is the smallest subspace of $V$ that
+contains both $S_{1}$ and $S_{2}$ as subspaces.)
+\end{definition}
+
+\begin{proposition}
+Let $\mathbb{F}$ be a field. Let $V$ be a finite-dimensional $\mathbb{F}%
+$-vector space. Let $S_{1}$ and $S_{2}$ be two subspaces of $V$. Then,%
+\[
+\dim\left(  S_{1}\cap S_{2}\right)  +\dim\left(  S_{1}+S_{2}\right)  =\dim
+S_{1}+\dim S_{2}.
+\]
+
+\end{proposition}
+
+\begin{proof}
+Pick any basis $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ of the vector space
+$S_{1}\cap S_{2}$.
+
+Then, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly independent
+list of vectors in $S_{1}$. Thus, we can extend it to a basis of $S_{1}$ by
+inserting some new vectors $y_{1},y_{2},\ldots,y_{p}$. Thus,%
+\[
+\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots,y_{p}\right)  \text{ is a
+basis of }S_{1}\text{.}%
+\]
+
+
+On the other hand, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly
+independent list of vectors in $S_{2}$. Thus, we can extend it to a basis of
+$S_{2}$ by inserting some new vectors $z_{1},z_{2},\ldots,z_{q}$. Thus,%
+\[
+\left(  x_{1},x_{2},\ldots,x_{k},z_{1},z_{2},\ldots,z_{q}\right)  \text{ is a
+basis of }S_{2}\text{.}%
+\]
+
+
+The above three bases yield $\dim\left(  S_{1}\cap S_{2}\right)  =k$ and $\dim
+S_{1}=k+p$ and $\dim S_{2}=k+q$.
+
+Now, we claim that
+\[
+\mathbf{w}:=\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots,y_{p}%
+,z_{1},z_{2},\ldots,z_{q}\right)  \text{ is a basis of }S_{1}+S_{2}.
+\]
+Once this is proved, we will conclude that $\dim\left(  S_{1}+S_{2}\right)
+=k+p+q$, and the proposition will follow by a simple computation ($k+\left(
+k+p+q\right)  =\left(  k+p\right)  +\left(  k+q\right)  $).
+
+So let us prove our claim. To prove that $\mathbf{w}$ is a basis of
+$S_{1}+S_{2}$, we need to check the following two statements:
+
+\begin{enumerate}
+\item The list $\mathbf{w}$ is linearly independent.
+
+\item The list $\mathbf{w}$ spans $S_{1}+S_{2}$.
+\end{enumerate}
+
+Proving statement 2 is easy: Any element of $S_{1}+S_{2}$ is an element of
+$S_{1}$ plus an element of $S_{2}$, and thus can be written as
+\begin{align*}
+&  \left(  \text{a linear combination of }x_{1},x_{2},\ldots,x_{k},y_{1}%
+,y_{2},\ldots,y_{p}\right) \\
+&  \ \ \ \ \ \ \ \ \ \ +\left(  \text{a linear combination of }x_{1}%
+,x_{2},\ldots,x_{k},z_{1},z_{2},\ldots,z_{q}\right) \\
+&  =\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}\\
+&  \ \ \ \ \ \ \ \ \ \ +\mu_{1}x_{1}+\mu_{2}x_{2}+\cdots+\mu_{k}x_{k}%
++\beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\\
+&  =\left(  \lambda_{1}+\mu_{1}\right)  x_{1}+\left(  \lambda_{2}+\mu
+_{2}\right)  x_{2}+\cdots+\left(  \lambda_{k}+\mu_{k}\right)  x_{k}\\
+&  \ \ \ \ \ \ \ \ \ \ +\alpha_{1}y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}%
+y_{p}+\beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\\
+&  =\left(  \text{a linear combination of }x_{1},x_{2},\ldots,x_{k}%
+,y_{1},y_{2},\ldots,y_{p},z_{1},z_{2},\ldots,z_{q}\right)  ;
+\end{align*}
+thus it belongs to the span of $\mathbf{w}$.
+
+Let us now prove statement 1. We need to show that $\mathbf{w}$ is linearly
+independent. So let us assume that%
+\[
+\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}+\beta_{1}z_{1}+\beta_{2}%
+z_{2}+\cdots+\beta_{q}z_{q}=0
+\]
+for some coefficients $\lambda_{m},\alpha_{i},\beta_{j}$ that are not all
+equal to $0$. We want a contradiction.
+
+Let
+\[
+v:=\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}.
+\]
+Then,%
+\begin{align*}
+v  &  =-\left(  \beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by the above equation}\right) \\
+&  \in S_{2}\ \ \ \ \ \ \ \ \ \ \left(  \text{since the }z_{j}\text{'s lie in
+}S_{2}\right)  .
+\end{align*}
+On the other hand, the definition of $v$ yields $v\in S_{1}$ (since the
+$x_{m}$'s and the $y_{i}$'s lie in $S_{1}$). Thus, $v$ lies in both $S_{1}$
+and $S_{2}$. This entails that $v\in S_{1}\cap S_{2}$. Since $\left(
+x_{1},x_{2},\ldots,x_{k}\right)  $ is a basis of $S_{1}\cap S_{2}$, this
+entails that%
+\[
+v=\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}\ \ \ \ \ \ \ \ \ \ \text{for
+some }\xi_{1},\xi_{2},\ldots,\xi_{k}\in\mathbb{F}.
+\]
+Comparing this with%
+\[
+v=-\left(  \beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)  ,
+\]
+we obtain%
+\[
+\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}=-\left(  \beta_{1}z_{1}%
++\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\right)  .
+\]
+In other words,%
+\[
+\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}+\beta_{1}z_{1}+\beta_{2}%
+z_{2}+\cdots+\beta_{q}z_{q}=0.
+\]
+Since the list $\left(  x_{1},x_{2},\ldots,x_{k},z_{1},z_{2},\ldots
+,z_{q}\right)  $ is linearly independent (being a basis of $S_{2}$), this
+entails that all coefficients $\xi_{m}$ and $\beta_{j}$ are $0$. Thus, $v=0$
+(since $v=\xi_{1}x_{1}+\xi_{2}x_{2}+\cdots+\xi_{k}x_{k}$). Now, recalling that%
+\[
+v=\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p},
+\]
+we obtain%
+\[
+\lambda_{1}x_{1}+\lambda_{2}x_{2}+\cdots+\lambda_{k}x_{k}+\alpha_{1}%
+y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}=0.
+\]
+Since the list $\left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots
+,y_{p}\right)  $ is linearly independent (being a basis of $S_{1}$), this
+entails that all coefficients $\lambda_{m}$ and $\alpha_{i}$ are $0$.
+
+Now we know that all $\lambda_{m}$ and $\alpha_{i}$ and $\beta_{j}$ are $0$,
+which contradicts our assumption that some of them are nonzero. This completes
+the proof of Statement 1.
+
+As we said, we now conclude that $\dim\left(  S_{1}+S_{2}\right)  =k+p+q$, so
+that%
+\begin{align*}
+\underbrace{\dim\left(  S_{1}\cap S_{2}\right)  }_{=k}+\underbrace{\dim\left(
+S_{1}+S_{2}\right)  }_{=k+p+q}  &  =k+\left(  k+p+q\right) \\
+&  =\underbrace{\left(  k+p\right)  }_{=\dim S_{1}}+\underbrace{\left(
+k+q\right)  }_{=\dim S_{2}}\\
+&  =\dim S_{1}+\dim S_{2}.
+\end{align*}
+
+\end{proof}
+
+\begin{remark}
+A well-known fact in elementary set theory says that if $A_{1}$ and $A_{2}$
+are two finite sets, then%
+\[
+\left\vert A_{1}\cap A_{2}\right\vert +\left\vert A_{1}\cup A_{2}\right\vert
+=\left\vert A_{1}\right\vert +\left\vert A_{2}\right\vert .
+\]
+The above theorem is an analogue of this fact for vector spaces (noticing that
+the sum $S_{1}+S_{2}$ is a vector-space analogue of the union).
+
+Note, however, that the \textquotedblleft next level\textquotedblright\ of the
+above formula has no vector space analogue. We do have%
+\begin{align*}
+&  \left\vert A_{1}\cup A_{2}\cup A_{3}\right\vert +\left\vert A_{1}\cap
+A_{2}\right\vert +\left\vert A_{1}\cap A_{3}\right\vert +\left\vert A_{2}\cap
+A_{3}\right\vert \\
+&  =\left\vert A_{1}\right\vert +\left\vert A_{2}\right\vert +\left\vert
+A_{3}\right\vert +\left\vert A_{1}\cap A_{2}\cap A_{3}\right\vert
+\end{align*}
+for any three finite sets $A_{1},A_{2},A_{3}$, but no such relation holds for
+three subspaces of a vector space.
+\end{remark}
+
+\begin{corollary}
+Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$. Let $V$ be an
+$n$-dimensional $\mathbb{F}$-vector space. Let $S_{1},S_{2},\ldots,S_{k}$ be
+subspaces of $V$ (with $k\geq1$). Let
+\[
+\delta:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)  +\cdots
++\dim\left(  S_{k}\right)  -\left(  k-1\right)  n.
+\]
+
+
+\textbf{(a)} Then, $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)
+\geq\delta$.
+
+\textbf{(b)} If $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and $\delta>0$,
+then there exists a vector $x\in S_{1}\cap S_{2}\cap\cdots\cap S_{k}$ with
+$\left\vert \left\vert x\right\vert \right\vert =1$.
+\end{corollary}
+
+\begin{proof}
+\textbf{(a)} We induct on $k$. The \textit{base case} ($k=1$) is obvious
+(since $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)  =\dim\left(
+S_{1}\right)  =\delta$ in this case).
+
+\textit{Induction step:} Suppose the statement holds for some $k$. Now
+consider $k+1$ subspaces $S_{1},S_{2},\ldots,S_{k+1}$ of $V$, and let%
+\[
+\delta_{k+1}:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)
++\cdots+\dim\left(  S_{k+1}\right)  -kn.
+\]
+We want to prove that $\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap
+S_{k+1}\right)  \geq\delta_{k+1}$.
+
+Then,%
+\begin{align*}
+&  \dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\cap S_{k+1}\right) \\
+&  =\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k-1}\cap\left(  S_{k}\cap
+S_{k+1}\right)  \right)  .
+\end{align*}
+Now, set
+\[
+\delta_{k}:=\dim\left(  S_{1}\right)  +\dim\left(  S_{2}\right)  +\cdots
++\dim\left(  S_{k-1}\right)  +\dim\left(  S_{k}\cap S_{k+1}\right)  -\left(
+k-1\right)  n.
+\]
+By the induction hypothesis, we have%
+\[
+\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k-1}\cap\left(  S_{k}\cap
+S_{k+1}\right)  \right)  \geq\delta_{k}.
+\]
+What remains is to show that $\delta_{k}\geq\delta_{k+1}$. Equivalently, we
+need to show that%
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  -\left(  k-1\right)  n\geq\dim\left(
+S_{k}\right)  +\dim\left(  S_{k+1}\right)  -kn.
+\]
+In other words, we need to show that%
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  +n\geq\dim\left(  S_{k}\right)
++\dim\left(  S_{k+1}\right)  .
+\]
+However, $S_{k}+S_{k+1}$ is a subspace of $V$, so its dimension is
+$\dim\left(  S_{k}+S_{k+1}\right)  \leq\dim V=n$. Therefore,
+\[
+\dim\left(  S_{k}\cap S_{k+1}\right)  +\underbrace{n}_{\geq\dim\left(
+S_{k}+S_{k+1}\right)  }\geq\dim\left(  S_{k}\cap S_{k+1}\right)  +\dim\left(
+S_{k}+S_{k+1}\right)  =\dim\left(  S_{k}\right)  +\dim\left(  S_{k+1}\right)
+\]
+(by the previous proposition). So the induction step is complete, and part
+\textbf{(a)} of the corollary is proved.
+
+\textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$ and $V=\mathbb{C}^{n}$ and
+$\delta>0$. Then, part \textbf{(a)} yields%
+\[
+\dim\left(  S_{1}\cap S_{2}\cap\cdots\cap S_{k}\right)  \geq\delta>0.
+\]
+Thus, the subspace $S_{1}\cap S_{2}\cap\cdots\cap S_{k}$ is not just $\left\{
+0\right\}  $. Therefore, it contains a nonzero vector. Scaling this vector by
+the reciprocal of its length, we obtain a vector of length $1$. This proves
+part \textbf{(b)}.
+\end{proof}
+
+Now, we get to the proof of the Courant--Fisher theorem:
+
+\begin{proof}
+[Proof of Theorem \ref{thm.herm.cour-fish}.]The spectral theorem says that
+$A=UDU^{\ast}$ for some unitary $U$ and some real diagonal matrix $D$.
+Consider these $U$ and $D$. The columns of $U$ form an orthonormal basis of
+$\mathbb{C}^{n}$ (since $U$ is unitary); let $\left(  u_{1},u_{2},\ldots
+,u_{n}\right)  $ be this basis. Then, $u_{1},u_{2},\ldots,u_{n}$ are
+eigenvectors of $A$. We WLOG assume that the corresponding eigenvalues are
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ (otherwise, permute the diagonal
+entries of $D$ and correspondingly permute the columns of $U$).
+
+Let $k\in\left[  n\right]  $.
+
+Let $S$ be a vector subspace of $\mathbb{C}^{n}$ with $\dim S=k$. Let
+$S^{\prime}=\operatorname*{span}\left(  u_{k},u_{k+1},\ldots,u_{n}\right)  $.
+Then, by the proposition, we have%
+\[
+\dim\left(  S\cap S^{\prime}\right)  +\dim\left(  S+S^{\prime}\right)
+=\underbrace{\dim S}_{=k}+\underbrace{\dim S^{\prime}}_{=n-k+1}=n+1>n\geq
+\dim\left(  S+S^{\prime}\right)
+\]
+(since $S+S^{\prime}$ is a subspace of $\mathbb{C}^{n}$). Subtracting
+$\dim\left(  S+S^{\prime}\right)  $ from this inequality, we obtain
+$\dim\left(  S\cap S^{\prime}\right)  >0$. Thus, $S\cap S^{\prime}$ contains a
+nonzero vector. Thus, $\sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  $ and $\inf\limits_{\substack{x\in S\cap
+S^{\prime};\\x\neq0}}\ \ R\left(  A,x\right)  $ are well-defined.
+
+Now,%
+\[
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq0}}\ \ R\left(
+A,x\right)  \geq\inf\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  \geq\inf\limits_{\substack{x\in S^{\prime}%
+;\\x\neq0}}\ \ R\left(  A,x\right)  .
+\]
+However, I claim that $\inf\limits_{\substack{x\in S^{\prime};\\x\neq
+0}}\ \ R\left(  A,x\right)  =\lambda_{k}$. Indeed, any $x\in S^{\prime}$ is a
+linear combination $\alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}%
+u_{n}$ and therefore satisfies%
+\begin{align*}
+\left\langle Ax,x\right\rangle  &  =\left\langle A\left(  \alpha_{k}%
+u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right)  ,\ \alpha_{k}%
+u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
+&  =\left\langle \alpha_{k}Au_{k}+\alpha_{k+1}Au_{k+1}+\cdots+\alpha_{n}%
+Au_{n},\ \alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}%
+\right\rangle \\
+&  =\left\langle \alpha_{k}\lambda_{k}u_{k}+\alpha_{k+1}\lambda_{k+1}%
+u_{k+1}+\cdots+\alpha_{n}\lambda_{n}u_{n},\ \alpha_{k}u_{k}+\alpha
+_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
+&  =\sum_{i=k}^{n}\underbrace{\alpha_{i}\overline{\alpha_{i}}}_{=\left\vert
+\alpha_{i}\right\vert ^{2}}\lambda_{i}\ \ \ \ \ \ \ \ \ \ \left(  \text{since
+}u_{k},u_{k+1},\ldots,u_{n}\text{ are orthonormal}\right) \\
+&  =\sum_{i=k}^{n}\left\vert \alpha_{i}\right\vert ^{2}\underbrace{\lambda
+_{i}}_{\substack{\geq\lambda_{k}\\\text{(since }\lambda_{1}\leq\lambda_{2}%
+\leq\cdots\leq\lambda_{n}\text{)}}}\geq\lambda_{k}\underbrace{\sum_{i=k}%
+^{n}\left\vert \alpha_{i}\right\vert ^{2}}_{=\left\langle x,x\right\rangle
+}=\lambda_{k}\left\langle x,x\right\rangle
+\end{align*}
+and thus $R\left(  A,x\right)  =\dfrac{\left\langle Ax,x\right\rangle
+}{\left\langle x,x\right\rangle }\geq\lambda_{k}$. So, altogether, we find%
+\[
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+Furthermore, this supremum is a maximum, because
+\begin{align*}
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)   &
+=\sup\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
+\right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\text{since }R\left(  A,x\right)  =R\left(  A,y\right)  \text{ where }%
+y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }\right) \\
+&  =\max\limits_{\substack{y\in S;\\\left\vert \left\vert y\right\vert
+\right\vert =1}}\ \ R\left(  A,y\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since the set of all }y\in S\text{ satisfying }\left\vert \left\vert
+y\right\vert \right\vert =1\\
+\text{is compact, and since a continuous function}\\
+\text{on a compact set always has a maximum}%
+\end{array}
+\right) \\
+&  =\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  .
+\end{align*}
+So we conclude%
+\[
+\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)
+=\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+
+
+Forget that we fixed $S$. We thus have shown that if $S$ is any $k$%
+-dimensional subspace of $\mathbb{C}^{n}$, then $\max\limits_{\substack{x\in
+S;\\x\neq0}}\ \ R\left(  A,x\right)  $ exists and satisfies
+\[
+\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\lambda_{k}.
+\]
+However, by choosing $S$ appropriately, we can achieve equality here; indeed,
+we have to choose $S=\operatorname*{span}\left(  u_{1},u_{2},\ldots
+,u_{k}\right)  $ for this. (Why? Because each $x\in\operatorname*{span}\left(
+u_{1},u_{2},\ldots,u_{k}\right)  $ can easily be seen to satisfy $\left\langle
+Ax,x\right\rangle \leq\lambda_{k}\left\langle x,x\right\rangle $ by a similar
+argument to the one we used above.)
+
+So $\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $ is
+$\geq\lambda_{k}$ for each $S$, but is $=\lambda_{k}$ for a certain $S$.
+Therefore, $\lambda_{k}$ is the smallest possible value of $\max
+\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $. In other
+words,%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)  .
+\]
+
+
+It remains to prove the other part of the theorem -- i.e., the equality%
+\[
+\lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
+0}}\ \ R\left(  A,x\right)  .
+\]
+One way to prove this is by arguing similarly to the above proof.
+Alternatively, we can simply apply the already proved equality%
+\[
+\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
+subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)
+\]
+to $-A$ instead of $A$, which is a Hermitian matrix with eigenvalues%
+\[
+-\lambda_{n}\leq-\lambda_{n-1}\leq\cdots\leq-\lambda_{1}.
+\]
+Keep in mind that $-\lambda_{k}$ is not the $k$-th smallest eigenvalue of
+$-A$, but it is the $k$-th largest eigenvalue of $-A$, and thus the $\left(
+n-k+1\right)  $-st smallest eigenvalue of $-A$. Thus, we have to apply the
+equality to $-A$ and $n-k+1$ instead of $A$ and $k$. Taking negatives turns
+minima into maxima and vice versa.
+\end{proof}
+
+The Courant--Fisher theorem can be used to connect the eigenvalues of $A+B$
+with the eigenvalues of $A$ and $B$.
+
+\begin{theorem}
+[Weyl's inequalities]\label{thm.herm.weyl-ineq}Let $A$ and $B$ be two
+Hermitian matrices in $\mathbb{C}^{n\times n}$. Let $i\in\left[  n\right]  $
+and $j\in\left\{  0,1,\ldots,n-i\right\}  $.
+
+\textbf{(a)} Then,%
+\[
+\lambda_{i}\left(  A+B\right)  \leq\lambda_{i+j}\left(  A\right)
++\lambda_{n-j}\left(  B\right)  .
+\]
+Here, $\lambda_{k}\left(  C\right)  $ means the $k$-th smallest eigenvalue of
+a Hermitian matrix $C$.
+
+Moreover, this inequality becomes an equality if and only if there exists a
+nonzero vector $x\in\mathbb{C}^{n}$ satisfying
+\[
+Ax=\lambda_{i+j}\left(  A\right)  x,\ \ \ \ \ \ \ \ \ \ Bx=\lambda
+_{n-j}\left(  B\right)  x,\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
+x=\lambda_{i}\left(  A+B\right)  x
+\]
+(at the same time).
+
+\textbf{(b)} Furthermore,%
+\[
+\lambda_{i-k+1}\left(  A\right)  +\lambda_{k}\left(  B\right)  \leq\lambda
+_{i}\left(  A+B\right)  \ \ \ \ \ \ \ \ \ \ \text{for any }k\in\left[
+i\right]  .
+\]
+
+\end{theorem}
+
+Theorem \ref{thm.herm.weyl-ineq} lets us bound the eigenvalues of $A+B$ in
+terms of those of $A$ and $B$ under the assumption that $A$ and $B$ are
+Hermitian matrices. (In contrast, if $A$ and $B$ are arbitrary -- not
+Hermitian -- matrices, then no such bounds are possible for $n>1$.)
+
+\begin{example}
+Applying Theorem \ref{thm.herm.weyl-ineq} \textbf{(a)} to $i=n$ and $j=0$, we
+obtain%
+\[
+\lambda_{n}\left(  A+B\right)  \leq\lambda_{n}\left(  A\right)  +\lambda
+_{n}\left(  B\right)  .
+\]
+
+
+Applying Theorem \ref{thm.herm.weyl-ineq} \textbf{(b)} to $i=1$ and $k=1$, we
+obtain%
+\[
+\lambda_{1}\left(  A\right)  +\lambda_{1}\left(  B\right)  \leq\lambda
+_{1}\left(  A+B\right)  .
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.herm.weyl-ineq}.]Let $\left(  x_{1},x_{2}%
+,\ldots,x_{n}\right)  $, $\left(  y_{1},y_{2},\ldots,y_{n}\right)  $ and
+$\left(  z_{1},z_{2},\ldots,z_{n}\right)  $ be three orthonormal bases of
+$\mathbb{C}^{n}$ with%
+\[
+Ax_{i}=\lambda_{i}\left(  A\right)  x_{i},\ \ \ \ \ \ \ \ \ \ By_{i}%
+=\lambda_{i}\left(  B\right)  y_{i},\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
+z_{i}=\lambda_{i}\left(  A+B\right)  z_{i}%
+\]
+for all $i\in\left[  n\right]  $. (As above, we can find such bases by using
+the spectral decompositions of $A$, $B$ and $A+B$.)
+
+Let
+\begin{align*}
+S_{1}  &  =\operatorname*{span}\left(  x_{1},x_{2},\ldots,x_{i+j}\right)  ;\\
+S_{2}  &  =\operatorname*{span}\left(  y_{1},y_{2},\ldots,y_{n-j}\right)  ;\\
+S_{3}  &  =\operatorname*{span}\left(  z_{i},z_{i+1},\ldots,z_{n}\right)  .
+\end{align*}
+Then,%
+\[
+\delta:=\underbrace{\dim\left(  S_{1}\right)  }_{=i+j}+\underbrace{\dim\left(
+S_{2}\right)  }_{=n-j}+\underbrace{\dim\left(  S_{3}\right)  }_{=n-i+1}%
+-2n=1>0.
+\]
+Hence, part \textbf{(b)} of the corollary yields that there is a length-$1$
+vector $x$ in $S_{1}\cap S_{2}\cap S_{3}$. This $x$ satisfies%
+\begin{align*}
+\lambda_{i}\left(  A+B\right)   &  \leq\left\langle \left(  A+B\right)
+x,\ x\right\rangle =\left\langle Ax+Bx,\ x\right\rangle
+=\underbrace{\left\langle Ax,\ x\right\rangle }_{\leq\lambda_{i+j}\left(
+A\right)  }+\underbrace{\left\langle Bx,\ x\right\rangle }_{\leq\lambda
+_{n-j}\left(  B\right)  }\\
+&  \leq\lambda_{i+j}\left(  A\right)  +\lambda_{n-j}\left(  B\right)  .
+\end{align*}
+This proves \textbf{(a)}.
+
+We leave \textbf{(b)} and \textbf{(c)} to the reader.
+\end{proof}
 
 [...]
 
@@ -12343,6 +13078,10 @@ Linear Algebra, Winter 2014}, 2014.\newline\url{http://web.math.ucsb.edu/~padrai
 \bibitem[Bourba74]{Bourba74}%
 \href{http://libgen.rs/book/index.php?md5=3270565F6D0052635A1550883588204C}{Nicolas
 Bourbaki, \textit{Algebra I: Chapters 1--3}, Addison-Wesley 1974}.
+
+\bibitem[Bourba03]{Bourba03}%
+\href{http://libgen.rs/book/index.php?md5=F0E3884F2EFB5C1F0B08054605192F6A}{Nicolas
+Bourbaki, \textit{Algebra II: Chapters 4--7}, Springer 2003}.
 
 \bibitem[BoyDip12]{BoyDip12}William E. Boyce, Richard C. DiPrima,
 \textit{Elementary Differential Equations}, 10th edition, Wiley 2012.
