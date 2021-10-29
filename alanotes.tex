@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, October 25, 2021 21:55:10}
+%TCIDATA{LastRevised=Friday, October 29, 2021 02:14:24}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4061,13 +4061,25 @@ $v$). This completes the proof of Theorem \ref{thm.schurtri.ch.fta-cons}
 \textbf{(f)}.
 \end{proof}
 
+\begin{exercise}
+\fbox{1} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be any
+$n\times n$-matrix. \medskip
+
+\textbf{(a)} Prove that $p_{A^{T}}=p_{A}$, where $A^{T}$ denotes the transpose
+of the matrix $A$. \medskip
+
+\textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$. Prove that $p_{A^{\ast}%
+}=\overline{p_{A}}$, where $\overline{p_{A}}$ denotes the result of replacing
+all coefficients of the polynomial $p_{A}$ by their complex conjugates.
+\end{exercise}
+
 \begin{noncompile}%
 \[%
 \begin{tabular}
 [c]{||l||}\hline\hline
 \textbf{Old lecture 2 starts here.}\\\hline\hline
 \end{tabular}
-\
+\ \
 \]
 
 \end{noncompile}
@@ -4408,14 +4420,15 @@ similar to $A^{\ast}$.
 \end{exercise}
 
 \begin{remark}
-If you are used to thinking of matrices as linear maps, then similarity is a
-rather natural concept: Two $n\times n$-matrices $A\in\mathbb{F}^{n\times n}$
-and $B\in\mathbb{F}^{n\times n}$ are similar if and only if they represent one
-and the same endomorphism $f:\mathbb{F}^{n}\rightarrow\mathbb{F}^{n}$ of
-$\mathbb{F}^{n}$ with respect to two (possibly different) bases of
-$\mathbb{F}^{n}$. To be more precise, $A$ has to represent $f$ with respect to
-some basis of $\mathbb{F}^{n}$, while $B$ has to represent $f$ with respect to
-a further basis of $\mathbb{F}^{n}$ (possibly the same, but usually not).
+\label{rmk.schurtri.similar.endo-vp}If you are used to thinking of matrices as
+linear maps, then similarity is a rather natural concept: Two $n\times
+n$-matrices $A\in\mathbb{F}^{n\times n}$ and $B\in\mathbb{F}^{n\times n}$ are
+similar if and only if they represent one and the same endomorphism
+$f:\mathbb{F}^{n}\rightarrow\mathbb{F}^{n}$ of $\mathbb{F}^{n}$ with respect
+to two (possibly different) bases of $\mathbb{F}^{n}$. To be more precise, $A$
+has to represent $f$ with respect to some basis of $\mathbb{F}^{n}$, while $B$
+has to represent $f$ with respect to a further basis of $\mathbb{F}^{n}$
+(possibly the same, but usually not).
 
 This fact is not hard to prove. Indeed, if $A$ and $B$ represent the same
 endomorphism $f$ with respect to two bases of $\mathbb{F}^{n}$, then we have
@@ -5315,6 +5328,34 @@ Let $A\in\mathbb{C}^{k\times k}$ be a normal matrix. Let $U\in\mathbb{C}%
 ^{n\times k}$ be an isometry. Then, the matrix $UAU^{\ast}$ is normal.
 
 Is this generalization correct?
+\end{exercise}
+
+\begin{exercise}
+\label{exe.schurtri.normal.A*x}\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ be a
+normal matrix. Prove the following: \medskip
+
+\textbf{(a)} We have $\left\vert \left\vert Ax\right\vert \right\vert
+=\left\vert \left\vert A^{\ast}x\right\vert \right\vert $ for each
+$x\in\mathbb{C}^{n}$. \medskip
+
+\textbf{(b)} We have $\operatorname*{Ker}A=\operatorname*{Ker}\left(  A^{\ast
+}\right)  $. \medskip
+
+\textbf{(c)} Let $\lambda\in\mathbb{C}$. Then, the $\lambda$-eigenvectors of
+$A$ are the $\overline{\lambda}$-eigenvectors of $A^{\ast}$.
+\end{exercise}
+
+\begin{exercise}
+\fbox{4} Let $A\in\mathbb{C}^{n\times n}$. \medskip
+
+\textbf{(a)} Show that there is a \textbf{unique} pair $\left(  R,C\right)  $
+of Hermitian matrices $R$ and $C$ such that $A=R+iC$. \medskip
+
+\textbf{(b)} Consider this pair $\left(  R,C\right)  $. Show that $A$ is
+normal if and only if $R$ and $C$ commute (that is, $RC=CR$). \medskip
+
+[\textbf{Hint:} For part \textbf{(a)}, apply the \textquotedblleft conjugate
+transpose\textquotedblright\ operation to $A=R+iC$ to obtain $A^{\ast}=R-iC$.]
 \end{exercise}
 
 We will now prove an innocent-looking property of normal matrices that will
@@ -8671,22 +8712,24 @@ s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{F}^{n}$ ?
 
 (The following proof is due to Terence Tao \cite{Tao07}.)
 
-We define an \textbf{orbit} to be a tuple of the form $\left(  v,Av,A^{2}%
-v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{F}^{n}$ satisfies $A^{k+1}v=0$.
-Note that for each $v\in\mathbb{F}^{n}$, there is an orbit that starts with
-$v$, since $A^{n}=0$.
+We recall that an \textbf{orbit} was defined to be a tuple of the form
+$\left(  v,Av,A^{2}v,\ldots,A^{k}v\right)  $, where $v\in\mathbb{F}^{n}$
+satisfies $A^{k+1}v=0$. Note that for each $v\in\mathbb{F}^{n}$, there is an
+orbit that starts with $v$, since $A^{n}=0$.
 
-Now, I claim:
+Now, we claim the existence of a forwarded basis:
 
 \begin{lemma}
 [orbit basis lemma]\label{lem.jnf.exist.tao}There exists a basis of
 $\mathbb{F}^{n}$ that is a concatenation of orbits.
 \end{lemma}
 
-Once Lemma \ref{lem.jnf.exist.tao} is proved, we will be done, because reading
-such a basis backwards gives us exactly the basis $\left(  s_{1},s_{2}%
-,\ldots,s_{n}\right)  $ we are looking for. For example, if our basis that is
-a concatenation of orbits is%
+Once Lemma \ref{lem.jnf.exist.tao} is proved, we will be done, because such a
+basis will be a forwarded basis (by Proposition \ref{prop.jnf.exist.step3.bwd}
+\textbf{(a)}), and therefore reading it backwards will gives us a backwarded
+basis (by Proposition \ref{prop.jnf.exist.step3.bwd} \textbf{(b)}), which is
+precisely what we wish. For example, if the basis that Lemma
+\ref{lem.jnf.exist.tao} gives us is%
 \[
 \left(  u,Au,A^{2}u,\ \ v,Av,A^{2}v,A^{3}v,\ \ w,Aw\right)
 \]
@@ -8695,9 +8738,7 @@ gives
 \[
 \left(  Aw,w,\ \ A^{3}v,A^{2}v,Av,v,\ \ A^{2}u,Au,u\right)  ,
 \]
-which is a basis $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ of $\mathbb{F}%
-^{n}$ such that for each $i\in\left[  n\right]  $, the vector $As_{i}$ is
-either $s_{i-1}$ or $0$.
+which is a backwarded basis of $\mathbb{F}^{n}$.
 
 \begin{proof}
 [Proof of Lemma \ref{lem.jnf.exist.tao}.]It is easy to find a finite
@@ -8725,18 +8766,19 @@ For the sake of concreteness, let us assume that our spanning set is%
 \]
 with $A^{2}x=0$ and $A^{3}y=0$ and $A^{4}z=0$ and $Aw=0$. If this spanning set
 is linearly independent, then it is already a basis, and we are done. So
-assume that it isn't. Thus, there exists some linear dependence relation --
+assume that it is not. Thus, there exists some linear dependence relation --
 say,%
 \[
 3x+4Ax+5Ay+6A^{2}y+7A^{2}z+8w=0.
 \]
-Apply $A$ to this relation:%
+Applying $A$ to this relation, we obtain%
 \begin{align*}
 3Ax+4A^{2}x+5A^{2}y+6A^{3}y+7A^{3}z+8Aw  &  =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}%
 \\
-3Ax+5A^{2}y+7A^{3}z  &  =0.
+3Ax+5A^{2}y+7A^{3}z  &  =0
 \end{align*}
-Apply $A$ to this relation:%
+(since $A^{2}x=0$ and $A^{3}y=0$ and $Aw=0$). Applying $A$ to this relation
+again, we obtain%
 \begin{align*}
 3A^{2}x+5A^{3}y+7A^{4}z  &  =0,\ \ \ \ \ \ \ \ \ \ \text{i.e.}\\
 0  &  =0.
@@ -8752,7 +8794,7 @@ we obtain%
 \[
 A\left(  3x+5Ay+7A^{2}z\right)  =0.
 \]
-So the $1$-tuple $\left(  3x+5Ay+7A^{2}z\right)  $ is an orbit.
+Thus, the $1$-tuple $\left(  3x+5Ay+7A^{2}z\right)  $ is an orbit.
 
 Now, let us replace the orbit $\left(  x,Ax\right)  $ in our spanning set
 $\left(  x,Ax,\ \ y,Ay,A^{2}y,\ \ z,Az,A^{2}z,A^{3}z,\ \ w\right)  $ by the
@@ -8762,18 +8804,22 @@ orbit $\left(  3x+5Ay+7A^{2}z\right)  $. We get
 \]
 This is still a concatenation of orbits, since the $1$-tuple $\left(
 3x+5Ay+7A^{2}z\right)  $ is an orbit. Furthermore, this is still a spanning
-set of $\mathbb{F}^{n}$; why? Because we removed the dependent vector $Ax$
-(this is a combination of the other vectors, because $3Ax+5A^{2}y+7A^{3}z=0$)
-and we replaced $x$ by $3x+5Ay+7A^{2}z$ (which does not change the span,
-because $Ay$ and $A^{2}z$ are still in the spanning set).
+set of $\mathbb{F}^{n}$; why? Because we removed the vector $Ax$, which was
+unnecessary for spanning $\mathbb{F}^{n}$ (because the equality $3Ax+5A^{2}%
+y+7A^{3}z=0$ reveals that it is a linear combination of the other vectors in
+our spanning set), and we replaced $x$ by $3x+5Ay+7A^{2}z$ (which does not
+change the span, because $Ay$ and $A^{2}z$ are still in the spanning set).
 
-This example generalizes. In the general case, you have a spanning set that is
-a concatenation of orbits:%
+This example generalizes. In the general case, you have a spanning set
+$\mathbf{s}$ that is a concatenation of orbits:%
 \[
-\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
-}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)  .
+\mathbf{s}=\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2}%
+,\ldots,A^{m_{2}}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
+,
 \]
-If it is a basis, you are done. If not, you pick a linear dependence relation:%
+where $A^{m_{1}+1}v_{1}=0$ and $A^{m_{2}+1}v_{2}=0$ and $\ldots$ and
+$A^{m_{k}+1}v_{k}=0$. If this spanning set $\mathbf{s}$ is a basis, you are
+done. If not, you pick a linear dependence relation:%
 \[
 \sum_{i,j}\lambda_{i,j}A^{j}v_{i}=0.
 \]
@@ -8781,18 +8827,22 @@ By multiplying this by $A$ an appropriate amount of times (namely, you keep
 multiplying until it becomes $0=0$, and then you take a step back), you obtain
 a linear dependence relation that involves only the \textbf{final} vectors of
 the orbits (i.e., the vectors $A^{m_{1}}v_{1},\ A^{m_{2}}v_{2},\ \ldots
-,\ A^{m_{k}}v_{k}$). So it will look like this:%
+,\ A^{m_{k}}v_{k}$). Thus, it will look like this:%
 \[
-\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{k}A^{m_{k}}v_{k}=0.
+\mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{k}A^{m_{k}}v_{k}=0
 \]
-Assume WLOG that the first $p$ of the $\mu_{1},\mu_{2},\ldots,\mu_{k}$ are
-nonzero, while the remaining $k-p$ are $0$. So the relation becomes%
+(with at least one of $\mu_{1},\mu_{2},\ldots,\mu_{k}$ being nonzero). Assume
+WLOG that the first $p$ of the scalars $\mu_{1},\mu_{2},\ldots,\mu_{k}$ are
+nonzero, while the remaining $k-p$ are $0$ (this can always be achieved by
+permuting the orbits, which of course does not change anything about the
+spanning set being a spanning set). So the relation becomes%
 \[
 \mu_{1}A^{m_{1}}v_{1}+\mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0,
 \]
-with $\mu_{1},\mu_{2},\ldots,\mu_{p}$ being nonzero. Assume WLOG that
-$m_{1}=\min\left\{  m_{1},m_{2},\ldots,m_{p}\right\}  $, and factor out
-$A^{m_{1}}$ from this relation. This yields%
+with $\mu_{1},\mu_{2},\ldots,\mu_{p}$ being nonzero. Note that $p>0$ (since at
+least one of $\mu_{1},\mu_{2},\ldots,\mu_{k}$ is nonzero), so that $\mu
+_{1}\neq0$. Assume WLOG that $m_{1}=\min\left\{  m_{1},m_{2},\ldots
+,m_{p}\right\}  $, and factor out $A^{m_{1}}$ from this relation. This yields%
 \[
 A^{m_{1}}\left(  \mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
 _{p}A^{m_{p}-m_{1}}v_{p}\right)  =0.
@@ -8801,42 +8851,59 @@ Now, set $w_{1}=\mu_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu
 _{p}A^{m_{p}-m_{1}}v_{p}$. Thus, $A^{m_{1}}w_{1}=0$. Hence, $\left(
 w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1}\right)  $ is an orbit of
 length $m_{1}$. Now, replace the orbit $\left(  v_{1},Av_{1},\ldots,A^{m_{1}%
-}v_{1}\right)  $ in the spanning set%
-\[
-\left(  v_{1},Av_{1},\ldots,A^{m_{1}}v_{1},\ v_{2},Av_{2},\ldots,A^{m_{2}%
-}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
-\]
-by the shorter orbit $\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}%
-w_{1}\right)  $. The resulting list%
+}v_{1}\right)  $ in the spanning set $\mathbf{s}$ by the shorter orbit
+$\left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1}\right)  $. The
+resulting list%
 \[
 \left(  w_{1},Aw_{1},A^{2}w_{1},\ldots,A^{m_{1}-1}w_{1},\ v_{2},Av_{2}%
 ,\ldots,A^{m_{2}}v_{2},\ \ldots,\ v_{k},Av_{k},\ldots,A^{m_{k}}v_{k}\right)
 \]
-is still a concatenation of orbits. Also, it still spans $\mathbb{F}^{n}$,
-because%
+is still a concatenation of orbits (since $A^{m_{1}}w_{1}=0$). Also, it still
+spans $\mathbb{F}^{n}$, because the $m_{1}+1$ vectors $v_{1},Av_{1}%
+,\ldots,A^{m_{1}}v_{1}$ that we have removed from $\mathbf{s}$ can be
+recovered as linear combinations of the vectors in our new list as follows:%
 \begin{align*}
-w_{1}  &  =\underbrace{\mu_{1}}_{\neq0}v_{1}+\mu_{2}A^{m_{2}-m_{1}}%
-v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p};\\
-Aw_{1}  &  =\underbrace{\mu_{1}}_{\neq0}Av_{1}+\mu_{2}A^{m_{2}-m_{1}+1}%
-v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}+1}v_{p};\\
-&  \ldots;\\
-A^{m_{1}}v_{1}  &  =-\left(  \mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}%
-}v_{p}\right) \\
-&  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\mu_{1}A^{m_{1}}v_{1}+\mu
-_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}=0\right)  .
+v_{1}  &  =\dfrac{1}{\mu_{1}}\left(  w_{1}-\left(  \mu_{2}A^{m_{2}-m_{1}}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p}\right)  \right) \\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{since }w_{1}=\mu
+_{1}v_{1}+\mu_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}%
+v_{p}\right)  ;\\
+Av_{1}  &  =A\cdot\dfrac{1}{\mu_{1}}\left(  w_{1}-\left(  \mu_{2}%
+A^{m_{2}-m_{1}}v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p}\right)  \right) \\
+&  =\dfrac{1}{\mu_{1}}\left(  Aw_{1}-\left(  \mu_{2}A^{m_{2}-m_{1}+1}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}+1}v_{p}\right)  \right)  ;\\
+A^{2}v_{1}  &  =A^{2}\cdot\dfrac{1}{\mu_{1}}\left(  w_{1}-\left(  \mu
+_{2}A^{m_{2}-m_{1}}v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}}v_{p}\right)  \right) \\
+&  =\dfrac{1}{\mu_{1}}\left(  A^{2}w_{1}-\left(  \mu_{2}A^{m_{2}-m_{1}+2}%
+v_{2}+\cdots+\mu_{p}A^{m_{p}-m_{1}+2}v_{p}\right)  \right)  ;\\
+\ldots;  & \\
+A^{m_{1}}v_{1}  &  =\dfrac{1}{\mu_{1}}\left(  \underbrace{A^{m_{1}}w_{1}}%
+_{=0}-\left(  \mu_{2}A^{m_{2}}v_{2}+\cdots+\mu_{p}A^{m_{p}}v_{p}\right)
+\right) \\
+&  =\dfrac{1}{\mu_{1}}\left(  -\left(  \mu_{2}A^{m_{2}}v_{2}+\cdots+\mu
+_{p}A^{m_{p}}v_{p}\right)  \right)  .
 \end{align*}
 
 
-So we have found a spanning set of $\mathbb{F}^{n}$ that is still a
-concatenation of orbits, but is shorter (it has one less vector). Doing this
-repeatedly, we will eventually obtain a basis (since we cannot keep making a
-finite list shorter and shorter indefinitely). This proves the lemma.
+So we have found a new spanning set of $\mathbb{F}^{n}$ that is still a
+concatenation of orbits, but is shorter than $\mathbf{s}$ (namely, it has one
+less vector than $\mathbf{s}$). In other words, we have found a way to replace
+a spanning set of $\mathbb{F}^{n}$ that is a concatenation of orbits by a
+smaller such set as long as it is linearly independent. Performing this
+process repeatedly, we will eventually obtain a basis (since we cannot keep
+making a finite list shorter and shorter indefinitely). This proves Lemma
+\ref{lem.jnf.exist.tao}.
 \end{proof}
 
-As we said, the lemma gives us a basis $\left(  s_{1},s_{2},\ldots
-,s_{n}\right)  $ such that $As_{i}$ is either $s_{i-1}$ or $0$; and that shows
-that $A$ is similar to a Jordan matrix. This completes the proof of the
-existence part of the Jordan canonical form.
+As we said, Lemma \ref{lem.jnf.exist.tao} gives us a basis of $\mathbb{F}^{n}$
+that is a concatenation of orbits. In other words, it gives us a forwarded
+basis (by Proposition \ref{prop.jnf.exist.step3.bwd} \textbf{(a)}), and
+therefore reading it backwards will gives us a backwarded basis (by
+Proposition \ref{prop.jnf.exist.step3.bwd} \textbf{(b)}). In view of
+Proposition \ref{prop.jnf.exist.step3.basis}, this lets us find an invertible
+matrix $S\in\mathbb{F}^{n\times n}$ such that $S^{-1}AS$ is a Jordan matrix.
+This completes the proof of Theorem \ref{thm.jnf.jnf} \textbf{(a)} (the
+existence part of the Jordan canonical form).
 
 \begin{example}
 Let $\mathbb{F}=\mathbb{C}$ and
@@ -8853,8 +8920,11 @@ A=\left(
 \end{array}
 \right)  .
 \]
-This is not strictly upper-triangular, but it is nilpotent, with $A^{3}=0$, so
-the above argument goes equally well with this $A$.
+This matrix $A$ is not strictly upper-triangular, but it is nilpotent, with
+$A^{3}=0$, so the above argument goes equally well with this $A$.
+
+[TODO: Replace this by a better example, with an actual strictly
+upper-triangular $A$.]
 
 Let us try to find a basis of $\mathbb{F}^{6}$ that is a concatenation of orbits.
 
@@ -8915,6 +8985,31 @@ e_{4},\ \ e_{5},Ae_{5},A^{2}e_{5},\ \ e_{6},Ae_{6},A^{2}e_{6}\right)  .
 Keep making these steps. Eventually, there will be no more linear
 dependencies, so we will have a basis.
 \end{example}
+
+\begin{exercise}
+\fbox{3} Compute the Jordan canonical form of the matrix $\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 2\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{array}
+\right)  $.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.jnf.step3.An=0}\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ be a
+matrix. Prove that the following three statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{A}$\textit{:} The matrix $A$ is nilpotent.
+
+\item $\mathcal{B}$\textit{:} We have $A^{n}=0$.
+
+\item $\mathcal{C}$\textit{:} The only eigenvalue of $A$ is $0$ (that is, we
+have $\sigma\left(  A\right)  =\left\{  0\right\}  $).
+\end{itemize}
+\end{exercise}
 
 \subsection{Powers and the Jordan canonical form}
 
@@ -9004,20 +9099,21 @@ C^{4}  &  =\left(
 \end{array}
 \right)  .
 \end{align*}
-In general:
+In general, we have the following:
 
 \begin{theorem}
-Let $k>0$ and $\lambda\in\mathbb{F}$. Let $C=J_{k}\left(  \lambda\right)  $.
-Let $m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
-whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$.
-(Here, we follow the convention that $\dbinom{n}{\ell}:=0$ when $\ell
-\notin\mathbb{N}$. Also, recall that $\dbinom{n}{\ell}=0$ when $n\in
-\mathbb{N}$ and $\ell>n$.)
+\label{thm.jnf.powers.Cm}Let $k>0$ and $\lambda\in\mathbb{F}$. Let
+$C=J_{k}\left(  \lambda\right)  $. Let $m\in\mathbb{N}$. Then, $C^{m}$ is the
+upper-triangular $k\times k$-matrix whose $\left(  i,j\right)  $-th entry is
+$\dbinom{m}{j-i}\lambda^{m-j+i}$ for all $i,j\in\left[  k\right]  $. (Here, we
+follow the convention that $\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when
+$\ell\notin\mathbb{N}$. Also, recall that $\dbinom{n}{\ell}=0$ when
+$n\in\mathbb{N}$ and $\ell>n$.)
 \end{theorem}
 
 \begin{proof}
-[First proof.]Induct on $m$ and use $C^{m}=CC^{m-1}$ as well as Pascal's
-recursion%
+[First proof of Theorem \ref{thm.jnf.powers.Cm}.]Induct on $m$ and use
+$C^{m}=CC^{m-1}$ as well as Pascal's recursion%
 \[
 \dbinom{n}{\ell}=\dbinom{n-1}{\ell}+\dbinom{n-1}{\ell-1}.
 \]
@@ -9025,17 +9121,19 @@ recursion%
 \end{proof}
 
 \begin{proof}
-[Second proof.]Set $B:=J_{k}\left(  0\right)  =\left(
+[Second proof of Theorem \ref{thm.jnf.powers.Cm}.]Set $B:=J_{k}\left(
+0\right)  =\left(
 \begin{array}
 [c]{ccccc}
 & 1 &  &  & \\
 &  & 1 &  & \\
-&  &  & 1 & \\
+&  &  & \ddots & \\
 &  &  &  & 1\\
 &  &  &  &
 \end{array}
-\right)  $. We know all powers of $B$ already: $B^{i}$ has $1$s $i$ steps
-above the main diagonal, and $0$s everywhere else.
+\right)  $. Proposition \ref{prop.jnf.jcell0-powers} \textbf{(a)} tells us
+what the powers of $B$ are: Namely, $B^{i}$ has $1$s $i$ steps above the main
+diagonal, and $0$s everywhere else.
 
 However, $C=B+\lambda I_{k}$. The matrices $\lambda I_{k}$ and $B$ commute
 (i.e., we have $B\cdot\lambda I_{k}=\lambda I_{k}\cdot B$). It is a general
@@ -9074,13 +9172,15 @@ Now we know how to take powers of Jordan cells, and therefore how to take
 powers of any matrix that we know how to bring to a Jordan canonical form.
 
 \begin{corollary}
-Let $A\in\mathbb{C}^{n\times n}$. Then, $\lim\limits_{m\rightarrow\infty}%
-A^{m}=0$ if and only if all eigenvalues of $A$ have absolute value $<1$.
+\label{cor.jnf.powers.to0}Let $A\in\mathbb{C}^{n\times n}$. Then,
+$\lim\limits_{m\rightarrow\infty}A^{m}=0$ if and only if all eigenvalues of
+$A$ have absolute value $<1$.
 \end{corollary}
 
 \begin{proof}
-$\Longrightarrow:$ Suppose that $\lim\limits_{m\rightarrow\infty}A^{m}=0$, but
-$A$ has an eigenvalue $\lambda$ of absolute value $\geq1$. We want a contradiction.
+$\Longrightarrow:$ Suppose that $\lim\limits_{m\rightarrow\infty}A^{m}=0$, and
+let $\lambda$ be an eigenvalue of $A$. We must show that $\left\vert
+\lambda\right\vert <1$.
 
 Consider a nonzero eigenvector $x$ for eigenvalue $\lambda$. Thus, $Ax=\lambda
 x$. Then, $A^{2}x=\lambda^{2}x$ (since $A^{2}x=A\underbrace{Ax}_{=\lambda
@@ -9092,47 +9192,47 @@ A^{m}x=\lambda^{m}x\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\mathbb{N}.
 
 
 Now, as $m\rightarrow\infty$, the vector $A^{m}x$ goes to $0$ (since
-$A^{m}\rightarrow0$), but the vector $\lambda^{m}x$ does not (since $x\neq0$
-and $\left\vert \lambda\right\vert \geq1$). Contradiction.
+$A^{m}\rightarrow0$). Thus, the vector $\lambda^{m}x$ goes to $0$ as well
+(since $A^{m}x=\lambda^{m}x$ for each $m\in\mathbb{N}$). Since $x\neq0$, this
+entails that the scalar $\lambda^{m}$ goes to $0$ as well. Hence, $\left\vert
+\lambda\right\vert <1$ (because if $\left\vert \lambda\right\vert $ was
+$\geq1$, then $\lambda^{m}$ would either oscillate along the unit circle, or
+move further and further away from the origin).
 
 $\Longleftarrow:$ Suppose that all eigenvalues of $A$ have absolute value $<1$.
 
 Let $A=SJS^{-1}$ be the Jordan canonical form of $A$. Write $J$ as $\left(
 \begin{array}
-[c]{ccc}%
-J_{1} &  & \\
-& \ddots & \\
-&  & J_{p}%
+[c]{cccc}%
+J_{1} &  &  & \\
+& J_{2} &  & \\
+&  & \ddots & \\
+&  &  & J_{p}%
 \end{array}
-\right)  $, where each $J_{i}$ is a Jordan cell.
+\right)  $, where $J_{1},J_{2},\ldots,J_{p}$ are Jordan cells.
 
-It suffices to show that $\lim\limits_{n\rightarrow\infty}J_{i}^{m}=0$.
-
-Write $J_{i}$ as $J_{k}\left(  \lambda\right)  $, with $\left\vert
-\lambda\right\vert <1$. The preceding theorem then tells us that%
+It suffices to show that $\lim\limits_{m\rightarrow\infty}J_{h}^{m}=0$ for
+each $h\in\left[  p\right]  $ (because this will yield $\lim
+\limits_{m\rightarrow\infty}J^{m}=0$, and therefore
 \[
-J_{i}^{m}=\left(
-\begin{array}
-[c]{ccccccc}%
-\lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} & \cdots
-& \cdots & \cdots & \cdots\\
-& \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
-\cdots & \cdots & \cdots\\
-&  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \dbinom{m}{2}\lambda^{m-2} &
-\cdots & \cdots\\
-&  &  & \lambda^{m} & \dbinom{m}{1}\lambda^{m-1} & \cdots & \cdots\\
-&  &  &  & \lambda^{m} & \cdots & \vdots\\
-&  &  &  &  & \ddots & \vdots\\
-&  &  &  &  &  & \lambda^{m}%
-\end{array}
-\right)  .
+\lim\limits_{m\rightarrow\infty}A^{m}=\lim\limits_{m\rightarrow\infty
+}\underbrace{\left(  SJS^{-1}\right)  ^{m}}_{=SJ^{m}S^{-1}}=\lim
+\limits_{m\rightarrow\infty}SJ^{m}S^{-1}=S\underbrace{\left(  \lim
+\limits_{m\rightarrow\infty}J^{m}\right)  }_{=0}S^{-1}=0,
 \]
-Look closely at this matrix. We need to show that for each $i,j\in\left[
-k\right]  $, we have%
+which is what we want to show).
+
+Fix some $h\in\left[  p\right]  $. Write $J_{h}$ as $J_{k}\left(
+\lambda\right)  $, with $\left\vert \lambda\right\vert <1$. Theorem
+\ref{thm.jnf.powers.Cm} thus yields that the powers $J_{h}^{m}$ of this matrix
+$J_{h}$ have a very specific form; in particular, each $J_{h}^{m}$ is an
+upper-triangular $k\times k$-matrix whose $\left(  i,j\right)  $-th entry is
+$\dbinom{m}{j-i}\lambda^{m-j+i}$. Thus, we need to show that for each
+$i,j\in\left[  k\right]  $, we have%
 \[
 \lim\limits_{m\rightarrow\infty}\dbinom{m}{j-i}\lambda^{m-j+i}=0.
 \]
-However, this is a standard asymptotics argument:%
+However, this follows from a standard asymptotics argument:%
 \[
 \underbrace{\dbinom{m}{j-i}}_{\substack{=\dfrac{m\left(  m-1\right)  \left(
 m-2\right)  \cdots\left(  m-j+i\right)  }{\left(  j-i\right)  !}\\\text{(for
@@ -9145,23 +9245,39 @@ because exponential functions with a quotient of absolute value $<1$ converge
 to $0$ faster than polynomials can go to $\infty$.
 \end{proof}
 
+\begin{exercise}
+\fbox{5} Let $\lambda\in\mathbb{C}$. Let $n$ and $k$ be two positive integers.
+Prove the following: \medskip
+
+\textbf{(a)} If a $k\times k$-matrix $C$ has eigenvalue $\lambda$ with
+algebraic multiplicity $k$ and geometric multiplicity $1$, then $C\sim
+J_{k}\left(  \lambda\right)  $. \medskip
+
+\textbf{(b)} We have $\left(  J_{k}\left(  \lambda\right)  \right)  ^{n}\sim
+J_{k}\left(  \lambda\right)  $ if $\lambda\neq0$. \medskip
+
+\textbf{(c)} If $A\in\mathbb{C}^{k\times k}$ is an invertible matrix such that
+$A^{n}$ is diagonalizable, then $A$ is diagonalizable.
+\end{exercise}
+
 \subsection{The minimal polynomial}
 
 \textbf{Recall:} A polynomial $p\left(  t\right)  \in\mathbb{F}\left[
 t\right]  $ (where $\mathbb{F}$ is any field, and $t$ is an indeterminate) is
 said to be \textbf{monic} if its leading coefficient is $1$ -- that is, if it
 can be written in the form%
-\[
-p\left(  t\right)  =t^{m}+p_{m-1}t^{m-1}+p_{m-2}t^{m-2}+\cdots+p_{0}%
-t^{0}\ \ \ \ \ \ \ \ \ \ \text{for some }m\in\mathbb{N}\text{ and }p_{0}%
+\begin{align*}
+p\left(  t\right)   &  =t^{m}+p_{m-1}t^{m-1}+p_{m-2}t^{m-2}+\cdots+p_{0}%
+t^{0}\\
+&  \ \ \ \ \ \ \ \ \ \ \text{for some }m\in\mathbb{N}\text{ and }p_{0}%
 ,p_{1},\ldots,p_{m-1}\in\mathbb{F}.
-\]
+\end{align*}
 
 
 \begin{definition}
-Given a matrix $A\in\mathbb{F}^{n\times n}$ and a polynomial $p\left(
-t\right)  \in\mathbb{F}\left[  t\right]  $, we saay that $p\left(  t\right)  $
-\textbf{annihilates} $A$ if $p\left(  A\right)  =0$.
+\label{def.jnf.mipo.annih}Given a matrix $A\in\mathbb{F}^{n\times n}$ and a
+polynomial $p\left(  t\right)  \in\mathbb{F}\left[  t\right]  $, we say that
+$p\left(  t\right)  $ \textbf{annihilates} $A$ if $p\left(  A\right)  =0$.
 \end{definition}
 
 The Cayley--Hamilton theorem says that the characteristic polynomial $p_{A}$
@@ -9246,37 +9362,43 @@ t-2\right)  \left(  t-3\right)  $, since%
 \end{example}
 
 \begin{theorem}
-Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
-n$-matrix. Then, there is a \textbf{unique} monic polynomial $q_{A}\left(
-t\right)  $ of minimum degree that annihilates $A$.
+\label{thm.jnf.mipo.unique}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Then, there is a
+\textbf{unique} monic polynomial $q_{A}\left(  t\right)  $ of minimum degree
+that annihilates $A$.
 \end{theorem}
 
 \begin{proof}
-The Cayley--Hamilton theorem shows that $p_{A}$ annihilates $A$. Since $p_{A}$
-is monic, we thus conclude that there exists \textbf{some} monic polynomial
-that annihilates $A$. Hence, there exists such a polynomial of minimum degree.
+The Cayley--Hamilton theorem (Theorem \ref{thm.schurtri.ch.ch}) shows that
+$p_{A}$ annihilates $A$. Since $p_{A}$ is monic, we thus conclude that there
+exists \textbf{some} monic polynomial that annihilates $A$. Hence, there
+exists such a polynomial of minimum degree.
 
 It remains to show that it is unique. To do so, we let $q_{A}$ and
 $\widetilde{q}_{A}$ be two monic polynomials of minimum degree that annihilate
 $A$. Our goal then is to show that $q_{A}=\widetilde{q}_{A}$.
 
-Indeed, if $q_{A}\neq\widetilde{q}_{A}$, then the difference $q_{A}%
--\widetilde{q}_{A}$ is a polynomial of smaller degree that annihilates $A$
-(indeed, it is of smaller degree because $q_{A}$ and $\widetilde{q}_{A}$ are
-monic of the same degree and thus lose their leading terms upon subtraction;
-it annihilates $A$ because $\left(  q_{A}-\widetilde{q}_{A}\right)  \left(
-A\right)  =q_{A}\left(  A\right)  -\widetilde{q}_{A}\left(  A\right)
-=0-0=0$). By scaling this difference appropriately, we can make it monic
-(since it is nonzero), and then get a contradiction to the minimality of
-$q_{A}$'s degree. This concludes the proof.
+Assume the contrary. Thus, $q_{A}-\widetilde{q}_{A}\neq0$. However, the two
+polynomials $q_{A}$ and $\widetilde{q}_{A}$ have the same degree (since both
+have minimum degree) and the same leading coefficients (because they are both
+monic). Thus, their difference $q_{A}-\widetilde{q}_{A}$ is a polynomial of
+smaller degree than $q_{A}$ and $\widetilde{q}_{A}$; furthermore, this
+difference $q_{a}-\widetilde{q}_{A}$ annihilates $A$ (because $\left(
+q_{A}-\widetilde{q}_{A}\right)  \left(  A\right)  =q_{A}\left(  A\right)
+-\widetilde{q}_{A}\left(  A\right)  =0-0=0$). Thus, by scaling this difference
+by an appropriate scalar in $\mathbb{F}$, we can make it monic (since it is
+nonzero), and of course it will still annihilate $A$. Therefore, we obtain a
+monic polynomial of smaller degree than $q_{A}$ that annihilates $A$. This
+contradicts the minimality of $q_{A}$'s degree. This concludes the proof of
+Theorem \ref{thm.jnf.mipo.unique}.
 \end{proof}
 
 \begin{definition}
-Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. The preceding
-theorem shows that there is a \textbf{unique} monic polynomial $q_{A}\left(
-t\right)  $ of minimum degree that annihilates $A$. This unique polynomial
-will be denoted $q_{A}\left(  t\right)  $ and will be called the
-\textbf{minimal polynomial} of $A$.
+\label{def.jnf.mipo.mipo}Let $A\in\mathbb{F}^{n\times n}$ be an $n\times
+n$-matrix. Theorem \ref{thm.jnf.mipo.unique} shows that there is a
+\textbf{unique} monic polynomial $q_{A}\left(  t\right)  $ of minimum degree
+that annihilates $A$. This unique polynomial will be denoted $q_{A}\left(
+t\right)  $ and will be called the \textbf{minimal polynomial} of $A$.
 \end{definition}
 
 \begin{example}
@@ -9287,7 +9409,7 @@ Let $\mathbb{F}=\mathbb{C}$. Let $A$ be the diagonal matrix $\left(
 & 2 & \\
 &  & 3
 \end{array}
-\right)  $. Then,%
+\right)  $ (where empty cells are supposed to contain $0$ entries). Then,%
 \[
 q_{A}\left(  t\right)  =\left(  t-2\right)  \left(  t-3\right)  .
 \]
@@ -9330,11 +9452,12 @@ $x_{1},x_{2},\ldots,x_{n}$ and $y_{1},y_{2},\ldots,y_{n}$ are nonzero.
 \end{exercise}
 
 \begin{theorem}
-Let $A\in\mathbb{F}^{n\times n}$ be an $n\times n$-matrix. Let $f\left(
-t\right)  \in\mathbb{F}\left[  t\right]  $ be any polynomial. Then, $f$
-annihilates $A$ if and only if $f$ is a multiple of $q_{A}$ (that is,
-$f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  $ for
-some polynomial $g\left(  t\right)  \in\mathbb{F}\left[  t\right]  $).
+\label{thm.jnf.mipo.annih-iff-mult}Let $A\in\mathbb{F}^{n\times n}$ be an
+$n\times n$-matrix. Let $f\left(  t\right)  \in\mathbb{F}\left[  t\right]  $
+be any polynomial. Then, $f$ annihilates $A$ if and only if $f$ is a multiple
+of $q_{A}$ (that is, $f\left(  t\right)  =q_{A}\left(  t\right)  \cdot
+g\left(  t\right)  $ for some polynomial $g\left(  t\right)  \in
+\mathbb{F}\left[  t\right]  $).
 \end{theorem}
 
 \begin{proof}
@@ -9368,8 +9491,9 @@ $\Longleftarrow:$ Easy and LTTR.
 \end{proof}
 
 \begin{corollary}
-Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be a matrix.
-Then, $q_{A}\left(  t\right)  \mid p_{A}\left(  t\right)  $.
+\label{cor.jnf.mipo.div-charpol}Let $\mathbb{F}$ be a field. Let
+$A\in\mathbb{F}^{n\times n}$ be a matrix. Then, $q_{A}\left(  t\right)  \mid
+p_{A}\left(  t\right)  $.
 \end{corollary}
 
 \begin{proof}
@@ -9382,8 +9506,9 @@ is, an eigenvalue of $A$. Conversely, we can show that any eigenvalue of $A$
 is a root of $q_{A}$ (but we don't know with which multiplicity):
 
 \begin{proposition}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. If $\lambda
-\in\sigma\left(  A\right)  $, then $q_{A}\left(  \lambda\right)  =0$.
+\label{prop.jnf.mipo.qlam=0}Let $A\in\mathbb{C}^{n\times n}$ be an $n\times
+n$-matrix. If $\lambda\in\sigma\left(  A\right)  $, then $q_{A}\left(
+\lambda\right)  =0$.
 \end{proposition}
 
 \begin{proof}
@@ -9404,10 +9529,11 @@ q_{A}\left(  \lambda\right)  x=\underbrace{q_{A}\left(  A\right)
 Since $x\neq0$, this entails $q_{A}\left(  \lambda\right)  =0$, qed.
 \end{proof}
 
-Combining the Corollary with the Proposition, we see that the roots of
-$q_{A}\left(  t\right)  $ are precisely the eigenvalues of $A$ (when
-$A\in\mathbb{C}^{n\times n}$); we just don't know yet with which
-multiplicities they appear as roots. In other words, we have
+Combining Corollary \ref{cor.jnf.mipo.div-charpol} with Proposition
+\ref{prop.jnf.mipo.qlam=0}, we see that the roots of $q_{A}\left(  t\right)  $
+are precisely the eigenvalues of $A$ (when $A\in\mathbb{C}^{n\times n}$); we
+just don't know yet with which multiplicities they appear as roots. In other
+words, we have
 \[
 q_{A}\left(  t\right)  =\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(
 t-\lambda_{2}\right)  ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
@@ -9418,17 +9544,17 @@ but we don't know these $k_{1},k_{2},\ldots,k_{p}$ yet. So let us find them.
 We will use some lemmas for this.
 
 \begin{lemma}
-Let $\mathbb{F}$ be a field. Let $A$ and $B$ be two similar $n\times
-n$-matrices in $\mathbb{F}^{n\times n}$. Then, $q_{A}\left(  t\right)
-=q_{B}\left(  t\right)  $.
+\label{lem.jnf.mipo.similar}Let $\mathbb{F}$ be a field. Let $A$ and $B$ be
+two similar $n\times n$-matrices in $\mathbb{F}^{n\times n}$. Then,
+$q_{A}\left(  t\right)  =q_{B}\left(  t\right)  $.
 \end{lemma}
 
 \begin{proof}
-This is obvious from the viewpoint of endomorphisms. For a pedestrian proof,
-you can just argue that a polynomial $f$ annihilates $A$ if and only if it
-annihilates $B$. But this is easy: We have $A=SBS^{-1}$ for some invertible
-$S$ (since $A$ and $B$ are similar), and therefore every polynomial $f$
-satisfies
+This is obvious from the viewpoint of endomorphisms (see Remark
+\ref{rmk.schurtri.similar.endo-vp}). For a pedestrian proof, you can just
+argue that a polynomial $f$ annihilates $A$ if and only if it annihilates $B$.
+But this is easy: We have $A=SBS^{-1}$ for some invertible $S$ (since $A$ and
+$B$ are similar), and therefore every polynomial $f$ satisfies
 \[
 f\left(  A\right)  =f\left(  SBS^{-1}\right)  =Sf\left(  B\right)  S^{-1}%
 \]
@@ -9446,14 +9572,17 @@ polynomial of smallest degree that is a common multiple of $p_{1},p_{2}%
 \operatorname{lcm}\left(  t^{2}-1,\ t^{3}-1\right)   &  =\operatorname{lcm}%
 \left(  \left(  t-1\right)  \left(  t+1\right)  ,\ \left(  t-1\right)  \left(
 t^{2}+t+1\right)  \right) \\
-&  =\allowbreak\left(  t-1\right)  \left(  t+1\right)  \left(  t+t^{2}%
-+1\right)  =\allowbreak t^{4}+t^{3}-t-1.
+&  =\left(  t-1\right)  \left(  t+1\right)  \left(  t+t^{2}+1\right)
+=t^{4}+t^{3}-t-1.
 \end{align*}
 (Again, the lcm of several polynomials is unique. This can be shown in the
 same way that we used to prove uniqueness of the minimal polynomial.)
 
+Our next lemma tells us what the minimal polynomial of a block-diagonal matrix is:
+
 \begin{lemma}
-Let $A_{1},A_{2},\ldots,A_{m}$ be $m$ square matrices. Let%
+\label{lem.jnf.mipo.block-diag}Let $A_{1},A_{2},\ldots,A_{m}$ be $m$ square
+matrices. Let%
 \[
 A=\left(
 \begin{array}
@@ -9530,8 +9659,8 @@ $q_{A}$ is the lcm of the $q_{A_{i}}$s.
 \end{proof}
 
 \begin{lemma}
-Let $k>0$ and $\lambda\in\mathbb{F}$. Let $A=J_{k}\left(  \lambda\right)  $.
-Then,%
+\label{lem.jnf.mipo.Jklam}Let $\mathbb{F}$ be a field. Let $k>0$ and
+$\lambda\in\mathbb{F}$. Let $A=J_{k}\left(  \lambda\right)  $. Then,%
 \[
 q_{A}=\left(  t-\lambda\right)  ^{k}.
 \]
@@ -9540,9 +9669,10 @@ q_{A}=\left(  t-\lambda\right)  ^{k}.
 
 \begin{proof}
 It is easy to see that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  $,
-because for a polynomial $f$ to annihilate $A-\lambda I_{k}$ is the same as
-for the polynomial $f\left(  t-\lambda\right)  $ to annihilate $A$. So we need
-to find $q_{A-\lambda I_{k}}$. Recall that
+because for a polynomial $f\in\mathbb{C}\left[  t\right]  $ to annihilate
+$A-\lambda I_{k}$ is the same as for the polynomial $f\left(  t-\lambda
+\right)  $ to annihilate $A$. So we need to find $q_{A-\lambda I_{k}}$. Recall
+(from Proposition \ref{prop.jnf.jcell-lambda}) that
 \[
 A-\lambda I_{k}=J_{k}\left(  0\right)  =\left(
 \begin{array}
@@ -9577,13 +9707,14 @@ degree that satisfies $f\left(  A-\lambda I_{k}\right)  =0$ is $t^{k}$. In
 other words, $q_{A-\lambda I_{k}}=t^{k}$.
 
 Now, recall that $q_{A}=q_{A-\lambda I_{k}}\left(  t-\lambda\right)  =\left(
-t-\lambda\right)  ^{k}$ (since $q_{A-\lambda I_{k}}=t^{k}$). Qed.
+t-\lambda\right)  ^{k}$ (since $q_{A-\lambda I_{k}}=t^{k}$). This proves Lemma
+\ref{lem.jnf.mipo.Jklam}.
 \end{proof}
 
 \begin{theorem}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Let $J$ be the
-Jordan canonical form of $A$. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{p}$
-be the distinct eigenvalues of $A$. Then,%
+\label{thm.jnf.mipo.jnf}Let $A\in\mathbb{C}^{n\times n}$ be an $n\times
+n$-matrix. Let $J$ be the Jordan canonical form of $A$. Let $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{p}$ be the distinct eigenvalues of $A$. Then,%
 \[
 q_{A}=\left(  t-\lambda_{1}\right)  ^{k_{1}}\left(  t-\lambda_{2}\right)
 ^{k_{2}}\cdots\left(  t-\lambda_{p}\right)  ^{k_{p}},
@@ -9617,11 +9748,12 @@ q_{A}=\left(  t-5\right)  ^{3}\left(  t-2\right)  ^{2}.
 \end{example}
 
 \begin{proof}
-[Proof of the Theorem.]We have $A\sim J$, so that $q_{A}=q_{J}$ (by our first lemma).
+[Proof of Theorem \ref{thm.jnf.mipo.jnf}.]We have $A\sim J$, so that
+$q_{A}=q_{J}$ (by Lemma \ref{lem.jnf.mipo.similar}).
 
 Recall that $J$ is a Jordan matrix, i.e., a block-diagonal matrix whose
-diagonal blocks are Jordan cells $J_{1},J_{2},\ldots,J_{m}$. Thus, by our
-second lemma, we have%
+diagonal blocks are Jordan cells $J_{1},J_{2},\ldots,J_{m}$. Thus, by Lemma
+\ref{lem.jnf.mipo.block-diag}, we have%
 \begin{align*}
 q_{J}  &  =\operatorname{lcm}\left(  q_{J_{1}},\ q_{J_{2}},\ \ldots
 ,\ q_{J_{m}}\right) \\
@@ -9630,13 +9762,40 @@ q_{J}  &  =\operatorname{lcm}\left(  q_{J_{1}},\ q_{J_{2}},\ \ldots
 t-\lambda_{J_{m}}\right)  ^{k_{J_{m}}}\right)  ,
 \end{align*}
 where each $J_{i}$ has eigenvalue $\lambda_{J_{i}}$ and size $k_{J_{i}}$ (by
-our third lemma). This lcm must be divisible by each $t-\lambda$ at least as
-often as each of the $\left(  t-\lambda_{J_{i}}\right)  ^{k_{J_{i}}}$s is;
-i.e., it must be divisible by $\left(  t-\lambda\right)  ^{k}$, where $k$ is
-the largest size of a Jordan cell of $J$ at eigenvalue $\lambda$. So the lcm
-is the product of these $\left(  t-\lambda\right)  ^{k}$s. But this is
-precisely our claim.
+Lemma \ref{lem.jnf.mipo.Jklam}). This lcm must be divisible by each
+$t-\lambda$ at least as often as each of the $\left(  t-\lambda_{J_{i}%
+}\right)  ^{k_{J_{i}}}$s is; i.e., it must be divisible by $\left(
+t-\lambda\right)  ^{k}$, where $k$ is the largest size of a Jordan cell of $J$
+at eigenvalue $\lambda$. So the lcm is the product of these $\left(
+t-\lambda\right)  ^{k}$s. But this is precisely our claim.
 \end{proof}
+
+\begin{exercise}
+\fbox{1} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ be any
+$n\times n$-matrix. \medskip
+
+\textbf{(a)} Prove that $q_{A^{T}}=q_{A}$, where $A^{T}$ denotes the transpose
+of the matrix $A$. \medskip
+
+\textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$. Prove that $q_{A^{\ast}%
+}=\overline{q_{A}}$, where $\overline{q_{A}}$ denotes the result of replacing
+all coefficients of the polynomial $q_{A}$ by their complex conjugates.
+\end{exercise}
+
+\begin{exercise}
+\fbox{5} \textbf{(a)} A matrix $A\in\mathbb{C}^{3\times3}$ has characteristic
+polynomial $t\left(  t-1\right)  \left(  t-2\right)  $. What can its JCF be?
+\medskip
+
+\textbf{(b)} A matrix $A\in\mathbb{C}^{3\times3}$ has characteristic
+polynomial $t^{2}\left(  t-2\right)  $. What can its JCF be? \medskip
+
+\textbf{(c)} A matrix $A\in\mathbb{C}^{3\times3}$ has minimal polynomial
+$t^{2}\left(  t-2\right)  $. What can its JCF be? \medskip
+
+\textbf{(d)} A matrix $A\in\mathbb{C}^{3\times3}$ has minimal polynomial
+$t\left(  t-2\right)  $. What can its JCF be?
+\end{exercise}
 
 \subsection{Application of functions to matrices}
 
@@ -9654,15 +9813,17 @@ t=\sum_{i\in\mathbb{N}}\dfrac{t^{i}}{i!}$, we can set%
 \exp A=\sum_{i\in\mathbb{N}}\dfrac{A^{i}}{i!}.
 \]
 This indeed works for $\exp$ and for $\sin$, as the sums you get always
-converge. But it doesn't generally work, e.g., for $f=\tan t$, since its
-Taylor series only converges in a certain neighborhood of $0$. Is this the
-best we can do?
+converge. But it doesn't generally work, e.g., for $f=\tan$, since its Taylor
+series only converges in a certain neighborhood of $0$. Is this the best we
+can do?
 
-There is a different approach that gives a more general definition.
+There is a different approach that gives a more general definition. We begin
+with a lemma about Jordan cells:
 
 \begin{lemma}
-Let $k>0$ and $\lambda\in\mathbb{C}$. Let $A=J_{k}\left(  \lambda\right)  $.
-Then, for any polynomial $f\in\mathbb{C}\left[  t\right]  $, we have%
+\label{lem.jnf.applying-funcs.Jklam}Let $k>0$ and $\lambda\in\mathbb{C}$. Let
+$A=J_{k}\left(  \lambda\right)  $. Then, for any polynomial $f\in
+\mathbb{C}\left[  t\right]  $, we have%
 \[
 f\left(  A\right)  =\left(
 \begin{array}
@@ -9684,12 +9845,8 @@ k-3\right)  }\left(  \lambda\right)  }{\left(  k-3\right)  !}\\
 
 \end{lemma}
 
-\begin{proof}
-Exercise.
-\end{proof}
-
 \begin{exercise}
-\fbox{2} Prove this.
+\fbox{2} Prove Lemma \ref{lem.jnf.applying-funcs.Jklam}.
 \end{exercise}
 
 Now, we aim to define $f\left(  A\right)  $ by the above formula, at least
@@ -9782,7 +9939,8 @@ polynomial). We shall prove this by explicitly constructing a matrix with a
 given polynomial as its characteristic polynomila.
 
 \begin{definition}
-Let $\mathbb{F}$ be a field, and let $n\in\mathbb{N}$.
+\label{def.jnf.companion.Cf}Let $\mathbb{F}$ be a field, and let
+$n\in\mathbb{N}$.
 
 Let $f\left(  t\right)  =t^{n}+f_{n-1}t^{n-1}+f_{n-2}t^{n-2}+\cdots+f_{1}%
 t^{1}+f_{0}t^{0}$ be a monic polynomial of degree $n$ with coefficients in
@@ -9792,22 +9950,24 @@ defined to be the matrix%
 C_{f}:=\left(
 \begin{array}
 [c]{cccccc}%
-0 &  &  & \cdots &  & -f_{0}\\
-1 & 0 &  & \cdots &  & -f_{1}\\
-& 1 & 0 & \cdots &  & -f_{2}\\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & 0 & -f_{n-2}\\
-&  &  & \cdots & 1 & -f_{n-1}%
+0 &  &  &  &  & -f_{0}\\
+1 & 0 &  &  &  & -f_{1}\\
+& 1 & 0 &  &  & -f_{2}\\
+&  & 1 & \ddots &  & \vdots\\
+&  &  & \ddots & 0 & -f_{n-2}\\
+&  &  &  & 1 & -f_{n-1}%
 \end{array}
-\right)  \in\mathbb{F}^{n\times n}.
+\right)  \in\mathbb{F}^{n\times n}%
 \]
-This is the $n\times n$-matrix whose first $n-1$ columns are the standard
-basis vectors $e_{2},e_{3},\ldots,e_{n}$, and whose last column is $\left(
+(where each cell that is left empty is supposed to be filled with a $0$). This
+is the $n\times n$-matrix whose first $n-1$ columns are the standard basis
+vectors $e_{2},e_{3},\ldots,e_{n}$, and whose last column is $\left(
 -f_{0},-f_{1},\ldots,-f_{n-1}\right)  ^{T}$.
 \end{definition}
 
 \begin{proposition}
-For any monic polynomial $f\left(  t\right)  $, we have%
+\label{prop.jnf.companion.pCf=qCf=f}For any monic polynomial $f\left(
+t\right)  $, we have%
 \[
 p_{C_{f}}\left(  t\right)  =q_{C_{f}}\left(  t\right)  =f\left(  t\right)  .
 \]
@@ -9815,76 +9975,97 @@ p_{C_{f}}\left(  t\right)  =q_{C_{f}}\left(  t\right)  =f\left(  t\right)  .
 \end{proposition}
 
 \begin{proof}
-Let us first show that $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $. To
-do so, we induct on $n$. Recall that%
-\begin{align*}
-p_{C_{f}}\left(  t\right)   &  =\det\left(  tI_{n}-C_{f}\right) \\
-&  =\det\left(
+Let us first show that $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $.
+
+To do so, we induct on $n$. The \textit{base case} (that is, the case $n=0$)
+is obvious (since the determinant of the $0\times0$-matrix is $1$ by
+definition). Let us thus proceed to the \textit{induction step}: Let $n$ be a
+positive integer. Let $f\left(  t\right)  =t^{n}+f_{n-1}t^{n-1}+f_{n-2}%
+t^{n-2}+\cdots+f_{1}t^{1}+f_{0}t^{0}$ be a monic polynomial of degree $n$ with
+coefficients in $\mathbb{F}$. We must show that $p_{C_{f}}\left(  t\right)
+=f\left(  t\right)  $. We assume (as the induction hypothesis) that the same
+holds for all monic polynomials of degree $n-1$.
+
+Let $g\left(  t\right)  $ be the polynomial $t^{n-1}+f_{n-1}t^{n-2}%
++\cdots+f_{2}t^{1}+f_{1}t^{0}$. This is a monic polynomial of degree $n-1$;
+thus, we can apply the induction hypothesis to it. Thus, we conclude that
+$p_{C_{g}}\left(  t\right)  =g\left(  t\right)  $.
+
+The definition of the characteristic polynomial yields%
+\[
+p_{C_{f}}\left(  t\right)  =\det\left(  tI_{n}-C_{f}\right)  =\det\left(
 \begin{array}
 [c]{cccccc}%
-t &  &  & \cdots &  & f_{0}\\
--1 & t &  & \cdots &  & f_{1}\\
-& -1 & t & \cdots &  & f_{2}\\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & t & f_{n-2}\\
-&  &  & \cdots & -1 & t+f_{n-1}%
+t &  &  &  &  & f_{0}\\
+-1 & t &  &  &  & f_{1}\\
+& -1 & t &  &  & f_{2}\\
+&  & -1 & \ddots &  & \vdots\\
+&  &  & \ddots & t & f_{n-2}\\
+&  &  &  & -1 & t+f_{n-1}%
 \end{array}
 \right)  .
-\end{align*}
-We compute this determinant by Laplace expansion along the first row:%
+\]
+We compute this determinant by Laplace expansion along the first row
+(exploiting the fact that only two entries of this first row are nonzero):%
 \begin{align*}
 &  \det\left(
 \begin{array}
 [c]{cccccc}%
-t &  &  & \cdots &  & f_{0}\\
--1 & t &  & \cdots &  & f_{1}\\
-& -1 & t & \cdots &  & f_{2}\\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-&  &  & \cdots & t & f_{n-2}\\
-&  &  & \cdots & -1 & t+f_{n-1}%
+t &  &  &  &  & f_{0}\\
+-1 & t &  &  &  & f_{1}\\
+& -1 & t &  &  & f_{2}\\
+&  & -1 & \ddots &  & \vdots\\
+&  &  & \ddots & t & f_{n-2}\\
+&  &  &  & -1 & t+f_{n-1}%
 \end{array}
 \right) \\
-&  =t\ \underbrace{\det\left(
+&  =t\ \det\underbrace{\left(
 \begin{array}
 [c]{ccccc}%
-t &  & \cdots &  & f_{1}\\
--1 & t & \cdots &  & f_{2}\\
-\vdots & \vdots & \ddots & \vdots & \vdots\\
-&  & \cdots & t & f_{n-2}\\
-&  & \cdots & -1 & t+f_{n-1}%
+t &  &  &  & f_{1}\\
+-1 & t &  &  & f_{2}\\
+& -1 & \ddots &  & \vdots\\
+&  & \ddots & t & f_{n-2}\\
+&  &  & -1 & t+f_{n-1}%
 \end{array}
-\right)  }_{\substack{=t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}%
-t^{0}\\\text{(by the induction hypothesis)}}}+\left(  -1\right)  ^{n+1}%
-f_{0}\ \underbrace{\det\left(
+\right)  }_{\substack{=tI_{n-1}-C_{g}\\\text{(by the definition of }%
+C_{g}\text{)}}}+\left(  -1\right)  ^{n+1}f_{0}\ \underbrace{\det\left(
 \begin{array}
 [c]{ccccc}%
--1 & t &  & \cdots & \\
-& -1 & t & \cdots & \\
-\vdots & \vdots & \vdots & \ddots & \vdots\\
-&  &  & \cdots & t\\
-&  &  & \cdots & -1
+-1 & t &  &  & \\
+& -1 & t &  & \\
+&  & -1 & \ddots & \\
+&  &  & \ddots & t\\
+&  &  &  & -1
 \end{array}
 \right)  }_{\substack{=\left(  -1\right)  ^{n-1}\\\text{(since this matrix is
-upper-triangular}\\\text{of size }n-1\text{)}}}\\
-&  =t\left(  t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}\right)
-+\underbrace{\left(  -1\right)  ^{n+1}f_{0}\left(  -1\right)  ^{n-1}}_{=f_{0}%
-}\\
+upper-triangular of}\\\text{size }n-1\text{, and its diagonal entries are
+}-1\text{'s)}}}\\
+&  =t\ \underbrace{\det\left(  tI_{n-1}-C_{g}\right)  }_{\substack{=p_{C_{g}%
+}\left(  t\right)  \\\text{(by the definition of the characteristic
+polynomial)}}}+\left(  -1\right)  ^{n+1}\underbrace{f_{0}\left(  -1\right)
+^{n-1}}_{=\left(  -1\right)  ^{n-1}f_{0}}\\
+&  =t\underbrace{p_{C_{g}}\left(  t\right)  }_{\substack{=g\left(  t\right)
+\\=t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}}}+\underbrace{\left(
+-1\right)  ^{n+1}\left(  -1\right)  ^{n-1}}_{=1}f_{0}\\
 &  =t\left(  t^{n-1}+f_{n-1}t^{n-2}+\cdots+f_{2}t^{1}+f_{1}t^{0}\right)
 +f_{0}\\
 &  =t^{n}+f_{n-1}t^{n-1}+f_{2}t^{2}+f_{1}t^{1}+f_{0}=f\left(  t\right)  .
 \end{align*}
-
-
-Thus, $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $ is proved.
+Thus, $p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $ is proved. This
+completes the induction step. Hence, we have proved the $p_{C_{f}}\left(
+t\right)  =f\left(  t\right)  $ part of Proposition
+\ref{prop.jnf.companion.pCf=qCf=f}.
 
 Now, let us show that $q_{C_{f}}\left(  t\right)  =f\left(  t\right)  $.
 Indeed, both $q_{C_{f}}\left(  t\right)  $ and $f\left(  t\right)  $ are monic
-polynomials, and we know from last lecture that $q_{C_{f}}\left(  t\right)
-\mid p_{C_{f}}\left(  t\right)  =f\left(  t\right)  $. Hence, if $q_{C_{f}%
-}\left(  t\right)  \neq f\left(  t\right)  $, then $q_{C_{f}}\left(  t\right)
-$ is a proper divisor of $f\left(  t\right)  $, thus has degree $<n$ (since
-$f\left(  t\right)  $ has degree $n$). So we just need to rule out the
-possibility that $q_{C_{f}}\left(  t\right)  $ has degree $<n$.
+polynomials, and we know from Corollary \ref{cor.jnf.mipo.div-charpol} that
+$q_{C_{f}}\left(  t\right)  \mid p_{C_{f}}\left(  t\right)  =f\left(
+t\right)  $. Hence, if $q_{C_{f}}\left(  t\right)  \neq f\left(  t\right)  $,
+then $q_{C_{f}}\left(  t\right)  $ is a proper divisor of $f\left(  t\right)
+$, thus has degree $<n$ (since $f\left(  t\right)  $ has degree $n$). So we
+just need to rule out the possibility that $q_{C_{f}}\left(  t\right)  $ has
+degree $<n$.
 
 Indeed, assume (for the sake of contradiction) that $q_{C_{f}}\left(
 t\right)  $ has degree $<n$. Thus, $q_{C_{f}}\left(  t\right)  =a_{k}%
@@ -9957,13 +10138,14 @@ Recall that:
 
 \item A matrix $A\in\mathbb{C}^{n\times n}$ is said to be \textbf{nilpotent}
 if some power of it is the zero matrix (i.e., if $A^{k}=0$ for some
-$k\in\mathbb{N}$). Actually (this will be a HW problem), for an $n\times
-n$-matrix $A$ to be nilpotent, it is necessary and sufficient that $A^{n}=0$.
+$k\in\mathbb{N}$). As we know from Exercise \ref{exe.jnf.step3.An=0}, for an
+$n\times n$-matrix $A$ to be nilpotent, it is necessary and sufficient that
+$A^{n}=0$.
 \end{itemize}
 
 \begin{theorem}
-[Jordan--Chevalley decomposition]Let $A\in\mathbb{C}^{n\times n}$ be an
-$n\times n$-matrix.
+[Jordan--Chevalley decomposition]\label{thm.jnf.jcdec.main}Let $A\in
+\mathbb{C}^{n\times n}$ be an $n\times n$-matrix.
 
 \textbf{(a)} Then, there exists a unique pair $\left(  D,N\right)  $
 consisting of
@@ -9974,7 +10156,7 @@ consisting of
 \item a nilpotent matrix $N\in\mathbb{C}^{n\times n}$
 \end{itemize}
 
-such that $DN=ND$ and $A=D+N$.
+\noindent such that $DN=ND$ and $A=D+N$.
 
 \textbf{(b)} Both $D$ and $N$ in this pair can be written as polynomials in
 $A$. In other words, there exist two polynomials $f,g\in\mathbb{C}\left[
@@ -9986,7 +10168,8 @@ The pair $\left(  D,N\right)  $ in this theorem is known as the
 decomposition}) of $A$.
 
 \begin{proof}
-[Partial proof.]We will show the following two claims:
+[Partial proof of Theorem \ref{thm.jnf.jcdec.main}.]We will show the following
+two claims:
 
 \begin{statement}
 \textit{Claim 1:} There exists a pair $\left(  D,N\right)  $ as in part
@@ -10146,11 +10329,11 @@ follows is a way to tweak the Jordan canonical form to this use case.
 We observe the following:
 
 \begin{lemma}
-Let $A\in\mathbb{R}^{n\times n}$ and $\lambda\in\mathbb{C}$. Then, the
-\textquotedblleft Jordan structure of $A$ at $\lambda$\textquotedblright%
-\ (meaning the multiset of the sizes of the Jordan blocks of $A$ at $\lambda$)
-equals the Jordan structure of $A$ at $\overline{\lambda}$. In other words,
-for each $p>0$, we have%
+\label{lem.jnf.real-jord.same-nums}Let $A\in\mathbb{R}^{n\times n}$ and
+$\lambda\in\mathbb{C}$. Then, the \textquotedblleft Jordan structure of $A$ at
+$\lambda$\textquotedblright\ (meaning the multiset of the sizes of the Jordan
+blocks of $A$ at $\lambda$) equals the Jordan structure of $A$ at
+$\overline{\lambda}$. In other words, for each $p>0$, we have%
 \begin{align*}
 &  \left(  \text{the number of Jordan blocks of }A\text{ at }\lambda\text{
 having size }p\right) \\
@@ -10164,7 +10347,7 @@ In other words, Jordan blocks at $\lambda$ and Jordan blocks at $\overline
 \end{lemma}
 
 \begin{exercise}
-\fbox{2} Prove this lemma.
+\fbox{2} Prove Lemma \ref{lem.jnf.real-jord.same-nums}.
 \end{exercise}
 
 So we can try to combine each Jordan block at $\lambda$ with an equally sized
@@ -10176,22 +10359,17 @@ somehow, in the same way as $\left(  t-\lambda\right)  \left(  t-\overline
 How to do this? For Jordan blocks of size $1$, this is easy:
 
 \begin{lemma}
-Let $\lambda\in\mathbb{C}$. Let $L$ be the $2\times2$-matrix $\left(
+\label{lem.jnf.real-jord.2x2}Let $\lambda\in\mathbb{C}$. Let $L$ be the
+$2\times2$-matrix $\left(
 \begin{array}
 [c]{cc}%
-\lambda & \\
-& \overline{\lambda}%
+\lambda & 0\\
+0 & \overline{\lambda}%
 \end{array}
 \right)  $. Let $a=\operatorname*{Re}\lambda$ and $b=\operatorname*{Im}%
 \lambda$ (so that $\lambda=a+bi$). Then,%
 \[
-\left(
-\begin{array}
-[c]{cc}%
-\lambda & \\
-& \overline{\lambda}%
-\end{array}
-\right)  \sim\left(
+L\sim\left(
 \begin{array}
 [c]{cc}%
 a & b\\
@@ -10203,7 +10381,7 @@ a & b\\
 \end{lemma}
 
 \begin{exercise}
-\fbox{2} Prove this lemma.
+\fbox{2} Prove Lemma \ref{lem.jnf.real-jord.2x2}.
 \end{exercise}
 
 Now, let us see how to combine a Jordan block at $\lambda$ with an equally
@@ -10249,18 +10427,12 @@ L & I_{2} &  & \\
 where $L$ is the $2\times2$-matrix $\left(
 \begin{array}
 [c]{cc}%
-\lambda & \\
-& \overline{\lambda}%
+\lambda & 0\\
+0 & \overline{\lambda}%
 \end{array}
-\right)  $. However, our last lemma yields%
+\right)  $. However, Lemma \ref{lem.jnf.real-jord.2x2} yields%
 \[
-\left(
-\begin{array}
-[c]{cc}%
-\lambda & \\
-& \overline{\lambda}%
-\end{array}
-\right)  \sim\left(
+L\sim\left(
 \begin{array}
 [c]{cc}%
 a & b\\
@@ -10890,7 +11062,8 @@ is a zero matrix.
 
 \begin{proof}
 Essentially the same argument that we used to prove the theorem about
-$J_{n}\left(  0\right)  $, just with a lot more bookkeeping involved.
+$J_{n}\left(  0\right)  $, just with a lot more bookkeeping involved. See
+\cite[Proposition 3.1.2]{OmClVi11} for details.
 \end{proof}
 
 We can summarize our results into a single theorem:
@@ -11038,7 +11211,7 @@ column vector $Mu$. According to the definition of matrix multiplication, this
 entry is given by%
 \begin{equation}
 w_{i}=M_{i,1}u_{1}+M_{i,2}u_{2}+\cdots+M_{i,n}u_{n}=\sum_{j=1}^{n}M_{i,j}%
-u_{j}.\label{pf.lem.herm.Muv.wi=}%
+u_{j}. \label{pf.lem.herm.Muv.wi=}%
 \end{equation}
 However, $Mu=\left(
 \begin{array}
@@ -11058,11 +11231,11 @@ v_{n}%
 \end{array}
 \right)  $; therefore, the definition of the inner product yields%
 \begin{align*}
-\left\langle Mu,v\right\rangle  & =w_{1}\overline{v_{1}}+w_{2}\overline{v_{2}%
-}+\cdots+w_{n}\overline{v_{n}}=\sum_{i=1}^{n}\underbrace{w_{i}}%
-_{\substack{=\sum_{j=1}^{n}M_{i,j}u_{j}\\\text{(by (\ref{pf.lem.herm.Muv.wi=}%
+\left\langle Mu,v\right\rangle  &  =w_{1}\overline{v_{1}}+w_{2}\overline
+{v_{2}}+\cdots+w_{n}\overline{v_{n}}=\sum_{i=1}^{n}\underbrace{w_{i}%
+}_{\substack{=\sum_{j=1}^{n}M_{i,j}u_{j}\\\text{(by (\ref{pf.lem.herm.Muv.wi=}%
 ))}}}\overline{v_{i}}\\
-& =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}u_{j}\overline{v_{i}}.
+&  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}u_{j}\overline{v_{i}}.
 \end{align*}
 This proves Lemma \ref{lem.herm.Muv}.
 \end{proof}
@@ -11074,7 +11247,7 @@ Then, $M=0$.
 \end{lemma}
 
 \begin{proof}
-[Proof of Lemma \ref{lem.herm.M=0}.] For every $x=\left(
+[Proof of Lemma \ref{lem.herm.M=0}.]For every $x=\left(
 \begin{array}
 [c]{c}%
 x_{1}\\
@@ -11084,15 +11257,15 @@ x_{n}%
 \end{array}
 \right)  \in\mathbb{C}^{n}$, we have%
 \begin{align*}
-\left\langle Mx,x\right\rangle  & =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}%
+\left\langle Mx,x\right\rangle  &  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}%
 M_{i,j}x_{j}\overline{x_{i}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
-(\ref{lem.herm.Muv})}\right)  \\
-& =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}%
+(\ref{lem.herm.Muv})}\right) \\
+&  =\sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}%
 \end{align*}
 and therefore%
 \begin{equation}
 \sum_{i=1}^{n}\ \ \sum_{j=1}^{n}M_{i,j}\overline{x_{i}}x_{j}=\left\langle
-Mx,x\right\rangle =0\label{pf.lem.herm.M=0.=0}%
+Mx,x\right\rangle =0 \label{pf.lem.herm.M=0.=0}%
 \end{equation}
 (since we assumed that $\left\langle Mx,x\right\rangle =0$ for each
 $x\in\mathbb{C}^{n}$). In particular:
@@ -11154,7 +11327,7 @@ This proves Lemma \ref{lem.herm.M=0}.
 Now we can prove the theorem:
 
 \begin{proof}
-[Proof of Theorem \ref{thm.herm.ABCDE}.] The equivalence $\mathcal{A}%
+[Proof of Theorem \ref{thm.herm.ABCDE}.]The equivalence $\mathcal{A}%
 \Longleftrightarrow\mathcal{B}$ has already been proved (it is Corollary
 \ref{cor.schurtri.normal.hermitian-iff}). The implication $\mathcal{A}%
 \Longrightarrow\mathcal{C}$ follows from Proposition
@@ -11199,9 +11372,9 @@ Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}x=x^{\ast}A^{\ast}x.
 \]
 Thus, each $x\in\mathbb{C}^{n}$ satisfies%
 \begin{align*}
-x^{\ast}Ax &  =\left\langle Ax,x\right\rangle =\overline{\left\langle
+x^{\ast}Ax  &  =\left\langle Ax,x\right\rangle =\overline{\left\langle
 Ax,x\right\rangle }\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\langle
-Ax,x\right\rangle \in\mathbb{R}\right)  \\
+Ax,x\right\rangle \in\mathbb{R}\right) \\
 &  =\left\langle x,Ax\right\rangle =x^{\ast}A^{\ast}x,
 \end{align*}
 so that
@@ -11232,6 +11405,19 @@ that $A$ is Hermitian. So $\mathcal{E}\Longrightarrow\mathcal{A}$ follows.
 
 The theorem is proved.
 \end{proof}
+
+\begin{exercise}
+\fbox{1} \textbf{(a)} Prove the converse of Proposition
+\ref{prop.unitary.innerprod.isometry.len}: If a matrix $A\in\mathbb{C}%
+^{n\times k}$ satisfies $\left\vert \left\vert Ax\right\vert \right\vert
+=\left\vert \left\vert x\right\vert \right\vert $ for each $x\in\mathbb{C}%
+^{k}$, then $A$ is an isometry. \medskip
+
+\textbf{(b)} Prove the converse of Exercise \ref{exe.schurtri.normal.A*x}
+\textbf{(a)}: If a matrix $A\in\mathbb{C}^{n\times n}$ satisfies $\left\vert
+\left\vert Ax\right\vert \right\vert =\left\vert \left\vert A^{\ast
+}x\right\vert \right\vert $ for each $x\in\mathbb{C}^{n}$, then $A$ is normal.
+\end{exercise}
 
 As a reminder: Sums of Hermitian matrices are Hermitian, but products are not
 (in general).
@@ -11374,11 +11560,14 @@ positive definite.
 $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}%
 {a_{i}+a_{j}}$. Prove that $A$ is positive definite. \medskip
 
-
 [\textbf{Hint:} Recall that $\dfrac{1}{m}=\int_{0}^{1}t^{m-1}dt$ for each
 $m>0$. Also, integrating an $\mathbb{R}_{\geq0}$-valued function over $\left[
 0,1\right]  $ yields a nonnegative real.]
 \end{exercise}
+
+Note that a Hermitian matrix $A$ is negative definite if and only if $-A$ is
+positive definite. Similarly, a Hermitian matrix $A$ is negative semidefinite
+if and only if $-A$ is positive semidefinite. (These follow easily from the definitions.)
 
 As an application of positive semidefiniteness, the Schoenberg theorem
 generalizes the triangle inequality. Recall that the triangle inequality says
@@ -11514,6 +11703,620 @@ We have thus proved Proposition \ref{thm.herm.pos-semdef-using-evals}
 entails $\left(  UE\right)  ^{\ast}x\neq0$ (because $U$ and $E$ are
 invertible, thus $UE$ is invertible, thus $\left(  UE\right)  ^{\ast}$ is invertible).
 \end{proof}
+
+\subsection{The Cholesky decomposition}
+
+\begin{theorem}
+[Cholesky decomposition for positive definite matrices]Let $A\in
+\mathbb{C}^{n\times n}$ be a positive definite Hermitian matrix. Then, $A$ has
+a unique factorization of the form%
+\[
+A=LL^{\ast},
+\]
+where $L\in\mathbb{C}^{n\times n}$ is a lower-triangular matrix whose diagonal
+entries are positive reals.
+\end{theorem}
+
+\begin{example}
+For $n=1$, the theorem is trivial: In this case, $A=\left(
+\begin{array}
+[c]{c}%
+a
+\end{array}
+\right)  $ for some $a\in\mathbb{R}$, and this $a$ is $>0$ because $A$ is
+positive definite. Thus, setting $L=\left(
+\begin{array}
+[c]{c}%
+\sqrt{a}%
+\end{array}
+\right)  $, then $A=LL^{\ast}$. Moreover, this is clearly the only choice.
+\end{example}
+
+\begin{example}
+Let us manually check the theorem for $n=2$. Let $A=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $ be a positive definite Hermitian matrix. We are looking for a
+lower-triangular matrix $L=\left(
+\begin{array}
+[c]{cc}%
+\lambda & 0\\
+x & \delta
+\end{array}
+\right)  $ whose diagonal entries $\lambda$ and $\delta$ are positive reals
+that satisfies $A=LL^{\ast}$.
+
+So we need%
+\begin{align*}
+\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)   &  =A=LL^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+\lambda & 0\\
+x & \delta
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda & 0\\
+x & \delta
+\end{array}
+\right)  ^{\ast}\\
+&  =\left(
+\begin{array}
+[c]{cc}%
+\lambda & 0\\
+x & \delta
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda & \overline{x}\\
+0 & \delta
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\lambda,\delta\text{ are
+real}\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+\lambda^{2} & \lambda\overline{x}\\
+\lambda x & x\overline{x}+\delta^{2}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda^{2} & \lambda\overline{x}\\
+\lambda x & \left\vert x\right\vert ^{2}+\delta^{2}%
+\end{array}
+\right)  .
+\end{align*}
+So we need to solve the system of equations%
+\[
+\left\{
+\begin{array}
+[c]{c}%
+a=\lambda^{2};\\
+b=\lambda\overline{x};\\
+c=\lambda x;\\
+d=\left\vert x\right\vert ^{2}+\delta^{2}.
+\end{array}
+\right.
+\]
+
+
+First, we solve the equation $a=\lambda^{2}$ by setting $\lambda=\sqrt{a}$.
+Since $A$ is positive definite, we have $a=\left\langle Ae_{1},e_{1}%
+\right\rangle >0$, so that $\sqrt{a}$ is well-defined, and we get a positive
+real $\lambda$. Next, we solve the equation $c=\lambda x$ by setting
+$x=\dfrac{c}{\lambda}$. Next, the equation $b=\lambda\overline{x}$ is
+automatically satisfied, since the Hermitianness of $A$ entails $b=\overline
+{c}=\overline{\lambda x}=\lambda\overline{x}$ (since $\lambda$ is real).
+Finally, we solve the equation $d=\left\vert x\right\vert ^{2}+\delta^{2}$ by
+setting $\delta=\sqrt{d-\left\vert x\right\vert ^{2}}$. Here, we need to
+convince ourselves that $d-\left\vert x\right\vert ^{2}$ is a positive real,
+i.e., that $d>\left\vert x\right\vert ^{2}$. Why is this the case?
+
+I claim that this follows from applying $\left\langle Az,z\right\rangle \geq0$
+to the vector $z=\left(
+\begin{array}
+[c]{c}%
+b\\
+-a
+\end{array}
+\right)  $. Indeed, setting $z=\left(
+\begin{array}
+[c]{c}%
+b\\
+-a
+\end{array}
+\right)  $, we obtain%
+\[
+Az=\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+b\\
+-a
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+0\\
+bc-ad
+\end{array}
+\right)  ,
+\]
+so that%
+\[
+\left\langle Az,z\right\rangle =\left\langle \left(
+\begin{array}
+[c]{c}%
+0\\
+bc-ad
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+b\\
+-a
+\end{array}
+\right)  \right\rangle =\left(  bc-ad\right)  \overline{-a}=a\left(
+ad-bc\right)
+\]
+and thus $a\left(  ad-bc\right)  =\left\langle Az,z\right\rangle >0$ (by the
+positive definiteness of $A$, since $z\neq0$). We can divide this inequality
+by $a$ (since $a>0$), and obtain $ad-bc>0$. Now, recall that $x=\dfrac
+{c}{\lambda}$ and $\lambda=\sqrt{a}$. Hence,%
+\begin{align*}
+d-\left\vert x\right\vert ^{2}  &  =d-\left\vert \dfrac{c}{\lambda}\right\vert
+^{2}=d-\dfrac{c\overline{c}}{\lambda^{2}}=d-\dfrac{cb}{a}%
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\overline{c}=b\text{ and }\lambda
+^{2}=a\right) \\
+&  =\dfrac{ad-bc}{a}>0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }ad-bc>0\text{
+and }a>0\right)  .
+\end{align*}
+This is what we need. So the theorem is proved for $n=2$.
+\end{example}
+
+To prove the theorem in general, we need a lemma that essentially generalizes
+our above argument for $d-\left\vert x\right\vert ^{2}>0$:
+
+\begin{lemma}
+Let $Q\in\mathbb{C}^{n\times n}$ be a invertible matrix. Let $x\in
+\mathbb{C}^{n}$ be some column vector. Let $d\in\mathbb{R}$. Let%
+\[
+A:=\left(
+\begin{array}
+[c]{cc}%
+QQ^{\ast} & Qx\\
+\left(  Qx\right)  ^{\ast} & d
+\end{array}
+\right)  \in\mathbb{C}^{\left(  n+1\right)  \times\left(  n+1\right)  }.
+\]
+Assume that $A$ is positive definite. Then, $\left\vert \left\vert
+x\right\vert \right\vert ^{2}<d$.
+\end{lemma}
+
+\begin{proof}
+Set $Q^{-\ast}:=\left(  Q^{-1}\right)  ^{\ast}=\left(  Q^{\ast}\right)  ^{-1}%
+$. (This is well-defined, since $Q$ is invertible.) Set $u=\left(
+\begin{array}
+[c]{c}%
+Q^{-\ast}x\\
+-1
+\end{array}
+\right)  \in\mathbb{C}^{n+1}$. (This is in block-matrix notation. Explicitly,
+this is the column vector obtained by appending the extra entry $-1$ at the
+bottom of $Q^{-\ast}x$.)
+
+Then,%
+\begin{align*}
+Au  &  =\left(
+\begin{array}
+[c]{cc}%
+QQ^{\ast} & Qx\\
+\left(  Qx\right)  ^{\ast} & d
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+Q^{-\ast}x\\
+-1
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+QQ^{\ast}Q^{-\ast}x+Qx\left(  -1\right) \\
+\left(  Qx\right)  ^{\ast}Q^{-\ast}x+d\left(  -1\right)
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{c}%
+0\\
+x^{\ast}Q^{\ast}Q^{-\ast}x-d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+0\\
+x^{\ast}x-d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+0\\
+\left\vert \left\vert x\right\vert \right\vert ^{2}-d
+\end{array}
+\right)
+\end{align*}
+(since $x^{\ast}x=\left\langle x,x\right\rangle =\left\vert \left\vert
+x\right\vert \right\vert ^{2}$). Hence,%
+\[
+\left\langle Au,u\right\rangle =\left\langle \left(
+\begin{array}
+[c]{c}%
+0\\
+\left\vert \left\vert x\right\vert \right\vert ^{2}-d
+\end{array}
+\right)  ,\left(
+\begin{array}
+[c]{c}%
+Q^{-\ast}x\\
+-1
+\end{array}
+\right)  \right\rangle =\left(  \left\vert \left\vert x\right\vert \right\vert
+^{2}-d\right)  \left(  \overline{-1}\right)  =d-\left\vert \left\vert
+x\right\vert \right\vert ^{2}.
+\]
+However, the vector $u$ is nonzero (since its last entry is $-1$), and the
+matrix $A$ is positive definite (by assumption). Thus, $\left\langle
+Au,u\right\rangle >0$. Since $\left\langle Au,u\right\rangle =d-\left\vert
+\left\vert x\right\vert \right\vert ^{2}$, we thus obtain $d-\left\vert
+\left\vert x\right\vert \right\vert ^{2}>0$. In other words, $d>\left\vert
+\left\vert x\right\vert \right\vert ^{2}$. This proves the lemma.
+\end{proof}
+
+Now, let us prove the Cholesky factorization theorem:
+
+\begin{proof}
+[Proof of the Theorem.]We proceed by induction on $n$.
+
+The \textit{base cases} $n=0$ and $n=1$ are essentially obvious ($n=1$ was
+done in an example).
+
+\textit{Induction step:} Assume that the theorem holds for some $n$. We must
+prove that it holds for $n+1$ as well.
+
+Let $A\in\mathbb{C}^{\left(  n+1\right)  \times\left(  n+1\right)  }$ be a
+positive definite Hermitian matrix. Write $A$ in the form%
+\[
+A=\left(
+\begin{array}
+[c]{cc}%
+B & b\\
+b^{\ast} & d
+\end{array}
+\right)  ,
+\]
+where $B\in\mathbb{C}^{n\times n}$ and $b\in\mathbb{C}^{n}$. Note that the
+$b^{\ast}$ on the bottom of the right hand side is because $A$ is Hermitian,
+so all entries in the last row of $A$ are the complex conjugates of the
+corresponding entries in the last column of $A$. Also, $d=d^{\ast}$ for the
+same reason, so $d\in\mathbb{R}$. Moreover, $B$ is Hermitian (since $A$ is Hermitian).
+
+Next, we claim that $B$ is positive definite. Indeed, for any nonzero vector
+$x\in\mathbb{C}^{n}$, we have $\left\langle Bx,x\right\rangle =\left\langle
+Ax^{\prime},x^{\prime}\right\rangle $, where $x^{\prime}=\left(
+\begin{array}
+[c]{c}%
+x\\
+0
+\end{array}
+\right)  $. Thus, positive definiteness of $B$ follows from positive
+definiteness of $A$. (More generally, any principal submatrix of a positive
+definite matrix is positive definite.)
+
+Therefore, by the induction hypothesis, we can apply the theorem to $B$
+instead of $A$. We conclude that $B$ can be uniquely written as a product
+$B=QQ^{\ast}$, where $Q\in\mathbb{C}^{n\times n}$ is a lower-triangular matrix
+whose diagonal entries are positive reals.
+
+Now, we want to find a vector $x\in\mathbb{C}^{n}$ and a positive real
+$\delta$ such that if we set%
+\[
+L:=\left(
+\begin{array}
+[c]{cc}%
+Q & 0\\
+x^{\ast} & \delta
+\end{array}
+\right)  ,
+\]
+then $A=LL^{\ast}$. If we can find such $x$ and $\delta$, then at least the
+existence part of the theorem will be settled.
+
+So let us set $L:=\left(
+\begin{array}
+[c]{cc}%
+Q & 0\\
+x^{\ast} & \delta
+\end{array}
+\right)  $, and see what conditions $A=LL^{\ast}$ places on $x$ and $\delta$.
+We want%
+\begin{align*}
+\left(
+\begin{array}
+[c]{cc}%
+B & b\\
+b^{\ast} & d
+\end{array}
+\right)   &  =A=LL^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+Q & 0\\
+x^{\ast} & \delta
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+Q^{\ast} & \left(  x^{\ast}\right)  ^{\ast}\\
+0 & \overline{\delta}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+Q & 0\\
+x^{\ast} & \delta
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+Q^{\ast} & x\\
+0 & \delta
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\delta\in\mathbb{R}%
+\Longrightarrow\overline{\delta}=\delta\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+QQ^{\ast} & Qx\\
+x^{\ast}Q^{\ast} & x^{\ast}x+\delta^{2}%
+\end{array}
+\right)  .
+\end{align*}
+In other words, we want%
+\[
+\left\{
+\begin{array}
+[c]{c}%
+B=QQ^{\ast};\\
+b=Qx;\\
+b^{\ast}=x^{\ast}Q^{\ast};\\
+d=x^{\ast}x+\delta^{2}.
+\end{array}
+\right.
+\]
+The first of these four equations is already satisfied (we know that
+$B=QQ^{\ast}$). The second equation will be satisfied if we set $x=Q^{-1}b$.
+We can indeed set $x=Q^{-1}b$, since the matrix $Q$ is invertible (since $Q$
+is a lower-triangular matrix with positive reals on its diagonal). The third
+equation follows automatically from the second ($b=Qx$ $\Longrightarrow$
+$b^{\ast}=\left(  Qx\right)  ^{\ast}=x^{\ast}Q^{\ast}$). Finally, the fourth
+equation rewrites as $d=\left\vert \left\vert x\right\vert \right\vert
+^{2}+\delta^{2}$. We can satisfy it by setting $\delta=\sqrt{d-\left\vert
+\left\vert x\right\vert \right\vert ^{2}}$, as long as we can show that
+$d-\left\vert \left\vert x\right\vert \right\vert ^{2}>0$. Fortunately, we can
+indeed show this, because our Lemma yields that $\left\vert \left\vert
+x\right\vert \right\vert ^{2}<d$. Thus, we have found $x$ and $\delta$, and
+constructed a lower-triangular matrix $L$ whose diagonal entries are positive
+reals and which satisfies $A=LL^{\ast}$.
+
+It remains to show that this $L$ is unique. Indeed, we can basically read our
+argument above backwards. \textbf{If} $L\in\mathbb{C}^{\left(  n+1\right)
+\times\left(  n+1\right)  }$ is a lower-triangular matrix whose diagonal
+entries are positive reals and which satisfies $A=LL^{\ast}$, then we can
+write $A$ in the form $A=\left(
+\begin{array}
+[c]{cc}%
+Q & 0\\
+x^{\ast} & \delta
+\end{array}
+\right)  $ for some $Q\in\mathbb{C}^{n\times n}$ and $x\in\mathbb{C}^{n}$ and
+some positive real $\delta$, where $Q$ is lower-triangular with diagonal
+entries being real. The equation $A=LL^{\ast}$ rewrites as%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+B & b\\
+b^{\ast} & d
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+QQ^{\ast} & Qx\\
+x^{\ast}Q^{\ast} & x^{\ast}x+\delta^{2}%
+\end{array}
+\right)  .
+\]
+Thus, $B=QQ^{\ast}$. By the induction hypothesis, the $Q$ is unique, so this
+$Q$ is exactly the $Q$ that was constructed above. Moreover, $b=Qx$, so that
+$x=Q^{-1}b$, so again our new $x$ is our old $x$. Finally, $d=x^{\ast}%
+x+\delta^{2}$ entails $\delta=\sqrt{d-\left\vert \left\vert x\right\vert
+\right\vert ^{2}}$, because $\delta$ has to be positive. So our $\delta$ is
+our old $\delta$. Thus, our $L$ is the $L$ that we constructed above. This
+proves the uniqueness of the $L$. The theorem is proved.
+\end{proof}
+
+\begin{exercise}
+Let $A\in\mathbb{C}^{n\times n}$ be a positive definite Hermitian matrix.
+Then, $\det A$ is a positive real.
+\end{exercise}
+
+\begin{exercise}
+Let $A$ and $B$ be two positive definite Hermitian matrices in $\mathbb{C}%
+^{n\times n}$. Then, $\operatorname*{Tr}\left(  AB\right)  \geq0$.
+\end{exercise}
+
+There is a version of Cholesky decomposition for positive semidefinite
+matrices, but this will be left to the exercises.
+
+\subsection{Rayleigh quotients}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix, and $x\in
+\mathbb{C}^{n}$ be a nonzero vector. Then, the \textbf{Rayleigh quotient} for
+$A$ and $x$ is defined to be the real number%
+\[
+R\left(  A,x\right)  :=\dfrac{\left\langle Ax,x\right\rangle }{\left\langle
+x,x\right\rangle }=\dfrac{x^{\ast}Ax}{x^{\ast}x}=\dfrac{x^{\ast}Ax}{\left\vert
+\left\vert x\right\vert \right\vert ^{2}}=y^{\ast}Ay,
+\]
+where $y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }$.
+\end{definition}
+
+Let us explore what Rayleigh quotients can tell us about the eigenvalues of a
+Hermitian matrix.
+
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. By the
+spectral theorem, we have $A=UDU^{\ast}$ for some unitary $U$ and some real
+diagonal matrix $D$. Consider these $U$ and $D$. We have
+$D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  $, where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
+eigenvalues of $A$. We WLOG that
+\[
+\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}%
+\]
+(indeed, we can always achieve this by permuting rows/columns of $D$ and
+integrating the permutation matrices into $U$). We set%
+\[
+\lambda_{\min}\left(  A\right)  :=\lambda_{1}\ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ \lambda_{\max}\left(  A\right)  :=\lambda_{n}.
+\]
+We will also write $\lambda_{\min}$ and $\lambda_{\max}$ without the
+\textquotedblleft$\left(  A\right)  $\textquotedblright\ part.
+
+Let us now pick some vector $x\in\mathbb{C}^{n}$ of length $1$ (that is,
+$\left\vert \left\vert x\right\vert \right\vert =1$). Set $z=U^{\ast}x$. Then,
+writing $z$ as $\left(
+\begin{array}
+[c]{c}%
+z_{1}\\
+z_{2}\\
+\vdots\\
+z_{n}%
+\end{array}
+\right)  $, we have%
+\[
+x^{\ast}Ax=\underbrace{x^{\ast}U}_{=\left(  U^{\ast}x\right)  ^{\ast}=z^{\ast
+}}D\underbrace{U^{\ast}x}_{=z}=z^{\ast}Dz=\sum_{k=1}^{n}\lambda_{k}%
+\overline{z_{k}}z_{k}=\sum_{k=1}^{n}\lambda_{k}\left\vert z_{k}\right\vert
+^{2}.
+\]
+We note that $\left\vert \left\vert z\right\vert \right\vert =1$ (indeed,
+since $U$ is unitary, the matrix $U^{\ast}$ is also unitary, so $\left\vert
+\left\vert U^{\ast}x\right\vert \right\vert =\left\vert \left\vert
+x\right\vert \right\vert =1$, which means $\left\vert \left\vert z\right\vert
+\right\vert =1$). In other words, $\sum\limits_{k=1}^{n}\left\vert
+z_{k}\right\vert ^{2}=1$ (since $\left\vert \left\vert z\right\vert
+\right\vert =\sqrt{\sum\limits_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}}$).
+Now,%
+\[
+x^{\ast}Ax=\sum_{k=1}^{n}\underbrace{\lambda_{k}}_{\leq\lambda_{n}}\left\vert
+z_{k}\right\vert ^{2}\leq\sum_{k=1}^{n}\lambda_{n}\left\vert z_{k}\right\vert
+^{2}=\lambda_{n}\underbrace{\sum_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}%
+}_{=1}=\lambda_{n}.
+\]
+
+
+So we have shown that each vector $x\in\mathbb{C}^{n}$ of length $1$ satisfies
+$x^{\ast}Ax\leq\lambda_{n}$. This inequality becomes an equality at least for
+one vector $x$: namely, for the vector $x=Ue_{n}$ (because for this vector, we
+have $z=\underbrace{U^{\ast}U}_{=I_{n}}e_{n}=e_{n}$, so that $z_{k}=0$ for all
+$k<n$, and therefore the inequality $\sum_{k=1}^{n}\lambda_{k}\left\vert
+z_{k}\right\vert ^{2}\leq\sum_{k=1}^{n}\lambda_{n}\left\vert z_{k}\right\vert
+^{2}$ becomes an equality). Thus,%
+\begin{align*}
+\lambda_{n}  &  =\max\left\{  x^{\ast}Ax\ \mid\ x\in\mathbb{C}^{n}\text{ is a
+vector of length }1\right\} \\
+&  =\max\left\{  \dfrac{x^{\ast}Ax}{x^{\ast}x}\ \mid\ x\in\mathbb{C}^{n}\text{
+is nonzero}\right\} \\
+&  =\max\left\{  R\left(  A,x\right)  \ \mid\ x\in\mathbb{C}^{n}\text{ is
+nonzero}\right\}  .
+\end{align*}
+Since $\lambda_{n}=\lambda_{\max}\left(  A\right)  $, we thus have proved the
+following fact:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. Then, the
+largest eigenvalue of $A$ is%
+\begin{align*}
+\lambda_{\max}\left(  A\right)   &  =\max\left\{  x^{\ast}Ax\ \mid
+\ x\in\mathbb{C}^{n}\text{ is a vector of length }1\right\} \\
+&  =\max\left\{  R\left(  A,x\right)  \ \mid\ x\in\mathbb{C}^{n}\text{ is
+nonzero}\right\}  .
+\end{align*}
+
+\end{proposition}
+
+Similarly:
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. Then, the
+smallest eigenvalue of $A$ is%
+\begin{align*}
+\lambda_{\max}\left(  A\right)   &  =\min\left\{  x^{\ast}Ax\ \mid
+\ x\in\mathbb{C}^{n}\text{ is a vector of length }1\right\} \\
+&  =\min\left\{  R\left(  A,x\right)  \ \mid\ x\in\mathbb{C}^{n}\text{ is
+nonzero}\right\}  .
+\end{align*}
+
+\end{proposition}
+
+What about the other eigenvalues? Can we characterize $\lambda_{2}$ (for
+example) in terms of Rayleigh quotients?
+
+\begin{theorem}
+[Courant--Fisher theorem]Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the eigenvalues of
+$A$, with $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$. Then, for
+each $k\in\left[  n\right]  $, we have%
+\begin{align*}
+\lambda_{k}  &  =\min\left\{  \max\left\{  R\left(  A,x\right)  \ \mid\ x\in
+S\text{ nonzero}\right\}  \ \mid\ S\subseteq\mathbb{C}^{n}\text{ is a
+}k\text{-dimensional subspace}\right\} \\
+&  =\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a subspace;}%
+\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)
+\end{align*}
+and%
+\begin{align*}
+\lambda_{k}  &  =\max\left\{  \min\left\{  R\left(  A,x\right)  \ \mid\ x\in
+S\text{ nonzero}\right\}  \ \mid\ S\subseteq\mathbb{C}^{n}\text{ is a }\left(
+n-k+1\right)  \text{-dimensional subspace}\right\} \\
+&  =\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a subspace;}%
+\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)  .
+\end{align*}
+
+\end{theorem}
+
+We will prove this next time.
 
 [...]
 
@@ -11659,6 +12462,10 @@ recurrence relations with constant coefficients}, 9 April 2001.\newline\url{http
 \bibitem[Nathan21]{Nathan21}\href{https://arxiv.org/abs/2109.01746v1}{Melvyn
 B. Nathanson, \textit{The Muirhead-Rado inequality, 1 Vector majorization and
 the permutohedron}, arXiv:2109.01746v1}.
+
+\bibitem[OmClVi11]{OmClVi11}Kevin C. O'Meara, John Clark, Charles I.
+Vinsonhaler, \textit{Advanced Topics in Linear Algebra: Weaving Matrix
+Problems through the Weyr Form}, Oxford University Press 2011.
 
 \bibitem[PolSze78]{PolSze78}%
 \href{https://doi.org/10.1007/978-3-642-61983-0}{George P\'{o}lya, Gabor
