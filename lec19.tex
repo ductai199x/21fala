@@ -1,0 +1,679 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, November 15, 2021 11:50:55}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 19}
+
+\section{Hermitian matrices (cont'd)}
+
+\subsection{Consequences of the interlacing theorem}
+
+Recall: If $A\in\mathbb{C}^{n\times n}$ is a Hermitian matrix (i.e., a square
+matrix satisfying $A^{\ast}=A$), then we denote its eigenvalues by
+$\lambda_{1}\left(  A\right)  ,\lambda_{2}\left(  A\right)  ,\ldots
+,\lambda_{n}\left(  A\right)  $ in weakly increasing order (with
+multiplicities). This makes sense, since we know that these eigenvalues are reals.
+
+Last time, Hugo proved:
+
+\begin{theorem}
+[Cauchy's interlacing theorem, aka eigenvalue interlacing theorem]Let
+$A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Let $j\in\left[  n\right]
+$. Let $B\in\mathbb{C}^{\left(  n-1\right)  \times\left(  n-1\right)  }$ be
+the matrix obtained from $A$ by removing the $j$-th row and the $j$-th column.
+Then,%
+\[
+\lambda_{1}\left(  A\right)  \leq\lambda_{1}\left(  B\right)  \leq\lambda
+_{2}\left(  A\right)  \leq\lambda_{2}\left(  B\right)  \leq\cdots\leq
+\lambda_{n-1}\left(  A\right)  \leq\lambda_{n-1}\left(  B\right)  \leq
+\lambda_{n}\left(  A\right)  .
+\]
+In other words,%
+\[
+\lambda_{i}\left(  A\right)  \leq\lambda_{i}\left(  B\right)  \leq
+\lambda_{i+1}\left(  A\right)  \ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[
+n-1\right]  .
+\]
+
+\end{theorem}
+
+A converse of this theorem also holds:
+
+\begin{proposition}
+Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ and $\mu_{1},\mu_{2}%
+,\ldots,\mu_{n-1}$ be real numbers satisfying
+\[
+\lambda_{1}\leq\mu_{1}\leq\lambda_{2}\leq\mu_{2}\leq\cdots\leq\lambda
+_{n-1}\leq\mu_{n-1}\leq\lambda_{n}.
+\]
+Then, there exist $n-1$ reals $y_{1},y_{2},\ldots,y_{n-1}\in\mathbb{R}$ and a
+real $a\in\mathbb{R}$ such that the matrix%
+\[
+A:=\left(
+\begin{array}
+[c]{ccccc}%
+\mu_{1} &  &  &  & y_{1}\\
+& \mu_{2} &  &  & y_{2}\\
+&  & \ddots &  & \vdots\\
+&  &  & \mu_{n-1} & y_{n-1}\\
+y_{1} & y_{2} & \cdots & y_{n-1} & a
+\end{array}
+\right)
+\]
+(where all empty cells are supposed to be filled with $0$s) has eigenvalues
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$. (This matrix is, of course,
+Hermitian, since it is real symmetric.)
+\end{proposition}
+
+\begin{proof}
+Omitted. (Exercise?)
+\end{proof}
+
+Now, let us derive some consequences from Cauchy's interlacing theorem. We
+begin with a straightforward generalization:
+
+\begin{corollary}
+[Cauchy's interlacing theorem for multiple deletions]Let $A\in\mathbb{C}%
+^{n\times n}$ be a Hermitian matrix. Let $r\in\left\{  0,1,\ldots,n\right\}
+$. Let $C\in\mathbb{C}^{r\times r}$ be the result of removing $n-r$ rows and
+the corresponding $n-r$ columns from $A$. (That is, we pick some $j_{1}%
+<j_{2}<\cdots<j_{n-r}$, and we remove the $j_{1}$-st, $j_{2}$-nd, $\ldots$,
+$j_{n-r}$-th rows from $A$, and we remove the $j_{1}$-st, $j_{2}$-nd, $\ldots
+$, $j_{n-r}$-th columns from $A$.) Then, for each $j\in\left[  r\right]  $, we
+have%
+\[
+\lambda_{j}\left(  A\right)  \leq\lambda_{j}\left(  C\right)  \leq
+\lambda_{j+n-r}\left(  A\right)  .
+\]
+
+\end{corollary}
+
+\begin{proof}
+Induction on $n-r$.
+
+The \textit{base case} ($n-r=0$) is trivial, since $C=A$ in this case.
+
+In the \textit{induction step}, we obtain $C$ from $B$ by removing a single
+row and the corresponding column. Thus, by the original Cauchy interlacing
+theorem, we get $\lambda_{j}\left(  B\right)  \leq\lambda_{j}\left(  C\right)
+$. However, by the induction hypothesis, we get $\lambda_{j}\left(  A\right)
+\leq\lambda_{j}\left(  B\right)  $. Combining these inequalities, we get
+$\lambda_{j}\left(  A\right)  \leq\lambda_{j}\left(  C\right)  $. The
+remaining inequality $\lambda_{j}\left(  C\right)  \leq\lambda_{j+n-r}\left(
+A\right)  $ is proved similarly: By the original Cauchy interlacing theorem,
+we get $\lambda_{j}\left(  C\right)  \leq\lambda_{j+1}\left(  B\right)  $.
+However, by the induction hypothesis, we get $\lambda_{j+1}\left(  B\right)
+\leq\lambda_{j+1+\left(  n-r-1\right)  }\left(  A\right)  =\lambda
+_{j+n-r}\left(  A\right)  $.
+\end{proof}
+
+The next corollary provides a minimum/maximum description of the sum of the
+first $m$ smallest/largest eigenvalues of a Hermitian matrix:
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Let $m\in\left\{
+0,1,\ldots,n\right\}  $. Then,%
+\[
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)  =\min\limits_{\text{isometries }V\in\mathbb{C}^{n\times
+m}}\operatorname*{Tr}\left(  V^{\ast}AV\right)
+\]
+and%
+\[
+\lambda_{n-m+1}\left(  A\right)  +\lambda_{n-m+2}\left(  A\right)
++\cdots+\lambda_{n}\left(  A\right)  =\max\limits_{\text{isometries }%
+V\in\mathbb{C}^{n\times m}}\operatorname*{Tr}\left(  V^{\ast}AV\right)  .
+\]
+
+\end{corollary}
+
+\begin{proof}
+First of all, it suffices to show the first equality, because the second
+follows by applying the first to $-A$ instead of $A$.
+
+First, we shall show that%
+\[
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)  \leq\operatorname*{Tr}\left(  V^{\ast}AV\right)
+\ \ \ \ \ \ \ \ \ \ \text{for every isometry }V\in\mathbb{C}^{n\times m}.
+\]
+
+
+Indeed, let $V\in\mathbb{C}^{n\times m}$ be an isometry. Thus, $V$ is an
+$n\times m$-matrix whose columns are orthonormal. As we have seen in the first
+chapter(?), we can extend each orthonormal tuple of vectors to an orthonormal
+basis. Doing this to the columns of $V$, we thus obtain an orthonormal basis
+of $\mathbb{C}^{n}$ whose first $m$ entries are the columns of $V$. Let $U$ be
+the matrix whose columns are the entries of this basis. Then,%
+\[
+U=\left(
+\begin{array}
+[c]{cc}%
+V & \widetilde{V}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)
+\]
+by construction of this basis, and furthermore the matrix $U$ is unitary since
+its columns form an orthonormal basis.
+
+Since $U$ is unitary, we have $U^{\ast}AU\sim A$ and therefore%
+\[
+\lambda_{j}\left(  U^{\ast}AU\right)  =\lambda_{j}\left(  A\right)
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  n\right]  .
+\]
+
+
+However, $U=\left(
+\begin{array}
+[c]{cc}%
+V & \widetilde{V}%
+\end{array}
+\right)  $ entails%
+\[
+U^{\ast}AU=\left(
+\begin{array}
+[c]{cc}%
+V & \widetilde{V}%
+\end{array}
+\right)  ^{\ast}A\left(
+\begin{array}
+[c]{cc}%
+V & \widetilde{V}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+V^{\ast}\\
+\widetilde{V}^{\ast}%
+\end{array}
+\right)  A\left(
+\begin{array}
+[c]{cc}%
+V & \widetilde{V}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+V^{\ast}AV & \ast\\
+\ast & \ast
+\end{array}
+\right)  ,
+\]
+where the three $\ast$s mean blocks that we don't care about. So the matrix
+$V^{\ast}AV$ is obtained from $U^{\ast}AU$ by removing a bunch of rows and the
+corresponding columns. Hence, the previous corollary yields%
+\[
+\lambda_{j}\left(  U^{\ast}AU\right)  \leq\lambda_{j}\left(  V^{\ast
+}AV\right)  \ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]
+\]
+(since $U^{\ast}AU$ is Hermitian (because $A$ is Hermitian)). In other words,%
+\[
+\lambda_{j}\left(  A\right)  \leq\lambda_{j}\left(  V^{\ast}AV\right)
+\ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]
+\]
+(since $\lambda_{j}\left(  U^{\ast}AU\right)  =\lambda_{j}\left(  A\right)
+$). Adding these inequalities together, we obtain%
+\begin{align*}
+& \lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots
++\lambda_{m}\left(  A\right)  \\
+& \leq\lambda_{1}\left(  V^{\ast}AV\right)  +\lambda_{2}\left(  V^{\ast
+}AV\right)  +\cdots+\lambda_{m}\left(  V^{\ast}AV\right)  \\
+& =\left(  \text{the sum of all eigenvalues of }V^{\ast}AV\right)  \\
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since }V^{\ast}AV\text{ is an }m\times m\text{-matrix}\\
+\text{and thus has }m\text{ eigenvalues}%
+\end{array}
+\right)  \\
+& =\operatorname*{Tr}\left(  V^{\ast}AV\right)
+\end{align*}
+(since the sum of all eigenvalues of a matrix is the trace of this matrix).
+
+Now, we need to show that there exists a unitary matrix $V\in\mathbb{C}%
+^{n\times m}$ such that%
+\[
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)  =\operatorname*{Tr}\left(  V^{\ast}AV\right)  .
+\]
+To do this, we construct $V$ as follows: We pick an eigenvector $x_{i}$ of $A$
+at eigenvalue $\lambda_{i}\left(  A\right)  $ for each $i\in\left[  n\right]
+$ in such a way that $\left(  x_{1},x_{2},\ldots,x_{n}\right)  $ is an
+orthonormal basis of $\mathbb{C}^{n}$. (This is possible because of Theorem
+2.6.1 \textbf{(b)}.) Now, let $V\in\mathbb{C}^{n\times m}$ be the matrix whose
+columns are $x_{1},x_{2},\ldots,x_{m}$. This matrix $V$ is an isometry, since
+$x_{1},x_{2},\ldots,x_{m}$ are orthonormal. Moreover,%
+\begin{align*}
+V^{\ast}AV  & =\left(
+\begin{array}
+[c]{c}%
+x_{1}^{\ast}\\
+x_{2}^{\ast}\\
+\vdots\\
+x_{m}^{\ast}%
+\end{array}
+\right)  A\left(
+\begin{array}
+[c]{cccc}%
+x_{1} & x_{2} & \cdots & x_{m}%
+\end{array}
+\right)  \\
+& =\left(
+\begin{array}
+[c]{cccc}%
+x_{1}^{\ast}Ax_{1} & x_{1}^{\ast}Ax_{2} & \cdots & x_{1}^{\ast}Ax_{m}\\
+x_{2}^{\ast}Ax_{1} & x_{2}^{\ast}Ax_{2} & \cdots & x_{2}^{\ast}Ax_{m}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{m}^{\ast}Ax_{1} & x_{m}^{\ast}Ax_{2} & \cdots & x_{m}^{\ast}Ax_{m}%
+\end{array}
+\right)  ,
+\end{align*}
+so that%
+\begin{align*}
+\operatorname*{Tr}\left(  V^{\ast}AV\right)    & =\sum_{j=1}^{m}x_{j}^{\ast
+}\underbrace{Ax_{j}}_{\substack{=\lambda_{j}\left(  A\right)  x_{j}%
+\\\text{(since }x_{j}\text{ is an eigenvector of }A\\\text{at eigenvalue
+}\lambda_{j}\left(  A\right)  \text{)}}}=\sum_{j=1}^{m}\lambda_{j}\left(
+A\right)  \underbrace{x_{j}^{\ast}x_{j}}_{\substack{=\left\vert \left\vert
+x_{j}\right\vert \right\vert ^{2}=1\\\text{(since }\left(  x_{1},x_{2}%
+,\ldots,x_{n}\right)  \\\text{is an orthonormal basis)}}}\\
+& =\sum_{j=1}^{m}\lambda_{j}\left(  A\right)  =\lambda_{1}\left(  A\right)
++\lambda_{2}\left(  A\right)  +\cdots+\lambda_{m}\left(  A\right)  .
+\end{align*}
+This is precisely what we needed. Thus, we conclude that%
+\[
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)  =\min\limits_{\text{isometries }V\in\mathbb{C}^{n\times
+m}}\operatorname*{Tr}\left(  V^{\ast}AV\right)  .
+\]
+As we said above, this completes the proof.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian $n\times n$-matrix. Let
+$m\in\left\{  0,1,\ldots,n\right\}  $. Let $i_{1},i_{2},\ldots,i_{m}\in\left[
+n\right]  $ be distinct. Then,%
+\begin{align*}
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)    & \leq A_{i_{1},i_{1}}+A_{i_{2},i_{2}}+\cdots
++A_{i_{m},i_{m}}\\
+& \leq\lambda_{n-m+1}\left(  A\right)  +\lambda_{n-m+2}\left(  A\right)
++\cdots+\lambda_{n}\left(  A\right)  .
+\end{align*}
+
+\end{corollary}
+
+In words: For a Hermitian matrix $A$, each sum of $m$ distinct diagonal
+entries of $A$ is sandwiched between the sum of the $m$ smallest eigenvalues
+of $A$ and the sum of the $m$ largest eigenvalues of $A$.
+
+\begin{proof}
+Let $C$ be the matrix obtained from $A$ by removing all but the $i_{1}$-st,
+$i_{2}$-nd, $\ldots$, $i_{m}$-th rows and the corresponding columns of $A$.
+Then,%
+\[
+\operatorname*{Tr}C=A_{i_{1},i_{1}}+A_{i_{2},i_{2}}+\cdots+A_{i_{m},i_{m}}.
+\]
+
+
+However, Cauchy's interlacing theorem for multiple deletions yields%
+\[
+\lambda_{j}\left(  A\right)  \leq\lambda_{j}\left(  C\right)
+\ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[  m\right]  .
+\]
+Summing these up, we obtain%
+\begin{align*}
+\lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
+_{m}\left(  A\right)    & \leq\lambda_{1}\left(  C\right)  +\lambda_{2}\left(
+C\right)  +\cdots+\lambda_{m}\left(  C\right)  \\
+& =\left(  \text{the sum of all eigenvalues of }C\right)  \\
+& =\operatorname*{Tr}C=A_{i_{1},i_{1}}+A_{i_{2},i_{2}}+\cdots+A_{i_{m},i_{m}}.
+\end{align*}
+So we have proved the first of the required two inequalities. The second
+follows by applying the first to $-A$ instead of $A$.
+\end{proof}
+
+The above corollary has a bunch of consequences that are obtained by restating
+it in terms of something called \textbf{majorization}. Let us define this
+concept and see what it entails.
+
+\subsection{Introduction to majorization theory}
+
+\begin{convention}
+Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{R}^{n}$ be a
+column vector with real entries. Then, for each $i\in\left[  n\right]  $, we
+let $x_{i}^{\downarrow}$ denote the $i$-th largest entry of $x$. So $\left(
+x_{1}^{\downarrow},x_{2}^{\downarrow},\ldots,x_{n}^{\downarrow}\right)  $ is
+the unique permutation of the tuple $\left(  x_{1},x_{2},\ldots,x_{n}\right)
+$ that satisfies
+\[
+x_{1}^{\downarrow}\geq x_{2}^{\downarrow}\geq\cdots\geq x_{n}^{\downarrow}.
+\]
+
+\end{convention}
+
+For example, if $x=\left(  3,5,2\right)  ^{T}$, then $x_{1}^{\downarrow}=5$
+and $x_{2}^{\downarrow}=3$ and $x_{3}^{\downarrow}=2$.
+
+Similarly, we define $x_{i}^{\uparrow}$ to be the $i$-th smallest entry of $x$.
+
+\begin{definition}
+Let $x\in\mathbb{R}^{n}$ and $y\in\mathbb{R}^{n}$ be two column vectors with
+real entries. Then, we say that $x$ \textbf{majorizes} $y$ (and we write
+$x\succcurlyeq y$) if and only if we have%
+\[
+\sum_{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow
+}\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\left[  n\right]  ,
+\]
+with equality for $m=n$ (and possibly for other $m$'s). In other words, $x$
+majorizes $y$ if and only if%
+\begin{align*}
+x_{1}^{\downarrow}  & \geq y_{1}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}  & \geq y_{1}^{\downarrow}%
++y_{2}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+x_{3}^{\downarrow}  & \geq
+y_{1}^{\downarrow}+y_{2}^{\downarrow}+y_{3}^{\downarrow};\\
+& \ldots;\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+\cdots+x_{n-1}^{\downarrow}  & \geq
+y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n-1}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+\cdots+x_{n}^{\downarrow}  &
+=y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n}^{\downarrow}.
+\end{align*}
+
+\end{definition}
+
+\begin{example}
+We have%
+\[
+\left(
+\begin{array}
+[c]{c}%
+1\\
+3\\
+5\\
+7
+\end{array}
+\right)  \geq\left(
+\begin{array}
+[c]{c}%
+2\\
+2\\
+6\\
+6
+\end{array}
+\right)  ,
+\]
+since%
+\begin{align*}
+7  & \geq6;\\
+7+5  & \geq6+6;\\
+7+5+3  & \geq6+6+2;\\
+7+5+3+1  & =6+6+2+2.
+\end{align*}
+
+\end{example}
+
+\begin{example}
+We don't have%
+\[
+\left(
+\begin{array}
+[c]{c}%
+1\\
+3\\
+5\\
+7
+\end{array}
+\right)  \geq\left(
+\begin{array}
+[c]{c}%
+0\\
+2\\
+6\\
+8
+\end{array}
+\right)  ,
+\]
+since we don't have $7\geq8$.
+\end{example}
+
+The intuition behind majorization is the following: $x$ majorizes $y$ if and
+only if you can obtain $y$ from $x$ by \textquotedblleft having the entries
+come closer together (while keeping the average equal)\textquotedblright.
+
+\begin{proposition}
+Majorization is a partial order: i.e., a reflexive, antisymmetric and
+transitive relation.
+\end{proposition}
+
+However, it is not a total order: For example, the sequences%
+\[
+x:=\left(
+\begin{array}
+[c]{c}%
+2\\
+2\\
+4\\
+6
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ y=\left(
+\begin{array}
+[c]{c}%
+1\\
+3\\
+5\\
+5
+\end{array}
+\right)
+\]
+satisfy neither $x\succcurlyeq y$ nor $y\succcurlyeq x$, since we have $6>5$
+but $6+4+2<5+5+3$.
+
+Now we can restate our last corollary as follows:
+
+\begin{corollary}
+[Schur's theorem]Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian $n\times
+n$-matrix. Then,%
+\[
+\left(  A_{1,1},A_{2,2},\ldots,A_{n,n}\right)  ^{T}\succcurlyeq\left(
+\lambda_{1}\left(  A\right)  ,\lambda_{2}\left(  A\right)  ,\ldots,\lambda
+_{n}\left(  A\right)  \right)  ^{T}.
+\]
+In words: The tuple of diagonal entries of $A$ majorizes the tuple of
+eigenvalues of $A$.
+\end{corollary}
+
+\begin{proof}
+We need to show that
+
+\begin{itemize}
+\item the sum of the $m$ largest diagonal entries of $A$ is $\geq$ to the sum
+of the $m$ largest eigenvalues of $A$ for each $m\in\left[  n\right]  $;
+
+\item the sum of all diagonal entries of $A$ equals the sum of all eigenvalues
+of $A$.
+\end{itemize}
+
+But the first of these two statements is the first inequality in the above
+corollary, whereas the second statement is the well-known theorem that the
+trace of a matrix is the sum of its eigenvalues.
+\end{proof}
+
+Now, what can we do with majorizing vectors? Here is probably the most
+important property:
+
+\begin{theorem}
+[Karamata's inequality]Let $I\subseteq\mathbb{R}$ be an interval. Let
+$f:I\rightarrow\mathbb{R}$ be a convex function. Let $x=\left(  x_{1}%
+,x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{R}^{n}$ and $y=\left(  y_{1}%
+,y_{2},\ldots,y_{n}\right)  ^{T}\in\mathbb{R}^{n}$ be two vectors such that
+$x\succcurlyeq y$. Then,%
+\[
+f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
+\geq f\left(  y_{1}\right)  +f\left(  y_{2}\right)  +\cdots+f\left(
+y_{n}\right)  .
+\]
+
+\end{theorem}
+
+For example, applying this to $f\left(  t\right)  =t^{2}$, we obtain%
+\[
+x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}\geq y_{1}^{2}+y_{2}^{2}+\cdots+y_{n}^{2}.
+\]
+
+
+Next time, we will prove Karamata's inequality.
+\end{document}

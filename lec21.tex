@@ -1,0 +1,712 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, November 19, 2021 11:49:24}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 21}
+
+\section{Hermitian matrices (cont'd)}
+
+\subsection{Introduction to majorization theory (cont'd)}
+
+Recall:
+
+\begin{itemize}
+\item If $x\in\mathbb{R}^{n}$ is a column vector and $i\in\left[  n\right]  $,
+then $x_{i}$ denotes the $i$-th coordinate (= entry) of $x$.
+
+\item If $x\in\mathbb{R}^{n}$ is a column vector, then $x^{\downarrow}$
+denotes the weakly decreasing permutation of $x$ (that is, the vector with the
+same entries as $x$ but in weakly decreasing order).
+
+\item For two vectors $x,y\in\mathbb{R}^{n}$, we say that $x$
+\textbf{majorizes} $y$ (and we write $x\succcurlyeq y$) if and only if
+\[
+\sum_{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow
+}\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\left[  n\right]
+\]
+and%
+\[
+x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}.
+\]
+
+
+\item A \textbf{Robin Hood move} (short \textbf{RH move}) transforms a vector
+$x\in\mathbb{R}^{n}$ into a vector $y\in\mathbb{R}^{n}$ that is constructed as
+follows: Pick two distinct $i,j\in\left[  n\right]  $ satisfying $x_{i}\leq
+x_{j}$, and pick two numbers $u,v\in\left[  x_{i},x_{j}\right]  $ satisfy
+$u+v=x_{i}+x_{j}$, and replace the $i$-th and the $j$-th entries of $x$ by $u$
+and $v$.
+
+This RH move is said to be an \textbf{order-preserving RH move} (short
+\textbf{OPRH move}) if both $x$ and $y$ are weakly decreasing.
+\end{itemize}
+
+Last time we proved:
+
+\begin{theorem}
+[RH criterion for majorization]Let $x,y\in\mathbb{R}^{n}$ be two weakly
+decreasing column vectors. Then, $x\succcurlyeq y$ if and only if $y$ can be
+obtained from $x$ by a (finite) sequence of OPRH moves.
+\end{theorem}
+
+\bigskip
+
+Now, what can we do with majorization? Probably the most important property of
+majorizing pairs of vectors is the following:
+
+\begin{theorem}
+[Karamata's inequality]Let $I\subseteq\mathbb{R}$ be an interval. Let
+$f:I\rightarrow\mathbb{R}$ be a convex function. Let $x\in I^{n}$ and $y\in
+I^{n}$ be two vectors such that $x\succcurlyeq y$. Then,%
+\[
+f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
+\geq f\left(  y_{1}\right)  +f\left(  y_{2}\right)  +\cdots+f\left(
+y_{n}\right)  .
+\]
+
+\end{theorem}
+
+Before we prove this, let us state a simple corollary:
+
+\begin{corollary}
+[Jensen's inequality]Let $I\subseteq\mathbb{R}$ be an interval. Let
+$f:I\rightarrow\mathbb{R}$ be a convex function. Let $x_{1},x_{2},\ldots
+,x_{n}\in I$. Let $m=\dfrac{x_{1}+x_{2}+\cdots+x_{n}}{n}$. Then,%
+\[
+f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
+\geq nf\left(  m\right)  .
+\]
+
+\end{corollary}
+
+\begin{proof}
+This follows from Karamata's inequality, since it is easy to see (exercise)
+that $\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\succcurlyeq\left(
+m,m,\ldots,m\right)  ^{T}$.
+\end{proof}
+
+Let us now prove Karamata's inequality:
+
+\begin{proof}
+[Proof of Karamata's inequality.] It is enough to prove the claim in the case
+when $x$ and $y$ are weakly decreasing (because permuting the entries of any
+of $x$ and $y$ does not change anything).
+
+Furthermore, it is enough to prove the claim in the case when
+$x\overset{\text{OPRH}}{\longrightarrow}y$ (this means that $y$ is obtained
+from $x$ by a single OPRH move). In fact, if we can show this, then it will
+mean that the sum $f\left(  x_{1}\right)  +f\left(  x_{2}\right)
++\cdots+f\left(  x_{n}\right)  $ decreases (weakly) every time we apply an
+OPRH move. Therefore, if $y$ is obtained from $x$ by a sequence of OPRH moves,
+then $f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(
+x_{n}\right)  \geq f\left(  y_{1}\right)  +f\left(  y_{2}\right)
++\cdots+f\left(  y_{n}\right)  $. But the theorem we proved last time shows
+that this is always satisfied when $x\succcurlyeq y$.
+
+So let us assume that $x\overset{\text{OPRH}}{\longrightarrow}y$. Thus, $y$ is
+obtained from $x$ by picking two entries $x_{i}$ and $x_{j}$ with $x_{i}\leq
+x_{j}$ and replacing them by $u$ and $v$, where $u,v\in\left[  x_{i}%
+,x_{j}\right]  $ with $u+v=x_{i}+x_{j}$. Consider these $x_{i},x_{j},u,v$. It
+clearly suffices to show that%
+\[
+f\left(  x_{i}\right)  +f\left(  x_{j}\right)  \geq f\left(  u\right)
++f\left(  v\right)  .
+\]
+
+
+How do we do this? From $u\in\left[  x_{i},x_{j}\right]  $, we obtain
+\[
+u=\lambda x_{i}+\left(  1-\lambda\right)  x_{j}\ \ \ \ \ \ \ \ \ \ \text{for
+some }\lambda\in\left[  0,1\right]
+\]
+(namely, $\lambda=\dfrac{1}{x_{i}-x_{j}}\left(  u-x_{j}\right)  $). Consider
+this $\lambda$. Then,%
+\[
+v=\left(  1-\lambda\right)  x_{i}+\lambda x_{j}\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }u+v=x_{i}+x_{j}\right)  .
+\]
+
+
+However, $f$ is convex. From $u=\lambda x_{i}+\left(  1-\lambda\right)  x_{j}%
+$, we obtain%
+\[
+f\left(  u\right)  =f\left(  \lambda x_{i}+\left(  1-\lambda\right)
+x_{j}\right)  \leq\lambda f\left(  x_{i}\right)  +\left(  1-\lambda\right)
+f\left(  x_{j}\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }f\text{ is
+convex}\right)
+\]
+and%
+\[
+f\left(  v\right)  =f\left(  \left(  1-\lambda\right)  x_{i}+\lambda
+x_{j}\right)  \leq\left(  1-\lambda\right)  f\left(  x_{i}\right)  +\lambda
+f\left(  x_{j}\right)  .
+\]
+Adding together these two inequalities, we obtain%
+\begin{align*}
+f\left(  u\right)  +f\left(  v\right)    & \leq\left(  \lambda f\left(
+x_{i}\right)  +\left(  1-\lambda\right)  f\left(  x_{j}\right)  \right)
++\left(  \left(  1-\lambda\right)  f\left(  x_{i}\right)  +\lambda f\left(
+x_{j}\right)  \right)  \\
+& =f\left(  x_{i}\right)  +f\left(  x_{j}\right)
+,\ \ \ \ \ \ \ \ \ \ \text{qed.}%
+\end{align*}
+So Karamata's inequality is proved.
+\end{proof}
+
+Karamata's inequality has lots of applications, since there are many convex
+functions around. For instance:
+
+\begin{itemize}
+\item $f\left(  t\right)  =t^{n}$ defines a convex function on $\mathbb{R}$
+whenever $n\in\mathbb{N}$ is even.
+
+\item $f\left(  t\right)  =t^{n}$ defines a convex function on $\mathbb{R}%
+_{+}$ whenever $n\in\mathbb{R}\setminus\left(  0,1\right)  $. Otherwise, it
+defines a concave function (so that $-f$ is a convex function).
+
+\item $f\left(  t\right)  =\sin t$ defines a concave function on $\left[
+0,\pi\right]  $ and a convex function on $\left[  \pi,2\pi\right]  $.
+\end{itemize}
+
+\bigskip
+
+Karamata's inequality has a converse: If $x,y\in\mathbb{R}^{n}$ are two
+vectors such that%
+\[
+f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
+\geq f\left(  y_{1}\right)  +f\left(  y_{2}\right)  +\cdots+f\left(
+y_{n}\right)
+\]
+for every convex function $f:\mathbb{R}\rightarrow\mathbb{R}$, then
+$x\succcurlyeq y$. Even better:
+
+\begin{theorem}
+[absolute-value criterion for majorization]Let $x\in\mathbb{R}^{n}$ and
+$y\in\mathbb{R}^{n}$ be two vectors. Then, $x\succcurlyeq y$ if and only if
+all $t\in\mathbb{R}$ satisfy%
+\[
+\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \geq\left\vert y_{1}-t\right\vert +\left\vert
+y_{2}-t\right\vert +\cdots+\left\vert y_{n}-t\right\vert .
+\]
+
+\end{theorem}
+
+\begin{proof}
+$\Longrightarrow:$ Assume that $x\succcurlyeq y$. Let $t\in\mathbb{R}$.
+Consider the function%
+\begin{align*}
+f_{t}:\mathbb{R}  & \rightarrow\mathbb{R},\\
+z  & \mapsto\left\vert z-t\right\vert .
+\end{align*}
+This function $f_{t}$ is convex (this follows easily from the triangle
+inequality). Hence, Karamata's inequality yields%
+\[
+f_{t}\left(  x_{1}\right)  +f_{t}\left(  x_{2}\right)  +\cdots+f_{t}\left(
+x_{n}\right)  \geq f_{t}\left(  y_{1}\right)  +f_{t}\left(  y_{2}\right)
++\cdots+f_{t}\left(  y_{n}\right)  .
+\]
+By the definition of $f_{t}$, this means
+\[
+\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \geq\left\vert y_{1}-t\right\vert +\left\vert
+y_{2}-t\right\vert +\cdots+\left\vert y_{n}-t\right\vert .
+\]
+So we have proved the \textquotedblleft$\Longrightarrow$\textquotedblright%
+\ direction of the theorem.
+
+$\Longleftarrow:$ We shall refer to the inequality%
+\[
+\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \geq\left\vert y_{1}-t\right\vert +\left\vert
+y_{2}-t\right\vert +\cdots+\left\vert y_{n}-t\right\vert
+\]
+as the \textbf{absolute value inequality}. So we assume that the absolute
+value inequality holds for all $t\in\mathbb{R}$. (Actually, it will suffice to
+assume that it holds for all $t\in\left\{  x_{1},x_{2},\ldots,x_{n}%
+,y_{1},y_{2},\ldots,y_{n}\right\}  $.)
+
+We must prove that $x\succcurlyeq y$.
+
+WLOG assume that $x$ and $y$ are weakly decreasing (since permuting the
+entries changes neither the absolute value inequality nor the claim
+$x\succcurlyeq y$).
+
+Let $t=\max\left\{  x_{1},y_{1}\right\}  $. Then, for all $i\in\left[
+n\right]  $, we have $t=\max\left\{  x_{1},y_{1}\right\}  \geq x_{1}\geq
+x_{i}$ (since $x$ is weakly decreasing) and therefore $\left\vert
+x_{i}-t\right\vert =t-x_{i}$ and similarly $\left\vert y_{i}-t\right\vert
+=t-y_{i}$. Thus, the absolute value inequality rewrites as%
+\[
+\left(  t-x_{1}\right)  +\left(  t-x_{2}\right)  +\cdots+\left(
+t-x_{n}\right)  \geq\left(  t-y_{1}\right)  +\left(  t-y_{2}\right)
++\cdots+\left(  t-y_{n}\right)  .
+\]
+In other words,%
+\[
+nt-\left(  x_{1}+x_{2}+\cdots+x_{n}\right)  \geq nt-\left(  y_{1}+y_{2}%
++\cdots+y_{n}\right)  .
+\]
+In other words,%
+\[
+x_{1}+x_{2}+\cdots+x_{n}\leq y_{1}+y_{2}+\cdots+y_{n}.
+\]
+
+
+Similarly, by taking $t=\min\left\{  x_{n},y_{n}\right\}  $, we obtain%
+\[
+x_{1}+x_{2}+\cdots+x_{n}\geq y_{1}+y_{2}+\cdots+y_{n}.
+\]
+
+
+Combining these two inequalities, we obtain%
+\[
+x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}.
+\]
+
+
+Now, let $k\in\left[  n\right]  $. Set $t=x_{k}$. Then, since $x$ is weakly
+decreasing, we have%
+\[
+x_{1}\geq x_{2}\geq\cdots\geq x_{k}=t\geq x_{k+1}\geq x_{k+2}\geq\cdots\geq
+x_{n}.
+\]
+Thus,%
+\begin{align*}
+& \left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \\
+& =\left(  \underbrace{\left\vert x_{1}-t\right\vert }_{=x_{1}-t}%
++\underbrace{\left\vert x_{2}-t\right\vert }_{=x_{2}-t}+\cdots
++\underbrace{\left\vert x_{k}-t\right\vert }_{=x_{k}-t}\right)  +\left(
+\underbrace{\left\vert x_{k+1}-t\right\vert }_{=t-x_{k+1}}%
++\underbrace{\left\vert x_{k+2}-t\right\vert }_{=t-x_{k+2}}+\cdots
++\underbrace{\left\vert x_{n}-t\right\vert }_{=t-x_{n}}\right)  \\
+& =\left(  \left(  x_{1}-t\right)  +\left(  x_{2}-t\right)  +\cdots+\left(
+x_{k}-t\right)  \right)  +\left(  \left(  t-x_{k+1}\right)  +\left(
+t-x_{k+2}\right)  +\cdots+\left(  t-x_{n}\right)  \right)  \\
+& =\left(  x_{1}+x_{2}+\cdots+x_{k}\right)  -kt+\left(  n-k\right)  t-\left(
+x_{k+1}+x_{k+2}+\cdots+x_{n}\right)  \\
+& =2\left(  x_{1}+x_{2}+\cdots+x_{k}\right)  +\left(  n-2k\right)  t-\left(
+x_{1}+x_{2}+\cdots+x_{n}\right)
+\end{align*}
+(here, I have added $x_{1}+x_{2}+\cdots+x_{k}$ to the first parenthesis and
+subtracted it back from the last) and%
+\begin{align*}
+& \left\vert y_{1}-t\right\vert +\left\vert y_{2}-t\right\vert +\cdots
++\left\vert y_{n}-t\right\vert \\
+& =\left(  \underbrace{\left\vert y_{1}-t\right\vert }_{\geq y_{1}%
+-t}+\underbrace{\left\vert y_{2}-t\right\vert }_{\geq y_{2}-t}+\cdots
++\underbrace{\left\vert y_{k}-t\right\vert }_{\geq y_{k}-t}\right)  +\left(
+\underbrace{\left\vert y_{k+1}-t\right\vert }_{\geq t-y_{k+1}}%
++\underbrace{\left\vert y_{k+2}-t\right\vert }_{\geq t-y_{k+2}}+\cdots
++\underbrace{\left\vert y_{n}-t\right\vert }_{\geq t-y_{n}}\right)  \\
+& \geq\left(  \left(  y_{1}-t\right)  +\left(  y_{2}-t\right)  +\cdots+\left(
+y_{k}-t\right)  \right)  +\left(  \left(  t-y_{k+1}\right)  +\left(
+t-y_{k+2}\right)  +\cdots+\left(  t-y_{n}\right)  \right)  \\
+& =\left(  y_{1}+y_{2}+\cdots+y_{k}\right)  -kt+\left(  n-k\right)  t-\left(
+y_{k+1}+y_{k+2}+\cdots+y_{n}\right)  \\
+& =2\left(  y_{1}+y_{2}+\cdots+y_{k}\right)  +\left(  n-2k\right)  t-\left(
+y_{1}+y_{2}+\cdots+y_{n}\right)  .
+\end{align*}
+Now, the absolute value inequality
+\[
+\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \geq\left\vert y_{1}-t\right\vert +\left\vert
+y_{2}-t\right\vert +\cdots+\left\vert y_{n}-t\right\vert
+\]
+becomes%
+\begin{align*}
+& 2\left(  x_{1}+x_{2}+\cdots+x_{k}\right)  +\left(  n-2k\right)  t-\left(
+x_{1}+x_{2}+\cdots+x_{n}\right)  \\
+& \geq\left\vert y_{1}-t\right\vert +\left\vert y_{2}-t\right\vert
++\cdots+\left\vert y_{n}-t\right\vert \\
+& \geq2\left(  y_{1}+y_{2}+\cdots+y_{k}\right)  +\left(  n-2k\right)
+t-\left(  y_{1}+y_{2}+\cdots+y_{n}\right)  .
+\end{align*}
+Subtracting $\left(  n-2k\right)  t$ from both sides, we obtain%
+\begin{align*}
+& 2\left(  x_{1}+x_{2}+\cdots+x_{k}\right)  -\left(  x_{1}+x_{2}+\cdots
++x_{n}\right)  \\
+& \geq2\left(  y_{1}+y_{2}+\cdots+y_{k}\right)  -\left(  y_{1}+y_{2}%
++\cdots+y_{n}\right)  .
+\end{align*}
+Adding the equality%
+\[
+x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}%
+\]
+to this inequality, we obtain%
+\[
+2\left(  x_{1}+x_{2}+\cdots+x_{k}\right)  \geq2\left(  y_{1}+y_{2}%
++\cdots+y_{k}\right)  .
+\]
+In other words,%
+\[
+x_{1}+x_{2}+\cdots+x_{k}\geq y_{1}+y_{2}+\cdots+y_{k}.
+\]
+Since $x$ and $y$ are weakly decreasing, this shows that $x\succcurlyeq y$
+(since $x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}$). This proves the
+\textquotedblleft$\Longleftarrow$\textquotedblright\ direction of the theorem.
+\end{proof}
+
+\bigskip
+
+Majorizing pairs of vectors are closely related to \textbf{doubly stochastic
+matrices}:
+
+\begin{definition}
+A matrix $S\in\mathbb{R}^{n\times n}$ is said to be \textbf{doubly stochastic}
+if its entries $S_{i,j}$ satisfy the following three conditions:
+
+\begin{enumerate}
+\item We have $S_{i,j}\geq0$ for all $i,j$.
+
+\item We have $\sum_{j=1}^{n}S_{i,j}=1$ for each $i\in\left[  n\right]  $.
+
+\item We have $\sum_{i=1}^{n}S_{i,j}=1$ for each $j\in\left[  n\right]  $.
+\end{enumerate}
+\end{definition}
+
+In other words, a doubly stochastic matrix is an $n\times n$-matrix whose
+entries are nonnegative reals and whose rows and columns have sum $1$ each.
+
+\begin{exercise}
+Show that even if we allow $S$ to be rectangular, the conditions 2 and 3 still
+force $S$ to be a square matrix.
+\end{exercise}
+
+\begin{example}
+\textbf{(a)} The matrix $\left(
+\begin{array}
+[c]{ccc}%
+\dfrac{1}{2} & \dfrac{1}{3} & \dfrac{1}{6}\\
+\dfrac{1}{2} & \dfrac{1}{4} & \dfrac{1}{4}\\
+0 & \dfrac{5}{12} & \dfrac{7}{12}%
+\end{array}
+\right)  $ is doubly stochastic. \medskip
+
+\textbf{(b)} Each doubly stochastic $2\times2$-matrix has the form%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda & 1-\lambda\\
+1-\lambda & \lambda
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }\lambda\in\left[  0,1\right]  .
+\]
+
+
+\textbf{(c)} Any permutation matrix is doubly stochastic.
+\end{example}
+
+\begin{proposition}
+Let $S\in\mathbb{R}^{n\times n}$ be a matrix whose entries are nonnegative
+reals. Let $e=\left(  1,1,\ldots,1\right)  ^{T}\in\mathbb{R}^{n}$. Then, $S$
+is doubly stochastic if and only if $Se=e$ and $e^{T}S=e^{T}$.
+\end{proposition}
+
+\begin{corollary}
+Any product of doubly stochastic matrices is again doubly stochastic.
+\end{corollary}
+
+\begin{exercise}
+Prove this proposition and this corolllary.
+\end{exercise}
+
+Now, the connection with majorization:
+
+\begin{theorem}
+Let $x,y\in\mathbb{R}^{n}$ be two vectors. Then, $x\succcurlyeq y$ if and only
+if there exists a doubly stochastic matrix $S$ such that $y=Sx$.
+\end{theorem}
+
+\begin{proof}
+$\Longrightarrow:$ Assume that $x\succcurlyeq y$. We must prove that there
+exists a doubly stochastic matrix $S$ such that $y=Sx$.
+
+By example \textbf{(c)} (and the corollary), it suffices to show this in the
+case when $x$ and $y$ are weakly decreasing.
+
+By the corollary, it suffices to show this in the case when
+$x\overset{\text{OPRH}}{\longrightarrow}y$ (since in the general case, $y$ is
+obtained from $x$ by a sequence of such moves).
+
+So let us assume that $x\overset{\text{OPRH}}{\longrightarrow}y$. Thus, $y$ is
+obtained from $x$ by picking two entries $x_{i}$ and $x_{j}$ with $x_{i}\leq
+x_{j}$ and replacing them by $u$ and $v$, where $u,v\in\left[  x_{i}%
+,x_{j}\right]  $ with $u+v=x_{i}+x_{j}$. Consider these $x_{i},x_{j},u,v$. It
+clearly suffices to show that%
+\[
+f\left(  x_{i}\right)  +f\left(  x_{j}\right)  \geq f\left(  u\right)
++f\left(  v\right)  .
+\]
+
+
+How do we do this? From $u\in\left[  x_{i},x_{j}\right]  $, we obtain
+\[
+u=\lambda x_{i}+\left(  1-\lambda\right)  x_{j}\ \ \ \ \ \ \ \ \ \ \text{for
+some }\lambda\in\left[  0,1\right]
+\]
+(namely, $\lambda=\dfrac{1}{x_{i}-x_{j}}\left(  u-x_{j}\right)  $). Consider
+this $\lambda$. Then,%
+\[
+v=\left(  1-\lambda\right)  x_{i}+\lambda x_{j}\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }u+v=x_{i}+x_{j}\right)  .
+\]
+
+
+This entails that $y=Sx$, where $S$ is a matrix given by%
+\begin{align*}
+S_{i,i}  & =\lambda,\ \ \ \ \ \ \ \ \ \ S_{i,j}=1-\lambda
+,\ \ \ \ \ \ \ \ \ \ S_{j,i}=1-\lambda,\ \ \ \ \ \ \ \ \ \ S_{j,j}=\lambda,\\
+S_{k,k}  & =1\ \ \ \ \ \ \ \ \ \ \text{for each }k\notin\left\{  i,j\right\}
+,\\
+S_{k,\ell}  & =0\ \ \ \ \ \ \ \ \ \ \text{for all remaining }k,\ell.
+\end{align*}
+For example, if $i=2$ and $j=4$, then
+\[
+S=\left(
+\begin{array}
+[c]{cccc}%
+1 &  &  & \\
+& \lambda &  & 1-\lambda\\
+&  & 1 & \\
+& 1-\lambda &  & \lambda
+\end{array}
+\right)
+\]
+(where all empty cells are filled with zeroes). In this case,%
+\[
+Sx=S\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+\lambda x_{2}+\left(  1-\lambda\right)  x_{4}\\
+x_{3}\\
+\left(  1-\lambda\right)  x_{2}+\lambda x_{4}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+x_{1}\\
+u\\
+x_{3}\\
+v
+\end{array}
+\right)  =y.
+\]
+So we are done proving the \textquotedblleft$\Longrightarrow$%
+\textquotedblright\ direction.
+
+$\Longleftarrow:$ Assume that $y=Sx$ for some doubly stochastic $S$. Then,%
+\[
+y_{i}=\left(  Sx\right)  _{i}=\sum_{j=1}^{n}S_{i,j}x_{j}%
+\ \ \ \ \ \ \ \ \ \ \text{for every }i\in\left[  n\right]  .
+\]
+Thus, for every convex function $f:\mathbb{R}\rightarrow\mathbb{R}$, we have%
+\begin{align*}
+& f\left(  y_{1}\right)  +f\left(  y_{2}\right)  +\cdots+f\left(
+y_{n}\right)  \\
+& =\underbrace{f\left(  \sum_{j=1}^{n}S_{1,j}x_{j}\right)  }_{\substack{\leq
+\sum_{j=1}^{n}S_{1,j}f\left(  x_{j}\right)  \\\text{(by the weighted Jensen
+inequality,}\\\text{since the }S_{1,j}\text{'s are nonnegative reals}%
+\\\text{with sum }=1\text{)}}}+\underbrace{f\left(  \sum_{j=1}^{n}S_{2,j}%
+x_{j}\right)  }_{\substack{\leq\sum_{j=1}^{n}S_{2,j}f\left(  x_{j}\right)
+\\\text{(by the weighted Jensen inequality,}\\\text{since the }S_{2,j}\text{'s
+are nonnegative reals}\\\text{with sum }=1\text{)}}}+\cdots
++\underbrace{f\left(  \sum_{j=1}^{n}S_{n,j}x_{j}\right)  }_{\substack{\leq
+\sum_{j=1}^{n}S_{n,j}f\left(  x_{j}\right)  \\\text{(by the weighted Jensen
+inequality,}\\\text{since the }S_{n,j}\text{'s are nonnegative reals}%
+\\\text{with sum }=1\text{)}}}\\
+& \leq\sum_{j=1}^{n}S_{1,j}f\left(  x_{j}\right)  +\sum_{j=1}^{n}%
+S_{2,j}f\left(  x_{j}\right)  +\cdots+\sum_{j=1}^{n}S_{n,j}f\left(
+x_{j}\right)  \\
+& =\sum_{j=1}^{n}\underbrace{\left(  S_{1,j}+S_{2,j}+\cdots+S_{n,j}\right)
+}_{\substack{=1\\\text{(since }S\text{ is doubly stochastic)}}}f\left(
+x_{j}\right)  \\
+& =\sum_{j=1}^{n}f\left(  x_{j}\right)  =f\left(  x_{1}\right)  +f\left(
+x_{2}\right)  +\cdots+f\left(  x_{n}\right)  .
+\end{align*}
+In particular, we can apply this to the convex function $f_{t}:\mathbb{R}%
+\rightarrow\mathbb{R},\ z\mapsto\left\vert z-t\right\vert $ for any
+$t\in\mathbb{R}$, and we obtain%
+\[
+\left\vert y_{1}-t\right\vert +\left\vert y_{2}-t\right\vert +\cdots
++\left\vert y_{n}-t\right\vert \leq\left\vert x_{1}-t\right\vert +\left\vert
+x_{2}-t\right\vert +\cdots+\left\vert x_{n}-t\right\vert .
+\]
+In other words,%
+\[
+\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
++\left\vert x_{n}-t\right\vert \geq\left\vert y_{1}-t\right\vert +\left\vert
+y_{2}-t\right\vert +\cdots+\left\vert y_{n}-t\right\vert .
+\]
+Therefore, by the absolute value criterion, we have $x\succcurlyeq y$. This
+proves the \textquotedblleft$\Longleftarrow$\textquotedblright\ direction.
+
+
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,532 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, November 17, 2021 11:50:58}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 20}
+
+\section{Hermitian matrices (cont'd)}
+
+\subsection{Introduction to majorization theory (cont'd)}
+
+Recall:
+
+\begin{convention}
+Let $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{R}^{n}$ be a
+column vector with real entries. Then, for each $i\in\left[  n\right]  $, we
+let $x_{i}^{\downarrow}$ denote the $i$-th largest entry of $x$. So $\left(
+x_{1}^{\downarrow},x_{2}^{\downarrow},\ldots,x_{n}^{\downarrow}\right)  $ is
+the unique permutation of the tuple $\left(  x_{1},x_{2},\ldots,x_{n}\right)
+$ that satisfies
+\[
+x_{1}^{\downarrow}\geq x_{2}^{\downarrow}\geq\cdots\geq x_{n}^{\downarrow}.
+\]
+
+\end{convention}
+
+For example, if $x=\left(  3,5,2\right)  ^{T}$, then $x_{1}^{\downarrow}=5$
+and $x_{2}^{\downarrow}=3$ and $x_{3}^{\downarrow}=2$.
+
+Similarly, we define $x_{i}^{\uparrow}$ to be the $i$-th smallest entry of $x$.
+
+\begin{definition}
+Let $x\in\mathbb{R}^{n}$ and $y\in\mathbb{R}^{n}$ be two column vectors with
+real entries. Then, we say that $x$ \textbf{majorizes} $y$ (and we write
+$x\succcurlyeq y$) if and only if we have%
+\[
+\sum_{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow
+}\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\left[  n\right]  ,
+\]
+with equality for $m=n$ (and possibly for other $m$'s). In other words, $x$
+majorizes $y$ if and only if%
+\begin{align*}
+x_{1}^{\downarrow}  &  \geq y_{1}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}  &  \geq y_{1}^{\downarrow}%
++y_{2}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+x_{3}^{\downarrow}  &  \geq
+y_{1}^{\downarrow}+y_{2}^{\downarrow}+y_{3}^{\downarrow};\\
+&  \ldots;\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+\cdots+x_{n-1}^{\downarrow}  &  \geq
+y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n-1}^{\downarrow};\\
+x_{1}^{\downarrow}+x_{2}^{\downarrow}+\cdots+x_{n}^{\downarrow}  &
+=y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n}^{\downarrow}.
+\end{align*}
+
+\end{definition}
+
+Last time, we gave an intuition for majorization: We said that $x$ majorizes
+$y$ if and only if you can obtain $y$ from $x$ by \textquotedblleft having the
+entries come closer together (while keeping the average
+equal)\textquotedblright. Let us now turn this into an actual theorem. First,
+some definitions:
+
+\begin{definition}
+\textbf{(a)} If $x\in\mathbb{R}^{n}$ is any column vector, then $x_{i}$ will
+mean the $i$-th coordinate of $x$ (for any $i\in\left[  n\right]  $).
+
+\textbf{(b)} If $x\in\mathbb{R}^{n}$ is any column vector, then $x^{\downarrow
+}$ will mean the column vector obtained from $x$ by sorting the coordinates in
+weakly decreasing order. Thus,%
+\[
+x^{\downarrow}=\left(  x_{1}^{\downarrow},x_{2}^{\downarrow},\ldots
+,x_{n}^{\downarrow}\right)  ^{T}.
+\]
+
+
+\textbf{(c)} A vector $x\in\mathbb{R}^{n}$ is said to be \textbf{weakly
+decreasing} if $x_{1}\geq x_{2}\geq\cdots\geq x_{n}$.
+\end{definition}
+
+\begin{lemma}
+Let $x,y\in\mathbb{R}^{n}$. Then, $x\succcurlyeq y$ if and only if
+$x^{\downarrow}\succcurlyeq y^{\downarrow}$.
+\end{lemma}
+
+\begin{proof}
+The definition of $\succcurlyeq$ only involves $x^{\downarrow}$ and
+$y^{\downarrow}$. In other words, whether or not we have $x\succcurlyeq y$
+does not depend on the order of the coordinates of $x$ or of those of $y$.
+Thus, replacing $x$ and $y$ by $x^{\downarrow}$ and $y^{\downarrow}$ doesn't
+make any difference.
+\end{proof}
+
+\begin{definition}
+Let $x\in\mathbb{R}^{n}$. Let $i,j\in\left[  n\right]  $ be such that
+$x_{i}\leq x_{j}$. Let $t\in\left[  x_{i},x_{j}\right]  $ (that is,
+$t\in\mathbb{R}$ and $x_{i}\leq t\leq x_{j}$). Let $y\in\mathbb{R}^{n}$ be the
+column vector obtained from $x$ by%
+\[
+\text{replacing the coordinates }x_{i}\text{ and }x_{j}\text{ by }u\text{ and
+}v
+\]
+for some $u,v\in\left[  x_{i},x_{j}\right]  $ satisfying $u+v=x_{i}+x_{j}$.
+
+Then, we say that $y$ is obtained from $x$ by a \textbf{Robin Hood move}
+(short: \textbf{RH move}), and we write
+\[
+x\overset{\text{RH}}{\longrightarrow}y.
+\]
+
+
+Moreover, if $x$ and $y$ are weakly decreasing, then this RH move is said to
+be an \textbf{order-preserving RH move} (short \textbf{OPRH move}), and we
+write
+\[
+x\overset{\text{OPRH}}{\longrightarrow}y.
+\]
+
+\end{definition}
+
+\begin{example}
+\textbf{(a)} Replacing two coordinates of a vector $x$ by their average is an
+RH move.
+
+\textbf{(b)} Swapping two coordinates of a vector $x$ is an RH move.
+
+\textbf{(c)} If $x\in\mathbb{R}^{n}$ is weakly decreasing, then replacing two
+adjacent entries of $x$ by their average is an OPRH move.
+
+\textbf{(d)} More generally: If $x\in\mathbb{R}^{n}$ is weakly decreasing,
+then replacing its coordinates $x_{i}$ and $x_{i+1}$ by $u$ and $x_{i}%
++x_{i+1}-u$ is an OPRH move if and only if $u\in\left[  \dfrac{x_{i}+x_{i+1}%
+}{2},x_{i}\right]  $.
+\end{example}
+
+\begin{proposition}
+If $x\overset{\text{RH}}{\longrightarrow}y$, then the sum of the entries of
+$x$ equals the sum of the entries of $y$.
+\end{proposition}
+
+\begin{proof}
+Clear.
+\end{proof}
+
+\begin{lemma}
+Let $x,y\in\mathbb{R}^{n}$ be weakly decreasing column vectors such that $y$
+is obtained from $x$ by a (finite) sequence of OPRH moves. Then,
+$x\succcurlyeq y$.
+\end{lemma}
+
+\begin{proof}
+Recall that the relation $\succcurlyeq$ is reflexive and transitive. Thus, if
+$x_{\left[  0\right]  }\succcurlyeq x_{\left[  1\right]  }\succcurlyeq
+\cdots\succcurlyeq x_{\left[  m\right]  }$, then $x_{\left[  0\right]
+}\succcurlyeq x_{\left[  m\right]  }$. Therefore, it suffices to prove the
+proposition in the case when $y$ is obtained from $x$ by a \textbf{single}
+OPRH move.
+
+So let us assume that $y$ is obtained from $x$ by a \textbf{single} RH move.
+Let this move be replacing $x_{i}$ and $x_{j}$ by $u$ and $v$, where
+$x_{i}\leq x_{j}$ and $u,v\in\left[  x_{i},x_{j}\right]  $ with $u+v=x_{i}%
++x_{j}$. WLOG we have $x_{i}<x_{j}$ (since otherwise, the OPRH move changes
+nothing). Therefore, $i>j$ (since $x$ is weakly decreasing). Thus,%
+\[
+y=\left(  x_{1},x_{2},\ldots,x_{j-1},v,x_{j+1},x_{j+2},\ldots,x_{i-1}%
+,u,x_{i+1},x_{i+2},\ldots,x_{n}\right)
+\]
+(since $y$ is obtained from $x$ by replacing $x_{i}$ and $x_{j}$ by $u$ and
+$v$).
+
+Now, we must prove that $x\succcurlyeq y$. In other words, we must prove that%
+\[
+x_{1}+x_{2}+\cdots+x_{m}\geq y_{1}+y_{2}+\cdots+y_{m}%
+\]
+for each $m\in\left[  n\right]  $ (since $x$ and $y$ are weakly decreasing),
+and we must prove that%
+\[
+x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}.
+\]
+
+
+The latter equality follows from $u+v=x_{i}+x_{j}$. So we only need to prove
+the former inequality. So let us fix an $m\in\left[  n\right]  $. We must show
+that
+\[
+x_{1}+x_{2}+\cdots+x_{m}\geq y_{1}+y_{2}+\cdots+y_{m}%
+\]
+We are in one of the following cases:
+
+\begin{enumerate}
+\item We have $m<j$.
+
+\item We have $j\leq m<i$.
+
+\item We have $i\leq m$.
+\end{enumerate}
+
+In Case 1, we have $x_{1}+x_{2}+\cdots+x_{m}=y_{1}+y_{2}+\cdots+y_{m}$,
+because $x_{p}=y_{p}$ for all $p\leq m$ in this case.
+
+In Case 2, we have%
+\begin{align*}
+y_{1}+y_{2}+\cdots+y_{m}  & =x_{1}+x_{2}+\cdots+x_{j-1}+v+x_{j+1}%
++x_{j+2}+\cdots+x_{m}\\
+& =\left(  x_{1}+x_{2}+\cdots+x_{m}\right)  +\underbrace{v-x_{j}%
+}_{\substack{\leq0\\\text{(since }v\in\left[  x_{i},x_{j}\right]  \text{)}%
+}}\\
+& \leq x_{1}+x_{2}+\cdots+x_{m}.
+\end{align*}
+
+
+In Case 3, we have%
+\begin{align*}
+& y_{1}+y_{2}+\cdots+y_{m}\\
+& =x_{1}+x_{2}+\cdots+x_{j-1}+v+x_{j+1}+x_{j+2}+\cdots+x_{i-1}+u+x_{i+1}%
++x_{i+2}+\cdots+x_{m}\\
+& =\left(  x_{1}+x_{2}+\cdots+x_{m}\right)  +\underbrace{\left(
+u-x_{i}\right)  +\left(  v-x_{j}\right)  }_{\substack{=0\\\text{(since
+}u+v=x_{i}+x_{j}\text{)}}}\\
+& =x_{1}+x_{2}+\cdots+x_{m}.
+\end{align*}
+
+
+So we have proved $x_{1}+x_{2}+\cdots+x_{m}\geq y_{1}+y_{2}+\cdots+y_{m}$ in
+all cases, and we are done.
+\end{proof}
+
+\begin{theorem}
+[RH criterion for majorization]Let $x,y\in\mathbb{R}^{n}$ be two weakly
+decreasing column vectors. Then, $x\succcurlyeq y$ if and only if $y$ can be
+obtained from $x$ by a (finite) sequence of OPRH moves.
+\end{theorem}
+
+\begin{example}
+\textbf{(a)} We have $\left(  4,1,1\right)  \succcurlyeq\left(  2,2,2\right)
+$, and indeed $\left(  2,2,2\right)  $ can be obtained from $\left(
+4,1,1\right)  $ by OPRH moves as follows:%
+\[
+\left(  4,1,1\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
+3,2,1\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  2,2,2\right)  .
+\]
+
+
+\textbf{(b)} We have $\left(  7,5,2,0\right)  \succcurlyeq\left(
+4,4,3,3\right)  $, and indeed $\left(  4,4,3,3\right)  $ can be obtained from
+$\left(  7,5,2,0\right)  $ by OPRH moves as follows:%
+\[
+\left(  7,5,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
+6,6,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  6,5,3,0\right)
+\overset{\text{OPRH}}{\longrightarrow}\left(  6,4,3,1\right)
+\overset{\text{OPRH}}{\longrightarrow}\left(  4,4,3,3\right)  .
+\]
+Here is another way to do this:%
+\[
+\left(  7,5,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
+7,4,3,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  4,4,3,3\right)
+.
+\]
+
+\end{example}
+
+\begin{proof}
+[Proof of Theorem.] $\Longleftarrow:$ This follows from the lemma above.
+
+$\Longrightarrow:$ Let $x\succcurlyeq y$. We must show that $y$ can be
+obtained from $x$ by a finite sequence of OPRH moves.
+
+If $x=y$, then this is clear (just take the empty sequence). So we WLOG assume
+that $x\neq y$.. We claim now that there is a further weakly decreasing vector
+$z\in\mathbb{R}^{n}$ such that
+
+\begin{enumerate}
+\item we have $x\overset{\text{OPRH}}{\longrightarrow}z$;
+
+\item we have $z\succcurlyeq y$;
+
+\item the vector $z$ has more entries in common with $y$ than $x$ does; in
+other words, we have%
+\[
+\left\vert \left\{  i\in\left[  n\right]  \ \mid\ z_{i}=y_{i}\right\}
+\right\vert >\left\vert \left\{  i\in\left[  n\right]  \ \mid\ x_{i}%
+=y_{i}\right\}  \right\vert .
+\]
+
+\end{enumerate}
+
+In other words, we claim that by making a strategic OPRH move starting at $x$,
+we can reach a vector $z$ that still majorizes $y$ but has at least one more
+entry in common with $y$ than $x$ does. If we can prove this claim, then we
+will automatically obtain a recursive procedure to transform $x$ into $y$ by a
+sequence of OPRH moves. (And in fact, this procedure will use at most $n$
+moves, because each move makes the vector agree with $y$ in at least one more position.)
+
+So let us prove our claim.
+
+Since $x$ is weakly decreasing, we have $x=x^{\downarrow}$. Similarly,
+$y=y^{\downarrow}$. Thus, from $x\succcurlyeq y$, we obtain%
+\[
+x_{1}+x_{2}+\cdots+x_{m}\geq y_{1}+y_{2}+\cdots+y_{m}%
+\ \ \ \ \ \ \ \ \ \ \text{for all }m\in\left[  n\right]  ,
+\]
+as well as $x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}$.
+
+Combining $x\neq y$ with $x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}$,
+we see that there exists some $a\in\left[  n\right]  $ such that $x_{a}>y_{a}$
+(why?). Moreover, there exists some pair $\left(  a,b\right)  \in\left[
+n\right]  \times\left[  n\right]  $ such that
+\[
+x_{a}>y_{a}\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ x_{b}%
+<y_{b}\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ a<b.
+\]
+(\textit{Proof:} Pick the smallest $a$ such that $x_{a}\neq y_{a}$, then the
+inequality $x_{1}+x_{2}+\cdots+x_{a}\geq y_{1}+y_{2}+\cdots+y_{a}$ shows that
+$x_{a}>y_{a}$. Now, pick the smallest $b>a$ such that $x_{1}+x_{2}%
++\cdots+x_{b}=y_{1}+y_{2}+\cdots+y_{b}$, then comparing this with $x_{1}%
++x_{2}+\cdots+x_{b-1}\geq y_{1}+y_{2}+\cdots+y_{b-1}$ yields $x_{b}<y_{b}$,
+and thus we have found our pair $\left(  a,b\right)  $.)
+
+So let us pick such a pair $\left(  a,b\right)  $ with smallest possible
+$b-a$. Then,%
+\begin{align*}
+x_{a}  & >y_{a},\\
+x_{j}  & =y_{j}\ \ \ \ \ \ \ \ \ \ \text{for all }a<j<b,\\
+x_{b}  & <y_{b}%
+\end{align*}
+(here, the equalities $x_{j}=y_{j}$ come from the \textquotedblleft smallest
+possible $b-a$\textquotedblright\ condition). Since $y$ is weakly decreasing,
+we thus have%
+\[
+x_{a}>y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with
+}a<j<b\right)  \geq y_{b}>x_{b}.
+\]
+(If there are no $a<j<b$, then this is supposed to read $x_{a}>y_{a}\geq
+y_{b}>x_{b}$.) This shows, in particular, that $y_{a},y_{b}$ lie in the open
+interval $\left(  x_{a},x_{b}\right)  $.
+
+Now, we make an RH move that \textquotedblleft squeezes $x_{a}$ and $x_{b}$
+together\textquotedblright\ until either $x_{a}$ reaches $y_{a}$ or $x_{b}$
+reaches $y_{b}$ (whatever happens first). In formal terms, this means that we
+\begin{align*}
+\text{replace }x_{a}\text{ and }x_{b}\text{ by }y_{a}\text{ and }x_{a}%
++x_{b}-y_{a}\text{ if }x_{a}-y_{a}  & \leq y_{b}-x_{b},\text{ and}\\
+\text{replace }x_{a}\text{ and }x_{b}\text{ by }x_{a}+x_{b}-y_{b}\text{ and
+}y_{b}\text{ if }x_{a}-y_{a}  & \geq y_{b}-x_{b}.
+\end{align*}
+Let $z\in\mathbb{R}^{n}$ be the resulting $n$-tuple. We claim that $z$ is
+weakly decreasing and satisfies the three requirements 1, 2, 3 above:
+
+\begin{enumerate}
+\item we have $x\overset{\text{OPRH}}{\longrightarrow}z$;
+
+\item we have $z\succcurlyeq y$;
+
+\item the vector $z$ has more entries in common with $y$ than $x$ does; in
+other words, we have%
+\[
+\left\vert \left\{  i\in\left[  n\right]  \ \mid\ z_{i}=y_{i}\right\}
+\right\vert >\left\vert \left\{  i\in\left[  n\right]  \ \mid\ x_{i}%
+=y_{i}\right\}  \right\vert .
+\]
+
+\end{enumerate}
+
+Indeed, the chain of inequalities%
+\[
+x_{a}>y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with
+}a<j<b\right)  \geq y_{b}>x_{b}%
+\]
+reveals that $z$ is weakly decreasing; thus, our RH move is an OPRH move. So
+requirement 1 holds.
+
+Requirement 2 is not hard to check (distinguish between the cases $m<a$,
+$a\leq m<b$ and $m\geq b$). Requirement 3 is easy: $x_{a}>y_{a}$ and
+$x_{b}<y_{b}$ but one of $z_{a}$ and $z_{b}$ equals the corresponding $y_{a}$
+or $y_{b}$.
+
+This completes the proof, as explained above.
+\end{proof}
+
+
+\end{document}
