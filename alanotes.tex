@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Sunday, November 21, 2021 00:15:08}
+%TCIDATA{LastRevised=Monday, November 22, 2021 00:32:31}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -1696,7 +1696,7 @@ integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple.
 
 \textbf{(c)} Find infinitely many Pythagorean triples that are pairwise
 non-proportional (i.e., no two of them are obtained from one another just by
-multiplying all three entries by the same number.) \medskip
+multiplying all three entries by the same number). \medskip
 
 [\textbf{Hint:} Use the $S\mapsto U$ construction from Exercise
 \ref{exe.unitary.skew-herm.1}.]
@@ -5667,7 +5667,213 @@ eigenvector of each $A\in\mathcal{F}$.
 \end{lemma}
 
 \begin{proof}
-TODO: Scribe!
+We shall use the following conventions:
+
+\begin{itemize}
+\item An $\mathcal{F}$\emph{-eigenvector} will mean a vector $x\in
+\mathbb{C}^{n}$ such that $x$ is an eigenvector of each $A\in\mathcal{F}$.
+Thus, our goal is to show that there exists a nonzero $\mathcal{F}$-eigenvector.
+
+\item A \emph{subspace} shall mean a $\mathbb{C}$-vector subspace of
+$\mathbb{C}^{n}$.
+
+\item A subspace $W$ of $\mathbb{C}^{n}$ is said to be \emph{nontrivial} if it
+contains a nonzero vector (i.e., if its dimension is $>0$).
+
+\item A subspace $W$ of $\mathbb{C}^{n}$ is said to be $\mathcal{F}%
+$\emph{-invariant} if every $A\in\mathcal{F}$ and every $w\in W$ satisfy
+$Aw\in W$. (This means that applying a matrix $A\in\mathcal{F}$ to a vector
+$w\in W$ gives a vector in $W$ again -- i.e., that there is no way to
+\textquotedblleft escape\textquotedblright\ $W$ by applying matrices
+$A\in\mathcal{F}$.)
+
+[\textbf{Example:} If $n=2$ and $\mathcal{F}=\left\{  \left(
+\begin{array}
+[c]{cc}%
+3 & a\\
+0 & 2
+\end{array}
+\right)  \ \mid\ a\in\mathbb{R}\right\}  $, then $\operatorname*{span}\left(
+e_{1}\right)  =\left\{  \left(
+\begin{array}
+[c]{c}%
+x\\
+0
+\end{array}
+\right)  \ \mid\ x\in\mathbb{C}\right\}  $ is an $\mathcal{F}$-invariant
+subspace, because every $A=\left(
+\begin{array}
+[c]{cc}%
+3 & a\\
+0 & 2
+\end{array}
+\right)  \in\mathcal{F}$ and every $w=\left(
+\begin{array}
+[c]{c}%
+x\\
+0
+\end{array}
+\right)  \in\operatorname*{span}\left(  e_{1}\right)  $ satisfy%
+\[
+Aw=\left(
+\begin{array}
+[c]{cc}%
+3 & a\\
+0 & 2
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+x\\
+0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+3x\\
+0
+\end{array}
+\right)  \in\operatorname*{span}\left(  e_{1}\right)  .
+\]
+More generally, if the set $\mathcal{F}\subseteq\mathbb{C}^{n\times n}$
+consists entirely of upper-triangular matrices, then each of the subspaces
+\[
+\operatorname*{span}\left(  e_{1},e_{2},\ldots,e_{k}\right)  =\left\{
+x\in\mathbb{C}^{n}\ \mid\ \text{the last }n-k\text{ coordinates of }x\text{
+are }0\right\}
+\]
+is $\mathcal{F}$-invariant, because the product $Ax$ of an upper-triangular
+matrix $A\in\mathbb{C}^{n\times n}$ with a vector $x\in\operatorname*{span}%
+\left(  e_{1},e_{2},\ldots,e_{k}\right)  $ is always a vector in
+$\operatorname*{span}\left(  e_{1},e_{2},\ldots,e_{k}\right)  $.]
+\end{itemize}
+
+It is clear that the trivial subspace $\left\{  0\right\}  $ is $\mathcal{F}%
+$-invariant; so is the whole space $\mathbb{C}^{n}$ itself. The latter shows
+that there exists at least one nontrivial $\mathcal{F}$-invariant subspace
+(namely, $\mathbb{C}^{n}$).
+
+Now, we shall show the following crucial claim:
+
+\begin{statement}
+\textit{Claim 1:} Let $W$ be a nontrivial $\mathcal{F}$-invariant subspace.
+Let $w\in W$. Assume that $w$ is not an $\mathcal{F}$-eigenvector. Then, there
+exists a nontrivial $\mathcal{F}$-invariant subspace $V$ such that $V$ is a
+\textbf{proper subset} of $W$.
+\end{statement}
+
+Roughly speaking, this claim is saying that if a nontrivial $\mathcal{F}%
+$-invariant subspace contains a vector $w$ that is not an $\mathcal{F}%
+$-eigenvector, then there is a smaller nontrivial $\mathcal{F}$-invariant
+subspace inside it. This fact (once proved) allows us to start with any
+nontrivial $\mathcal{F}$-invariant subspace (for instance, $\mathbb{C}^{n}$
+itself), and then successively replace it by smaller and smaller subspaces
+until we eventually find a nontrivial $\mathcal{F}$-invariant subspace that
+consists entirely of $\mathcal{F}$-eigenvectors. This will then yield the
+existence of a nonzero $\mathcal{F}$-eigenvector, and thus Lemma
+\ref{lem.schurtri.commute.1} will be proved. (We shall walk through this
+argument in more detail after proving Claim 1.)
+
+So let us now prove Claim 1:
+
+[\textit{Proof of Claim 1:} We know that $w$ is not an $\mathcal{F}%
+$-eigenvector. In other words, there exists some $B\in\mathcal{F}$ such that
+$w$ is not an eigenvector of $B$. Consider this $B$.
+
+We have $Bv\in W$ for each $v\in W$ (since $W$ is $\mathcal{F}$-invariant).
+Hence, the map%
+\begin{align*}
+f:W  &  \rightarrow W,\\
+v  &  \mapsto Bv
+\end{align*}
+is well-defined. This map $f$ is furthermore $\mathbb{C}$-linear (for obvious
+reasons). Also, $\dim W>0$ (because $W$ is nontrivial).
+
+However, it is well-known that any linear map from a finite-dimensional
+$\mathbb{C}$-vector space to itself has at least one nonzero eigenvector,
+provided that this vector space has dimension $>0$. We thus conclude that the
+linear map $f:W\rightarrow W$ has at least one nonzero
+eigenvector\footnote{since $f$ is a $\mathbb{C}$-linear map from the
+finite-dimensional $\mathbb{C}$-vector space $W$ to itself, and since $\dim
+W>0$}. Pick such a nonzero eigenvector $x$, and let $\lambda\in\mathbb{C}$ be
+the corresponding eigenvalue. Thus, $x\in W$ and $v\neq0$ and $f\left(
+x\right)  =\lambda x$. Since $f\left(  x\right)  =Bx$ (by the definition of
+$f$), we can rewrite the latter equality as $Bx=\lambda x$. In contrast,
+$Bw\neq\lambda w$ (since $w$ is not an eigenvector of $B$).
+
+Define a subset $V$ of $W$ by
+\[
+V:=\left\{  v\in W\ \mid\ Bv=\lambda v\right\}  .
+\]
+It is easy to see that $V$ is a subspace (since $B\left(  u+v\right)  =Bu+Bv$
+and $B\left(  \mu v\right)  =\mu\cdot Bv$ for any $u,v\in W$ and $\mu
+\in\mathbb{C}$). Furthermore, this subpace $V$ contains the nonzero vector $x$
+(since $Bx=\lambda x$), and thus is nontrivial. However, this subspace $V$
+does not contain $w$ (because if it did, then we would have $Bw=\lambda w$ (by
+the definition of $V$), which would contradict $Bw\neq\lambda w$). Thus,
+$V\neq W$ (since $W$ does contain $w$). Therefore, $V$ is a \textbf{proper}
+subset of $W$ (since $V$ is a subset of $W$).
+
+Let us now show that this subspace $V$ is $\mathcal{F}$-invariant. Indeed, let
+$A\in\mathcal{F}$ and $v\in V$ be arbitrary. We shall show that $Av\in V$.
+
+We have $v\in V\subseteq W$ and therefore $Av\in W$ (since $W$ is
+$\mathcal{F}$-invariant). Moreover, $Bv=\lambda v$ (since $v\in V$).
+Furthermore, $B$ and $A$ commute (since any two matrices in $\mathcal{F}$
+commute); thus, $BA=AB$. Hence, $BAv=A\underbrace{Bv}_{=\lambda v}%
+=\lambda\cdot Av$. Thus, $Av$ is a vector $z\in W$ that satisfies $Bz=\lambda
+z$ (since $Av\in W$). In other words, $Av\in V$ (by the definition of $V$).
+
+Forget that we fixed $A$ and $v$. We thus have shown that every $A\in
+\mathcal{F}$ and every $v\in V$ satisfy $Av\in V$. In other words, the
+subspace $V$ is $\mathcal{F}$-invariant.
+
+Thus, we have found a nontrivial $\mathcal{F}$-invariant subspace $V$ such
+that $V$ is a \textbf{proper subset} of $W$. This proves Claim 1.] \medskip
+
+Now, we can complete the proof of Lemma \ref{lem.schurtri.commute.1} (using
+the strategy we outlined above):
+
+We must prove that there exists a nonzero $\mathcal{F}$-eigenvector. Assume
+the contrary. Thus, there exists no nonzero $\mathcal{F}$-eigenvector.
+
+We recursively construct a sequence $\left(  V_{0},V_{1},V_{2},V_{3}%
+,\ldots\right)  $ of nontrivial $\mathcal{F}$-invariant subspaces as follows:
+
+\begin{itemize}
+\item We begin by setting $V_{0}:=\mathbb{C}^{n}$. (This subspace is indeed
+$\mathcal{F}$-invariant, and furthermore is nontrivial because $n>0$.)
+
+\item For each $i\in\mathbb{N}$, if the nontrivial $\mathcal{F}$-invariant
+subspace $V_{i}$ has already been constructed, we define the next subspace
+$V_{i+1}$ as follows: We pick an arbitrary nonzero vector $w\in V_{i}$. (Such
+a $w$ exists, since $V_{i}$ is nontrivial.) This $w$ cannot be an
+$\mathcal{F}$-eigenvector (since there exists no nonzero $\mathcal{F}%
+$-eigenvector). Hence, Claim 1 (applied to $W=V_{i}$) yields that there exists
+a nontrivial $\mathcal{F}$-invariant subspace $V$ such that $V$ is a
+\textbf{proper subset} of $V_{i+1}$. We choose such a $V$ and define
+$V_{i+1}:=V$.
+\end{itemize}
+
+Thus, we obtain a sequence $\left(  V_{0},V_{1},V_{2},V_{3},\ldots\right)  $
+of subspaces such that each subspace $V_{i+1}$ in this sequence is a
+\textbf{proper subset} of the preceding subspace $V_{i}$. Hence, for each
+$i\in\mathbb{N}$, we have $\dim\left(  V_{i+1}\right)  <\dim\left(
+V_{i}\right)  $ (since $V_{i}$ and $V_{i+1}$ are finite-dimensional vector
+spaces). Equivalently, for each $i\in\mathbb{N}$, we have $\dim\left(
+V_{i}\right)  >\dim\left(  V_{i+1}\right)  $. In other words,%
+\[
+\dim\left(  V_{0}\right)  >\dim\left(  V_{1}\right)  >\dim\left(
+V_{2}\right)  >\cdots.
+\]
+Hence, the sequence $\left(  \dim\left(  V_{0}\right)  ,\ \dim\left(
+V_{1}\right)  ,\ \dim\left(  V_{2}\right)  ,\ \ldots\right)  $ is a strictly
+decreasing infinite sequence of nonnegative integers. However, this is absurd,
+since there exists no strictly decreasing infinite sequence of nonnegative
+integers\footnote{This is an example of a
+\href{https://en.wikipedia.org/wiki/Proof_by_infinite_descent}{\textquotedblleft
+proof by infinite descent\textquotedblright}.}. Thus, we have obtained a
+contradiction. This proves Lemma \ref{lem.schurtri.commute.1}.
 \end{proof}
 
 We can now generalize Theorem \ref{thm.schurtri.schurtri} to families of
@@ -5684,6 +5890,12 @@ $UAU^{\ast}$ is upper-triangular.
 \end{theorem}
 
 \begin{proof}
+This can be proved by an induction on $n$, similarly to Theorem
+\ref{thm.jnf.schurtri-diag}. But now, instead of picking an eigenvector $x$ of
+a single matrix $A$, we pick a common eigenvector for all matrices in
+$\mathcal{F}$. The existence of such an eigenvector is guaranteed by Lemma
+\ref{lem.schurtri.commute.1}.
+
 TODO: Scribe!
 \end{proof}
 
@@ -5858,7 +6070,7 @@ Unlike the unitary matrices, the normal matrices are not closed under multiplica
 $A,B\in\mathbb{C}^{2\times2}$ such that neither $A+B$ nor $AB$ is normal.
 \end{exercise}
 
-Here are two more ways to construct normal matrices out of existing normal matrices:
+Here are three more ways to construct normal matrices out of existing normal matrices:
 
 \begin{proposition}
 \label{prop.schurtri.normal.conj}Let $A\in\mathbb{C}^{n\times n}$ be a normal
@@ -6192,13 +6404,78 @@ In other words, $A$ is unitarily similar to a diagonal matrix. \medskip
 \textbf{(b)} Let $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)
 $ be a unitary matrix, and $D\in\mathbb{C}^{n\times n}$ be a diagonal matrix
 such that $A=UDU^{\ast}$. Then, the diagonal entries of $D$ are the
-eigenvalues of $A$. Moreover, the columns of $U$ are the eigenvectors of $A$.
+eigenvalues of $A$. Moreover, the columns of $U$ are eigenvectors of $A$.
 Thus, there exists an orthonormal basis of $\mathbb{C}^{n}$ consisting of
 eigenvectors of $A$.
 \end{theorem}
 
 \begin{proof}
-TODO: Scribe!
+\textbf{(a)} Theorem \ref{thm.schurtri.schurtri} yields that there exist a
+unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $
+and an upper-triangular matrix $T\in\mathbb{C}^{n\times n}$ such that
+$A=UTU^{\ast}$. Consider these $U$ and $T$.
+
+Since $U$ is unitary, we have $U^{\ast}U=I_{n}$ and $UU^{\ast}=I_{n}$. The
+matrix $U^{\ast}$ is unitary as well (since $U^{\ast}\underbrace{\left(
+U^{\ast}\right)  ^{\ast}}_{=U}=U^{\ast}U=I_{n}$ and $\underbrace{\left(
+U^{\ast}\right)  ^{\ast}}_{=U}U^{\ast}=UU^{\ast}=I_{n}$). Hence, Proposition
+\ref{prop.schurtri.normal.conj} \textbf{(b)} (applied to $U^{\ast}$ instead of
+$U$) yields that the matrix $U^{\ast}A\left(  U^{\ast}\right)  ^{\ast}$ is
+normal. Since%
+\[
+U^{\ast}\underbrace{A}_{=UTU^{\ast}}\ \ \underbrace{\left(  U^{\ast}\right)
+^{\ast}}_{=U}=\underbrace{U^{\ast}U}_{=I_{n}}T\underbrace{U^{\ast}U}_{=I_{n}%
+}=I_{n}TI_{n}=T,
+\]
+this rewrites as follows: The matrix $T$ is normal. Since $T$ is
+upper-triangular, we thus conclude by Lemma \ref{lem.schurtri.normal.tri} that
+$T$ is diagonal. Hence, if we set $D=T$, then we have constructed a unitary
+matrix $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and a
+diagonal matrix $D\in\mathbb{C}^{n\times n}$ such that $A=UDU^{\ast}$. Hence,
+$A$ is unitarily similar to a diagonal matrix. This proves Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(a)}. \medskip
+
+\textbf{(b)} From $A=UDU^{\ast}$, we see that the matrix $D$ is unitarily
+similar to $A$. Hence, $D$ is similar to $A$ (by Proposition
+\ref{prop.schurtri.unisim.sim}). Moreover, the matrix $D$ is upper-triangular
+(since it is diagonal). Thus, Proposition \ref{prop.schurtri.similar.T-diag}
+(applied to $\mathbb{F}=\mathbb{C}$ and $T=D$) yields that the diagonal
+entries of $T$ are the eigenvalues of $A$ (with their algebraic multiplicities).
+
+Next, we shall show that the columns of $U$ are eigenvectors of $A$. Indeed,
+from $A=UDU^{\ast}$, we obtain
+\[
+AU=UD\underbrace{U^{\ast}U}_{\substack{=I_{n}\\\text{(since }U\text{ is
+unitary)}}}=UD.
+\]
+
+
+Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
+of the diagonal matrix $D$. Let $i\in\left[  n\right]  $. Then, $De_{i}%
+=\lambda_{i}e_{i}$ (where $\left(  e_{1},e_{2},\ldots,e_{n}\right)  $ denotes
+the standard basis of $\mathbb{C}^{n}$), since $D$ is a diagonal matrix whose
+$i$-th diagonal entry is $e_{i}$. Therefore,%
+\[
+\underbrace{AU}_{=UD}e_{i}=U\underbrace{De_{i}}_{=\lambda_{i}e_{i}}%
+=\lambda_{i}\cdot Ue_{i}.
+\]
+This shows that $Ue_{i}$ is an eigenvector of $A$ (for eigenvalue $\lambda
+_{i}$). Since $Ue_{i}$ is the $i$-th column of $U$, we can rewrite this as
+follows: The $i$-th column of $U$ is an eigenvector of $A$.
+
+Forget that we fixed $i$. We thus have shown that for each $i\in\left[
+n\right]  $, the $i$-th column of $U$ is an eigenvector of $A$. In other
+words, the columns of $U$ are eigenvectors of $A$.
+
+It remains to prove that there exists an orthonormal basis of $\mathbb{C}^{n}$
+consisting of eigenvectors of $A$. However, this is now easy: The matrix $U$
+is unitary. Thus, the columns of $U$ form an orthonormal basis of
+$\mathbb{C}^{n}$ (by the implication $\mathcal{A}\Longrightarrow\mathcal{E}$
+in Theorem \ref{thm.unitary.unitary.eqs}). This basis consists of eigenvectors
+of $A$ (since the columns of $U$ are eigenvectors of $A$). Thus, there exists
+an orthonormal basis of $\mathbb{C}^{n}$ consisting of eigenvectors of $A$
+(namely, this basis). This concludes the proof of Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(b)}.
 \end{proof}
 
 The decomposition $A=UDU^{\ast}$ in Theorem
@@ -6283,7 +6560,22 @@ diagonal matrix.
 \end{corollary}
 
 \begin{proof}
-TODO: Scribe!
+$\Longrightarrow:$ Assume that $A$ is normal. Then, Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(a)} shows that $A$ is unitarily
+similar to a diagonal matrix. This proves the \textquotedblleft%
+$\Longrightarrow$\textquotedblright\ direction of Corollary
+\ref{cor.schurtri.normal.normal-iff}. \medskip
+
+$\Longleftarrow:$ Assume that $A$ is unitarily similar to a diagonal matrix.
+In other words, $A=UDU^{\ast}$ for some unitary matrix $U\in\operatorname*{U}%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ and some diagonal matrix
+$D\in\mathbb{C}^{n\times n}$. Consider these $U$ and $D$. The matrix $D$ is
+normal (by Proposition \ref{prop.schurtri.normal.classes} \textbf{(d)}).
+Hence, the matrix $UDU^{\ast}$ is normal (by Proposition
+\ref{prop.schurtri.normal.conj} \textbf{(b)}, applied to $D$ instead of $A$).
+In other words, the matrix $A$ is normal (since $A=UDU^{\ast}$). This proves
+the \textquotedblleft$\Longleftarrow$\textquotedblright\ direction of
+Corollary \ref{cor.schurtri.normal.normal-iff}.
 \end{proof}
 
 The spectral decomposition of a Hermitian matrix has a special property:
@@ -6295,7 +6587,29 @@ of $A$. Then, the diagonal entries of $D$ are real.
 \end{proposition}
 
 \begin{proof}
-TODO: Scribe!
+The definition of a spectral decomposition yields $A=UDU^{\ast}$. Moreover, it
+yields that $U$ is unitary and $D$ is diagonal. However, since $A$ is
+Hermitian, we have $A^{\ast}=A$. In view of $A=UDU^{\ast}$, this rewrites as
+$\left(  UDU^{\ast}\right)  ^{\ast}=UDU^{\ast}$. Hence,
+\[
+UDU^{\ast}=\left(  UDU^{\ast}\right)  ^{\ast}=\underbrace{\left(  U^{\ast
+}\right)  ^{\ast}}_{=U}D^{\ast}U^{\ast}=UD^{\ast}U^{\ast}.
+\]
+Since the matrix $U$ is unitary, we can cancel both $U$ and $U^{\ast}$ from
+this equality\footnote{Indeed, the matrix $U$ is unitary; therefore, $U$ is
+invertible, and its inverse is $U^{-1}=U^{\ast}$. Hence, $U^{\ast}$ is also
+invertible (being the inverse of $U$). Thus, we can multiply both sides of the
+equality $UDU^{\ast}=UD^{\ast}U^{\ast}$ from the left by $U^{-1}$ and from the
+right by $\left(  U^{\ast}\right)  ^{-1}$; as a result, we obtain $D=D^{\ast}%
+$.}, and thus obtain $D=D^{\ast}$. However, if $\lambda$ is a diagonal entry
+of $D$, then the corresponding diagonal entry of $D^{\ast}$ must be
+$\overline{\lambda}$, and therefore we obtain $\lambda=\overline{\lambda}$
+(since $D=D^{\ast}$ shows that these two entries are equal). Thus, each
+diagonal entry $\lambda$ of $D$ satisfies $\lambda=\overline{\lambda}$ and
+therefore $\lambda\in\mathbb{R}$ (because a complex number $z$ satisfying
+$z=\overline{z}$ must automatically satisfy $z\in\mathbb{R}$). In other words,
+the diagonal entries of $D$ are real. This proves Proposition
+\ref{prop.schurtri.normal.hermitian-spec}.
 \end{proof}
 
 This allows us to characterize Hermitian matrices in a similar way as normal
@@ -6308,7 +6622,36 @@ a diagonal matrix with real entries.
 \end{corollary}
 
 \begin{proof}
-TODO: Scribe!
+$\Longrightarrow:$ Assume that $A$ is Hermitian. Then, $A$ is normal (by
+Proposition \ref{prop.schurtri.normal.classes} \textbf{(a)}). Hence, Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(a)} shows that $A$ is unitarily
+similar to a diagonal matrix. In other words, $A=UDU^{\ast}$ for some unitary
+matrix $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and
+some diagonal matrix $D\in\mathbb{C}^{n\times n}$. Consider these $U$ and $D$.
+Clearly, $A$ is unitarily similar to $D$. Moreover, $\left(  U,D\right)  $ is
+a spectral decomposition of $A$ (by the definition of a spectral
+decomposition). Hence, Proposition \ref{prop.schurtri.normal.hermitian-spec}
+yields that the diagonal entries of $D$ are real. Thus, $D$ is a diagonal
+matrix with real entries. Hence, $A$ is unitarily similar to a diagonal matrix
+with real entries (since $A$ is unitarily similar to $D$). This proves the
+\textquotedblleft$\Longrightarrow$\textquotedblright\ direction of Corollary
+\ref{cor.schurtri.normal.hermitian-iff}. \medskip
+
+$\Longleftarrow:$ Assume that $A$ is unitarily similar to a diagonal matrix
+with real entries. In other words, $A=UDU^{\ast}$ for some unitary matrix
+$U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and some
+diagonal matrix $D\in\mathbb{C}^{n\times n}$ that has real entries. Consider
+these $U$ and $D$. The matrix $D$ is a diagonal matrix with real entries;
+thus, it is easy to see that $D^{\ast}=D$ (since the diagonal entries of $D$
+are real and thus remain unchanged and unmoved in $D^{\ast}$, whereas all
+other entries of $D$ are $0$). Now, from $A=UDU^{\ast}$, we obtain
+\[
+A^{\ast}=\left(  UDU^{\ast}\right)  ^{\ast}=\underbrace{\left(  U^{\ast
+}\right)  ^{\ast}}_{=U}\ \ \underbrace{D^{\ast}}_{=D}U^{\ast}=UDU^{\ast}=A.
+\]
+In other words, the matrix $A$ is Hermitian. This proves the \textquotedblleft%
+$\Longleftarrow$\textquotedblright\ direction of Corollary
+\ref{cor.schurtri.normal.hermitian-iff}.
 \end{proof}
 
 Similarly, we can handle skew-Hermitian matrices:
@@ -9941,8 +10284,10 @@ have $\sigma\left(  A\right)  =\left\{  0\right\}  $).
 
 \subsection{Powers and the Jordan canonical form}
 
-Let $n\in\mathbb{N}$ and $A\in\mathbb{F}^{n\times n}$. Assume that we know the
-JCF $J$ of $A$ and an invertible matrix $S$ such that
+Let $n\in\mathbb{N}$ and $A\in\mathbb{F}^{n\times n}$ for some field
+$\mathbb{F}$. Assume that we know the JCF $J$ of $A$ (this always exists when
+$\mathbb{F}=\mathbb{C}$, but sometimes exists for other fields as well) and an
+invertible matrix $S\in\mathbb{F}^{n\times n}$ such that
 \[
 A=SJS^{-1}.
 \]
@@ -10030,13 +10375,13 @@ C^{4}  &  =\left(
 In general, we have the following:
 
 \begin{theorem}
-\label{thm.jnf.powers.Cm}Let $k>0$ and $\lambda\in\mathbb{F}$. Let
-$C=J_{k}\left(  \lambda\right)  $. Let $m\in\mathbb{N}$. Then, $C^{m}$ is the
-upper-triangular $k\times k$-matrix whose $\left(  i,j\right)  $-th entry is
-$\dbinom{m}{j-i}\lambda^{m-j+i}$ for all $i,j\in\left[  k\right]  $. (Here, we
-follow the convention that $\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when
-$\ell\notin\mathbb{N}$. Also, recall that $\dbinom{n}{\ell}=0$ when
-$n\in\mathbb{N}$ and $\ell>n$.)
+\label{thm.jnf.powers.Cm}Let $\mathbb{F}$ be a field. Let $k>0$ and
+$\lambda\in\mathbb{F}$. Let $C=J_{k}\left(  \lambda\right)  $. Let
+$m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
+whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$ for
+all $i,j\in\left[  k\right]  $. (Here, we follow the convention that
+$\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when $\ell\notin\mathbb{N}$. Also,
+recall that $\dbinom{n}{\ell}=0$ when $n\in\mathbb{N}$ and $\ell>n$.)
 \end{theorem}
 
 \begin{proof}
@@ -10126,7 +10471,7 @@ $A^{m}\rightarrow0$). Thus, the vector $\lambda^{m}x$ goes to $0$ as well
 entails that the scalar $\lambda^{m}$ goes to $0$ as well. Hence, $\left\vert
 \lambda\right\vert <1$ (because if $\left\vert \lambda\right\vert $ was
 $\geq1$, then $\lambda^{m}$ would either oscillate along the unit circle, or
-move further and further away from the origin).
+move further and further away from the origin). \medskip
 
 $\Longleftarrow:$ Suppose that all eigenvalues of $A$ have absolute value $<1$.
 
@@ -10175,7 +10520,7 @@ to $0$ faster than polynomials can go to $\infty$.
 \end{proof}
 
 \begin{exercise}
-\fbox{5} Let $\lambda\in\mathbb{C}$. Let $n$ and $k$ be two positive integers.
+\fbox{6} Let $\lambda\in\mathbb{C}$. Let $n$ and $k$ be two positive integers.
 Prove the following: \medskip
 
 \textbf{(a)} If a $k\times k$-matrix $C$ has eigenvalue $\lambda$ with
@@ -10183,7 +10528,7 @@ algebraic multiplicity $k$ and geometric multiplicity $1$, then $C\sim
 J_{k}\left(  \lambda\right)  $. \medskip
 
 \textbf{(b)} We have $\left(  J_{k}\left(  \lambda\right)  \right)  ^{n}\sim
-J_{k}\left(  \lambda\right)  $ if $\lambda\neq0$. \medskip
+J_{k}\left(  \lambda^{n}\right)  $ if $\lambda\neq0$. \medskip
 
 \textbf{(c)} If $A\in\mathbb{C}^{k\times k}$ is an invertible matrix such that
 $A^{n}$ is diagonalizable, then $A$ is diagonalizable.
@@ -10225,17 +10570,6 @@ p\left(  I_{n}\right)  =I_{n}-I_{n}=0.
 \begin{example}
 The matrix $\left(
 \begin{array}
-[c]{cc}%
-0 & 1\\
-0 & 0
-\end{array}
-\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=t^{2}$,
-since its square is $0$.
-\end{example}
-
-\begin{example}
-The matrix $\left(
-\begin{array}
 [c]{ccc}%
 0 & 1 & 0\\
 0 & 0 & 0\\
@@ -10253,29 +10587,37 @@ The diagonal matrix $\left(
 & 2 & \\
 &  & 3
 \end{array}
-\right)  $ is annihilated by the polynomial $p\left(  t\right)  :=\left(
-t-2\right)  \left(  t-3\right)  $, since%
+\right)  $ (where empty cells are understood to be filled with zeroes) is
+annihilated by the polynomial $p\left(  t\right)  :=\left(  t-2\right)
+\left(  t-3\right)  $, since%
 \begin{align*}
-&  \left(  \left(
+p\left(  \left(
 \begin{array}
 [c]{ccc}%
 2 &  & \\
 & 2 & \\
 &  & 3
 \end{array}
-\right)  -2I_{n}\right)  \left(  \left(
+\right)  \right)   &  =\left(  \left(
 \begin{array}
 [c]{ccc}%
 2 &  & \\
 & 2 & \\
 &  & 3
 \end{array}
-\right)  -3I_{n}\right) \\
+\right)  -2I_{3}\right)  \left(  \left(
+\begin{array}
+[c]{ccc}%
+2 &  & \\
+& 2 & \\
+&  & 3
+\end{array}
+\right)  -3I_{3}\right) \\
 &  =\left(
 \begin{array}
-[c]{ccc}
-&  & \\
-&  & \\
+[c]{ccc}%
+0 &  & \\
+& 0 & \\
 &  & 1
 \end{array}
 \right)  \left(
@@ -10283,7 +10625,7 @@ t-2\right)  \left(  t-3\right)  $, since%
 [c]{ccc}%
 -1 &  & \\
 & -1 & \\
-&  &
+&  & 0
 \end{array}
 \right)  =0.
 \end{align*}
@@ -10347,8 +10689,8 @@ t-3\right)  $ annihilates $A$. If there was any monic polynomial of smaller
 degree that would annihilate $A$, then it would have the form $t-\lambda$ for
 some $\lambda\in\mathbb{F}$, but $\lambda$ cannot be $2$ and $3$ at the same time.
 
-For comparison: $p_{A}\left(  t\right)  =\left(  t-2\right)  ^{2}\left(
-t-3\right)  $.
+For comparison: The characteristic polynomial of $A$ is $p_{A}\left(
+t\right)  =\left(  t-2\right)  ^{2}\left(  t-3\right)  $.
 \end{example}
 
 \begin{exercise}
@@ -10394,12 +10736,18 @@ $\Longrightarrow:$ Assume that $f$ annihilates $A$. Thus, $f\left(  A\right)
 =0$. WLOG, assume that $f\neq0$. Thus, we can make $f$ monic by scaling it.
 Thus, $\deg f\geq\deg q_{A}$ (since $q_{A}$ had minimum degree). Hence, we can
 divide $f$ by $q_{A}$ with remainder, obtaining%
-\[
+\begin{equation}
 f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)  +r\left(
-t\right)  ,
-\]
+t\right)  , \label{pf.thm.jnf.mipo.annih-iff-mult.1}%
+\end{equation}
 where $g\left(  t\right)  $ and $r\left(  t\right)  $ are two polynomials with
-$\deg r<\deg q_{A}$. Substituting $A$ for $t$ in this equality, we obtain%
+$\deg r<\deg q_{A}$. (Note that $r\left(  t\right)  $ is allowed to be the
+zero polynomial.) Consider these $g\left(  t\right)  $ and $r\left(  t\right)
+$.
+
+Substituting $A$ for $t$ in the equality
+(\ref{pf.thm.jnf.mipo.annih-iff-mult.1}) (and using Lemma
+\ref{lem.p(A).multiplicative} \textbf{(a)}), we obtain%
 \[
 f\left(  A\right)  =\underbrace{q_{A}\left(  A\right)  }%
 _{\substack{=0\\\text{(since }q_{A}\text{ annihilates }A\text{)}}}\cdot
@@ -10407,14 +10755,16 @@ g\left(  A\right)  +r\left(  A\right)  =r\left(  A\right)  ,
 \]
 so that $r\left(  A\right)  =f\left(  A\right)  =0$. In other words, $r$
 annihilates $A$. Since $\deg r<\deg q_{A}$, this entails that $r=0$ (since
-otherwise, scaling $r$ to make it monic would contradict the minimality of
-$\deg q_{A}$). Thus,%
+otherwise, we could scale the polynomial $r\left(  t\right)  $ to make it
+monic, and then we would obtain a monic polynomial of degree $\deg r<\deg
+q_{A}$ that annihilates $A$; but this would contradict the minimality of $\deg
+q_{A}$). Thus,%
 \[
 f\left(  t\right)  =q_{A}\left(  t\right)  \cdot g\left(  t\right)
 +\underbrace{r\left(  t\right)  }_{=0}=q_{A}\left(  t\right)  \cdot g\left(
 t\right)  .
 \]
-Thus, $f$ is a multiple of $q_{A}$.
+Thus, $f$ is a multiple of $q_{A}$. \medskip
 
 $\Longleftarrow:$ Easy and LTTR.
 \end{proof}
@@ -15417,13 +15767,18 @@ or
 .}) and then obtain Theorem \ref{thm.major.jensen} from it by setting
 $\lambda_{1}=\lambda_{2}=\cdots=\lambda_{n}=\dfrac{1}{n}$.
 
-Jensen's inequality can be interpreted as saying that a sum of values of $f$
-at several points becomes smaller (or at least not larger) if all these points
-are replaced by their average. Karamata's inequality generalizes this by
-saying that we don't need to replace all the points by their average right
-away, but rather it suffices to \textquotedblleft move them closer
-together\textquotedblright\ (not necessarily going all the way to the
-average). Here, \textquotedblleft moving them closer
+Note that both Jensen's inequalities are highly useful for proving various
+kinds of inequalities, even ones in which there is no convex function easily
+visible. See \cite[Chapter 4]{Hung07} for some such applications.
+
+Jensen's inequality can be interpreted as saying that a sum of values of a
+convex function $f$ at several points $x_{1},x_{2},\ldots,x_{n}$ becomes
+smaller (or at least not larger) if all these points are replaced by their
+average $m=\dfrac{x_{1}+x_{2}+\cdots+x_{n}}{n}$. Karamata's inequality
+generalizes this by saying that we don't need to replace all the points by
+their average right away, but rather it suffices to \textquotedblleft move
+them closer together\textquotedblright\ (not necessarily going all the way to
+the average). Here, \textquotedblleft moving them closer
 together\textquotedblright\ is formalized using majorization:
 
 \begin{theorem}
@@ -15438,9 +15793,12 @@ y_{n}\right)  .
 
 \end{theorem}
 
-Note that Jensen's inequality follows from Karamata's inequality, since
-Exercise \ref{exe.major.average} says that $\left(  x_{1},x_{2},\ldots
-,x_{n}\right)  ^{T}\succcurlyeq\left(  m,m,\ldots,m\right)  ^{T}$.
+Karamata's inequality has many applications (see, e.g., \cite[\S 2]{KDLM05},
+which incidentally also gives a proof of Karamata's inequality different from
+the ones we shall give below). In particular, Jensen's inequality follows from
+Karamata's inequality, since Exercise \ref{exe.major.average} says that
+$\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\succcurlyeq\left(
+m,m,\ldots,m\right)  ^{T}$.
 
 The weighted Jensen's inequality can, incidentally, be derived from a weighted
 Karamata's inequality (see Exercise \ref{exe.major.karamata-wt} below).
@@ -15516,7 +15874,7 @@ Adding together these two inequalities, we obtain%
 f\left(  u\right)  +f\left(  v\right)   &  \leq\left(  \lambda f\left(
 x_{i}\right)  +\left(  1-\lambda\right)  f\left(  x_{j}\right)  \right)
 +\left(  \left(  1-\lambda\right)  f\left(  x_{i}\right)  +\lambda f\left(
-x_{j}\right)  \right)  \\
+x_{j}\right)  \right) \\
 &  =f\left(  x_{i}\right)  +f\left(  x_{j}\right)
 ,\ \ \ \ \ \ \ \ \ \ \text{qed.}%
 \end{align*}
@@ -15912,11 +16270,11 @@ v=\left(  1-\lambda\right)  x_{i}+\lambda x_{j}\ \ \ \ \ \ \ \ \ \ \left(
 This entails that $y=Sx$, where $S\in\mathbb{R}^{n\times n}$ is the matrix
 defined by%
 \begin{align*}
-S_{i,i} &  =\lambda,\ \ \ \ \ \ \ \ \ \ S_{i,j}=1-\lambda
+S_{i,i}  &  =\lambda,\ \ \ \ \ \ \ \ \ \ S_{i,j}=1-\lambda
 ,\ \ \ \ \ \ \ \ \ \ S_{j,i}=1-\lambda,\ \ \ \ \ \ \ \ \ \ S_{j,j}=\lambda,\\
-S_{k,k} &  =1\ \ \ \ \ \ \ \ \ \ \text{for each }k\notin\left\{  i,j\right\}
+S_{k,k}  &  =1\ \ \ \ \ \ \ \ \ \ \text{for each }k\notin\left\{  i,j\right\}
 ,\\
-S_{k,\ell} &  =0\ \ \ \ \ \ \ \ \ \ \text{for all remaining }k,\ell.
+S_{k,\ell}  &  =0\ \ \ \ \ \ \ \ \ \ \text{for all remaining }k,\ell.
 \end{align*}
 For example, if $i=2$ and $j=4$, then
 \[
@@ -15967,14 +16325,14 @@ $\Longleftarrow:$ Assume that $y=Sx$ for some doubly stochastic matrix
 $S\in\mathbb{R}^{n\times n}$. Then, for every $i\in\left[  n\right]  $, we
 have%
 \begin{equation}
-y_{i}=\left(  Sx\right)  _{i}=\sum_{j=1}^{n}S_{i,j}x_{j}%
-.\label{pf.thm.major.doublestoch.maj.denn.yi=}%
+y_{i}=\left(  Sx\right)  _{i}=\sum_{j=1}^{n}S_{i,j}x_{j}.
+\label{pf.thm.major.doublestoch.maj.denn.yi=}%
 \end{equation}
 Hence, for every $i\in\left[  n\right]  $ and $t\in\mathbb{R}$, we have%
 \begin{align*}
-y_{i}-t  & =\sum_{j=1}^{n}S_{i,j}x_{j}-t=\sum_{j=1}^{n}S_{i,j}x_{j}-\sum
-_{j=1}^{n}S_{i,j}t\\
-& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+y_{i}-t  &  =\sum_{j=1}^{n}S_{i,j}x_{j}-t=\sum_{j=1}^{n}S_{i,j}x_{j}%
+-\sum_{j=1}^{n}S_{i,j}t\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{since condition 2 in Definition \ref{def.major.doublestoch}}\\
@@ -15982,18 +16340,18 @@ _{j=1}^{n}S_{i,j}t\\
 S_{i,j}t=\underbrace{\left(  \sum_{j=1}^{n}S_{i,j}\right)  }_{=1}t=t\\
 \text{and therefore }t=\sum_{j=1}^{n}S_{i,j}t
 \end{array}
-\right)  \\
-& =\sum_{j=1}^{n}S_{i,j}\left(  x_{j}-t\right)
+\right) \\
+&  =\sum_{j=1}^{n}S_{i,j}\left(  x_{j}-t\right)
 \end{align*}
 and therefore%
 \begin{align}
-\left\vert y_{i}-t\right\vert  & =\left\vert \sum_{j=1}^{n}S_{i,j}\left(
+\left\vert y_{i}-t\right\vert  &  =\left\vert \sum_{j=1}^{n}S_{i,j}\left(
 x_{j}-t\right)  \right\vert \nonumber\\
-& \leq\sum_{j=1}^{n}\underbrace{\left\vert S_{i,j}\left(  x_{j}-t\right)
+&  \leq\sum_{j=1}^{n}\underbrace{\left\vert S_{i,j}\left(  x_{j}-t\right)
 \right\vert }_{\substack{=S_{i,j}\cdot\left\vert x_{j}-t\right\vert
 \\\text{(since }S_{i,j}\geq0\\\text{(by condition 1 in Definition
 \ref{def.major.doublestoch}))}}}\nonumber\\
-& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(
 \begin{array}
 [c]{c}%
 \text{by the triangle inequality, which says that }\left\vert \sum_{j=1}%
@@ -16001,26 +16359,26 @@ x_{j}-t\right)  \right\vert \nonumber\\
 \\
 \text{for any }n\text{ reals }\alpha_{1},\alpha_{2},\ldots,\alpha_{n}%
 \end{array}
-\right)  \nonumber\\
-& =\sum_{j=1}^{n}S_{i,j}\cdot\left\vert x_{j}-t\right\vert
-.\label{pf.thm.major.doublestoch.maj.denn.2}%
+\right) \nonumber\\
+&  =\sum_{j=1}^{n}S_{i,j}\cdot\left\vert x_{j}-t\right\vert .
+\label{pf.thm.major.doublestoch.maj.denn.2}%
 \end{align}
 
 
 Thus, for every $t\in\mathbb{R}$, we have%
 \begin{align*}
-& \left\vert y_{1}-t\right\vert +\left\vert y_{2}-t\right\vert +\cdots
+&  \left\vert y_{1}-t\right\vert +\left\vert y_{2}-t\right\vert +\cdots
 +\left\vert y_{n}-t\right\vert \\
-& =\sum_{i=1}^{n}\left\vert y_{i}-t\right\vert \leq\sum_{i=1}^{n}%
+&  =\sum_{i=1}^{n}\left\vert y_{i}-t\right\vert \leq\sum_{i=1}^{n}%
 \ \ \sum_{j=1}^{n}S_{i,j}\cdot\left\vert x_{j}-t\right\vert
 \ \ \ \ \ \ \ \ \ \ \left(  \text{by
-(\ref{pf.thm.major.doublestoch.maj.denn.2})}\right)  \\
-& =\sum_{j=1}^{n}\underbrace{\left(  \sum_{i=1}^{n}S_{i,j}\right)
+(\ref{pf.thm.major.doublestoch.maj.denn.2})}\right) \\
+&  =\sum_{j=1}^{n}\underbrace{\left(  \sum_{i=1}^{n}S_{i,j}\right)
 }_{\substack{=1\\\text{(by condition 3}\\\text{in Definition
 \ref{def.major.doublestoch})}}}\cdot\left\vert x_{j}-t\right\vert =\sum
 _{j=1}^{n}\left\vert x_{j}-t\right\vert \\
-& =\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert +\cdots
-+\left\vert x_{n}-t\right\vert .
+&  =\left\vert x_{1}-t\right\vert +\left\vert x_{2}-t\right\vert
++\cdots+\left\vert x_{n}-t\right\vert .
 \end{align*}
 In other words, for every $t\in\mathbb{R}$, we have%
 \[
@@ -16142,6 +16500,12 @@ Kim Hung, \textit{Secrets in Inequalities, volume 1}, GIL 2007}.
 
 \bibitem[Ivanov08]{Ivanov08}Nikolai V. Ivanov, \textit{Linear Recurrences}, 17
 January 2008.\newline\url{https://nikolaivivanov.files.wordpress.com/2014/02/ivanov2008arecurrence.pdf}
+
+\bibitem[KDLM05]{KDLM05}%
+\href{http://elib.mi.sanu.ac.rs/files/journals/tm/14/tm813.pdf}{Zoran
+Kadelburg, Dusan Dukic, Milivoje Lukic and Ivan Matic, \textit{Inequalities of
+Karamata, Schur and Muirhead, and some applications}, The teaching of
+mathematics \textbf{VIII} (2005), issue 1, pp. 31--45}.
 
 \bibitem[Knapp16]{Knapp1}Anthony W. Knapp, \textit{Basic Algebra}, digital
 second edition 2016.\newline\url{http://www.math.stonybrook.edu/~aknapp/download.html}
