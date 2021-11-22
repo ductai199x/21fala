@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, November 22, 2021 00:32:31}
+%TCIDATA{LastRevised=Monday, November 22, 2021 14:50:52}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -1141,6 +1141,34 @@ is an orthogonal basis of $\mathbb{C}^{n}$.
 \label{exe.unitary.orthog-extend}\fbox{2} Prove Corollary
 \ref{cor.unitary.orthog-extend}.
 \end{exercise}
+
+\begin{corollary}
+\label{cor.unitary.orthon-extend}Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)
+$ be an orthonormal $k$-tuple of vectors in $\mathbb{C}^{n}$. Then, we have
+$k\leq n$, and we can find $n-k$ further nonzero vectors $u_{k+1}%
+,u_{k+2},\ldots,u_{n}$ such that $\left(  u_{1},u_{2},\ldots,u_{n}\right)  $
+is an orthonormal basis of $\mathbb{C}^{n}$.
+\end{corollary}
+
+\begin{proof}
+The $k$-tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is an orthogonal
+tuple of nonzero vectors (since it is orthonormal). Hence, Corollary
+\ref{cor.unitary.orthog-extend} yields that we can find $n-k$ further nonzero
+vectors $u_{k+1},u_{k+2},\ldots,u_{n}$ such that $\left(  u_{1},u_{2}%
+,\ldots,u_{n}\right)  $ is an orthogonal basis of $\mathbb{C}^{n}$. Consider
+these $n-k$ vectors $u_{k+1},u_{k+2},\ldots,u_{n}$, and replace them by%
+\[
+\dfrac{1}{\left\vert \left\vert u_{k+1}\right\vert \right\vert }%
+u_{k+1},\ \ \dfrac{1}{\left\vert \left\vert u_{k+2}\right\vert \right\vert
+}u_{k+2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert u_{n}\right\vert
+\right\vert }u_{n},
+\]
+respectively. Then, the orthogonal basis $\left(  u_{1},u_{2},\ldots
+,u_{n}\right)  $ becomes an orthonormal basis (since an orthogonal basis
+remains orthogonal when we scale its entries, and since the first $k$ vectors
+$u_{1},u_{2},\ldots,u_{k}$ already have length $1$ by assumption). Thus,
+Corollary \ref{cor.unitary.orthon-extend} is proved.
+\end{proof}
 
 \subsection{Conjugate transposes}
 
@@ -5178,52 +5206,19 @@ a $\lambda_{1}$-eigenvector of $A$, but additionally satisfies $\left\vert
 \left\vert u_{1}\right\vert \right\vert =1$. Hence, the $1$-tuple $\left(
 u_{1}\right)  $ of vectors in $\mathbb{C}^{m}$ is orthonormal.
 
-Thus, combining Corollary \ref{cor.unitary.orthog-extend} with Proposition
-\ref{prop.unitary.innerprod.orth-norm}, we see that we can find $m-1$ vectors
-$u_{2},u_{3},\ldots,u_{m}\in\mathbb{C}^{m}$ such that $\left(  u_{1}%
-,u_{2},\ldots,u_{m}\right)  $ is an orthogonal basis of $\mathbb{C}^{m}%
-$\ \ \ \ \footnote{Here is this argument in detail:
-\par
-Corollary \ref{cor.unitary.orthog-extend} (applied to $k=1$ and $n=m$) yields
-that we can find $m-1$ vectors $u_{2},u_{3},\ldots,u_{m}\in\mathbb{C}^{m}$
-such that $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ is an orthogonal basis
-of $\mathbb{C}^{m}$. Consider these $u_{2},u_{3},\ldots,u_{m}$. Proposition
-\ref{prop.unitary.innerprod.orth-norm} yields that the tuple
-\[
-\left(  \dfrac{1}{\left\vert \left\vert u_{1}\right\vert \right\vert }%
-u_{1},\ \ \dfrac{1}{\left\vert \left\vert u_{2}\right\vert \right\vert }%
-u_{2},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert u_{m}\right\vert
-\right\vert }u_{m}\right)
-\]
-is orthonormal. In view of $\dfrac{1}{\left\vert \left\vert u_{1}\right\vert
-\right\vert }u_{1}=u_{1}$ (which follows from $\left\vert \left\vert
-u_{1}\right\vert \right\vert =u_{1}$), we can rewrite this as follows: The
-tuple%
-\[
-\left(  u_{1},\ \ \dfrac{1}{\left\vert \left\vert u_{2}\right\vert \right\vert
-}u_{2},\ \ \dfrac{1}{\left\vert \left\vert u_{3}\right\vert \right\vert }%
-u_{3},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert u_{m}\right\vert
-\right\vert }u_{m}\right)
-\]
-is orthonormal. Hence, if we replace the vectors $u_{2},u_{3},\ldots,u_{m}$ by
-their scalar multiples $\dfrac{1}{\left\vert \left\vert u_{2}\right\vert
-\right\vert }u_{2},\ \ \dfrac{1}{\left\vert \left\vert u_{3}\right\vert
-\right\vert }u_{3},\ \ \ldots,\ \ \dfrac{1}{\left\vert \left\vert
-u_{m}\right\vert \right\vert }u_{m}$, then the $m$-tuple $\left(  u_{1}%
-,u_{2},\ldots,u_{m}\right)  $ becomes orthonormal. Furthermore, this $m$-tuple
-$\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ is a basis of $\mathbb{C}^{m}$ (as
-we have already seen above; this property does not change when we scale some
-of its entries). Hence, we have found $m-1$ vectors $u_{2},u_{3},\ldots
-,u_{m}\in\mathbb{C}^{m}$ such that $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $
-is an orthogonal basis of $\mathbb{C}^{m}$.}. Consider these $m-1$ vectors
+Thus, Corollary \ref{cor.unitary.orthon-extend} (applied to $k=1$ and $n=m$)
+shows that we can find $m-1$ vectors $u_{2},u_{3},\ldots,u_{m}\in
+\mathbb{C}^{m}$ such that $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ is an
+orthonormal basis of $\mathbb{C}^{m}$. Consider these $m-1$ vectors
 $u_{2},u_{3},\ldots,u_{m}$.
 
 Let $U\in\mathbb{C}^{m\times m}$ be the $m\times m$-matrix whose columns are
 $u_{1},u_{2},\ldots,u_{m}$ in this order. Then, the columns of this matrix
 form an orthonormal basis of $\mathbb{C}^{m}$. Hence, Theorem
 \ref{thm.unitary.unitary.eqs} (specifically, the implication $\mathcal{E}%
-\Longrightarrow\mathcal{B}$ in this theorem) yields that the matrices $U$ and
-$U^{\ast}$ are unitary. Therefore, $U^{\ast}=U^{-1}$.
+\Longrightarrow\mathcal{A}$ in this theorem) yields that the matrix $U$ is
+unitary. Therefore, $U^{\ast}=U^{-1}$. Moreover, since $U$ is unitary, we have
+$UU^{\ast}=I_{m}$ and $U^{\ast}U=I_{m}$. Thus, $U^{\ast}$ is unitary as well.
 
 Define an $m\times m$-matrix%
 \[
@@ -5896,7 +5891,314 @@ a single matrix $A$, we pick a common eigenvector for all matrices in
 $\mathcal{F}$. The existence of such an eigenvector is guaranteed by Lemma
 \ref{lem.schurtri.commute.1}.
 
-TODO: Scribe!
+Here is the argument in more detail:
+
+We proceed by induction on $n$:
+
+\textit{Induction base:} For $n=0$, Theorem
+\ref{thm.schurtri.commute.schurtri} holds trivially\footnote{because any
+$0\times0$-matrix is upper-triangular}.
+
+\textit{Induction step:} Let $m$ be a positive integer. Assume (as the
+induction hypothesis) that Theorem \ref{thm.schurtri.commute.schurtri} is
+proved for $n=m-1$. We must prove that Theorem
+\ref{thm.schurtri.commute.schurtri} holds for $n=m$.
+
+So let $\mathcal{F}$ be a subset of $\mathbb{C}^{m\times m}$ such that any two
+matrices in $\mathcal{F}$ commute (i.e., any $A\in\mathcal{F}$ and
+$B\in\mathcal{F}$ satisfy $AB=BA$). We must show that there exists a unitary
+matrix $Q\in\operatorname*{U}\nolimits_{m}\left(  \mathbb{C}\right)  $ such
+that for each $A\in\mathcal{F}$, the matrix $QAQ^{\ast}$ is upper-triangular.
+
+Lemma \ref{lem.schurtri.commute.1} (applied to $n=m$) shows that there exists
+a nonzero vector $x\in\mathbb{C}^{m}$ such that $x$ is an eigenvector of each
+$A\in\mathcal{F}$. Pick any such $x$. Set $u_{1}:=\dfrac{1}{\left\vert
+\left\vert x\right\vert \right\vert }x$. Then, $u_{1}$ is still an eigenvector
+of each $A\in\mathcal{F}$, but additionally satisfies $\left\vert \left\vert
+u_{1}\right\vert \right\vert =1$. Hence, the $1$-tuple $\left(  u_{1}\right)
+$ of vectors in $\mathbb{C}^{m}$ is orthonormal.
+
+Thus, Corollary \ref{cor.unitary.orthon-extend} (applied to $k=1$ and $n=m$)
+shows that we can find $m-1$ vectors $u_{2},u_{3},\ldots,u_{m}\in
+\mathbb{C}^{m}$ such that $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ is an
+orthonormal basis of $\mathbb{C}^{m}$. Consider these $m-1$ vectors
+$u_{2},u_{3},\ldots,u_{m}$.
+
+Let $U\in\mathbb{C}^{m\times m}$ be the $m\times m$-matrix whose columns are
+$u_{1},u_{2},\ldots,u_{m}$ in this order. Then, the columns of this matrix
+form an orthonormal basis of $\mathbb{C}^{m}$. Hence, Theorem
+\ref{thm.unitary.unitary.eqs} (specifically, the implication $\mathcal{E}%
+\Longrightarrow\mathcal{A}$ in this theorem) yields that the matrix $U$ is
+unitary. Therefore, $U^{\ast}=U^{-1}$. Moreover, since $U$ is unitary, we have
+$UU^{\ast}=I_{m}$ and $U^{\ast}U=I_{m}$. Thus, the matrix $U^{\ast}$ is unitary.
+
+For each $A\in\mathcal{F}$, we now define an $m\times m$-matrix%
+\[
+C_{A}:=U^{\ast}AU\in\mathbb{C}^{m\times m}.
+\]
+
+
+Now, let $A\in\mathcal{F}$ be arbitrary. We know that $u_{1}$ is an
+eigenvector of $A$; let $\lambda_{A}$ be the corresponding eigenvalue. Now, it
+is not hard to show\footnote{Indeed, this is essentially a carbon copy of the
+proof of (\ref{pf.thm.jnf.schurtri-diag.C=2x2}) in our above proof of Theorem
+\ref{thm.jnf.schurtri-diag} (except that $C$, $\lambda_{1}$, $p$ and $B$ are
+now called $C_{A}$, $\lambda_{A}$, $p_{A}$ and $B_{A}$); thus, we leave the
+details to the reader.} that the matrix $C_{A}$ can be written in block-matrix
+notation as%
+\begin{equation}
+C_{A}=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  ,\label{pf.thm.schurtri.commute.schurtri.C=2x2}%
+\end{equation}
+where $p_{A}\in\mathbb{C}^{1\times\left(  m-1\right)  }$ is a row vector and
+$B_{A}\in\mathbb{C}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ is a
+matrix\footnote{The \textquotedblleft$0$\textquotedblright\ here is actually
+the zero vector in $\mathbb{C}^{m-1}$.}. Consider this $p_{A}$ and this
+$B_{A}$.
+
+Forget that we fixed $A$. Thus, for each $A\in\mathcal{F}$, we have defined a
+complex number $\lambda_{A}$, a row vector $p_{A}\in\mathbb{C}^{1\times\left(
+m-1\right)  }$ and a matrix $B_{A}\in\mathbb{C}^{\left(  m-1\right)
+\times\left(  m-1\right)  }$ such that
+(\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) holds.
+
+Let $A\in\mathcal{F}$ and $A^{\prime}\in\mathcal{F}$ be arbitrary. We are
+going to show that $B_{AA^{\prime}}=B_{A}B_{A^{\prime}}$.
+
+Indeed, we first observe that the definitions of $C_{A}$ and $C_{A^{\prime}}$
+yield%
+\begin{align}
+\underbrace{C_{A}}_{=U^{\ast}AU}\ \ \underbrace{C_{A^{\prime}}}_{=U^{\ast
+}A^{\prime}U}  & =U^{\ast}A\underbrace{UU^{\ast}}_{=I_{m}}A^{\prime}U=U^{\ast
+}AA^{\prime}U\nonumber\\
+& =C_{AA^{\prime}}\label{pf.thm.schurtri.commute.schurtri.CACA'=}%
+\end{align}
+(by the definition of $C_{AA^{\prime}}$). However,
+(\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) yields%
+\begin{align*}
+C_{A}  & =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ C_{A^{\prime}}=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A^{\prime}} & p_{A^{\prime}}\\
+0 & B_{A^{\prime}}%
+\end{array}
+\right)  ,\\
+\text{and}\ \ \ \ \ \ \ \ \ \ C_{AA^{\prime}}  & =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
+0 & B_{AA^{\prime}}%
+\end{array}
+\right)  .
+\end{align*}
+In view of this, we can rewrite (\ref{pf.thm.schurtri.commute.schurtri.CACA'=}%
+) as%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda_{A^{\prime}} & p_{A^{\prime}}\\
+0 & B_{A^{\prime}}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
+0 & B_{AA^{\prime}}%
+\end{array}
+\right)  .
+\]
+Hence,%
+\[
+\left(
+\begin{array}
+[c]{cc}%
+\lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
+0 & B_{AA^{\prime}}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda_{A^{\prime}} & p_{A^{\prime}}\\
+0 & B_{A^{\prime}}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A}\lambda_{A^{\prime}} & \lambda_{A}p_{A^{\prime}}+p_{A}B_{A^{\prime
+}}\\
+0 & B_{A}B_{A^{\prime}}%
+\end{array}
+\right)
+\]
+(by applying Proposition \ref{prop.blockmatrix.mult-2x2} and simplifying).
+Comparing the bottom-right blocks of the block matrices on both sides, we
+obtain $B_{AA^{\prime}}=B_{A}B_{A^{\prime}}$.
+
+Similarly, $B_{A^{\prime}A}=B_{A^{\prime}}B_{A}$. However, $AA^{\prime
+}=A^{\prime}A$ (since any two matrices in $\mathcal{F}$ commute). Thus,
+$B_{AA^{\prime}}=B_{A^{\prime}A}$. In view of $B_{AA^{\prime}}=B_{A}%
+B_{A^{\prime}}$ and $B_{A^{\prime}A}=B_{A^{\prime}}B_{A}$, we can rewrite this
+as
+\begin{equation}
+B_{A}B_{A^{\prime}}=B_{A^{\prime}}B_{A}%
+.\label{pf.thm.schurtri.commute.schurtri.BABA'comm}%
+\end{equation}
+
+
+Forget that we fixed $A$ and $A^{\prime}$. We thus have proved
+(\ref{pf.thm.schurtri.commute.schurtri.BABA'comm}) for all $A\in\mathcal{F}$
+and $A^{\prime}\in\mathcal{F}$.
+
+Define a set%
+\[
+\mathcal{F}^{\prime}:=\left\{  B_{A}\ \mid\ A\in\mathcal{F}\right\}
+\subseteq\mathbb{C}^{\left(  m-1\right)  \times\left(  m-1\right)  }.
+\]
+Then, (\ref{pf.thm.schurtri.commute.schurtri.BABA'comm}) shows that any two
+matrices in $\mathcal{F}^{\prime}$ commute.
+
+Hence, by the induction hypothesis, we can apply Theorem
+\ref{thm.schurtri.commute.schurtri} to $m-1$ and $\mathcal{F}^{\prime}$
+instead of $n$ and $\mathcal{F}$. As a result, we conclude that there exists a
+unitary matrix $V\in\operatorname*{U}\nolimits_{m-1}\left(  \mathbb{C}\right)
+$ such that for each $B\in\mathcal{F}^{\prime}$, the matrix $VBV^{\ast}$ is
+upper-triangular. Consider this $V$.
+
+Now, let%
+\[
+W:=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  \in\mathbb{C}^{m\times m}\ \ \ \ \ \ \ \ \ \ \left(  \text{in
+block-matrix notation}\right)  .
+\]
+This is a block-diagonal matrix, with $\left(
+\begin{array}
+[c]{c}%
+1
+\end{array}
+\right)  $ and $V$ being its diagonal blocks. Hence, $W^{\ast}=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  $. Moreover, $W$ is a unitary matrix (since it is a block-diagonal
+matrix whose diagonal blocks are unitary\footnote{We are using Proposition
+\ref{prop.blockmatrix.unitary-diag} here.}). 
+
+Now, let $Q$ be the matrix $WU^{\ast}$. Then, $Q$ is unitary (by Exercise
+\ref{exe.unitary.group} \textbf{(b)}, since $W$ and $U^{\ast}$ are unitary).
+We shall show that for each $A\in\mathcal{F}$, the matrix $QAQ^{\ast}$ is upper-triangular.
+
+Indeed, let $A\in\mathcal{F}$. Then, $B_{A}\in\mathcal{F}^{\prime}$ (by the
+definition of $\mathcal{F}^{\prime}$). However, we know that for each
+$B\in\mathcal{F}^{\prime}$, the matrix $VBV^{\ast}$ is upper-triangular.
+Applying this to $B=B_{A}$, we conclude that the matrix $VB_{A}V^{\ast}$ is
+upper-triangular. On the other hand, from $Q=WU^{\ast}$, we obtain%
+\begin{align*}
+&  QAQ^{\ast}=WU^{\ast}A\underbrace{\left(  WU^{\ast}\right)  ^{\ast}%
+}_{=\left(  U^{\ast}\right)  ^{\ast}W^{\ast}=UW^{\ast}}=W\underbrace{U^{\ast
+}AU}_{\substack{=C_{A}\\\text{(by the definition of }C_{A}\text{)}}}W^{\ast}\\
+&  =\underbrace{W}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  }\ \ \underbrace{C_{A}}_{\substack{=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  \\\text{(by (\ref{pf.thm.schurtri.commute.schurtri.C=2x2}))}%
+}}\ \ \underbrace{W^{\ast}}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  }\\
+&  =\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}\\
+0 & B_{A}%
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{\ast}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+1\cdot\lambda_{A}\cdot1 & 1\cdot p_{A}\cdot V^{\ast}\\
+V\cdot0\cdot1 & V\cdot B_{A}\cdot V^{\ast}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{by using Proposition \ref{prop.blockmatrix.mult-2x2} twice}\\
+\text{and simplifying the }0\text{ addends away}%
+\end{array}
+\right)  \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{A} & p_{A}V^{\ast}\\
+0 & VB_{A}V^{\ast}%
+\end{array}
+\right)  .
+\end{align*}
+This matrix $QAQ^{\ast}$ is therefore upper-triangular (since its bottom-right
+block $VB_{A}V^{\ast}$ is upper-triangular).
+
+Forget that we fixed $A$. We thus have shown that for each $A\in\mathcal{F}$,
+the matrix $QAQ^{\ast}$ is upper-triangular. Since $Q$ is unitary, we thus
+have found a unitary matrix $Q\in\operatorname*{U}\nolimits_{m}\left(
+\mathbb{C}\right)  $ such that for each $A\in\mathcal{F}$, the matrix
+$QAQ^{\ast}$ is upper-triangular.
+
+Thus, we have shown that Theorem \ref{thm.schurtri.commute.schurtri} holds for
+$n=m$. This completes the induction step. The proof of Theorem
+\ref{thm.schurtri.commute.schurtri} is thus complete.
 \end{proof}
 
 %
@@ -9684,7 +9986,7 @@ So let us prove the \textquotedblleft if\textquotedblright\ part. Thus, we
 assume that the $n$-tuple $\left(  s_{1},s_{2},\ldots,s_{n}\right)  $ is
 backwarded. In other words, each $i\in\left[  n\right]  $ satisfies
 \begin{equation}
-As_{i}=s_{i-1}\text{ or }As_{i-1}=0 \label{pf.prop.jnf.exist.step3.basis.fwd}%
+As_{i}=s_{i-1}\text{ or }As_{i}=0 \label{pf.prop.jnf.exist.step3.basis.fwd}%
 \end{equation}
 (where $s_{0}$ means $0$). Our goal is to show that $S^{-1}AS$ is a Jordan matrix.
 
@@ -12957,7 +13259,7 @@ Theorem \ref{thm.herm.ABCDE} is thus proved.
 Let us recall again that sums of Hermitian matrices are Hermitian, but
 products are not (in general).
 
-\subsection{Definiteness}
+\subsection{Definiteness and semidefiniteness}
 
 \begin{definition}
 Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix.
@@ -13733,7 +14035,7 @@ matrix. Prove that $\det A$ is a positive real.
 \begin{exercise}
 \fbox{4} Let $n>0$. Let $A$ and $B$ be two positive definite Hermitian
 matrices in $\mathbb{C}^{n\times n}$. Prove that $\operatorname*{Tr}\left(
-AB\right)  >0$.
+AB\right)  $ is real and $\operatorname*{Tr}\left(  AB\right)  >0$.
 \end{exercise}
 
 \begin{exercise}
@@ -13741,6 +14043,23 @@ AB\right)  >0$.
 entries. Assume that every nonzero vector $x\in\mathbb{R}^{n}$ (with
 \textbf{real} entries) satisfies $\left\langle Ax,x\right\rangle >0$. Prove
 that $A$ is positive definite.
+\end{exercise}
+
+Some properties of positive semidefinite matrices can be deduced from
+corresponding properties of positive definite matrices:
+
+\begin{exercise}
+\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ be a positive semidefinite Hermitian
+matrix. \medskip
+
+\textbf{(a)} Prove that $A+\varepsilon I_{n}$ is positive definite whenever
+$\varepsilon$ is a positive real number. \medskip
+
+\textbf{(b)} Prove that $\det A$ is a nonnegative real. \medskip
+
+\textbf{(c)} Let $B\in\mathbb{C}^{n\times n}$ be a further positive
+semidefinite Hermitian matrix. Prove that $\operatorname*{Tr}\left(
+AB\right)  $ is real and $\operatorname*{Tr}\left(  AB\right)  \geq0$.
 \end{exercise}
 
 There is a version of Cholesky decomposition for positive semidefinite
@@ -13854,7 +14173,7 @@ Similarly:
 Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. Then, the
 smallest eigenvalue of $A$ is%
 \begin{align*}
-\lambda_{\max}\left(  A\right)   &  =\min\left\{  x^{\ast}Ax\ \mid
+\lambda_{\min}\left(  A\right)   &  =\min\left\{  x^{\ast}Ax\ \mid
 \ x\in\mathbb{C}^{n}\text{ is a vector of length }1\right\} \\
 &  =\min\left\{  R\left(  A,x\right)  \ \mid\ x\in\mathbb{C}^{n}\text{ is
 nonzero}\right\}  .
@@ -13871,17 +14190,17 @@ example) in terms of Rayleigh quotients?
 ,\ldots,\lambda_{n}$ be the eigenvalues of $A$, with $\lambda_{1}\leq
 \lambda_{2}\leq\cdots\leq\lambda_{n}$. Then, for each $k\in\left[  n\right]
 $, we have%
-\[
+\begin{equation}
 \lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
 subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
-A,x\right)
-\]
+A,x\right)  \label{thm.herm.cour-fish.minmax}%
+\end{equation}
 and%
-\[
+\begin{equation}
 \lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
 subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
-0}}\ \ R\left(  A,x\right)  .
-\]
+0}}\ \ R\left(  A,x\right)  . \label{thm.herm.cour-fish.maxmin}%
+\end{equation}
 
 \end{theorem}
 
@@ -14166,14 +14485,21 @@ Corollary \ref{cor.subspaces.dim-geq-del} \textbf{(b)}.
 Now, we get to the proof of the Courant--Fisher theorem:
 
 \begin{proof}
-[Proof of Theorem \ref{thm.herm.cour-fish}.]The spectral theorem says that
-$A=UDU^{\ast}$ for some unitary $U$ and some real diagonal matrix $D$.
-Consider these $U$ and $D$. The columns of $U$ form an orthonormal basis of
-$\mathbb{C}^{n}$ (since $U$ is unitary); let $\left(  u_{1},u_{2},\ldots
-,u_{n}\right)  $ be this basis. Then, $u_{1},u_{2},\ldots,u_{n}$ are
-eigenvectors of $A$. We WLOG assume that the corresponding eigenvalues are
-$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ (otherwise, permute the diagonal
-entries of $D$ and correspondingly permute the columns of $U$).
+[Proof of Theorem \ref{thm.herm.cour-fish}.]The spectral theorem (Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(a)}) says that $A=UDU^{\ast}$ for
+some unitary $U$ and some diagonal matrix $D$. Consider these $U$ and $D$.
+Proposition \ref{prop.schurtri.normal.hermitian-spec} shows that the diagonal
+entries of $D$ are real.
+
+The columns of $U$ form an orthonormal basis of $\mathbb{C}^{n}$ (since $U$ is
+unitary); let $\left(  u_{1},u_{2},\ldots,u_{n}\right)  $ be this basis. Then,
+$u_{1},u_{2},\ldots,u_{n}$ are eigenvectors of $A$ (by Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(b)}). We WLOG assume that the
+corresponding eigenvalues are $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$
+(otherwise, permute the diagonal entries of $D$ and correspondingly permute
+the columns of $U$). Thus, $D=\operatorname*{diag}\left(  \lambda_{1}%
+,\lambda_{2},\ldots,\lambda_{n}\right)  $ (by the proof of Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(b)}).
 
 Let $k\in\left[  n\right]  $.
 
@@ -14390,14 +14716,20 @@ S_{2}\right)  }_{=n-j}+\underbrace{\dim\left(  S_{3}\right)  }_{=n-i+1}%
 -2n=1>0.
 \]
 Hence, Corollary \ref{cor.subspaces.dim-geq-del} \textbf{(b)} yields that
-there is a length-$1$ vector $x$ in $S_{1}\cap S_{2}\cap S_{3}$. This $x$
+there is a length-$1$ vector $v$ in $S_{1}\cap S_{2}\cap S_{3}$. This $v$
 satisfies%
 \begin{align*}
 \lambda_{i}\left(  A+B\right)   &  \leq\left\langle \left(  A+B\right)
-x,\ x\right\rangle =\left\langle Ax+Bx,\ x\right\rangle
-=\underbrace{\left\langle Ax,\ x\right\rangle }_{\leq\lambda_{i+j}\left(
-A\right)  }+\underbrace{\left\langle Bx,\ x\right\rangle }_{\leq\lambda
-_{n-j}\left(  B\right)  }\\
+v,\ v\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{since }v\in
+S_{3}=\operatorname*{span}\left(  z_{i},z_{i+1},\ldots,z_{n}\right)  \right)
+\\
+&  =\left\langle Av+Bv,\ v\right\rangle =\underbrace{\left\langle
+Av,\ v\right\rangle }_{\substack{\leq\lambda_{i+j}\left(  A\right)
+\\\text{(since }v\in S_{1}=\operatorname*{span}\left(  x_{1},x_{2}%
+,\ldots,x_{i+j}\right)  \text{)}}}+\underbrace{\left\langle
+Bv,\ v\right\rangle }_{\substack{\leq\lambda_{n-j}\left(  B\right)
+\\\text{(since }v\in S_{2}=\operatorname*{span}\left(  y_{1},y_{2}%
+,\ldots,y_{n-j}\right)  \text{)}}}\\
 &  \leq\lambda_{i+j}\left(  A\right)  +\lambda_{n-j}\left(  B\right)  .
 \end{align*}
 This proves \textbf{(a)}.
@@ -14405,7 +14737,7 @@ This proves \textbf{(a)}.
 We leave \textbf{(b)} and \textbf{(c)} to the reader.
 \end{proof}
 
-\subsection[Missing lecture]{ The interlacing theorem}
+\subsection{([Missing lecture]) The interlacing theorem}
 
 \subsection{Consequences of the interlacing theorem}
 
@@ -14513,14 +14845,18 @@ The next corollary provides a minimum/maximum description of the sum of the
 first $m$ smallest/largest eigenvalues of a Hermitian matrix:
 
 \begin{corollary}
-Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Let $m\in\left\{
-0,1,\ldots,n\right\}  $. Then,%
+\label{cor.interlacing.sum-first-m-eigs}Let $A\in\mathbb{C}^{n\times n}$ be a
+Hermitian matrix. Let $m\in\left\{  0,1,\ldots,n\right\}  $. Then:
+
+\textbf{(a)} We have%
 \[
 \lambda_{1}\left(  A\right)  +\lambda_{2}\left(  A\right)  +\cdots+\lambda
 _{m}\left(  A\right)  =\min\limits_{\text{isometries }V\in\mathbb{C}^{n\times
-m}}\operatorname*{Tr}\left(  V^{\ast}AV\right)
+m}}\operatorname*{Tr}\left(  V^{\ast}AV\right)  .
 \]
-and%
+
+
+\textbf{(b)} We have%
 \[
 \lambda_{n-m+1}\left(  A\right)  +\lambda_{n-m+2}\left(  A\right)
 +\cdots+\lambda_{n}\left(  A\right)  =\max\limits_{\text{isometries }%
@@ -15021,6 +15357,37 @@ largest eigenvalues of $A$ is $\geq$ to the sum of the $m$ largest diagonal
 entries of $A$. This completes the proof of Corollary
 \ref{cor.interlacing.maj-2}.
 \end{proof}
+
+\begin{exercise}
+\fbox{5} For each Hermitian matrix $A\in\mathbb{C}^{n\times n}$, let
+$\lambda\left(  A\right)  \in\mathbb{R}^{n}$ be the column vector $\left(
+\lambda_{n}\left(  A\right)  ,\ \lambda_{n-1}\left(  A\right)  ,\ \ldots
+,\ \lambda_{1}\left(  A\right)  \right)  ^{T}$ consisting of all eigenvalues
+of $A$ in decreasing order. \medskip
+
+Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be two
+Hermitian matrices. Prove the following: \medskip
+
+\textbf{(a)} (\emph{Fan's theorem:}) We have%
+\[
+\lambda\left(  A\right)  +\lambda\left(  B\right)  \succcurlyeq\lambda\left(
+A+B\right)  .
+\]
+
+
+\textbf{(b)} (\emph{Lidskii's theorem:}) We have%
+\[
+\lambda\left(  A+B\right)  \succcurlyeq\lambda\left(  A\right)  +\left(
+\lambda\left(  B\right)  \right)  ^{\uparrow}.
+\]
+
+
+[\textbf{Hint:} For part \textbf{(a)}, use Corollary
+\ref{cor.interlacing.sum-first-m-eigs} \textbf{(b)}. For part \textbf{(b)},
+observe first that three weakly decreasing vectors $x,y,z\in\mathbb{R}^{n}$
+satisfying $x-z^{\uparrow}\succcurlyeq y$ must always satisfy $x\succcurlyeq
+y+z^{\uparrow}$.]
+\end{exercise}
 
 \subsubsection{Robin Hood moves}
 
@@ -15532,11 +15899,11 @@ Fortunately, these inequalities all follow easily from the facts that we know
 x_{a}>y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with
 }j\in\left\{  a+1,a+2,\ldots,b-1\right\}  \right)  \geq y_{b}>x_{b}%
 \]
-and from the inequalities $z_{a}\geq y_{a}$ and $z_{b}\leq y_{b}$ and the
-facts that $z_{a}$ and $z_{b}$ lie in the interval $\left[  x_{b}%
-,x_{a}\right]  $): The inequality $x_{a-1}\geq z_{a}$ (if $a>1$) follows from
-$x_{a-1}\geq x_{a}\geq z_{a}$ (since $z_{a}\in\left[  x_{b},x_{a}\right]  $).
-The inequality $z_{a}\geq x_{a+1}$ (if $a+1\neq b$) follows from $z_{a}\geq
+and from the inequalities $z_{a}\geq y_{a}$ and $z_{b}\leq y_{b}$ and the fact
+that $z_{a}$ and $z_{b}$ lie in the interval $\left[  x_{b},x_{a}\right]  $):
+The inequality $x_{a-1}\geq z_{a}$ (if $a>1$) follows from $x_{a-1}\geq
+x_{a}\geq z_{a}$ (since $z_{a}\in\left[  x_{b},x_{a}\right]  $). The
+inequality $z_{a}\geq x_{a+1}$ (if $a+1\neq b$) follows from $z_{a}\geq
 y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with }%
 j\in\left\{  a+1,a+2,\ldots,b-1\right\}  \right)  $ (since $x_{a+1}$ is one of
 the latter $x_{j}$). Furthermore, $z_{a}\geq z_{b}$ follows from $z_{a}\geq
@@ -15564,7 +15931,8 @@ z_{1}+z_{2}+\cdots+z_{n}=y_{1}+y_{2}+\cdots+y_{n}.
 
 
 The equality (\ref{pf.thm.major.RH.OPRH-crit.req2-eq}) is easy to verify:
-Since $x\overset{\text{RH}}{\longrightarrow}z$, we have%
+Since $x\overset{\text{RH}}{\longrightarrow}z$ (and since the sum of the
+entries of a vector does not change when we make an RH move), we have%
 \[
 z_{1}+z_{2}+\cdots+z_{n}=x_{1}+x_{2}+\cdots+x_{n}=y_{1}+y_{2}+\cdots+y_{n}%
 \]
@@ -15650,7 +16018,7 @@ and eigenvalues $x_{1},x_{2},\ldots,x_{n}$.
 
 [\textbf{Remark:} This can be viewed as a converse to Corollary
 \ref{cor.interlacing.maj-2} (but is in fact even stronger, since $A$ is not
-just Hermitian but real symmetric.]
+just Hermitian but real symmetric).]
 \end{exercise}
 
 \subsubsection{Karamata's inequality}
@@ -16316,10 +16684,10 @@ v
 \end{array}
 \right)  =y.
 \]
-So we have constructed a matrix $S$ that satisfies $y=Sx$, and it is easy to
-see that this $S$ is doubly stochastic. Thus, we have proved the
-\textquotedblleft$\Longrightarrow$\textquotedblright\ direction of Theorem
-\ref{thm.major.doublestoch.maj}. \medskip
+So we have constructed a matrix $S\in\mathbb{R}^{n\times n}$ that satisfies
+$y=Sx$, and it is easy to see that this $S$ is doubly stochastic. Thus, we
+have proved the \textquotedblleft$\Longrightarrow$\textquotedblright%
+\ direction of Theorem \ref{thm.major.doublestoch.maj}. \medskip
 
 $\Longleftarrow:$ Assume that $y=Sx$ for some doubly stochastic matrix
 $S\in\mathbb{R}^{n\times n}$. Then, for every $i\in\left[  n\right]  $, we
@@ -16391,7 +16759,406 @@ This proves the \textquotedblleft$\Longleftarrow$\textquotedblright\ direction
 of Theorem \ref{thm.major.doublestoch.maj}.
 \end{proof}
 
-\subsubsection{More on majorization}
+\section{Singular value decomposition}
+
+This will be just a brief introduction to singular value decomposition. For
+much more, see \cite{TreBau97}.
+
+\subsection{Some properties of $A^{\ast}A$}
+
+We first state some basic properties of matrices of the form $A^{\ast}A$:
+
+\begin{proposition}
+[the $\operatorname*{Ker}\left(  A^{\ast}A\right)  $ lemma]%
+\label{prop.SVD.A*A}Let $A\in\mathbb{C}^{m\times n}$ be any $m\times n$-matrix
+with complex entries (not necessarily a square matrix). Then: \medskip
+
+\textbf{(a)} The matrix $A^{\ast}A$ is Hermitian and positive semidefinite.
+\medskip
+
+\textbf{(b)} We have $\operatorname*{Ker}A=\operatorname*{Ker}\left(  A^{\ast
+}A\right)  $. \medskip
+
+\textbf{(c)} We have $\operatorname*{rank}A=\operatorname*{rank}\left(
+A^{\ast}A\right)  $.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} The matrix $A^{\ast}A$ is Hermitian, since $\left(  A^{\ast
+}A\right)  ^{\ast}=A^{\ast}\underbrace{\left(  A^{\ast}\right)  ^{\ast}}%
+_{=A}=A^{\ast}A$. Moreover, this matrix $A^{\ast}A$ is positive semidefinite,
+since each vector $x\in\mathbb{C}^{n}$ satisfies%
+\[
+\left\langle A^{\ast}Ax,\ x\right\rangle =\underbrace{x^{\ast}A^{\ast}%
+}_{=\left(  Ax\right)  ^{\ast}}Ax=\left(  Ax\right)  ^{\ast}Ax=\left\vert
+\left\vert Ax\right\vert \right\vert ^{2}\geq0.
+\]
+Thus, Proposition \ref{prop.SVD.A*A} \textbf{(a)} is proven. \medskip
+
+\textbf{(b)} Each $y\in\operatorname*{Ker}A$ satisfies $y\in
+\operatorname*{Ker}\left(  A^{\ast}A\right)  $ (because $y\in
+\operatorname*{Ker}A$ entails $Ay=0$, so that $A^{\ast}\underbrace{Ay}_{=0}=0$
+and thus $y\in\operatorname*{Ker}\left(  A^{\ast}A\right)  $). In other words,
+$\operatorname*{Ker}A\subseteq\operatorname*{Ker}\left(  A^{\ast}A\right)  $.
+
+Let us now show that $\operatorname*{Ker}\left(  A^{\ast}A\right)
+\subseteq\operatorname*{Ker}A$. Indeed, let $x\in\operatorname*{Ker}\left(
+A^{\ast}A\right)  $. Thus, $x\in\mathbb{C}^{n}$ and $A^{\ast}Ax=0$. Hence,
+\begin{align*}
+\left\vert \left\vert Ax\right\vert \right\vert ^{2}  &  =\underbrace{\left(
+Ax\right)  ^{\ast}}_{=x^{\ast}A^{\ast}}Ax\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }\left\vert \left\vert v\right\vert \right\vert ^{2}=\left\langle
+v,v\right\rangle =v^{\ast}v\text{ for any }v\in\mathbb{C}^{n}\right) \\
+&  =x^{\ast}\underbrace{A^{\ast}Ax}_{=0}=0.
+\end{align*}
+In other words, $\left\vert \left\vert Ax\right\vert \right\vert =0$. Hence,
+$Ax=0$ (since a vector whose length is $0$ must itself be $0$). In other
+words, $x\in\operatorname*{Ker}A$.
+
+Forget that we fixed $x$. We thus have shown that $x\in\operatorname*{Ker}A$
+for each $x\in\operatorname*{Ker}\left(  A^{\ast}A\right)  $. In other words,
+$\operatorname*{Ker}\left(  A^{\ast}A\right)  \subseteq\operatorname*{Ker}A$.
+Combining this with $\operatorname*{Ker}A\subseteq\operatorname*{Ker}\left(
+A^{\ast}A\right)  $, we obtain $\operatorname*{Ker}A=\operatorname*{Ker}%
+\left(  A^{\ast}A\right)  $. This proves Proposition \ref{prop.SVD.A*A}
+\textbf{(b)}. \medskip
+
+\textbf{(c)} The rank-nullity theorem yields%
+\begin{align*}
+\operatorname*{rank}A  &  =n-\dim\left(  \operatorname*{Ker}A\right)
+\ \ \ \ \ \ \ \ \ \ \text{and}\\
+\operatorname*{rank}\left(  A^{\ast}A\right)   &  =n-\dim\left(
+\operatorname*{Ker}\left(  A^{\ast}A\right)  \right)  .
+\end{align*}
+The right hand sides of these two equalities are equal (since part
+\textbf{(b)} yields $\operatorname*{Ker}A=\operatorname*{Ker}\left(  A^{\ast
+}A\right)  $). Thus, the left hand sides are also equal. In other words,
+$\operatorname*{rank}A=\operatorname*{rank}\left(  A^{\ast}A\right)  $. This
+proves Proposition \ref{prop.SVD.A*A} \textbf{(c)}.
+\end{proof}
+
+Note that Proposition \ref{prop.SVD.A*A} \textbf{(b)} really requires a matrix
+with complex entries. It cannot be generalized to matrices over an arbitrary field.
+
+\subsection{The singular value decomposition}
+
+\begin{definition}
+\label{def.svd.uniteq}Let $A$ and $B$ be two $m\times n$-matrices with complex entries.
+
+We say that $A$ and $B$ are \emph{unitarily equivalent} if there exist unitary
+matrices $U\in\operatorname*{U}\nolimits_{m}\left(  \mathbb{C}\right)  $ and
+$V\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ such that
+$A=UBV^{\ast}$.
+\end{definition}
+
+Note the difference between \textquotedblleft unitarily
+equivalent\textquotedblright\ and \textquotedblleft unitarily
+similar\textquotedblright: The latter requires $A=UBU^{\ast}$, whereas the
+former only requires $A=UBV^{\ast}$.
+
+Unitary equivalence is an equivalence relation.
+
+\begin{exercise}
+\fbox{2} Prove this!
+\end{exercise}
+
+A natural question is therefore: What is the \textquotedblleft
+simplest\textquotedblright\ matrix in the equivalence class of a given matrix?
+The answer is pretty nice: Each matrix is unitarily equivalent to a
+\textquotedblleft more or less diagonal\textquotedblright\ matrix. We are
+saying \textquotedblleft more or less\textquotedblright\ because diagonal
+matrices are supposed to be square, but our matrices can have any dimensions;
+thus, we introduce a separate word for rectangular matrices that
+\textquotedblleft would be diagonal if they were square\textquotedblright:
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. A rectangular matrix $A\in\mathbb{F}^{n\times m}$
+is said to be \emph{pseudodiagonal} if it satisfies%
+\[
+A_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{whenever }i\neq j.
+\]
+
+\end{definition}
+
+This is just the straightforward generalization of diagonal matrices to
+non-square matrices. In particular, a square matrix is pseudodiagonal if and
+only if it is diagonal. A pseudodiagonal $2\times3$-matrix looks like this:
+$\left(
+\begin{array}
+[c]{ccc}%
+\ast & 0 & 0\\
+0 & \ast & 0
+\end{array}
+\right)  $. A pseudodiagonal $3\times2$-matrix looks like this: $\left(
+\begin{array}
+[c]{cc}%
+\ast & 0\\
+0 & \ast\\
+0 & 0
+\end{array}
+\right)  $. (Of course, any of the $\ast$s can be a $0$ too.)
+
+\begin{theorem}
+[SVD]\label{thm.svd.svd}Let $A\in\mathbb{C}^{m\times n}$. Then: \medskip
+
+\textbf{(a)} There exist unitary matrices $U\in\operatorname*{U}%
+\nolimits_{m}\left(  \mathbb{C}\right)  $ and $V\in\operatorname*{U}%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ and a pseudodiagonal matrix $\Sigma$
+such that%
+\[
+A=U\Sigma V^{\ast}.
+\]
+In other words, $A$ is unitarily equivalent to a pseudodiagonal matrix.
+\medskip
+
+\textbf{(b)} The matrix $\Sigma$ is unique up to permutation of its diagonal
+entries. (The matrices $U$ and $V$ are usually not unique.) \medskip
+
+\textbf{(c)} Let $k=\operatorname*{rank}A$. Then, the matrix $\Sigma$ has
+exactly $k$ nonzero diagonal entries. \medskip
+
+\textbf{(d)} Let $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ be the square roots
+of the $n$ eigenvalues of the Hermitian matrix $A^{\ast}A$, listed in
+decreasing order (so that $\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{n}$).
+Then, we have $\sigma_{k+1}=\sigma_{k+2}=\cdots=\sigma_{n}=0$, and we can
+take
+\[
+\Sigma=\left(
+\begin{array}
+[c]{ccccccc}%
+\sigma_{1} & 0 & \cdots & 0 & 0 & \cdots & 0\\
+0 & \sigma_{2} & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \sigma_{k} & 0 & \cdots & 0\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \in\mathbb{C}^{m\times n}%
+\]
+in part \textbf{(a)}.
+\end{theorem}
+
+\begin{definition}
+The triple $\left(  U,V,\Sigma\right)  $ in Theorem \ref{thm.svd.svd}
+\textbf{(a)} is called a \emph{singular value decomposition} (short:
+\emph{SVD}) of $A$. The numbers $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are
+called the \emph{singular values} of $A$.
+\end{definition}
+
+Before we prove the theorem, a few words are to be said about the use of an
+SVD. Often in practice, you have a matrix $A$ and you want to find a low-rank
+\textquotedblleft approximation\textquotedblright\ for $A$: that is, a matrix
+$B$ that is \textquotedblleft sufficiently close\textquotedblright\ to $A$ and
+yet has low rank. Indeed, the idea for doing this is to compute an SVD of $A$
+-- that is, $A=U\Sigma V^{\ast}$ with $U,\Sigma,V$ as above -- and then set
+all but the first few $\sigma_{i}$'s to $0$ in $\Sigma$.
+
+Let us now prove the theorem.
+
+\begin{proof}
+[Proof of Theorem \ref{thm.svd.svd}.]Let $k:=\operatorname*{rank}A$. Then, $k$
+is the rank of an $m\times n$-matrix (namely, $A$), and thus satisfies $k\leq
+m$ and $k\leq n$.
+
+Proposition \ref{prop.SVD.A*A} \textbf{(a)} shows that the matrix $A^{\ast}A$
+is Hermitian and positive semidefinite. The spectral theorem thus yields that
+$A^{\ast}A$ can be written in the form
+\[
+A^{\ast}A=V\cdot\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \cdot V^{\ast},
+\]
+where $V\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ is a
+unitary matrix and where the $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are
+the eigenvalues of $A^{\ast}A$ listed in decreasing order. Consider this $V$
+and these $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$. The eigenvalues
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are nonnegative reals, since
+$A^{\ast}A$ is positive semidefinite. Thus, we can set%
+\[
+\sigma_{i}:=\sqrt{\lambda_{i}}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[
+n\right]  .
+\]
+Then, $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonnegative reals.
+
+We have%
+\begin{align*}
+k  &  =\operatorname*{rank}A=\operatorname*{rank}\left(  A^{\ast}A\right)
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition \ref{prop.SVD.A*A}
+\textbf{(c)}}\right) \\
+&  =\operatorname*{rank}\left(  \operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  \right)
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }A^{\ast}A\overset{\operatorname*{us}%
+}{\sim}\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  \right) \\
+&  =\left(  \text{the number of }i\in\left[  n\right]  \text{ such that
+}\lambda_{i}\neq0\right) \\
+&  =\left(  \text{the number of }i\in\left[  n\right]  \text{ such that
+}\sigma_{i}\neq0\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\sigma
+_{i}=\sqrt{\lambda_{i}}\right)  .
+\end{align*}
+Hence, exactly $k$ of the numbers $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$
+are nonzero. Since $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonnegative
+reals and sorted in weakly decreasing order, this entails that%
+\begin{align*}
+\sigma_{1}  &  \geq\sigma_{2}\geq\cdots\geq\sigma_{k}%
+>0\ \ \ \ \ \ \ \ \ \ \text{and}\\
+\sigma_{k+1}  &  =\sigma_{k+2}=\cdots=\sigma_{n}=0.
+\end{align*}
+
+
+Let $v_{1},v_{2},\ldots,v_{n}$ be the columns of the unitary matrix $V$. Thus,
+$\left(  v_{1},v_{2},\ldots,v_{n}\right)  $ is an orthonormal basis of
+$\mathbb{C}^{n}$ (since $V$ is unitary). Since $V$ is the unitary matrix in a
+spectral decomposition of $A^{\ast}A$, the columns of $V$ are eigenvectors of
+$A^{\ast}A$, corresponding to the eigenvalues $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$. In other words,%
+\[
+A^{\ast}Av_{i}=\lambda_{i}v_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[
+n\right]  .
+\]
+
+
+For each $j\in\left[  k\right]  $, set%
+\[
+u_{j}:=\dfrac{1}{\sigma_{j}}Av_{j}.
+\]
+(The division by $\sigma_{j}$ is well-defined, since $\sigma_{1}\geq\sigma
+_{2}\geq\cdots\geq\sigma_{k}>0$ imply $\sigma_{j}\neq0$.) We claim that the
+tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthonormal. Indeed:
+
+\begin{itemize}
+\item For any $i\neq j$, we have%
+\begin{align*}
+\left\langle u_{i},u_{j}\right\rangle  &  =\left\langle \dfrac{1}{\sigma_{i}%
+}Av_{i},\ \dfrac{1}{\sigma_{j}}Av_{j}\right\rangle =\dfrac{1}{\sigma_{i}%
+\sigma_{j}}\left\langle Av_{i},\ Av_{j}\right\rangle =\dfrac{1}{\sigma
+_{i}\sigma_{j}}\left(  Av_{j}\right)  ^{\ast}Av_{i}\\
+&  =\dfrac{1}{\sigma_{i}\sigma_{j}}v_{j}^{\ast}\underbrace{A^{\ast}Av_{i}%
+}_{=\lambda_{i}v_{i}}=\dfrac{1}{\sigma_{i}\sigma_{j}}v_{j}^{\ast}\lambda
+_{i}v_{i}=\dfrac{\lambda_{i}}{\sigma_{i}\sigma_{j}}\underbrace{v_{j}^{\ast
+}v_{i}}_{\substack{=\left\langle v_{i},v_{j}\right\rangle \\=0\\\text{(since
+}\left(  v_{1},v_{2},\ldots,v_{n}\right)  \\\text{is orthonormal)}}}=0,
+\end{align*}
+and thus $u_{i}\perp u_{j}$.
+
+\item For any $i$, we have%
+\begin{align*}
+\left\langle u_{i},u_{i}\right\rangle  &  =\left\langle \dfrac{1}{\sigma_{i}%
+}Av_{i},\ \dfrac{1}{\sigma_{i}}Av_{i}\right\rangle =\dfrac{1}{\sigma_{i}%
+\sigma_{i}}\left\langle Av_{i},\ Av_{i}\right\rangle =\dfrac{1}{\sigma
+_{i}\sigma_{i}}\left(  Av_{i}\right)  ^{\ast}Av_{i}\\
+&  =\dfrac{1}{\sigma_{i}\sigma_{i}}v_{i}^{\ast}\underbrace{A^{\ast}Av_{i}%
+}_{=\lambda_{i}v_{i}}=\underbrace{\dfrac{\lambda_{i}}{\sigma_{i}\sigma_{i}}%
+}_{\substack{=1\\\text{(since }\sigma_{i}=\sqrt{\lambda_{i}}\text{)}}%
+}v_{i}^{\ast}v_{i}=v_{i}^{\ast}v_{i}=\left\langle v_{i},v_{i}\right\rangle =1
+\end{align*}
+(since $\left(  v_{1},v_{2},\ldots,v_{n}\right)  $ is orthonormal), and thus
+$\left\vert \left\vert u_{i}\right\vert \right\vert =1$.
+\end{itemize}
+
+So $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is an orthonormal tuple of
+vectors in $\mathbb{C}^{m}$. As we know, we can extend it to an orthonormal
+basis $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ of $\mathbb{C}^{m}$. So let
+us do this. Let $U$ be the $m\times m$-matrix with columns $u_{1},u_{2}%
+,\ldots,u_{m}$. Thus, $U$ is a unitary matrix, since its columns form an
+orthonormal basis of $\mathbb{C}^{m}$.
+
+Set $\sigma_{i}:=0$ for every $i>n$. Note that $\sigma_{i}=0$ for every $i>k$,
+since we already have $\sigma_{k+1}=\sigma_{k+2}=\cdots=\sigma_{n}=0$.
+
+Let%
+\[
+\Sigma:=\left(
+\begin{array}
+[c]{ccccccc}%
+\sigma_{1} & 0 & \cdots & 0 & 0 & \cdots & 0\\
+0 & \sigma_{2} & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \sigma_{k} & 0 & \cdots & 0\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0
+\end{array}
+\right)  \in\mathbb{C}^{m\times n}.
+\]
+
+
+Now, we claim that $A=U\Sigma V^{\ast}$. To prove this, we shall show the
+equivalent claim $AV=U\Sigma$.
+
+It is sufficient to prove that
+\[
+\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet
+,j}\ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[  n\right]
+\]
+(recall that the notation $M_{\bullet,j}$ means the $j$-th column of a matrix
+$M$). So let us fix $j\in\left[  n\right]  $ and try to prove that $\left(
+AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$.
+
+\begin{itemize}
+\item If $j\leq k$, then we have%
+\begin{align*}
+\left(  AV\right)  _{\bullet,j}  &  =A\underbrace{V_{\bullet,j}}_{=v_{j}%
+}=Av_{j}=\sigma_{j}\underbrace{u_{j}}_{=U_{\bullet,j}}%
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }u_{j}=\dfrac{1}{\sigma_{j}}%
+Av_{j}\right) \\
+&  =\sigma_{j}U_{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}.
+\end{align*}
+
+
+\item If $j>k$, then we can apply the $A^{\ast}Av_{i}=\lambda_{i}v_{i}$
+equality to $i=j$ and obtain%
+\[
+A^{\ast}Av_{j}=\underbrace{\lambda_{j}}_{\substack{=0\\\text{(since
+}j>k\text{)}}}v_{j}=0,
+\]
+so that $v_{j}\in\operatorname*{Ker}\left(  A^{\ast}A\right)
+=\operatorname*{Ker}A$ (by Proposition \ref{prop.SVD.A*A} \textbf{(b)}); now,%
+\[
+\left(  AV\right)  _{\bullet,j}=A\underbrace{V_{\bullet,j}}_{=v_{j}}%
+=Av_{j}=0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }v_{j}=\operatorname*{Ker}%
+A\right)  ,
+\]
+but also%
+\[
+\left(  U\Sigma\right)  _{\bullet,j}=\underbrace{\sigma_{j}}_{=\sqrt
+{\lambda_{j}}=\sqrt{0}=0}U_{\bullet,j}=0,
+\]
+and therefore $\left(  AV\right)  _{\bullet,j}=0=\left(  U\Sigma\right)
+_{\bullet,j}$.
+\end{itemize}
+
+Thus, we have proved $\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)
+_{\bullet,j}$ in both cases, and this completes the proof of $AV=U\Sigma$.
+Therefore,%
+\[
+\underbrace{U\Sigma}_{=AV}V^{\ast}=A\underbrace{VV^{\ast}}_{\substack{=I_{n}%
+\\\text{(since }V\text{ is unitary)}}}=A,
+\]
+so that $A=U\Sigma V^{\ast}$, as desired.
+
+This proves parts \textbf{(a)}, \textbf{(c)} and \textbf{(d)} of the theorem.
+
+\textbf{(b)} We must show that if $P$ is a pseudodiagonal matrix such that $A$
+is unitarily equivalent to $P$, then $P$ and $\Sigma$ have the same diagonal
+entries up to order.
+
+Rough outline: The singular values of a matrix are invariant under unitary
+equivalence. In other words, if $A=UBV^{\ast}$ for some unitary $U$ and $V$,
+then $A$ and $B$ have the same singular values. (In fact, $A=UBV^{\ast}$
+entails%
+\[
+A^{\ast}A=\left(  UBV^{\ast}\right)  ^{\ast}UBV^{\ast}=VB^{\ast}%
+\underbrace{U^{\ast}U}_{=I_{m}}BV^{\ast}=VB^{\ast}BV^{\ast}%
+\overset{\operatorname*{us}}{\sim}B^{\ast}B;
+\]
+this shows that $A^{\ast}A$ and $B^{\ast}B$ have the same eigenvalues;
+therefore $A$ and $B$ have the same singular values.) Thus, $P$ and $\Sigma$
+must have the same singular values (since $P$ and $\Sigma$ are both unitarily
+equivalent to $A$). However, for a pseudodiagonal matrix, the singular values
+are simply the diagonal entries. (Fine print: There might be $0$s not
+accounted for.)
+\end{proof}
 
 [...]
 
@@ -16492,7 +17259,10 @@ Mathematical Excalibur \textbf{19}, Number 3, pp. 1--2, 4}.
 \bibitem[HorJoh13]{HorJoh13}%
 \href{http://www.cse.zju.edu.cn/eclass/attachments/2015-10/01-1446086008-145421.pdf}{Roger
 A. Horn, Charles R. Johnson, \textit{Matrix analysis}, Cambridge University
-Press, 2nd edition 2013}.
+Press, 2nd edition 2013}.\newline See
+\url{https://www.cambridge.org/us/files/7413/7180/9643/Errata_HJ_Matrix_Analysis_2nd_ed.pdf}
+and \url{https://www.kth.se/social/files/5707c3bef2765428eba786d3/errata.pdf}
+for errata.
 
 \bibitem[Hung07]{Hung07}%
 \href{http://refkol.ro/matek/mathbooks/!Books!/Secrets in Inequalities (volume 1) Pham Kim Hung.pdf}{Pham
@@ -16610,6 +17380,11 @@ Euclidean algorithm}, 12 October 2007.\newline\url{https://terrytao.wordpress.co
 Algebra}, AMS 2020}.\newline See
 \url{https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/linalg.pdf}
 for a preprint.
+
+\bibitem[TreBau97]{TreBau97}Lloyd Nicholas Trefethen, David Bau III,
+\textit{Numerical linear algebra}, SIAM 1997.\newline See
+\url{https://people.maths.ox.ac.uk/trefethen/text.html} for the first five
+sections (\textquotedblleft lectures\textquotedblright).
 
 \bibitem[Treil15]{Treil15}Sergei Treil, \textit{Linear Algebra Done Wrong},
 2017.\newline\url{https://www.math.brown.edu/~treil/papers/LADW/LADW.html}
