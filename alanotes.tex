@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, November 22, 2021 14:50:52}
+%TCIDATA{LastRevised=Tuesday, November 23, 2021 21:30:15}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -149,8 +149,8 @@
 \begin{document}
 
 \title{Math 504: Advanced Linear Algebra}
-\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
-Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\author{Hugo Woerdeman and Darij Grinberg\thanks{Drexel University, Korman Center, 15
+S 33rd Street, Philadelphia PA, 19104, USA}}
 \date{\today\ (unfinished!)}
 \maketitle
 \tableofcontents
@@ -1732,6 +1732,13 @@ multiplying all three entries by the same number). \medskip
 
 We shall soon see one more way to construct unitary matrices from smaller
 ones, using the notion of block matrices, which we shall now introduce.
+
+Incidentally, here is another simple but useful property of skew-Hermitian matrices:
+
+\begin{exercise}
+\fbox{2} Let $A,B\in\mathbb{C}^{n\times n}$ be two skew-Hermitian matrices.
+Show that $AB-BA$ is again skew-Hermitian.
+\end{exercise}
 
 \subsection{Block matrices}
 
@@ -4577,9 +4584,10 @@ In other words,%
 
 \begin{proof}
 [Proof of Proposition \ref{prop.schurtri.similar.diag}.]Let $P_{\sigma}%
-\in\mathbb{F}^{n\times n}$ be the permutation matrix of $\sigma$ (defined in
-Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). We recall that the
-$\left(  i,j\right)  $-th entry of this matrix $P_{\sigma}$ is $%
+\in\mathbb{F}^{n\times n}$ be the permutation matrix of $\sigma$ (defined as
+in Example \ref{exa.unitary.unitary.exas} \textbf{(d)}, but using the field
+$\mathbb{F}$ instead of $\mathbb{C}$). We recall that the $\left(  i,j\right)
+$-th entry of this matrix $P_{\sigma}$ is $%
 \begin{cases}
 1, & \text{if }i=\sigma\left(  j\right)  ;\\
 0, & \text{if }i\neq\sigma\left(  j\right)
@@ -4913,6 +4921,53 @@ B_{1} & 0 & \cdots & 0\\
 \label{exe.schurtri.block-unisimi}\fbox{1} Prove Proposition
 \ref{prop.schurtri.block-unisimi}.
 \end{exercise}
+
+We note further that the similarity in Proposition
+\ref{prop.schurtri.similar.diag} can be upgraded to a unitary similarity if we
+work over the field $\mathbb{C}$:
+
+\begin{proposition}
+\label{prop.schurtri.unisimi.diag}Let $n\in\mathbb{N}$. Let $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\in\mathbb{C}$. Let $\sigma$ be a
+permutation of $\left[  n\right]  $ (that is, a bijective map from $\left[
+n\right]  $ to $\left[  n\right]  $). Then,%
+\[
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+\overset{\operatorname*{us}}{\sim}\operatorname*{diag}\left(  \lambda
+_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots
+,\lambda_{\sigma\left(  n\right)  }\right)  .
+\]
+
+\end{proposition}
+
+\begin{proof}
+Let $P_{\sigma}\in\mathbb{F}^{n\times n}$ be the permutation matrix of
+$\sigma$ (defined in Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). In
+the proof of Proposition \ref{prop.schurtri.similar.diag}, we have shown that
+\[
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+=P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)
+},\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)
+}\right)  \cdot P_{\sigma}^{-1}.
+\]
+However, the matrix $P_{\sigma}$ is unitary (as we have already seen in
+Example \ref{exa.unitary.unitary.exas} \textbf{(d)}). Hence, $P_{\sigma}%
+^{-1}=P_{\sigma}^{\ast}$. Thus,%
+\begin{align*}
+\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)
+&  =P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda_{\sigma\left(
+1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(
+n\right)  }\right)  \cdot\underbrace{P_{\sigma}^{-1}}_{=P_{\sigma}^{\ast}}\\
+&  =P_{\sigma}\cdot\operatorname*{diag}\left(  \lambda_{\sigma\left(
+1\right)  },\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(
+n\right)  }\right)  \cdot P_{\sigma}^{\ast}.
+\end{align*}
+This shows that $\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \overset{\operatorname*{us}}{\sim}%
+\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  },\lambda
+_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)  }\right)
+$. Thus, Proposition \ref{prop.schurtri.unisimi.diag} is proven.
+\end{proof}
 
 %
 
@@ -5953,7 +6008,7 @@ C_{A}=\left(
 \lambda_{A} & p_{A}\\
 0 & B_{A}%
 \end{array}
-\right)  ,\label{pf.thm.schurtri.commute.schurtri.C=2x2}%
+\right)  , \label{pf.thm.schurtri.commute.schurtri.C=2x2}%
 \end{equation}
 where $p_{A}\in\mathbb{C}^{1\times\left(  m-1\right)  }$ is a row vector and
 $B_{A}\in\mathbb{C}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ is a
@@ -5974,14 +6029,14 @@ Indeed, we first observe that the definitions of $C_{A}$ and $C_{A^{\prime}}$
 yield%
 \begin{align}
 \underbrace{C_{A}}_{=U^{\ast}AU}\ \ \underbrace{C_{A^{\prime}}}_{=U^{\ast
-}A^{\prime}U}  & =U^{\ast}A\underbrace{UU^{\ast}}_{=I_{m}}A^{\prime}U=U^{\ast
-}AA^{\prime}U\nonumber\\
-& =C_{AA^{\prime}}\label{pf.thm.schurtri.commute.schurtri.CACA'=}%
+}A^{\prime}U}  &  =U^{\ast}A\underbrace{UU^{\ast}}_{=I_{m}}A^{\prime}%
+U=U^{\ast}AA^{\prime}U\nonumber\\
+&  =C_{AA^{\prime}} \label{pf.thm.schurtri.commute.schurtri.CACA'=}%
 \end{align}
 (by the definition of $C_{AA^{\prime}}$). However,
 (\ref{pf.thm.schurtri.commute.schurtri.C=2x2}) yields%
 \begin{align*}
-C_{A}  & =\left(
+C_{A}  &  =\left(
 \begin{array}
 [c]{cc}%
 \lambda_{A} & p_{A}\\
@@ -5994,7 +6049,7 @@ C_{A}  & =\left(
 0 & B_{A^{\prime}}%
 \end{array}
 \right)  ,\\
-\text{and}\ \ \ \ \ \ \ \ \ \ C_{AA^{\prime}}  & =\left(
+\text{and}\ \ \ \ \ \ \ \ \ \ C_{AA^{\prime}}  &  =\left(
 \begin{array}
 [c]{cc}%
 \lambda_{AA^{\prime}} & p_{AA^{\prime}}\\
@@ -6064,8 +6119,8 @@ $B_{AA^{\prime}}=B_{A^{\prime}A}$. In view of $B_{AA^{\prime}}=B_{A}%
 B_{A^{\prime}}$ and $B_{A^{\prime}A}=B_{A^{\prime}}B_{A}$, we can rewrite this
 as
 \begin{equation}
-B_{A}B_{A^{\prime}}=B_{A^{\prime}}B_{A}%
-.\label{pf.thm.schurtri.commute.schurtri.BABA'comm}%
+B_{A}B_{A^{\prime}}=B_{A^{\prime}}B_{A}.
+\label{pf.thm.schurtri.commute.schurtri.BABA'comm}%
 \end{equation}
 
 
@@ -6112,7 +6167,7 @@ This is a block-diagonal matrix, with $\left(
 \end{array}
 \right)  $. Moreover, $W$ is a unitary matrix (since it is a block-diagonal
 matrix whose diagonal blocks are unitary\footnote{We are using Proposition
-\ref{prop.blockmatrix.unitary-diag} here.}). 
+\ref{prop.blockmatrix.unitary-diag} here.}).
 
 Now, let $Q$ be the matrix $WU^{\ast}$. Then, $Q$ is unitary (by Exercise
 \ref{exe.unitary.group} \textbf{(b)}, since $W$ and $U^{\ast}$ are unitary).
@@ -6165,7 +6220,7 @@ upper-triangular. On the other hand, from $Q=WU^{\ast}$, we obtain%
 1 & 0\\
 0 & V^{\ast}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -6178,7 +6233,7 @@ V\cdot0\cdot1 & V\cdot B_{A}\cdot V^{\ast}%
 \text{by using Proposition \ref{prop.blockmatrix.mult-2x2} twice}\\
 \text{and simplifying the }0\text{ addends away}%
 \end{array}
-\right)  \\
+\right) \\
 &  =\left(
 \begin{array}
 [c]{cc}%
@@ -6306,7 +6361,8 @@ For example, the matrix $\left(
 1 & i\\
 -i & 2
 \end{array}
-\right)  $ is Hermitian.
+\right)  $ is Hermitian. Any real symmetric matrix (i.e., any symmetric matrix
+with real entries) is Hermitian as well.
 
 In contrast, a square matrix $S\in\mathbb{C}^{n\times n}$ is skew-Hermitian if
 and only if $S^{\ast}=-S$ (by Definition \ref{def.unitary.skew-herm}).
@@ -6527,9 +6583,9 @@ part \textbf{(a)}.]
 \end{exercise}
 
 \begin{exercise}
-\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be
-two normal matrices such that $AB=BA$. Prove that the matrix $AB$ is normal.
-\medskip
+\fbox{5} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be
+two normal matrices such that $AB=BA$. Prove that the matrices $A+B$ and $AB$
+are normal. \medskip
 
 [\textbf{Hint:} Use Exercise \ref{exe.schurtri.normal.fp} \textbf{(b)}.]
 \end{exercise}
@@ -6688,6 +6744,8 @@ normal matrix that is nilpotent. Prove that $A=0$.
 
 \subsection{The spectral theorem}
 
+\subsubsection{The spectral theorem for normal matrices}
+
 We are now ready to state the main theorem about normal matrices, the
 so-called \emph{spectral theorem}:
 
@@ -6785,7 +6843,90 @@ The decomposition $A=UDU^{\ast}$ in Theorem
 U,D\right)  $) is called a \emph{spectral decomposition} of $A$. It is not
 unique (e.g., we can replace $U$ by $\lambda U$ whenever $\lambda\in
 \mathbb{C}$ satisfies $\left\vert \lambda\right\vert =1$; this does not change
-$UDU^{\ast}$).
+$UDU^{\ast}$). We can actually choose the order of the diagonal entries of $D$
+at will, as the following simple corollary shows:
+
+\begin{corollary}
+\label{cor.schurtri.normal.given-order}Let $A\in\mathbb{C}^{n\times n}$ be a
+normal matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the $n$
+eigenvalues of $A$ (listed with algebraic multiplicities, in an arbitrary
+order). Then, there exists a spectral decomposition $\left(  U,D\right)  $ of
+$A$ with $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}\right)  $. Thus,%
+\begin{equation}
+A\overset{\operatorname*{us}}{\sim}\operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  .
+\label{eq.cor.schurtri.normal.given-order.us}%
+\end{equation}
+
+\end{corollary}
+
+\begin{proof}
+Let $L=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  $. This is clearly a diagonal matrix.
+
+Theorem \ref{thm.schurtri.normal.spectral} \textbf{(a)} yields that there
+exists a unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ and a diagonal matrix $D\in\mathbb{C}^{n\times n}$ such
+that%
+\[
+A=UDU^{\ast}.
+\]
+Consider these $U$ and $D$, and denote them by $W$ and $F$ (since they are not
+yet the $U$ and $D$ that we are looking for). Thus, $W\in\operatorname*{U}%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ is a unitary matrix and
+$F\in\mathbb{C}^{n\times n}$ is a diagonal matrix such that $A=WFW^{\ast}$.
+
+The definition of unitary similarity yields $A\overset{\operatorname*{us}%
+}{\sim}F$ (since $W$ is unitary and $A=WFW^{\ast}$). However, the diagonal
+entries of $F$ are the eigenvalues of $A$ (by Theorem
+\ref{thm.schurtri.normal.spectral} \textbf{(b)}, applied to $U=W$ and $D=F$).
+Since the eigenvalues of $A$ are $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$,
+this shows that the diagonal entries of $F$ are $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}$ in some order. In other words, there exists a
+permutation $\sigma$ of $\left[  n\right]  $ such that the diagonal entries of
+$F$ are $\lambda_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)
+},\ldots,\lambda_{\sigma\left(  n\right)  }$. Consider this $\sigma$.
+
+The matrix $F$ is a diagonal matrix, and its diagonal entries are
+$\lambda_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  }%
+,\ldots,\lambda_{\sigma\left(  n\right)  }$. In other words,
+$F=\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  }%
+,\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)
+}\right)  $.
+
+However, Proposition \ref{prop.schurtri.unisimi.diag} yields
+$\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  \overset{\operatorname*{us}}{\sim}\operatorname*{diag}\left(
+\lambda_{\sigma\left(  1\right)  },\lambda_{\sigma\left(  2\right)  }%
+,\ldots,\lambda_{\sigma\left(  n\right)  }\right)  $. This rewrites as
+$L\overset{\operatorname*{us}}{\sim}F$ (since $L=\operatorname*{diag}\left(
+\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\right)  $ and
+$F=\operatorname*{diag}\left(  \lambda_{\sigma\left(  1\right)  }%
+,\lambda_{\sigma\left(  2\right)  },\ldots,\lambda_{\sigma\left(  n\right)
+}\right)  $). In other words, there exists a unitary matrix $Q\in
+\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ such that%
+\[
+F=QLQ^{\ast}.
+\]
+Consider this $Q$. Now, the matrix $WQ$ is unitary (by Exercise
+\ref{exe.unitary.group} \textbf{(b)}, since $W$ and $Q$ are unitary), and we
+have%
+\[
+A=W\underbrace{F}_{=QLQ^{\ast}}W^{\ast}=WQL\underbrace{Q^{\ast}W^{\ast}%
+}_{=\left(  WQ\right)  ^{\ast}}=WQL\left(  WQ\right)  ^{\ast}=\left(
+WQ\right)  \cdot L\cdot\left(  WQ\right)  ^{\ast}.
+\]
+This shows that $\left(  WQ,L\right)  $ is a spectral decomposition of $A$
+(since $WQ$ is unitary and $L$ is diagonal). This spectral decomposition
+satisfies $L=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  $. Thus, there exists a spectral decomposition
+$\left(  U,D\right)  $ of $A$ with $D=\operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  $ (namely, $\left(  WQ,L\right)
+$). This furthermore shows that $A\overset{\operatorname*{us}}{\sim
+}\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  $. Corollary \ref{cor.schurtri.normal.given-order} is thus proven.
+\end{proof}
 
 Note that Theorem \ref{thm.schurtri.normal.spectral} \textbf{(b)} has a
 converse, which helps finding spectral decompositions in practice if one
@@ -6880,7 +7021,15 @@ the \textquotedblleft$\Longleftarrow$\textquotedblright\ direction of
 Corollary \ref{cor.schurtri.normal.normal-iff}.
 \end{proof}
 
-The spectral decomposition of a Hermitian matrix has a special property:
+\begin{exercise}
+\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be
+two normal matrices such that $A\sim B$. Prove that
+$A\overset{\operatorname*{us}}{\sim}B$.
+\end{exercise}
+
+\subsubsection{The spectral theorem for Hermitian matrices}
+
+The spectral decompositions of a Hermitian matrix have a special property:
 
 \begin{proposition}
 \label{prop.schurtri.normal.hermitian-spec}Let $A\in\mathbb{C}^{n\times n}$ be
@@ -6889,10 +7038,10 @@ of $A$. Then, the diagonal entries of $D$ are real.
 \end{proposition}
 
 \begin{proof}
-The definition of a spectral decomposition yields $A=UDU^{\ast}$. Moreover, it
-yields that $U$ is unitary and $D$ is diagonal. However, since $A$ is
-Hermitian, we have $A^{\ast}=A$. In view of $A=UDU^{\ast}$, this rewrites as
-$\left(  UDU^{\ast}\right)  ^{\ast}=UDU^{\ast}$. Hence,
+The definition of a spectral decomposition yields that $U$ is unitary and $D$
+is diagonal and $A=UDU^{\ast}$. However, since $A$ is Hermitian, we have
+$A^{\ast}=A$. In view of $A=UDU^{\ast}$, this rewrites as $\left(  UDU^{\ast
+}\right)  ^{\ast}=UDU^{\ast}$. Hence,
 \[
 UDU^{\ast}=\left(  UDU^{\ast}\right)  ^{\ast}=\underbrace{\left(  U^{\ast
 }\right)  ^{\ast}}_{=U}D^{\ast}U^{\ast}=UD^{\ast}U^{\ast}.
@@ -6956,6 +7105,8 @@ $\Longleftarrow$\textquotedblright\ direction of Corollary
 \ref{cor.schurtri.normal.hermitian-iff}.
 \end{proof}
 
+\subsubsection{The spectral theorem for skew-Hermitian matrices}
+
 Similarly, we can handle skew-Hermitian matrices:
 
 \begin{proposition}
@@ -6976,7 +7127,9 @@ similar to a diagonal matrix with purely imaginary entries.
 \ref{cor.schurtri.normal.skewherm-iff}.
 \end{exercise}
 
-Likewise, we can handle unitary matrices.
+\subsubsection{The spectral theorem for unitary matrices}
+
+Likewise, we can handle unitary matrices:
 
 \begin{proposition}
 \label{prop.schurtri.normal.unitary-spec}Let $A\in\mathbb{C}^{n\times n}$ be a
@@ -12943,12 +13096,13 @@ only if its Jordan canonical form has exactly one Jordan block for each eigenval
 \end{exercise}
 
 \begin{theorem}
-Let $A\in\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. Then,
+\label{thm.jnf.cent.nonderog}Let $A\in\mathbb{C}^{n\times n}$ be an $n\times
+n$-matrix. Then,
 \[
 \operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
 \left[  t\right]  \right\}
 \]
-if and only if $f$ is nonderogatory. Moreover, in this case,%
+if and only if $A$ is nonderogatory. Moreover, in this case,%
 \[
 \operatorname*{Cent}A=\left\{  f\left(  A\right)  \ \mid\ f\in\mathbb{C}%
 \left[  t\right]  \text{ is a polynomial of degree }\leq n-1\right\}  .
@@ -12956,9 +13110,9 @@ if and only if $f$ is nonderogatory. Moreover, in this case,%
 
 \end{theorem}
 
-\begin{proof}
-Later or exercises?
-\end{proof}
+\begin{exercise}
+\fbox{8} Prove this.
+\end{exercise}
 
 \section{Hermitian matrices (\cite[Chapter 4]{HorJoh13})}
 
@@ -13033,7 +13187,7 @@ u_{j}\overline{v_{i}}.
 
 \begin{proof}
 For each $i\in\left[  n\right]  $, let $w_{i}$ denote the $i$-th entry of the
-column vector $Mu$. According to the definition of matrix multiplication, this
+column vector $w$. According to the definition of matrix multiplication, this
 entry is given by%
 \begin{equation}
 w_{i}=M_{i,1}u_{1}+M_{i,2}u_{2}+\cdots+M_{i,n}u_{n}=\sum_{j=1}^{n}M_{i,j}%
@@ -13301,7 +13455,7 @@ $x,y\in\mathbb{C}^{n}$ such that%
 
 \end{definition}
 
-Here are some examples of definiteness:
+Here are some examples of matrices that are definite, semidefinite or neither:
 
 \begin{example}
 Let $n\in\mathbb{N}$. Let $J=\left(
@@ -13366,7 +13520,7 @@ _{i}\left\vert x_{i}\right\vert ^{2}.
 If $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\geq0$, then we therefore
 conclude that $\left\langle Dx,x\right\rangle \geq0$, so that $D$ is positive
 semidefinite. Otherwise, $D$ is not positive semidefinite, since we can pick
-an $x=e_{j}$ where $j$ satisfies $\lambda_{i}<0$. So $D$ is positive
+an $x=e_{j}$ where $j$ satisfies $\lambda_{j}<0$. So $D$ is positive
 semidefinite if and only if $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\geq0$.
 A similar argument shows that $D$ is positive definite if and only if
 $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}>0$.
@@ -13405,6 +13559,48 @@ $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is $\dfrac{1}%
 [\textbf{Hint:} Recall that $\dfrac{1}{m}=\int_{0}^{1}t^{m-1}dt$ for each
 $m>0$. Also, integrating an $\mathbb{R}_{\geq0}$-valued function over $\left[
 0,1\right]  $ yields a nonnegative real.]
+\end{exercise}
+
+\begin{exercise}
+\fbox{5} Let $a_{1},a_{2},\ldots,a_{n}$ be reals. Let $A\in\mathbb{R}^{n\times
+n}$ be the $n\times n$-matrix%
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+a_{1} & a_{1} & a_{1} & a_{1} & a_{1}\\
+a_{1} & a_{2} & a_{2} & a_{2} & a_{2}\\
+a_{1} & a_{2} & \ddots & \cdots & \cdots\\
+a_{1} & a_{2} & \vdots & a_{n-1} & a_{n-1}\\
+a_{1} & a_{2} & \vdots & a_{n-1} & a_{n}%
+\end{array}
+\right)
+\]
+(that is, the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is
+$a_{\min\left\{  i,j\right\}  }$). This matrix $A$ is real symmetric and thus
+Hermitian. \medskip
+
+\textbf{(a)} Set $a_{0}:=0$, and let $d_{i}:=a_{i}-a_{i-1}$ for each
+$i\in\left[  n\right]  $. Let $D$ be the diagonal matrix $\operatorname*{diag}%
+\left(  d_{1},d_{2},\ldots,d_{n}\right)  \in\mathbb{R}^{n\times n}$. Let $U$
+be the upper-triangular matrix
+\[
+\left(
+\begin{array}
+[c]{ccccc}%
+1 & 1 & 1 & \cdots & 1\\
+0 & 1 & 1 & \cdots & 1\\
+0 & 0 & 1 & \cdots & 1\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 1
+\end{array}
+\right)  \in\mathbb{R}^{n\times n},
+\]
+all of whose entries on and above the main diagonal are $1$. Prove that
+$A=U^{\ast}DU$. \medskip
+
+\textbf{(b)} Prove that $A$ is positive definite if and only if $0<a_{1}%
+<a_{2}<\cdots<a_{n}$.
 \end{exercise}
 
 Note that a Hermitian matrix $A$ is negative definite if and only if $-A$ is
@@ -14063,11 +14259,13 @@ AB\right)  $ is real and $\operatorname*{Tr}\left(  AB\right)  \geq0$.
 \end{exercise}
 
 There is a version of Cholesky decomposition for positive semidefinite
-matrices, but this will be left to the exercises.
+matrices, but we omit it for now.
 
+\begin{noncompile}
 TODO: Add exercises on Cholesky for positive semidefinite matrices.
 
 TODO: Add exercises on determinantal criteria?
+\end{noncompile}
 
 \subsection{Rayleigh quotients}
 
@@ -15165,7 +15363,7 @@ y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n-1}^{\downarrow};\\
 x_{1}^{\downarrow}+x_{2}^{\downarrow}+\cdots+x_{n}^{\downarrow}  &
 =y_{1}^{\downarrow}+y_{2}^{\downarrow}+\cdots+y_{n}^{\downarrow}%
 \end{align*}
-(note that the last relation in this chain is an equality, not just an equality).
+(note that the last relation in this chain is an equality, not just an inequality).
 \end{definition}
 
 \begin{example}
@@ -15272,11 +15470,11 @@ on the set $\mathbb{R}^{n}$ is reflexive, antisymmetric and transitive.
 \begin{proof}
 This is straightforward to verify. For example, if $\sum_{i=1}^{m}%
 x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow}$ and $\sum_{i=1}%
-^{m}y_{i}^{\downarrow}\geq\sum_{i=1}^{m}z_{i}^{\downarrow}$ and $\sum
+^{m}y_{i}^{\downarrow}\geq\sum_{i=1}^{m}z_{i}^{\downarrow}$, then $\sum
 _{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}z_{i}^{\downarrow}$.
 \end{proof}
 
-However, majorization is not a total order: For example, the sequences%
+However, majorization is not a total order: For example, the vectors%
 \[
 x=\left(
 \begin{array}
@@ -16759,7 +16957,7 @@ This proves the \textquotedblleft$\Longleftarrow$\textquotedblright\ direction
 of Theorem \ref{thm.major.doublestoch.maj}.
 \end{proof}
 
-\section{Singular value decomposition}
+\section{Singular value decomposition (\cite[\S 2.6]{HorJoh13})}
 
 This will be just a brief introduction to singular value decomposition. For
 much more, see \cite{TreBau97}.
@@ -16851,6 +17049,9 @@ $V\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ such that
 $A=UBV^{\ast}$.
 \end{definition}
 
+Note that we could just as well require $A=UBV$ instead of $A=UBV^{\ast}$
+here, since $V$ is unitary if and only if $V^{\ast}$ is unitary.
+
 Note the difference between \textquotedblleft unitarily
 equivalent\textquotedblright\ and \textquotedblleft unitarily
 similar\textquotedblright: The latter requires $A=UBU^{\ast}$, whereas the
@@ -16903,13 +17104,14 @@ $\left(
 
 \textbf{(a)} There exist unitary matrices $U\in\operatorname*{U}%
 \nolimits_{m}\left(  \mathbb{C}\right)  $ and $V\in\operatorname*{U}%
-\nolimits_{n}\left(  \mathbb{C}\right)  $ and a pseudodiagonal matrix $\Sigma$
-such that%
+\nolimits_{n}\left(  \mathbb{C}\right)  $ and a pseudodiagonal matrix
+$\Sigma\in\mathbb{C}^{m\times n}$ such that all diagonal entries of $\Sigma$
+are nonnegative reals and such that%
 \[
 A=U\Sigma V^{\ast}.
 \]
-In other words, $A$ is unitarily equivalent to a pseudodiagonal matrix.
-\medskip
+In other words, $A$ is unitarily equivalent to a pseudodiagonal matrix whose
+diagonal entries are nonnegative reals. \medskip
 
 \textbf{(b)} The matrix $\Sigma$ is unique up to permutation of its diagonal
 entries. (The matrices $U$ and $V$ are usually not unique.) \medskip
@@ -16947,12 +17149,14 @@ called the \emph{singular values} of $A$.
 \end{definition}
 
 Before we prove the theorem, a few words are to be said about the use of an
-SVD. Often in practice, you have a matrix $A$ and you want to find a low-rank
-\textquotedblleft approximation\textquotedblright\ for $A$: that is, a matrix
-$B$ that is \textquotedblleft sufficiently close\textquotedblright\ to $A$ and
-yet has low rank. Indeed, the idea for doing this is to compute an SVD of $A$
--- that is, $A=U\Sigma V^{\ast}$ with $U,\Sigma,V$ as above -- and then set
-all but the first few $\sigma_{i}$'s to $0$ in $\Sigma$.
+SVD. In practice, you often want to find a low-rank \textquotedblleft
+approximation\textquotedblright\ for a given matrix $A$: that is, a matrix $B$
+that is \textquotedblleft sufficiently close\textquotedblright\ to $A$ and yet
+has low rank. One of the best ways to do this is by computing an SVD of $A$ --
+that is, writing $A$ in the form $A=U\Sigma V^{\ast}$ with $U,\Sigma,V$ as in
+Theorem \ref{thm.svd.svd} \textbf{(a)} -- and then setting all but the first
+few $\sigma_{i}$'s to $0$ in $\Sigma$. We will soon see why this
+\textquotedblleft approximates\textquotedblright\ $A$.
 
 Let us now prove the theorem.
 
@@ -16962,25 +17166,36 @@ is the rank of an $m\times n$-matrix (namely, $A$), and thus satisfies $k\leq
 m$ and $k\leq n$.
 
 Proposition \ref{prop.SVD.A*A} \textbf{(a)} shows that the matrix $A^{\ast}A$
-is Hermitian and positive semidefinite. The spectral theorem thus yields that
-$A^{\ast}A$ can be written in the form
-\[
-A^{\ast}A=V\cdot\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
-,\ldots,\lambda_{n}\right)  \cdot V^{\ast},
-\]
-where $V\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ is a
-unitary matrix and where the $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are
-the eigenvalues of $A^{\ast}A$ listed in decreasing order. Consider this $V$
-and these $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$. The eigenvalues
-$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are nonnegative reals, since
-$A^{\ast}A$ is positive semidefinite. Thus, we can set%
+is Hermitian and positive semidefinite. Let $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$ be the eigenvalues of this matrix $A^{\ast}A$, listed in
+decreasing order. These eigenvalues $\lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}$ are nonnegative reals (since $A^{\ast}A$ is positive
+semidefinite). Thus, we can set%
 \[
 \sigma_{i}:=\sqrt{\lambda_{i}}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[
 n\right]  .
 \]
 Then, $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonnegative reals.
+Moreover, $\lambda_{1}\geq\lambda_{2}\geq\cdots\geq\lambda_{n}$ (since
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are listed in decreasing order)
+and therefore $\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{n}$ (since
+$\sigma_{i}=\sqrt{\lambda_{i}}$ for each $i$).
 
-We have%
+The matrix $A^{\ast}A$ is Hermitian and thus normal. Hence, Corollary
+\ref{cor.schurtri.normal.given-order} (applied to $A^{\ast}A$ instead of $A$)
+yields that there exists a spectral decomposition $\left(  V,D\right)  $ of
+$A^{\ast}A$ with $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  $. Consider this spectral decomposition. Thus,
+$V\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ is a unitary
+matrix, and $D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  $, and we have
+\begin{equation}
+A^{\ast}A=VDV^{\ast}. \label{pf.thm.svd.svd.A=}%
+\end{equation}
+
+
+From (\ref{pf.thm.svd.svd.A=}), we obtain $A^{\ast}%
+A\overset{\operatorname*{us}}{\sim}D$ (since $V$ is unitary). Now,
 \begin{align*}
 k  &  =\operatorname*{rank}A=\operatorname*{rank}\left(  A^{\ast}A\right)
 \ \ \ \ \ \ \ \ \ \ \left(  \text{by Proposition \ref{prop.SVD.A*A}
@@ -16988,83 +17203,145 @@ k  &  =\operatorname*{rank}A=\operatorname*{rank}\left(  A^{\ast}A\right)
 &  =\operatorname*{rank}\left(  \operatorname*{diag}\left(  \lambda
 _{1},\lambda_{2},\ldots,\lambda_{n}\right)  \right)
 \ \ \ \ \ \ \ \ \ \ \left(  \text{since }A^{\ast}A\overset{\operatorname*{us}%
-}{\sim}\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
-_{n}\right)  \right) \\
+}{\sim}D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}\right)  \right) \\
 &  =\left(  \text{the number of }i\in\left[  n\right]  \text{ such that
 }\lambda_{i}\neq0\right) \\
 &  =\left(  \text{the number of }i\in\left[  n\right]  \text{ such that
-}\sigma_{i}\neq0\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }\sigma
-_{i}=\sqrt{\lambda_{i}}\right)  .
+}\sigma_{i}\neq0\right)
 \end{align*}
-Hence, exactly $k$ of the numbers $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$
-are nonzero. Since $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonnegative
-reals and sorted in weakly decreasing order, this entails that%
-\begin{align*}
+(since $\sigma_{i}=\sqrt{\lambda_{i}}$ for each $i$). Hence, exactly $k$ of
+the numbers $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonzero. Since
+$\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ are nonnegative reals and satisfy
+$\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{n}$, this entails that%
+\begin{align}
 \sigma_{1}  &  \geq\sigma_{2}\geq\cdots\geq\sigma_{k}%
->0\ \ \ \ \ \ \ \ \ \ \text{and}\\
+>0\ \ \ \ \ \ \ \ \ \ \text{and}\label{pf.thm.svd.svd.pos}\\
 \sigma_{k+1}  &  =\sigma_{k+2}=\cdots=\sigma_{n}=0.
-\end{align*}
+\label{pf.thm.svd.svd.zero}%
+\end{align}
 
 
 Let $v_{1},v_{2},\ldots,v_{n}$ be the columns of the unitary matrix $V$. Thus,
 $\left(  v_{1},v_{2},\ldots,v_{n}\right)  $ is an orthonormal basis of
-$\mathbb{C}^{n}$ (since $V$ is unitary). Since $V$ is the unitary matrix in a
-spectral decomposition of $A^{\ast}A$, the columns of $V$ are eigenvectors of
-$A^{\ast}A$, corresponding to the eigenvalues $\lambda_{1},\lambda_{2}%
-,\ldots,\lambda_{n}$. In other words,%
-\[
+$\mathbb{C}^{n}$ (since $V$ is unitary)\footnote{Here we are using the
+implication $\mathcal{A}\Longrightarrow\mathcal{E}$ of Theorem
+\ref{thm.unitary.unitary.eqs}.}. Since $V$ is the unitary matrix in a spectral
+decomposition of $A^{\ast}A$, we can easily see that the columns of $V$ are
+eigenvectors of $A^{\ast}A$ corresponding to the eigenvalues $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}$. In other words,%
+\begin{equation}
 A^{\ast}Av_{i}=\lambda_{i}v_{i}\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[
-n\right]  .
-\]
+n\right]  . \label{pf.thm.svd.svd.evec}%
+\end{equation}
 
 
-For each $j\in\left[  k\right]  $, set%
+[\textit{Proof of (\ref{pf.thm.svd.svd.evec}):} Let $i\in\left[  n\right]  $.
+Then, we have\footnote{Recall that the notation $M_{\bullet,i}$ denotes the
+$i$-th column of a matrix $M$.} $V_{\bullet,i}=v_{i}$ (since $v_{1}%
+,v_{2},\ldots,v_{n}$ are the columns of $V$). However, from
+(\ref{pf.thm.svd.svd.A=}), we obtain $A^{\ast}AV=VD\underbrace{V^{\ast}%
+V}_{\substack{=I_{n}\\\text{(since }V\text{ is unitary)}}}=VD$. Hence,%
+\begin{align*}
+\left(  A^{\ast}AV\right)  _{\bullet,i}  &  =\left(  VD\right)  _{\bullet,i}\\
+&  =\left(  V\cdot\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \right)  _{\bullet,i}\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \right) \\
+&  =\lambda_{i}\underbrace{V_{\bullet,i}}_{=v_{i}}\ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{since multiplication by the diagonal}\\
+\text{matrix }\operatorname*{diag}\left(  \lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}\right)  \text{ on the right}\\
+\text{scales the }i\text{-th column of a matrix by }\lambda_{i}%
+\end{array}
+\right) \\
+&  =\lambda_{i}v_{i}.
+\end{align*}
+Comparing this with%
+\begin{align*}
+\left(  A^{\ast}AV\right)  _{\bullet,i}  &  =A^{\ast}A\underbrace{V_{\bullet
+,i}}_{=v_{i}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by the rules for matrix
+multiplication}\right) \\
+&  =A^{\ast}Av_{i},
+\end{align*}
+we obtain $A^{\ast}Av_{i}=\lambda_{i}v_{i}$. This proves
+(\ref{pf.thm.svd.svd.evec}).] \medskip
+
+For each $j\in\left[  k\right]  $, we set%
 \[
 u_{j}:=\dfrac{1}{\sigma_{j}}Av_{j}.
 \]
-(The division by $\sigma_{j}$ is well-defined, since $\sigma_{1}\geq\sigma
-_{2}\geq\cdots\geq\sigma_{k}>0$ imply $\sigma_{j}\neq0$.) We claim that the
+(The division by $\sigma_{j}$ in this definition is legitimate, since
+(\ref{pf.thm.svd.svd.pos}) reveals that $\sigma_{j}\neq0$.) We claim that the
 tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthonormal. Indeed:
 
 \begin{itemize}
-\item For any $i\neq j$, we have%
+\item For any two distinct elements $i$ and $j$ of $\left[  k\right]  $, we
+have%
 \begin{align*}
 \left\langle u_{i},u_{j}\right\rangle  &  =\left\langle \dfrac{1}{\sigma_{i}%
-}Av_{i},\ \dfrac{1}{\sigma_{j}}Av_{j}\right\rangle =\dfrac{1}{\sigma_{i}%
-\sigma_{j}}\left\langle Av_{i},\ Av_{j}\right\rangle =\dfrac{1}{\sigma
-_{i}\sigma_{j}}\left(  Av_{j}\right)  ^{\ast}Av_{i}\\
-&  =\dfrac{1}{\sigma_{i}\sigma_{j}}v_{j}^{\ast}\underbrace{A^{\ast}Av_{i}%
-}_{=\lambda_{i}v_{i}}=\dfrac{1}{\sigma_{i}\sigma_{j}}v_{j}^{\ast}\lambda
-_{i}v_{i}=\dfrac{\lambda_{i}}{\sigma_{i}\sigma_{j}}\underbrace{v_{j}^{\ast
-}v_{i}}_{\substack{=\left\langle v_{i},v_{j}\right\rangle \\=0\\\text{(since
-}\left(  v_{1},v_{2},\ldots,v_{n}\right)  \\\text{is orthonormal)}}}=0,
+}Av_{i},\ \dfrac{1}{\sigma_{j}}Av_{j}\right\rangle \ \ \ \ \ \ \ \ \ \ \left(
+\text{by the definitions of }u_{i}\text{ and }u_{j}\right) \\
+&  =\dfrac{1}{\sigma_{i}\overline{\sigma_{j}}}\underbrace{\left\langle
+Av_{i},\ Av_{j}\right\rangle }_{=\left(  Av_{j}\right)  ^{\ast}Av_{i}}%
+=\dfrac{1}{\sigma_{i}\overline{\sigma_{j}}}\underbrace{\left(  Av_{j}\right)
+^{\ast}}_{=v_{j}^{\ast}A^{\ast}}Av_{i}\\
+&  =\dfrac{1}{\sigma_{i}\overline{\sigma_{j}}}v_{j}^{\ast}\underbrace{A^{\ast
+}Av_{i}}_{\substack{=\lambda_{i}v_{i}\\\text{(by (\ref{pf.thm.svd.svd.evec})}%
+}}=\dfrac{1}{\sigma_{i}\overline{\sigma_{j}}}v_{j}^{\ast}\lambda_{i}%
+v_{i}=\dfrac{\lambda_{i}}{\sigma_{i}\overline{\sigma_{j}}}\underbrace{v_{j}%
+^{\ast}v_{i}}_{\substack{=\left\langle v_{i},v_{j}\right\rangle
+\\=0\\\text{(since }\left(  v_{1},v_{2},\ldots,v_{n}\right)  \\\text{is
+orthonormal)}}}=0
 \end{align*}
-and thus $u_{i}\perp u_{j}$.
+and thus $u_{i}\perp u_{j}$. Therefore, the tuple $\left(  u_{1},u_{2}%
+,\ldots,u_{k}\right)  $ is orthogonal.
 
-\item For any $i$, we have%
+\item For any $i\in\left[  k\right]  $, we have%
 \begin{align*}
 \left\langle u_{i},u_{i}\right\rangle  &  =\left\langle \dfrac{1}{\sigma_{i}%
-}Av_{i},\ \dfrac{1}{\sigma_{i}}Av_{i}\right\rangle =\dfrac{1}{\sigma_{i}%
-\sigma_{i}}\left\langle Av_{i},\ Av_{i}\right\rangle =\dfrac{1}{\sigma
-_{i}\sigma_{i}}\left(  Av_{i}\right)  ^{\ast}Av_{i}\\
-&  =\dfrac{1}{\sigma_{i}\sigma_{i}}v_{i}^{\ast}\underbrace{A^{\ast}Av_{i}%
-}_{=\lambda_{i}v_{i}}=\underbrace{\dfrac{\lambda_{i}}{\sigma_{i}\sigma_{i}}%
-}_{\substack{=1\\\text{(since }\sigma_{i}=\sqrt{\lambda_{i}}\text{)}}%
-}v_{i}^{\ast}v_{i}=v_{i}^{\ast}v_{i}=\left\langle v_{i},v_{i}\right\rangle =1
+}Av_{i},\ \dfrac{1}{\sigma_{i}}Av_{i}\right\rangle \ \ \ \ \ \ \ \ \ \ \left(
+\text{by the definition of }u_{i}\right) \\
+&  =\underbrace{\dfrac{1}{\sigma_{i}\overline{\sigma_{i}}}}_{\substack{=\dfrac
+{1}{\lambda_{i}}\\\text{(since }\sigma_{i}\in\mathbb{R}\text{ and}\\\text{thus
+}\sigma_{i}\overline{\sigma_{i}}=\sigma_{i}\sigma_{i}=\sigma_{i}^{2}%
+=\lambda_{i}\\\text{(because }\sigma_{i}=\sqrt{\lambda_{i}}\text{))}%
+}}\underbrace{\left\langle Av_{i},\ Av_{i}\right\rangle }_{=\left(
+Av_{i}\right)  ^{\ast}Av_{i}}=\dfrac{1}{\lambda_{i}}\underbrace{\left(
+Av_{i}\right)  ^{\ast}}_{=v_{i}^{\ast}A^{\ast}}Av_{i}\\
+&  =\dfrac{1}{\lambda_{i}}v_{i}^{\ast}\underbrace{A^{\ast}Av_{i}%
+}_{\substack{=\lambda_{i}v_{i}\\\text{(by (\ref{pf.thm.svd.svd.evec})}%
+}}=\dfrac{1}{\lambda_{i}}v_{i}^{\ast}\lambda_{i}v_{i}=v_{i}^{\ast}%
+v_{i}=\left\langle v_{i},v_{i}\right\rangle =\left\vert \left\vert
+v_{i}\right\vert \right\vert ^{2}=1
 \end{align*}
-(since $\left(  v_{1},v_{2},\ldots,v_{n}\right)  $ is orthonormal), and thus
-$\left\vert \left\vert u_{i}\right\vert \right\vert =1$.
+(since $\left(  v_{1},v_{2},\ldots,v_{n}\right)  $ is orthonormal and thus
+$\left\vert \left\vert v_{i}\right\vert \right\vert =1$), and thus $\left\vert
+\left\vert u_{i}\right\vert \right\vert =1$. Hence, the orthogonal tuple
+$\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is orthonormal.
 \end{itemize}
 
 So $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ is an orthonormal tuple of
-vectors in $\mathbb{C}^{m}$. As we know, we can extend it to an orthonormal
-basis $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ of $\mathbb{C}^{m}$. So let
-us do this. Let $U$ be the $m\times m$-matrix with columns $u_{1},u_{2}%
-,\ldots,u_{m}$. Thus, $U$ is a unitary matrix, since its columns form an
-orthonormal basis of $\mathbb{C}^{m}$.
+vectors in $\mathbb{C}^{m}$. Hence, Corollary \ref{cor.unitary.orthon-extend}
+shows that we can extend this tuple to an orthonormal basis $\left(
+u_{1},u_{2},\ldots,u_{m}\right)  $ of $\mathbb{C}^{m}$ by appending $m-k$ new
+(appropriately chosen) vectors $u_{k+1},u_{k+2},\ldots,u_{m}$. Let us consider
+the orthonormal basis $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ of
+$\mathbb{C}^{m}$ obtained in this way. Let $U\in\mathbb{C}^{m\times m}$ be the
+$m\times m$-matrix with columns $u_{1},u_{2},\ldots,u_{m}$. Thus, the columns
+of this matrix $U$ form an orthonormal basis of $\mathbb{C}^{m}$; hence, $U$
+is a unitary matrix (by the implication $\mathcal{E}\Longrightarrow
+\mathcal{A}$ of Theorem \ref{thm.unitary.unitary.eqs}).
 
-Set $\sigma_{i}:=0$ for every $i>n$. Note that $\sigma_{i}=0$ for every $i>k$,
-since we already have $\sigma_{k+1}=\sigma_{k+2}=\cdots=\sigma_{n}=0$.
+\begin{noncompile}
+Set $\sigma_{i}:=0$ for every $i>n$. Thus, $\sigma_{i}$ is defined for each
+positive integer $i$ (not just for $i\in\left[  n\right]  $). Note that
+$\sigma_{i}=0$ for every $i>k$ (since we already have $\sigma_{k+1}%
+=\sigma_{k+2}=\cdots=\sigma_{n}=0$ and have furthermore set $\sigma_{i}=0$ for
+every $i>n$).
+\end{noncompile}
 
 Let%
 \[
@@ -17081,84 +17358,422 @@ Let%
 \end{array}
 \right)  \in\mathbb{C}^{m\times n}.
 \]
+(This is the $m\times n$-matrix whose $\left(  i,i\right)  $-th entries are
+$\sigma_{i}$ for all $i\in\left[  k\right]  $, and whose all remaining entries
+are $0$.) Clearly, this matrix $\Sigma$ is pseudodiagonal. Moreover, this
+matrix $\Sigma$ has exactly $k$ nonzero diagonal entries (since
+(\ref{pf.thm.svd.svd.pos}) shows that $\sigma_{1},\sigma_{2},\ldots,\sigma
+_{k}$ are nonzero). All its diagonal entries are nonnegative reals.
 
+Now, we claim that $A=U\Sigma V^{\ast}$. To prove this, we shall first show
+that $AV=U\Sigma$.
 
-Now, we claim that $A=U\Sigma V^{\ast}$. To prove this, we shall show the
-equivalent claim $AV=U\Sigma$.
-
-It is sufficient to prove that
+It is sufficient to prove that\footnote{Recall that the notation
+$M_{\bullet,j}$ means the $j$-th column of a matrix $M$.}%
 \[
 \left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet
-,j}\ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[  n\right]
+,j}\ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[  n\right]  .
 \]
-(recall that the notation $M_{\bullet,j}$ means the $j$-th column of a matrix
-$M$). So let us fix $j\in\left[  n\right]  $ and try to prove that $\left(
-AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$.
+So let us fix $j\in\left[  n\right]  $ and try to prove that $\left(
+AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$. We note that
+$V_{\bullet,j}=v_{j}$ (since the columns of $V$ are $v_{1},v_{2},\ldots,v_{n}%
+$) and $U_{\bullet,j}=u_{j}$ (since the columns of $U$ are $u_{1},u_{2}%
+,\ldots,u_{m}$). We distinguish between the cases $j\leq k$ and $j>k$:
 
 \begin{itemize}
-\item If $j\leq k$, then we have%
-\begin{align*}
+\item Assume that $j\leq k$. Then, by the rules for multiplying matrices, we
+have%
+\begin{align}
 \left(  AV\right)  _{\bullet,j}  &  =A\underbrace{V_{\bullet,j}}_{=v_{j}%
-}=Av_{j}=\sigma_{j}\underbrace{u_{j}}_{=U_{\bullet,j}}%
-\ \ \ \ \ \ \ \ \ \ \left(  \text{since }u_{j}=\dfrac{1}{\sigma_{j}}%
-Av_{j}\right) \\
-&  =\sigma_{j}U_{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}.
-\end{align*}
+}=Av_{j}=\sigma_{j}\underbrace{u_{j}}_{\substack{=U_{\bullet,j}}%
+}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }u_{j}=\dfrac{1}{\sigma_{j}}%
+Av_{j}\right) \nonumber\\
+&  =\sigma_{j}U_{\bullet,j}. \label{pf.thm.svd.svd.AV=US.c1.1}%
+\end{align}
+On the other hand, $j\leq k$ shows that the $j$-th column of the matrix
+$\Sigma$ has a $\sigma_{j}$ in its $j$-th position and zeroes in all other
+positions. In other words, this column equals $\sigma_{j}e_{j}$ (where
+$\left(  e_{1},e_{2},\ldots,e_{m}\right)  $ denotes the standard basis of
+$\mathbb{C}^{m}$). In other words, $\Sigma_{\bullet,j}=\sigma_{j}e_{j}$ (since
+$\Sigma_{\bullet,j}$ is the $j$-th column of $\Sigma$). Now, by the rules for
+multiplying matrices, we have%
+\[
+\left(  U\Sigma\right)  _{\bullet,j}=U\underbrace{\Sigma_{\bullet,j}}%
+_{=\sigma_{j}e_{j}}=U\cdot\sigma_{j}e_{j}=\sigma_{j}\underbrace{Ue_{j}%
+}_{\substack{=U_{\bullet,j}\\\text{(since multiplying a matrix by }e_{j}\text{
+always}\\\text{produces the }j\text{-th column of the matrix)}}}=\sigma
+_{j}U_{\bullet,j}.
+\]
+Comparing this with (\ref{pf.thm.svd.svd.AV=US.c1.1}), we obtain $\left(
+AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$.
 
+Thus, $\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$
+is proved in the case when $j\leq k$.
 
-\item If $j>k$, then we can apply the $A^{\ast}Av_{i}=\lambda_{i}v_{i}$
-equality to $i=j$ and obtain%
+\item Now, assume that $j>k$. Then, $\sigma_{j}=0$ (by
+(\ref{pf.thm.svd.svd.zero})), so that $\lambda_{j}=0$ (since the definition of
+$\sigma_{j}$ yields $\sigma_{j}=\sqrt{\lambda_{j}}$, so that $\lambda
+_{j}=\sigma_{j}^{2}$). However, applying (\ref{pf.thm.svd.svd.evec}) to $i=j$,
+we obtain%
 \[
 A^{\ast}Av_{j}=\underbrace{\lambda_{j}}_{\substack{=0\\\text{(since
 }j>k\text{)}}}v_{j}=0,
 \]
 so that $v_{j}\in\operatorname*{Ker}\left(  A^{\ast}A\right)
-=\operatorname*{Ker}A$ (by Proposition \ref{prop.SVD.A*A} \textbf{(b)}); now,%
+=\operatorname*{Ker}A$ (by Proposition \ref{prop.SVD.A*A} \textbf{(b)}). Now,
+by the rules for multiplying matrices, we have%
 \[
-\left(  AV\right)  _{\bullet,j}=A\underbrace{V_{\bullet,j}}_{=v_{j}}%
-=Av_{j}=0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }v_{j}=\operatorname*{Ker}%
-A\right)  ,
+\left(  AV\right)  _{\bullet,j}=A\underbrace{V_{\bullet,j}}_{\substack{=v_{j}%
+}}=Av_{j}=0\ \ \ \ \ \ \ \ \ \ \left(  \text{since }v_{j}\in
+\operatorname*{Ker}A\right)  .
 \]
-but also%
+Comparing this with%
 \[
-\left(  U\Sigma\right)  _{\bullet,j}=\underbrace{\sigma_{j}}_{=\sqrt
-{\lambda_{j}}=\sqrt{0}=0}U_{\bullet,j}=0,
+\left(  U\Sigma\right)  _{\bullet,j}=U\underbrace{\Sigma_{\bullet,j}%
+}_{\substack{=0\\\text{(since }j>k\text{, so that all entries in}\\\text{the
+}j\text{-th column of }\Sigma\text{ are }0\text{)}}}=0,
 \]
-and therefore $\left(  AV\right)  _{\bullet,j}=0=\left(  U\Sigma\right)
+we obtain $\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)
 _{\bullet,j}$.
+
+Thus, $\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$
+is proved in the case when $j>k$.
 \end{itemize}
 
 Thus, we have proved $\left(  AV\right)  _{\bullet,j}=\left(  U\Sigma\right)
-_{\bullet,j}$ in both cases, and this completes the proof of $AV=U\Sigma$.
-Therefore,%
+_{\bullet,j}$ in both cases.
+
+Forget that we fixed $j$. We thus have shown that $\left(  AV\right)
+_{\bullet,j}=\left(  U\Sigma\right)  _{\bullet,j}$ for each $j\in\left[
+n\right]  $. In other words, each column of the matrix $AV$ equals the
+corresponding column of the matrix $U\Sigma$. Hence, $AV=U\Sigma$. Therefore,%
 \[
 \underbrace{U\Sigma}_{=AV}V^{\ast}=A\underbrace{VV^{\ast}}_{\substack{=I_{n}%
 \\\text{(since }V\text{ is unitary)}}}=A,
 \]
 so that $A=U\Sigma V^{\ast}$, as desired.
 
-This proves parts \textbf{(a)}, \textbf{(c)} and \textbf{(d)} of the theorem.
+This proves parts \textbf{(a)}, \textbf{(c)} and \textbf{(d)} of Theorem
+\ref{thm.svd.svd}. \medskip
 
-\textbf{(b)} We must show that if $P$ is a pseudodiagonal matrix such that $A$
-is unitarily equivalent to $P$, then $P$ and $\Sigma$ have the same diagonal
-entries up to order.
+\textbf{(b)} We must show that if $P$ is a pseudodiagonal matrix such that all
+diagonal entries of $P$ are nonnegative reals, and such that $A$ is unitarily
+equivalent to $P$, then $P$ and $\Sigma$ have the same diagonal entries up to order.
 
-Rough outline: The singular values of a matrix are invariant under unitary
-equivalence. In other words, if $A=UBV^{\ast}$ for some unitary $U$ and $V$,
-then $A$ and $B$ have the same singular values. (In fact, $A=UBV^{\ast}$
-entails%
+Before we prove this, let us show two auxiliary results:
+
+\begin{statement}
+\textit{Claim 1:} Let $X\in\mathbb{C}^{m\times n}$ and $Y\in\mathbb{C}%
+^{m\times n}$ be two unitarily equivalent matrices. Then, $X$ and $Y$ have the
+same singular values\footnote{Recall that the \emph{singular values} of a
+matrix $X$ are defined to be the square roots of the eigenvalues of $X^{\ast
+}X$.}.
+\end{statement}
+
+[\textit{Proof of Claim 1:} Since $X$ and $Y$ are unitarily equivalent, there
+exist two unitary matrices $U\in\operatorname*{U}\nolimits_{m}\left(
+\mathbb{C}\right)  $ and $V\in\operatorname*{U}\nolimits_{n}\left(
+\mathbb{C}\right)  $ such that $X=UYV^{\ast}$. (These $U$ and $V$ have nothing
+to do with the $U$ and $V$ from Theorem \ref{thm.svd.svd}.) Consider these $U$
+and $V$. From $X=UYV^{\ast}$, we obtain%
 \[
-A^{\ast}A=\left(  UBV^{\ast}\right)  ^{\ast}UBV^{\ast}=VB^{\ast}%
-\underbrace{U^{\ast}U}_{=I_{m}}BV^{\ast}=VB^{\ast}BV^{\ast}%
-\overset{\operatorname*{us}}{\sim}B^{\ast}B;
+X^{\ast}X=\underbrace{\left(  UYV^{\ast}\right)  ^{\ast}}_{=\left(  V^{\ast
+}\right)  ^{\ast}Y^{\ast}U^{\ast}}\left(  UYV^{\ast}\right)
+=\underbrace{\left(  V^{\ast}\right)  ^{\ast}}_{=V}Y^{\ast}\underbrace{U^{\ast
+}U}_{\substack{=I_{m}\\\text{(since }U\text{ is unitary)}}}YV^{\ast}=VY^{\ast
+}YV^{\ast}.
 \]
-this shows that $A^{\ast}A$ and $B^{\ast}B$ have the same eigenvalues;
-therefore $A$ and $B$ have the same singular values.) Thus, $P$ and $\Sigma$
-must have the same singular values (since $P$ and $\Sigma$ are both unitarily
-equivalent to $A$). However, for a pseudodiagonal matrix, the singular values
-are simply the diagonal entries. (Fine print: There might be $0$s not
-accounted for.)
+This shows that $X^{\ast}X\overset{\operatorname*{us}}{\sim}Y^{\ast}Y$ (since
+$V$ is unitary). Therefore, $X^{\ast}X\sim Y^{\ast}Y$ (by Proposition
+\ref{prop.schurtri.unisim.sim}). Thus, the matrices $X^{\ast}X$ and $Y^{\ast
+}Y$ have the same eigenvalues (by Proposition \ref{prop.schurtri.similar.same}
+\textbf{(e)}). Therefore, $X$ and $Y$ have the same singular values (because
+the singular values of $X$ are defined as the square roots of the eigenvalues
+of $X^{\ast}X$, and likewise for $Y$). This proves Claim 1.] \medskip
+
+\begin{statement}
+\textit{Claim 2:} Let $D\in\mathbb{C}^{m\times n}$ be a pseudodiagonal matrix.
+Then, the nonzero singular values of $D$ are the absolute values of the
+nonzero diagonal entries of $D$.
+\end{statement}
+
+[\textit{Proof of Claim 2:} We WLOG assume that $m\leq n$, since the case
+$m>n$ is similar but easier. Let $d_{1},d_{2},\ldots,d_{m}$ be the diagonal
+entries of $D$. Then,%
+\[
+D=\left(
+\begin{array}
+[c]{ccccccc}%
+d_{1} & 0 & \cdots & 0 & 0 & \cdots & 0\\
+0 & d_{2} & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & d_{m} & 0 & \cdots & 0
+\end{array}
+\right)  .
+\]
+Hence, it is easy to check that%
+\begin{align*}
+D^{\ast}D  &  =\left(
+\begin{array}
+[c]{ccccccc}%
+\overline{d_{1}}d_{1} & 0 & \cdots & 0 & 0 & \cdots & 0\\
+0 & \overline{d_{2}}d_{2} & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \overline{d_{m}}d_{m} & 0 & \cdots & 0\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 0 & 0 & \cdots & 0
+\end{array}
+\right) \\
+&  =\operatorname*{diag}\left(  \overline{d_{1}}d_{1},\overline{d_{2}}%
+d_{2},\ldots,\overline{d_{m}}d_{m},\underbrace{0,0,\ldots,0}_{n-m\text{
+entries}}\right) \\
+&  =\operatorname*{diag}\left(  \left\vert d_{1}\right\vert ^{2},\left\vert
+d_{2}\right\vert ^{2},\ldots,\left\vert d_{m}\right\vert ^{2}%
+,\underbrace{0,0,\ldots,0}_{n-m\text{ entries}}\right)  .
+\end{align*}
+Therefore, the eigenvalues of $D^{\ast}D$ are $\left\vert d_{1}\right\vert
+^{2},\left\vert d_{2}\right\vert ^{2},\ldots,\left\vert d_{m}\right\vert
+^{2},\underbrace{0,0,\ldots,0}_{n-m\text{ entries}}$ (since the eigenvalues of
+a diagonal matrix are its diagonal entries). Hence, the singular values of $D$
+are $\left\vert d_{1}\right\vert ,\left\vert d_{2}\right\vert ,\ldots
+,\left\vert d_{m}\right\vert ,\underbrace{0,0,\ldots,0}_{n-m\text{ entries}}$
+(since the singular values of $D$ are defined as the square roots of the
+eigenvalues of $D^{\ast}D$). Thus, the nonzero singular values of $D$ are the
+nonzero numbers among $\left\vert d_{1}\right\vert ,\left\vert d_{2}%
+\right\vert ,\ldots,\left\vert d_{m}\right\vert $. In other words, they are
+the absolute values of the nonzero diagonal entries of $D$. This proves Claim
+2.] \medskip
+
+Now, we can prove the claim we intended to prove. Let $P$ be a pseudodiagonal
+matrix such that all diagonal entries of $P$ are nonnegative reals, and such
+that $A$ is unitarily equivalent to $P$. As we recall, our goal is to prove
+that $P$ and $\Sigma$ have the same diagonal entries up to order.
+
+We know that the matrix $A$ is unitarily equivalent to $\Sigma$ and also to
+$P$. Thus, $\Sigma$ is unitarily equivalent to $P$ (because unitary
+equivalence is an equivalence relation). Therefore, Claim 1 (applied to
+$X=\Sigma$ and $Y=P$) shows that the matrices $\Sigma$ and $P$ have the same
+singular values. However, these two matrices are pseudodiagonal; thus, Claim 2
+shows that their nonzero singular values are the absolute values of their
+nonzero diagonal entries. Since their diagonal entries are nonnegative reals,
+we can actually drop the \textquotedblleft absolute values\textquotedblright%
+\ part from this sentence, and conclude that their nonzero singular values are
+simply their nonzero diagonal entries. Thus, the matrices $\Sigma$ and $P$
+have the same nonzero diagonal entries (because we have shown that they have
+the same singular values). Therefore, the matrices $\Sigma$ and $P$ have the
+same diagonal entries (since they have the same dimensions and therefore the
+same number of diagonal entries). Thus, we have shown that the matrices $P$
+and $\Sigma$ have the same diagonal entries up to order. This completes the
+proof of Theorem \ref{thm.svd.svd} \textbf{(b)}.
 \end{proof}
+
+\begin{example}
+Let $A=\left(
+\begin{array}
+[c]{ccc}%
+3 & 2 & 2\\
+2 & 3 & -2
+\end{array}
+\right)  \in\mathbb{C}^{2\times3}$. How do we find an SVD of $A$ ?
+
+This is not the way SVDs are computed in practice, but we can try following
+our above proof of Theorem \ref{thm.svd.svd}. Thus, we compute a spectral
+decomposition of $A^{\ast}A$. (Since $A^{\ast}A$ is Hermitian, this is
+equivalent to diagonalizing $A^{\ast}A$.) A simple computation yields that
+\[
+A^{\ast}A=\left(
+\begin{array}
+[c]{ccc}%
+13 & 12 & 2\\
+12 & 13 & -2\\
+2 & -2 & 8
+\end{array}
+\right)
+\]
+and that $A^{\ast}A$ has eigenvalues $25,9,0$ and a spectral decomposition
+$\left(  V,D\right)  $ with%
+\[
+V=\left(
+\begin{array}
+[c]{ccc}%
+\sqrt{2}/2 & \sqrt{2}/6 & -2/3\\
+\sqrt{2}/2 & -\sqrt{2}/6 & 2/3\\
+0 & 2\sqrt{2}/3 & 1/3
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}%
+\ \ \ \ \ \ \ \ \ \ D=\operatorname*{diag}\left(  25,9,0\right)  .
+\]
+(Of course, we have handpicked $A$ to make the eigenvalues integers; a random
+$A$ would give rise to irrational eigenvalues.) Thus, $\lambda_{1}=25$ and
+$\lambda_{2}=9$ and $\lambda_{3}=0$ and $k=2$. Hence, $\sigma_{1}=\sqrt{25}=5$
+and $\sigma_{2}=\sqrt{9}=3$, so that $\Sigma=\left(
+\begin{array}
+[c]{ccc}%
+5 & 0 & 0\\
+0 & 3 & 0
+\end{array}
+\right)  $. It remains to find $U$. To do so, we set $u_{j}:=\dfrac{1}%
+{\sigma_{j}}Av_{j}$ for all $j\in\left[  k\right]  $; thus,%
+\begin{align*}
+u_{1}  &  =\dfrac{1}{\sigma_{1}}Av_{1}=\dfrac{1}{5}\left(
+\begin{array}
+[c]{ccc}%
+3 & 2 & 2\\
+2 & 3 & -2
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+\sqrt{2}/2\\
+\sqrt{2}/2\\
+0
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+\sqrt{2}/2\\
+\sqrt{2}/2
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{and}\\
+u_{2}  &  =\dfrac{1}{\sigma_{2}}Av_{2}=\dfrac{1}{3}\left(
+\begin{array}
+[c]{ccc}%
+3 & 2 & 2\\
+2 & 3 & -2
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{c}%
+\sqrt{2}/6\\
+-\sqrt{2}/6\\
+2\sqrt{2}/3
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{c}%
+\sqrt{2}/2\\
+-\sqrt{2}/2
+\end{array}
+\right)  .
+\end{align*}
+The proof of Theorem \ref{thm.svd.svd} tells us to extend this orthonormal
+tuple $\left(  u_{1},u_{2},\ldots,u_{k}\right)  $ to an orthonormal basis
+$\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ of $\mathbb{C}^{m}$, but this is
+unnecessary here, since it already is a basis (since $k=m$). Thus, we can now
+compute $U$ as the matrix with columns $u_{1},u_{2},\ldots,u_{m}$; that is,
+$U=\left(
+\begin{array}
+[c]{cc}%
+\sqrt{2}/2 & \sqrt{2}/2\\
+\sqrt{2}/2 & -\sqrt{2}/2
+\end{array}
+\right)  $. Hence, we obtain the SVD $\left(  U,V,\Sigma\right)  $ of $A$ with%
+\begin{align*}
+U  &  =\left(
+\begin{array}
+[c]{cc}%
+\sqrt{2}/2 & \sqrt{2}/2\\
+\sqrt{2}/2 & -\sqrt{2}/2
+\end{array}
+\right)  ,\ \ \ \ \ \ \ \ \ \ V=\left(
+\begin{array}
+[c]{ccc}%
+\sqrt{2}/2 & \sqrt{2}/6 & -2/3\\
+\sqrt{2}/2 & -\sqrt{2}/6 & 2/3\\
+0 & 2\sqrt{2}/3 & 1/3
+\end{array}
+\right)  ,\\
+\Sigma &  =\left(
+\begin{array}
+[c]{ccc}%
+5 & 0 & 0\\
+0 & 3 & 0
+\end{array}
+\right)  .
+\end{align*}
+
+\end{example}
+
+\begin{exercise}
+\fbox{3} Find an SVD of the matrix $A:=\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 1\\
+0 & 1 & 0
+\end{array}
+\right)  $.
+\end{exercise}
+
+\begin{exercise}
+\fbox{4} Find an SVD of the matrix $A:=\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 1\\
+0 & 1 & 0\\
+-1 & 0 & 1
+\end{array}
+\right)  $.
+\end{exercise}
+
+\begin{exercise}
+\fbox{3} Let $\left(  U,V,\Sigma\right)  $ be an SVD of a matrix
+$A\in\mathbb{C}^{m\times n}$. \medskip
+
+\textbf{(a)} Construct an SVD of the matrix $A^{\ast}\in\mathbb{C}^{n\times
+m}$. \medskip
+
+\textbf{(b)} Now assume that $A$ is invertible (so that $m=n$). Construct an
+SVD of the matrix $A^{-1}$.
+\end{exercise}
+
+\begin{exercise}
+\fbox{3} Let $A$ and $B$ be two $m\times n$-matrices. Prove that $A$ and $B$
+are unitarily equivalent if and only if the matrices $A^{\ast}A$ and $B^{\ast
+}B$ are unitarily similar.
+\end{exercise}
+
+A variant of the SVD is the so-called \emph{compact SVD}, in which the unitary
+matrices $U$ and $V$ are replaced by isometries and the pseudodiagonal matrix
+$\Sigma$ is replaced by a diagonal $k\times k$-matrix for
+$k=\operatorname*{rank}A$:
+
+\begin{corollary}
+\label{cor.svd.compact-svd}Let $A\in\mathbb{C}^{m\times n}$. Let
+$k=\operatorname*{rank}A$. Then: \medskip
+
+\textbf{(a)} There exist isometries $U\in\mathbb{C}^{m\times k}$ and
+$V\in\mathbb{C}^{n\times k}$ and a diagonal matrix $\Sigma\in\mathbb{C}%
+^{k\times k}$ such that all diagonal entries of $\Sigma$ are positive reals
+and such that%
+\[
+A=U\Sigma V^{\ast}.
+\]
+
+
+\textbf{(b)} The matrix $\Sigma$ is unique up to permutation of its diagonal
+entries. (The matrices $U$ and $V$ are usually not unique.) \medskip
+
+\textbf{(c)} Let $\sigma_{1},\sigma_{2},\ldots,\sigma_{n}$ be the square roots
+of the $n$ eigenvalues of the Hermitian matrix $A^{\ast}A$, listed in
+decreasing order (so that $\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{n}$).
+Then, we have $\sigma_{k+1}=\sigma_{k+2}=\cdots=\sigma_{n}=0$, and we can
+take
+\[
+\Sigma=\operatorname*{diag}\left(  \sigma_{1},\sigma_{2},\ldots,\sigma
+_{k}\right)  \in\mathbb{C}^{k\times k}%
+\]
+in part \textbf{(a)}.
+\end{corollary}
+
+\begin{exercise}
+\fbox{4} Prove Corollary \ref{cor.svd.compact-svd}.
+\end{exercise}
+
+\begin{exercise}
+\fbox{4} Give a simple algorithm (without using eigenvalues or spectral
+decomposition) to compute a compact SVD of a given rank-$1$ matrix.
+\end{exercise}
 
 [...]
 
