@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, November 29, 2021 01:16:52}
+%TCIDATA{LastRevised=Monday, November 29, 2021 16:07:57}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -10989,6 +10989,12 @@ J_{k}\left(  \lambda^{n}\right)  $ if $\lambda\neq0$. \medskip
 $A^{n}$ is diagonalizable, then $A$ is diagonalizable.
 \end{exercise}
 
+\begin{exercise}
+\fbox{4} Let $\mathbb{F}$ be a field. Compute $\left(  J_{k}\left(
+\lambda\right)  \right)  ^{-1}$ for any nonzero $\lambda\in\mathbb{F}$ and any
+$k>0$.
+\end{exercise}
+
 \subsection{The minimal polynomial}
 
 \textbf{Recall:} A polynomial $p\left(  t\right)  \in\mathbb{F}\left[
@@ -17809,6 +17815,683 @@ in part \textbf{(a)}.
 \begin{exercise}
 \fbox{4} Give a simple algorithm (without using eigenvalues or spectral
 decomposition) to compute a compact SVD of a given rank-$1$ matrix.
+\end{exercise}
+
+\section{Positive and nonnegative matrices (\cite[Chapter 8]{HorJoh13})}
+
+\subsection{Basics}
+
+Recall the triangle inequality:
+
+\begin{proposition}
+[triangle inequality]\label{prop.ineq.triangle-CC}Let $z_{1},z_{2}%
+,\ldots,z_{n}$ be $n$ complex numbers. Then: \medskip
+
+\textbf{(a)} We have the inequality%
+\[
+\left\vert z_{1}\right\vert +\left\vert z_{2}\right\vert +\cdots+\left\vert
+z_{n}\right\vert \geq\left\vert z_{1}+z_{2}+\cdots+z_{n}\right\vert .
+\]
+
+
+\textbf{(b)} Equality holds in this inequality if and only if $z_{1}%
+,z_{2},\ldots,z_{n}$ have the same argument (i.e., there exists some
+$w\in\mathbb{C}$ such that $z_{1},z_{2},\ldots,z_{n}$ are nonnegative real
+multiples of $w$).
+\end{proposition}
+
+\begin{definition}
+\label{def.posmat.pos-nonneg}Let $A\in\mathbb{C}^{n\times m}$ be a matrix. \medskip
+
+\textbf{(a)} We say that $A$ is \emph{positive} (and write $A>0$) if all
+entries of $A$ are positive reals. \medskip
+
+\textbf{(b)} We say that $A$ is \emph{nonnegative} (and write $A\geq0$) if all
+entries of $A$ are nonnegative reals. \medskip
+
+\textbf{(c)} We let $\left\vert A\right\vert \in\mathbb{R}^{n\times m}$ be the
+nonnegative matrix obtained by replacing each entry of $A$ by its absolute
+value. In other words,%
+\[
+\left\vert A\right\vert :=\left(
+\begin{array}
+[c]{cccc}%
+\left\vert A_{1,1}\right\vert  & \left\vert A_{1,2}\right\vert  & \cdots &
+\left\vert A_{1,m}\right\vert \\
+\left\vert A_{2,1}\right\vert  & \left\vert A_{2,2}\right\vert  & \cdots &
+\left\vert A_{2,m}\right\vert \\
+\vdots & \vdots & \ddots & \vdots\\
+\left\vert A_{n,1}\right\vert  & \left\vert A_{n,2}\right\vert  & \cdots &
+\left\vert A_{n,m}\right\vert
+\end{array}
+\right)  .
+\]
+
+\end{definition}
+
+\begin{remark}
+Recall that row vectors and column vectors are matrices. Thus, the statements
+\textquotedblleft$v>0$\textquotedblright\ and \textquotedblleft$v\geq
+0$\textquotedblright\ and the notation $\left\vert v\right\vert $ are defined
+for them as well. If $v=\left(  v_{1},v_{2},\ldots,v_{k}\right)  ^{T}$, then
+$\left\vert v\right\vert =\left(  \left\vert v_{1}\right\vert ,\left\vert
+v_{2}\right\vert ,\ldots,\left\vert v_{k}\right\vert \right)  ^{T}$.
+\end{remark}
+
+\begin{warning}
+Do not mistake $\left\vert v\right\vert $ (a vector) for $\left\vert
+\left\vert v\right\vert \right\vert $ (a number). Also, when $A$ is a matrix,
+do not mistake $\left\vert A\right\vert $ for (an old notation for) the
+determinant of $A$. (We always write $\det A$ for the determinant of $A$, so
+this confusion should not arise.)
+\end{warning}
+
+\begin{exercise}
+\fbox{1} Let $v\in\mathbb{C}^{m}$ be a column vector. Prove that $\left\vert
+\left\vert \left\vert v\right\vert \right\vert \right\vert =\left\vert
+\left\vert v\right\vert \right\vert $, where the left hand side means the
+length of $\left\vert v\right\vert $.
+\end{exercise}
+
+\begin{exercise}
+\label{exe.posmat.abs-lamA}\fbox{1} Let $\lambda\in\mathbb{C}$ and
+$A\in\mathbb{C}^{n\times m}$. Prove that $\left\vert \lambda A\right\vert
+=\left\vert \lambda\right\vert \cdot\left\vert A\right\vert $.
+\end{exercise}
+
+\begin{proposition}
+A matrix $A\in\mathbb{C}^{n\times m}$ is nonnegative if and only if
+$\left\vert A\right\vert =A$.
+\end{proposition}
+
+\begin{proof}
+$\Longrightarrow:$ If $A$ is nonnegative, then each $i$ and $j$ satisfy
+$A_{i,j}=0$ and thus $\left\vert A_{i,j}\right\vert =A_{i,j}$; therefore,
+$\left\vert A\right\vert =A$.
+
+$\Longleftarrow:$ If $\left\vert A\right\vert =A$, then $A$ is nonnegative
+(since $\left\vert A\right\vert $ is always nonnegative).
+\end{proof}
+
+\begin{definition}
+\label{def.posmat.ineqs}Let $A,B\in\mathbb{R}^{n\times m}$ be two matrices
+with real entries. Then: \medskip
+
+\textbf{(a)} We say that $A\geq B$ if and only if $A-B\geq0$ (or,
+equivalently, $A_{i,j}\geq B_{i,j}$ for all $i\in\left[  n\right]  $ and
+$j\in\left[  m\right]  $). \medskip
+
+\textbf{(b)} We say that $A>B$ if and only if $A-B>0$ (or, equivalently,
+$A_{i,j}>B_{i,j}$ for all $i\in\left[  n\right]  $ and $j\in\left[  m\right]
+$). \medskip
+
+\textbf{(c)} We say that $A\leq B$ if and only if $A-B\leq0$ (or,
+equivalently, $A_{i,j}\leq B_{i,j}$ for all $i\in\left[  n\right]  $ and
+$j\in\left[  m\right]  $). \medskip
+
+\textbf{(d)} We say that $A<B$ if and only if $A-B<0$ (or, equivalently,
+$A_{i,j}<B_{i,j}$ for all $i\in\left[  n\right]  $ and $j\in\left[  m\right]
+$).
+\end{definition}
+
+\begin{example}
+We have $\left(
+\begin{array}
+[c]{cc}%
+1 & 2\\
+3 & 4
+\end{array}
+\right)  \geq\left(
+\begin{array}
+[c]{cc}%
+0 & 2\\
+2 & 4
+\end{array}
+\right)  $.
+\end{example}
+
+The relations $\geq$, $>$, $\leq$ and $<$ are known as \emph{entrywise
+inequalities} (specifically, \textquotedblleft entrywise greater or
+equal\textquotedblright, \textquotedblleft entrywise greater\textquotedblright%
+, etc.), since they are just saying that each entry of $A$ is $\geq$, $>$,
+$\leq$ or $<$ to the corresponding entry of $B$.
+
+\begin{remark}
+Again, recall that row vectors and column vectors are matrices too; thus,
+Definition \ref{def.posmat.ineqs} applies to them as well.
+\end{remark}
+
+\begin{proposition}
+\textbf{(a)} The relations $\geq$, $>$, $\leq$ and $<$ on $\mathbb{R}^{n\times
+m}$ (introduced in Definition \ref{def.posmat.ineqs}) are transitive.  \medskip
+
+\textbf{(b)} The relations $\geq$ and $\leq$ are reflexive and antisymmetric
+(so they are weak partial orders on $\mathbb{R}^{n\times m}$). \medskip
+
+\textbf{(c)} Let $A$ and $B$ be two matrices in $\mathbb{R}^{n\times m}$.
+Then, the implications $\left(  A>B\right)  \ \Longrightarrow\ \left(  A\geq
+B\right)  $ and $\left(  A<B\right)  \ \Longrightarrow\ \left(  A\leq
+B\right)  $ as well as the equivalences $\left(  A>B\right)
+\ \Longleftrightarrow\ \left(  B<A\right)  $ and $\left(  A\geq B\right)
+\ \Longleftrightarrow\ \left(  B\leq A\right)  $ hold.
+\end{proposition}
+
+\begin{proof}
+All of these are straightforward, since the relations $\geq$, $>$, $\leq$ and
+$<$ are just entrywise inequalities.
+\end{proof}
+
+\begin{warning}
+The relations $\geq$ and $\leq$ are not total orders (unless $n\leq1$). For
+instance, the row vector $\left(  2,1\right)  $ is neither $\geq$ nor $\leq$
+to $\left(  3,0\right)  $.
+\end{warning}
+
+\begin{warning}
+Do not mistake the relation $\geq$ on column vectors for the relation
+$\succcurlyeq$ (majorization).
+\end{warning}
+
+\begin{warning}
+The trivial vector $v=\left(  {}\right)  \in\mathbb{R}^{0}$ (with no entries
+at all) satisfies $v>v$ and $v<v$ and $v\geq v$ and $v\leq v$, because the
+\textquotedblleft for all\textquotedblright\ statements in Definition
+\ref{def.posmat.ineqs} are vacuously true. However, this is the only case in
+which a vector $v$ satisfies both $v>v$ and $v\leq v$.
+\end{warning}
+
+\begin{warning}
+Given two matrices $A$ and $B$, the relation $A\geq B$ is \textbf{not}
+equivalent to \textquotedblleft$A>B$ or $A=B$\textquotedblright. For example,
+$\left(  3,1\right)  \geq\left(  2,1\right)  $ is true, but we have neither
+$\left(  2,1\right)  >\left(  3,1\right)  $ nor $\left(  2,1\right)  =\left(
+3,1\right)  $.
+\end{warning}
+
+\begin{exercise}
+\fbox{1} Let $A\in\mathbb{C}^{n\times n}$ be a doubly stochastic matrix (see
+Definition \ref{def.major.doublestoch} for the meaning of this). Let $J$ be
+the $n\times n$-matrix whose all entries equal $1$. Prove that $J\geq A\geq0$.
+\end{exercise}
+
+Two complex numbers $z$ and $w$ always satisfy $\left\vert z\right\vert
+\cdot\left\vert w\right\vert =\left\vert zw\right\vert $. For two matrices,
+however, this equality is not usually satisfied; however, it survives as an inequality:
+
+\begin{proposition}
+\label{prop.posmat.prod-geq}Let $A\in\mathbb{C}^{n\times m}$ and
+$B\in\mathbb{C}^{m\times p}$ be two matrices. Then,%
+\[
+\left\vert A\right\vert \cdot\left\vert B\right\vert \geq\left\vert
+AB\right\vert .
+\]
+
+\end{proposition}
+
+\begin{proof}
+We must prove that $\left(  \left\vert A\right\vert \cdot\left\vert
+B\right\vert \right)  _{i,k}\geq\left\vert AB\right\vert _{i,k}$ for all
+$i\in\left[  n\right]  $ and $k\in\left[  p\right]  $.
+
+So let $i\in\left[  n\right]  $ and $k\in\left[  p\right]  $. Then, the
+definition of the product of two matrices yields
+\[
+\left(  \left\vert A\right\vert \cdot\left\vert B\right\vert \right)
+_{i,k}=\sum_{j=1}^{m}\underbrace{\left\vert A\right\vert _{i,j}}_{=\left\vert
+A_{i,j}\right\vert }\cdot\underbrace{\left\vert B\right\vert _{j,k}%
+}_{=\left\vert B_{j,k}\right\vert }=\sum_{j=1}^{m}\underbrace{\left\vert
+A_{i,j}\right\vert \cdot\left\vert B_{j,k}\right\vert }_{=\left\vert
+A_{i,j}B_{j,k}\right\vert }=\sum_{j=1}^{m}\left\vert A_{i,j}B_{j,k}\right\vert
+\geq\left\vert \sum_{j=1}^{m}A_{i,j}B_{j,k}\right\vert
+\]
+(by the triangle inequality). In view of%
+\[
+\left\vert AB\right\vert _{i,k}=\left\vert \left(  AB\right)  _{i,k}%
+\right\vert =\left\vert \sum_{j=1}^{m}A_{i,j}B_{j,k}\right\vert ,
+\]
+we can rewrite this as $\left(  \left\vert A\right\vert \cdot\left\vert
+B\right\vert \right)  _{i,k}\geq\left\vert AB\right\vert _{i,k}$, qed.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.pow-geq}Let $A\in\mathbb{C}^{n\times n}$ and $k\in
+\mathbb{N}$. Then, $\left\vert A\right\vert ^{k}\geq\left\vert A^{k}%
+\right\vert $.
+\end{corollary}
+
+\begin{proof}
+Induction on $k$, using Proposition \ref{prop.posmat.prod-geq} (and the fact
+that $\left\vert I_{n}\right\vert =I_{n}$).
+\end{proof}
+
+It is not easy to characterize when the inequality in Proposition
+\ref{prop.posmat.prod-geq} becomes an equality. However, conclusions can be
+drawn in some cases. The following proposition considers the case when the
+matrix $B$ is a column vector (which we call $x$ to avoid unusual notations):
+
+\begin{proposition}
+\label{prop.posmat.prod-geq-Ax}Let $A\in\mathbb{C}^{n\times m}$ and
+$x\in\mathbb{C}^{m}$. Then: \medskip
+
+\textbf{(a)} We have $\left\vert A\right\vert \cdot\left\vert x\right\vert
+\geq\left\vert Ax\right\vert $. \medskip
+
+\textbf{(b)} If at least one row of $A$ is positive and we have $A\geq0$ and
+$\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $, then $\left\vert
+x\right\vert =\omega x$ for some $\omega\in\mathbb{C}$ satisfying $\left\vert
+\omega\right\vert =1$. \medskip
+
+\textbf{(c)} If $x>0$ and $Ax=\left\vert A\right\vert x$, then $A=\left\vert
+A\right\vert $ (so that $A\geq0$).
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} follows from Proposition \ref{prop.posmat.prod-geq}. \medskip
+
+\textbf{(b)} Assume that at least one row of $A$ is positive and we have
+$A\geq0$ and $\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $.
+
+We have assumed that at least one row of $A$ is positive. Let the $i$-th row
+of $A$ be positive. Thus, the numbers $A_{i,j}$ are positive reals for all
+$j\in\left[  m\right]  $.
+
+Write $x=\left(  x_{1},x_{2},\ldots,x_{m}\right)  ^{T}$. Thus, $\left\vert
+x\right\vert =\left(  \left\vert x_{1}\right\vert ,\left\vert x_{2}\right\vert
+,\ldots,\left\vert x_{m}\right\vert \right)  ^{T}$.
+
+From $\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $, we obtain%
+\begin{align*}
+\left(  \text{the }i\text{-th entry of }\left\vert Ax\right\vert \right)    &
+=\left(  \text{the }i\text{-th entry of }A\cdot\left\vert x\right\vert
+\right)  =\sum_{j=1}^{m}\underbrace{A_{i,j}\cdot\left\vert x_{j}\right\vert
+}_{\substack{=\left\vert A_{i,j}x_{j}\right\vert \\\text{(since }A\geq0\text{
+and thus }A_{i,j}\geq0\text{)}}}\\
+& =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}\right\vert ,
+\end{align*}
+so that
+\begin{align*}
+\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}\right\vert  &  =\left(  \text{the
+}i\text{-th entry of }\left\vert Ax\right\vert \right)  =\left\vert \text{the
+}i\text{-th entry of }Ax\right\vert \\
+&  =\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
+\end{align*}
+(since the $i$-th entry of $Ax$ is $\sum_{j=1}^{m}A_{i,j}x_{j}$). This is an
+equality case of the triangle inequality. Thus, the complex numbers
+$A_{i,j}x_{j}$ for all $j\in\left[  m\right]  $ have the same argument (by
+Proposition \ref{prop.ineq.triangle-CC} \textbf{(b)}). In other words, the
+numbers $x_{j}$ for all $j\in\left[  m\right]  $ have the same argument (since
+all the $A_{i,j}$ are positive reals and thus we have $\arg\left(
+A_{i,j}x_{j}\right)  =\arg x_{j}$). Let $\varphi$ be this argument, and let
+$\omega:=e^{-i\varphi}$. Then, $\omega$ is a complex number satisfying
+$\left\vert \omega\right\vert =1$, and the numbers $\omega x_{1},\omega
+x_{2},\ldots,\omega x_{n}$ are nonnegative reals. This shows that $\omega
+x\geq0$, so that $\left\vert \omega x\right\vert =\omega x$. However, Exercise
+\ref{exe.posmat.abs-lamA} yields $\left\vert \omega x\right\vert
+=\underbrace{\left\vert \omega\right\vert }_{=1}\cdot\left\vert x\right\vert
+=\left\vert x\right\vert $. Comparing these two equalities, we obtain
+$\left\vert x\right\vert =\omega x$. Theorem \ref{prop.posmat.prod-geq-Ax}
+\textbf{(b)} is thus proven. \medskip
+
+\textbf{(c)} Suppose $x>0$ and $Ax=\left\vert A\right\vert x$. We must show
+that $A=\left\vert A\right\vert $ (so that $A\geq0$).
+
+Write $x=\left(  x_{1},x_{2},\ldots,x_{m}\right)  ^{T}$. Thus, $x_{1}%
+,x_{2},\ldots,x_{m}$ are positive reals (since $x>0$).
+
+Fix $i\in\left[  n\right]  $. Then,%
+\[
+\left(  \text{the }i\text{-th entry of }Ax\right)  =\left(  \text{the
+}i\text{-th entry of }\left\vert A\right\vert x\right)  .
+\]
+In other words,%
+\[
+\sum_{j=1}^{m}A_{i,j}x_{j}=\sum_{j=1}^{m}\underbrace{\left\vert A_{i,j}%
+\right\vert x_{j}}_{\substack{=\left\vert A_{i,j}x_{j}\right\vert
+\\\text{(since }x_{j}\text{ is a positive real)}}}=\sum_{j=1}^{m}\left\vert
+A_{i,j}x_{j}\right\vert .
+\]
+This shows that $\sum_{j=1}^{m}A_{i,j}x_{j}$ is a nonnegative real.
+Furthermore, we obtain
+\begin{align*}
+\sum_{j=1}^{m}A_{i,j}x_{j}  & =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}%
+\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right)  \\
+& \geq\sum_{j=1}^{m}A_{i,j}x_{j}.
+\end{align*}
+This is a chain of inequalities in which the first and the last side are
+equal. Thus, all inequalities in it must be equalities. In particular, we thus
+have equality in the triangle inequality $\sum_{j=1}^{m}\left\vert
+A_{i,j}x_{j}\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
+$. Hence, the complex numbers $A_{i,j}x_{j}$ for all $j\in\left[  m\right]  $
+have the same argument (by Proposition \ref{prop.ineq.triangle-CC}
+\textbf{(b)}). Their sum $\sum_{j=1}^{m}A_{i,j}x_{j}$ therefore has the same
+argument as them; but since we know that this sum $\sum_{j=1}^{m}A_{i,j}x_{j}$
+is a nonnegative real, we thus conclude that this common argument is $0$. In
+other words, the complex numbers $A_{i,j}x_{j}$ for all $j\in\left[  m\right]
+$ are nonnegative reals. Since $x_{1},x_{2},\ldots,x_{m}$ are positive reals,
+this means that the $A_{i,j}$ for all $j\in\left[  m\right]  $ are nonnegative
+reals. Since we have proved this for all $i\in\left[  n\right]  $, we thus
+conclude that all entries of $A$ are nonnegative reals. Hence, $A\geq0$, so
+that $A=\left\vert A\right\vert $. This proves Theorem
+\ref{prop.posmat.prod-geq-Ax} \textbf{(c)}.
+\end{proof}
+
+\begin{proposition}
+\label{prop.posmat.ineq-calculus}\textbf{(a)} If $A,B,C,D\in\mathbb{C}%
+^{n\times m}$ satisfy $A\leq B$ and $C\leq D$, then $A+C\leq B+D$. \medskip
+
+\textbf{(b)} If $A,B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{m\times
+p}$ satisfy $A\leq B$ and $0\leq C$, then $AC\leq BC$. \medskip
+
+\textbf{(c)} If $A,B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{p\times
+n}$ satisfy $A\leq B$ and $0\leq C$, then $CA\leq CB$. \medskip
+
+\textbf{(d)} If $A,B\in\mathbb{C}^{n\times m}$ and $C,D\in\mathbb{C}^{m\times
+p}$ satisfy $0\leq A\leq B$ and $0\leq C\leq D$, then $0\leq AC\leq BD$. \medskip
+
+\textbf{(e)} If $A,B\in\mathbb{C}^{n\times n}$ satisfy $0\leq A\leq B$, and if
+$k\in\mathbb{N}$, then $0\leq A^{k}\leq B^{k}$.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} For all $i$ and $j$, we have $A_{i,j}\leq B_{i,j}$ and
+$C_{i,j}\leq D_{i,j}$ and therefore $A_{i,j}+C_{i,j}\leq B_{i,j}+D_{i,j}$. But
+this means $A+C\leq B+D$. \medskip
+
+\textbf{(b)} Assume $A\leq B$ and $0\leq C$. Let $i\in\left[  n\right]  $ and
+$k\in\left[  p\right]  $. The definition of the product of two matrices
+yields
+\[
+\left(  AC\right)  _{i,k}=\sum_{j=1}^{m}A_{i,j}C_{j,k}%
+\ \ \ \ \ \ \ \ \ \ \text{with}\ \ \ \ \ \ \ \ \ \ \left(  BC\right)
+_{i,k}=\sum_{j=1}^{m}B_{i,j}C_{j,k}.
+\]
+The right hand side of the first equality is $\leq$ to the right hand side of
+the second, because all $j\in\left[  m\right]  $ satisfy $A_{i,j}\leq B_{i,j}$
+(since $A\leq B$) and $C_{j,k}\geq0$ (since $0\leq C$). Thus, we obtain
+$\left(  AC\right)  _{i,k}\leq\left(  BC\right)  _{i,k}$. Since we have proved
+this for all $i$ and $k$, we thus obtain $AC\leq BC$. This proves Proposition
+\ref{prop.posmat.ineq-calculus} \textbf{(b)}. \medskip
+
+\textbf{(c)} Similar to \textbf{(b)}. \medskip
+
+\textbf{(d)} Part \textbf{(b)} yields $AC\leq BC$. Part \textbf{(c)} (applied
+to $C$, $D$ and $B$ instead of $A$, $B$ and $C$) yields $BC\leq BD$. Since the
+relation $\leq$ is transitive, we can conclude $AC\leq BD$ from these two
+inequalities. \medskip
+
+\textbf{(e)} Follows from \textbf{(d)} by induction on $k$.
+\end{proof}
+
+\begin{exercise}
+\fbox{2} Let $n,m,p$ be three positive integers.  \medskip
+
+\textbf{(a)} Show that any two positive matrices $A\in\mathbb{R}^{n\times m}$
+and $B\in\mathbb{R}^{m\times p}$ satisfy $AB>0$.  \medskip
+
+\textbf{(b)} Now, assume that $m>1$. Find an example of two nonzero
+nonnegative matrices $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times
+p}$ that nevertheless satisfy $AB=0$.
+\end{exercise}
+
+\subsection{The spectral radius}
+
+\begin{definition}
+\label{def.specrad.specrad}The \emph{spectral radius} $\rho\left(  A\right)  $
+of a matrix $A\in\mathbb{C}^{n\times n}$ (with $n>0$) is defined to be the
+largest absolute value of an eigenvalue of $A$. That is,%
+\[
+\rho\left(  A\right)  :=\max\left\{  \left\vert \lambda\right\vert
+\ \mid\ \lambda\in\sigma\left(  A\right)  \right\}  .
+\]
+
+
+Note that $\rho\left(  A\right)  $ is always a nonnegative real.
+\end{definition}
+
+Some examples:
+
+\begin{itemize}
+\item If $A=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}\right)  $, then $\rho\left(  A\right)  =\max\left\{  \left\vert
+\lambda_{1}\right\vert ,\left\vert \lambda_{2}\right\vert ,\ldots,\left\vert
+\lambda_{n}\right\vert \right\}  $. More generally, this is true if $A$ is a
+triangular matrix with diagonal entries $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$.
+
+\item By Exercise \ref{exe.jnf.step3.An=0} (equivalence $\mathcal{A}%
+\Longleftrightarrow\mathcal{C}$), a square matrix $A$ satisfies $\rho\left(
+A\right)  =0$ if and only if $A$ is nilpotent.
+\end{itemize}
+
+The following is obvious:
+
+\begin{lemma}
+\label{lem.posmat.specrad.scale}Let $\lambda\in\mathbb{C}$ and $A\in
+\mathbb{C}^{n\times n}$ (where $n>0$). Then, $\rho\left(  \lambda A\right)
+=\left\vert \lambda\right\vert \cdot\rho\left(  A\right)  $.
+\end{lemma}
+
+\begin{theorem}
+\label{thm.posmat.specrad.leq1}Let $A\in\mathbb{C}^{n\times n}$ and
+$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $.
+Then, $\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
+\end{theorem}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.posmat.specrad.leq1}.] If $\rho\left(  A\right)
+=0$, then this is obvious. So, WLOG assume that $\rho\left(  A\right)  >0$.
+
+We can thus scale both matrices $A$ and $B$ by the positive real $\dfrac
+{1}{\rho\left(  A\right)  }$. This does not break the inequality
+$B\geq\left\vert A\right\vert $, and also does not break the claim
+$\rho\left(  A\right)  \leq\rho\left(  B\right)  $ (by Lemma
+\ref{lem.posmat.specrad.scale}).
+
+Thus, we WLOG assume that $\rho\left(  A\right)  =1$. (This is achieved by the
+scaling we just mentioned.)
+
+This yields that $A$ has an eigenvalue $\lambda$ with $\left\vert
+\lambda\right\vert =1$. Let $\lambda$ be such an eigenvalue, and let $v$ be a
+nonzero $\lambda$-eigenvector. Thus, $Av=\lambda v$. Hence,%
+\begin{equation}
+A^{m}v=\lambda^{m}v\ \ \ \ \ \ \ \ \ \ \text{for any }m\in\mathbb{N}%
+.\label{pf.thm.posmat.specrad.leq1.Amv=}%
+\end{equation}
+(This follows easily by induction on $m$.)
+
+Now, we must prove $\rho\left(  A\right)  \leq\rho\left(  B\right)  $. In
+other words, we must prove that $1\leq\rho\left(  B\right)  $ (since
+$\rho\left(  A\right)  =1$). Assume the contrary. Thus, $\rho\left(  B\right)
+<1$. Hence, all eigenvalues of $B$ have absolute value $<1$. Therefore,
+Corollary \ref{cor.jnf.powers.to0} (applied to $B$ instead of $A$) shows that
+$\lim\limits_{m\rightarrow\infty}B^{m}=0$. Therefore, $\lim
+\limits_{m\rightarrow\infty}B^{m}\cdot\left\vert v\right\vert =0$.
+
+However, let $m\in\mathbb{N}$. Then, $B\geq\left\vert A\right\vert \geq0$
+entails $B^{m}\geq\left\vert A\right\vert ^{m}$ (by Proposition
+\ref{prop.posmat.ineq-calculus} \textbf{(e)}). Also, $\left\vert A\right\vert
+^{m}\geq\left\vert A^{m}\right\vert $ (by Corollary \ref{cor.posmat.pow-geq}).
+Thus, $B^{m}\geq\left\vert A\right\vert ^{m}\geq\left\vert A^{m}\right\vert $.
+Hence, using Proposition \ref{prop.posmat.ineq-calculus} \textbf{(b)}, we
+obtain%
+\begin{align*}
+B^{m}\cdot\left\vert v\right\vert  &  \geq\left\vert A^{m}\right\vert
+\cdot\left\vert v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{since
+}\left\vert v\right\vert \geq0\right)  \\
+&  \geq\left\vert A^{m}v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+Proposition \ref{prop.posmat.prod-geq}}\right)  \\
+&  =\left\vert \lambda^{m}v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.thm.posmat.specrad.leq1.Amv=})}\right)  \\
+&  =\underbrace{\left\vert \lambda^{m}\right\vert }%
+_{\substack{=1\\\text{(since }\left\vert \lambda\right\vert =1\text{)}}%
+}\cdot\left\vert v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by Exercise
+\ref{exe.posmat.abs-lamA}}\right)  \\
+&  =\left\vert v\right\vert .
+\end{align*}
+Taking limits as $m\rightarrow\infty$, we obtain $\lim\limits_{m\rightarrow
+\infty}B^{m}\cdot\left\vert v\right\vert \geq\lim\limits_{m\rightarrow\infty
+}\left\vert v\right\vert =\left\vert v\right\vert \neq0$ (since $v$ is
+nonzero). This contradicts $\lim\limits_{m\rightarrow\infty}B^{m}%
+\cdot\left\vert v\right\vert =0$. This contradiction shows that our assumption
+was false, and the proof of Theorem \ref{thm.posmat.specrad.leq1} is complete.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.specrad.leq1a}Let $A\in\mathbb{C}^{n\times n}$ and
+$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $.
+Then, $\rho\left(  A\right)  \leq\rho\left(  \left\vert A\right\vert \right)
+\leq\rho\left(  B\right)  $.
+\end{corollary}
+
+\begin{proof}
+Applying Theorem \ref{thm.posmat.specrad.leq1} to $\left\vert A\right\vert $
+instead of $B$, we get $\rho\left(  A\right)  \leq\rho\left(  \left\vert
+A\right\vert \right)  $.
+
+Applying Theorem \ref{thm.posmat.specrad.leq1} to $\left\vert A\right\vert $
+instead of $A$, we get $\rho\left(  \left\vert A\right\vert \right)  \leq
+\rho\left(  B\right)  $ (since $\left\vert \ \left\vert A\right\vert
+\ \right\vert =\left\vert A\right\vert $).
+
+Hence, Corollary \ref{cor.posmat.specrad.leq1a} is proved.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.specrad.leq1b}Let $A\in\mathbb{R}^{n\times n}$ and
+$B\in\mathbb{R}^{n\times n}$ satisfy $B\geq A\geq0$. Then, $\rho\left(
+A\right)  \leq\rho\left(  B\right)  $.
+\end{corollary}
+
+\begin{proof}
+We have $\left\vert A\right\vert =A$. Thus, we can apply Theorem
+\ref{thm.posmat.specrad.leq1}.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.specrad.leq1c}Let $A\in\mathbb{R}^{n\times n}$ satisfy
+$A\geq0$. \medskip
+
+\textbf{(a)} If $\widetilde{A}$ is a principal submatrix of $A$ (that is, a
+matrix obtained from $A$ by removing a bunch of rows along with the
+corresponding columns), then $\rho\left(  \widetilde{A}\right)  \leq
+\rho\left(  A\right)  $. \medskip
+
+\textbf{(b)} We have $\max\left\{  A_{i,i}\ \mid\ i\in\left[  n\right]
+\right\}  \leq\rho\left(  A\right)  $. \medskip
+
+\textbf{(c)} If $A_{i,i}>0$ for some $i\in\left[  n\right]  $, then
+$\rho\left(  A\right)  >0$.
+\end{corollary}
+
+\begin{proof}
+\textbf{(a)} Let $\widetilde{A}$ be a principal submatrix of $A$. For
+simplicity, I assume that $\widetilde{A}$ is $A$ with the $n$-th row and the
+$n$-th column removed. Thus,%
+\begin{equation}
+A=\left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & y\\
+x & \lambda
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)
+\label{pf.cor.posmat.specrad.leq1c.a.A=}%
+\end{equation}
+for some nonnegative $x\in\mathbb{R}^{1\times\left(  n-1\right)  }$,
+$y\in\mathbb{R}^{\left(  n-1\right)  \times1}$ and $\lambda\in\mathbb{R}$.
+Let
+\begin{equation}
+B:=\left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & 0\\
+0 & 0
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)
+,\label{pf.cor.posmat.specrad.leq1c.a.B=}%
+\end{equation}
+where the three $0$s have the same dimensions as the $x$, $y$ and $\lambda$
+above. Comparing (\ref{pf.cor.posmat.specrad.leq1c.a.A=}) with
+(\ref{pf.cor.posmat.specrad.leq1c.a.B=}), we see that $A\geq B$ (since
+$x\geq0$ and $y\geq0$ and $\lambda\geq0$). Also, $\widetilde{A}\geq0$ (since
+$A\geq0$) and thus $B\geq0$. Thus, $A\geq B\geq0$. Hence, Corollary
+\ref{cor.posmat.specrad.leq1b} (applied to $B$ and $A$ instead of $A$ and $B$)
+yields $\rho\left(  B\right)  \leq\rho\left(  A\right)  $.
+
+However, it is easy to see from (\ref{pf.cor.posmat.specrad.leq1c.a.B=}) that
+$\sigma\left(  B\right)  =\sigma\left(  \widetilde{A}\right)  \cup\left\{
+0\right\}  $ (for example, because we can pick any Schur triangularization
+$\left(  U,T\right)  $ of $\widetilde{A}$, and then obtain a Schur
+triangularization $\left(  U^{\prime},T^{\prime}\right)  $ of $B$ by setting
+$U^{\prime}=\left(
+\begin{array}
+[c]{cc}%
+U & 0\\
+0 & 1
+\end{array}
+\right)  $ and $T^{\prime}=\left(
+\begin{array}
+[c]{cc}%
+T & 0\\
+0 & 0
+\end{array}
+\right)  $). Hence, $\rho\left(  B\right)  =\rho\left(  \widetilde{A}\right)
+$ (because inserting $0$ into a set of nonnegative reals cannot change the
+maximum of this set). Hence,  $\rho\left(  B\right)  \leq\rho\left(  A\right)
+$ rewrites as  $\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $.
+This proves Corollary \ref{cor.posmat.specrad.leq1a} \textbf{(a)}. \medskip
+
+\textbf{(b)} We must show that $A_{i,i}\leq\rho\left(  A\right)  $ for all
+$i\in\left[  n\right]  $.
+
+So let $i\in\left[  n\right]  $. Then, the $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  $ is a principal submatrix of $A$ (obtained by removing all rows of
+$A$ other than the $i$-th one, and all columns of $A$ other than the $i$-th
+one). Hence, part \textbf{(a)} yields $\rho\left(  \left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  \right)  \leq\rho\left(  A\right)  $. However, since the only
+eigenvalue of the $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  $ is $A_{i,i}$, we have $\rho\left(  \left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  \right)  =\left\vert A_{i,i}\right\vert =A_{i,i}$ (since $A\geq0$).
+Therefore, $A_{i,i}=\rho\left(  \left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  \right)  \leq\rho\left(  A\right)  $. This proves Corollary
+\ref{cor.posmat.specrad.leq1a} \textbf{(b)}.  \medskip
+
+\textbf{(c)} Follows from \textbf{(b)}.
+\end{proof}
+
+\begin{exercise}
+\fbox{1} Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$. Prove that
+$\rho\left(  A\right)  >0$.
+\end{exercise}
+
+\begin{exercise}
+\fbox{2} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ be
+such that $B>\left\vert A\right\vert $. Prove that $\rho\left(  A\right)
+<\rho\left(  B\right)  $. \medskip
+
+[\textbf{Hint:} Show that there exists some real $\lambda>1$ such that
+$B\geq\lambda\cdot\left\vert A\right\vert $.]
 \end{exercise}
 
 [...]

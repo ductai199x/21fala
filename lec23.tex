@@ -1,0 +1,647 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Monday, November 29, 2021 11:49:44}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 23}
+
+\section{Positive and nonnegative matrices ([HorJoh, Chapter 8])}
+
+\subsection{Basics}
+
+Recall the triangle inequality:
+
+\begin{proposition}
+[triangle inequality]Let $z_{1},z_{2},\ldots,z_{n}$ be $n$ complex numbers.
+Then,%
+\[
+\left\vert z_{1}\right\vert +\left\vert z_{2}\right\vert +\cdots+\left\vert
+z_{n}\right\vert \geq\left\vert z_{1}+z_{2}+\cdots+z_{n}\right\vert .
+\]
+
+
+Equality holds if and only if $z_{1},z_{2},\ldots,z_{n}$ have the same
+argument (i.e., there exists some $w\in\mathbb{C}$ such that $z_{1}%
+,z_{2},\ldots,z_{n}$ are nonnegative real multiples of $w$).
+\end{proposition}
+
+\begin{definition}
+Let $A\in\mathbb{C}^{n\times m}$ be a matrix.
+
+\textbf{(a)} We say that $A$ is \textbf{positive} (and write $A>0$) if all
+entries of $A$ are positive reals.
+
+\textbf{(b)} We say that $A$ is \textbf{nonnegative} (and write $A\geq0$) if
+all entries of $A$ are nonnegative reals.
+
+\textbf{(c)} We let $\left\vert A\right\vert \in\mathbb{R}^{n\times m}$ be the
+nonnegative matrix obtained by replacing each entry of $A$ by its absolute
+value. In other words,%
+\[
+\left\vert A\right\vert =\left(
+\begin{array}
+[c]{cccc}%
+\left\vert A_{1,1}\right\vert  & \left\vert A_{1,2}\right\vert  & \cdots &
+\left\vert A_{1,m}\right\vert \\
+\left\vert A_{2,1}\right\vert  & \left\vert A_{2,2}\right\vert  & \cdots &
+\left\vert A_{2,m}\right\vert \\
+\vdots & \vdots & \ddots & \vdots\\
+\left\vert A_{n,1}\right\vert  & \left\vert A_{n,2}\right\vert  & \cdots &
+\left\vert A_{n,m}\right\vert
+\end{array}
+\right)  .
+\]
+
+\end{definition}
+
+\begin{remark}
+Recall that row vectors and column vectors are matrices. Thus, $v>0$ and
+$v\geq0$ and $\left\vert v\right\vert $ are defined for them as well. If
+$v=\left(  v_{1},v_{2},\ldots,v_{k}\right)  ^{T}$, then $\left\vert
+v\right\vert =\left(  \left\vert v_{1}\right\vert ,\left\vert v_{2}\right\vert
+,\ldots,\left\vert v_{k}\right\vert \right)  ^{T}$.
+\end{remark}
+
+\begin{warning}
+Do not mistake $\left\vert v\right\vert $ (a vector) for $\left\vert
+\left\vert v\right\vert \right\vert $ (a number). Also, for a matrix $A$, do
+not mistake $\left\vert A\right\vert $ for (an old notation for) the
+determinant of $A$.
+\end{warning}
+
+\begin{exercise}
+Prove that for any vector $v\in\mathbb{C}^{m}$, we have $\left\vert \left\vert
+\left\vert v\right\vert \right\vert \right\vert =\left\vert \left\vert
+v\right\vert \right\vert $, where the left hand side means the length of
+$\left\vert v\right\vert $.
+\end{exercise}
+
+\begin{definition}
+Let $A,B\in\mathbb{R}^{n\times m}$ be two matrices with real entries. Then:
+
+\textbf{(a)} We say that $A\geq B$ if and only if $A-B\geq0$ (or,
+equivalently, $A_{i,j}\geq B_{i,j}$ for all $i\in\left[  n\right]  $ and
+$j\in\left[  m\right]  $).
+
+\textbf{(b)} We say that $A>B$ if and only if $A-B>0$ (or, equivalently,
+$A_{i,j}>B_{i,j}$ for all $i\in\left[  n\right]  $ and $j\in\left[  m\right]
+$).
+
+\textbf{(c)} We say that $A\leq B$ if and only if $A-B\leq0$ (or,
+equivalently, $A_{i,j}\leq B_{i,j}$ for all $i\in\left[  n\right]  $ and
+$j\in\left[  m\right]  $).
+
+\textbf{(d)} We say that $A<B$ if and only if $A-B<0$ (or, equivalently,
+$A_{i,j}<B_{i,j}$ for all $i\in\left[  n\right]  $ and $j\in\left[  m\right]
+$).
+\end{definition}
+
+\begin{example}
+We have $\left(
+\begin{array}
+[c]{cc}%
+1 & 2\\
+3 & 4
+\end{array}
+\right)  \geq\left(
+\begin{array}
+[c]{cc}%
+0 & 2\\
+2 & 4
+\end{array}
+\right)  $.
+\end{example}
+
+\begin{remark}
+Again, recall that row vectors and column vectors are matrices too, so this
+applies to them as well.
+\end{remark}
+
+\begin{warning}
+The relations $\geq$ and $\leq$ and not total orders. For instance, $\left(
+2,1\right)  $ is neither $\geq$ nor $\leq$ to $\left(  3,0\right)  $.
+\end{warning}
+
+\begin{warning}
+Do not mistake $\geq$ for $\succcurlyeq$ (majorization).
+\end{warning}
+
+\begin{warning}
+For $n=0$, the trivial vector $v=\left(  {}\right)  \in\mathbb{R}^{0}$
+satisfies $v>v$ and $v<v$ and $v\geq v$ and $v\leq v$, because the
+\textquotedblleft for all\textquotedblright\ statements are vacuously true.
+\end{warning}
+
+\begin{warning}
+Given two matrices $A$ and $B$, the relation $A\geq B$ is \textbf{not}
+equivalent to \textquotedblleft$A>B$ or $A=B$\textquotedblright. For example,
+$\left(  2,1\right)  \geq\left(  3,1\right)  $, but neither $>$ nor $=$.
+\end{warning}
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times p}$ be two
+matrices. Then,%
+\[
+\left\vert A\right\vert \cdot\left\vert B\right\vert \geq\left\vert
+AB\right\vert .
+\]
+
+\end{proposition}
+
+\begin{proof}
+We must prove that $\left(  \left\vert A\right\vert \cdot\left\vert
+B\right\vert \right)  _{i,k}\geq\left\vert AB\right\vert _{i,k}$ for all $i$
+and $k$.
+
+So let $i\in\left[  n\right]  $ and $k\in\left[  p\right]  $. Then,
+\begin{align*}
+\left(  \left\vert A\right\vert \cdot\left\vert B\right\vert \right)  _{i,k}
+& =\sum_{j=1}^{m}\underbrace{\left\vert A\right\vert _{i,j}}_{=\left\vert
+A_{i,j}\right\vert }\cdot\underbrace{\left\vert B\right\vert _{j,k}%
+}_{=\left\vert B_{j,k}\right\vert }=\sum_{j=1}^{m}\underbrace{\left\vert
+A_{i,j}\right\vert \cdot\left\vert B_{j,k}\right\vert }_{=\left\vert
+A_{i,j}B_{j,k}\right\vert }\\
+& =\sum_{j=1}^{m}\left\vert A_{i,j}B_{j,k}\right\vert \geq\left\vert
+\sum_{j=1}^{m}A_{i,j}B_{j,k}\right\vert .
+\end{align*}
+In view of%
+\[
+\left\vert AB\right\vert _{i,k}=\left\vert \left(  AB\right)  _{i,k}%
+\right\vert =\left\vert \sum_{j=1}^{m}A_{i,j}B_{j,k}\right\vert ,
+\]
+we can rewrite this as $\left(  \left\vert A\right\vert \cdot\left\vert
+B\right\vert \right)  _{i,k}\geq\left\vert AB\right\vert _{i,k}$, qed.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ and $k\in\mathbb{N}$. Then, $\left\vert
+A\right\vert ^{k}\geq\left\vert A^{k}\right\vert $.
+\end{corollary}
+
+\begin{proof}
+Induction on $k$, using the previous proposition (and the fact that
+$\left\vert I_{n}\right\vert =I_{n}$).
+\end{proof}
+
+\begin{proposition}
+Let $A\in\mathbb{C}^{n\times m}$ and $x\in\mathbb{C}^{m}$. Then:
+
+\textbf{(a)} We have $\left\vert A\right\vert \cdot\left\vert x\right\vert
+\geq\left\vert Ax\right\vert $.
+
+\textbf{(b)} If at least one row of $A$ is positive and we have $A\geq0$ and
+$\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $, then $\left\vert
+x\right\vert =\omega x$ for some $\omega\in\mathbb{C}$ satisfying $\left\vert
+\omega\right\vert =1$.
+
+\textbf{(c)} If $x>0$ and $Ax=\left\vert A\right\vert x$, then $A=\left\vert
+A\right\vert $ (so that $A\geq0$).
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} follows from the previous proposition.
+
+\textbf{(b)} Assume that at least one row of $A$ is positive and we have
+$A\geq0$ and $\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $.
+
+We have assumed that at least one row of $A$ is positive. Let the $i$-th row
+of $A$ be positive. Write $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}$.
+From $\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $, we have%
+\[
+\left(  \text{the }i\text{-th entry of }\left\vert Ax\right\vert \right)
+=\left(  \text{the }i\text{-th entry of }A\cdot\left\vert x\right\vert
+\right)  =\sum_{j=1}^{n}A_{i,j}\cdot\left\vert x_{j}\right\vert ,
+\]
+so that
+\begin{align*}
+\sum_{j=1}^{n}A_{i,j}\cdot\left\vert x_{j}\right\vert  & =\left(  \text{the
+}i\text{-th entry of }\left\vert Ax\right\vert \right)  =\left\vert \text{the
+}i\text{-th entry of }Ax\right\vert \\
+& =\left\vert \sum_{j=1}^{n}A_{i,j}x_{j}\right\vert
+\end{align*}
+(since the $i$-th entry of $Ax$ is $\sum_{j=1}^{n}A_{i,j}x_{j}$). This is an
+equality case of the triangle inequality (since $A_{i,j}=\left\vert
+A_{i,j}\right\vert $ for all $j$). Thus, the complex numbers $A_{i,j}x_{j}$
+for all $j\in\left[  n\right]  $ have the same argument. In other words, the
+$x_{j}$ for all $j\in\left[  n\right]  $ have the same argument. But this
+means that we can multiply $x$ by a complex number on the unit circle and
+obtain a vector of positive reals. That latter vector, of course, will be
+$\left\vert x\right\vert $.
+
+\textbf{(c)} Suppose $x>0$ and $Ax=\left\vert A\right\vert x$. We must show
+that $A=\left\vert A\right\vert $ (so that $A\geq0$).
+
+Write $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}$. Fix $i\in\left[
+n\right]  $. Then,%
+\[
+\left(  \text{the }i\text{-th entry of }Ax\right)  =\left(  \text{the
+}i\text{-th entry of }\left\vert A\right\vert x\right)  ,
+\]
+i.e.%
+\[
+\sum_{j=1}^{n}A_{i,j}x_{j}=\sum_{j=1}^{n}\underbrace{\left\vert A_{i,j}%
+\right\vert x_{j}}_{=\left\vert A_{i,j}x_{j}\right\vert }=\sum_{j=1}%
+^{n}\left\vert A_{i,j}x_{j}\right\vert \geq\left\vert \sum_{j=1}^{n}%
+A_{i,j}x_{j}\right\vert \geq\sum_{j=1}^{n}A_{i,j}x_{j}.
+\]
+This is a chain of inequalities in which the first and the last side are
+equal. Thus, all inequalities in it must be equalities. In particular, we thus
+have equality in the triangle inequality $\sum_{j=1}^{n}\left\vert
+A_{i,j}x_{j}\right\vert \geq\left\vert \sum_{j=1}^{n}A_{i,j}x_{j}\right\vert
+$. Hence, the complex numbers $A_{i,j}x_{j}$ for all $j\in\left[  n\right]  $
+have the same argument. Moreover, $\left\vert \sum_{j=1}^{n}A_{i,j}%
+x_{j}\right\vert \geq\sum_{j=1}^{n}A_{i,j}x_{j}$ must also become an equality,
+so this argument has to be $0$. This shows that the complex numbers
+$A_{i,j}x_{j}$ for all $j\in\left[  n\right]  $ are nonnegative reals. Since
+$x>0$, this means that the $A_{i,j}$ are nonnegative reals. Since we have
+proved this for all $i$, we thus conclude that all entries of $A$ are
+nonnegative reals. Hence, $A=\left\vert A\right\vert $.
+\end{proof}
+
+\begin{proposition}
+Let $A,B,C,D$ be four complex matrices.
+
+\textbf{(a)} If $A\leq B$ and $C\leq D$, then $A+C\leq B+D$ if $A+C$ and $B+D$
+are well-defined.
+
+\textbf{(b)} If $A\leq B$ and $0\leq C$, then $AC\leq BC$ if $AC$ and $BC$ are well-defined.
+
+\textbf{(c)} If $A\leq B$ and $0\leq C$, then $CA\leq CB$ if $CA$ and $CB$ are well-defined.
+
+\textbf{(d)} If $0\leq A\leq B$ and $0\leq C\leq D$, then $0\leq AC\leq BD$ if
+$AC$ and $BD$ are well-defined.
+
+\textbf{(e)} If $0\leq A\leq B$ and $k\in\mathbb{N}$, then $0\leq A^{k}\leq
+B^{k}$.
+\end{proposition}
+
+\begin{proof}
+\textbf{(a)} Straightforward.
+
+\textbf{(b)} Assume $A\leq B$ and $0\leq C$. Then, compare
+\[
+\left(  AC\right)  _{i,k}=\sum_{j}A_{i,j}C_{j,k}%
+\ \ \ \ \ \ \ \ \ \ \text{with}\ \ \ \ \ \ \ \ \ \ \left(  BC\right)
+_{i,k}=\sum_{j}B_{i,j}C_{j,k}.
+\]
+The right hand side of the first equation is $\leq$ to the right hand side of
+the second, because $A_{i,j}\leq B_{i,j}$ and $C_{j,k}\geq0$ for all $j$. So
+$\left(  AC\right)  _{i,k}\leq\left(  BC\right)  _{i,k}$. Thus, $AC\leq BC$.
+
+\textbf{(c)} Similar.
+
+\textbf{(d)} Part \textbf{(b)} yields $AC\leq BC$. Part \textbf{(c)} yields
+$BC\leq BD$. Since $\leq$ is transitive, this entails $AC\leq BD$.
+
+\textbf{(e)} Follows from \textbf{(d)} by induction on $k$.
+\end{proof}
+
+\subsection{The spectral radius}
+
+\begin{definition}
+The \textbf{spectral radius} $\rho\left(  A\right)  $ of a matrix
+$A\in\mathbb{C}^{n\times n}$ (with $n>0$) is defined to be the largest
+absolute value of an eigenvalue of $A$. That is,%
+\[
+\rho\left(  A\right)  :=\max\left\{  \left\vert \lambda\right\vert
+\ \mid\ \lambda\in\sigma\left(  A\right)  \right\}  .
+\]
+
+
+Note that $\rho\left(  A\right)  $ is always a nonnegative real.
+\end{definition}
+
+By Exercise 3.4.2 (equivalence $\mathcal{A}\Longleftrightarrow\mathcal{C}$), a
+square matrix $A$ satisfies $\rho\left(  A\right)  =0$ if and only if $A$ is nilpotent.
+
+If $A=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
+_{n}\right)  $, then $\rho\left(  A\right)  =\max\left\{  \left\vert
+\lambda_{1}\right\vert ,\left\vert \lambda_{2}\right\vert ,\ldots,\left\vert
+\lambda_{n}\right\vert \right\}  $.
+
+\begin{theorem}
+Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ be such that
+$B\geq\left\vert A\right\vert $. Then, $\rho\left(  A\right)  \leq\rho\left(
+B\right)  $.
+\end{theorem}
+
+\begin{proof}
+If $\rho\left(  A\right)  =0$, then this is obvious. So, WLOG assume that
+$\rho\left(  A\right)  >0$.
+
+We can thus scale both matrices $A$ and $B$ by $\dfrac{1}{\rho\left(
+A\right)  }$. This does not break the inequality $B\geq\left\vert A\right\vert
+$, and also does not break the claim $\rho\left(  A\right)  \leq\rho\left(
+B\right)  $ (since $\rho\left(  \lambda A\right)  =\left\vert \lambda
+\right\vert \rho\left(  A\right)  $ for any $\lambda\in\mathbb{C}$).
+
+So we WLOG assume that $\rho\left(  A\right)  =1$. (This is achieved by the
+scaling we just mentioned.)
+
+This yields that $A$ has an eigenvalue $\lambda$ with $\left\vert
+\lambda\right\vert =1$. Let $v$ be a nonzero eigenvector at this eigenvalue
+$\lambda$. Thus,%
+\[
+A^{m}v=\lambda^{m}v\ \ \ \ \ \ \ \ \ \ \text{for any }m\in\mathbb{N}.
+\]
+
+
+Now, we must prove $\rho\left(  A\right)  \leq\rho\left(  B\right)  $. In
+other words, we must prove that $1\leq\rho\left(  B\right)  $. Assume the
+contrary. Thus, $\rho\left(  B\right)  <1$. Hence, all eigenvalues of $B$ have
+absolute value $<1$. Hence, Corollary 3.5.2 shows that $\lim
+\limits_{m\rightarrow\infty}B^{m}=0$. Therefore, $\lim\limits_{m\rightarrow
+\infty}B^{m}\left\vert v\right\vert =0$.
+
+However, $B\geq\left\vert A\right\vert \geq0$ entails $B^{m}\geq\left\vert
+A\right\vert ^{m}$, so that%
+\begin{align*}
+B^{m}\left\vert v\right\vert  & \geq\left\vert A\right\vert ^{m}\left\vert
+v\right\vert \geq\left\vert A^{m}\right\vert \cdot\left\vert v\right\vert
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }\left\vert A\right\vert ^{m}%
+\geq\left\vert A^{m}\right\vert \right)  \\
+& \geq\left\vert A^{m}v\right\vert =\left\vert \lambda^{m}v\right\vert
+=\underbrace{\left\vert \lambda^{m}\right\vert }_{\substack{=1\\\text{(since
+}\left\vert \lambda\right\vert =1\text{)}}}\cdot\left\vert v\right\vert
+=\left\vert v\right\vert .
+\end{align*}
+In view of $\lim\limits_{m\rightarrow\infty}B^{m}\left\vert v\right\vert =0$,
+this is only possible if $\left\vert v\right\vert =0$. However, $\left\vert
+v\right\vert \neq0$ (since $v$ is nonzero). Contradiction, qed.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ be such that
+$B\geq\left\vert A\right\vert $. Then, $\rho\left(  A\right)  \leq\rho\left(
+\left\vert A\right\vert \right)  \leq\rho\left(  B\right)  $.
+\end{corollary}
+
+\begin{proof}
+Applying the above theorem to $\left\vert A\right\vert $ instead of $B$, we
+get $\rho\left(  A\right)  \leq\rho\left(  \left\vert A\right\vert \right)  $.
+
+Applying the above theorem to $\left\vert A\right\vert $ instead of $A$, we
+get $\rho\left(  \left\vert A\right\vert \right)  \leq\rho\left(  B\right)  $
+(since $\left\vert \left\vert A\right\vert \right\vert =\left\vert
+A\right\vert $).
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ satisfy
+$B\geq A\geq0$, then $\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
+\end{corollary}
+
+\begin{proof}
+Apply the theorem, noticing that $\left\vert A\right\vert =A$.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ satisfy $A\geq0$.
+
+\textbf{(a)} If $\widetilde{A}$ is a principal submatrix of $A$ (that is, a
+matrix obtained from $A$ by removing a bunch of rows along with the
+corresponding columns), then $\rho\left(  \widetilde{A}\right)  \leq
+\rho\left(  A\right)  $.
+
+\textbf{(b)} We have $\max\left\{  A_{i,i}\ \mid\ i\in\left[  n\right]
+\right\}  \leq\rho\left(  A\right)  $.
+
+\textbf{(c)} If $A_{i,i}>0$ for some $i\in\left[  n\right]  $, then
+$\rho\left(  A\right)  >0$.
+\end{corollary}
+
+\begin{proof}
+\textbf{(a)} Let $\widetilde{A}$ be a principal submatrix of $A$. For
+simplicity, I assume that $\widetilde{A}$ is $A$ without the $n$-th row and
+the $n$-th column. Thus,%
+\[
+A=\left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & y\\
+x & \lambda
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)
+\]
+for some nonnegative $x$, $y$ and $\lambda$. Now, it is easy to see that%
+\[
+\rho\left(  \widetilde{A}\right)  =\rho\left(  \left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & 0\\
+0 & 0
+\end{array}
+\right)  \right)
+\]
+(since $\sigma\left(  \left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & 0\\
+0 & 0
+\end{array}
+\right)  \right)  =\sigma\left(  \widetilde{A}\right)  \cup\left\{  0\right\}
+$). However, $0\leq\left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & 0\\
+0 & 0
+\end{array}
+\right)  \leq\left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & y\\
+x & \lambda
+\end{array}
+\right)  =A$, so the previous corollary yields%
+\[
+\rho\left(  \left(
+\begin{array}
+[c]{cc}%
+\widetilde{A} & 0\\
+0 & 0
+\end{array}
+\right)  \right)  \leq\rho\left(  A\right)  .
+\]
+So $\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $. This proves
+part \textbf{(a)}.
+
+\textbf{(b)} We must show that $A_{i,i}\leq\rho\left(  A\right)  $ for all
+$i\in\left[  n\right]  $.
+
+So let $i\in\left[  n\right]  $. Then, the $1\times1$-matrix $\left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  $ is a principal submatrix of $A$ (obtained by removing all rows of
+$A$ other than the $i$-th one, and all columns of $A$ other than the $i$-th
+one). Hence, part \textbf{(a)} yields $\rho\left(  \left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  \right)  \leq\rho\left(  A\right)  $. However, $\rho\left(  \left(
+\begin{array}
+[c]{c}%
+A_{i,i}%
+\end{array}
+\right)  \right)  =\left\vert A_{i,i}\right\vert =A_{i,i}$ (since $A\geq0$).
+Therefore, $A_{i,i}\leq\rho\left(  A\right)  $, qed.
+
+\textbf{(c)} Follows from \textbf{(b)}.
+\end{proof}
+
+
+\end{document}
