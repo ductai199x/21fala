@@ -1,0 +1,617 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, December 01, 2021 11:49:12}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 24}
+
+\section{Positive and nonnegative matrices ([HorJoh, Chapter 8]) (cont'd)}
+
+\subsection{The spectral radius (cont'd)}
+
+Recall from last lecture:
+
+The \textbf{spectral radius} of a square matrix $A$ is%
+\[
+\rho\left(  A\right)  :=\max\left\{  \left\vert \lambda\right\vert
+\ \mid\ \lambda\in\sigma\left(  A\right)  \right\}  .
+\]
+
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ satisfy
+$B\geq A\geq0$, then $\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
+\end{corollary}
+
+(Inequalities between matrices are entrywise. Nonnegative or positive matrices
+have real entries by definition.)
+
+\bigskip
+
+Let us now prove some bounds for $\rho\left(  A\right)  $ when $A\geq0$.
+
+\begin{definition}
+Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times m}$.
+
+\textbf{(a)} The \textbf{column sums} of $A$ are the $m$ sums
+\[
+\sum_{i=1}^{n}A_{i,j}=\left(  \text{the sum of all entries of the }j\text{-th
+column of }A\right)  \ \ \ \ \ \ \ \ \ \ \text{for }j\in\left[  m\right]  .
+\]
+
+
+\textbf{(b)} The \textbf{row sums} of $A$ are%
+\[
+\sum_{j=1}^{n}A_{i,j}=\left(  \text{the sum of all entries of the }i\text{-th
+row of }A\right)  \ \ \ \ \ \ \ \ \ \ \text{for }i\in\left[  n\right]  .
+\]
+
+
+\textbf{(c)} Now, assume that $\mathbb{F}=\mathbb{C}$ and $n>0$ and $m>0$.
+Then, we set%
+\[
+\left\vert \left\vert A\right\vert \right\vert _{\infty}:=\left(
+\text{largest row sum of }\left\vert A\right\vert \right)  =\max
+\limits_{i\in\left[  n\right]  }\sum_{j=1}^{m}\left\vert A_{i,j}\right\vert
+\]
+and%
+\[
+\left\vert \left\vert A\right\vert \right\vert _{1}:=\left(  \text{largest
+column sum of }\left\vert A\right\vert \right)  =\max\limits_{j\in\left[
+m\right]  }\sum_{i=1}^{n}\left\vert A_{i,j}\right\vert .
+\]
+These two numbers are called the $\infty$\textbf{-norm} and the $1$%
+\textbf{-norm} of $A$ (for reasons I will explain on zoom).
+\end{definition}
+
+\begin{example}
+The column sums of $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $ are $a+c$ and $b+d$.
+\end{example}
+
+\begin{warning}
+The column sums of a matrix are \textbf{not} the entries of the sum of its
+columns. Rather, the latter entries are the row sums, whereas the column sums
+are the entries of the sum of the rows.
+\end{warning}
+
+\begin{remark}
+Let $A\in\mathbb{F}^{n\times m}$.
+
+\textbf{(a)} The row sums of $A$ are the column sums of $A^{T}$.
+
+\textbf{(b)} If $\mathbb{F}=\mathbb{C}$, then $\left\vert \left\vert
+A\right\vert \right\vert _{\infty}=\left\vert \left\vert A^{T}\right\vert
+\right\vert _{1}$.
+\end{remark}
+
+\begin{lemma}
+Let $A\in\mathbb{C}^{n\times n}$. Then:
+
+\textbf{(a)} We have $\rho\left(  A\right)  \leq\left\vert \left\vert
+A\right\vert \right\vert _{\infty}$.
+
+\textbf{(b)} If $A\geq0$ and if all row sums of $A$ are equal, then
+$\rho\left(  A\right)  =\left\vert \left\vert A\right\vert \right\vert
+_{\infty}$.
+
+\textbf{(c)} We have $\rho\left(  A\right)  \leq\left\vert \left\vert
+A\right\vert \right\vert _{1}$.
+
+\textbf{(d)} If $A\geq0$ and if all column sums of $A$ are equal, then
+$\rho\left(  A\right)  =\left\vert \left\vert A\right\vert \right\vert _{1}$.
+\end{lemma}
+
+\begin{proof}
+\textbf{(a)} We have $\rho\left(  A\right)  =\left\vert \lambda\right\vert $
+for some eigenvalue $\lambda$ of $A$. Consider this $\lambda$, and let
+$v=\left(  v_{1},v_{2},\ldots,v_{n}\right)  ^{T}\in\mathbb{C}^{n}$ be a
+nonzero $\lambda$-eigenvector.
+
+Choose an $i\in\left[  n\right]  $ such that $\left\vert v_{i}\right\vert
+=\max\left\{  \left\vert v_{1}\right\vert ,\left\vert v_{2}\right\vert
+,\ldots,\left\vert v_{n}\right\vert \right\}  $. Then, $\left\vert
+v_{i}\right\vert >0$ (since $v$ is nonzero).
+
+Now, the $i$-th entry of the column vector $Av$ is $\sum\limits_{j=1}%
+^{n}A_{i,j}v_{j}$; however, the same entry is $\lambda v_{i}$ (since
+$Av=\lambda v$). Comparing these facts, we obtain%
+\[
+\lambda v_{i}=\sum\limits_{j=1}^{n}A_{i,j}v_{j}.
+\]
+Taking absolute values, we obtain%
+\begin{align*}
+\left\vert \lambda v_{i}\right\vert  & =\left\vert \sum\limits_{j=1}%
+^{n}A_{i,j}v_{j}\right\vert \leq\sum\limits_{j=1}^{n}\underbrace{\left\vert
+A_{i,j}v_{j}\right\vert }_{\substack{=\left\vert A_{i,j}\right\vert
+\cdot\left\vert v_{j}\right\vert \leq\left\vert A_{i,j}\right\vert
+\cdot\left\vert v_{i}\right\vert \\\text{(since the choice of }i\\\text{yields
+}\left\vert v_{j}\right\vert \leq\left\vert v_{i}\right\vert \text{)}%
+}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right)  \\
+& \leq\sum\limits_{j=1}^{n}\left\vert A_{i,j}\right\vert \cdot\left\vert
+v_{i}\right\vert .
+\end{align*}
+Since $\left\vert v_{i}\right\vert >0$, we can cancel $\left\vert
+v_{i}\right\vert $ from this inequality (since the left hand side is
+$\left\vert \lambda v_{i}\right\vert =\left\vert \lambda\right\vert
+\cdot\left\vert v_{i}\right\vert $), and thus we obtain%
+\begin{align*}
+\left\vert \lambda\right\vert  & \leq\sum\limits_{j=1}^{n}\left\vert
+A_{i,j}\right\vert =\left(  \text{the }i\text{-th row sum of }\left\vert
+A\right\vert \right)  \\
+& \leq\left(  \text{the largest row sum of }\left\vert A\right\vert \right)
+=\left\vert \left\vert A\right\vert \right\vert _{\infty}.
+\end{align*}
+Since $\rho=\left\vert \lambda\right\vert $, this rewrites as $\rho
+\leq\left\vert \left\vert A\right\vert \right\vert _{\infty}$, qed.
+
+\textbf{(b)} Assume that $A\geq0$ and that all row sums of $A$ are equal. Let
+$e=\left(  1,1,\ldots,1\right)  ^{T}\in\mathbb{R}^{n}$, and let $\kappa$ be
+the common value of the row sums of $A$. Then, $Ae=\kappa e$ (since $Ae$ is
+the vector whose entries are the row sums of $A$, but all these row sums are
+equal to $\kappa$). Hence, $\kappa$ is an eigenvalue of $A$ (since $e\neq0$),
+so that $\rho\left(  A\right)  \geq\left\vert \kappa\right\vert =\kappa$
+(since $A\geq0$ entails $\kappa\geq0$).
+
+On the other hand, part \textbf{(a)} of the lemma yields
+\[
+\rho\left(  A\right)  \leq\left\vert \left\vert A\right\vert \right\vert
+_{\infty}=\left(  \text{the largest row sum of }\left\vert A\right\vert
+\right)  =\left(  \text{the largest row sum of }A\right)  =\kappa
+\]
+(since all row sums of $A$ are $\kappa$). Combining this with $\rho\left(
+A\right)  \geq\kappa$, we obtain $\rho\left(  A\right)  =\kappa=\left\vert
+\left\vert A\right\vert \right\vert _{\infty}$. This proves part \textbf{(b)}.
+
+\textbf{(c)} Apply part \textbf{(a)} to $A^{T}$ instead of $A$, and recall
+that $\left\vert \left\vert A^{T}\right\vert \right\vert _{\infty}=\left\vert
+\left\vert A\right\vert \right\vert _{1}$ and $\rho\left(  A^{T}\right)
+=\rho\left(  A\right)  $.
+
+\textbf{(d)} Similar to part \textbf{(c)}.
+\end{proof}
+
+Now, we can bound $\rho\left(  A\right)  $ from both sides when $A\geq0$:
+
+\begin{theorem}
+Let $A\in\mathbb{R}^{n\times n}$ satisfy $A\geq0$. Then,%
+\[
+\left(  \text{the smallest row sum of }A\right)  \leq\rho\left(  A\right)
+\leq\left(  \text{the largest row sum of }A\right)  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+The inequality $\rho\left(  A\right)  \leq\left(  \text{the largest row sum of
+}A\right)  $ follows from part \textbf{(a)} of the lemma, because
+\[
+\left\vert \left\vert A\right\vert \right\vert _{\infty}=\left(  \text{the
+largest row sum of }\underbrace{\left\vert A\right\vert }_{=A}\right)
+=\left(  \text{the largest row sum of }A\right)  .
+\]
+
+
+It remains to prove that $\left(  \text{the smallest row sum of }A\right)
+\leq\rho\left(  A\right)  $.
+
+Let $r_{1},r_{2},\ldots,r_{n}$ be the row sums of $A$. Let $r_{i}$ be the
+smallest among them. We must then prove that $r_{i}\leq\rho\left(  A\right)
+$. If $r_{i}=0$, this is obvious. So WLOG assume that $r_{i}>0$. Hence, all
+$r_{1},r_{2},\ldots,r_{n}$ are positive.
+
+Let $B$ the $n\times n$-matrix whose $\left(  u,v\right)  $-th entry is
+$\dfrac{r_{i}}{r_{u}}A_{u,v}$. So $B$ is obtained from $A$ by scaling each row
+such that the row sums all become $r_{i}$. Hence, the matrix $B$ is $\geq0$
+(since $A\geq0$), and its row sums are all equal to $r_{i}$. Hence, part
+\textbf{(b)} of the above lemma (applied to $B$ instead of $A$) yields
+\begin{align*}
+\rho\left(  B\right)    & =\left\vert \left\vert B\right\vert \right\vert
+_{\infty}=\left(  \text{the largest row sum of }\left\vert B\right\vert
+\right)  \\
+& =\left(  \text{the largest row sum of }B\right)  =r_{i}%
+\end{align*}
+(since all row sums of $B$ are $r_{i}$). However, for each $u\in\left[
+n\right]  $, we have $\dfrac{r_{i}}{r_{u}}A_{u,v}\leq A_{u,v}$ (since
+$r_{i}\leq r_{u}$). In other words, $B\leq A$. Hence, the Corollary from last
+time (applied to $B$ and $A$ instead of $A$ and $B$) yields $\rho\left(
+B\right)  \leq\rho\left(  A\right)  $. Hence, $r_{i}=\rho\left(  B\right)
+\leq\rho\left(  A\right)  $, qed.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ satisfy $A\geq0$. Let $x_{1},x_{2}%
+,\ldots,x_{n}$ be any $n$ positive reals. Then,%
+\[
+\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}%
+a_{i,j}\leq\rho\left(  A\right)  \leq\max\limits_{i\in\left[  n\right]  }%
+\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}a_{i,j}.
+\]
+
+\end{corollary}
+
+\begin{proof}
+Let $D=\operatorname*{diag}\left(  x_{1},x_{2},\ldots,x_{n}\right)  $. Then,
+we can apply the previous theorem to $DAD^{-1}$ instead of $A$, and notice
+that the row sums of $DAD^{-1}$ are exactly the sums $\sum_{j=1}^{n}%
+\dfrac{x_{i}}{x_{j}}a_{i,j}$ for $i\in\left[  n\right]  $. (And, of course,
+$\rho\left(  DAD^{-1}\right)  =\rho\left(  A\right)  $).
+\end{proof}
+
+\begin{remark}
+If the $x_{1},x_{2},\ldots,x_{n}$ in the above corollary are chosen
+appropriately, both of the inequalities can become equalities. (This follows
+from the Perron--Frobenius theorems further below.)
+\end{remark}
+
+\subsection{Perron--Frobenius theorems}
+
+We now come to the most important results about nonnegative matrices: the
+Perron--Frobenius theorems.
+
+\subsubsection{Motivation}
+
+Recall a standard situation in probability theorem. Consider a system (e.g., a
+slot machine) that can be in one of $n$ possible \textbf{states} $s_{1}%
+,s_{2},\ldots,s_{n}$. Every minute, the system randomly changes states
+according to the following rule: If the system is in state $s_{i}$, then it
+changes to state $s_{j}$ with probability $P_{i,j}$, where $P$ is a (fixed,
+pre-determined) nonnegative $n\times n$-matrix whose row sums all equal $1$
+(such a matrix is called \textbf{row-stochastic}). This is commonly known as a
+\textbf{Markov chain}.
+
+Given such a Markov chain, one often wonders about its \textquotedblleft
+steady state\textquotedblright: If you wait long enough, how likely is the
+system to be in a given state?
+
+\begin{example}
+Let $P=\left(
+\begin{array}
+[c]{cc}%
+0.9 & 0.1\\
+0.5 & 0.5
+\end{array}
+\right)  $. We encode the two states $s_{1}$ and $s_{2}$ as the basis vectors
+$e_{1}=\left(  1,0\right)  $ and $e_{2}=\left(  0,1\right)  $ of the vector
+space $\mathbb{R}^{1\times2}$ (we work with row vectors here for convenience).
+Thus, a probability distribution on the set of states (i.e., a distribution of
+the form \textquotedblleft state $s_{1}$ with probability $a_{1}$ and state
+$s_{2}$ with probability $a_{2}$\textquotedblright) corresponds to a row
+vector $\left(  a_{1},a_{2}\right)  \in\mathbb{R}^{1\times2}$ satisfying
+$a_{1}\geq0$ and $a_{2}\geq0$ and $a_{1}+a_{2}=1$.
+
+If we start at state $s_{1}$ and let $k$ minutes pass, then the probability
+distribution for the resulting state is $s_{1}P^{k}$. More generally, if we
+start with a probability distribution $d\in\mathbb{R}^{1\times2}$ and let $k$
+minutes pass, then the resulting state will be distributed according to
+$dP^{k}$. So we wonder: What is $\lim\limits_{k\rightarrow\infty}dP^{k}$ as
+$k\rightarrow\infty$ ? Does this limit even exist?
+
+We can notice one thing right away: If $\lim\limits_{k\rightarrow\infty}%
+dP^{k}$ exists, then this limit is a left $1$-eigenvector of $P$, in the sense
+that it is a row vector $y$ such that $yP=y$ (since $y=\lim
+\limits_{k\rightarrow\infty}dP^{k}=\lim\limits_{k\rightarrow\infty}%
+dP^{k+1}=\left(  \lim\limits_{k\rightarrow\infty}dP^{k}\right)  P=yP$). Since
+it is furthermore a vector whose coordinates add up to $1$ (because it is a
+limit of such vectors), this often allows us to explicitly compute it. In the
+above case, for example, we get
+\[
+\lim\limits_{k\rightarrow\infty}dP^{k}=\left(  \dfrac{5}{6},\dfrac{1}%
+{6}\right)  .
+\]
+
+
+But does this limit actually exist? Yes, in this specific example, but this
+isn't quite that obvious. Note that this limit (known as the \textbf{steady
+state} of the Markov chain) actually does not depend on the starting
+distribution $d$.
+\end{example}
+
+Does this generalize? Not always. Here are two bad examples:
+
+\begin{itemize}
+\item If $P=I_{2}=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  $, then $\lim\limits_{k\rightarrow\infty}dP^{k}=d$ for each $d$, so
+the limits do depend on $d$.
+
+\item If $P=\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+1 & 0
+\end{array}
+\right)  $, then $\lim\limits_{k\rightarrow\infty}dP^{k}$ does not exist
+unless $d=\left(  0.5,\ 0.5\right)  $, since in all other cases the sequence
+$\left(  dP^{k}\right)  _{k\geq0}$ oscillates between $\left(  a_{1}%
+,a_{2}\right)  $ and $\left(  a_{2},a_{1}\right)  $.
+\end{itemize}
+
+Perhaps surprisingly, such cases are an exception. For \textbf{most}
+row-stochastic matrices $P$ (that is, nonnegative matrices whose row sums all
+equal $1$), there is a \textbf{unique} steady state (i.e., left $1$%
+-eigenvector), and it can be obtained as $\lim\limits_{k\rightarrow\infty
+}dP^{k}$ for any starting distribution $d$. To be more precise, this holds
+whenever $P$ is positive (i.e., all $P_{i,j}>0$). Some weaker assumptions also suffice.
+
+More general versions of these facts hold even if we don't assume $P$ to be
+row-stochastic, but merely require $P>0$ (or $P\geq0$ with some extra
+conditions). These will be the Perron and Perron--Frobenius theorems.
+
+\subsubsection{The theorems}
+
+\begin{theorem}
+[Perron theorem]Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$. Then:
+
+\textbf{(a)} We have $\rho\left(  A\right)  >0$.
+
+\textbf{(b)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$ and
+has algebraic multiplicity $1$ (and therefore geometric multiplicity $1$ as well).
+
+\textbf{(c)} There is a unique $\rho\left(  A\right)  $-eigenvector $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This eigenvector $x$ is furthermore positive.
+(It is called the \textbf{Perron vector} of $A$.)
+
+\textbf{(d)} There is a unique vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=\rho\left(  A\right)
+y^{T}$ and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This vector $y$ is
+also positive.
+
+\textbf{(e)} We have%
+\[
+\left(  \dfrac{1}{\rho\left(  A\right)  }A\right)  ^{m}\rightarrow
+xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+
+\textbf{(f)} The only eigenvalue of $A$ that has absolute value $\rho\left(
+A\right)  $ is $\rho\left(  A\right)  $ itself.
+\end{theorem}
+
+We will prove this next time.
+
+\begin{theorem}
+[Perron--Frobenius 1]Let $A\in\mathbb{R}^{n\times n}$ satisfy $A\geq0$. Then:
+
+\textbf{(a)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$.
+
+\textbf{(b)} The matrix $A$ has a nonzero nonnegative $\rho\left(  A\right)  $-eigenvector.
+\end{theorem}
+
+To get stronger statements without requiring $A>0$, we need two further
+properties of $A$.
+
+\begin{definition}
+Let $A\in\mathbb{R}^{n\times n}$ be an $n\times n$-matrix.
+
+\textbf{(a)} We say that $A$ is \textbf{reducible} if there exist two disjoint
+nonempty subsets $I$ and $J$ of $\left[  n\right]  $ such that $I\cup
+J=\left[  n\right]  $ and such that%
+\[
+A_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\in I\text{ and }j\in J.
+\]
+Equivalently, $A$ is reducible if and only if there exists a permutation
+matrix $P$ such that%
+\[
+P^{-1}AP=\left(
+\begin{array}
+[c]{cc}%
+B & C\\
+0_{\left(  n-r\right)  \times r} & D
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }0<r<n\text{ and some }B,C,D.
+\]
+
+
+\textbf{(b)} We say that $A$ is \textbf{irreducible} if $A$ is not reducible.
+
+\textbf{(c)} We say that $A$ is \textbf{primitive} if there exists some $m>0$
+such that $A^{m}>0$.
+\end{definition}
+
+\begin{theorem}
+[Perron--Frobenius 2]Let $A\in\mathbb{R}^{n\times n}$ be nonnegative and
+irreducible. Then:
+
+\textbf{(a)} We have $\rho\left(  A\right)  >0$.
+
+\textbf{(b)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$ and
+has algebraic multiplicity $1$ (and therefore geometric multiplicity $1$ as well).
+
+\textbf{(c)} There is a unique $\rho\left(  A\right)  $-eigenvector $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This eigenvector $x$ is furthermore positive.
+(It is called the \textbf{Perron vector} of $A$.)
+
+\textbf{(d)} There is a unique vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=\rho\left(  A\right)
+y^{T}$ and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This vector $y$ is
+also positive.
+
+\textbf{(e)} Assume furthermore that $A$ is primitive. We have%
+\[
+\left(  \dfrac{1}{\rho\left(  A\right)  }A\right)  ^{m}\rightarrow
+xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+
+\textbf{(f)} Assume again that $A$ is primitive. The only eigenvalue of $A$
+that has absolute value $\rho\left(  A\right)  $ is $\rho\left(  A\right)  $ itself.
+\end{theorem}
+
+\begin{remark}
+If $A$ is the row-stochastic matrix $P$ corresponding to a Markov chain, then:
+
+\begin{itemize}
+\item $A$ is irreducible if and only if there is no set of states from which
+you cannot escape (except for the empty set and for the set of all states);
+
+\item $A$ is primitive if and only if there is no \textquotedblleft
+oscillation\textquotedblright.
+\end{itemize}
+\end{remark}
+
+
+\end{document}

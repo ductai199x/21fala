@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Monday, November 29, 2021 16:07:57}
+%TCIDATA{LastRevised=Friday, December 03, 2021 10:53:45}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4981,6 +4981,8 @@ $. Thus, Proposition \ref{prop.schurtri.unisimi.diag} is proven.
 
 \subsection{Schur triangularization}
 
+\subsubsection{The theorems}
+
 We are now ready for one more matrix decomposition: the so-called \emph{Schur
 triangularization} (aka \emph{Schur decomposition}):
 
@@ -5100,6 +5102,8 @@ c & -\overline{b}\\
 \]
 
 \end{exercise}
+
+\subsubsection{The proofs}
 
 The following lemma about characteristic polynomials will help us in our proof
 of Theorem \ref{thm.jnf.schurtri-diag}:
@@ -5413,7 +5417,7 @@ we obtain%
 \left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{m}\right)  .
 \]
 We can cancel the factor $t-\lambda_{1}$ from both sides of this equality
-(since the polynomial ring over $\mathbb{F}$ has no zero-divisors). Thus, we
+(since the polynomial ring over $\mathbb{C}$ has no zero-divisors). Thus, we
 obtain%
 \[
 p_{B}=\left(  t-\lambda_{2}\right)  \left(  t-\lambda_{3}\right)
@@ -5582,6 +5586,8 @@ the matrix $\left(
 \right)  $.
 \end{exercise}
 
+\subsubsection{The diagonal entries of $T$}
+
 One remark is in order about the $T$ in a Schur triangularization:
 
 \begin{proposition}
@@ -5688,10 +5694,335 @@ Proposition \ref{prop.schurtri.schurtri.T-diag}.
 \end{proof}
 
 We will see several applications of Theorem \ref{thm.schurtri.schurtri} in
-this chapter. First, however, let us generalize this theorem from the case of
-a single matrix to the case of several matrices that pairwise commute.
+this chapter. First, however, let us see some variants of Schur triangularization.
+
+\subsubsection{Triangularization over an arbitrary field}
+
+The first variant gives a partial answer to the following natural question:
+What becomes of Theorem \ref{thm.schurtri.schurtri} if we replace $\mathbb{C}$
+by an arbitrary field $\mathbb{F}$ ? Of course, Theorem
+\ref{thm.schurtri.schurtri} does not even make sense for an arbitrary field
+$\mathbb{F}$, since the notion of a unitary matrix is only defined over
+$\mathbb{C}$. Even if we take this loss and replace \textquotedblleft
+unitary\textquotedblright\ by merely \textquotedblleft
+invertible\textquotedblright\ (so $U^{\ast}$ becomes $U^{-1}$, and
+\textquotedblleft unitarily similar\textquotedblright\ just becomes
+\textquotedblleft similar\textquotedblright), the theorem will still fail,
+because (for example) the matrix $\left(
+\begin{array}
+[c]{cc}%
+0 & -1\\
+1 & 0
+\end{array}
+\right)  $ is not similar to any triangular matrix over the field $\mathbb{R}%
+$. This is because its eigenvalues (which are $i$ and $-i$) are not real.
+
+However, apart from these two issues, things go well. So we can state the
+following weak version of Schur triangularization over an arbitrary field:
+
+\begin{theorem}
+[triangularization theorem]\label{thm.schurtri.invtri}Let $\mathbb{F}$ be a
+field. Let $A\in\mathbb{F}^{n\times n}$. Assume that the characteristic
+polynomial $p_{A}$ of $A$ factors as a product of $n$ linear factors over
+$\mathbb{F}$ (so $A$ has $n$ eigenvalues in $\mathbb{F}$, counted with
+algebraic multiplicities). Then, there exist an invertible matrix
+$U\in\mathbb{F}^{n\times n}$ and an upper-triangular matrix $T\in
+\mathbb{F}^{n\times n}$ such that $A=UTU^{-1}$. In other words, $A$ is similar
+to some upper-triangular matrix.
+\end{theorem}
+
+This is an analogue of Theorem \ref{thm.schurtri.schurtri}; a corresponding
+analogue of Theorem \ref{thm.jnf.schurtri-diag} also exists:
+
+\begin{theorem}
+[triangularization with prescribed diagonal]\label{thm.jnf.invtri-diag}Let
+$\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$. Assume that the
+characteristic polynomial $p_{A}$ of $A$ factors as a product of $n$ linear
+factors over $\mathbb{F}$ (so $A$ has $n$ eigenvalues in $\mathbb{F}$, counted
+with algebraic multiplicities). Let $\lambda_{1},\lambda_{2},\ldots
+,\lambda_{n}$ be the eigenvalues of $A$ (listed with their algebraic
+multiplicities). Then, there exists an upper-triangular matrix $T\in
+\mathbb{F}^{n\times n}$ such that $A\sim T$ (this means \textquotedblleft$A$
+is similar to $T$\textquotedblright, as we recall) and such that the diagonal
+entries of $T$ are $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ in this order.
+\end{theorem}
+
+The proofs of Theorem \ref{thm.schurtri.invtri} and Theorem
+\ref{thm.jnf.invtri-diag} are fairly similar to the above proofs of Theorem
+\ref{thm.schurtri.schurtri} and Theorem \ref{thm.jnf.schurtri-diag}:
+
+\begin{proof}
+[Proof of Theorem \ref{thm.jnf.invtri-diag}.]We proceed by induction on $n$:
+
+\textit{Induction base:} For $n=0$, Theorem \ref{thm.jnf.invtri-diag} holds
+trivially\footnote{There is only one $0\times0$-matrix, and we take $T$ to be
+this matrix.}.
+
+\textit{Induction step:} Let $m$ be a positive integer. Assume (as the
+induction hypothesis) that Theorem \ref{thm.jnf.invtri-diag} is proved for
+$n=m-1$. We must prove that Theorem \ref{thm.jnf.invtri-diag} holds for $n=m$.
+
+So let $A\in\mathbb{F}^{m\times m}$ be an $m\times m$-matrix whose
+characteristic polynomial $p_{A}$ factors as a product of $m$ linear factors,
+and let $\lambda_{1},\lambda_{2},\ldots,\lambda_{m}$ be the eigenvalues of $A$
+(listed with their algebraic multiplicities). We must show that there exists
+an upper-triangular matrix $T\in\mathbb{F}^{m\times m}$ such that $A\sim T$
+and such that the diagonal entries of $T$ are $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{m}$ in this order.
+
+Since $\lambda_{1}$ is an eigenvalue of $A$, there exists at least one nonzero
+$\lambda_{1}$-eigenvector $x$ of $A$. Pick any such $x$. Set $u_{1}:=x$. The
+$1$-tuple $\left(  u_{1}\right)  $ of vectors in $\mathbb{F}^{m}$ is then
+linearly independent (since $u_{1}=x$ is nonzero).
+
+It is well-known that any linearly independent tuple of vectors in
+$\mathbb{F}^{m}$ can be extended to a basis of $\mathbb{F}^{m}$ (if you wish,
+this is an analogue of Corollary \ref{cor.unitary.orthon-extend}). Thus, in
+particular, the $1$-tuple $\left(  u_{1}\right)  $ of vectors in
+$\mathbb{F}^{m}$ can be extended to a basis of $\mathbb{F}^{m}$. In other
+words, we can find $m-1$ vectors $u_{2},u_{3},\ldots,u_{m}\in\mathbb{F}^{m}$
+such that $\left(  u_{1},u_{2},\ldots,u_{m}\right)  $ is a basis of
+$\mathbb{F}^{m}$. Consider these $m-1$ vectors $u_{2},u_{3},\ldots,u_{m}$.
+
+Let $U\in\mathbb{F}^{m\times m}$ be the $m\times m$-matrix whose columns are
+$u_{1},u_{2},\ldots,u_{m}$ in this order. Then, the columns of this matrix
+form a basis of $\mathbb{F}^{m}$. Hence, the matrix $U$ is invertible.
+
+Let $\left(  e_{1},e_{2},\ldots,e_{m}\right)  $ be the standard basis of the
+$\mathbb{F}$-vector space $\mathbb{F}^{m}$. It is known that if $B$ is any
+$m\times m$-matrix, then%
+\begin{equation}
+\text{the }1\text{-st column of }B\text{ is }Be_{1}.
+\label{pf.thm.jnf.invtri-diag.col1}%
+\end{equation}
+Applying this to $B=U$, we see that the $1$-st column of $U$ is $Ue_{1}$.
+Since we also know that the $1$-st column of $U$ is $u_{1}$ (by the definition
+of $U$), we thus conclude that $Ue_{1}=u_{1}=x$. However, $Ax=\lambda_{1}x$
+(since $x$ is a $\lambda_{1}$-eigenvector of $A$). In view of $Ue_{1}=x$, this
+rewrites as $AUe_{1}=\lambda_{1}Ue_{1}$.
+
+Define an $m\times m$-matrix%
+\[
+C:=U^{-1}AU\in\mathbb{F}^{m\times m}.
+\]
+Thus, $A\sim C$. Hence, Proposition \ref{prop.schurtri.similar.same}
+\textbf{(d)} shows that the matrices $A$ and $C$ have the same characteristic
+polynomial. In other words, $p_{A}=p_{C}$.
+
+Furthermore, (\ref{pf.thm.jnf.invtri-diag.col1}) shows that the $1$-st column
+of the matrix $C$ is%
+\begin{align*}
+Ce_{1}  &  =U^{-1}\underbrace{AUe_{1}}_{=\lambda_{1}Ue_{1}}%
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }C=U^{-1}AU\right) \\
+&  =U^{-1}\lambda_{1}Ue_{1}=\lambda_{1}e_{1}=\left(
+\begin{array}
+[c]{c}%
+\lambda_{1}\\
+0\\
+0\\
+\vdots\\
+0
+\end{array}
+\right)  .
+\end{align*}
+In other words, the matrix $C$ has the form%
+\[
+C=\left(
+\begin{array}
+[c]{ccccc}%
+\lambda_{1} & \ast & \ast & \cdots & \ast\\
+0 & \ast & \ast & \cdots & \ast\\
+0 & \ast & \ast & \cdots & \ast\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & \ast & \ast & \cdots & \ast
+\end{array}
+\right)  ,
+\]
+where each asterisk ($\ast$) means an entry that we don't know or don't care
+about (in our case, both).
+
+Let us write this in block-matrix notation:%
+\begin{equation}
+C=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  , \label{pf.thm.jnf.invtri-diag.C=2x2}%
+\end{equation}
+where $p\in\mathbb{F}^{1\times\left(  m-1\right)  }$ is a row vector and
+$B\in\mathbb{F}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ is a
+matrix\footnote{The \textquotedblleft$0$\textquotedblright\ here is actually
+the zero vector in $\mathbb{F}^{m-1}$.}. Consider this $p$ and this $B$.
+
+We shall now show that the eigenvalues of $B$ are $\lambda_{2},\lambda
+_{3},\ldots,\lambda_{m}$. Indeed, Lemma
+\ref{lem.jnf.schurtri-diag.descend-poly} (applied to $n=m-1$ and
+$\lambda=\lambda_{1}$) yields $p_{C}=\left(  t-\lambda_{1}\right)  \cdot
+p_{B}$ (because of (\ref{pf.thm.jnf.invtri-diag.C=2x2})). Hence,%
+\[
+p_{A}=p_{C}=\left(  t-\lambda_{1}\right)  \cdot p_{B}.
+\]
+On the other hand,%
+\[
+p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
+\cdots\left(  t-\lambda_{m}\right)
+\]
+(since $p_{A}$ is monic, and the roots of $p_{A}$ are precisely the
+eigenvalues of $A$ with algebraic multiplicities, which we know are
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{m}$). Comparing these two equalities,
+we obtain%
+\[
+\left(  t-\lambda_{1}\right)  \cdot p_{B}=\left(  t-\lambda_{1}\right)
+\left(  t-\lambda_{2}\right)  \cdots\left(  t-\lambda_{m}\right)  .
+\]
+We can cancel the factor $t-\lambda_{1}$ from both sides of this equality
+(since the polynomial ring over $\mathbb{F}$ has no zero-divisors). Thus, we
+obtain%
+\[
+p_{B}=\left(  t-\lambda_{2}\right)  \left(  t-\lambda_{3}\right)
+\cdots\left(  t-\lambda_{m}\right)  .
+\]
+In other words, the eigenvalues of the $\left(  m-1\right)  \times\left(
+m-1\right)  $-matrix $B$ are $\lambda_{2},\lambda_{3},\ldots,\lambda_{m}$
+(listed with their algebraic multiplicities).
+
+Hence, by the induction hypothesis, we can apply Theorem
+\ref{thm.jnf.invtri-diag} to $m-1$, $B$ and $\lambda_{2},\lambda_{3}%
+,\ldots,\lambda_{m}$ instead of $n$, $A$ and $\lambda_{1},\lambda_{2}%
+,\ldots,\lambda_{n}$. As a result, we conclude that there exists an
+upper-triangular matrix $S\in\mathbb{F}^{\left(  m-1\right)  \times\left(
+m-1\right)  }$ such that $B\sim S$ and such that the diagonal entries of $S$
+are $\lambda_{2},\lambda_{3},\ldots,\lambda_{m}$ in this order. Consider this
+$S$.
+
+We have $B\sim S$. In other words, there is a invertible matrix $V\in
+\mathbb{F}^{\left(  m-1\right)  \times\left(  m-1\right)  }$ such that
+$S=VBV^{-1}$. Consider this $V$.
+
+Now, let%
+\[
+W:=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  \in\mathbb{F}^{m\times m}\ \ \ \ \ \ \ \ \ \ \left(  \text{in
+block-matrix notation}\right)  .
+\]
+This is a block-diagonal matrix, with $\left(
+\begin{array}
+[c]{c}%
+1
+\end{array}
+\right)  $ and $V$ being its diagonal blocks. Hence, $W$ is invertible with
+$W^{-1}=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{-1}%
+\end{array}
+\right)  $. Therefore, $C\sim WCW^{-1}$. Combining $A\sim C$ with $C\sim
+WCW^{-1}$, we obtain $A\sim WCW^{-1}$ (by Proposition
+\ref{prop.schurtri.similar.eqrel} \textbf{(c)}).
+
+However,%
+\begin{align*}
+&  \underbrace{W}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  }\ \ \underbrace{C}_{=\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  }\ \ \underbrace{W^{-1}}_{=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{-1}%
+\end{array}
+\right)  }\\
+&  =\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & p\\
+0 & B
+\end{array}
+\right)  \left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & V^{-1}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+1\cdot\lambda_{1}\cdot1 & 1\cdot p\cdot V^{-1}\\
+V\cdot0\cdot1 & V\cdot B\cdot V^{-1}%
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(
+\begin{array}
+[c]{c}%
+\text{by using Proposition \ref{prop.blockmatrix.mult-2x2} twice}\\
+\text{and simplifying the }0\text{ addends away}%
+\end{array}
+\right) \\
+&  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & pV^{-1}\\
+0 & VBV^{-1}%
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+\lambda_{1} & pV^{-1}\\
+0 & S
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{since }VBV^{-1}=S\right)  .
+\end{align*}
+This matrix $WCW^{-1}$ is therefore upper-triangular (since the bottom-left
+block is a zero vector, and since the bottom-right block $S$ is
+upper-triangular), and its diagonal entries are $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{m}$ in this order (because its first diagonal entry is
+visibly $\lambda_{1}$, whereas its remaining diagonal entries are the diagonal
+entries of $S$ and therefore are $\lambda_{2},\lambda_{3},\ldots,\lambda_{m}$
+in this order\footnote{In fact, we have shown above that the diagonal entries
+of $S$ are $\lambda_{2},\lambda_{3},\ldots,\lambda_{m}$ in this order.}).
+
+Thus, there exists an upper-triangular matrix $T\in\mathbb{F}^{m\times m}$
+such that $A\sim T$ and such that the diagonal entries of $T$ are $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{m}$ in this order (namely, $WCW^{-1}$ is such
+a matrix, because $A\sim WCW^{-1}$ and because of what we just said).
+
+Thus, we have shown that Theorem \ref{thm.jnf.invtri-diag} holds for $n=m$.
+This completes the induction step. The proof of Theorem
+\ref{thm.jnf.invtri-diag} is thus complete.
+\end{proof}
+
+\begin{proof}
+[Proof of Theorem \ref{thm.schurtri.invtri}.]Theorem \ref{thm.schurtri.invtri}
+follows from Theorem \ref{thm.jnf.invtri-diag} (and the definition of similarity).
+\end{proof}
 
 \subsection{Commuting matrices}
+
+Next, we shall generalize Theorem \ref{thm.schurtri.schurtri} from the case of
+a single matrix to the case of several matrices that pairwise commute.
 
 \begin{definition}
 Two $n\times n$-matrices $A$ and $B$ are said to \emph{commute} if $AB=BA$.
@@ -17841,7 +18172,8 @@ multiples of $w$).
 \end{proposition}
 
 \begin{definition}
-\label{def.posmat.pos-nonneg}Let $A\in\mathbb{C}^{n\times m}$ be a matrix. \medskip
+\label{def.posmat.pos-nonneg}Let $A\in\mathbb{C}^{n\times m}$ be a matrix.
+\medskip
 
 \textbf{(a)} We say that $A$ is \emph{positive} (and write $A>0$) if all
 entries of $A$ are positive reals. \medskip
@@ -17885,6 +18217,9 @@ do not mistake $\left\vert A\right\vert $ for (an old notation for) the
 determinant of $A$. (We always write $\det A$ for the determinant of $A$, so
 this confusion should not arise.)
 \end{warning}
+
+Let us stress once again that positive matrices and nonnegative matrices are
+required to have real entries by definition.
 
 \begin{exercise}
 \fbox{1} Let $v\in\mathbb{C}^{m}$ be a column vector. Prove that $\left\vert
@@ -17963,7 +18298,7 @@ Definition \ref{def.posmat.ineqs} applies to them as well.
 
 \begin{proposition}
 \textbf{(a)} The relations $\geq$, $>$, $\leq$ and $<$ on $\mathbb{R}^{n\times
-m}$ (introduced in Definition \ref{def.posmat.ineqs}) are transitive.  \medskip
+m}$ (introduced in Definition \ref{def.posmat.ineqs}) are transitive. \medskip
 
 \textbf{(b)} The relations $\geq$ and $\leq$ are reflexive and antisymmetric
 (so they are weak partial orders on $\mathbb{R}^{n\times m}$). \medskip
@@ -18101,12 +18436,12 @@ x\right\vert =\left(  \left\vert x_{1}\right\vert ,\left\vert x_{2}\right\vert
 
 From $\left\vert Ax\right\vert =A\cdot\left\vert x\right\vert $, we obtain%
 \begin{align*}
-\left(  \text{the }i\text{-th entry of }\left\vert Ax\right\vert \right)    &
+\left(  \text{the }i\text{-th entry of }\left\vert Ax\right\vert \right)   &
 =\left(  \text{the }i\text{-th entry of }A\cdot\left\vert x\right\vert
 \right)  =\sum_{j=1}^{m}\underbrace{A_{i,j}\cdot\left\vert x_{j}\right\vert
 }_{\substack{=\left\vert A_{i,j}x_{j}\right\vert \\\text{(since }A\geq0\text{
 and thus }A_{i,j}\geq0\text{)}}}\\
-& =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}\right\vert ,
+&  =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}\right\vert ,
 \end{align*}
 so that
 \begin{align*}
@@ -18153,10 +18488,10 @@ A_{i,j}x_{j}\right\vert .
 This shows that $\sum_{j=1}^{m}A_{i,j}x_{j}$ is a nonnegative real.
 Furthermore, we obtain
 \begin{align*}
-\sum_{j=1}^{m}A_{i,j}x_{j}  & =\sum_{j=1}^{m}\left\vert A_{i,j}x_{j}%
-\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
-\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right)  \\
-& \geq\sum_{j=1}^{m}A_{i,j}x_{j}.
+\sum_{j=1}^{m}A_{i,j}x_{j}  &  =\sum_{j=1}^{m}\left\vert A_{i,j}%
+x_{j}\right\vert \geq\left\vert \sum_{j=1}^{m}A_{i,j}x_{j}\right\vert
+\ \ \ \ \ \ \ \ \ \ \left(  \text{by the triangle inequality}\right) \\
+&  \geq\sum_{j=1}^{m}A_{i,j}x_{j}.
 \end{align*}
 This is a chain of inequalities in which the first and the last side are
 equal. Thus, all inequalities in it must be equalities. In particular, we thus
@@ -18187,7 +18522,8 @@ p}$ satisfy $A\leq B$ and $0\leq C$, then $AC\leq BC$. \medskip
 n}$ satisfy $A\leq B$ and $0\leq C$, then $CA\leq CB$. \medskip
 
 \textbf{(d)} If $A,B\in\mathbb{C}^{n\times m}$ and $C,D\in\mathbb{C}^{m\times
-p}$ satisfy $0\leq A\leq B$ and $0\leq C\leq D$, then $0\leq AC\leq BD$. \medskip
+p}$ satisfy $0\leq A\leq B$ and $0\leq C\leq D$, then $0\leq AC\leq BD$.
+\medskip
 
 \textbf{(e)} If $A,B\in\mathbb{C}^{n\times n}$ satisfy $0\leq A\leq B$, and if
 $k\in\mathbb{N}$, then $0\leq A^{k}\leq B^{k}$.
@@ -18224,10 +18560,10 @@ inequalities. \medskip
 \end{proof}
 
 \begin{exercise}
-\fbox{2} Let $n,m,p$ be three positive integers.  \medskip
+\fbox{2} Let $n,m,p$ be three positive integers. \medskip
 
 \textbf{(a)} Show that any two positive matrices $A\in\mathbb{R}^{n\times m}$
-and $B\in\mathbb{R}^{m\times p}$ satisfy $AB>0$.  \medskip
+and $B\in\mathbb{R}^{m\times p}$ satisfy $AB>0$. \medskip
 
 \textbf{(b)} Now, assume that $m>1$. Find an example of two nonzero
 nonnegative matrices $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times
@@ -18272,14 +18608,18 @@ The following is obvious:
 =\left\vert \lambda\right\vert \cdot\rho\left(  A\right)  $.
 \end{lemma}
 
+It is furthermore easy to see that each $n\times n$-matrix $A\in
+\mathbb{C}^{n\times n}$ (with $n>0$) satisfies $\rho\left(  A^{T}\right)
+=\rho\left(  A^{\ast}\right)  =\rho\left(  A\right)  $.
+
 \begin{theorem}
 \label{thm.posmat.specrad.leq1}Let $A\in\mathbb{C}^{n\times n}$ and
-$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $.
-Then, $\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
+$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $ and
+$n>0$. Then, $\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
 \end{theorem}
 
 \begin{proof}
-[Proof of Theorem \ref{thm.posmat.specrad.leq1}.] If $\rho\left(  A\right)
+[Proof of Theorem \ref{thm.posmat.specrad.leq1}.]If $\rho\left(  A\right)
 =0$, then this is obvious. So, WLOG assume that $\rho\left(  A\right)  >0$.
 
 We can thus scale both matrices $A$ and $B$ by the positive real $\dfrac
@@ -18295,8 +18635,8 @@ This yields that $A$ has an eigenvalue $\lambda$ with $\left\vert
 \lambda\right\vert =1$. Let $\lambda$ be such an eigenvalue, and let $v$ be a
 nonzero $\lambda$-eigenvector. Thus, $Av=\lambda v$. Hence,%
 \begin{equation}
-A^{m}v=\lambda^{m}v\ \ \ \ \ \ \ \ \ \ \text{for any }m\in\mathbb{N}%
-.\label{pf.thm.posmat.specrad.leq1.Amv=}%
+A^{m}v=\lambda^{m}v\ \ \ \ \ \ \ \ \ \ \text{for any }m\in\mathbb{N}.
+\label{pf.thm.posmat.specrad.leq1.Amv=}%
 \end{equation}
 (This follows easily by induction on $m$.)
 
@@ -18318,15 +18658,15 @@ obtain%
 \begin{align*}
 B^{m}\cdot\left\vert v\right\vert  &  \geq\left\vert A^{m}\right\vert
 \cdot\left\vert v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{since
-}\left\vert v\right\vert \geq0\right)  \\
+}\left\vert v\right\vert \geq0\right) \\
 &  \geq\left\vert A^{m}v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
-Proposition \ref{prop.posmat.prod-geq}}\right)  \\
+Proposition \ref{prop.posmat.prod-geq}}\right) \\
 &  =\left\vert \lambda^{m}v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
-(\ref{pf.thm.posmat.specrad.leq1.Amv=})}\right)  \\
-&  =\underbrace{\left\vert \lambda^{m}\right\vert }%
-_{\substack{=1\\\text{(since }\left\vert \lambda\right\vert =1\text{)}}%
-}\cdot\left\vert v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by Exercise
-\ref{exe.posmat.abs-lamA}}\right)  \\
+(\ref{pf.thm.posmat.specrad.leq1.Amv=})}\right) \\
+&  =\underbrace{\left\vert \lambda^{m}\right\vert }_{\substack{=\left\vert
+\lambda\right\vert ^{m}=1\\\text{(since }\left\vert \lambda\right\vert
+=1\text{)}}}\cdot\left\vert v\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+Exercise \ref{exe.posmat.abs-lamA}}\right) \\
 &  =\left\vert v\right\vert .
 \end{align*}
 Taking limits as $m\rightarrow\infty$, we obtain $\lim\limits_{m\rightarrow
@@ -18339,9 +18679,9 @@ was false, and the proof of Theorem \ref{thm.posmat.specrad.leq1} is complete.
 
 \begin{corollary}
 \label{cor.posmat.specrad.leq1a}Let $A\in\mathbb{C}^{n\times n}$ and
-$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $.
-Then, $\rho\left(  A\right)  \leq\rho\left(  \left\vert A\right\vert \right)
-\leq\rho\left(  B\right)  $.
+$B\in\mathbb{R}^{n\times n}$ be such that $B\geq\left\vert A\right\vert $ and
+$n>0$. Then, $\rho\left(  A\right)  \leq\rho\left(  \left\vert A\right\vert
+\right)  \leq\rho\left(  B\right)  $.
 \end{corollary}
 
 \begin{proof}
@@ -18359,8 +18699,8 @@ Hence, Corollary \ref{cor.posmat.specrad.leq1a} is proved.
 
 \begin{corollary}
 \label{cor.posmat.specrad.leq1b}Let $A\in\mathbb{R}^{n\times n}$ and
-$B\in\mathbb{R}^{n\times n}$ satisfy $B\geq A\geq0$. Then, $\rho\left(
-A\right)  \leq\rho\left(  B\right)  $.
+$B\in\mathbb{R}^{n\times n}$ satisfy $B\geq A\geq0$ and $n>0$. Then,
+$\rho\left(  A\right)  \leq\rho\left(  B\right)  $.
 \end{corollary}
 
 \begin{proof}
@@ -18370,7 +18710,7 @@ We have $\left\vert A\right\vert =A$. Thus, we can apply Theorem
 
 \begin{corollary}
 \label{cor.posmat.specrad.leq1c}Let $A\in\mathbb{R}^{n\times n}$ satisfy
-$A\geq0$. \medskip
+$A\geq0$ and $n>0$. \medskip
 
 \textbf{(a)} If $\widetilde{A}$ is a principal submatrix of $A$ (that is, a
 matrix obtained from $A$ by removing a bunch of rows along with the
@@ -18387,7 +18727,8 @@ $\rho\left(  A\right)  >0$.
 \begin{proof}
 \textbf{(a)} Let $\widetilde{A}$ be a principal submatrix of $A$. For
 simplicity, I assume that $\widetilde{A}$ is $A$ with the $n$-th row and the
-$n$-th column removed. Thus,%
+$n$-th column removed\footnote{The proof in the general case is similar; it
+just requires more notational work.}. Thus,%
 \begin{equation}
 A=\left(
 \begin{array}
@@ -18408,8 +18749,8 @@ B:=\left(
 \widetilde{A} & 0\\
 0 & 0
 \end{array}
-\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)
-,\label{pf.cor.posmat.specrad.leq1c.a.B=}%
+\right)  \ \ \ \ \ \ \ \ \ \ \left(  \text{in block-matrix notation}\right)  ,
+\label{pf.cor.posmat.specrad.leq1c.a.B=}%
 \end{equation}
 where the three $0$s have the same dimensions as the $x$, $y$ and $\lambda$
 above. Comparing (\ref{pf.cor.posmat.specrad.leq1c.a.A=}) with
@@ -18438,8 +18779,8 @@ T & 0\\
 \end{array}
 \right)  $). Hence, $\rho\left(  B\right)  =\rho\left(  \widetilde{A}\right)
 $ (because inserting $0$ into a set of nonnegative reals cannot change the
-maximum of this set). Hence,  $\rho\left(  B\right)  \leq\rho\left(  A\right)
-$ rewrites as  $\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $.
+maximum of this set). Hence, $\rho\left(  B\right)  \leq\rho\left(  A\right)
+$ rewrites as $\rho\left(  \widetilde{A}\right)  \leq\rho\left(  A\right)  $.
 This proves Corollary \ref{cor.posmat.specrad.leq1a} \textbf{(a)}. \medskip
 
 \textbf{(b)} We must show that $A_{i,i}\leq\rho\left(  A\right)  $ for all
@@ -18475,24 +18816,583 @@ Therefore, $A_{i,i}=\rho\left(  \left(
 A_{i,i}%
 \end{array}
 \right)  \right)  \leq\rho\left(  A\right)  $. This proves Corollary
-\ref{cor.posmat.specrad.leq1a} \textbf{(b)}.  \medskip
+\ref{cor.posmat.specrad.leq1a} \textbf{(b)}. \medskip
 
 \textbf{(c)} Follows from \textbf{(b)}.
 \end{proof}
 
 \begin{exercise}
-\fbox{1} Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$. Prove that
+\fbox{1} Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$ and $n>0$. Prove that
 $\rho\left(  A\right)  >0$.
 \end{exercise}
 
 \begin{exercise}
 \fbox{2} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{R}^{n\times n}$ be
-such that $B>\left\vert A\right\vert $. Prove that $\rho\left(  A\right)
-<\rho\left(  B\right)  $. \medskip
+such that $B>\left\vert A\right\vert $ and $n>0$. Prove that $\rho\left(
+A\right)  <\rho\left(  B\right)  $. \medskip
 
 [\textbf{Hint:} Show that there exists some real $\lambda>1$ such that
 $B\geq\lambda\cdot\left\vert A\right\vert $.]
 \end{exercise}
+
+Let us next prove some more bounds for $\rho\left(  A\right)  $ when $A$ is a
+nonnegative matrix. We will use the following notions:\footnote{Recall that
+$\max\limits_{i\in I}a_{i}$ is a shorthand notation for $\max\left\{
+a_{i}\ \mid\ i\in I\right\}  $ (when $I$ is a set and $a_{i}$ is a real number
+for each $i\in I$).}
+
+\begin{definition}
+\label{def.posmat.infty1-norms}Let $\mathbb{F}$ be a field. Let $A\in
+\mathbb{F}^{n\times m}$. \medskip
+
+\textbf{(a)} The \emph{column sums} of $A$ are the $m$ sums
+\[
+\sum_{i=1}^{n}A_{i,j}=\left(  \text{the sum of all entries of the }j\text{-th
+column of }A\right)
+\]
+for $j\in\left[  m\right]  $. \medskip
+
+\textbf{(b)} The \emph{row sums} of $A$ are%
+\[
+\sum_{j=1}^{m}A_{i,j}=\left(  \text{the sum of all entries of the }i\text{-th
+row of }A\right)
+\]
+for $i\in\left[  n\right]  $. \medskip
+
+\textbf{(c)} Now, assume that $\mathbb{F}=\mathbb{C}$ and $n>0$ and $m>0$.
+Then, we set%
+\[
+\left\vert \left\vert A\right\vert \right\vert _{\infty}:=\left(  \text{the
+largest row sum of }\left\vert A\right\vert \right)  =\max\limits_{i\in\left[
+n\right]  }\sum_{j=1}^{m}\left\vert A_{i,j}\right\vert
+\]
+and%
+\[
+\left\vert \left\vert A\right\vert \right\vert _{1}:=\left(  \text{the largest
+column sum of }\left\vert A\right\vert \right)  =\max\limits_{j\in\left[
+m\right]  }\sum_{i=1}^{n}\left\vert A_{i,j}\right\vert .
+\]
+These two numbers $\left\vert \left\vert A\right\vert \right\vert _{\infty}$
+and $\left\vert \left\vert A\right\vert \right\vert _{1}$ are called the
+$\infty$\emph{-norm} and the $1$\emph{-norm} of $A$ (for reasons that will be
+explained in a later chapter).
+\end{definition}
+
+\begin{example}
+The column sums of a $2\times2$-matrix $\left(
+\begin{array}
+[c]{cc}%
+a & b\\
+c & d
+\end{array}
+\right)  $ are $a+c$ and $b+d$, whereas its row sums are $a+b$ and $c+d$.
+\end{example}
+
+\begin{warning}
+Let $A$ be a matrix. Then, the sum of all rows of $A$ is a row vector whose
+entries are the column sums (not the row sums!) of $A$. Likewise, the sum of
+all columns of $A$ is a column vector whose entries are the row sums (not the
+column sums!) of $A$.
+\end{warning}
+
+The following is obvious:
+
+\begin{remark}
+\label{rmk.posmat.rowsums-AT}Let $A\in\mathbb{F}^{n\times m}$ be a matrix over
+a field $\mathbb{F}$. \medskip
+
+\textbf{(a)} The row sums of $A$ are the column sums of $A^{T}$, and vice
+versa. \medskip
+
+\textbf{(b)} If $\mathbb{F}=\mathbb{C}$ and $n>0$ and $m>0$, then $\left\vert
+\left\vert A\right\vert \right\vert _{\infty}=\left\vert \left\vert
+A^{T}\right\vert \right\vert _{1}$ and $\left\vert \left\vert A\right\vert
+\right\vert _{1}=\left\vert \left\vert A^{T}\right\vert \right\vert _{\infty}$.
+\end{remark}
+
+We can now bound the spectral radius of a matrix in terms of its $1$-norm and
+its $\infty$-norm:
+
+\begin{lemma}
+\label{lem.posmat.rho-in-terms-of-norms}Let $A\in\mathbb{C}^{n\times n}$ with
+$n>0$. Then: \medskip
+
+\textbf{(a)} We have $\rho\left(  A\right)  \leq\left\vert \left\vert
+A\right\vert \right\vert _{\infty}$. \medskip
+
+\textbf{(b)} If $A\geq0$ and if all row sums of $A$ are equal, then
+$\rho\left(  A\right)  =\left\vert \left\vert A\right\vert \right\vert
+_{\infty}$. \medskip
+
+\textbf{(c)} We have $\rho\left(  A\right)  \leq\left\vert \left\vert
+A\right\vert \right\vert _{1}$. \medskip
+
+\textbf{(d)} If $A\geq0$ and if all column sums of $A$ are equal, then
+$\rho\left(  A\right)  =\left\vert \left\vert A\right\vert \right\vert _{1}$.
+\end{lemma}
+
+\begin{proof}
+\textbf{(a)} We have $\rho\left(  A\right)  =\left\vert \lambda\right\vert $
+for some eigenvalue $\lambda$ of $A$ (by the definition of $\rho\left(
+A\right)  $). Consider this $\lambda$, and let $v=\left(  v_{1},v_{2}%
+,\ldots,v_{n}\right)  ^{T}\in\mathbb{C}^{n}$ be a nonzero $\lambda
+$-eigenvector of $A$. Then, $Av=\lambda v$.
+
+Choose an $i\in\left[  n\right]  $ such that $\left\vert v_{i}\right\vert
+=\max\left\{  \left\vert v_{1}\right\vert ,\left\vert v_{2}\right\vert
+,\ldots,\left\vert v_{n}\right\vert \right\}  $. Then, $\left\vert
+v_{i}\right\vert >0$ (since $v$ is nonzero). Furthermore,%
+\begin{equation}
+\left\vert v_{j}\right\vert \leq\left\vert v_{i}\right\vert
+\ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[  n\right]
+\label{pf.lem.posmat.rho-in-terms-of-norms.max}%
+\end{equation}
+(since $\left\vert v_{i}\right\vert =\max\left\{  \left\vert v_{1}\right\vert
+,\left\vert v_{2}\right\vert ,\ldots,\left\vert v_{n}\right\vert \right\}  $).
+
+Now, the $i$-th entry of the column vector $Av$ is $\sum\limits_{j=1}%
+^{n}A_{i,j}v_{j}$ (by the definition of the product $Av$); however, the same
+entry is $\lambda v_{i}$ (since $Av=\lambda v$). Comparing these two facts, we
+obtain%
+\[
+\lambda v_{i}=\sum\limits_{j=1}^{n}A_{i,j}v_{j}.
+\]
+Taking absolute values on both sides of this equality, we obtain%
+\begin{align*}
+\left\vert \lambda v_{i}\right\vert  &  =\left\vert \sum\limits_{j=1}%
+^{n}A_{i,j}v_{j}\right\vert \leq\sum\limits_{j=1}^{n}\underbrace{\left\vert
+A_{i,j}v_{j}\right\vert }_{\substack{=\left\vert A_{i,j}\right\vert
+\cdot\left\vert v_{j}\right\vert \leq\left\vert A_{i,j}\right\vert
+\cdot\left\vert v_{i}\right\vert \\\text{(by
+(\ref{pf.lem.posmat.rho-in-terms-of-norms.max}))}}}\ \ \ \ \ \ \ \ \ \ \left(
+\text{by the triangle inequality}\right) \\
+&  \leq\sum\limits_{j=1}^{n}\left\vert A_{i,j}\right\vert \cdot\left\vert
+v_{i}\right\vert .
+\end{align*}
+Since $\left\vert \lambda v_{i}\right\vert =\left\vert \lambda\right\vert
+\cdot\left\vert v_{i}\right\vert $, we can rewrite this as
+\[
+\left\vert \lambda\right\vert \cdot\left\vert v_{i}\right\vert \leq
+\sum\limits_{j=1}^{n}\left\vert A_{i,j}\right\vert \cdot\left\vert
+v_{i}\right\vert .
+\]
+Since $\left\vert v_{i}\right\vert >0$, we can cancel $\left\vert
+v_{i}\right\vert $ from this inequality, and thus we obtain%
+\begin{align*}
+\left\vert \lambda\right\vert  &  \leq\sum\limits_{j=1}^{n}\left\vert
+A_{i,j}\right\vert =\left(  \text{the }i\text{-th row sum of }\left\vert
+A\right\vert \right) \\
+&  \leq\left(  \text{the largest row sum of }\left\vert A\right\vert \right)
+=\left\vert \left\vert A\right\vert \right\vert _{\infty}.
+\end{align*}
+Since $\rho\left(  A\right)  =\left\vert \lambda\right\vert $, this rewrites
+as $\rho\left(  A\right)  \leq\left\vert \left\vert A\right\vert \right\vert
+_{\infty}$. This proves Lemma \ref{lem.posmat.rho-in-terms-of-norms}
+\textbf{(a)}. \medskip
+
+\textbf{(b)} Assume that $A\geq0$ and that all row sums of $A$ are equal. Let
+$e=\left(  1,1,\ldots,1\right)  ^{T}\in\mathbb{R}^{n}$, and let $\kappa$ be
+the common value of the row sums of $A$. Then, all row sums of $A$ equal
+$\kappa$; in other words, we have $Ae=\kappa e$ (since $Ae$ is the column
+vector whose entries are the row sums of $A$, whereas $\kappa e$ is the column
+vector whose entries are $\underbrace{\kappa,\kappa,\ldots,\kappa}_{n\text{
+times}}$). Hence, $\kappa$ is an eigenvalue of $A$ (since $e\neq0$), so that
+$\rho\left(  A\right)  \geq\left\vert \kappa\right\vert =\kappa$ (since
+$A\geq0$ entails $\kappa\geq0$).
+
+On the other hand, $\left\vert A\right\vert =A$ (since $A\geq0$). Now, Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(a)} yields
+\[
+\rho\left(  A\right)  \leq\left\vert \left\vert A\right\vert \right\vert
+_{\infty}=\left(  \text{the largest row sum of }\underbrace{\left\vert
+A\right\vert }_{=A}\right)  =\left(  \text{the largest row sum of }A\right)
+=\kappa
+\]
+(since all row sums of $A$ are $\kappa$). Combining this with $\rho\left(
+A\right)  \geq\kappa$, we obtain $\rho\left(  A\right)  =\kappa=\left\vert
+\left\vert A\right\vert \right\vert _{\infty}$. This proves Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(b)}. \medskip
+
+\textbf{(c)} This follows by applying Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(a)} of the lemma to $A^{T}$
+instead of $A$, and recalling that $\left\vert \left\vert A^{T}\right\vert
+\right\vert _{\infty}=\left\vert \left\vert A\right\vert \right\vert _{1}$ and
+$\rho\left(  A^{T}\right)  =\rho\left(  A\right)  $. \medskip
+
+\textbf{(d)} This follows by applying Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(b)} of the lemma to $A^{T}$
+instead of $A$, and recalling that $\left\vert \left\vert A^{T}\right\vert
+\right\vert _{\infty}=\left\vert \left\vert A\right\vert \right\vert _{1}$ and
+$\rho\left(  A^{T}\right)  =\rho\left(  A\right)  $ and the row sums of
+$A^{T}$ are the column sums of $A$.
+\end{proof}
+
+\begin{remark}
+We note that the converse of Lemma \ref{lem.posmat.rho-in-terms-of-norms}
+\textbf{(b)} is false: For example, the $3\times3$-matrix $A:=\left(
+\begin{array}
+[c]{ccc}%
+1 & 0 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{array}
+\right)  $ satisfies $A\geq0$ and $\rho\left(  A\right)  =\left\vert
+\left\vert A\right\vert \right\vert _{\infty}$, but the row sums of $A$ are
+not all equal.
+\end{remark}
+
+Next, let us bound the spectral radius $\rho\left(  A\right)  $ of a matrix
+$A$ from both sides when $A\geq0$:
+
+\begin{theorem}
+\label{thm.posmat.rho-in-terms-of-rowsums}Let $A\in\mathbb{R}^{n\times n}$
+satisfy $A\geq0$ and $n>0$. Then,%
+\[
+\left(  \text{the smallest row sum of }A\right)  \leq\rho\left(  A\right)
+\leq\left(  \text{the largest row sum of }A\right)  .
+\]
+
+\end{theorem}
+
+\begin{proof}
+We have $\left\vert A\right\vert =A$ (since $A\geq0$). Now, Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(a)} yields%
+\[
+\rho\left(  A\right)  \leq\left\vert \left\vert A\right\vert \right\vert
+_{\infty}=\left(  \text{the largest row sum of }\underbrace{\left\vert
+A\right\vert }_{=A}\right)  =\left(  \text{the largest row sum of }A\right)
+.
+\]
+Hence, it remains to prove that $\left(  \text{the smallest row sum of
+}A\right)  \leq\rho\left(  A\right)  $.
+
+Let $r_{1},r_{2},\ldots,r_{n}$ be the row sums of $A$. Let $r_{i}$ be the
+smallest among them. We must thus prove that $r_{i}\leq\rho\left(  A\right)
+$. If $r_{i}=0$, then this is obvious. So let WLOG assume that $r_{i}>0$.
+Hence, all $n$ numbers $r_{1},r_{2},\ldots,r_{n}$ are positive (since the
+smallest among them is $r_{i}>0$) and thus nonzero.
+
+Let $B$ the $n\times n$-matrix whose $\left(  u,v\right)  $-th entry is
+$\dfrac{r_{i}}{r_{u}}A_{u,v}$ for all $u,v\in\left[  n\right]  $%
+.\ \ \ \ \footnote{This is well-defined, since $r_{u}\neq0$ (because all $n$
+numbers $r_{1},r_{2},\ldots,r_{n}$ are nonzero).} Thus, $B$ is obtained from
+the matrix $A$ by scaling each row by a certain positive real factor (namely,
+$\dfrac{r_{i}}{r_{u}}$ for the $u$-th row) chosen in such a way that the row
+sums all become $r_{i}$. Hence, the matrix $B$ is $\geq0$ (since $A\geq0$, and
+since all $n$ numbers $r_{1},r_{2},\ldots,r_{n}$ are positive), and its row
+sums are all equal to $r_{i}$. Hence, Lemma
+\ref{lem.posmat.rho-in-terms-of-norms} \textbf{(b)} (applied to $B$ instead of
+$A$) yields
+\begin{align}
+\rho\left(  B\right)   &  =\left\vert \left\vert B\right\vert \right\vert
+_{\infty}=\left(  \text{the largest row sum of }\underbrace{\left\vert
+B\right\vert }_{\substack{=B\\\text{(since }B\geq0\text{)}}}\right)
+\nonumber\\
+&  =\left(  \text{the largest row sum of }B\right)  =r_{i}
+\label{pf.thm.posmat.rho-in-terms-of-rowsums.4}%
+\end{align}
+(since all row sums of $B$ are $r_{i}$). However, for each $u,v\in\left[
+n\right]  $, we have $\dfrac{r_{i}}{r_{u}}A_{u,v}\leq A_{u,v}$ (since
+$r_{i}\leq r_{u}$ (because $r_{i}$ is the smallest among the numbers
+$r_{1},r_{2},\ldots,r_{n}$)). In other words, $B\leq A$ (since the entries of
+$B$ are the numbers $\dfrac{r_{i}}{r_{u}}A_{u,v}$, whereas the corresponding
+entries of $A$ are $A_{u,v}$). Hence, Corollary \ref{cor.posmat.specrad.leq1b}
+(applied to $B$ and $A$ instead of $A$ and $B$) yields $\rho\left(  B\right)
+\leq\rho\left(  A\right)  $. Thus,
+(\ref{pf.thm.posmat.rho-in-terms-of-rowsums.4}) becomes $r_{i}=\rho\left(
+B\right)  \leq\rho\left(  A\right)  $. This proves Theorem
+\ref{thm.posmat.rho-in-terms-of-rowsums}.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.rho-in-terms-of-rowsums-x}Let $A\in\mathbb{R}^{n\times n}$
+satisfy $A\geq0$ and $n>0$. Let $x_{1},x_{2},\ldots,x_{n}$ be any $n$ positive
+reals. Then,%
+\[
+\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}%
+A_{i,j}\leq\rho\left(  A\right)  \leq\max\limits_{i\in\left[  n\right]  }%
+\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}A_{i,j}.
+\]
+
+\end{corollary}
+
+\begin{proof}
+Let $D=\operatorname*{diag}\left(  x_{1},x_{2},\ldots,x_{n}\right)  $. Then,
+$DAD^{-1}$ is the $n\times n$-matrix whose $\left(  i,j\right)  $-th entry is
+$x_{i}A_{i,j}x_{j}^{-1}=\dfrac{x_{i}}{x_{j}}A_{i,j}$ for all $i,j\in\left[
+n\right]  $. Thus, $DAD^{-1}\geq0$ (since $A\geq0$ and since $x_{1}%
+,x_{2},\ldots,x_{n}$ are positive). Hence, Theorem
+\ref{thm.posmat.rho-in-terms-of-rowsums} (applied to $DAD^{-1}$ instead of
+$A$) yields%
+\[
+\left(  \text{the smallest row sum of }DAD^{-1}\right)  \leq\rho\left(
+DAD^{-1}\right)  \leq\left(  \text{the largest row sum of }DAD^{-1}\right)  .
+\]
+In view of $\rho\left(  DAD^{-1}\right)  =\rho\left(  A\right)  $ (which is a
+consequence of the fact that the matrices $DAD^{-1}$ and $A$ are similar and
+thus have the same spectrum), we can rewrite this as
+\[
+\left(  \text{the smallest row sum of }DAD^{-1}\right)  \leq\rho\left(
+A\right)  \leq\left(  \text{the largest row sum of }DAD^{-1}\right)  .
+\]
+Now, it remains only to notice that the row sums of $DAD^{-1}$ are exactly the
+sums $\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}A_{i,j}$ for $i\in\left[  n\right]  $.
+\end{proof}
+
+\begin{remark}
+If the $x_{1},x_{2},\ldots,x_{n}$ in Corollary
+\ref{cor.posmat.rho-in-terms-of-rowsums-x} are chosen appropriately, both of
+the inequalities can become equalities. (This follows from the
+Perron--Frobenius theorems further below.)
+\end{remark}
+
+\subsection{Perron--Frobenius theorems}
+
+We now come to the most important results about nonnegative matrices: the
+Perron--Frobenius theorems.
+
+\subsubsection{Motivation}
+
+Let us first motivate the theorems using a less general (but more intuitive) setting.
+
+Recall a standard situation in probability theory: Consider a system (e.g., a
+slot machine) that can be in one of $n$ possible \emph{states} $s_{1}%
+,s_{2},\ldots,s_{n}$. Every minute, the system randomly changes states
+according to the following rule: If the system is in state $s_{i}$, then it
+changes to state $s_{j}$ with probability $P_{i,j}$, where $P$ is a (fixed,
+pre-determined) nonnegative $n\times n$-matrix whose row sums all equal $1$
+(such a matrix is called \emph{row-stochastic}). This is commonly known as a
+\emph{Markov chain}.
+
+Given such a Markov chain, one often wonders about its \textquotedblleft
+steady state\textquotedblright: If you wait long enough, how likely is the
+system to be in a given state?
+
+\begin{example}
+\label{exa.posmat.markov-chain.1}Let $P=\left(
+\begin{array}
+[c]{cc}%
+0.9 & 0.1\\
+0.5 & 0.5
+\end{array}
+\right)  $. This corresponds to a system that has two states $s_{1}$ and
+$s_{2}$, and the probability of going from state $s_{1}$ to state $s_{2}$ (any
+given minute) is $0.1$, whereas the probability of going from state $s_{1}$ to
+state $s_{1}$ (that is, staying at state $s_{1}$) is $0.9$, and the
+probability of going from state $s_{2}$ to either state is $0.5$.
+
+We encode the two states $s_{1}$ and $s_{2}$ as the basis vectors
+$e_{1}=\left(  1,0\right)  $ and $e_{2}=\left(  0,1\right)  $ of the vector
+space $\mathbb{R}^{1\times2}$ (we work with row vectors here for convenience).
+Thus, a probability distribution on the set of states (i.e., a distribution of
+the form \textquotedblleft state $s_{1}$ with probability $a_{1}$ and state
+$s_{2}$ with probability $a_{2}$\textquotedblright) corresponds to a row
+vector $\left(  a_{1},a_{2}\right)  \in\mathbb{R}^{1\times2}$ satisfying
+$a_{1}\geq0$ and $a_{2}\geq0$ and $a_{1}+a_{2}=1$.
+
+If we start at state $s_{1}$ and let $k$ minutes pass, then the probability
+distribution for the resulting state is $s_{1}P^{k}$ (why?). More generally,
+if we start with a probability distribution $d\in\mathbb{R}^{1\times2}$ and
+let $k$ minutes pass, then the resulting state will be distributed according
+to $dP^{k}$ (why?). So our question about the steady state can be rewritten as
+follows: What is $\lim\limits_{k\rightarrow\infty}dP^{k}$ ? Does this limit
+even exist?
+
+We can notice one thing right away: If the limit $\lim\limits_{k\rightarrow
+\infty}dP^{k}$ exists, then this limit is a left $1$-eigenvector of $P$, in
+the sense that it is a row vector $y$ such that $yP=y$ (because if we set
+$y=\lim\limits_{k\rightarrow\infty}dP^{k}$, then we have $y=\lim
+\limits_{k\rightarrow\infty}dP^{k}=\lim\limits_{k\rightarrow\infty
+}d\underbrace{P^{k+1}}_{=P^{k}P}=\left(  \lim\limits_{k\rightarrow\infty
+}dP^{k}\right)  P=yP$). Since it is furthermore a probability distribution
+(because it is a limit of probability distributions), we can easily compute it
+(indeed, our matrix $P$ has only one left $1$-eigenvector up to scaling, and
+the scaling factor is uniquely determined by the requirement that it be a
+probability distribution). We obtain%
+\[
+\lim\limits_{k\rightarrow\infty}dP^{k}=\left(  \dfrac{5}{6},\dfrac{1}%
+{6}\right)  .
+\]
+
+
+But does this limit actually exist? Yes: In our specific example, it does; but
+this isn't quite that obvious. Note that this limit (known as the \emph{steady
+state} of the Markov chain) actually does not depend on the starting
+distribution $d$.
+\end{example}
+
+Does this generalize? Not always. Here are two examples where things go bad:
+
+\begin{itemize}
+\item If $P=I_{2}=\left(
+\begin{array}
+[c]{cc}%
+1 & 0\\
+0 & 1
+\end{array}
+\right)  $, then $\lim\limits_{k\rightarrow\infty}dP^{k}=d$ for each $d$, so
+the limits do depend on $d$.
+
+\item If $P=\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+1 & 0
+\end{array}
+\right)  $, then $\lim\limits_{k\rightarrow\infty}dP^{k}$ does not exist
+unless $d=\left(  0.5,\ 0.5\right)  $, since in all other cases the sequence
+$\left(  dP^{k}\right)  _{k\geq0}$ oscillates between $\left(  a_{1}%
+,a_{2}\right)  $ and $\left(  a_{2},a_{1}\right)  $.
+\end{itemize}
+
+Perhaps surprisingly, such bad cases are an exception. For \textbf{most}
+row-stochastic matrices $P$ (that is, nonnegative matrices whose row sums all
+equal $1$), there is a \textbf{unique} steady state (i.e., left $1$%
+-eigenvector whose entries sum up to $1$), and it can be obtained as
+$\lim\limits_{k\rightarrow\infty}dP^{k}$ for any starting distribution $d$. To
+be more precise, this holds whenever $P$ is positive (i.e., all $P_{i,j}>0$).
+Some weaker assumptions also suffice.
+
+More general versions of these facts hold even if we don't assume $P$ to be
+row-stochastic, but merely require $P>0$ (or $P\geq0$ with some extra
+conditions). These will be the Perron and Perron--Frobenius theorems.
+
+\subsubsection{The theorems}
+
+We can now state the Perron and Perron--Frobenius theorems; we will prove them later:
+
+\begin{theorem}
+[Perron theorem]\label{thm.posmat.perron}Let $A\in\mathbb{R}^{n\times n}$
+satisfy $A>0$ and $n>0$. Then: \medskip
+
+\textbf{(a)} We have $\rho\left(  A\right)  >0$. \medskip
+
+\textbf{(b)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$ and
+has algebraic multiplicity $1$ (and therefore geometric multiplicity $1$ as
+well). \medskip
+
+\textbf{(c)} There is a unique $\rho\left(  A\right)  $-eigenvector $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This eigenvector $x$ is furthermore positive.
+(It is called the \emph{Perron vector} of $A$.) \medskip
+
+\textbf{(d)} There is a unique vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=\rho\left(  A\right)
+y^{T}$ and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This vector $y$ is
+also positive. \medskip
+
+\textbf{(e)} We have%
+\[
+\left(  \dfrac{1}{\rho\left(  A\right)  }A\right)  ^{m}\rightarrow
+xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+
+\textbf{(f)} The only eigenvalue of $A$ that has absolute value $\rho\left(
+A\right)  $ is $\rho\left(  A\right)  $ itself.
+\end{theorem}
+
+We will prove this soon, but first we have two more theorems to state. The
+Perron theorem applies to positive matrices; but some parts of it can be
+adapted to the more general situation of a nonnegative matrix. If we require
+nothing other than nonnegativity, then only two statements hold:
+
+\begin{theorem}
+[Perron--Frobenius theorem 1]\label{thm.posmat.pf1}Let $A\in\mathbb{R}%
+^{n\times n}$ satisfy $A\geq0$ and $n>0$. Then: \medskip
+
+\textbf{(a)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$.
+\medskip
+
+\textbf{(b)} The matrix $A$ has a nonzero nonnegative $\rho\left(  A\right)  $-eigenvector.
+\end{theorem}
+
+To get stronger statements without requiring $A>0$, we need two further
+properties of $A$.
+
+\begin{definition}
+Let $A\in\mathbb{R}^{n\times n}$ be an $n\times n$-matrix with $n>0$. \medskip
+
+\textbf{(a)} We say that $A$ is \emph{reducible} if there exist two disjoint
+nonempty subsets $I$ and $J$ of $\left[  n\right]  $ such that $I\cup
+J=\left[  n\right]  $ and such that%
+\[
+A_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i\in I\text{ and }j\in J.
+\]
+Equivalently, $A$ is reducible if and only if there exists a permutation
+matrix $P\in\mathbb{R}^{n\times n}$ such that%
+\begin{align*}
+P^{-1}AP  &  =\left(
+\begin{array}
+[c]{cc}%
+B & C\\
+0_{\left(  n-r\right)  \times r} & D
+\end{array}
+\right)  \ \ \ \ \ \ \ \ \ \ \text{for some }0<r<n\\
+&
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \text{and
+some matrices }B,C,D.
+\end{align*}
+(Note that $P^{-1}AP$ is the matrix obtained from $A$ by permuting the rows
+and then permuting the columns using the same permutation.) \medskip
+
+\textbf{(b)} We say that $A$ is \emph{irreducible} if $A$ is not reducible.
+\medskip
+
+\textbf{(c)} We say that $A$ is \emph{primitive} if there exists some $m>0$
+such that $A^{m}>0$.
+\end{definition}
+
+\begin{theorem}
+[Perron--Frobenius theorem 2]\label{thm.posmat.pf2}Let $A\in\mathbb{R}%
+^{n\times n}$ be nonnegative and irreducible and satisfy $n>0$. Then: \medskip
+
+\textbf{(a)} We have $\rho\left(  A\right)  >0$. \medskip
+
+\textbf{(b)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$ and
+has algebraic multiplicity $1$ (and therefore geometric multiplicity $1$ as
+well). \medskip
+
+\textbf{(c)} There is a unique $\rho\left(  A\right)  $-eigenvector $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This eigenvector $x$ is furthermore positive.
+(It is called the \emph{Perron vector} of $A$.) \medskip
+
+\textbf{(d)} There is a unique vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=\rho\left(  A\right)
+y^{T}$ and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This vector $y$ is
+also positive. \medskip
+
+\textbf{(e)} Assume furthermore that $A$ is primitive. We have%
+\[
+\left(  \dfrac{1}{\rho\left(  A\right)  }A\right)  ^{m}\rightarrow
+xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+
+\textbf{(f)} Assume again that $A$ is primitive. The only eigenvalue of $A$
+that has absolute value $\rho\left(  A\right)  $ is $\rho\left(  A\right)  $ itself.
+\end{theorem}
+
+\begin{remark}
+If $A$ is the row-stochastic matrix $P$ corresponding to a Markov chain, then:
+
+\begin{itemize}
+\item $A$ is irreducible if and only if there is no set of states from which
+you cannot escape (except for the empty set and for the set of all states);
+
+\item $A$ is primitive if and only if there is an $m>0$ such that we can get
+from any state to any state in exactly $m$ minutes (this technical condition
+rules out the kind of \textquotedblleft oscillation\textquotedblright\ that
+prevented us from finding a steady state for $P=\left(
+\begin{array}
+[c]{cc}%
+0 & 1\\
+1 & 0
+\end{array}
+\right)  $).
+\end{itemize}
+\end{remark}
 
 [...]
 

@@ -1,0 +1,164 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}%
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Wednesday, December 01, 2021 11:49:12}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{exera}
+\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+{\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+{\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+{\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+{\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+{\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+{\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+{\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+{\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+{\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+{\end{leftbar}\end{exmp}}
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\iffalse
+\NOEXPAND{\today}{\today}
+\NOEXPAND{\sslash}{\sslash}
+\NOEXPAND{\numboxed}[2]{\numboxed}
+\NOEXPAND{\UNFINISHED}{\UNFINISHED}
+\fi
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504: Advanced Linear Algebra}
+\author{Hugo Woerdeman, with edits by Darij Grinberg\thanks{Drexel University, Korman
+Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
+\date{\today\ (unfinished!)}
+\maketitle
+\tableofcontents
+
+\section*{Math 504 Lecture 25}
+
+\section{Positive and nonnegative matrices ([HorJoh, Chapter 8]) (cont'd)}
+
+\subsection{...}
+
+\end{document}
