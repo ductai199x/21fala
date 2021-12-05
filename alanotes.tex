@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Friday, December 03, 2021 10:53:45}
+%TCIDATA{LastRevised=Saturday, December 04, 2021 22:12:20}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -12009,7 +12009,7 @@ any monic polynomial be a characteristic polynomial?
 
 The latter turns out to be true (and moreover, the same holds for the minimal
 polynomial). We shall prove this by explicitly constructing a matrix with a
-given polynomial as its characteristic polynomila.
+given polynomial as its characteristic polynomial.
 
 \begin{definition}
 \label{def.jnf.companion.Cf}Let $\mathbb{F}$ be a field, and let
@@ -12181,8 +12181,8 @@ t\right)  \right)  $ as an $n$-dimensional $\mathbb{F}$-vector space with
 basis $\left(  \overline{t^{0}},\overline{t^{1}},\ldots,\overline{t^{n-1}%
 }\right)  $. Then, the companion matrix $C_{f}$ represents the endomorphism
 \textquotedblleft multiply by $t$\textquotedblright\ (that is, the
-endomorphism that sends each $\overline{f\left(  t\right)  }$ to
-$\overline{t\cdot f\left(  t\right)  }$) in this basis.
+endomorphism that sends each residue class $\overline{g\left(  t\right)  }$ to
+$\overline{t\cdot g\left(  t\right)  }$) in this basis.
 \end{remark}
 
 \begin{exercise}
@@ -12218,7 +12218,7 @@ $A^{n}=0$.
 
 \begin{theorem}
 [Jordan--Chevalley decomposition]\label{thm.jnf.jcdec.main}Let $A\in
-\mathbb{C}^{n\times n}$ be an $n\times n$-matrix.
+\mathbb{C}^{n\times n}$ be an $n\times n$-matrix. \medskip
 
 \textbf{(a)} Then, there exists a unique pair $\left(  D,N\right)  $
 consisting of
@@ -12229,11 +12229,12 @@ consisting of
 \item a nilpotent matrix $N\in\mathbb{C}^{n\times n}$
 \end{itemize}
 
-\noindent such that $DN=ND$ and $A=D+N$.
+\noindent such that $DN=ND$ and $A=D+N$. \medskip
 
-\textbf{(b)} Both $D$ and $N$ in this pair can be written as polynomials in
-$A$. In other words, there exist two polynomials $f,g\in\mathbb{C}\left[
-t\right]  $ such that $D=f\left(  A\right)  $ and $N=g\left(  A\right)  $.
+\textbf{(b)} Both matrices $D$ and $N$ in this pair can be written as
+polynomials in $A$. In other words, there exist two polynomials $f,g\in
+\mathbb{C}\left[  t\right]  $ such that $D=f\left(  A\right)  $ and
+$N=g\left(  A\right)  $.
 \end{theorem}
 
 The pair $\left(  D,N\right)  $ in this theorem is known as the
@@ -17185,7 +17186,7 @@ that $y=Sx$.
 
 By Corollary \ref{cor.major.doublestoch.prod}, it suffices to show this in the
 case when $x\overset{\text{OPRH}}{\longrightarrow}y$ (because in the general
-case, $y$ is obtained from $x$ by a sequence of such moves\footnote{This is a
+case, $y$ is obtained from $x$ by a sequence of OPRH moves\footnote{This is a
 consequence of Theorem \ref{thm.major.RH.OPRH-crit}.}).
 
 So let us WLOG assume that $x\overset{\text{OPRH}}{\longrightarrow}y$. Thus,
@@ -19146,6 +19147,117 @@ the inequalities can become equalities. (This follows from the
 Perron--Frobenius theorems further below.)
 \end{remark}
 
+\begin{corollary}
+\label{cor.posmat.supereigenvectors}Let $A\in\mathbb{R}^{n\times n}$ satisfy
+$A\geq0$ and $n>0$.
+
+Let $x\in\mathbb{R}^{n}$ satisfy $x>0$.
+
+Let $\alpha$ be a nonnegative real. Then: \medskip
+
+\textbf{(a)} If $Ax\geq\alpha x$, then $\rho\left(  A\right)  \geq\alpha$.
+\medskip
+
+\textbf{(b)} If $Ax>\alpha x$, then $\rho\left(  A\right)  >\alpha$. \medskip
+
+\textbf{(c)} If $Ax\leq\alpha x$, then $\rho\left(  A\right)  \leq\alpha$.
+\medskip
+
+\textbf{(d)} If $Ax<\alpha x$, then $\rho\left(  A\right)  <\alpha$.
+\end{corollary}
+
+\begin{proof}
+Write $x$ as $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}$. Then, the $n$
+numbers $x_{1},x_{2},\ldots,x_{n}$ are positive reals (since $x>0$); hence,
+their reciprocals $1/x_{1},\ 1/x_{2},\ \ldots,\ 1/x_{n}$ are well-defined
+positive reals as well. \medskip
+
+\textbf{(a)} Assume that $Ax\geq\alpha x$. Then, for each $i\in\left[
+n\right]  $, we have%
+\begin{align}
+\sum_{j=1}^{n}A_{i,j}x_{j}  &  =\left(  \text{the }i\text{-th entry of
+}Ax\right) \nonumber\\
+&  \geq\left(  \text{the }i\text{-th entry of }\alpha x\right)
+\ \ \ \ \ \ \ \ \ \ \left(  \text{since }Ax\geq\alpha x\right) \nonumber\\
+&  =\alpha x_{i}. \label{pf.cor.posmat.supereigenvectors.a.1}%
+\end{align}
+
+
+However, Corollary \ref{cor.posmat.rho-in-terms-of-rowsums-x} (applied to
+$1/x_{k}$ instead of $x_{k}$) yields%
+\[
+\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac{1/x_{i}}{1/x_{j}%
+}A_{i,j}\leq\rho\left(  A\right)  \leq\max\limits_{i\in\left[  n\right]  }%
+\sum_{j=1}^{n}\dfrac{1/x_{i}}{1/x_{j}}A_{i,j}.
+\]
+The first of these two inequalities yields%
+\begin{align*}
+\rho\left(  A\right)   &  \geq\min\limits_{i\in\left[  n\right]  }\sum
+_{j=1}^{n}\underbrace{\dfrac{1/x_{i}}{1/x_{j}}A_{i,j}}_{=\dfrac{1}{x_{i}%
+}A_{i,j}x_{j}}=\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac
+{1}{x_{i}}A_{i,j}x_{j}=\min\limits_{i\in\left[  n\right]  }\dfrac{1}{x_{i}%
+}\underbrace{\sum_{j=1}^{n}A_{i,j}x_{j}}_{\substack{\geq\alpha x_{i}%
+\\\text{(by (\ref{pf.cor.posmat.supereigenvectors.a.1}))}}}\\
+&  \geq\min\limits_{i\in\left[  n\right]  }\underbrace{\dfrac{1}{x_{i}}%
+\cdot\alpha x_{i}}_{=\alpha}=\min\limits_{i\in\left[  n\right]  }\alpha
+=\alpha.
+\end{align*}
+This proves Corollary \ref{cor.posmat.supereigenvectors} \textbf{(a)}.
+\medskip
+
+\textbf{(b)} The proof is analogous to the proof of Corollary
+\ref{cor.posmat.supereigenvectors} \textbf{(a)}, but uses $>$ signs instead of
+$\geq$ signs. \medskip
+
+\textbf{(c)} The proof is similar to the proof of Corollary
+\ref{cor.posmat.supereigenvectors} \textbf{(a)}, but uses $>$ signs instead of
+$\geq$ signs and uses $\max$ instead of $\min$. \medskip
+
+\textbf{(d)} The proof is analogous to the proof of Corollary
+\ref{cor.posmat.supereigenvectors} \textbf{(c)}.
+\end{proof}
+
+\begin{corollary}
+\label{cor.posmat.supereig-cor}Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$
+and $n>0$ and $\rho\left(  A\right)  =1$. Let $w\in\mathbb{R}^{n}$ satisfy
+$w\geq0$ and $w\neq0$. Then: \medskip
+
+\textbf{(a)} We always have $Aw>0$. \medskip
+
+\textbf{(b)} If $Aw\geq w$, then $Aw=w>0$.
+\end{corollary}
+
+\begin{proof}
+Write the vector $w$ as $w=\left(  w_{1},w_{2},\ldots,w_{n}\right)  ^{T}$.
+Then, the numbers $w_{1},w_{2},\ldots,w_{n}$ are nonnegative reals (since
+$w\geq0$). Moreover, at least one $k\in\left[  n\right]  $ satisfies
+$w_{k}\neq0$ (since $w\neq0$). Consider this $k$. Thus, $w_{k}>0$ (since
+$w\geq0$). \medskip
+
+\textbf{(a)} For each $i\in\left[  n\right]  $, the $i$-th entry of $Aw$ is
+$\sum_{j=1}^{n}A_{i,j}w_{j}$. This is a sum of nonnegative addends (since
+$A>0$ and $w\geq0$), and at least one of these addends is actually positive
+(indeed, $A>0$ entails $A_{i,k}>0$ and thus $\underbrace{A_{i,k}}%
+_{>0}\underbrace{w_{k}}_{>0}>0$). Hence, this sum is positive. We have thus
+shown that for each $i\in\left[  n\right]  $, the $i$-th entry of $Aw$ is
+positive. In other words, $Aw>0$. This proves Corollary
+\ref{cor.posmat.supereig-cor} \textbf{(a)}. \medskip
+
+\textbf{(b)} Assume that $Aw\geq w$. Let $z:=Aw-w$. Then, $z=Aw-w\geq0$.
+However, Corollary \ref{cor.posmat.supereig-cor} \textbf{(a)} also yields
+$Aw>0$.
+
+We claim that $z=0$. Indeed, assume the contrary. Thus, $z\neq0$. Hence,
+Corollary \ref{cor.posmat.supereig-cor} \textbf{(a)} (applied to $z$ instead
+of $w$) yields $Az>0$. Therefore, $AAw>Aw$ (since $AAw-Aw=A\underbrace{\left(
+Aw-w\right)  }_{=z}=Az>0$). Also, $A\geq0$ (since $A>0$). Hence, Corollary
+\ref{cor.posmat.supereigenvectors} \textbf{(b)} (applied to $x=Aw$ and
+$\alpha=1$) yields $\rho\left(  A\right)  >1$, which contradicts $\rho\left(
+A\right)  =1$. This contradiction shows that our assumption was wrong. Hence,
+$z=0$ is proved. Thus, $Aw=w$ (since $Aw-w=z=0$). Hence, $w=Aw>0$. This proves
+Corollary \ref{cor.posmat.supereig-cor} \textbf{(b)}.
+\end{proof}
+
 \subsection{Perron--Frobenius theorems}
 
 We now come to the most important results about nonnegative matrices: the
@@ -19393,6 +19505,641 @@ prevented us from finding a steady state for $P=\left(
 \right)  $).
 \end{itemize}
 \end{remark}
+
+\subsubsection{Proof of Perron}
+
+We shall now approach the proof of the Perron theorem (Theorem
+\ref{thm.posmat.perron}). We begin with some notations:
+
+\begin{definition}
+For the rest of this subsection, we shall use the following notations:
+
+Let $n$ be a fixed positive integer. Let $e:=\left(  1,1,\ldots,1\right)
+^{T}\in\mathbb{R}^{n}$.
+\end{definition}
+
+\begin{remark}
+\label{rmk.posmat.e-rowsums}\textbf{(a)} An $n\times n$-matrix $A$ satisfies
+$Ae=e$ if and only if all row sums of $A$ equal $1$. \medskip
+
+\textbf{(b)} An $n\times n$-matrix $A$ satisfies $e^{T}A=e^{T}$ if and only if
+all column sums of $A$ equal $1$.
+\end{remark}
+
+\begin{proof}
+[Proof of Remark \ref{rmk.posmat.e-rowsums}.]\textbf{(a)} This is because the
+entries of the column vector $Ae$ are the row sums of $A$, while the entries
+of the column vector $e$ are all $1$. \medskip
+
+\textbf{(b)} This is because the entries of the row vector $e^{T}A$ are the
+column sums of $A$, while the entries of the row vector $e^{T}$ are all $1$.
+\end{proof}
+
+Next, we state a few lemmas. The first one is an instance of the obvious idea
+that when some addends in a sum have different signs, they interfere
+destructively with each other:
+
+\begin{lemma}
+\label{lem.posmat.proper-subset}Let $y\in\mathbb{R}^{n}$ and $v=\left(
+v_{1},v_{2},\ldots,v_{n}\right)  ^{T}\in\mathbb{R}^{n}$ be two column vectors
+such that $y\geq0$ and $y\neq0$ and $y^{T}v=0$. Let $a_{1},a_{2},\ldots,a_{n}$
+be nonnegative reals. Then, there exists some \textbf{proper} subset $K$ of
+$\left[  n\right]  $ such that%
+\[
+\left\vert \sum_{k=1}^{n}a_{k}v_{k}\right\vert \leq\sum_{k\in K}%
+a_{k}\left\vert v_{k}\right\vert .
+\]
+
+\end{lemma}
+
+\begin{proof}
+Let
+\[
+P:=\left\{  k\in\left[  n\right]  \ \mid\ v_{k}>0\right\}
+\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ N:=\left\{  k\in\left[
+n\right]  \ \mid\ v_{k}<0\right\}  .
+\]
+Then, $P$ and $N$ are two disjoint subsets of $\left[  n\right]  $, and every
+$k\in\left[  n\right]  \setminus\left(  P\cup N\right)  $ satisfies $v_{k}=0$.
+Therefore, we can break up the sum $\sum_{k=1}^{n}a_{k}v_{k}$ as follows:%
+\begin{align}
+\sum_{k=1}^{n}a_{k}v_{k}  &  =\sum_{k\in P}a_{k}\underbrace{v_{k}%
+}_{\substack{=\left\vert v_{k}\right\vert \\\text{(since }k\in P\text{ and
+thus }v_{k}>0\text{)}}}+\sum_{k\in N}a_{k}\underbrace{v_{k}}%
+_{\substack{=-\left\vert v_{k}\right\vert \\\text{(since }k\in N\text{ and
+thus }v_{k}<0\text{)}}}\nonumber\\
+&  =\sum_{k\in P}a_{k}\left\vert v_{k}\right\vert -\sum_{k\in N}%
+a_{k}\left\vert v_{k}\right\vert . \label{pf.lem.posmat.proper-subset.1}%
+\end{align}
+Note that both sums $\sum_{k\in P}a_{k}\left\vert v_{k}\right\vert $ and
+$\sum_{k\in N}a_{k}\left\vert v_{k}\right\vert $ are nonnegative (since
+$a_{1},a_{2},\ldots,a_{n}$ are nonnegative). However, it is easy to see that
+$\left\vert x-y\right\vert \leq\max\left\{  x,y\right\}  $ for any two
+nonnegative reals $x$ and $y$. Applying this to $x=\sum_{k\in P}%
+a_{k}\left\vert v_{k}\right\vert $ and $y=\sum_{k\in N}a_{k}\left\vert
+v_{k}\right\vert $, we thus obtain%
+\[
+\left\vert \sum_{k\in P}a_{k}\left\vert v_{k}\right\vert -\sum_{k\in N}%
+a_{k}\left\vert v_{k}\right\vert \right\vert \leq\max\left\{  \sum_{k\in
+P}a_{k}\left\vert v_{k}\right\vert ,\ \sum_{k\in N}a_{k}\left\vert
+v_{k}\right\vert \right\}  .
+\]
+Therefore,%
+\begin{equation}
+\left\vert \sum_{k\in P}a_{k}\left\vert v_{k}\right\vert -\sum_{k\in N}%
+a_{k}\left\vert v_{k}\right\vert \right\vert \leq\sum_{k\in K}a_{k}\left\vert
+v_{k}\right\vert , \label{pf.lem.posmat.proper-subset.2}%
+\end{equation}
+where $K$ is either $P$ or $N$ depending on whether $\sum_{k\in P}%
+a_{k}\left\vert v_{k}\right\vert \geq\sum_{k\in N}a_{k}\left\vert
+v_{k}\right\vert $ or not. Consider this $K$. Clearly, $K$ is a subset of
+$\left[  n\right]  $.
+
+We shall now show that $K$ is a \textbf{proper} subset of $\left[  n\right]
+$. Indeed, assume the contrary. Thus, $K=\left[  n\right]  $. However, $K$ is
+either $P$ or $N$ (by definition). We WLOG assume that $K=P$ (since the case
+$K=N$ is analogous). Thus, $P=K=\left[  n\right]  $. In other words, $v_{k}>0$
+for each $k\in\left[  n\right]  $ (by the definition of $P$). In other words,
+$v>0$.
+
+Write the vector $y$ as $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}$.
+Then, at least one $k\in\left[  n\right]  $ satisfies $y_{k}\neq0$ (since
+$y\neq0$). Consider this $k$. Then, $y_{k}>0$ (since $y\geq0$).
+
+However, $y^{T}v=\sum_{j=1}^{n}y_{j}v_{j}$. This is a sum of nonnegative reals
+(since $y\geq0$ and $v>0$), and at least one of its addends is actually
+positive (indeed, $\underbrace{y_{k}}_{>0}\underbrace{v_{k}}%
+_{\substack{>0\\\text{(since }v>0\text{)}}}>0$). Thus, the entire sum is
+positive. Therefore, $y^{T}v>0$. But this contradicts $y^{T}v=0$. This
+contradiction shows that our assumption was false. Hence, we have shown that
+$K$ is a proper subset of $\left[  n\right]  $. Furthermore, from
+(\ref{pf.lem.posmat.proper-subset.1}), we obtain%
+\[
+\left\vert \sum_{k=1}^{n}a_{k}v_{k}\right\vert =\left\vert \sum_{k\in P}%
+a_{k}\left\vert v_{k}\right\vert -\sum_{k\in N}a_{k}\left\vert v_{k}%
+\right\vert \right\vert \leq\sum_{k\in K}a_{k}\left\vert v_{k}\right\vert
+\]
+(by (\ref{pf.lem.posmat.proper-subset.2})). This proves Lemma
+\ref{lem.posmat.proper-subset}.
+\end{proof}
+
+The next three lemmas will help us derive some parts of Theorem
+\ref{thm.posmat.perron} from others:
+
+\begin{lemma}
+[crucifix lemma, stochastic case]\label{lem.posmat.crucifix-e}Let
+$A\in\mathbb{R}^{n\times n}$ satisfy $A>0$ and $Ae=e$. Let $y\in\mathbb{R}%
+^{n}$ satisfy $y^{T}A=y^{T}$ and $y\geq0$ and $y^{T}e=1$ (that is, the sum of
+all entries of $y$ is $1$). Then,%
+\[
+A^{m}\rightarrow ey^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+\end{lemma}
+
+\begin{proof}
+Write the vector $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}$. Then, the
+entries $y_{1},y_{2},\ldots,y_{n}$ are nonnegative reals (since $y\geq0$), and
+we have $y^{T}e=y_{1}+y_{2}+\cdots+y_{n}$ (since $e=\left(  1,1,\ldots
+,1\right)  ^{T}$). Hence, $y_{1}+y_{2}+\cdots+y_{n}=y^{T}e=1$.
+
+Thus, the $n$ numbers $y_{1},y_{2},\ldots,y_{n}$ are nonnegative reals whose
+sum is $1$ (since $y_{1}+y_{2}+\cdots+y_{n}=1$). Hence, all these $n$ numbers
+$y_{1},y_{2},\ldots,y_{n}$ lie in the interval $\left[  0,1\right]  $. In
+other words,%
+\begin{equation}
+y_{j}\in\left[  0,1\right]  \ \ \ \ \ \ \ \ \ \ \text{for each }j\in\left[
+n\right]  . \label{pf.lem.posmat.crucifix-e.yj-in}%
+\end{equation}
+
+
+From $Ae=e$, we conclude that all row sums of $A$ equal $1$ (by Remark
+\ref{rmk.posmat.e-rowsums} \textbf{(a)}). Since $A>0$, this implies that all
+entries $A_{u,v}$ of $A$ satisfy%
+\begin{equation}
+0<A_{u,v}\leq1. \label{pf.lem.posmat.crucifix-e.0<A}%
+\end{equation}
+
+
+Let
+\[
+\mu:=1-\min\left\{  A_{u,v}\ \mid\ u,v\in\left[  n\right]  \right\}  .
+\]
+Then, $0\leq\mu<1$ (by (\ref{pf.lem.posmat.crucifix-e.0<A})). We claim the following:
+
+\begin{statement}
+\textit{Claim 1:} For each $i\in\left[  n\right]  $ and each \textbf{proper}
+subset $K$ of $\left[  n\right]  $, we have%
+\[
+\sum_{k\in K}A_{i,k}\leq\mu.
+\]
+
+\end{statement}
+
+[\textit{Proof of Claim 1:} Let $i\in\left[  n\right]  $. Let $K$ be a proper
+subset of $\left[  n\right]  $. Then, there exists at least one element
+$j\in\left[  n\right]  $ satisfying $j\notin K$. Consider this $j$. Then,
+$\sum_{\substack{k\in\left[  n\right]  ;\\k\notin K}}A_{i,k}\geq A_{i,j}$
+(since $A\geq0$ entails that all $A_{i,k}$ are nonnegative). However,%
+\begin{align*}
+\sum_{k\in K}A_{i,k}  &  =\underbrace{\sum_{k\in\left[  n\right]  }A_{i,k}%
+}_{\substack{=\left(  \text{the }i\text{-th row sum of }A\right)
+\\=1\\\text{(since all row sums of }A\text{ equal }1\text{)}}%
+}-\underbrace{\sum_{\substack{k\in\left[  n\right]  ;\\k\notin K}}A_{i,k}%
+}_{\geq A_{i,j}}\leq1-\underbrace{A_{i,j}}_{\geq\min\left\{  A_{u,v}%
+\ \mid\ u,v\in\left[  n\right]  \right\}  }\\
+&  \leq1-v=\mu\ \ \ \ \ \ \ \ \ \ \left(  \text{by the definition of }%
+\mu\right)  .
+\end{align*}
+This proves Claim 1.] \medskip
+
+Next, we claim:
+
+\begin{statement}
+\textit{Claim 2:} For any $i,j\in\left[  n\right]  $ and any $m\in\mathbb{N}$,
+we have%
+\[
+\left\vert \left(  A^{m}-ey^{T}\right)  _{i,j}\right\vert \leq\mu^{m}.
+\]
+
+\end{statement}
+
+Once Claim 2 is proved, it will follow easily that $\left(  A^{m}%
+-ey^{T}\right)  _{i,j}\rightarrow0$ as $m\rightarrow\infty$ (because $0\leq
+\mu<1$), so that $A^{m}\rightarrow ey^{T}$, and the lemma will thus follow.
+
+[\textit{Proof of Claim 2:} We induct on $m$:
+
+\textit{Base case:} For any $i,j\in\left[  n\right]  $, we have%
+\[
+\left(  A^{0}-ey^{T}\right)  _{i,j}=\underbrace{\left(  A^{0}\right)  _{i,j}%
+}_{\substack{=\left(  I_{n}\right)  _{i,j}\\=\delta_{i,j}}}-y_{j}%
+=\underbrace{\delta_{i,j}}_{\in\left\{  0,1\right\}  }-\underbrace{y_{j}%
+}_{\substack{\in\left[  0,1\right]  \\\text{(by
+(\ref{pf.lem.posmat.crucifix-e.yj-in}))}}}\in\left[  -1,1\right]
+\]
+and therefore $\left\vert \left(  A^{0}-ey^{T}\right)  _{i,j}\right\vert
+\leq1=\mu^{0}$. In other words, Claim 2 holds for $m=0$.
+
+\textit{Induction step:} Let $p\in\mathbb{N}$. Assume (as the induction
+hypothesis) that Claim 2 holds for $m=p$. We must now show that Claim 2 also
+holds for $m=p+1$.
+
+Let
+\[
+B:=A^{p}-ey^{T}\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ C:=A^{p+1}%
+-ey^{T}.
+\]
+Our induction hypothesis says that Claim 2 holds for $m=p$. In other words,
+for all $i,j\in\left[  n\right]  $, we have $\left\vert \left(  A^{p}%
+-ey^{T}\right)  _{i,j}\right\vert \leq\mu^{p}$. In other words, for all
+$i,j\in\left[  n\right]  $, we have%
+\begin{equation}
+\left\vert B_{i,j}\right\vert \leq\mu^{p}
+\label{pf.lem.posmat.crucifix-e.c2.IH}%
+\end{equation}
+(since $B=A^{p}-ey^{T}$).
+
+Our goal is to show that Claim 2 holds for $m=p+1$. In other words, our goal
+is to show that for all $i,j\in\left[  n\right]  $, we have $\left\vert
+\left(  A^{p+1}-ey^{T}\right)  _{i,j}\right\vert \leq\mu^{p+1}$. In other
+words, our goal is to show that for all $i,j\in\left[  n\right]  $, we have
+$\left\vert C_{i,j}\right\vert \leq\mu^{p+1}$ (since $C=A^{p+1}-ey^{T}$).
+
+Fix $i,j\in\left[  n\right]  $. Thus we must prove that $\left\vert
+C_{i,j}\right\vert \leq\mu^{p+1}$.
+
+From $B=A^{p}-ey^{T}$, we obtain%
+\[
+AB=A\left(  A^{p}-ey^{T}\right)  =\underbrace{AA^{p}}_{=A^{p+1}}%
+-\underbrace{Ae}_{=e}y^{T}=A^{p+1}-ey^{T}=C.
+\]
+Hence, $C=AB$, so that (by the definition of the product of two matrices we
+have)%
+\begin{equation}
+C_{i,j}=\sum_{k=1}^{n}A_{i,k}B_{k,j}. \label{pf.lem.posmat.crucifix-e.c2.Cij=}%
+\end{equation}
+
+
+For each $m\in\mathbb{N}$, we have
+\[
+y^{T}A^{m}=y^{T}%
+\]
+(indeed, this is easily proved by induction on $m$, using the fact that
+$y^{T}A=y^{T}$). Applying this to $m=p$, we obtain $y^{T}A^{p}=y^{T}$.
+
+Recall that $B_{\bullet,j}$ denotes the $j$-th column of the matrix $B$. We
+have%
+\[
+y^{T}\underbrace{B}_{=A^{p}-ey^{T}}=y^{T}\left(  A^{p}-ey^{T}\right)
+=\underbrace{y^{T}A^{p}}_{=y^{T}}-\underbrace{y^{T}e}_{=1}y^{T}=y^{T}%
+-y^{T}=0,
+\]
+and thus $y^{T}B_{\bullet,j}=0$ (since $y^{T}B_{\bullet,j}$ is the $j$-th
+entry of the row vector $y^{T}B$). Also, from $y^{T}e=1\neq0$, we obtain
+$y\neq0$. Hence, Lemma \ref{lem.posmat.proper-subset} (applied to
+$B_{\bullet,j}$ and $B_{k,j}$ and $A_{i,k}$ instead of $v$ and $v_{k}$ and
+$a_{i}$) yields that there exists some \textbf{proper} subset $K$ of $\left[
+n\right]  $ such that%
+\begin{equation}
+\left\vert \sum_{k=1}^{n}A_{i,k}B_{k,j}\right\vert \leq\sum_{k\in K}%
+A_{i,k}\left\vert B_{k,j}\right\vert .
+\label{pf.lem.posmat.crucifix-e.c2.Kieq}%
+\end{equation}
+Consider this $K$. Now, from (\ref{pf.lem.posmat.crucifix-e.c2.Cij=}), we
+obtain%
+\begin{align*}
+\left\vert C_{i,j}\right\vert  &  =\left\vert \sum_{k=1}^{n}A_{i,k}%
+B_{k,j}\right\vert \leq\sum_{k\in K}A_{i,k}\underbrace{\left\vert
+B_{k,j}\right\vert }_{\substack{\leq\mu^{p}\\\text{(by
+(\ref{pf.lem.posmat.crucifix-e.c2.IH}),}\\\text{applied to }k\text{ instead of
+}i\text{)}}}\ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{pf.lem.posmat.crucifix-e.c2.Kieq})}\right) \\
+&  \leq\underbrace{\sum_{k\in K}A_{i,k}}_{\substack{\leq\mu\\\text{(by Claim
+1)}}}\mu^{p}\ \ \ \ \ \ \ \ \ \ \left(  \text{since }A_{i,k}\geq0\text{ for
+all }k\right) \\
+&  \leq\mu\mu^{p}=\mu^{p+1}.
+\end{align*}
+As we explained above, this completes the induction step. Thus, Claim 2 is
+proved.] \medskip
+
+Finishing the proof of Lemma \ref{lem.posmat.crucifix-e} is now easy: We have
+$0\leq\mu<1$ and therefore $\mu^{m}\rightarrow0$ as $m\rightarrow\infty$.
+Thus, Claim 2 shows that for any $i,j\in\left[  n\right]  $, we have%
+\[
+\left(  A^{m}-ey^{T}\right)  _{i,j}\rightarrow0\ \ \ \ \ \ \ \ \ \ \text{as
+}m\rightarrow\infty.
+\]
+In other words, $A^{m}-ey^{T}\rightarrow0$ as $m\rightarrow\infty$. In other
+words, $A^{m}\rightarrow ey^{T}$ as $m\rightarrow\infty$. This proves Lemma
+\ref{lem.posmat.crucifix-e}.
+\end{proof}
+
+Next, we generalize Lemma \ref{lem.posmat.crucifix-e} by replacing $e$ by an
+arbitrary positive vector $x$:
+
+\begin{lemma}
+[crucifix lemma, general case]\label{lem.posmat.crucifix-x}Let $A\in
+\mathbb{R}^{n\times n}$ satisfy $A>0$. Let $x\in\mathbb{R}^{n}$ satisfy $Ax=x$
+and $x>0$. Let $y\in\mathbb{R}^{n}$ satisfy $y^{T}A=y^{T}$ and $y\geq0$ and
+$y^{T}x=1$. Then,%
+\[
+A^{m}\rightarrow xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+\end{lemma}
+
+\begin{proof}
+We can easily reduce this to Lemma \ref{lem.posmat.crucifix-e}.
+
+Indeed, write the vector $x$ as $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)
+^{T}$. Thus, $x_{1},x_{2},\ldots,x_{n}$ are positive reals (since $x>0$). Let%
+\[
+D:=\operatorname*{diag}\left(  x_{1},x_{2},\ldots,x_{n}\right)  .
+\]
+Thus, we easily obtain $De=x$. Moreover, the matrix $D$ is diagonal, so that
+$D^{T}=D$. Furthermore, we have
+\[
+D^{-1}AD>0
+\]
+(since the $\left(  u,v\right)  $-th entry of the matrix $D^{-1}AD$ is
+$\underbrace{x_{u}^{-1}}_{>0}\ \ \underbrace{A_{u,v}}_{>0}%
+\ \ \underbrace{x_{v}}_{>0}>0$ for each $u,v\in\left[  n\right]  $) and%
+\[
+D^{-1}ADe=e
+\]
+(since $A\underbrace{De}_{=x}=Ax=x=De$) and
+\[
+\underbrace{\left(  Dy\right)  ^{T}}_{\substack{=y^{T}D^{T}=y^{T}%
+D\\\text{(since }D^{T}=D\text{)}}}D^{-1}AD=y^{T}\underbrace{DD^{-1}}_{=I_{n}%
+}AD=\underbrace{y^{T}A}_{=y^{T}}D=y^{T}D
+\]
+and%
+\[
+\left(  Dy\right)  ^{T}=y^{T}\underbrace{D^{T}}_{=D}=y^{T}D\geq0
+\]
+(since $y\geq0$ and $D\geq0$) and%
+\[
+\underbrace{\left(  Dy\right)  ^{T}}_{=y^{T}D}e=y^{T}\underbrace{De}%
+_{=x}=y^{T}x=1.
+\]
+Hence, we can apply Lemma \ref{lem.posmat.crucifix-e} to $D^{-1}AD$ and $Dy$
+instead of $A$ and $y$. We thus obtain that%
+\[
+\left(  D^{-1}AD\right)  ^{m}\rightarrow e\left(  Dy\right)  ^{T}%
+\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+Since we have $\left(  D^{-1}AD\right)  ^{m}=D^{-1}A^{m}D$ for each
+$m\in\mathbb{N}$ (in fact, this is essentially the equality
+(\ref{pf.prop.schurtri.similar.same.f.1}) we proved long ago), we can rewrite
+this as%
+\[
+D^{-1}A^{m}D\rightarrow e\left(  Dy\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{as
+}m\rightarrow\infty
+\]
+Multiplying both sides by $D$ from the left and by $D^{-1}$ from the right, we
+can transform this into%
+\[
+A^{m}\rightarrow De\left(  Dy\right)  ^{T}D^{-1}\ \ \ \ \ \ \ \ \ \ \text{as
+}m\rightarrow\infty.
+\]
+In other words,%
+\[
+A^{m}\rightarrow xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty
+\]
+(since $\underbrace{De}_{=x}\underbrace{\left(  Dy\right)  ^{T}}_{=y^{T}%
+D}D^{-1}=xy^{T}\underbrace{DD^{-1}}_{=I_{n}}=xy^{T}$). This proves Lemma
+\ref{lem.posmat.crucifix-x}.
+\end{proof}
+
+\begin{lemma}
+\label{lem.posmat.uniques}Let $A\in\mathbb{C}^{n\times n}$ and $B\in
+\mathbb{C}^{n\times n}$ be two matrices such that $\rho\left(  A\right)  =1$
+and $\operatorname*{rank}B\leq1$. Assume that%
+\begin{equation}
+A^{m}\rightarrow B\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\label{eq.lem.posmat.uniques.ass}%
+\end{equation}
+
+
+Then: \medskip
+
+\textbf{(a)} The number $1$ is an eigenvalue of $A$ and has algebraic
+multiplicity $1$ (and therefore geometric multiplicity $1$ as well). \medskip
+
+\textbf{(b)} There is at most one $1$-eigenvector $x=\left(  x_{1}%
+,x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with $x_{1}%
++x_{2}+\cdots+x_{n}=1$. \medskip
+
+\textbf{(c)} There is at most one vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=y^{T}$ and $x_{1}%
+y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. \medskip
+
+\textbf{(d)} The only eigenvalue of $A$ that has absolute value $1$ is $1$.
+\end{lemma}
+
+\begin{proof}
+We know that $A$ has a Schur triangularization. Let $\left(  U,T\right)  $ be
+a Schur triangularization of $A$. Then, $U\in\mathbb{C}^{n\times n}$ is
+unitary and $T\in\mathbb{C}^{n\times n}$ is upper-triangular and $A=UTU^{\ast
+}$. Since $U$ is unitary, we have $U^{\ast}=U^{-1}$, so that
+$A=UT\underbrace{U^{\ast}}_{=U^{-1}}=UTU^{-1}$. Moreover, Proposition
+\ref{prop.schurtri.schurtri.T-diag} shows that the diagonal entries of $T$ are
+the eigenvalues of $A$ (with their algebraic multiplicities). Let $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}$ be these diagonal entries, in the order
+in which they appear on the diagonal of $T$. Thus, $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$.
+
+For each $m\in\mathbb{N}$, we have%
+\begin{align*}
+A^{m}  &  =\left(  UTU^{-1}\right)  ^{m}\ \ \ \ \ \ \ \ \ \ \left(
+\text{since }A=UTU^{-1}\right) \\
+&  =UT^{m}U^{-1}%
+\end{align*}
+(this is essentially the equality (\ref{pf.prop.schurtri.similar.same.f.1}) we
+proved long ago). Hence, our assumption (\ref{eq.lem.posmat.uniques.ass}) can
+be rewritten as follows:
+\begin{equation}
+UT^{m}U^{-1}\rightarrow B\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\label{pf.lem.posmat.uniques.1}%
+\end{equation}
+Thus, $T^{m}$ converges to a limit (namely, to $U^{-1}BU$) as $m\rightarrow
+\infty$. Therefore, each entry of $T^{m}$ converges to a limit as
+$m\rightarrow\infty$. In particular, $\lim\limits_{m\rightarrow\infty}\left(
+T^{m}\right)  _{i,i}$ is well-defined for each $i\in\left[  n\right]  $.
+However, since $T$ is an upper-triangular matrix with diagonal entries
+$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$, its $m$-th power $T^{m}$ (for
+each $m\in\mathbb{N}$) is an upper-triangular matrix with diagonal entries
+$\lambda_{1}^{m},\lambda_{2}^{m},\ldots,\lambda_{n}^{m}$. In particular, we
+have $\left(  T^{m}\right)  _{i,i}=\lambda_{i}^{m}$ for each $i\in\left[
+n\right]  $. Therefore, $\lim\limits_{m\rightarrow\infty}\lambda_{i}^{m}$ is
+well-defined for each $i\in\left[  n\right]  $ (since we have shown that
+$\lim\limits_{m\rightarrow\infty}\left(  T^{m}\right)  _{i,i}$ is well-defined
+for each $i\in\left[  n\right]  $). This shows that
+\begin{equation}
+\left\vert \lambda_{i}\right\vert <1\text{ or }\lambda_{i}%
+=1\ \ \ \ \ \ \ \ \ \ \text{for each }i\in\left[  n\right]  .
+\label{pf.lem.posmat.uniques.2}%
+\end{equation}
+
+
+If we had $\left\vert \lambda_{i}\right\vert <1$ for each $i\in\left[
+n\right]  $, then we would have $\rho\left(  A\right)  <1$ (since $\lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$); but this
+would contradict $\rho\left(  A\right)  =1$. Hence, we cannot have $\left\vert
+\lambda_{i}\right\vert <1$ for each $i\in\left[  n\right]  $. According to
+(\ref{pf.lem.posmat.uniques.2}), this shows that at least one $i\in\left[
+n\right]  $ satisfies $\lambda_{i}=1$. In other words, $1$ is an eigenvalue of
+$A$ (since $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the eigenvalues of
+$A$). Moreover, (\ref{pf.lem.posmat.uniques.2}) shows that the only eigenvalue
+of $A$ that has absolute value $1$ is $1$. This proves Lemma
+\ref{lem.posmat.uniques} \textbf{(d)}.
+
+Let $k$ be the number of all $i\in\left[  n\right]  $ that satisfy
+$\lambda_{i}=1$. The matrix $\lim\limits_{m\rightarrow\infty}T^{m}$ is an
+upper-triangular matrix whose diagonal entries are $\lim\limits_{m\rightarrow
+\infty}\lambda_{1}^{m},\ \lim\limits_{m\rightarrow\infty}\lambda_{2}%
+^{m},\ \ldots,\ \lim\limits_{m\rightarrow\infty}\lambda_{n}^{m}$ (since each
+$T^{m}$ is an upper-triangular matrix whose diagonal entries are $\lambda
+_{1}^{m},\lambda_{2}^{m},\ldots,\lambda_{n}^{m}$). In view of
+(\ref{pf.lem.posmat.uniques.2}), we conclude that exactly $k$ of these
+diagonal entries are nonzero (since $\left\vert \lambda_{i}\right\vert <1$
+entails $\lim\limits_{m\rightarrow\infty}\lambda_{i}^{m}=0$, whereas
+$\lambda_{i}=1$ entails $\lim\limits_{m\rightarrow\infty}\lambda_{i}^{m}%
+=\lim\limits_{m\rightarrow\infty}1^{m}=1$). Therefore, the matrix
+$\lim\limits_{m\rightarrow\infty}T^{m}$ has rank $\geq k$ (since the rank of
+an upper-triangular matrix is always $\geq$ to the number of its diagonal
+entries that are nonzero\footnote{This can be proved in several ways; for
+example, nonzero diagonal entries can be used to create a nonzero principal
+minor.}). Therefore, the matrix $U\left(  \lim\limits_{m\rightarrow\infty
+}T^{m}\right)  U^{-1}$ has rank $\geq k$ as well (since $U$ is invertible, so
+that $\operatorname*{rank}\left(  U\left(  \lim\limits_{m\rightarrow\infty
+}T^{m}\right)  U^{-1}\right)  =\operatorname*{rank}\left(  \lim
+\limits_{m\rightarrow\infty}T^{m}\right)  $). In other words, the matrix $B$
+has rank $\geq k$ (since (\ref{pf.lem.posmat.uniques.1}) yields $U\left(
+\lim\limits_{m\rightarrow\infty}T^{m}\right)  U^{-1}=B$). In view of the
+assumption $\operatorname*{rank}B\leq1$, this entails $k\leq1$. In other
+words, at most one $i\in\left[  n\right]  $ satisfies $\lambda_{i}=1$ (since
+$k$ is the number of all $i\in\left[  n\right]  $ that satisfy $\lambda_{i}%
+=1$). In other words, the algebraic multiplicity of the eigenvalue $1$ of $A$
+is at most $1$ (since $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
+eigenvalues of $A$). Since this multiplicity is at least $1$ (because we know
+that $1$ is an eigenvalue of $A$), we thus conclude that this multiplicity is
+$1$. This proves Lemma \ref{lem.posmat.uniques} \textbf{(a)}.
+
+The geometric multiplicity of the eigenvalue $1$ of $A$ is therefore also $1$.
+Hence, the $1$-eigenvectors $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)
+^{T}\in\mathbb{C}^{n}$ of $A$ form a $1$-dimensional vector subspace of
+$\mathbb{C}^{n}$. Thus, at most one of these $1$-eigenvectors $x$ satisfies
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This proves Lemma \ref{lem.posmat.uniques}
+\textbf{(b)}.
+
+The matrices $A$ and $A^{T}$ have the same characteristic polynomial, and thus
+have the same eigenvalues with the same algebraic multiplicities. Hence, the
+algebraic multiplicity of the eigenvalue $1$ of $A^{T}$ equals the algebraic
+multiplicity of the eigenvalue $1$ of $A$. Since the latter multiplicity is
+$1$, we thus conclude that the former is $1$ as well. Hence, the geometric
+multiplicity of the eigenvalue $1$ of $A^{T}$ must also equal $1$.
+
+The vectors $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$
+satisfying $y^{T}A=y^{T}$ are the $1$-eigenvectors of $A^{T}$ (since the
+equality $y^{T}A=y^{T}$ is equivalent to $A^{T}y=y$ (because $y^{T}A=\left(
+A^{T}y\right)  ^{T}$)). Hence, they form a $1$-dimensional vector subspace of
+$\mathbb{C}^{n}$ (since the geometric multiplicity of the eigenvalue $1$ of
+$A^{T}$ is $1$). Thus, at most one of these vectors $y$ satisfies $x_{1}%
+y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This proves Lemma
+\ref{lem.posmat.uniques} \textbf{(c)}.
+\end{proof}
+
+Proving Theorem \ref{thm.posmat.perron} is now an easy matter of combining lemmas:
+
+\begin{proof}
+[Proof of Theorem \ref{thm.posmat.perron}.]\textbf{(a)} We have $A>0$. Thus,
+all the more, we have $A_{i,i}>0$ for some $i\in\left[  n\right]  $. Hence,
+Corollary \ref{cor.posmat.specrad.leq1c} \textbf{(c)} yields $\rho\left(
+A\right)  >0$. This proves Theorem \ref{thm.posmat.perron} \textbf{(a)}.
+
+This also shows that the matrix $\dfrac{1}{\rho\left(  A\right)  }A$ is
+well-defined. Moreover, $\dfrac{1}{\rho\left(  A\right)  }A>0$ (since $A>0$).
+the matrix $\dfrac{1}{\rho\left(  A\right)  }A$ has the same eigenvectors as
+$A$ (with the same algebraic multiplicities), while the corresponding
+eigenvalues are those of $A$ multiplied by $\dfrac{1}{\rho\left(  A\right)  }%
+$. Hence, if we replace $A$ by $\dfrac{1}{\rho\left(  A\right)  }A$, then the
+claim of Theorem \ref{thm.posmat.perron} does not substantially change (i.e.,
+it gets replaced by an equivalent claim). Thus, let us replace $A$ by
+$\dfrac{1}{\rho\left(  A\right)  }A$. This replacement causes $\rho\left(
+A\right)  $ to become $1$ (since $\rho\left(  \dfrac{1}{\rho\left(  A\right)
+}A\right)  =\dfrac{1}{\rho\left(  A\right)  }\rho\left(  A\right)  =1$). Thus,
+we have $\rho\left(  A\right)  =1$ now.
+
+Next, we shall show that $A$ has a positive $1$-eigenvector. Indeed, from
+$\rho\left(  A\right)  =1$, we see that $A$ has an eigenvalue $\lambda
+\in\mathbb{C}$ with $\left\vert \lambda\right\vert =1$. Consider this
+$\lambda$. Pick any nonzero $\lambda$-eigenvector $z=\left(  z_{1}%
+,z_{2},\ldots,z_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$. Thus, $Az=\lambda
+z$. Moreover, $z\neq0$ and thus $\left\vert z\right\vert \neq0$. Also,
+clearly, $\left\vert z\right\vert \geq0$.
+
+From $A>0$, we obtain $A=\left\vert A\right\vert $. Hence,%
+\begin{align*}
+\underbrace{A}_{=\left\vert A\right\vert }\left\vert z\right\vert  &
+=\left\vert A\right\vert \cdot\left\vert z\right\vert \geq\left\vert
+\underbrace{Az}_{=\lambda z}\right\vert \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+Proposition \ref{prop.posmat.prod-geq-Ax} \textbf{(a)}}\right) \\
+&  =\left\vert \lambda z\right\vert =\underbrace{\left\vert \lambda\right\vert
+}_{=1}\cdot\left\vert z\right\vert =\left\vert z\right\vert .
+\end{align*}
+Thus, Corollary \ref{cor.posmat.supereig-cor} \textbf{(b)} (applied to
+$w=\left\vert z\right\vert $) yields $A\left\vert z\right\vert =\left\vert
+z\right\vert >0$. In other words, $\left\vert z\right\vert $ is a positive
+$1$-eigenvector of $A$.
+
+We have thus constructed a positive $1$-eigenvector of $A$. The same argument
+(applied to $A^{T}$ instead of $A$) lets us construct a positive
+$1$-eigenvector of $A^{T}$ (since $A>0$ entails $A^{T}>0$, and since
+$\rho\left(  A^{T}\right)  =\rho\left(  A\right)  =1$). Let these two
+eigenvectors be $x$ and $y$ (with $x$ being the $1$-eigenvector of $A$ and $y$
+being the one of $A^{T}$). Thus, $x\in\mathbb{R}^{n}$ satisfies $Ax=x$ and
+$x>0$, whereas $y\in\mathbb{R}^{n}$ satisfies $A^{T}y=y$ and $y>0$.
+
+Write the vectors $x$ and $y$ as $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)
+^{T}$ and $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}$.
+
+By scaling $x$ by an appropriately chosen real scalar\footnote{namely, by the
+scalar $\dfrac{1}{x_{1}+x_{2}+\cdots+x_{n}}$}, we can achieve $x_{1}%
++x_{2}+\cdots+x_{n}=1$. So we WLOG assume that $x_{1}+x_{2}+\cdots+x_{n}=1$.
+
+Moreover, by scaling $y$ by an appropriately chosen positive real scalar
+\footnote{Specifically, we must scale $y$ by $\dfrac{1}{y^{T}x}$ (which is a
+well-defined positive real scalar, since $x>0$ and $y>0$ entail $y^{T}x>0$).},
+we can achieve $y^{T}x=1$ (without disturbing the properties $A^{T}y=y$ and
+$y>0$). So we WLOG assume that $y^{T}x=1$. In other words, $x_{1}y_{1}%
++x_{2}y_{2}+\cdots+x_{n}y_{n}=1$ (since $y^{T}x=x_{1}y_{1}+x_{2}y_{2}%
++\cdots+x_{n}y_{n}$).
+
+By taking transposes on both sides of the equality $A^{T}y=y$, we obtain
+$y^{T}A=y^{T}$ (since $\left(  A^{T}y\right)  ^{T}=y^{T}A$). Thus, Lemma
+\ref{lem.posmat.crucifix-x} yields
+\begin{equation}
+A^{m}\rightarrow xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\label{pf.thm.posmat.perron.e.at}%
+\end{equation}
+This proves Theorem \ref{thm.posmat.perron} \textbf{(e)} (since $\dfrac
+{1}{\rho\left(  A\right)  }A=A$ (because $\rho\left(  A\right)  =1$)).
+
+The matrix $xy^{T}$ has rank%
+\[
+\operatorname*{rank}\left(  xy^{T}\right)  \leq\operatorname*{rank}x\leq1
+\]
+(since $x$ is a column vector). Hence, we can apply Lemma
+\ref{lem.posmat.uniques} to $B=xy^{T}$ (because of
+(\ref{pf.thm.posmat.perron.e.at})).
+
+Lemma \ref{lem.posmat.uniques} \textbf{(a)} tells us that the number $1$ is an
+eigenvalue of $A$ and has algebraic multiplicity $1$ (and therefore geometric
+multiplicity $1$ as well). In view of $\rho\left(  A\right)  =1$, this proves
+Theorem \ref{thm.posmat.perron} \textbf{(b)}.
+
+Lemma \ref{lem.posmat.uniques} \textbf{(d)} tells us that the only eigenvalue
+of $A$ that has absolute value $1$ is $1$. In view of $\rho\left(  A\right)
+=1$, this proves Theorem \ref{thm.posmat.perron} \textbf{(f)}.
+
+We already know that $x=\left(  x_{1},x_{2},\ldots,x_{n}\right)  ^{T}%
+\in\mathbb{C}^{n}$ is an $1$-eigenvector of $A$ with $x_{1}+x_{2}+\cdots
++x_{n}=1$. Moreover, Lemma \ref{lem.posmat.uniques} \textbf{(b)} tells us that
+there is at most one such $1$-eigenvector; therefore, $x$ is the only such
+$1$-eigenvector. This proves Theorem \ref{thm.posmat.perron} \textbf{(c)}
+(since $\rho\left(  A\right)  =1$, and since we also know that $x$ is positive).
+
+We already know that $y=\left(  y_{1},y_{2},\ldots,y_{n}\right)  ^{T}%
+\in\mathbb{C}^{n}$ is a vector such that $y^{T}A=y^{T}$ and $x_{1}y_{1}%
++x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. Moreover, Lemma \ref{lem.posmat.uniques}
+\textbf{(c)} tells us that there is at most one such vector; therefore, $y$ is
+the only such vector. This proves Theorem \ref{thm.posmat.perron} \textbf{(c)}
+(since $\rho\left(  A\right)  =1$, and since we know that $y$ is positive).
+\end{proof}
+
+We shall now prove the Perron--Frobenius theorems.
 
 [...]
 

@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Wednesday, December 01, 2021 11:49:12}
+%TCIDATA{LastRevised=Friday, December 03, 2021 11:51:20}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -159,6 +159,375 @@ Center, 15 S 33rd Street, Philadelphia PA, 19104, USA}}
 
 \section{Positive and nonnegative matrices ([HorJoh, Chapter 8]) (cont'd)}
 
-\subsection{...}
+\subsection{The Perron theorems (cont'd)}
+
+\subsubsection{Lemmas for the proofs}
+
+Before we prove the Perron and Perron--Frobenius theorems, we need to state a
+few lemmas. First, recall the corollary:
+
+\begin{corollary}
+\label{cor.posmat.rho-in-terms-of-rowsums-x}Let $A\in\mathbb{R}^{n\times n}$
+satisfy $A\geq0$ and $n>0$. Let $x_{1},x_{2},\ldots,x_{n}$ be any $n$ positive
+reals. Then,%
+\[
+\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}%
+A_{i,j}\leq\rho\left(  A\right)  \leq\max\limits_{i\in\left[  n\right]  }%
+\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}A_{i,j}.
+\]
+
+\end{corollary}
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ satisfy $A\geq0$ and $n>0$.
+
+Let $x\in\mathbb{R}^{n}$ satisfy $x>0$.
+
+Let $\alpha$ be a nonnegative real. Then:
+
+\textbf{(a)} If $Ax\geq\alpha x$, then $\rho\left(  A\right)  \geq\alpha$.
+
+\textbf{(b)} If $Ax>\alpha x$, then $\rho\left(  A\right)  >\alpha$.
+
+\textbf{(c)} If $Ax\leq\alpha x$, then $\rho\left(  A\right)  \leq\alpha$.
+
+\textbf{(d)} If $Ax<\alpha x$, then $\rho\left(  A\right)  <\alpha$.
+\end{corollary}
+
+\begin{proof}
+Write $x$ as $x=\left(  \dfrac{1}{x_{1}},\dfrac{1}{x_{2}},\ldots,\dfrac
+{1}{x_{n}}\right)  ^{T}$; then, $x_{1},x_{2},\ldots,x_{n}>0$.
+
+\textbf{(a)} Assume that $Ax\geq\alpha x$. The old corollary yields
+\[
+\min\limits_{i\in\left[  n\right]  }\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}%
+A_{i,j}\leq\rho\left(  A\right)  .
+\]
+Thus,%
+\[
+\rho\left(  A\right)  \geq\min\limits_{i\in\left[  n\right]  }\sum_{j=1}%
+^{n}\dfrac{x_{i}}{x_{j}}A_{i,j}=\min\limits_{i\in\left[  n\right]  }%
+x_{i}\underbrace{\sum_{j=1}^{n}\dfrac{1}{x_{j}}A_{i,j}}_{\substack{=\left(
+\text{the }i\text{-th entry of }Ax\right)  \geq\dfrac{\alpha}{x_{i}%
+}\\\text{(since }Ax\geq\alpha x\text{)}}}\geq\min\limits_{i\in\left[
+n\right]  }x_{i}\cdot\dfrac{\alpha}{x_{i}}=\alpha.
+\]
+
+
+\textbf{(b)} Use the same argument as before, but with $>$ sign.
+
+\textbf{(c)} Analogous, but now use the other half of the old corollary.
+
+\textbf{(d)} Analogous.
+\end{proof}
+
+\begin{corollary}
+Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$ and $n>0$ and $\rho\left(
+A\right)  =1$. Let $w\in\mathbb{R}^{n}$ satisfy $w\geq0$ and $w\neq0$.
+
+\textbf{(a)} We always have $Aw>0$.
+
+\textbf{(b)} If $Aw\geq w$, then $Aw=w>0$.
+\end{corollary}
+
+\begin{proof}
+\textbf{(a)} For each $i$, the $i$-th entry of $Aw$ is $\sum_{j=1}^{n}%
+A_{i,j}w_{j}$ (where $w_{j}$ is the $j$-th entry of $w$). This is a sum of
+nonnegative addends, and at least one of these addends is actually positive
+(since $w\neq0$ entails that $w_{j}>0$ for some $j$, and then we also have
+$A_{i,j}>0$ because $A>0$). So this sum is positive. Thus we have shown that
+all entries of $Aw$ are positive. In other words, $Aw>0$.
+
+\textbf{(b)} Assume that $Aw\geq w$. Let $z:=Aw-w$. Then, $z\geq0$. Hence, if
+we had $z\neq0$, then part \textbf{(a)} (applied to $z$ instead of $w$) would
+yield $Az>0$, so that $A\left(  Aw-w\right)  >0$.
+
+Part \textbf{(a)} yields $Aw>0$. If we had $AAw>Aw$, then part \textbf{(b)} of
+the preceding corollary (applied to $x=Aw$ and $\alpha=1$) would yield
+$\rho\left(  A\right)  >1$, which would contradict $\rho\left(  A\right)  =1$.
+So we cannot have $AAw>Aw$. In other words, we cannot have $A\left(
+Aw-w\right)  >0$. Thus, we cannot have $z\neq0$ (by the previous paragraph).
+So $z=0$ and therefore $Aw=w$ (since $z=Aw-w$). This also entails $w=Aw>0$ by
+part \textbf{(a)}. So part \textbf{(b)} is proved.
+\end{proof}
+
+\begin{definition}
+Fix $n>0$. Let $e=\left(  1,1,\ldots,1\right)  ^{T}$.
+\end{definition}
+
+\begin{remark}
+\textbf{(a)} An $n\times n$-matrix $A$ satisfies $Ae=e$ if and only if all row
+sums of $A$ equal $1$.
+
+\textbf{(b)} An $n\times n$-matrix $A$ satisfies $e^{T}A=e^{T}$ if and only if
+all column sums of $A$ equal $1$.
+\end{remark}
+
+\begin{lemma}
+[crucifix lemma, special case]Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$
+and $Ae=e$. Let $y\in\mathbb{R}^{n}$ satisfy $y^{T}A=y^{T}$ and $y\geq0$ and
+$y^{T}e=1$ (that is, the sum of all entries of $y$ is $1$). Then,%
+\[
+A^{m}\rightarrow ey^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+\end{lemma}
+
+\begin{proof}
+The entries of the vector $y$ are nonnegative reals (since $y\geq0$) and their
+sum is $1$ (since $y^{T}e=1$). Thus, all these entries lie in the interval
+$\left[  0,1\right]  $.
+
+From $Ae=e$, we conclude that all row sums of $A$ equal $1$. Since $A>0$, this
+implies that all entries $A_{i,j}$ of $A$ satisfy%
+\[
+0<A_{i,j}\leq1.
+\]
+
+
+Let
+\[
+\mu:=1-\min\left\{  A_{i,j}\ \mid\ i,j\in\left[  n\right]  \right\}  .
+\]
+Then, $0\leq\mu<1$ (by the previous inequality).
+
+\begin{statement}
+\textit{Claim 1:} For each $i\in\left[  n\right]  $ and each \textbf{proper}
+subset $K$ of $\left[  n\right]  $, we have%
+\[
+\sum_{k\in K}A_{i,k}\leq\mu.
+\]
+
+\end{statement}
+
+[\textit{Proof of Claim 1:} Let $i\in\left[  n\right]  $. Let $K$ be a proper
+subset of $\left[  n\right]  $. Then,
+\[
+\sum_{k\in K}A_{i,k}=1-\underbrace{\sum_{k\notin K}A_{i,k}}_{\substack{\geq
+\min\left\{  A_{i,j}\ \mid\ i,j\in\left[  n\right]  \right\}  \\\text{(since
+there exists at least one }k\notin K\text{)}}}\leq1-\min\left\{  A_{i,j}%
+\ \mid\ i,j\in\left[  n\right]  \right\}  =\mu,
+\]
+so Claim 1 is proved.]
+
+Now, we claim:
+
+\begin{statement}
+\textit{Claim 2:} For any $i,j\in\left[  n\right]  $ and any $m\in\mathbb{N}$,
+we have%
+\[
+\left\vert \left(  A^{m}-ey^{T}\right)  _{i,j}\right\vert \leq\mu^{m}.
+\]
+
+\end{statement}
+
+Once Claim 2 is proved, it will follow easily that $\left(  A^{m}%
+-ey^{T}\right)  _{i,j}\rightarrow0$ as $m\rightarrow\infty$ (because $0\leq
+\mu<1$), so that $A^{m}\rightarrow ey^{T}$, and the lemma will thus follow.
+
+[\textit{Proof of Claim 2:} We induct on $m$:
+
+\textit{Base case:} We need to show that $\left\vert \left(  I_{n}%
+-ey^{T}\right)  _{i,j}\right\vert \leq1$ for all $i,j$. This follows from the
+fact that the entries of $y$ lie in the interval $\left[  0,1\right]  $
+(because $\left(  I_{n}-ey^{T}\right)  _{i,j}=\delta_{i,j}-\underbrace{y_{j}%
+}_{\in\left[  0,1\right]  }\in\left[  -1,1\right]  $).
+
+\textit{Induction step:} Let $p\in\mathbb{N}$. Assume (as the induction
+hypothesis) that Claim 2 holds for $m=p$. We must now show that it also holds
+for $m=p+1$.
+
+Let $B:=A^{p}-ey^{T}$ and $C:=A^{p+1}-ey^{T}$. So our IH says that $\left\vert
+B_{i,j}\right\vert \leq\mu^{p}$ for all $i,j$. Our goal is to show that
+$\left\vert C_{i,j}\right\vert \leq\mu^{p+1}$ for all $i,j$.
+
+Fix $i,j$. We have%
+\[
+AB=A\left(  A^{p}-ey^{T}\right)  =A^{p+1}-\underbrace{Ae}_{=e}y^{T}%
+=A^{p+1}-ey^{T}=C.
+\]
+Hence, $C=AB$, so that%
+\[
+C_{i,j}=\sum_{k=1}^{n}\underbrace{A_{i,k}}_{>0}B_{k,j}=\sum_{k\in P}%
+A_{i,k}\left\vert B_{k,j}\right\vert -\sum_{k\in N}A_{i,k}\left\vert
+B_{k,j}\right\vert ,
+\]
+where%
+\[
+P:=\left\{  k\in\left[  n\right]  \ \mid\ B_{k,j}>0\right\}
+\ \ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ \ N:=\left\{  k\in\left[
+n\right]  \ \mid\ B_{k,j}<0\right\}  .
+\]
+
+
+However, the entries of the $j$-th column of $B$ cannot all have the same sign
+(i.e., both subsets $P$ and $N$ of $\left[  n\right]  $ are proper). The
+reason for this is that%
+\begin{align*}
+y^{T}B  & =y^{T}\left(  A^{p}-ey^{T}\right)  =\underbrace{y^{T}A^{p}%
+}_{\substack{=y^{T}\\\text{(since }y^{T}A=y^{T}\text{)}}}-\underbrace{y^{T}%
+e}_{=1}y^{T}=y^{T}-y^{T}=0\\
+& \Longrightarrow\ \ \ \ \ \ \ \ \ \ \left(  \text{look at the }j\text{-th
+entry}\right)  \\
+\sum_{k=1}^{n}\underbrace{y_{k}}_{\geq0}B_{k,j}  & =0
+\end{align*}
+and that $y^{T}$ is a nonzero nonnegative vector, so there is a nontrivial
+linear combination of the entries of the $j$-th column of $B$ with nonnegative
+coefficients that is $0$.
+
+So both subsets $P$ and $N$ of $\left[  n\right]  $ are proper.
+
+Now, from%
+\[
+C_{i,j}=\sum_{k=1}^{n}\underbrace{A_{i,k}}_{>0}B_{k,j}=\sum_{k\in P}%
+A_{i,k}\left\vert B_{k,j}\right\vert -\sum_{k\in N}A_{i,k}\left\vert
+B_{k,j}\right\vert ,
+\]
+we obtain%
+\[
+\left\vert C_{i,j}\right\vert =\left\vert \sum_{k\in P}A_{i,k}\left\vert
+B_{k,j}\right\vert -\sum_{k\in N}A_{i,k}\left\vert B_{k,j}\right\vert
+\right\vert \leq\max\left\{  \sum_{k\in P}A_{i,k}\left\vert B_{k,j}\right\vert
+,\ \sum_{k\in N}A_{i,k}\left\vert B_{k,j}\right\vert \right\}  ,
+\]
+since any two nonnegative reals $x$ and $y$ satisfy $\left\vert x-y\right\vert
+\leq\max\left\{  x,y\right\}  $. Thus,%
+\[
+\left\vert C_{i,j}\right\vert \leq\sum_{k\in K}A_{i,k}\left\vert
+B_{k,j}\right\vert ,
+\]
+where $K$ is either $P$ or $N$. In either case, $K$ is a proper subset of
+$\left[  n\right]  $. Therefore,%
+\[
+\left\vert C_{i,j}\right\vert \leq\sum_{k\in K}A_{i,k}\underbrace{\left\vert
+B_{k,j}\right\vert }_{\substack{\leq\mu^{p}\\\text{(by IH)}}}\leq\mu
+^{p}\underbrace{\sum_{k\in K}A_{i,k}}_{\substack{\leq\mu\\\text{(by Claim 1)}%
+}}\leq\mu^{p}\mu=\mu^{p+1}.
+\]
+This completes the induction step. Thus, Claim 2 is proved.]
+\end{proof}
+
+\begin{lemma}
+[crucifix lemma, general case]Let $A\in\mathbb{R}^{n\times n}$ satisfy $A>0$.
+Let $x\in\mathbb{R}^{n}$ satisfy $Ax=x$ and $x>0$. Let $y\in\mathbb{R}^{n}$
+satisfy $y^{T}A=y^{T}$ and $y\geq0$ and $y^{T}x=1$. Then,%
+\[
+A^{m}\rightarrow xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+\end{lemma}
+
+\begin{proof}
+Let $x_{1},x_{2},\ldots,x_{n}$ be the entries of $x$; then $x_{i}>0$.
+
+Let $D=\operatorname*{diag}\left(  x_{1},x_{2},\ldots,x_{n}\right)  $. Then,
+$De=x$.
+
+Now, apply the previous lemma to $D^{-1}AD$ and $Dy$ instead of $A$ and $y$.
+Details are LTTR.
+\end{proof}
+
+
+
+\begin{proof}
+[Proof of Perron's theorem.] \textbf{(a)} Recall the corollary we had a while
+ago, which said that if $A\geq0$ satisfies $A_{i,i}>0$ for some $i\in\left[
+n\right]  $, then $\rho\left(  A\right)  >0$. This clearly applies, since
+$A>0$. So part \textbf{(a)} is proved.
+
+Next, knowing that $\rho\left(  A\right)  >0$, we can replace $A$ by
+$\dfrac{1}{\rho\left(  A\right)  }A$. This way, $\rho\left(  A\right)  $
+becomes $1$, but nothing else significantly changes. So we have $\rho\left(
+A\right)  =1$ now.
+
+Next, we shall show that there is a positive $1$-eigenvector of $A$. Indeed,
+from $\rho\left(  A\right)  =1$, we see that $A$ has an eigenvalue $\lambda$
+with $\left\vert \lambda\right\vert =1$. Consider this $\lambda$. Pick any
+nonzero $\lambda$-eigenvector $z=\left(  z_{1},z_{2},\ldots,z_{n}\right)
+^{T}\in\mathbb{C}^{n}$ of $A$. Then, $Az=\lambda z$. Hence,%
+\[
+\underbrace{A}_{=\left\vert A\right\vert }\left\vert z\right\vert =\left\vert
+A\right\vert \cdot\left\vert z\right\vert \geq\left\vert Az\right\vert
+=\left\vert \lambda z\right\vert =\underbrace{\left\vert \lambda\right\vert
+}_{=1}\cdot\left\vert z\right\vert =\left\vert z\right\vert .
+\]
+Hence, applying part \textbf{(b)} to the last corollary, we conclude that
+$A\left\vert z\right\vert =\left\vert z\right\vert >0$. Thus, $\left\vert
+z\right\vert $ is a positive $1$-eigenvector of $A$.
+
+We have thus constructed a positive $1$-eigenvector of $A$. The same argument
+(applied to $A^{T}$ instead of $A$) yields a positive $1$-eigenvector of
+$A^{T}$, and thus (by transposing it) a positive left $1$-eigenvector of $A$.
+Let these two eigenvectors be $x$ and $y$. Thus, $x\in\mathbb{R}^{n}$
+satisfies $Ax=x$ and $x>0$, and $y\in\mathbb{R}^{n}$ satisfies $y^{T}A=y^{T}$
+and $y>0$. Moreover, by scaling $y$ appropriately, we can achieve $y^{T}x=1$.
+Thus, the crucifix lemma yields
+\[
+A^{m}\rightarrow xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+This proves part \textbf{(e)}.
+
+Remains to prove the uniqueness claims in parts \textbf{(c)} and \textbf{(d)},
+and also parts \textbf{(b)} and \textbf{(f)}. We can do this in one fell swoop
+if we can show the following: If $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$
+are the eigenvalues of $A$, then only one of these eigenvalues has absolute
+value $\geq1$.
+
+This follows easily from $A^{m}\rightarrow xy^{T}$. Indeed, let $\left(
+U,T\right)  $ be the Schur triangularization of $A$. Then,
+\[
+A=UTU^{\ast}=UTU^{-1},
+\]
+and the diagonal entries of $T$ are the eigenvalues $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}$ of $A$. Hence,%
+\[
+A^{m}=\left(  UTU^{-1}\right)  ^{m}=UT^{m}U^{-1}.
+\]
+Hence, taking the limit as $m\rightarrow\infty$, we get%
+\[
+xy^{T}=UT^{\infty}U^{-1},
+\]
+where $T^{\infty}=U^{-1}xy^{T}U$ is a triangular matrix with diagonal entries
+$\lambda_{1}^{\infty},\lambda_{2}^{\infty},\ldots,\lambda_{n}^{\infty}$. This
+shows that all $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ have absolute
+value $\leq1$, and the ones that have absolute value $1$ must equal $1$.
+Moreover, if more than one of the $\lambda_{i}$s would equal $1$, then
+$UT^{\infty}U^{-1}$ would have rank $>1$, but then it could not equal $xy^{T}$
+(since $\operatorname*{rank}\left(  xy^{T}\right)  \leq1$). Qed.
+\end{proof}
+
+-----------
+
+\begin{theorem}
+[Perron theorem]\label{thm.posmat.perron}Let $A\in\mathbb{R}^{n\times n}$
+satisfy $A>0$ and $n>0$. Then: \medskip
+
+\textbf{(a)} We have $\rho\left(  A\right)  >0$. \medskip
+
+\textbf{(b)} The number $\rho\left(  A\right)  $ is an eigenvalue of $A$ and
+has algebraic multiplicity $1$ (and therefore geometric multiplicity $1$ as
+well). \medskip
+
+\textbf{(c)} There is a unique $\rho\left(  A\right)  $-eigenvector $x=\left(
+x_{1},x_{2},\ldots,x_{n}\right)  ^{T}\in\mathbb{C}^{n}$ of $A$ with
+$x_{1}+x_{2}+\cdots+x_{n}=1$. This eigenvector $x$ is furthermore positive.
+(It is called the \emph{Perron vector} of $A$.) \medskip
+
+\textbf{(d)} There is a unique vector $y=\left(  y_{1},y_{2},\ldots
+,y_{n}\right)  ^{T}\in\mathbb{C}^{n}$ such that $y^{T}A=\rho\left(  A\right)
+y^{T}$ and $x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=1$. This vector $y$ is
+also positive. \medskip
+
+\textbf{(e)} We have%
+\[
+\left(  \dfrac{1}{\rho\left(  A\right)  }A\right)  ^{m}\rightarrow
+xy^{T}\ \ \ \ \ \ \ \ \ \ \text{as }m\rightarrow\infty.
+\]
+
+
+\textbf{(f)} The only eigenvalue of $A$ that has absolute value $\rho\left(
+A\right)  $ is $\rho\left(  A\right)  $ itself.
+\end{theorem}
+
 
 \end{document}
