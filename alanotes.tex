@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Saturday, December 04, 2021 22:12:20}
+%TCIDATA{LastRevised=Sunday, December 05, 2021 00:58:28}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -4774,6 +4774,17 @@ B_{1} & 0 & \cdots & 0\\
 \ref{prop.blockmatrix.simi-pres}.
 \end{exercise}
 
+\begin{exercise}
+\fbox{1} Let $\mathbb{F}$ be a field. Let $A\in\mathbb{F}^{n\times n}$ and
+$B\in\mathbb{F}^{n\times n}$ be two matrices such that $A\sim B$. \medskip
+
+\textbf{(a)} Prove that $A^{T}\sim B^{T}$. (Recall that $C^{T}$ denotes the
+transpose of a matrix $C$.) \medskip
+
+\textbf{(b)} Assume that $\mathbb{F}=\mathbb{C}$. Prove that $A^{\ast}\sim
+B^{\ast}$.
+\end{exercise}
+
 \subsection{Unitary similarity}
 
 Unitary similarity is a more restrictive form of similarity, even though it is
@@ -7071,6 +7082,22 @@ strictly lower-triangular matrix is nilpotent.
 \begin{exercise}
 \label{exe.schurtri.normal.nilp}\fbox{2} Let $A\in\mathbb{C}^{n\times n}$ be a
 normal matrix that is nilpotent. Prove that $A=0$.
+\end{exercise}
+
+Let us state another useful property of polynomials applied to matrices
+(Definition \ref{def.schurtri.normal.p(A)}):
+
+\begin{exercise}
+\label{exe.schurtri.spec-map}\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ be any
+matrix. Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the eigenvalues of
+$A$ (listed with their algebraic multiplicities). Let $p\left(  x\right)  $ be
+a polynomial in a single indeterminate $x$ with coefficients in $\mathbb{C}$.
+
+Prove that the eigenvalues of the matrix $p\left(  A\right)  $ are $p\left(
+\lambda_{1}\right)  ,p\left(  \lambda_{2}\right)  ,\ldots,p\left(  \lambda
+_{n}\right)  $ (listed with their algebraic multiplicities).
+
+(This is known as the \emph{spectral mapping theorem}.)
 \end{exercise}
 
 \subsection{The spectral theorem}
@@ -11868,6 +11895,13 @@ $t^{2}\left(  t-2\right)  $. What can its JCF be? \medskip
 
 \textbf{(d)} A matrix $A\in\mathbb{C}^{3\times3}$ has minimal polynomial
 $t\left(  t-2\right)  $. What can its JCF be?
+\end{exercise}
+
+\begin{exercise}
+\fbox{5} Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Prove that $A^{T}\sim
+A$, where $A^{T}$ denotes the transpose of the matrix $A$. \medskip
+
+[\textbf{Hint:} Reduce to the case of a Jordan cell.]
 \end{exercise}
 
 \subsection{Application of functions to matrices}
@@ -17090,6 +17124,79 @@ f\left(  z\right)  =\sum_{s\in S}\alpha_{s}\left\vert s-z\right\vert
 \]
 Then, apply this to $S=\left\{  x_{1},x_{2},\ldots,x_{n},y_{1},y_{2}%
 ,\ldots,y_{n}\right\}  $.]
+\end{exercise}
+
+\begin{exercise}
+\label{exe.major.weakmaj}\fbox{7} We define a new binary relation
+$\succcurlyeq^{\prime}$ on the set $\mathbb{R}^{n}$ as follows: For two column
+vectors $x\in\mathbb{R}^{n}$ and $y\in\mathbb{R}^{n}$, we write $x\succcurlyeq
+^{\prime}y$ (and say that $x$ \emph{weakly majorizes} $y$) if and only if we
+have%
+\[
+\sum_{i=1}^{m}x_{i}^{\downarrow}\geq\sum_{i=1}^{m}y_{i}^{\downarrow
+}\ \ \ \ \ \ \ \ \ \ \text{for each }m\in\left[  n\right]
+\]
+(but we do not require $\sum_{i=1}^{n}x_{i}^{\downarrow}=\sum_{i=1}^{n}%
+y_{i}^{\downarrow}$).
+
+Let $x$ and $y$ be two weakly decreasing column vectors in $\mathbb{R}^{n}$.
+Let $I$ be an interval of $\mathbb{R}$ that contains all entries of $x$ and of
+$y$. Prove that the following statements are equivalent:
+
+\begin{itemize}
+\item $\mathcal{A}$\textit{:} We have $x\succcurlyeq^{\prime}y$.
+
+\item $\mathcal{B}$\textit{:} For any sufficiently low $\alpha\in\mathbb{R}$,
+we have $\left(
+\begin{array}
+[c]{c}%
+x\\
+\alpha-\sum x
+\end{array}
+\right)  \succcurlyeq\left(
+\begin{array}
+[c]{c}%
+y\\
+\alpha-\sum y
+\end{array}
+\right)  $, where $\sum x:=\sum_{i=1}^{n}x_{i}$ and $\sum y:=\sum_{i=1}%
+^{n}y_{i}$ (and where we are using block-matrix notation, so that $\left(
+\begin{array}
+[c]{c}%
+x\\
+\alpha-\sum x
+\end{array}
+\right)  $ denotes the result of appending a new entry $\alpha-\sum x$ to the
+bottom of the column vector $x$).
+
+\item $\mathcal{C}$\textit{:} We can obtain $y$ from $x$ by a sequence of OPRH
+moves and OPD moves. Here, an \textquotedblleft\emph{OPD move}%
+\textquotedblright\ (short for \textquotedblleft order-preserving decrease
+move\textquotedblright) means a move in which we decrease an entry of a
+decreasing vector in such a way that the vector remains decreasing (i.e., we
+replace an entry $z_{i}$ of a decreasing vector $z\in\mathbb{R}^{n}$ by a
+smaller entry $z_{i}^{\prime}\leq z_{i}$ such that we still have $z_{1}\geq
+z_{2}\geq\cdots\geq z_{i-1}\geq z_{i}^{\prime}\geq z_{i+1}\geq z_{i+2}%
+\geq\cdots\geq z_{n}$).
+
+\item $\mathcal{D}$\textit{:} Every weakly increasing convex function
+$f:I\rightarrow\mathbb{R}$ satisfies%
+\[
+f\left(  x_{1}\right)  +f\left(  x_{2}\right)  +\cdots+f\left(  x_{n}\right)
+\geq f\left(  y_{1}\right)  +f\left(  y_{2}\right)  +\cdots+f\left(
+y_{n}\right)  .
+\]
+
+
+\item $\mathcal{E}$\textit{:} All $t\in\mathbb{R}$ satisfy%
+\[
+\left(  x_{1}-t\right)  _{+}+\left(  x_{2}-t\right)  _{+}+\cdots+\left(
+x_{n}-t\right)  _{+}\geq\left(  y_{1}-t\right)  _{+}+\left(  y_{2}-t\right)
+_{+}+\cdots+\left(  y_{n}-t\right)  _{+}.
+\]
+Here, the notation $z_{+}$ means the positive part of a real number $z$ (that
+is, we have $z_{+}=z$ when $z\geq0$, and $z_{+}=0$ otherwise).
+\end{itemize}
 \end{exercise}
 
 \subsubsection{Doubly stochastic matrices}
