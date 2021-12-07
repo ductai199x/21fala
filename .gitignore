@@ -1,0 +1,5 @@
+*.synctex*
+*.aux
+*.ex
+*.log
+*.out

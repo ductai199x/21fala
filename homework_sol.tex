@@ -1,0 +1,3171 @@
+\documentclass[numbers=enddot,12pt,final,onecolumn,notitlepage]{scrartcl}
+\usepackage[headsepline,footsepline,manualmark]{scrlayer-scrpage}
+\usepackage[all,cmtip]{xy}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{needspace}
+\usepackage{tabls}
+\usepackage{wasysym}
+\usepackage{easytable}
+\usepackage{pythonhighlight}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{LastRevised=Friday, September 24, 2021 15:15:52}
+%TCIDATA{SuppressPackageManagement}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{chains}
+\newcounter{exer}
+\newcounter{sol}
+\newcounter{exera}
+%\numberwithin{exer}{subsection}
+\theoremstyle{definition}
+\newtheorem{theo}{Theorem}[subsection]
+\newenvironment{theorem}[1][]
+{\begin{theo}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{theo}}
+\newtheorem{lem}[theo]{Lemma}
+\newenvironment{lemma}[1][]
+{\begin{lem}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{lem}}
+\newtheorem{prop}[theo]{Proposition}
+\newenvironment{proposition}[1][]
+{\begin{prop}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{prop}}
+\newtheorem{defi}[theo]{Definition}
+\newenvironment{definition}[1][]
+{\begin{defi}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{defi}}
+\newtheorem{remk}[theo]{Remark}
+\newenvironment{remark}[1][]
+{\begin{remk}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{remk}}
+\newtheorem{coro}[theo]{Corollary}
+\newenvironment{corollary}[1][]
+{\begin{coro}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{coro}}
+\newtheorem{conv}[theo]{Convention}
+\newenvironment{convention}[1][]
+{\begin{conv}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{conv}}
+\newtheorem{quest}[theo]{Question}
+\newenvironment{question}[1][]
+{\begin{quest}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{quest}}
+\newtheorem{warn}[theo]{Warning}
+\newenvironment{warning}[1][]
+{\begin{warn}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{warn}}
+\newtheorem{conj}[theo]{Conjecture}
+\newenvironment{conjecture}[1][]
+{\begin{conj}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{conj}}
+\newtheorem{exam}[theo]{Example}
+\newenvironment{example}[1][]
+{\begin{exam}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{exam}}
+\newtheorem{exmp}[exer]{Exercise}
+\newenvironment{exercise}[1][]
+{\begin{exmp}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{exmp}}
+
+\newtheorem{solu}[sol]{Solution}
+\newenvironment{solution}[1][]
+{\begin{solu}[#1]\begin{leftbar}}
+        {\end{leftbar}\end{solu}}
+
+\newenvironment{statement}{\begin{quote}}{\end{quote}}
+\newenvironment{fineprint}{\medskip \begin{small}}{\end{small} \medskip}
+\iffalse
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{question}[1][Question]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{warning}[1][Warning]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newenvironment{teachingnote}[1][Teaching note]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\fi
+\let\sumnonlimits\sum
+\let\prodnonlimits\prod
+\let\cupnonlimits\bigcup
+\let\capnonlimits\bigcap
+\renewcommand{\sum}{\sumnonlimits\limits}
+\renewcommand{\prod}{\prodnonlimits\limits}
+\renewcommand{\bigcup}{\cupnonlimits\limits}
+\renewcommand{\bigcap}{\capnonlimits\limits}
+\setlength\tablinesep{3pt}
+\setlength\arraylinesep{3pt}
+\setlength\extrarulesep{3pt}
+\voffset=0cm
+\hoffset=-0.7cm
+\setlength\textheight{22.5cm}
+\setlength\textwidth{15.5cm}
+\newcommand\arxiv[1]{\href{http://www.arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+\newenvironment{verlong}{}{}
+\newenvironment{vershort}{}{}
+\newenvironment{noncompile}{}{}
+\newenvironment{teachingnote}{}{}
+\excludecomment{verlong}
+\includecomment{vershort}
+\excludecomment{noncompile}
+\excludecomment{teachingnote}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\powset}[2][]{\ifthenelse{\equal{#2}{}}{\mathcal{P}\left(#1\right)}{\mathcal{P}_{#1}\left(#2\right)}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\lf}[2]{#1^{\underline{#2}}}
+\newcommand{\underbrack}[2]{\underbrace{#1}_{\substack{#2}}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\are}{\ar@{-}}
+\newcommand{\nnn}{\nonumber\\}
+\newcommand{\sslash}{\mathbin{/\mkern-6mu/}}
+\newcommand{\numboxed}[2]{\underbrace{\boxed{#1}}_{\text{box } #2}}
+\newcommand{\ig}[2]{\includegraphics[scale=#1]{#2.png}}
+\newcommand{\UNFINISHED}{\begin{center} \Huge{\textbf{Unfinished material begins here.}} \end{center} }
+\ihead{Math 504 notes}
+\ohead{page \thepage}
+\cfoot{\today}
+\begin{document}
+
+\title{Math 504 Homework: Advanced Linear Algebra}
+\author{Tai Duc Nguyen}
+\date{\today\ (Fall 2021)}
+\maketitle
+
+\section{Scoring Table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[!htb]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			Problem \# in notes & Problem \# in this doc & Problem points & Problem grade \\ \hline
+			1.1.1               & 1                      & 3              &               \\ \hline
+			1.1.2               & 2                      & 3              &               \\ \hline
+			1.2.1               & 3                      & 2              &               \\ \hline
+			1.5.1               & 4                      & 1              &               \\ \hline
+			1.5.2               & 5                      & 3              &               \\ \hline
+			1.5.3               & 6                      & 2              &               \\ \hline
+			1.5.4               & 7                      & 3              &               \\ \hline
+			1.5.5               & 8                      & 5              &               \\ \hline
+			1.5.6               & 9                      & 3              &               \\ \hline
+			1.5.7               & 10                     & 5              &               \\ \hline
+			1.5.8               & 11                     & 2              &               \\ \hline
+			1.8.1               & 12                     & 4              &               \\ \hline
+			1.8.2               & 13                     & 5              &               \\ \hline
+			2.1.1               & 14                     & 2              &               \\ \hline
+			2.1.2               & 15                     & 3              &               \\ \hline
+			2.1.3               & 16                     & 2              &               \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+\clearpage
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[!htb]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|ll|l|l|}
+			\hline
+			\multicolumn{1}{|l|}{Problem \# in notes} & Problem \# in this doc & Problem points & Problem grade \\ \hline
+			\multicolumn{1}{|l|}{2.2.1}               & 17                     & 1              &               \\ \hline
+			\multicolumn{1}{|l|}{2.3.2}               & 18                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.3.3}               & 19                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.1}               & 20                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.2}               & 21                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.3}               & 22                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.4}               & 23                     & 4              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.5}               & 24                     & 4              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.6}               & 25                     & 5              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.7}               & 26                     & 4              &               \\ \hline
+			\multicolumn{1}{|l|}{2.5.8}               & 27                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.6.1}               & 28                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.6.2}               & 29                     & 5              &               \\ \hline
+			\multicolumn{1}{|l|}{2.6.3}               & 30                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.6.4}               & 31                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.6.5}               & 32                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.7.1}               & 33                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.7.2}               & 34                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{2.7.3}               & 35                     & 5              &               \\ \hline
+			\multicolumn{1}{|l|}{2.8.1}               & 36                     & 2              &               \\ \hline
+			\multicolumn{1}{|l|}{2.8.2}               & 37                     & 5              &               \\ \hline
+			\multicolumn{1}{|l|}{3.4.1}               & 38                     & 3              &               \\ \hline
+			\multicolumn{1}{|l|}{3.4.2}               & 39                     & 4              &               \\ \hline
+			\multicolumn{1}{|l|}{3.5.1}               & 40                     & 6              &               \\ \hline
+			\multicolumn{1}{|l|}{3.5.2}               & 41                     & 4              &               \\ \hline
+			\multicolumn{2}{|l|}{Total points}        & 131                    &                                \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+\clearpage
+
+\section*{Exercises}
+
+\begin{exercise}
+	\label{exe.unitary.innerprod.x+y}\fbox{3} (1.1.1) Let $x\in\mathbb{C}^{n}$ and
+	$y\in\mathbb{C}^{n}$. Prove that
+	\[
+		\left\vert \left\vert x+y\right\vert \right\vert ^{2}-\left\vert \left\vert
+		x\right\vert \right\vert ^{2}-\left\vert \left\vert y\right\vert \right\vert
+		^{2}=\left\langle x,y\right\rangle +\left\langle y,x\right\rangle
+		=2\cdot\operatorname*{Re}\left\langle x,y\right\rangle .
+	\]
+	Here, $\operatorname*{Re}z$ denotes the real part of any complex number $z$.
+
+\end{exercise}
+
+\begin{solution}
+	\[
+		\left\vert \left\vert x+y \right\vert \right\vert ^{2} = \sqrt{\left\langle x+y, x+y \right\rangle}^{2} -
+		\sqrt{\left\langle x, x \right\rangle}^{2} -
+		\sqrt{\left\langle y, y \right\rangle}^{2}
+	\]
+	\[
+		= \left\langle x+y, x+y \right\rangle -
+		\left\langle x, x \right\rangle -
+		\left\langle y, y \right\rangle
+	\]
+	Due to the fact that dot product has distributive property:
+	\[
+		= \left\langle x, x \right\rangle +
+		\left\langle x, y \right\rangle +
+		\left\langle y, y \right\rangle +
+		\left\langle y, x \right\rangle -
+		\left\langle x, x \right\rangle -
+		\left\langle y, y \right\rangle
+	\]
+	\[
+		= \left\langle x, y \right\rangle +
+		\left\langle y, x \right\rangle
+	\]
+	Since dot product has commutative property:
+	\[
+		= 2\cdot\operatorname*{}\left\langle x, y \right\rangle
+	\]
+	And because the entire left hand side is all real (sum of squared terms)
+	\[
+		= 2\cdot\operatorname*{Re}\left\langle x, y \right\rangle
+	\]
+	QED.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.innerprod.norm-tria}\fbox{3} (1.1.2) Prove triangular inequality theorem:
+	Let
+	$x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Then:
+
+	\textbf{(a)} The inequality $\left\vert \left\vert x\right\vert \right\vert
+		+\left\vert \left\vert y\right\vert \right\vert \geq\left\vert \left\vert
+		x+y\right\vert \right\vert $ holds.
+
+	\textbf{(b)} This inequality becomes an equality if and only if we have $y=0$
+	or $x=\lambda y$ for some nonnegative real $\lambda$.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} We can prove the inequality: $\vert\vert x \vert\vert + \vert\vert y \vert\vert \geq \vert\vert x + y \vert\vert$ by squaring both sides.
+
+	Left side:
+	\[
+		(\vert\vert x \vert\vert + \vert\vert y \vert\vert)^2 = \vert\vert x \vert\vert ^2 + \vert\vert y \vert\vert ^2 + 2 \cdot  \vert\vert x \vert\vert \cdot \vert\vert y \vert\vert
+	\]
+
+	Right side:
+
+	\[
+		\vert\vert x + y \vert\vert ^ 2 = \langle x + y \rangle \langle x + y \rangle = \langle x, x \rangle + \langle y, y \rangle + \langle x, y \rangle + \langle y, x \rangle
+	\]
+	\[
+		= \vert\vert x \vert\vert ^2 + \vert\vert y \vert\vert ^2 + \langle x, y \rangle + \langle y, x \rangle
+	\]
+
+	Using the Cauchy-Schwarz inequality: $\vert\vert x \vert\vert \cdot \vert\vert y \vert\vert \geq \vert \langle x,y \rangle \vert$, we have:
+	\[
+		2 \cdot  \vert\vert x \vert\vert \cdot \vert\vert y \vert\vert \geq 2 \cdot \vert \langle x,y \rangle \vert
+	\]
+
+	Since $\vert \bar{z} \vert = \vert z \vert$, $z \in \mathbb{C}^{n}$,
+
+	\[
+		2 \cdot  \vert\vert x \vert\vert \cdot \vert\vert y \vert\vert \geq \vert \langle x,y \rangle \vert + \vert \langle y,x \rangle \vert
+	\]
+
+	Hence, the left hand side is $\geq$ right hand side.
+
+	\textbf{(b)}
+
+	The case for $y = 0$ is clear because $\vert\vert x \vert\vert + \vert\vert 0 \vert\vert = \vert\vert x + 0 \vert\vert = \vert\vert x \vert\vert$
+
+	The other case if $x = \lambda y$, for some non-negative real $\lambda$, we can substitute in the last equation above
+
+	The left hand side:
+	\[
+		\vert\vert x \vert\vert \cdot \vert\vert y \vert\vert = \vert\vert \lambda y \vert\vert \cdot \vert\vert y \vert\vert = \vert \lambda \vert \vert\vert y \vert\vert \cdot \vert\vert y \vert\vert = \lambda \vert\vert y \vert\vert ^2
+	\]
+	The right hand side:
+	\[
+		\vert \langle x,y \rangle \vert = \vert \langle \lambda y,y \rangle \vert = \lambda \vert \langle y,y \rangle \vert = \lambda \vert\vert y \vert\vert ^ 2
+	\]
+	Hence, the left hand side $=$ right hand side.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.orthog-extend}\fbox{2} (1.2.1)
+	Let $\left(  u_{1},u_{2},\ldots,u_{k}\right)
+	$ be an orthogonal $k$-tuple of nonzero vectors in $\mathbb{C}^{n}$. Then, we have $k\leq n$, and prove that we can find $n-k$ further nonzero vectors $u_{k+1}%
+		,u_{k+2},\ldots,u_{n}$ such that $\left(  u_{1},u_{2},\ldots,u_{n}\right)  $
+	is an orthogonal basis of $\mathbb{C}^{n}$.
+\end{exercise}
+
+\begin{solution}
+	Let $U_k = \left(u_{1},u_{2},\ldots,u_{k}\right)$ be an orthogonal $k$-tuple of nonzero vectors in $\mathbb{C}^{n}$ and $k < n - 1$. \\
+
+	From this Lemma,
+
+	\begin{lemma}
+		\label{lem.unitary.orthog.one-more}Let $k<n$. Let $a_{1},a_{2},\ldots,a_{k}$
+		be $k$ vectors in $\mathbb{C}^{n}$. Then, there exists a nonzero vector
+		$b\in\mathbb{C}^{n}$ that is orthogonal to each of $a_{1},a_{2},\ldots,a_{k}$.
+	\end{lemma}
+
+	there exist a non-zero vector $n_{1}$ that is orthogonal to each vector $u_i$ in $U_k$. Hence, $\left(u_{1},u_{2},\ldots,u_{k},n_{1}\right)$ forms a new tuple $U_{k+1}$ of $k + 1$ othorgonal vectors in $\mathbb{C}^{n}$. Iteratively, we can find $n_1, n_2, n_3,\ldots,n_l$ vectors, with $l = n - k$, that together with $u_{1},u_{2},\ldots,u_{k}$ forms a tuple of $n$ othorgonal vectors $\left(u_{1},u_{2},\ldots,u_{k},n_{1},n_{2},\ldots,n_{l}\right)$ in $\mathbb{C}^{n}$, which is an othorgonal basis of $\mathbb{C}^{n}$. QED.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.isometry-tall}\fbox{1} (1.5.1) Let $A\in\mathbb{C}^{n\times k}$ be
+	an isometry. Show that $n\geq k$.
+\end{exercise}
+
+\begin{solution}
+	Because A is an isometry, columns of A forms a tuple of k-orthorgonal vectors in $\mathbb{C}^{n}$. If $n < k$, then there would be $l = k-n$ more equations than unknowns, which means that there are $l$ vectors that are not orthogonal with each of the other vectors in the tuple. This contradicts, hence, QED.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.group}\fbox{3} (1.5.2) \textbf{(a)} Prove that the product $AB$ of
+	two isometries $A\in\mathbb{C}^{n\times m}$ and $B\in\mathbb{C}^{m\times k}$
+	is always an isometry.
+
+	\textbf{(b)} Prove that the product $AB$ of two unitary matrices
+	$A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ is always unitary.
+
+	\textbf{(c)} Prove that the inverse of a unitary matrix $A\in\mathbb{C}%
+		^{n\times n}$ is always unitary.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)}
+	Let $b_1,b_2,\ldots,b_k$ be the columns in matrix $B$. Then, the product $AB$ can be written as:
+
+	\[
+		AB = C = \left(
+		\begin{array}
+				[c]{ccc}%
+				\mid   &        & \mid   \\
+				Ab_{1} & \cdots & Ab_{k} \\
+				\mid   &        & \mid
+			\end{array}
+		\right)
+	\]
+
+	For any 2 columns $c_i, c_j$ ($i \neq j$) in $C$, the dot product between them is:
+	\[
+		\langle c_i, c_j \rangle =
+		\langle Ab_i, Ab_j \rangle =
+		\langle A, A \rangle \cdot \langle b_i, b_j \rangle =
+		\vert\vert A \vert\vert \cdot \langle b_i, b_j \rangle
+	\]
+	But because $b_i$ is orthogonal to $b_j$, $\langle b_i, b_j \rangle = 0$. Hence,
+	\[
+		\langle c_i, c_j \rangle = 0
+	\]
+	Which means C is an isometry. QED.
+
+	\textbf{(b)}
+	\[
+		(AB)(AB)^{\ast} = (AB)(B^{\ast}A^{\ast})
+	\]
+	\[
+		= A(BB^{\ast})A^{\ast}
+	\]
+	\[
+		= AI_nA^{\ast} = AA^{\ast} = I_n
+	\]
+
+	Hence, the product $AB$ is also unitary
+
+	\textbf{(c)}
+	If $A^{-1}$ is unitary, then we must prove:
+	\[
+		A^{-1}(A^{-1})^{\ast} = I
+	\]
+	From the fact that $A$ is unitary, we have
+	\[
+		AA^{\ast} = I_n
+	\]
+	Invert both sides:
+	\[
+		A^{-1}(A^{\ast})^{-1} = I
+	\]
+	Multiply both sides by $A$ and $A^{-1}$:
+	\[
+		A (A^{-1}(A^{\ast})^{-1}) A^{-1} = A I A^{-1}
+	\]
+	Simplifying:
+	\[
+		(A A^{-1})((A^{\ast})^{-1} A^{-1}) = I
+	\]
+	\[
+		(A^{\ast})^{-1} A^{-1} = I
+	\]
+	Take the conjugate transpose of both sides:
+	\[
+		((A^{\ast})^{-1} A^{-1})^{\ast} = A^{-1}(A^{-1})^{\ast} = I
+	\]
+	QED.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.det-eval}\fbox{2} (1.5.3) Let $U\in\mathbb{C}^{n\times n}$ be a
+	unitary matrix.
+
+	\textbf{(a)} Prove that $\left\vert \det U\right\vert =1$.
+
+	\textbf{(b)} Prove that any eigenvalue $\lambda$ of $U$ satisfies $\left\vert
+		\lambda\right\vert =1$.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Since $U$ is unitary:
+	\[
+		det(U^{\ast}U) = det(I) = 1
+	\]
+	\[
+		det(U^{\ast})det(U) = 1
+	\]
+	\[
+		det(U)^{\ast}det(U) = 1
+	\]
+	\[
+		\vert det(U) \vert ^2 = 1
+	\]
+	\[
+		\vert det(U) \vert = 1
+	\]
+
+	\textbf{(b)} Let $\lambda$ be an eigen value of $U$ and $x$ be the eigen vector associated with $\lambda$:
+	\[
+		Ux = \lambda x
+	\]
+	\[
+		(Ux)^{\ast} Ux = (\lambda x)^{\ast} \lambda x
+	\]
+	\[
+		x^{\ast}U^{\ast}Ux = x^{\ast}\lambda^{\ast} \lambda x
+	\]
+	\[
+		x^{\ast}x = \vert \lambda \vert ^{2} x^{\ast}x
+	\]
+	\[
+		\vert x \vert ^2 = \vert \lambda \vert \vert x \vert ^2
+	\]
+	\[
+		1 = \vert \lambda \vert
+	\]
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.house}\fbox{3} (1.5.4) Let $w\in\mathbb{C}^{n}$ be a nonzero
+	vector. Then, $w^{\ast}w=\left\langle w,w\right\rangle >0$. Thus, we can define an
+	$n\times n$-matrix
+	\[
+		U_{w}:=I_{n}-2\left(  w^{\ast}w\right)  ^{-1}ww^{\ast}\in\mathbb{C}^{n\times
+			n}.
+	\]
+	This is called a \emph{Householder matrix}.
+
+	Show that this matrix $U_{w}$ is unitary and satisfies $U_{w}^{\ast}=U_{w}$.
+\end{exercise}
+
+\begin{solution}
+	Symmetry: \\
+	\[
+		U_w^{\ast} = (I_n - 2\frac{ww^{\ast}}{w^{\ast}w})^{\ast}
+	\]
+	\[
+		= I_n - 2\frac{(ww^{\ast})^{\ast}}{(w^{\ast}w)^{\ast}}
+	\]
+	\[
+		= I_n - 2\frac{ww^{\ast}}{w^{\ast}w} = U_w
+	\]
+
+	Unitary: \\
+	\[
+		U_wU_w^{\ast} = (I_n - 2\frac{ww^{\ast}}{w^{\ast}w})(I_n - 2\frac{ww^{\ast}}{w^{\ast}w})^{\ast}
+	\]
+	\[
+		= (I_n - 2\frac{ww^{\ast}}{w^{\ast}w})(I_n - 2\frac{ww^{\ast}}{w^{\ast}w})
+	\]
+	\[
+		= I_n - 4\frac{ww^{\ast}}{w^{\ast}w} + 4\frac{ww^{\ast}ww^{\ast}}{w^{\ast}ww^{\ast}w}
+	\]
+	\[
+		= I_n - 4\frac{ww^{\ast}}{w^{\ast}w} + 4\frac{ww^{\ast}}{w^{\ast}w}
+	\]
+	\[
+		= I_n
+	\]
+\end{solution}
+
+\begin{exercise}
+	\fbox{5} (1.5.5) \label{exe.unitary.skew-herm.1}Let $S\in\mathbb{C}^{n\times n}$ be a
+	skew-Hermitian matrix.
+
+	\textbf{(a)} Prove that the matrix $I_{n}-S$ is invertible.
+
+	[\textbf{Hint:} Show first that the matrix $I_{n}+S^{\ast}S$ is invertible,
+	since each nonzero vector $v\in\mathbb{C}^{n}$ satisfies $v^{\ast}\left(
+		I_{n}+S^{\ast}S\right)  v=\underbrace{\left\langle v,v\right\rangle }%
+		_{>0}+\underbrace{\left\langle Sv,Sv\right\rangle }_{\geq0}>0$. Then, expand
+	the product $\left(  I_{n}-S^{\ast}\right)  \left(  I_{n}-S\right)  $.]
+
+	\textbf{(b)} Prove that the matrices $I_{n}+S$ and $\left(  I_{n}-S\right)
+		^{-1}$ commute (i.e., satisfy $\left(  I_{n}+S\right)  \cdot\left(
+		I_{n}-S\right)  ^{-1}=\left(  I_{n}-S\right)  ^{-1}\cdot\left(  I_{n}%
+		+S\right)  $).
+
+	\textbf{(c)} Prove that the matrix $U:=\left(  I_{n}-S\right)  ^{-1}%
+		\cdot\left(  I_{n}+S\right)  $ is unitary.
+
+	\textbf{(d)} Prove that the matrix $U+I_{n}$ is invertible.
+
+	\textbf{(e)} Prove that $S=\left(  U-I_{n}\right)  \cdot\left(  U+I_{n}%
+		\right)  ^{-1}$.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)}
+	Let $\lambda$ be an eigen value of $S$ and $v$ be its corresponding eigen vector. Then:
+	\[
+		(I - S)v = Iv - Sv = Iv - \lambda v = (1 - \lambda) v
+	\]
+
+	Since $S$ is a skew-Hermitian matrix, $\lambda$ must be purely imaginary, and $1 - \lambda$ cannot be 0. Hence, all the eigen values of $I - S$ cannot be 0, which means $I - S$ is invertible.
+
+	\textbf{(b)} We have:
+	\[
+		(I + S)\cdot(I - S)^{-1} = I - S^{-1} + S + S \cdot (-S)^{-1}
+	\]
+	and
+	\[
+		(I - S)^{-1}\cdot(I + S) = I + S - S^{-1} + (-S)^{-1} \cdot S = I - S^{-1} + S + (-S)^{-1} \cdot S
+	\]
+	From these 2 equations, we have to prove that: $S \cdot (-S)^{-1} = (-S)^{-1} \cdot S $. But this is obvious because:
+	\[
+		S \cdot (-S)^{-1} = \frac{S}{-S} = -\frac{S}{S} = \frac{-S}{S} = (-S)^{-1} \cdot S
+	\]
+
+	\textbf{(c)}
+
+	Let $W = I - S$, then, $(I - S)^{-1} = W^{-1}$ and $I + S = W^{\ast}$. Hence, $U = W^{-1}W^{\ast}$. We are going to prove $UU^{\ast} = I$.
+	\[
+		UU^{\ast} = W^{-1}W^{\ast} (W^{-1}W^{\ast})^{\ast} = W^{-1}W^{\ast} W(W^{-1})^{\ast}
+	\]
+	Since $W$ and $W^{\ast}$ commutes (part b),
+	\[
+		UU^{\ast} = (W^{-1} W) \cdot (W^{\ast} (W^{-1})^{\ast}) = I \cdot I = I
+	\]
+
+	\textbf{(d)}
+	Following the proof in part a, we can see that the matrix $I + S$ is also invertible because all of its eigen values cannot be 0 since $1 + \lambda$ (where $\lambda$ is purely imaginary). Hence, the matrix $U$ from part c above also have all of its eigenvalues be non-zero since its determinant is a product of two non-zero determinant: $det((I - S)^{-1})$ and $det(I + S)$. Therefore, again, let $\mu$ be an eigen value of $U$ and $v$ be its corresponding eigen vector. Then:
+
+	\[
+		(U + I)v = Uv + Iv = \mu v + Iv = (\mu + 1)v
+	\]
+	Since $\mu$ is non-zero, $\mu + 1$ is non-zero and $U + I$ is invertible.
+
+	\textbf{(e)}
+	From the previous proofs, we can construct the following equation:
+	\[
+		U (I - S) = (I - S)^{-1} (I + S) (I - S) = I \cdot (I + S) = I + S
+	\]
+	Hence,
+	\[
+		U - US = I + S
+	\]
+	\[
+		U - I = S + US
+	\]
+	\[
+		U - I = S(I + U)
+	\]
+	Multiply both sides by $(I + U)^{-1}$:
+	\[
+		(U - I)(I + U)^{-1} = S(I + U)(I + U)^{-1} = S
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.skew-herm.2}\fbox{3} (1.5.6) Let $A\in\mathbb{C}^{n\times n}$ be a
+	matrix. Prove the following: \medskip
+
+	\textbf{(a)} If $A$ is unitary, then the matrix $\lambda A$ is unitary for
+	each $\lambda\in\mathbb{C}$ satisfying $\left\vert \lambda\right\vert =1$.
+	\medskip
+
+	\textbf{(b)} The matrix $\lambda A+I_{n}$ is invertible for all but finitely
+	many $\lambda\in\mathbb{C}$. \medskip
+
+	[\textbf{Hint:} The determinant $\det\left(  \lambda A+I_{n}\right)  $ is a
+		polynomial function in $\lambda$.] \medskip
+
+	\textbf{(c)} The set $\left\{  U\in\operatorname*{U}\nolimits_{n}\left(
+		\mathbb{C}\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  $ is
+	dense in $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $. (That
+	is, each unitary matrix in $\operatorname*{U}\nolimits_{n}\left(
+		\mathbb{C}\right)  $ can be written as a limit $\lim\limits_{k\rightarrow
+			\infty}U_{k}$ of a sequence of unitary matrices $U_{k}$ such that $U_{k}%
+		+I_{n}$ is invertible for each $k$.)
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} We have:
+	\[
+		\lambda A (\lambda A)^{\ast} = \lambda A A^{\ast} \bar{\lambda}
+	\]
+	\[
+		= \lambda I \bar{\lambda} = \vert \lambda \vert ^{2} I
+	\]
+	Hence, $\vert \lambda \vert ^{2} I = I$ only if $\vert \lambda \vert ^{2} = 1$, which means $\vert \lambda \vert = 1$
+
+	\textbf{(b)} Let $\mu$ be the eigen value of the matrix $A$ and $v$ be its corresponding eigen vector:
+	\[
+		(\lambda A + I)v = \lambda Av + Iv = \lambda \mu v + Iv = (\lambda \mu + 1)v
+	\]
+
+	In order for $\lambda A + I$ to be invertible, $(\lambda \mu + 1)$ has to be non zero. Hence, $\lambda \neq -1 -\mu$
+
+	\textbf{(c)}
+	In order to show that the set $D = \left\{  U\in\operatorname*{U}\nolimits_{n}\left(
+		\mathbb{C}\right)  \text{ }\mid\ U+I_{n}\text{ is invertible}\right\}  $ is
+	dense in $\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $, we will show that the complement of such set is nowhere dense in $U_n(\mathbb{C})$.
+
+	The complement of such set is that:
+
+	$\bar{D} = \{U \in U_n(\mathbb{C})\text{ }|\text{ }U + I_n \text{ is NOT invertible}\}$
+
+	Again, let $\lambda$ be an eigen value of $U$ and $v$ its corresponding eigen vector. Then:
+
+	\[
+		(U + I)v = Uv + Iv = \lambda v + Iv = (\lambda + 1)v
+	\]
+
+	Since $\lambda$ is an eigen value of $U$, $\vert \lambda \vert = 1$. Also, because the matrix $U + I$ is not invertible, $\lambda + 1 = 0$. Hence, $\lambda$ has to be $-1$. And due to the fact that $\lambda \text{ spans all of } \mathbb{C}$, the complementary set $\bar{D}$ is not dense at all. Therefore, the set $D$ is dense in $U_n(\mathbb{C})$.
+
+\end{solution}
+
+
+\begin{exercise}
+	\label{exe.unitary.skew-herm.pyth}\fbox{5} (1.5.7) A \emph{Pythagorean triple} is a
+	triple $\left(  p,q,r\right)  $ of positive integers satisfying $p^{2}%
+		+q^{2}=r^{2}$. (In other words, it is a triple of positive integers that are
+	the sides of a right-angled triangle.) Two famous Pythagorean triples are
+	$\left(  3,4,5\right)  $ and $\left(  5,12,13\right)  $. \medskip
+
+	\textbf{(a)} Prove that a triple $\left(  p,q,r\right)  $ of positive integers
+	is Pythagorean if and only if the matrix $\left(
+		\begin{array}
+				[c]{cc}%
+				p/r & -q/r \\
+				q/r & p/r
+			\end{array}
+		\right)  $ is unitary. \medskip
+
+	\textbf{(b)} Let $\left(
+		\begin{array}
+				[c]{cc}%
+				a & b \\
+				c & d
+			\end{array}
+		\right)  $ be any unitary matrix with rational entries. Assume that $a$ and
+	$c$ are positive, and write $a$ and $c$ as $p/r$ and $q/r$ for some positive
+	integers $p,q,r$. Show that $\left(  p,q,r\right)  $ is a Pythagorean triple.
+	\medskip
+
+	\textbf{(c)} Find infinitely many Pythagorean triples that are pairwise
+	non-proportional (i.e., no two of them are obtained from one another just by
+	multiplying all three entries by the same number). \medskip
+
+	[\textbf{Hint:} Use the $S\mapsto U$ construction from Exercise
+		\ref{exe.unitary.skew-herm.1}.]
+\end{exercise}
+
+
+\begin{solution}
+	\textbf{(a)}
+	Let $U$ be the matrix
+	$(\begin{array}
+			[c]{cc}%
+			p/r & -q/r \\
+			q/r & p/r
+		\end{array})$. The product of $UU^{\ast} = UU^{-1}$ is:
+
+	\[
+		(\begin{array}
+			[c]{cc}%
+			p/r & -q/r \\
+			q/r & p/r
+		\end{array}) \times
+		(\begin{array}
+				[c]{cc}%
+				p/r  & q/r \\
+				-q/r & p/r
+			\end{array}) =
+		(\begin{array}
+			[c]{cc}%
+			p^2/r^2 + q^2/r^2 & 0                 \\
+			0                 & q^2/r^2 + p^2/r^2
+		\end{array})
+	\]
+	But since $p^2 + q^2 = r^2$, which means (divide both sides by $r^2$) $q^2/r^2 + p^2/r^2 = 1$,
+	\[
+		UU^{\ast} = UU^{-1} =
+		(\begin{array}
+			[c]{cc}%
+			1 & 0 \\
+			0 & 1
+		\end{array}) = I
+	\]
+	This is the same for $U^{\ast}U$. Hence, $U^{\ast}U = UU^{\ast} = I$ and $U$ is unitary.
+
+	The reverse direction is similar. If $UU^{\ast} = I$, then $q^2/r^2 + p^2/r^2$ has to be $1$, so $p^2 + q^2 = r^2$.
+
+	\textbf{(b)}
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{2} (1.5.8) Let $A,B\in\mathbb{C}^{n\times n}$ be two skew-Hermitian matrices.
+	Show that $AB-BA$ is again skew-Hermitian.
+\end{exercise}
+
+\begin{solution}
+	We have: $A^{\ast} = -A$ and $B^{\ast} = -B$. Then:
+
+	\[
+		(AB - BA)^{\ast} = B^{\ast}A^{\ast} - A^{\ast}B^{\ast} = (-B)(-A) - (-A)(-B) = BA - AB
+	\]
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.QR2-uni}\fbox{4} (1.8.1) Let $A\in\mathbb{C}^{n\times m}$ satisfy
+	$n\geq m$ and $\operatorname*{rank}A=m$. Prove that there exists exactly one
+	QR factorization $\left(  Q,R\right)  $ of $A$ such that the diagonal entries
+	of $R$ are positive reals.
+\end{exercise}
+
+\begin{solution}
+	Let $A \in \mathbb{C}^{n \times m}$, $n \geq m$ and rank $A = m$ (full rank). Suppose it has at least these 2 decompositions:
+	\[
+		A = Q_1 R_1 = Q_2 R_2
+	\]
+	Here, $Q_1, Q_2$ are isometries of size $n \times m$ and $R_1, R_2$ are invertible, upper-triangular of size $n \times n$. Shifting things around in the equation above, we get:
+	\[
+		\begin{cases}
+			Q_2^{T}Q_1 = R_2R_1^{T} (\ast) \\
+			Q_1^{T}Q_2 = R_1R_2^{T} (\ast\ast)
+		\end{cases}
+	\]
+	In (*), since both $R_2$ and $R_1$ are upper-triangular, their product is upper-triangular. Hence $Q_2^{T}Q_1$ is upper-triangular. However, in (**), we can tranpose both sides and get:
+	\[
+		(Q_1^{T}Q_2)^{T} = (R_1R_2^{T})^{T}
+	\]
+	\[
+		Q_1Q_2^{T} = Q_2^{T}Q_1 = R_1^{T}R_2
+	\]
+	The product $R_1^{T}R_2$ results in a lower-triangular matrix. Hence, $Q_2^{T}Q_1 = R_2R_1^{T}$ is both lower and upper-triangular, which means it has to be a diagonal matrix $D$. In addition, the equation $Q_1 R_1 = Q_2 R_2$ can also be written as:
+	\[
+		Q_1 (R_1 R_2^{T}) = Q_2 R_2 R_2^{T} = Q_2
+	\]
+	\[
+		Q_1 D = Q_2
+	\]
+	But, since:
+	\[
+		I = (Q_1 D)^{T}(Q_1 D) = D^{T}Q_1^{T}Q_1 D
+	\]
+	Because $Q_1$ is an isometry, $Q_1^{T}Q_1 = I$
+	\[
+		I = D^{T} D = D^2
+	\]
+	Therefore, $D$ has to be a diagonal matrix with entries $\pm 1$. However, if we constrain that all the diagonal entries of $R_1$ and $R_2$ to be positive, the same must be true for those of $D$. Hence, $D = I$, which means that
+	\[
+		Q_1 D = Q_1 I = Q_1 = Q_2
+	\]
+	and,
+	\[
+		R_1 = R_2
+	\]
+	This means that the pair $Q, R$ is unique.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.unitary.QR2}\fbox{5} (1.8.2) Prove Theorem \ref{thm.unitary.QR2}.
+
+	[\textbf{Hint:} Reduce both cases $n>m$ and $n<m$ to the case $n=m$.]
+
+	\begin{theorem}
+		[QR factorization, unitary version]\label{thm.unitary.QR2}Let $A\in
+			\mathbb{C}^{n\times m}$. Then, there exist a unitary matrix $Q\in
+			\mathbb{C}^{n\times n}$ and an upper-triangular matrix $R\in\mathbb{C}%
+			^{n\times m}$ such that $A=QR$. Here, a rectangular matrix $R\in
+			\mathbb{C}^{n\times m}$ is said to be \emph{upper-triangular} if and only if
+		it satisfies%
+		\[
+			R_{i,j}=0\ \ \ \ \ \ \ \ \ \ \text{for all }i>j.
+		\]
+
+	\end{theorem}
+\end{exercise}
+
+\begin{solution}
+	\begin{theorem}
+		[QR factorization, isometry version] \label{thm.unitary.QR1} Let $A\in
+			\mathbb{C}^{n\times m}$ satisfy $n\geq m$. Then, there exist an isometry
+		$Q\in\mathbb{C}^{n\times m}$ and an upper-triangular matrix $R\in
+			\mathbb{C}^{m\times m}$ such that $A=QR$.
+	\end{theorem}
+
+	We must consider 3 cases: $n < m$, $n > m$, and $n = m$.
+
+	\textbf{Case 1 ($n = m$):}
+
+	Using theorem \ref{thm.unitary.QR1}, We can see that $A = QR$, in which $Q$ is an isometry of size $n \times n$ (in other words, an unitary matrix) and $R$ is an upper-triangular matrix also of size $n \times n$.
+
+	Hence, let $Q_1, R_1$ and $Q_2, R_2$ are 2 of decomposition of $A$. Then: $A = Q_1 R_1 = Q_2 R_2$.
+
+	Using the proof from the previous exercise \ref{exe.unitary.QR2-uni}, we know that:
+	\[
+		Q_2 = Q_1 D
+	\]
+	and,
+	\[
+		R_2 = D R_1
+	\]
+	in which $D$ is a diagonal matrix with entries $\pm 1$. If we constrain the diagonal entries of $R$ to be positive then the decomposition is unique.
+
+	\textbf{Case 2 ($n < m$):}
+
+	We have: $A = QR$, in which, $Q$ is $n \times n$ and $R$ is $n \times m$. We can write $R$ as
+	\[
+		A = QR = Q\left[
+			\begin{array}
+				[c]{cc}%
+				|   & |   \\
+				R_1 & N_1 \\
+				|   & |
+			\end{array}
+			\right] = [R_1 N_1] \text{ (in short) }
+	\]
+	, where: $R_1$ is a square $n \times n$ matrix and $N_1$ is a rectangular $n \times m-n$ matrix. Assume that the matrix $A$ has another QR decomposition, resulting in:
+	\[
+		A = Q_1[R_1 N_1] = Q_2[R_2 N_2]
+	\]
+	\[
+		[(Q_1R_1) \text{  } (Q_1N_1)] = [(Q_2R_2) \text{  } (Q_2N_2)]
+	\]
+	We can see that:
+	\[
+		\begin{cases}
+			Q_1R_1 = Q_2R_2 \\
+			Q_1N_1 = Q_2N_2
+		\end{cases}
+	\]
+	From the previous case, we know that $Q_2 = Q_1 S$ and $R_2 = D R_1$. Hence, we can subsitute in:
+	\[
+		Q_1 N_1 = Q_1 D N_2
+	\]
+	\[
+		N_1 = D N_2
+	\]
+	\[
+		D^{T} N_1 = D N_1 = N_2
+	\]
+	Hence, we have proved the theorem for $n < m$
+
+	\textbf{Case 3 ($n > m$):}
+
+	Similar to case 2, suppose the matrix $A$ has decomposition $A = QR$, in which $Q$ is an isometry of size $n \times n$ and $R$ is an upper-triangular matrix of size $n \times m$. Since $n > m$, we can write $Q$ as:
+	\[
+		Q = [Q' M']
+	\]
+	, where Q' is $n \times m$ and M' is $n \times n-m$. And we can write $R$ as:
+	\[
+		R = \left[
+			\begin{array}
+				[c]{c}%
+				R' \\
+				0
+			\end{array}
+			\right]
+	\]
+	, with R' is $m \times m$.
+
+	Hence, we write the decomposition as:
+	\[
+		A = [Q' M'] \left[
+			\begin{array}
+				[c]{c}%
+				R' \\
+				0
+			\end{array}\right] = Q'R'
+	\]
+
+	Similar to the proof in the previous exercise \ref{exe.unitary.QR2-uni}, assume A has 2 decomposition $Q_1, R_1$ and $Q_2, R_2$, then:
+	\[
+		A = Q_1 R_1 = Q_1^{'} R_1^{'} = Q_2^{'} R_2^{'} = Q_2 R_2
+	\]
+	, and there exist a diagonal matrix $D$ in which its entries are $\pm 1$ so that:
+	\[
+		\begin{cases}
+			Q_2^{'} = Q_1^{'} D \\
+			R_2^{'} = D R_1^{'}
+		\end{cases}
+	\]
+	Hence, we have proved the theorem for $n > m$
+
+\end{solution}
+
+
+\begin{exercise}
+	\label{exe.schurtri.similar.two-4x4s}\fbox{2} (2.1.1) Prove that the two matrices
+	$\left(
+		\begin{array}
+				[c]{cccc}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 1 \\
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)  $ and $\left(
+		\begin{array}
+				[c]{cccc}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)  $ are not similar.
+\end{exercise}
+
+\begin{solution}
+	Let $A = \left(
+		\begin{array}
+				[c]{cccc}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 1 \\
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)$ and $B = \left(
+		\begin{array}
+				[c]{cccc}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)$
+
+	Breaking both matrices into their Jordan blocks:
+	\[
+		A = \left(
+		\begin{array}
+				[c]{cc|cc}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 0 & 0 \\
+				\hline
+				0 & 0 & 0 & 1 \\
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)
+	\]
+	\[
+		B = \left(
+		\begin{array}
+				[c]{ccc|c}%
+				0 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 0 \\
+				\hline
+				0 & 0 & 0 & 0
+			\end{array}
+		\right)
+	\]
+
+	Since the Jordan blocks of $A$ have different sizes compared to those of $B$, A and B cannot be similar.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.similar.unitary-inv}\fbox{3} (2.1.2) Let $A\in\mathbb{C}^{n\times
+			n}$ be a matrix that is similar to some unitary matrix. Prove that $A^{-1}$ is
+	similar to $A^{\ast}$.
+\end{exercise}
+
+\begin{solution}
+	Since A is similar to some unitary matrix U, we can write A as:
+	\[
+		A = PUP^{-1}
+	\]
+	Also, we can write U as:
+	\[
+		U = P^{-1}AP
+	\]
+	Now, take the conjugate transpose of both sides in the first equation:
+	\[
+		A^{\ast} = (PUP^{-1})^{\ast} = (P^{-1})^{\ast}U^{\ast}P^{\ast}
+	\]
+	And take the inverse of the second equation:
+	\[
+		U^{-1} = (P^{-1}AP)^{-1} = P^{-1}A^{-1}P
+	\]
+	Since U is unitary, we can substitute $U^{-1}$ into $U^{\ast}$ to obtain:
+	\[
+		A^{\ast} = (P^{-1})^{\ast} (P^{-1}A^{-1}P) P^{\ast}
+	\]
+	\[
+		A^{\ast} = (P^{-1})^{\ast}P^{-1}A^{-1}PP^{\ast} = (PP^{\ast})^{-1}A^{-1}PP^{\ast} = Q^{-1}A^{-1}Q
+	\]
+
+	Hence, $A^{\ast}$ is similar to $A^{-1}$
+
+\end{solution}
+
+
+\begin{exercise}
+	\label{exe.blockmatrix.simi-pres}\fbox{2} (2.1.3) Prove Proposition
+	\ref{prop.blockmatrix.simi-pres}.
+
+	\begin{proposition}
+		\label{prop.blockmatrix.simi-pres}Let $\mathbb{F}$ be a field. Let
+		$n\in\mathbb{N}$. For each $i\in\left[  n\right]  $, let $A_{i}$ and $B_{i}$
+		be two $n_{i}\times n_{i}$-matrices (for some $n_{i}\in\mathbb{N}$) satisfying
+		$A_{i}\sim B_{i}$. Then,%
+		\[
+			\left(
+			\begin{array}
+					[c]{cccc}%
+					A_{1}  & 0      & \cdots & 0      \\
+					0      & A_{2}  & \cdots & 0      \\
+					\vdots & \vdots & \ddots & \vdots \\
+					0      & 0      & \cdots & A_{n}  %
+				\end{array}
+			\right)  \sim\left(
+			\begin{array}
+					[c]{cccc}%
+					B_{1}  & 0      & \cdots & 0      \\
+					0      & B_{2}  & \cdots & 0      \\
+					\vdots & \vdots & \ddots & \vdots \\
+					0      & 0      & \cdots & B_{n}  %
+				\end{array}
+			\right)  .
+		\]
+
+	\end{proposition}
+\end{exercise}
+
+\begin{solution}
+	Since $A_i \sim B_i$, $A_i = P_iB_iP_i^{-1}$. We can rewrite the block diagonal matrix A as:
+	\[
+		A = \left(
+		\begin{array}
+				[c]{cccc}%
+				P_1B_1P_1^{-1} & 0              & \cdots & 0              \\
+				0              & P_2B_2P_2^{-1} & \cdots & 0              \\
+				\vdots         & \vdots         & \ddots & \vdots         \\
+				0              & 0              & \cdots & P_nB_nP_n^{-1} %
+			\end{array}
+		\right)
+	\]
+	which is the same as:
+	\[
+		A =
+		\left(\begin{array}
+				[c]{cccc}%
+				P_1    & 0      & \cdots & 0      \\
+				0      & P_2    & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & P_n    %
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cccc}%
+				B_1P_1^{-1} & 0           & \cdots & 0           \\
+				0           & B_2P_2^{-1} & \cdots & 0           \\
+				\vdots      & \vdots      & \ddots & \vdots      \\
+				0           & 0           & \cdots & B_nP_n^{-1} %
+			\end{array}\right)
+	\]
+	\[
+		=
+		\left(\begin{array}
+				[c]{cccc}%
+				P_1    & 0      & \cdots & 0      \\
+				0      & P_2    & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & P_n    %
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cccc}%
+				B_1    & 0      & \cdots & 0      \\
+				0      & B_2    & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & B_n    %
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cccc}%
+				P_1^{-1} & 0        & \cdots & 0        \\
+				0        & P_2^{-1} & \cdots & 0        \\
+				\vdots   & \vdots   & \ddots & \vdots   \\
+				0        & 0        & \cdots & P_n^{-1} %
+			\end{array}\right)
+	\]
+	Hence,
+	\[
+		\left(
+		\begin{array}
+				[c]{cccc}%
+				A_{1}  & 0      & \cdots & 0      \\
+				0      & A_{2}  & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & A_{n}  %
+			\end{array}
+		\right)  \sim\left(
+		\begin{array}
+				[c]{cccc}%
+				B_{1}  & 0      & \cdots & 0      \\
+				0      & B_{2}  & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & B_{n}  %
+			\end{array}
+		\right)  .
+	\].
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.block-unisimi}\fbox{1} Prove Proposition
+	\ref{prop.schurtri.block-unisimi}.
+
+	\begin{proposition}
+		\label{prop.schurtri.block-unisimi}Let $n\in\mathbb{N}$. For each $i\in\left[
+				n\right]  $, let $A_{i}\in\mathbb{C}^{n_{i}\times n_{i}}$ and $B_{i}%
+			\in\mathbb{C}^{n_{i}\times n_{i}}$ be two $n_{i}\times n_{i}$-matrices (for
+		some $n_{i}\in\mathbb{N}$) satisfying $A_{i}\overset{\operatorname*{us}}{\sim
+			}B_{i}$. Then,%
+		\[
+			\left(
+			\begin{array}
+					[c]{cccc}%
+					A_{1}  & 0      & \cdots & 0      \\
+					0      & A_{2}  & \cdots & 0      \\
+					\vdots & \vdots & \ddots & \vdots \\
+					0      & 0      & \cdots & A_{n}  %
+				\end{array}
+			\right)  \overset{\operatorname*{us}}{\sim}\left(
+			\begin{array}
+					[c]{cccc}%
+					B_{1}  & 0      & \cdots & 0      \\
+					0      & B_{2}  & \cdots & 0      \\
+					\vdots & \vdots & \ddots & \vdots \\
+					0      & 0      & \cdots & B_{n}  %
+				\end{array}
+			\right)  .
+		\]
+
+	\end{proposition}
+\end{exercise}
+
+\begin{solution}
+	Similar to the prove for the exercise \ref{exe.blockmatrix.simi-pres} above, the final equation becomes:
+	\[
+		A	=
+		\left(\begin{array}
+				[c]{cccc}%
+				P_1    & 0      & \cdots & 0      \\
+				0      & P_2    & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & P_n    %
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cccc}%
+				B_1    & 0      & \cdots & 0      \\
+				0      & B_2    & \cdots & 0      \\
+				\vdots & \vdots & \ddots & \vdots \\
+				0      & 0      & \cdots & B_n    %
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cccc}%
+				P_1^{\ast} & 0          & \cdots & 0          \\
+				0          & P_2^{\ast} & \cdots & 0          \\
+				\vdots     & \vdots     & \ddots & \vdots     \\
+				0          & 0          & \cdots & P_n^{\ast} %
+			\end{array}\right)
+	\]
+
+	We can see that the left matrix and the right matrix are composed of diagonal blocks in which all of them are unitary. Hence, both the left and the right matrix are unitary. QED.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.schurtri.one2x2}\fbox{2} (2.3.2) Find a Schur triangularization of
+	the matrix $\left(
+		\begin{array}
+				[c]{cc}%
+				1 & 0 \\
+				i & 1
+			\end{array}
+		\right)  $.
+\end{exercise}
+
+\begin{solution}
+	Let $A = \left(
+		\begin{array}
+				[c]{cc}%
+				1 & 0 \\
+				i & 1
+			\end{array}
+		\right)$.
+	First, we will construct the unitary matrix of the decomposition. The first column of such matrix can be found by finding the eigen vector of some eigen value of A. Since both diagonal entries of A is 1, A only has 1 eigen value = 1. Therefore:
+	\[
+		\left(
+		\begin{array}
+				[c]{cc}%
+				1-1 & 0   \\
+				i   & 1-1
+			\end{array}
+		\right)\cdot u_1 =
+		\left(
+		\begin{array}
+				[c]{cc}%
+				0 & 0 \\
+				i & 0
+			\end{array}
+		\right)\cdot u_1 = 0
+	\]
+	Trivially, we can see that $u_1$ is the column vector $[0 \text{  } 1]^{T}$. Since A is a 2x2, we need to choose another vector that's orthorgonal to $u_1$. Let this vector be $u_2 = [1 \text{  } 0]^{T}$. Hence, we have:
+	\[
+		A = \left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0
+			\end{array}\right) \cdot T \cdot
+		\left(\begin{array}
+			[c]{cc}%
+			0 & 1 \\
+			1 & 0
+		\end{array}\right)^{\ast} =
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0
+			\end{array}\right) \cdot T \cdot
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0
+			\end{array}\right)
+	\]
+	Solving for T, we obtain:
+	\[
+		T = \left(\begin{array}
+				[c]{cc}%
+				1 & i \\
+				0 & 1
+			\end{array}\right)
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.schurtri.one3x3}\fbox{3} (2.3.3) Find a Schur triangularization of
+	the matrix $\left(
+		\begin{array}
+				[c]{ccc}%
+				1 & 1 & 1 \\
+				1 & 1 & 1 \\
+				1 & 1 & 1
+			\end{array}
+		\right)  $.
+\end{exercise}
+
+\begin{solution}
+	Let $A = \left(\begin{array}
+				[c]{ccc}%
+				1 & 1 & 1 \\
+				1 & 1 & 1 \\
+				1 & 1 & 1
+			\end{array}\right)$.
+	Similar to the previous exercise, we first find an eigen value, eigen vector pair of A to construct our unitary matrix U. From A, we see that the 3 eigen values are $\lambda_1 = 3, \lambda_2 = 0, \lambda_3 = 0$, and the 3 eigen vectors are: $v_1=[1,1,1]^{T}, v_2=[-1,0,1]^{T}, v_3=[-1,1,0]^{T}$.
+
+	Since the 3 eigen vectors form a basis in $\mathbb{R}^3$, we can use all 3 of them in our unitary matrix.
+
+	Take $u_1=\frac{1}{\sqrt{3}}v_1$ as our first column of U and $u_2 = [0, -\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}]^{T}$ as the second column. Then, we can construct our third column $u_3$ such that it is orthorgonal to both $u_1, u_2$. Let $u_3 = [\sqrt{\frac{2}{3}}, \frac{1}{\sqrt{6}}, \frac{1}{\sqrt{6}}]^{T}$
+
+	Hence,
+	\[
+		U = \left(\begin{array}
+				[c]{ccc}%
+				\frac{1}{\sqrt{3}} & 0                   & \sqrt{\frac{2}{3}} \\
+				\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} \\
+				\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}}  & \frac{1}{\sqrt{6}}
+			\end{array}\right)
+	\]
+	Then we just solve for T with $T = U^{\ast}AU$:
+	\[
+		T = \left(\begin{array}
+				[c]{ccc}%
+				3 & 0 & 0 \\
+				0 & 0 & 0 \\
+				0 & 0 & 0
+			\end{array}\right)
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.not-additive}\fbox{2} (2.5.1) Find two normal matrices
+	$A,B\in\mathbb{C}^{2\times2}$ such that neither $A+B$ nor $AB$ is normal.
+\end{exercise}
+
+\begin{solution}
+	Let $A = \left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right)$ and
+	$B = \left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0 \\
+			\end{array}\right)$.
+
+	\[
+		A + B = \left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right) +
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0 \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 2 \\
+				0 & 0 \\
+			\end{array}\right)
+	\]
+	Since:
+	\[
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 2 \\
+				0 & 0 \\
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 0 \\
+				2 & 0 \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				4 & 0 \\
+				0 & 0 \\
+			\end{array}\right)
+	\]
+	but
+	\[
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 0 \\
+				2 & 0 \\
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 2 \\
+				0 & 0 \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 0 \\
+				0 & 4 \\
+			\end{array}\right)
+	\]
+	So $A + B$ is not normal.
+	Similarly,
+	\[
+		AB = \left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				0 & 1 \\
+				1 & 0 \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right)
+	\]
+	We have:
+	\[
+		(AB)(AB)^{\ast} = \left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				0 & -1 \\
+				1 & 0  \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				-1 & 0 \\
+				0  & 1 \\
+			\end{array}\right)
+	\]
+	and
+	\[
+		(AB)^{\ast}(AB) = \left(\begin{array}
+				[c]{cc}%
+				0 & -1 \\
+				1 & 0  \\
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				0  & 1 \\
+				-1 & 0 \\
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{cc}%
+				1 & 0  \\
+				0 & -1 \\
+			\end{array}\right)
+	\]
+	Because $(AB)(AB)^{\ast} \neq (AB)^{\ast}(AB)$, $AB$ is not normal.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.p(A)nor}\fbox{3} (2.5.2) Prove Proposition
+	\ref{prop.schurtri.normal.p(A)nor}.
+
+	\begin{proposition}
+		\label{prop.schurtri.normal.p(A)nor}Let $A\in\mathbb{C}^{n\times n}$ be a
+		normal matrix. Let $p\left(  x\right)  $ be a polynomial in a single
+		indeterminate $x$ with coefficients in $\mathbb{C}$. Then, the matrix
+		$p\left(  A\right)  $ is normal.
+	\end{proposition}
+\end{exercise}
+
+\begin{solution}
+	Let $p\left(  A\right) = a_{0}A^{0}+a_{1}A^{1}+\cdots+a_{d}A^{d}\in\mathbb{F}^{n\times n}$
+
+	Then:
+	\[
+		p(A)^{\ast} = (a_{0}A^{0}+a_{1}A^{1}+\cdots+a_{d}A^{d})^{\ast}
+	\]
+	\[
+		= \bar{a_{0}}(A^{0})^{\ast}+\bar{a_{1}}(A^{1})^{\ast}+\cdots+\bar{a_{d}}(A^{d})^{\ast}
+	\]
+	Since $(Z^n)^{\ast} = (Z^{\ast})^n$:
+	\[
+		p(A)^{\ast} = \bar{a_{0}}(A^{\ast})^0+\bar{a_{1}}(A^{\ast})^{1}+\cdots+\bar{a_{d}}(A^{\ast})^{d}
+	\]
+	\[
+		p(A)^{\ast} = p(A^{\ast})
+	\]
+
+	Since $A$ is normal, $A$ and $A^{\ast}$ commutes. Hence, $p(A)$ and $p(A^{\ast})$ commutes, which means that $p(A)$ is normal.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.isometry}\fbox{2} (2.5.3) Generalizing Proposition
+	\ref{prop.schurtri.normal.conj} \textbf{(b)}, we might claim the following:
+
+	Let $A\in\mathbb{C}^{k\times k}$ be a normal matrix. Let $U\in\mathbb{C}%
+		^{n\times k}$ be an isometry. Then, the matrix $UAU^{\ast}$ is normal.
+
+	Is this generalization correct?
+\end{exercise}
+
+\begin{solution}
+	From the proposition, since $U^{\ast}U$ no longer reduce to $I_k$, we now have:
+	\[
+		(UAU^{\ast})(UAU^{\ast})^{\ast} = UAU^{\ast}UA^{\ast}U^{\ast}
+	\]
+	and,
+	\[
+		(UAU^{\ast})^{\ast}(UAU^{\ast}) = UA^{\ast}U^{\ast}UAU^{\ast}
+	\]
+	Therefore, $(UAU^{\ast})(UAU^{\ast})^{\ast}$ only equal to $(UAU^{\ast})^{\ast}(UAU^{\ast})$ when we can commute $U^{\ast}U$ with either $A$ or $A^{\ast}$
+
+	Hence, this generalization is not correct.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.A*x}\fbox{4} (2.5.4) Let $A\in\mathbb{C}^{n\times n}$ be a
+	normal matrix. Prove the following: \medskip
+
+	\textbf{(a)} We have $\left\vert \left\vert Ax\right\vert \right\vert
+		=\left\vert \left\vert A^{\ast}x\right\vert \right\vert $ for each
+	$x\in\mathbb{C}^{n}$. \medskip
+
+	\textbf{(b)} We have $\operatorname*{Ker}A=\operatorname*{Ker}\left(  A^{\ast
+		}\right)  $. \medskip
+
+	\textbf{(c)} Let $\lambda\in\mathbb{C}$. Then, the $\lambda$-eigenvectors of
+	$A$ are the $\overline{\lambda}$-eigenvectors of $A^{\ast}$.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} From the definition of vector norm: $\vert\vert z \vert\vert^2 = \langle z, z\rangle$, we have:
+	\[
+		\vert\vert Ax \vert\vert^2 = \langle Ax, Ax\rangle = (Ax)^{\ast}Ax = \bar{x}A^{\ast}Ax
+	\]
+	Since $A$ is normal, $A^{\ast}$ is normal and $A^{\ast}A = AA^{\ast}$
+	\[
+		\vert\vert Ax \vert\vert^2 = \bar{x}AA^{\ast}x = (A^{\ast}x)^{\ast}A^{\ast}x = \langle A^{\ast}x \rangle
+	\]
+	Hence,
+	\[
+		\vert\vert Ax \vert\vert^2 = \vert\vert A^{\ast}x \vert\vert^2
+	\]
+	Or,
+	\[
+		\vert\vert Ax \vert\vert = \vert\vert A^{\ast}x \vert\vert
+	\]
+
+	\textbf{(b)} Let $x$ be an $n \times 1$ column vector in Ker A. Then we know that:
+	\[
+		Ax = 0
+	\]
+	Therefore,
+	\[
+		\langle Ax, Ax \rangle = 0
+	\]
+	Using the adjoint linear transformation:
+	\[
+		\langle A^{\ast}Ax, x \rangle = 0
+	\]
+	Since $A$ is normal, $A^{\ast}A = AA^{\ast}$:
+	\[
+		\langle AA^{\ast}x, x \rangle = \langle x, AA^{\ast}x \rangle = 0
+	\]
+	\[
+		\langle A^{\ast}x, A^{\ast}x \rangle = 0
+	\]
+	Hence,
+	\[
+		A^{\ast}x = 0
+	\]
+	This means that x is also in the Kernel space of $A^{\ast}$
+
+	\textbf{(c)} Similar to the proof in the previous part (b), let $ \lambda $ be an eigen value of A and $ x $ be is corresponding eigen vector:
+	\[
+		Ax = \lambda x
+	\]
+	\[
+		xA^{\ast}Ax = xA^{\ast}\lambda x
+	\]
+	\[
+		(xA)(A^{\ast}x) = \lambda xA^{\ast} x
+	\]
+	\[
+		(A^{\ast}x^{\ast})^{\ast} (\bar{\lambda}x) = \lambda xA^{\ast} x
+	\]
+	Conjugate transpose both sides:
+	\[
+		\lambda x^{\ast} (A^{\ast}x^{\ast}) = \bar{\lambda} (x^{\ast} A) x^{\ast}
+	\]
+	Shuffle around:
+	\[
+		A^{\ast}x^{\ast} = \frac{\bar{\lambda}}{\lambda} (x^{\ast} A)
+	\]
+	\[
+		A^{\ast}x^{\ast} = \frac{\bar{\lambda}}{\lambda} (A^{\ast}x)^{\ast}
+	\]
+	\[
+		A^{\ast}x^{\ast} = \frac{\bar{\lambda}}{\lambda} (\bar{\lambda}x)^{\ast}
+	\]
+	\[
+		A^{\ast}x^{\ast} = \frac{\bar{\lambda}}{\lambda} \lambda x^{\ast}
+	\]
+	\[
+		A^{\ast}x^{\ast} = \bar{\lambda} x^{\ast}
+	\]
+
+	Therefore, if A is normal and $x$ is A's eigen vector, then $x^{\ast}$ is $A^{\ast}$'s eigen vector.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.fp}\fbox{4} (2.5.5) \textbf{(a)} Let $A\in\mathbb{C}%
+		^{n\times n}$ and $B\in\mathbb{C}^{m\times m}$ be two normal matrices, and
+	$X\in\mathbb{C}^{n\times m}$. Prove that $AX=XB$ if and only if $A^{\ast
+			}X=XB^{\ast}$. (This is known as the (finite) \emph{Fuglede--Putnam
+		theorem}.)\medskip
+
+	\textbf{(b)} Let $A\in\mathbb{C}^{n\times n}$ and $X\in\mathbb{C}^{n\times n}$
+	be two matrices such that $A$ is normal. Prove that $X$ commutes with $A$ if
+	and only if $X$ commutes with $A^{\ast}$. \medskip
+
+	[\textbf{Hint:} For part \textbf{(a)}, set $C:=AX-XB$ and $D:=A^{\ast
+		}X-XB^{\ast}$. Use Exercise \ref{exe.trace.TrAB} to show that
+	$\operatorname*{Tr}\left(  C^{\ast}C\right)  =\operatorname*{Tr}\left(
+		D^{\ast}D\right)  $. Conclude using Exercise \ref{exe.trace.A*A=0}
+	\textbf{(b)}. Finally, observe that part \textbf{(b)} is a particular case of
+	part \textbf{(a)}.]
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Let $C = AX - XB$ and $D = A^{\ast}X - XB^{\ast}$. We have:
+	\[
+		C^{\ast}C = (AX - XB)^{\ast}(AX - XB) = (X^{\ast}A^{\ast} - B^{\ast}X^{\ast})(AX - XB)
+	\]
+	\[
+		= X^{\ast}A^{\ast}AX - X^{\ast}A^{\ast}XB - B^{\ast}X^{\ast}AX + B^{\ast}X^{\ast}XB
+	\]
+	and,
+	\[
+		D^{\ast}D = (A^{\ast}X - XB^{\ast})^{\ast}(A^{\ast}X - XB^{\ast}) = (X^{\ast}A - BX^{\ast})(A^{\ast}X - XB^{\ast})
+	\]
+	\[
+		= X^{\ast}AA^{\ast}X - X^{\ast}AXB^{\ast} - BX^{\ast}A^{\ast}X + BX^{\ast}XB^{\ast}
+	\]
+
+	Since $Tr(AB) = Tr(BA)$ for any two matrix A and B in field F ($A \in F^{n \times m}$ and $B \in F^{m \times n}$), we can see that:
+	\[
+		\begin{cases}
+			Tr(X^{\ast}A^{\ast}AX) = Tr(X^{\ast}AA^{\ast}X) \\
+			Tr(X^{\ast}A^{\ast}XB) = Tr(X^{\ast}AXB^{\ast}) \\
+			Tr(B^{\ast}X^{\ast}AX) = Tr(BX^{\ast}A^{\ast}X) \\
+			Tr(B^{\ast}X^{\ast}XB) = Tr(BX^{\ast}XB^{\ast})
+		\end{cases}
+	\]
+	Hence,
+	\[
+		Tr(C^{\ast}C) = Tr(X^{\ast}A^{\ast}AX) + Tr(X^{\ast}A^{\ast}XB) + Tr(B^{\ast}X^{\ast}AX) + Tr(B^{\ast}X^{\ast}XB)
+	\]
+	\[
+		= Tr(X^{\ast}AA^{\ast}X) + Tr(X^{\ast}AXB^{\ast}) + Tr(BX^{\ast}A^{\ast}X) + Tr(BX^{\ast}XB^{\ast})
+	\]
+	\[
+		= Tr(D^{\ast}D)
+	\]
+
+	From this fact, we can clearly see that:
+	\begin{enumerate}
+		\item (The forward direction) If $AX = XB$, then $AX - XB = C = 0$. This means $Tr(C^{\ast}C) = 0$. Hence, $Tr(D^{\ast}D) = 0$ and $D = 0$, or $A^{\ast}X - XB^{\ast} = 0$, or $A^{\ast}X = XB^{\ast}$.
+		\item (The backward direction) Similary, If $A^{\ast}X = XB^{\ast}$ then $Tr(D^{\ast}D) = Tr(C^{\ast}C) = 0$. This means $C = AX - XB = 0$, or $AX = XB$.
+	\end{enumerate}
+
+	\textbf{(b)} Using the result from part (a), we can see that part (b) is a special case of part (a), in which $B = A$. We also know that $A^{\ast}$ is normal because $A$ is normal. Hence, replacing $B$ with $A$, we get:
+
+	$AX = XA$ if and only if $A^{\ast}X = XA^{\ast} = XA$. Therefore, $X$ commutes with both $A$ and $A^{\ast}$.
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{5} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be
+	two normal matrices such that $AB=BA$. Prove that the matrices $A+B$ and $AB$
+	are normal. \medskip
+
+	[\textbf{Hint:} Use Exercise \ref{exe.schurtri.normal.fp} \textbf{(b)}.]
+\end{exercise}
+
+\begin{solution}
+	Using the results from the previous exercise \ref{exe.schurtri.normal.fp}, we get these equalities:
+	\[
+		\begin{cases}
+			AB = BA \text{   } (1)                                                    \\
+			AB^{\ast} = B^{\ast}A (A=A, X=B^{\ast}, B=A) \text{   } (2)               \\
+			A^{\ast}B^{\ast} = B^{\ast}A^{\ast} (A=A, X=B^{\ast}, B=A) \text{   } (3) \\
+			A^{\ast}B = BA^{\ast} (A=A^{\ast}, X=B, B=A^{\ast}) \text{   } (4)
+		\end{cases}
+	\]
+
+	From these equalities, we have:
+	\[
+		(AB)(AB)^{\ast} = ABB^{\ast}A^{\ast} \xrightarrow[]{\text{3}} ABA^{\ast}B^{\ast} \xrightarrow[]{\text{1}} BAA^{\ast}B^{\ast} = BA^{\ast}AB^{\ast} \xrightarrow[]{\text{2}} BA^{\ast}B^{\ast}A \xrightarrow[]{\text{4}}
+	\]
+	\[
+		A^{\ast}BB^{\ast}A = A^{\ast}B^{\ast}BA = (AB)^{\ast}(AB)
+	\]
+	Hence, $AB$ is normal.
+
+	Now, we need to prove that $A + B$ is also normal. We have:
+
+	\[
+		(A + B)(A + B)^{\ast} = (A + B)(A^{\ast} + B^{\ast}) = AA^{\ast} + AB^{\ast} + BA^{\ast} + BB^{\ast}
+	\]
+	and,
+	\[
+		(A + B)^{\ast}(A + B) = (A^{\ast} + B^{\ast})(A + B) = A^{\ast}A + A^{\ast}B + B^{\ast}A + B^{\ast}B
+	\]
+	Since:
+	\[
+		\begin{cases}
+			AA^{\ast} = A^{\ast}A              \\
+			AB^{\ast} = B^{\ast}A \text{  (2)} \\
+			BA^{\ast} = A^{\ast}B \text{  (4)} \\
+			BB^{\ast} = B^{\ast}B
+		\end{cases}
+	\],
+	\[
+		(A + B)(A + B)^{\ast} = (A + B)^{\ast}(A + B)
+	\]
+	and $A + B$ is normal.
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{4} (2.5.7) Let $A\in\mathbb{C}^{n\times n}$. \medskip
+
+	\textbf{(a)} Show that there is a \textbf{unique} pair $\left(  R,C\right)  $
+	of Hermitian matrices $R$ and $C$ such that $A=R+iC$. \medskip
+
+	\textbf{(b)} Consider this pair $\left(  R,C\right)  $. Show that $A$ is
+	normal if and only if $R$ and $C$ commute (that is, $RC=CR$). \medskip
+
+	[\textbf{Hint:} For part \textbf{(a)}, apply the \textquotedblleft conjugate
+		transpose\textquotedblright\ operation to $A=R+iC$ to obtain $A^{\ast}=R-iC$.]
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)}
+
+	Since $A = R + iC$, we have $A^{\ast} = R - iC$. Hence, let $B = \frac{A + A^{\ast}}{2}$ and $C = \frac{A - A^{\ast}}{2i}$. Then:
+	\[
+		B^{\ast} = (\frac{A + A^{\ast}}{2})^{\ast} = \frac{A^{\ast} + A}{2} = B
+	\]
+	Hence B is Hermitian.
+	Also,
+	\[
+		C^{\ast} = (\frac{A - A^{\ast}}{2i})^{\ast} = \frac{A^{\ast} - A}{-2i} = \frac{A - A^{\ast}}{2i} = C
+	\]
+	Hence, C is Hermitian.
+
+	However,
+	\[
+		B + iC = \frac{A + A^{\ast}}{2} + i\frac{A - A^{\ast}}{2i} = \frac{2A}{2} = A
+	\]
+	Since both B and C are constructed from A, hence, they are an unique pair of hermitian matrices. QED.
+
+	\textbf{(b)}
+	\[
+		A^{\ast}A = (R - iC)(R + iC) = R^2 + C^2 + iRC - iCR
+	\]
+	and,
+	\[
+		AA^{\ast} = (R + iC)(R - iC) = R^2 + C^2 - iRC + iCR
+	\]
+	Hence, $A^{\ast}A$ can only be equal to $AA^{\ast}$ if and only if $iRC = iCR$, or $RC = CR$.
+
+
+\end{solution}
+
+\begin{exercise}
+	\label{lem.schurtri.normal.tri.2}\fbox{3} (2.5.8) \textbf{(a)} Let $T\in
+		\mathbb{C}^{n\times n}$ be an upper-triangular matrix. Prove that%
+	\[
+		\sum_{i=1}^{m}\left(  TT^{\ast}-T^{\ast}T\right)  _{i,i}=\sum_{i=1}%
+		^{m}\ \ \sum_{j=m+1}^{n}\left\vert T_{i,j}\right\vert ^{2}%
+	\]
+	for each $m\in\left\{  0,1,\ldots,n\right\}  $. \medskip
+
+	\textbf{(b)} Use this to give a direct proof (i.e., not a proof by
+	contradiction) of Lemma \ref{lem.schurtri.normal.tri}.
+
+	\begin{lemma}
+		\label{lem.schurtri.normal.tri}Let $T\in\mathbb{C}^{n\times n}$ be a
+		triangular matrix. Then, $T$ is normal if and only if $T$ is diagonal.
+	\end{lemma}
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Let examine the entries of T (empty entries are 0):
+	\[
+		T = \left(
+		\begin{array}[c]{cccc}
+				a_{1,1}  & a_{1,2}  & \cdots   & a_{1,n} \\
+				\text{ } & a_{2,2}  & \cdots   & a_{2,n} \\
+				\text{ } & \text{ } & \ddots   & \vdots  \\
+				\text{ } & \text{ } & \text{ } & a_{n,n}
+			\end{array}
+		\right)
+	\]
+	Hence, the entries of $T^{\ast}$ is:
+	\[
+		T^{\ast} = \left(
+		\begin{array}[c]{cccc}
+				\bar{a_{1,1}} & \text{ }      & \text{ } & \text{ }      \\
+				\bar{a_{1,2}} & \bar{a_{2,2}} & \text{ } & \text{ }      \\
+				\vdots        & \vdots        & \ddots   & \text{ }      \\
+				\bar{a_{1,n}} & \bar{a_{2,n}} & \cdots   & \bar{a_{n,n}}
+			\end{array}
+		\right)
+	\]
+	We can see that the diagonal entries of the product of $TT^{\ast}$ are simply:
+	\[
+		(TT^{\ast})_{i,i} = \sum_{k=i}^{n} a_{i,k} \bar{a_{i,k}} = \sum_{k=i}^{n} \vert a_{i,k} \vert^2
+	\]
+	and those of the product of $T^{\ast}T$ are:
+	\[
+		(T^{\ast}T)_{i,i} =  \bar{a_{i,i}} a_{i,i} = \vert a_{i,i} \vert^2
+	\]
+	Therefore,
+	\[
+		(TT^{\ast} - T^{\ast}T)_{i,i} = \sum_{k=i}^{n} \vert a_{i,k} \vert^2 - \vert a_{i,i} \vert^2 = \sum_{k=i+1}^{n} \vert a_{i,k} \vert^2
+	\]
+	and finally,
+	\[
+		\sum_{i=1}^{m} (TT^{\ast} - T^{\ast}T)_{i,i} = \sum_{i=1}^{m} \sum_{k=i+1}^{n} \vert a_{i,k} \vert^2
+	\]
+
+	\textbf{(b)}
+
+	Direction 1: If T is normal $\rightarrow$ T is diagonal.
+
+	Since T is normal, $T^{\ast}$ is also normal and $TT^{\ast} - T^{\ast}T = 0$. Hence,
+	\[
+		\sum_{i=1}^{m} (TT^{\ast} - T^{\ast}T)_{i,i} = 0
+	\]
+	\[
+		\sum_{i=1}^{m} \sum_{k=i+1}^{n} \vert a_{i,k} \vert^2 = 0
+	\]
+	This means that all elements $a_{i,k}$ where $k > i$ are 0. Also, because T is upper-triangular, $a_{i,k}$ where $k < i$ are also 0. Hence, T is diagonal.
+
+	Direction 2: If T is diagonal $\rightarrow$ T is normal.
+
+	This is obvious since $T^{\ast}$ does not change the order of the diagonal elements.
+
+	QED.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.nilp}\fbox{2} (2.5.9) Let $A\in\mathbb{C}^{n\times n}$ be a
+	normal matrix that is nilpotent. Prove that $A=0$.
+\end{exercise}
+
+\begin{solution}
+	Let $k$ be a positive integer such that $A^k = 0$. Let $\lambda$ be an eigenvalue of A and $x$ its corresponding eigenvector. Then we have:
+	\[
+		A^kx = \lambda^kx
+	\]
+	But since $A^k = 0$,
+	\[
+		0 = \lambda^kx
+	\]
+	and $x$ is a non-zero vector, $\lambda$ = 0.
+
+	Let consider the fact that $A$ is also a normal matrix. So A is diagonalizable. Write A as: $A = UDU^{\ast}$ where U is unitary and D is a diagonal matrix with entries are the eigenvalues of A (spectral theorem for normal matrices). However, since $\lambda = 0$, $D = 0$.
+	\[
+		A = UDU^{\ast} = U0U^{\ast} = 0
+	\]
+\end{solution}
+
+\begin{exercise}
+	\fbox{2} (2.6.1) Prove Proposition \ref{prop.schurtri.normal.converse}.
+
+	\begin{proposition}
+		\label{prop.schurtri.normal.converse}Let $A\in\mathbb{C}^{n\times n}$. Let
+		$U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ be a unitary
+		matrix and $D\in\mathbb{C}^{n\times n}$ a diagonal matrix. Assume that for
+		each $i\in\left[  n\right]  $, we have $AU_{\bullet,i}=D_{i,i}U_{\bullet,i}$
+		(that is, the $i$-th column of $U$ is an eigenvector of $A$ for the eigenvalue
+		$D_{i,i}$). Then, $A=UDU^{\ast}$, so that $\left(  U,D\right)  $ is a spectral
+		decomposition of $A$.
+	\end{proposition}
+\end{exercise}
+
+\begin{solution}
+	Since the columns of U are the eigenvectors of A. Denote $u_i$ to be the i-th eigenvector of A. Then $U = [u_1, u_2,...,u_n]$. Let $\lambda_1, \lambda_2,...,\lambda_n$ be A's respective eigenvalues. We have:
+	\[
+		AU = A[u_1, u_2,...,u_n] = [Au_1, Au_2,...,Au_n] = [\lambda_1u_1, \lambda_2u_2,...,\lambda_nu_n]
+	\]
+	Construct a diagonal matrix D with entries $\lambda_1, \lambda_2,...,\lambda_n$, then:
+	\[
+		AU = UD
+	\]
+	\[
+		AUU^{\ast} = UDU^{\ast}
+	\]
+	Since U is unitary,
+	\[
+		A = UDU^{\ast}
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.examples}\fbox{5} (2.6.2) \textbf{(a)} Find a spectral
+	decomposition of the normal matrix $\left(
+		\begin{array}
+				[c]{cc}%
+				1   & 1+i \\
+				1+i & 1
+			\end{array}
+		\right)  $. \medskip
+
+	\textbf{(b)} Find a spectral decomposition of the Hermitian matrix $\left(
+		\begin{array}
+				[c]{cc}%
+				0 & -i \\
+				i & 0
+			\end{array}
+		\right)  $. \medskip
+
+	\textbf{(c)} Find a spectral decomposition of the skew-Hermitian matrix
+	$\left(
+		\begin{array}
+				[c]{cc}%
+				0 & i \\
+				i & 0
+			\end{array}
+		\right)  $. \medskip
+
+	\textbf{(d)} Find a spectral decomposition of the unitary matrix $\dfrac
+		{1}{\sqrt{2}}\left(
+		\begin{array}
+				[c]{cc}%
+				1 & 1  \\
+				1 & -1
+			\end{array}
+		\right)  $.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Let $A = \left(
+		\begin{array}
+				[c]{cc}%
+				1   & 1+i \\
+				1+i & 1
+			\end{array}
+		\right)$. Then, A's eigenvalues are $\lambda_1 = 2 + i, \lambda_2 = -i$ and A's eigenvectors are $x_1 = [1, 1]^{T}, x_2 = [-1, 1]^{T}$
+
+	Therefore, A's spectral decomposition is:
+	\[
+		A = \left(\begin{array}
+				[c]{cc}%
+				1/\sqrt{2} & -1/\sqrt{2} \\
+				1/\sqrt{2} & 1/\sqrt{2}
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				2 + i & 0  \\
+				0     & -i
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				1/\sqrt{2}  & 1/\sqrt{2} \\
+				-1/\sqrt{2} & 1/\sqrt{2}
+			\end{array}\right)
+	\]
+
+	\textbf{(b)} Let $A = \left(
+		\begin{array}
+				[c]{cc}%
+				0 & -i \\
+				i & 0
+			\end{array}
+		\right)$. Then, A's eigenvalues are $\lambda_1 = -1, \lambda_2 = 1$ and A's eigenvectors are $x_1 = [i, 1]^{T}, x_2 = [-i, 1]^{T}$
+
+	Therefore, A's spectral decomposition is:
+	\[
+		A = \left(\begin{array}
+				[c]{cc}%
+				i/\sqrt{2} & -i/\sqrt{2} \\
+				1/\sqrt{2} & 1/\sqrt{2}
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				-1 & 0 \\
+				0  & 1
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				-i/\sqrt{2} & 1/\sqrt{2} \\
+				i/\sqrt{2}  & 1/\sqrt{2}
+			\end{array}\right)
+	\]
+
+	\textbf{(c)} Let $A = \left(
+		\begin{array}
+				[c]{cc}%
+				0 & i \\
+				i & 0
+			\end{array}
+		\right)$. Then, A's eigenvalues are $\lambda_1 = i, \lambda_2 = -i$ and A's eigenvectors are $x_1 = [1, 1]^{T}, x_2 = [-1, 1]^{T}$
+
+	Therefore, A's spectral decomposition is:
+	\[
+		A = \left(\begin{array}
+				[c]{cc}%
+				1/\sqrt{2} & -1/\sqrt{2} \\
+				1/\sqrt{2} & 1/\sqrt{2}
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				i & 0  \\
+				0 & -i
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				1/\sqrt{2}  & 1/\sqrt{2} \\
+				-1/\sqrt{2} & 1/\sqrt{2}
+			\end{array}\right)
+	\]
+
+
+	\textbf{(d)} Let $A = \frac{1}{\sqrt{2}}\left(
+		\begin{array}
+				[c]{cc}%
+				1 & 1  \\
+				1 & -1
+			\end{array}
+		\right)$. Then, A's eigenvalues are $\lambda_1 = -1, \lambda_2 = 1$ and A's eigenvectors are $x_1 = [1 - \sqrt{2}, 1]^{T}, x_2 = [1 + \sqrt{2}, 1]^{T}$
+
+	Therefore, A's spectral decomposition is:
+	\[
+		A = \left(\begin{array}
+				[c]{cc}%
+				\frac{1 - \sqrt{2}}{\sqrt{1+(\sqrt{2} - 1)^2}} & \frac{1 + \sqrt{2}}{\sqrt{1+(\sqrt{2} + 1)^2}} \\
+				\frac{1}{\sqrt{1+(\sqrt{2} - 1)^2}}            & \frac{1}{\sqrt{1+(\sqrt{2} + 1)^2}}
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				-1 & 0 \\
+				0  & 1
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{cc}%
+				\frac{1 - \sqrt{2}}{\sqrt{1+(\sqrt{2} - 1)^2}} & \frac{1}{\sqrt{1+(\sqrt{2} - 1)^2}} \\
+				\frac{1 + \sqrt{2}}{\sqrt{1+(\sqrt{2} + 1)^2}} & \frac{1}{\sqrt{1+(\sqrt{2} + 1)^2}}
+			\end{array}\right)
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{2} (2.6.3) Describe all spectral decompositions of the $n\times n$ identity
+	matrix $I_{n}$.
+\end{exercise}
+
+\begin{solution}
+	Let $I = UDU^{\ast}$. Since I is the identity matrix, all of its eigenvalues are 1s, so $D$ is a diagonal matrix with its entries = 1. In other words, $D = I$. So,
+	\[
+		I = UIU^{\ast}
+	\]
+	Hence, we can see that $UU^{\ast}$ has to be equal to $I$. But this is true because $U$ is unitary. Therefore the spectral decomposition of I is $I_n = UI_nU^{\ast}$ with $U$ being \textbf{any} unitary matrix of size $n \times n$
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{3} Let $A\in\mathbb{C}^{n\times n}$ and $B\in\mathbb{C}^{n\times n}$ be
+	two normal matrices such that $A\sim B$. Prove that
+	$A\overset{\operatorname*{us}}{\sim}B$.
+\end{exercise}
+
+\begin{solution}
+	Let $(Q, D)$ be the spectral decomposition of A and $(P, F)$ be the spectral decomposition of F:
+	\[
+		\begin{cases}
+			A = QDQ^{\ast} \text{   (1)} \\
+			B = PFP^{\ast} \text{   (2)}
+		\end{cases}
+	\]
+
+	Also, since A is similar to B, we can write A as: $A = MBM^{-1}$ where M is an invertible matrix. However, since both A and B are square matrices, M must be square. This plus the fact that the columns of M are linearly independent, M is unitary. Therefore, $M^{-1} = M^{\ast}$ and $A = MBM^{-\ast}$. Using equation (2), we have:
+	\[
+		MBM^{\ast} = MPFP^{\ast}M^{\ast}
+	\]
+	\[
+		MBM^{\ast} = (MP)F(P^{\ast}M^{\ast}) = (MP)F(MP)^{\ast}
+	\]
+	In other words,
+	\[
+		A = (MP)F(MP)^{\ast}
+	\]
+	Because both M and P are unitary, (MP) is unitary. Therefore, A is also unitarily similar to F. Since $B \overset{\operatorname*{us}}{\sim} F$, $A \overset{\operatorname*{us}}{\sim} B$
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.normal.skewherm}\fbox{3} (2.6.5) Prove Proposition
+	\ref{prop.schurtri.normal.skewherm-spec} and Corollary
+	\ref{cor.schurtri.normal.skewherm-iff}.
+
+	\begin{proposition}
+		\label{prop.schurtri.normal.skewherm-spec}Let $A\in\mathbb{C}^{n\times n}$ be
+		a skew-Hermitian matrix, and let $\left(  U,D\right)  $ be a spectral
+		decomposition of $A$. Then, the diagonal entries of $D$ are purely imaginary.
+	\end{proposition}
+
+	\begin{corollary}
+		\label{cor.schurtri.normal.skewherm-iff}An $n\times n$-matrix $A\in
+			\mathbb{C}^{n\times n}$ is skew-Hermitian if and only if it is unitarily
+		similar to a diagonal matrix with purely imaginary entries.
+	\end{corollary}
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Proof of proposition:
+
+	Let $A = UDU^{\ast}$, U is unitary, D is diagonal. We have:
+	\[
+		A^{\ast} = UD^{\ast}U^{\ast}
+	\]
+	But since A is skew-Hermitian, $A^{\ast} = -A$. Therefore,
+	\[
+		UD^{\ast}U^{\ast} = -UDU^{\ast}
+	\]
+	In other words,
+	\[
+		D^{\ast} = -D
+	\]
+	Since the entries of $D^{\ast}$ are $\bar{\lambda}$, the only way for $\bar{\lambda} = -\lambda$ is for $\lambda$ to be pure imaginary. QED.
+
+	\textbf{(b)} Proof of corollary:
+
+	$\Longrightarrow:$ Assume that $A$ is skew-Hermitian. Then, $A$ is normal. Hence, using the spectral theorem for normal matrices, $A=UDU^{\ast}$ for some unitary matrix $U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and
+	some diagonal matrix $D\in\mathbb{C}^{n\times n}$. Hence, using the proposition above, the entries of D must be pure imaginary. This proves the \textquotedblleft$\Longrightarrow$\textquotedblright\ direction of Corollary
+	\ref{cor.schurtri.normal.skewherm-iff}. \medskip
+
+	$\Longleftarrow:$ Assume that $A$ is unitarily similar to a diagonal matrix	with imaginary entries. In other words, $A=UDU^{\ast}$ for some unitary matrix	$U\in\operatorname*{U}\nolimits_{n}\left(  \mathbb{C}\right)  $ and some
+	diagonal matrix $D\in\mathbb{C}^{n\times n}$ that has imaginary entries. Therefore, it's easy to see that $D^{\ast} = -D$
+
+	Now, from $A=UDU^{\ast}$, we obtain
+	\[
+		A^{\ast}=UD^{\ast}U^{\ast}=-UDU^{\ast} = -A.
+	\]
+	In other words, the matrix $A$ is skew-Hermitian. This proves the \textquotedblleft $\Longleftarrow$\textquotedblright\ direction of Corollary \ref{cor.schurtri.normal.skewherm-iff}.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.ch.inverse-poly}\fbox{3} (2.7.1) Let $\mathbb{F}$ be a field. Let
+	$n$ be a positive integer. Let $A\in\mathbb{F}^{n\times n}$ be an invertible
+	matrix with entries in $\mathbb{F}$. Prove that there exists a polynomial $f$
+	of degree $n-1$ in the single indeterminate $t$ over $\mathbb{F}$ such that
+	$A^{-1}=f\left(  A\right)  $.
+\end{exercise}
+
+\begin{solution}
+	Let A has the characteristic polynomial $p_A$: $p_A(t) = a_0t^0 + a_1t^1 + a_2t^2 + \cdots + a_{n-1}t^{n-1} + t^n$ Since A is invertible, $det(A) \neq 0$. Hence, we have:
+	\[
+		p_A(A) = a_0I + a_1A^1 + a_2A^2 + \cdots + a_{n-1}A^{n-1} + A^n = 0
+	\]
+	\[
+		a_0I + A(a_1 + a_2A^1 + \cdots + a_{n-1}A^{n-2} + A^{n-1}) = 0
+	\]
+	\[
+		A(a_1 + a_2A^1 + \cdots + a_{n-1}A^{n-2} + A^{n-1}) = -a_0I
+	\]
+	\[
+		-\frac{A}{a_0}(a_1 + a_2A^1 + \cdots + a_{n-1}A^{n-2} + A^{n-1}) = I
+	\]
+	\[
+		-\frac{A}{a_0A}(a_1 + a_2A^1 + \cdots + a_{n-1}A^{n-2} + A^{n-1}) = IA^{-1}
+	\]
+	\[
+		-a_0^{-1}(a_1 + a_2A^1 + \cdots + a_{n-1}A^{n-2} + A^{n-1}) = A^{-1}
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.ch.powers-span}\fbox{3} (2.7.2) Let $\mathbb{F}$ be a field. Let
+	$A\in\mathbb{F}^{n\times n}$ be a square matrix with entries in $\mathbb{F}$.
+	Prove that for any nonnegative integer $k$, the power $A^{k}$ can be written
+	as an $\mathbb{F}$-linear combination of the first $n$ powers $A^{0},A^{1},\ldots,A^{n-1}$.
+\end{exercise}
+
+\begin{solution}
+	Using the characteristic polynomial of $A \in \mathbb{F}^{n \times n}$ and Cayley-Hamilton theorem, we clearly see that if we want to find the value of the matrix $A^k$ where $0 \le k \le n$, then:
+	\[
+		a_0I + a_1A^1 + a_2A^2 + \cdots + a_kA^k + \cdots + a_{n-1}A^{n-1} + A^n = 0
+	\]
+	\[
+		a_0I + a_1A^1 + a_2A^2 + \cdots + a_{k-1}A^{k-1} + a_{k+1}A^{k+1} + \cdots + a_{n-1}A^{n-1} + A^n = -a_kA^k
+	\]
+	\[
+		A^k = -a_k^{-1}(a_0I + a_1A^1 + a_2A^2 + \cdots + a_{k-1}A^{k-1} + a_{k+1}A^{k+1} + \cdots + a_{n-1}A^{n-1})
+	\]
+	Hence, $A^k$ is a linear combination of the first n powers $A^{0},A^{1},\ldots,A^{n-1}$
+
+	If $n < k$, then we have:
+	\[
+		a_0I + a_1A^1 + a_2A^2 + \cdots + a_{n-1}A^{n-1} + A^n = 0
+	\]
+	\[
+		A^{k-n}(a_0I + a_1A^1 + a_2A^2 + \cdots + a_{n-1}A^{n-1} + A^n) = A^{k-n} \cdot 0 = 0
+	\]
+	\[
+		a_0A^{k-n} + a_1A^{k-n+1} + a_2A^{k-n+2} + \cdots + a_{n-1}A^{k-1} + A^{k} = 0
+	\]
+	\[
+		A^{k} = -A^{k-n}(a_0I + a_1A^1 + a_2A^2 + \cdots + a_{n-1}A^{n-1})
+	\]
+	Then, $A^{k-n}$ can be further broken down until $k - n < n$ using the same process.
+	Hence, QED.
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.ch.lin-rec-kd}\fbox{5} (2.7.3) Let $a_{1},a_{2},\ldots,a_{k}$ be
+	$k$ numbers. Let $\left(  x_{0},x_{1},x_{2},\ldots\right)  $ be any $\left(
+		a_{1},a_{2},\ldots,a_{k}\right)  $-recurrent sequence of numbers. Let $d$ be a
+	positive integer. Show that there exist $k$ integers $b_{1},b_{2},\ldots
+		,b_{k}$ such that each $i\geq kd$ satisfies%
+	\[
+		x_{i}=b_{1}x_{i-d}+b_{2}x_{i-2d}+\cdots+b_{k}x_{i-kd}.
+	\]
+	(This means that the sequences $\left(  x_{0+u},x_{d+u},x_{2d+u}%
+		,x_{3d+u},\ldots\right)  $ are $\left(  b_{1},b_{2},\ldots,b_{k}\right)
+	$-recurrent for all $u\geq0$.)
+
+	[\textbf{Hint:} For each $j\geq0$, define the column vector $v_{j}$ by
+	$v_{j}=\left(
+		\begin{array}
+				[c]{c}%
+				x_{j}   \\
+				x_{j+1} \\
+				\vdots  \\
+				x_{j+k-1}%
+			\end{array}
+		\right)  \in\mathbb{R}^{k}$. Let $A$ be the $k\times k$-matrix $\left(
+		\begin{array}
+				[c]{ccccc}%
+				0      & 1       & 0       & \cdots & 0      \\
+				0      & 0       & 1       & \cdots & 0      \\
+				\vdots & \vdots  & \vdots  & \ddots & \vdots \\
+				0      & 0       & 0       & \cdots & 1      \\
+				a_{k}  & a_{k-1} & a_{k-2} & \cdots & a_{1}  %
+			\end{array}
+		\right)  \in\mathbb{R}^{k\times k}$. Start by showing that $Av_{j}=v_{j+1}$
+	for each $j\geq0$.]
+
+	\begin{definition}
+		Let $a_{1},a_{2},\ldots,a_{k}$ be $k$ numbers. A sequence $\left(  x_{0}%
+			,x_{1},x_{2},\ldots\right)  $ of numbers is said to be $\left(  a_{1}%
+			,a_{2},\ldots,a_{k}\right)  $\emph{-recurrent} if each integer $i\geq k$
+		satisfies%
+		\[
+			x_{i}=a_{1}x_{i-1}+a_{2}x_{i-2}+\cdots+a_{k}x_{i-k}.
+		\]
+
+	\end{definition}
+\end{exercise}
+
+\begin{solution}
+	Let a column vector $v_j \in \mathbb{R}^k$ contains k entries of $x$ from $x_j$ to $x_{j+k-1}$. For example, $v_0 = \left(\begin{array}[c]{c}
+				x_0    \\
+				x_1    \\
+				\vdots \\
+				x_{k-1}
+			\end{array}\right)$. Hence, $v_{j+1}$ is
+	$\left(\begin{array}[c]{c}
+				x_{j+1} \\
+				x_{j+2} \\
+				\vdots  \\
+				x_{j+k}
+			\end{array}\right)$.
+	But since we know from the definition of $x$ that: $x_{j+k} = a_{1}x_{j+k-1}+a_{2}x_{j+k-2}+\cdots+a_{k}x_{j}$, we can construct a matrix $A$, such that the product $Av_j = v_{j+1}$. It's easy to see that:
+	\[
+		A = \left(
+		\begin{array}
+				[c]{ccccc}
+				0      & 1       & 0       & \cdots & 0      \\
+				0      & 0       & 1       & \cdots & 0      \\
+				\vdots & \vdots  & \vdots  & \ddots & \vdots \\
+				0      & 0       & 0       & \cdots & 1      \\
+				a_{k}  & a_{k-1} & a_{k-2} & \cdots & a_{1}
+			\end{array}
+		\right)
+	\].
+	It's easy to see that $A^{-1} = A$ and since the entries $a_1, a_2,...,a_k$ are real, $A^{\ast} = A$. Therefore, A is Hermitian and normal. Also, it is important to note that:
+	\[
+		v_1 = Av_0
+	\]
+	\[
+		v_2 = Av_1 = A(Av_0) = A^2v_0
+	\]
+	\[
+		v_3 = Av_2 = A(A^2v_0) = A^3v_0
+	\]
+	Hence,
+	\[
+		v_m = A^{m}v_0 \text{   for some m $\ge$ 0 }
+	\]
+	In other words, to get $v_m$, we need to calculate $A^{m}$. For that, the characteristic polynomial of A is:
+	\[
+		p_A(t) = det(tI - A) = t^k + a_{k-1}t^{k-1} + a_{k-2}t^{k-2} + \cdots + a_1t^{1} + a_0t^{0}
+	\]
+
+	Using the Cayley-Hamilton theorem and proof from the previous exercise \ref{exe.schurtri.ch.powers-span}, we know that $A^{m}$ can always be evaluated as a linear combination of the first $n$ powers $A^{0},A^{1},\ldots,A^{n-1}$. Hence, we can always calculate $v_m$ to get $x_{m+1}$.
+
+	Now, however, we must also prove that, for a positive integer $d$, if the sequence $(x_{0},x_{1},x_{2},\ldots)$ satisfy:
+	\[
+		x_{i}=a_{1}x_{i-1}+a_{2}x_{i-2}+\cdots+a_{k}x_{i-k}. \text{   for all $i \ge k$ }
+	\]
+	then it must also satisfy,
+	\[
+		x_{i}=b_{1}x_{i-d}+b_{2}x_{i-2d}+\cdots+b_{k}x_{i-kd}. \text{   for all $i \ge kd$ }
+	\]
+
+	Again, let's consider A's characteristic polynomial:
+	\[
+		p_A(t) = t^k + a_{k-1}t^{k-1} + a_{k-2}t^{k-2} + \cdots + a_1t^{1} + a_0t^{0}
+	\]
+	Let $b_i = -a_{k-i}$, we have:
+	\[
+		p_A(t) = t^k - b_1t^{k-1} - b_2t^{k-2} - \cdots - b_{k-1}t^{1} - b_{k}t^{0}
+	\]
+	\[
+		p_A(t) = t^k - \sum_{j=1}^{k} b_jt^{k-j}
+	\]
+	Using the Cayley-Hamilton theorem, subsitute t with $A^d$:
+	\[
+		p_A(A^d) = (A^d)^k - \sum_{j=1}^{k} b_j(A^d)^{k-j} = A^{kd} - \sum_{j=1}^{k} b_jA^{(k-j)d} = 0
+	\]
+	\[
+		A^{kd} = \sum_{j=1}^{k} b_jA^{(k-j)d}
+	\]
+	Let $i$ be an integer such that $i \ge kd$. Multiplying both side of the equation above with $A^{i-kd}v_0$:
+	\[
+		A^{kd}A^{i-kd}v_0 = (\sum_{j=1}^{k} b_jA^{(m-j)d})A^{i-kd}v_0
+	\]
+	\[
+		A^iv_0 = \sum_{j=1}^{k} b_jA^{i-jd}v_0
+	\]
+	But since we know that $A^{i-jd}v_0 = v_{i-jd} =
+		\left(\begin{array}[c]{c}
+				x_{i-jd}   \\
+				x_{i-jd+1} \\
+				\vdots     \\
+				x_{i-jd+k-1}
+			\end{array}\right)$. Hence,
+	\[
+		A^iv_0 = \sum_{j=1}^{k} b_j
+		\left(\begin{array}[c]{c}
+				x_{i-jd}   \\
+				x_{i-jd+1} \\
+				\vdots     \\
+				x_{i-jd+k-1}
+			\end{array}\right) =
+		\left(\begin{array}[c]{c}
+				\sum_{j=1}^{k} b_jx_{i-jd}   \\
+				\sum_{j=1}^{k} b_jx_{i-jd+1} \\
+				\vdots                       \\
+				\sum_{j=1}^{k} b_jx_{i-jd+k-1}
+			\end{array}\right)
+	\]
+	Now, the left hand side $A^iv_0 = v_i =
+		\left(\begin{array}[c]{c}
+				x_{i}   \\
+				x_{i+1} \\
+				\vdots  \\
+				x_{i+k-1}
+			\end{array}\right)$. Therefore:
+	\[
+		\left(\begin{array}[c]{c}
+				x_{i}   \\
+				x_{i+1} \\
+				\vdots  \\
+				x_{i+k-1}
+			\end{array}\right) =
+		\left(\begin{array}[c]{c}
+				\sum_{j=1}^{k} b_jx_{i-jd}   \\
+				\sum_{j=1}^{k} b_jx_{i-jd+1} \\
+				\vdots                       \\
+				\sum_{j=1}^{k} b_jx_{i-jd+k-1}
+			\end{array}\right)
+	\]
+	We can see that from the first element of both sides' vectors:
+	\[
+		x_{i} = \sum_{j=1}^{k} b_jx_{i-jd}
+	\]
+	In other words,
+	\[
+		x_{i} = b_1x_{i-d} + b_2x_{i-2d} + \cdots + b_kx_{i-kd}
+	\]
+	Hence, QED.
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.syl.AX-BX}\fbox{2} (2.8.1) Let $A\in\mathbb{C}^{n\times m}$,
+	$B\in\mathbb{C}^{n\times m}$ and $C\in\mathbb{C}^{n\times p}$ be three complex
+	matrices. Prove that there exists a matrix $X\in\mathbb{C}^{m\times p}$ such
+	that $AX-BX=C$ if and only if each column of $C$ belongs to the image (=
+	column space) of $A-B$.
+\end{exercise}
+
+\begin{solution}
+	Let $Col(M)$ denotes the column space of matrix $M$.
+	\bigskip
+
+	Since $X$ is the left side of both $A$ and $B$, we can write:
+	\[
+		AX - BX = (A-B)X = C
+	\]
+
+	WLOG, let $v$ be a column vector in $Col((A-B)X)$. Then by definition, there's some vector $x$ for which $v = ((A-B)X)x$. Set $y = Xx$, then $v = (A-B)y$. This means $v$ is also a vector in $Col(A-B)$.
+	\bigskip
+
+	On the other hand, let $v$ be a column vector in $Col(A-B)$. By definition, there's some vector $y$ for which $v = (A-B)y$. Let $x$ be some vector $x$ in which $Xx = y$. Then we can write $v$ as $v = (A-B)Xx$, which is equivalent to saying $v$ is $\in Col((A-B)X)$
+
+	From the above two proofs, $Col(A-B) = Col((A-B)X) = Col(C)$. Therefore, $A-B$ and $C$ contain the same vectors $\rightarrow$ columns of C $\in Col(A - B)$
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.schurtri.syl.sigA-B}\fbox{5} (2.8.2) Let $A$, $B$ and $C$ be as in Theorem
+	\ref{thm.schurtri.syl.equivalence}. \medskip
+
+	\textbf{(a)} Let the linear map $L$ be as in the above proof of the
+	$\mathcal{V}\Longrightarrow\mathcal{U}$ part of Theorem
+	\ref{thm.schurtri.syl.equivalence}. Prove that if $\lambda\in\sigma\left(
+		A\right)  $ and $\mu\in\sigma\left(  B\right)  $, then $\lambda-\mu$ is an
+	eigenvalue of $L$ (that is, there exists a nonzero matrix $X\in\mathbb{C}%
+		^{n\times m}$ satisfying $L\left(  X\right)  =\left(  \lambda-\mu\right)  X$).
+	\medskip
+
+	\textbf{(b)} Prove the implication $\mathcal{U}\Longrightarrow\mathcal{V}$ in
+	Theorem \ref{thm.schurtri.syl.equivalence} (thus completing the proof of the theorem).
+
+	\begin{theorem}
+		\label{thm.schurtri.syl.equivalence}Let $A\in\mathbb{C}^{n\times n}$ be an
+		$n\times n$-matrix, and let $B\in\mathbb{C}^{m\times m}$ be an $m\times
+			m$-matrix (both with complex entries). Let $C\in\mathbb{C}^{n\times m}$ be an
+		$n\times m$-matrix. Then, the following two statements are equivalent:
+
+		\begin{itemize}
+			\item $\mathcal{U}$: There is a \textbf{unique} matrix $X\in\mathbb{C}%
+				      ^{n\times m}$ such that $AX-XB=C$.
+
+			\item $\mathcal{V}$: We have $\sigma\left(  A\right)  \cap\sigma\left(
+				      B\right)  =\varnothing$.
+		\end{itemize}
+	\end{theorem}
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)}
+	Consider the linear map
+	\begin{align*}
+		L:\mathbb{C}^{n\times m} & \rightarrow\mathbb{C}^{n\times m}, \\
+		X                        & \mapsto AX-XB.
+	\end{align*}
+	We can write $L$ as a function of $X$ such that: $L(X) = AX - XB$. Now, let $\lambda$ be an eigenvalue of A and $u$ be its corresponding eigenvector. Also, let $\mu$ be an eigenvalue of B and $v$ be its corresponding eigenvector. Then, $\lambda \in \sigma(A)$ and $\mu \in \sigma(B)$. We have:
+	\[
+		\begin{cases}
+			Au = \lambda u \\
+			Bv = \mu v
+		\end{cases}
+	\]
+
+	Now, we denote a matrix $Z = uv^{\ast}$. Hence,
+	\[
+		L(Z) = AZ - ZB = Auv^{\ast} - uv^{\ast}B
+	\]
+	\[
+		= \lambda uv^{\ast} - u(B^{\ast}v)^{\ast}
+	\]
+	\[
+		= \lambda uv^{\ast} - u(\mu^{\ast}v)^{\ast} = \lambda uv^{\ast} - \mu uv^{\ast} = (\lambda - \mu)uv^{\ast}
+	\]
+	\[
+		= (\lambda - \mu)Z
+	\]
+
+	Since $Z = uv^{\ast}$, Z must be nonzero. Hence if we let $X = Z$, then we have found a non-zero matrix $X$ in which $L(X) = (\lambda - \mu)X$. Therefore, $\lambda - \mu$ must be an eigenvalue of $L$.
+
+	\textbf{(b)}
+	Now, we are going to assume the contradiction (*): \textbf{assume both $A$ and $B$ share an eigenvalue $\delta$} and we are going to show that if there exist a non-zero matrix $X \in \mathbb{C}^{n \times m}$ such that $AX - XB = C$, then we contradict our assumption.
+
+	Let $X = uv^{\ast}$ where:
+	\[
+		\begin{cases}
+			Au = \delta u \\
+			Bv = \delta v
+		\end{cases}
+	\]
+	We have:
+	\[
+		L(X) = AX - XB = Auv^{\ast} - uv^{\ast}B = \delta uv^{\ast} - u(\delta^{\ast}v)^{\ast} = \delta uv^{\ast} - \delta uv^{\ast} = 0
+	\]
+	Since $AX - XB = 0$, $X$ must be 0. However, we defined $X$ as $X = uv^{\ast}$, which is non-zero. Hence, $X$ cannot exists (contradict our initial assumption(*)). Therefore, $A$ and $B$ cannot share any eigenvalue. QED.
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{3} (3.4.1) Compute the Jordan canonical form of the matrix $\left(
+		\begin{array}
+				[c]{ccc}
+				1 & 0 & 2 \\
+				0 & 1 & 1 \\
+				0 & 0 & 1
+			\end{array}
+		\right)  $.
+\end{exercise}
+
+\begin{solution}
+	Let $A = \left(\begin{array}
+				[c]{ccc}
+				1 & 0 & 2 \\
+				0 & 1 & 1 \\
+				0 & 0 & 1
+			\end{array}\right)$. Since $A$ is already upper-triangular, $A$'s eigenvalues can be found on its diagonal. We can see that $A$ only has 1 eigenvalue $\lambda = 1$. Because of that, $A$'s characteristic polynomial is $p_A(\lambda) = (1 - \lambda)^{3}$. Hence, the algebraic multiplicity of $\lambda$ -- $\alpha(\lambda) = 3$. Therefore, the JCF of $A$ = $J$ has only 01 Jordan block of size 3.
+
+	Next, we determine the $dim(Ker(A - \lambda I))$ to get the geometric multiplicity of $\lambda$, denoted as $\gamma(\lambda)$.
+	\[
+		A - \lambda I = A - 1 I =
+		\left(\begin{array}
+				[c]{ccc}
+				0 & 0 & 2 \\
+				0 & 0 & 1 \\
+				0 & 0 & 0
+			\end{array}\right)
+	\]
+	\[
+		Ker(A - 1 I) = Ker
+		\left(\begin{array}
+				[c]{ccc}
+				0 & 0 & 2 \\
+				0 & 0 & 1 \\
+				0 & 0 & 0
+			\end{array}\right) = Ker
+		\left(\begin{array}
+				[c]{ccc}
+				0 & 0 & 2 \\
+				0 & 0 & 0 \\
+				0 & 0 & 0
+			\end{array}\right)
+	\]
+	Since $\left(\begin{array}
+				[c]{ccc}
+				0 & 0 & 2 \\
+				0 & 0 & 0 \\
+				0 & 0 & 0
+			\end{array}\right)$ has 1 pivot and 2 free variables, $dim(Ker(A - 1 I)) = 2 < 3 = \alpha(\lambda=1)$.
+
+	Hence, we need to calculate $Ker((A - 1 I)^2)$:
+	\[
+		Ker((A - 1 I)^2) = Ker
+		\left(\begin{array}
+				[c]{ccc}
+				0 & 0 & 2 \\
+				0 & 0 & 1 \\
+				0 & 0 & 0
+			\end{array}\right)^2 = 0
+	\]
+
+	Because $Ker((A - 1 I)^2) = 0$, $dim(Ker((A - 1 I)^2)) = 3 = \alpha(\lambda=1)$, then our Jordan block contains 2 smaller boxes of size 1 x 1 and size 2 x 2:
+	\[
+		J = \left(\begin{array}
+				[c]{cc}
+				J_1(1)   & \text{ } \\
+				\text{ } & J_2(1)
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{ccc}
+				1 & 0 & 0 \\
+				0 & 1 & 1 \\
+				0 & 0 & 1
+			\end{array}\right)
+	\]
+
+	Now, we find the matrix $S$ such that $AS = SJ$. We can write $S = [s_1, s_2, s_3]$ where $s_1, s_2, s_3$ are its columns. we have:
+	\[
+		AS = [As_1, As_2, As_3] = SJ = [Se_1, Se_2, S(e_2 + e_3)] = [s_1, s_2, s_2 + s_3]
+	\]
+	Therefore, we have:
+	\[
+		\begin{cases}
+			As_1 = s_1 \\
+			As_2 = s_2 \\
+			As_3 = s_2 + s_3
+		\end{cases}
+	\]
+
+	Hence, $s_1$ and $s_2$ is in $span(Ker(A - 1 I)) = span\left(
+		\left(\begin{array}
+					[c]{c}
+					0 \\
+					1 \\
+					0
+				\end{array}\right),
+		\left(\begin{array}
+					[c]{c}
+					1 \\
+					0 \\
+					0
+				\end{array}\right)
+		\right)
+	$
+
+	Let $s_1 =
+		\left(\begin{array}
+				[c]{c}
+				0 \\
+				1 \\
+				0
+			\end{array}\right)$. Let $s_2 =
+		\alpha_1\left(\begin{array}
+				[c]{c}
+				0 \\
+				1 \\
+				0
+			\end{array}\right) +
+		\alpha_2\left(\begin{array}
+				[c]{c}
+				1 \\
+				0 \\
+				0
+			\end{array}\right)$
+	Hence,
+	\[
+		As_2 = A\left(
+		\alpha_1\left(\begin{array}
+					[c]{c}
+					0 \\
+					1 \\
+					0
+				\end{array}\right) +
+		\alpha_2\left(\begin{array}
+					[c]{c}
+					1 \\
+					0 \\
+					0
+				\end{array}\right)
+		\right) =
+		\alpha_1\left(\begin{array}
+				[c]{c}
+				0 \\
+				1 \\
+				0
+			\end{array}\right) +
+		\alpha_2\left(\begin{array}
+				[c]{c}
+				1 \\
+				0 \\
+				0
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{c}
+				\alpha_2 \\
+				\alpha_1 \\
+				0
+			\end{array}\right)
+	\]
+
+	Since $s_3$ has to be orthorgonal to both $s_1$ and $s_2$, $s_3 =
+		\left(\begin{array}
+				[c]{c}
+				0 \\
+				0 \\
+				\alpha_3
+			\end{array}\right)$. Assume $\alpha_3 = 1$, then $s_3 =
+		\left(\begin{array}
+				[c]{c}
+				0 \\
+				0 \\
+				1
+			\end{array}\right)$.
+	Hence, we have:
+	\[
+		As_3 = A\left(\begin{array}
+				[c]{c}
+				0 \\
+				0 \\
+				1
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{c}
+				2 \\
+				1 \\
+				1
+			\end{array}\right)
+	\]
+	Then, $s_2$ is:
+	\[
+		s_2 = As_3 - s_3 =
+		\left(\begin{array}
+				[c]{c}
+				2 \\
+				1 \\
+				1
+			\end{array}\right) -
+		\left(\begin{array}
+				[c]{c}
+				0 \\
+				0 \\
+				1
+			\end{array}\right) =
+		\left(\begin{array}
+				[c]{c}
+				2 \\
+				1 \\
+				0
+			\end{array}\right)
+	\]
+
+	Therefore, $S$ is:
+	\[
+		S = \left(\begin{array}
+				[c]{ccc}
+				0 & 2 & 0 \\
+				1 & 1 & 0 \\
+				0 & 0 & 1
+			\end{array}\right)
+	\]
+
+	Hence,
+	\[
+		A = \left(\begin{array}
+				[c]{ccc}
+				0 & 2 & 0 \\
+				1 & 1 & 0 \\
+				0 & 0 & 1
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{ccc}
+				1 & 0 & 0 \\
+				0 & 1 & 1 \\
+				0 & 0 & 1
+			\end{array}\right)
+		\left(\begin{array}
+				[c]{ccc}
+				-1/2 & 1 & 0 \\
+				1/2  & 0 & 0 \\
+				0    & 0 & 1
+			\end{array}\right)
+	\]
+
+
+\end{solution}
+
+\begin{exercise}
+	\label{exe.jnf.step3.An=0}\fbox{4} (3.4.2) Let $A\in\mathbb{C}^{n\times n}$ be a
+	matrix. Prove that the following three statements are equivalent:
+
+	\begin{itemize}
+		\item $\mathcal{A}$\textit{:} The matrix $A$ is nilpotent.
+
+		\item $\mathcal{B}$\textit{:} We have $A^{n}=0$.
+
+		\item $\mathcal{C}$\textit{:} The only eigenvalue of $A$ is $0$ (that is, we
+		      have $\sigma\left(  A\right)  =\left\{  0\right\}  $).
+	\end{itemize}
+\end{exercise}
+
+\begin{solution}
+	$\mathcal{A}\Longrightarrow\mathcal{C}$:
+
+	Proof:
+
+	Let $A$ be a nilpotent-matrix. Let $\lambda$ be a non-zero eigenvalue of $A$ and $x$ its corresponding non-zero eigenvector. Then:
+	\[
+		Ax = \lambda x
+	\]
+	Now, let $k$ be a positive integer in which $A^k = 0$. Then:
+	\[
+		A^kx = \lambda^kx = 0
+	\]
+	However, since $x$ is non-zero, $\lambda^k = 0$, in other words, $\lambda = 0$. However, this contradicts our assumption. Hence, the only eigenvalue of $A$ is 0.
+
+	$\mathcal{C}\Longrightarrow\mathcal{B}$:
+
+	Because the only eigenvalue of $A$ is 0, $p_A(t) = 0$. In addition, using the Cayley-Hamilton theorem, $p_A(A)$ is also 0. However, any polynomial $p$ of degree $n$ with 0 as the only root is of the type $p(x)=cx^n$. Hence, $A^n=0$.
+
+	$\mathcal{C}\Longleftarrow\mathcal{B}$:
+
+	Proof:
+
+	$\mathcal{A}\Longrightarrow\mathcal{C}$ implies $\mathcal{B}\Longleftarrow\mathcal{C}$ just by replacing $k$ with $n$.
+
+	$\mathcal{A}\Longleftarrow\mathcal{C}$:
+
+	Proof:
+
+	$\mathcal{C}\Longrightarrow\mathcal{B}$ implies $\mathcal{A}\Longleftarrow\mathcal{C}$ because if $A^n = 0$ then $A$ is nilpotent.
+
+	$\mathcal{A}\Longleftrightarrow\mathcal{B}$: This is obvious from the definition of nilpotent matrices.
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{6} (3.5.1) Let $\lambda\in\mathbb{C}$. Let $n$ and $k$ be two positive integers.
+	Prove the following: \medskip
+
+	\textbf{(a)} If a $k\times k$-matrix $C$ has eigenvalue $\lambda$ with
+	algebraic multiplicity $k$ and geometric multiplicity $1$, then $C\sim
+		J_{k}\left(  \lambda\right)  $. \medskip
+
+	\textbf{(b)} We have $\left(  J_{k}\left(  \lambda\right)  \right)  ^{n}\sim
+		J_{k}\left(  \lambda^{n}\right)  $ if $\lambda\neq0$. \medskip
+
+	\textbf{(c)} If $A\in\mathbb{C}^{k\times k}$ is an invertible matrix such that
+	$A^{n}$ is diagonalizable, then $A$ is diagonalizable.
+\end{exercise}
+
+\begin{solution}
+	\textbf{(a)} Let $A$ be a matrix $\in \mathbb{C}^{k \times k}$, which has eigenvalue $\lambda$ with algebraic multiplicity $k$ and geometric multiplicity $1$. Therefore, $A$ has a single eigenvalue and a single eigenvector. Hence,
+	the JCF of $A$ is exactly a $k \times k$ Jordan block of $\lambda$: $J_k(\lambda)$:
+	\[
+		J_k(\lambda) =
+		\left(
+		\begin{array}[c]{ccccc}
+				\lambda  & *        & \cdots   & 0        & 0       \\
+				\text{ } & \lambda  & *        & \cdots   & 0       \\
+				\text{ } & \text{ } & \ddots   & \ddots   & \vdots  \\
+				\text{ } & \text{ } & \text{ } & \lambda  & *       \\
+				\text{ } & \text{ } & \text{ } & \text{ } & \lambda
+			\end{array}
+		\right)
+	\]
+
+	No matter how the structure of the sub-blocks inside $J_k(\lambda)$, it is by definition that $A$ is similar to its JCF, $J_k(\lambda)$.
+
+	\textbf{(b)} Let $\lambda \neq 0$. Let a Jordan block be $J_k(\lambda) =
+		\left(
+		\begin{array}[c]{ccccc}
+				\lambda  & 1        & \cdots   & 0        & 0       \\
+				\text{ } & \lambda  & 1        & \cdots   & 0       \\
+				\text{ } & \text{ } & \ddots   & \ddots   & \vdots  \\
+				\text{ } & \text{ } & \text{ } & \lambda  & 1       \\
+				\text{ } & \text{ } & \text{ } & \text{ } & \lambda
+			\end{array}
+		\right)$. Hence,
+	\[
+		J_k(\lambda^n) =
+		\left(
+		\begin{array}[c]{ccccc}
+				\lambda^n & 1         & \cdots   & 0         & 0         \\
+				\text{ }  & \lambda^n & 1        & \cdots    & 0         \\
+				\text{ }  & \text{ }  & \ddots   & \ddots    & \vdots    \\
+				\text{ }  & \text{ }  & \text{ } & \lambda^n & 1         \\
+				\text{ }  & \text{ }  & \text{ } & \text{ }  & \lambda^n
+			\end{array}
+		\right)
+	\]
+
+	\begin{theorem}
+		\label{thm.jnf.powers.Cm}Let $\mathbb{F}$ be a field. Let $k>0$ and
+		$\lambda\in\mathbb{F}$. Let $C=J_{k}\left(  \lambda\right)  $. Let
+		$m\in\mathbb{N}$. Then, $C^{m}$ is the upper-triangular $k\times k$-matrix
+		whose $\left(  i,j\right)  $-th entry is $\dbinom{m}{j-i}\lambda^{m-j+i}$ for
+		all $i,j\in\left[  k\right]  $. (Here, we follow the convention that
+		$\dbinom{m}{\ell}\lambda^{m-\ell}:=0$ when $\ell\notin\mathbb{N}$. Also,
+		recall that $\dbinom{n}{\ell}=0$ when $n\in\mathbb{N}$ and $\ell>n$.)
+	\end{theorem}
+
+	Using theorem \ref{thm.jnf.powers.Cm}, $J_k(\lambda)^n$ is:
+	\[
+		J_k(\lambda)^n = \left(
+		\begin{array}
+				[c]{ccccccc}%
+				\lambda^{n} & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} & \cdots
+				            & \cdots                     & \cdots                     & \cdots                                                                         \\
+				            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} &
+				\cdots      & \cdots                     & \cdots                                                                                                      \\
+				            &                            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} &
+				\cdots      & \cdots                                                                                                                                   \\
+				            &                            &                            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \cdots & \cdots      \\
+				            &                            &                            &                            & \lambda^{n}                & \cdots & \vdots      \\
+				            &                            &                            &                            &                            & \ddots & \vdots      \\
+				            &                            &                            &                            &                            &        & \lambda^{n}
+			\end{array}
+		\right)
+	\]
+
+	Now, since $\lambda$ is the eigenvalue of $A$, then $\lambda^n$ is the eigen value of $A^n$. Hence $A^n$ is similar to $J_k(\lambda^n)$.
+
+	Moreover,
+	\[
+		A = SJ_k(\lambda)S^{-1}
+	\]
+	\[
+		A^n = SJ_k(\lambda)^nS^{-1}
+	\]
+	So $A^n$ is also similar to its JCF - $J_k(\lambda)^n$. Therefore, $J_k(\lambda^n)$ is similar to $J_k(\lambda)^n$.
+
+	\textbf{(c)} From the previous part (b),
+	\[
+		A^n = SJ_k(\lambda)^nS^{-1}
+	\]
+	Therefore, if $A^n$ is diagonalizable, then $J_k(\lambda)^n$ is a diagonal matrix. Since $J_k(\lambda)^n$ has the form:
+	\[
+		\left(
+		\begin{array}
+				[c]{ccccccc}%
+				\lambda^{n} & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} & \cdots                     & \cdots                     & \cdots & \cdots      \\
+				            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} & \cdots                     & \cdots & \cdots      \\
+				            &                            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \dbinom{n}{2}\lambda^{m-2} & \cdots & \cdots      \\
+				            &                            &                            & \lambda^{n}                & \dbinom{n}{1}\lambda^{m-1} & \cdots & \cdots      \\
+				            &                            &                            &                            & \lambda^{n}                & \cdots & \vdots      \\
+				            &                            &                            &                            &                            & \ddots & \vdots      \\
+				            &                            &                            &                            &                            &        & \lambda^{n}
+			\end{array}
+		\right)
+	\]
+
+	But since $J_k(\lambda)^n$ is a diagonal matrix,
+	\[
+		J_k(\lambda)^n = \left(
+		\begin{array}
+				[c]{ccccccc}%
+				\lambda^{n} &             &             &             &             &        &             \\
+				            & \lambda^{n} &             &             &             &        &             \\
+				            &             & \lambda^{n} &             &             &        &             \\
+				            &             &             & \lambda^{n} &             &        &             \\
+				            &             &             &             & \lambda^{n} &        &             \\
+				            &             &             &             &             & \ddots &             \\
+				            &             &             &             &             &        & \lambda^{n}
+			\end{array}
+		\right)
+	\]
+	Hence it's easy to see that:
+	\[
+		J_k(\lambda) = \left(
+		\begin{array}
+				[c]{ccccccc}%
+				\lambda &         &         &         &         &        &         \\
+				        & \lambda &         &         &         &        &         \\
+				        &         & \lambda &         &         &        &         \\
+				        &         &         & \lambda &         &        &         \\
+				        &         &         &         & \lambda &        &         \\
+				        &         &         &         &         & \ddots &         \\
+				        &         &         &         &         &        & \lambda
+			\end{array}
+		\right)
+	\]
+	And because $A^n = SJ_k(\lambda)^nS^{-1}$, $A = SJ_k(\lambda)S^{-1}$, or:
+	\[
+		A = S
+		\left(
+		\begin{array}
+				[c]{ccccccc}%
+				\lambda &         &         &         &         &        &         \\
+				        & \lambda &         &         &         &        &         \\
+				        &         & \lambda &         &         &        &         \\
+				        &         &         & \lambda &         &        &         \\
+				        &         &         &         & \lambda &        &         \\
+				        &         &         &         &         & \ddots &         \\
+				        &         &         &         &         &        & \lambda
+			\end{array}
+		\right) S^{-1}
+	\]
+
+	Therefore, $A$ is diagonalizable.
+
+\end{solution}
+
+\begin{exercise}
+	\fbox{4} (3.5.2) Let $\mathbb{F}$ be a field. Compute $\left(  J_{k}\left(
+		\lambda\right)  \right)  ^{-1}$ for any nonzero $\lambda\in\mathbb{F}$ and any
+	$k>0$.
+\end{exercise}
+
+\begin{solution}
+	Let $J_k(\lambda) =
+		\left(
+		\begin{array}[c]{ccccc}
+				\lambda  & 1        & \cdots   & 0        & 0       \\
+				\text{ } & \lambda  & 1        & \cdots   & 0       \\
+				\text{ } & \text{ } & \ddots   & \ddots   & \vdots  \\
+				\text{ } & \text{ } & \text{ } & \lambda  & 1       \\
+				\text{ } & \text{ } & \text{ } & \text{ } & \lambda
+			\end{array}
+		\right)$. We can see that $J_k(\lambda) = \lambda I + B$, where $B$ is:
+	\[
+		\left(
+		\begin{array}[c]{ccccc}
+				0        & 1        & \cdots   & 0        & 0      \\
+				\text{ } & 0        & 1        & \cdots   & 0      \\
+				\text{ } & \text{ } & \ddots   & \ddots   & \vdots \\
+				\text{ } & \text{ } & \text{ } & 0        & 1      \\
+				\text{ } & \text{ } & \text{ } & \text{ } & 0
+			\end{array}
+		\right)
+	\]
+
+	Let $C = I - tB$. Hence, according to the Cayley-Hamilton theorem, $p_C(C)$ is:
+	\[
+		p_C(C) = c_0I + c_1C^1 + c_2C^2 + \cdots + c_{k-1}C^{k-1} + C^k = 0
+	\]
+	\[
+		-c_0I = C(c_1 + c_2C^1 + \cdots + c_{k-1}C^{k-2} + C^{k-1})
+	\]
+	\[
+		C^{-1} = -\frac{1}{c_0}(c_1 + c_2C^1 + \cdots + c_{k-1}C^{k-2} + C^{k-1})
+	\]
+	Hence,
+	\[
+		(I - tB)^{-1} = I - tB + t^2B^2 - \cdots + (-t)^{k-1}B^{k-1}
+	\]
+	Therefore, replacing $t$ with $\lambda$ we have:
+	\[
+		J_k(\lambda)^{-1} = \frac{1}{\lambda}(I - \frac{1}{\lambda}B + \frac{1}{\lambda^2}B^2 - \cdots + \frac{1}{(-\lambda)^{n-1}}B^{k-1})
+	\]
+
+\end{solution}
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Consider $a_{i,j} (i,j \in [n])$ to be the entries of matrix A. Then we can write A as:
+%\[
+%A = \left(
+%\begin{array}[c]{cccc}
+%	a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+%	a_{2,1} & \cdots & \cdots & a_{2,n} \\
+%	\vdots & \ddots & \ddots & \vdots \\
+%	a_{n,1} & \cdots & \cdots & a_{n,n}
+%\end{array}
+%\right)
+%\]
+%
+%And $A^{\ast}$ as:
+%\[
+%A^{\ast} = \left(
+%\begin{array}[c]{cccc}
+%	a_{1,1} & a_{2,1} & \cdots & a_{n,1} \\
+%	a_{1,2} & \cdots & \cdots & a_{n,2} \\
+%	\vdots & \ddots & \ddots & \vdots \\
+%	a_{1,n} & \cdots & \cdots & a_{n,n}
+%\end{array}
+%\right)
+%\]
+%
+%The kernel of A (denote as Ker A) is the span of the vectors that satisfy Ax = 0. Take an arbitrary column vector x, then let $x_1, x_2, ..., x_n$ be the entries of this vector. Then:
+%\[
+%Ax = \left(
+%\begin{array}[c]{cccc}
+%	a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+%	a_{2,1} & \cdots & \cdots & a_{2,n} \\
+%	\vdots & \ddots & \ddots & \vdots \\
+%	a_{n,1} & \cdots & \cdots & a_{n,n}
+%\end{array}
+%\right) \cdot
+%\left(
+%\begin{array}[c]{c}
+%	x_1 \\
+%	x_2 \\
+%	\vdots \\
+%	x_n
+%\end{array}
+%\right) = 
+%\left(
+%\begin{array}[c]{c}
+%	a_{1,1}x_1 + a_{1,2}x_2 + \cdots + a_{1,n}x_n \\
+%	a_{2,1}x_1 + a_{2,2}x_2 + \cdots + a_{2,n}x_n \\
+%	\vdots \\
+%	a_{n,1}x_1 + a_{n,2}x_2 + \cdots + a_{n,n}x_n
+%\end{array}
+%\right)
+%\]
+%and,
+%\[
+%A^{\ast}x = \left(
+%\begin{array}[c]{cccc}
+%	a_{1,1} & a_{2,1} & \cdots & a_{n,1} \\
+%	a_{1,2} & \cdots & \cdots & a_{n,2} \\
+%	\vdots & \ddots & \ddots & \vdots \\
+%	a_{1,n} & \cdots & \cdots & a_{n,n}
+%\end{array}
+%\right) \cdot
+%\left(
+%\begin{array}[c]{c}
+%	x_1 \\
+%	x_2 \\
+%	\vdots \\
+%	x_n
+%\end{array}
+%\right) = 
+%\left(
+%\begin{array}[c]{c}
+%	a_{1,1}x_1 + a_{2,1}x_2 + \cdots + a_{n,1}x_n \\
+%	a_{1,2}x_1 + a_{2,2}x_2 + \cdots + a_{n,2}x_n \\
+%	\vdots \\
+%	a_{1,n}x_1 + a_{2,n}x_2 + \cdots + a_{n,n}x_n
+%\end{array}
+%\right)
+%\]
