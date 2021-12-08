@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Sunday, December 05, 2021 00:58:28}
+%TCIDATA{LastRevised=Wednesday, December 08, 2021 10:11:41}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -569,7 +569,7 @@ One of the most famous properties of the inner product is the
 
 \begin{theorem}
 [Cauchy--Schwarz inequality]\label{thm.unitary.innerprod.cs}Let $x\in
-\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$ be two vectors. Then:
+\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$ be two vectors. Then: \medskip
 
 \textbf{(a)} The inequality%
 \[
@@ -577,7 +577,7 @@ One of the most famous properties of the inner product is the
 y\right\vert \right\vert \geq\left\vert \left\langle x,y\right\rangle
 \right\vert
 \]
-holds.
+holds. \medskip
 
 \textbf{(b)} This inequality becomes an equality if and only if the pair
 $\left(  x,y\right)  $ of vectors is linearly dependent.
@@ -727,11 +727,11 @@ Using Theorem \ref{thm.unitary.innerprod.cs} and Exercise
 
 \begin{theorem}
 [triangle inequality]\label{thm.unitary.innerprod.norm-tria} Let
-$x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Then:
+$x\in\mathbb{C}^{n}$ and $y\in\mathbb{C}^{n}$. Then: \medskip
 
 \textbf{(a)} The inequality $\left\vert \left\vert x\right\vert \right\vert
 +\left\vert \left\vert y\right\vert \right\vert \geq\left\vert \left\vert
-x+y\right\vert \right\vert $ holds.
+x+y\right\vert \right\vert $ holds. \medskip
 
 \textbf{(b)} This inequality becomes an equality if and only if we have $y=0$
 or $x=\lambda y$ for some nonnegative real $\lambda$.
@@ -4025,7 +4025,7 @@ Its algebraic multiplicity is $3$, while its geometric multiplicity is $2$.
 
 \begin{theorem}
 \label{thm.schurtri.ch.fta-cons}Let $A\in\mathbb{C}^{n\times n}$ be an
-$n\times n$-matrix with complex entries. Then:
+$n\times n$-matrix with complex entries. Then: \medskip
 
 \textbf{(a)} Its characteristic polynomial $p_{A}$ factors into $n$ linear
 terms:%
@@ -4066,8 +4066,8 @@ multiplicities. \medskip
 \textbf{(c)} This follows from part \textbf{(b)}. \medskip
 
 \textbf{(d)} Let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the roots of
-$p_{A}$ (with their algebraic multiplicities). Then, these roots are the
-eigenvalues of $A$, appearing with their algebraic multiplicities (by Theorem
+$p_{A}$ (with their multiplicities). Then, these roots are the eigenvalues of
+$A$, appearing with their algebraic multiplicities (by Theorem
 \ref{thm.schurtri.ch.fta-cons} \textbf{(b)}). Hence, their sum $\lambda
 _{1}+\lambda_{2}+\cdots+\lambda_{n}$ is the sum of the eigenvalues of $A$
 (with their algebraic multiplicities). On the other hand, we know from Theorem
@@ -6199,8 +6199,8 @@ V:=\left\{  v\in W\ \mid\ Bv=\lambda v\right\}  .
 \]
 It is easy to see that $V$ is a subspace (since $B\left(  u+v\right)  =Bu+Bv$
 and $B\left(  \mu v\right)  =\mu\cdot Bv$ for any $u,v\in W$ and $\mu
-\in\mathbb{C}$). Furthermore, this subpace $V$ contains the nonzero vector $x$
-(since $Bx=\lambda x$), and thus is nontrivial. However, this subspace $V$
+\in\mathbb{C}$). Furthermore, this subspace $V$ contains the nonzero vector
+$x$ (since $Bx=\lambda x$), and thus is nontrivial. However, this subspace $V$
 does not contain $w$ (because if it did, then we would have $Bw=\lambda w$ (by
 the definition of $V$), which would contradict $Bw\neq\lambda w$). Thus,
 $V\neq W$ (since $W$ does contain $w$). Therefore, $V$ is a \textbf{proper}
@@ -7929,7 +7929,7 @@ T\right)  =0$.
 Now, let $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ be the diagonal entries
 of $T$. Then, by Proposition \ref{prop.schurtri.similar.T-diag}, these
 diagonal entries $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
-eigenvalues of $A$ (with algebraic multipliticies). Hence,%
+eigenvalues of $A$ (with algebraic multiplicities). Hence,%
 \[
 p_{A}=\left(  t-\lambda_{1}\right)  \left(  t-\lambda_{2}\right)
 \cdots\left(  t-\lambda_{n}\right)
@@ -8778,7 +8778,7 @@ be $1$s.)
 \end{remark}
 
 While the Jordan cell $J_{m}\left(  \lambda\right)  $ depends on both $m$ and
-$\lambda$, its dependence on $k$ is not very substantial:
+$\lambda$, its dependence on $\lambda$ is not very substantial:
 
 \begin{proposition}
 \label{prop.jnf.jcell-lambda}Let $\mathbb{F}$ be a field. Let $m$ be a
@@ -9153,19 +9153,14 @@ Hence,%
 \begin{align*}
 B^{p}v  &  =B^{p}\cdot\sum_{i=1}^{m}v_{i}e_{i}=\sum_{i=1}^{m}v_{i}%
 \underbrace{B^{p}e_{i}}_{\substack{=e_{i-p}\\\text{(by
-(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}))}}}=\sum_{i=1}^{m}v_{i}e_{i-p}\\
-&  =\sum_{i=1}^{p}v_{i}\underbrace{e_{i-p}}_{\substack{=0\\\text{(since
-}i-p\notin\left[  m\right]  \\\text{(because }i\leq p\text{ and thus }%
-i-p\leq0\text{))}}}+\sum_{i=p+1}^{m}v_{i}e_{i-p}=\underbrace{\sum_{i=1}%
-^{p}v_{i}0}_{=0}+\sum_{i=p+1}^{m}v_{i}e_{i-p}\\
-&  =\sum_{i=p+1}^{m}v_{i}e_{i-p}=\sum_{j=1}^{m-p}v_{j+p}e_{j}%
-\ \ \ \ \ \ \ \ \ \ \left(
-\begin{array}
-[c]{c}%
-\text{here, we have substituted }j+p\text{ for }i\\
-\text{in the sum}%
-\end{array}
-\right) \\
+(\ref{pf.prop.jnf.jcell0-powers.a.Bpei}))}}}=\sum_{i=1}^{m}v_{i}e_{i-p}%
+=\sum_{j=1-p}^{m-p}v_{j+p}e_{j}\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{here, we have
+substituted }j+p\text{ for }i\text{ in the sum}\right) \\
+&  =\sum_{j=1-p}^{0}v_{j+p}\underbrace{e_{j}}_{\substack{=0\\\text{(since
+}j\notin\left[  m\right]  \\\text{(because }j\leq0\text{))}}}+\sum_{j=1}%
+^{m-p}v_{j+p}e_{j}=\underbrace{\sum_{j=1-p}^{0}v_{j+p}0}_{=0}+\sum_{j=1}%
+^{m-p}v_{j+p}e_{j}=\sum_{j=1}^{m-p}v_{j+p}e_{j}\\
 &  =v_{p+1}e_{1}+v_{p+2}e_{2}+\cdots+v_{m}e_{m-p}=\left(
 \begin{array}
 [c]{c}%
@@ -9300,9 +9295,9 @@ B$\textquotedblright\ means that the matrix $A$ is similar to the matrix $B$.}
 
 \begin{theorem}
 [Jordan canonical form theorem]\label{thm.jnf.jnf}Let $A\in\mathbb{C}^{n\times
-n}$ be an $n\times n$-matrix over $\mathbb{C}$. Then:
+n}$ be an $n\times n$-matrix over $\mathbb{C}$. Then: \medskip
 
-\textbf{(a)} There exists a Jordan matrix $J$ such that $A\sim J$.
+\textbf{(a)} There exists a Jordan matrix $J$ such that $A\sim J$. \medskip
 
 \textbf{(b)} This Jordan matrix $J$ is unique up to the order of the diagonal blocks.
 \end{theorem}
@@ -9399,6 +9394,30 @@ Jordan canonical form of the same matrix: $\left(
 \end{example}
 
 \begin{example}
+If $A=\left(
+\begin{array}
+[c]{cc}%
+0 & -1\\
+1 & 0
+\end{array}
+\right)  $, then a Jordan canonical form of $A$ is $\left(
+\begin{array}
+[c]{cc}%
+-i & 0\\
+0 & i
+\end{array}
+\right)  =\left(
+\begin{array}
+[c]{cc}%
+J_{1}\left(  -i\right)  & 0\\
+0 & J_{1}\left(  i\right)
+\end{array}
+\right)  $, where $i=\sqrt{-1}\in\mathbb{C}$. Note that this Jordan canonical
+form has imaginary entries, despite all entries of $A$ being real. This is
+unavoidable when $A$ has non-real eigenvalues.
+\end{example}
+
+\begin{example}
 If $D$ is a diagonal matrix, then $D$ itself is a Jordan canonical form of
 $D$. Indeed, each diagonal entry $\lambda$ of $D$ can be viewed as a Jordan
 cell of size $1$ (namely, $J_{1}\left(  \lambda\right)  $), so that $D$ is a
@@ -9407,12 +9426,18 @@ Jordan matrix.
 
 \subsection{Jordan canonical form: proof of uniqueness}
 
-We shall approach the proof of Theorem \ref{thm.jnf.jnf} slowly, making sure
-to record all auxiliary results obtained on the way (as they are themselves
-rather useful). We first try to explore how much of the structure of the
-Jordan normal form $J$ can be read off the matrix $A$. This will lead us to
-the proof of the uniqueness part (i.e., part \textbf{(b)}) of Theorem
-\ref{thm.jnf.jnf}.
+We shall approach the proof of Theorem \ref{thm.jnf.jnf} slowly\footnote{See
+\cite[Chapter VII, \S 5, section 4]{Bourba03}, \cite[Theorem 31.17]{GalQua20},
+\cite[Chapter Five, Section IV, Theorem 2.8]{Heffer20},
+\cite[\S 8.10--\S 8.11]{Loehr14}, \cite[\S 4.6]{OmClVi11}, \cite[\S 12.2]%
+{Prasolov}, \cite[\S 4.3]{Shapir15}, \cite[\S 2.4]{Taylor20}, \cite[Chapter 9,
+Theorem 5.1]{Treil15} and \cite[Theorem 4.4.1]{Woerde16} for other proofs (at
+least proofs of Theorem \ref{thm.jnf.jnf} \textbf{(a)}, which is the harder
+part of Theorem \ref{thm.jnf.jnf}).}, making sure to record all auxiliary
+results obtained on the way (as they are themselves rather useful). We first
+try to explore how much of the structure of the Jordan normal form $J$ can be
+read off the matrix $A$. This will lead us to the proof of the uniqueness part
+(i.e., part \textbf{(b)}) of Theorem \ref{thm.jnf.jnf}.
 
 We start with an example:
 
@@ -12855,7 +12880,7 @@ There certainly can be. For instance, if $A=\lambda I_{n}$ for some
 $\lambda\in\mathbb{F}$, then \textbf{every} $n\times n$-matrix commutes with
 $A$ (but very few matrices are of the form $f\left(  A\right)  $ for some
 polynomial $f$). This is, in a sense, the \textquotedblleft best case
-scentario\textquotedblright. Only for $A=\lambda I_{n}$ is it true that every
+scenario\textquotedblright. Only for $A=\lambda I_{n}$ is it true that every
 $n\times n$-matrix commutes with $A$.
 
 Let us study the general case now.
@@ -13716,7 +13741,7 @@ Assume that $\mathcal{A}$ holds. Thus, $A=A^{\ast}$. Now, let $x\in
 \mathbb{C}^{n}$. Then, $\left\langle x,Ax\right\rangle =\overline{\left\langle
 Ax,x\right\rangle }$ (by Proposition \ref{prop.unitary.innerprod.props}
 \textbf{(b)}). However, by Proposition \ref{prop.unitary.innerprod.props}
-\textbf{(a)}, we hve%
+\textbf{(a)}, we have%
 \[
 \left\langle Ax,x\right\rangle =x^{\ast}Ax\ \ \ \ \ \ \ \ \ \ \text{and}%
 \ \ \ \ \ \ \ \ \ \ \left\langle x,Ax\right\rangle =\underbrace{\left(
@@ -13796,7 +13821,7 @@ products are not (in general).
 \subsection{Definiteness and semidefiniteness}
 
 \begin{definition}
-Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix.
+Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. \medskip
 
 \textbf{(a)} We say that $A$ is \emph{positive semidefinite} if it satisfies%
 \[
@@ -13948,11 +13973,11 @@ n}$ be the $n\times n$-matrix%
 \left(
 \begin{array}
 [c]{ccccc}%
-a_{1} & a_{1} & a_{1} & a_{1} & a_{1}\\
-a_{1} & a_{2} & a_{2} & a_{2} & a_{2}\\
-a_{1} & a_{2} & \ddots & \cdots & \cdots\\
-a_{1} & a_{2} & \vdots & a_{n-1} & a_{n-1}\\
-a_{1} & a_{2} & \vdots & a_{n-1} & a_{n}%
+a_{1} & a_{1} & \cdots & a_{1} & a_{1}\\
+a_{1} & a_{2} & \cdots & a_{2} & a_{2}\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+a_{1} & a_{2} & \cdots & a_{n-1} & a_{n-1}\\
+a_{1} & a_{2} & \cdots & a_{n-1} & a_{n}%
 \end{array}
 \right)
 \]
@@ -15401,7 +15426,7 @@ Now, let us derive some consequences from Cauchy's interlacing theorem. We
 begin with a straightforward generalization:
 
 \begin{corollary}
-[Cauchy's interlacing theorem for multiple deletions]\label{thm.interlacing.r}%
+[Cauchy's interlacing theorem for multiple deletions]\label{cor.interlacing.r}%
 Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix. Let $r\in\left\{
 0,1,\ldots,n\right\}  $. Let $C\in\mathbb{C}^{r\times r}$ be the result of
 removing $n-r$ rows and the corresponding $n-r$ columns from $A$. (That is, we
@@ -15472,11 +15497,12 @@ _{m}\left(  A\right)  \leq\operatorname*{Tr}\left(  V^{\ast}AV\right)
 
 
 Indeed, let $V\in\mathbb{C}^{n\times m}$ be an isometry. Thus, $V$ is an
-$n\times m$-matrix whose columns are orthonormal. As we have seen in the first
-chapter(?), we can extend each orthonormal tuple of vectors to an orthonormal
-basis. Doing this to the columns of $V$, we thus obtain an orthonormal basis
-of $\mathbb{C}^{n}$ whose first $m$ entries are the columns of $V$. Let $U$ be
-the matrix whose columns are the entries of this basis. Then,%
+$n\times m$-matrix whose columns are orthonormal. As we know from Corollary
+\ref{cor.unitary.orthon-extend}, we can extend each orthonormal tuple of
+vectors to an orthonormal basis. Doing this to the columns of $V$, we thus
+obtain an orthonormal basis of $\mathbb{C}^{n}$ whose first $m$ entries are
+the columns of $V$. Let $U$ be the matrix whose columns are the entries of
+this basis. Then,%
 \[
 U=\left(
 \begin{array}
@@ -15533,7 +15559,7 @@ V^{\ast}AV & \ast\\
 \]
 where the three $\ast$s mean blocks that we don't care about. So the matrix
 $V^{\ast}AV$ is obtained from $U^{\ast}AU$ by removing a bunch of rows and the
-corresponding columns. Hence, the previous corollary yields%
+corresponding columns. Hence, Corollary \ref{cor.interlacing.r} yields%
 \[
 \lambda_{j}\left(  U^{\ast}AU\right)  \leq\lambda_{j}\left(  V^{\ast
 }AV\right)  \ \ \ \ \ \ \ \ \ \ \text{for all }j\in\left[  m\right]
@@ -15679,7 +15705,7 @@ found in \cite{MaOlAr11} (see also \cite{Nathan21} for an elementary introductio
 
 \begin{convention}
 \label{conv.major.notations}Let $x\in\mathbb{R}^{n}$ be a column vector with
-real entries. Then:
+real entries. Then: \medskip
 
 \textbf{(a)} For each $i\in\left[  n\right]  $, we let $x_{i}$ denote the
 $i$-th coordinate of $x$. (\textquotedblleft Coordinate\textquotedblright\ is
@@ -15700,7 +15726,7 @@ x_{n}%
 
 \textbf{(b)} We say that $x$ is \emph{weakly decreasing} if $x_{1}\geq
 x_{2}\geq\cdots\geq x_{n}$. We say that $x$ is \emph{weakly increasing} if
-$x_{1}\leq x_{2}\leq\cdots\leq x_{n}$.
+$x_{1}\leq x_{2}\leq\cdots\leq x_{n}$. \medskip
 
 \textbf{(c)} We let $x^{\downarrow}$ denote the weakly decreasing permutation
 of $x$ (that is, the column vector obtained by sorting the entries of $x$ in
@@ -15710,7 +15736,7 @@ of $x$.
 
 Thus, $x_{i}^{\downarrow}$ is the $i$-th largest entry of $x$ for each
 $i\in\left[  n\right]  $; in particular, $x_{1}^{\downarrow}\geq
-x_{2}^{\downarrow}\geq\cdots\geq x_{n}^{\downarrow}$.
+x_{2}^{\downarrow}\geq\cdots\geq x_{n}^{\downarrow}$. \medskip
 
 \textbf{(d)} We let $x^{\uparrow}$ denote the weakly increasing permutation of
 $x$ (that is, the column vector obtained by sorting the entries of $x$ in
@@ -15725,11 +15751,11 @@ $i\in\left[  n\right]  $; in particular, $x_{1}^{\uparrow}\leq x_{2}%
 For example, if $x=\left(  3,5,2\right)  ^{T}$, then $x_{1}=3$ and $x_{2}=5$
 and $x_{3}=2$ and%
 \begin{align*}
-x^{\downarrow}  &  =\left(  5,3,2\right)  \ \ \ \ \ \ \ \ \ \ \text{and }%
-x_{1}^{\downarrow}=5\text{ and }x_{2}^{\downarrow}=3\text{ and }%
+x^{\downarrow} &  =\left(  5,3,2\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
+}x_{1}^{\downarrow}=5\text{ and }x_{2}^{\downarrow}=3\text{ and }%
 x_{3}^{\downarrow}=2\ \ \ \ \ \ \ \ \ \ \text{and}\\
-x^{\uparrow}  &  =\left(  2,3,5\right)  \ \ \ \ \ \ \ \ \ \ \text{and }%
-x_{1}^{\uparrow}=2\text{ and }x_{2}^{\uparrow}=3\text{ and }x_{3}^{\uparrow
+x^{\uparrow} &  =\left(  2,3,5\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
+}x_{1}^{\uparrow}=2\text{ and }x_{2}^{\uparrow}=3\text{ and }x_{3}^{\uparrow
 }=5.
 \end{align*}
 
@@ -16225,29 +16251,31 @@ sequence of OPRH moves.
 \end{theorem}
 
 \begin{example}
-\textbf{(a)} We have $\left(  4,1,1\right)  \succcurlyeq\left(  2,2,2\right)
-$, and indeed $\left(  2,2,2\right)  $ can be obtained from $\left(
-4,1,1\right)  $ by OPRH moves as follows:%
+\textbf{(a)} We have $\left(  4,1,1\right)  ^{T}\succcurlyeq\left(
+2,2,2\right)  ^{T}$, and indeed $\left(  2,2,2\right)  ^{T}$ can be obtained
+from $\left(  4,1,1\right)  ^{T}$ by OPRH moves as follows:%
 \[
-\left(  4,1,1\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
-3,2,1\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  2,2,2\right)  .
+\left(  4,1,1\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+3,2,1\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(  2,2,2\right)
+^{T}.
 \]
 
 
-\textbf{(b)} We have $\left(  7,5,2,0\right)  \succcurlyeq\left(
-4,4,3,3\right)  $, and indeed $\left(  4,4,3,3\right)  $ can be obtained from
-$\left(  7,5,2,0\right)  $ by OPRH moves as follows:%
+\textbf{(b)} We have $\left(  7,5,2,0\right)  ^{T}\succcurlyeq\left(
+4,4,3,3\right)  ^{T}$, and indeed $\left(  4,4,3,3\right)  ^{T}$ can be
+obtained from $\left(  7,5,2,0\right)  ^{T}$ by OPRH moves as follows:%
 \[
-\left(  7,5,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
-6,6,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  6,5,3,0\right)
-\overset{\text{OPRH}}{\longrightarrow}\left(  6,4,3,1\right)
-\overset{\text{OPRH}}{\longrightarrow}\left(  4,4,3,3\right)  .
+\left(  7,5,2,0\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+6,6,2,0\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+6,5,3,0\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+6,4,3,1\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+4,4,3,3\right)  ^{T}.
 \]
 Here is another way to do this:%
 \[
-\left(  7,5,2,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(
-7,4,3,0\right)  \overset{\text{OPRH}}{\longrightarrow}\left(  4,4,3,3\right)
-.
+\left(  7,5,2,0\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+7,4,3,0\right)  ^{T}\overset{\text{OPRH}}{\longrightarrow}\left(
+4,4,3,3\right)  ^{T}.
 \]
 
 \end{example}
@@ -16477,15 +16505,15 @@ order-preserving, i.e., that $z$ is weakly decreasing. Since the only entries
 of $x$ that changed in our RH move were $x_{a}$ and $x_{b}$ (and since we know
 that $x$ is weakly decreasing), we only need to verify the inequalities
 \begin{align*}
-x_{a-1}  &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
+x_{a-1} &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a}  &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+z_{a} &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
+z_{a} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-x_{b-1}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+x_{b-1} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{b}  &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
+z_{b} &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
 \end{align*}
 Fortunately, these inequalities all follow easily from the facts that we know
 (viz., from the chain of inequalities%
@@ -16497,18 +16525,23 @@ and from the inequalities $z_{a}\geq y_{a}$ and $z_{b}\leq y_{b}$ and the fact
 that $z_{a}$ and $z_{b}$ lie in the interval $\left[  x_{b},x_{a}\right]  $):
 The inequality $x_{a-1}\geq z_{a}$ (if $a>1$) follows from $x_{a-1}\geq
 x_{a}\geq z_{a}$ (since $z_{a}\in\left[  x_{b},x_{a}\right]  $). The
-inequality $z_{a}\geq x_{a+1}$ (if $a+1\neq b$) follows from $z_{a}\geq
-y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with }%
-j\in\left\{  a+1,a+2,\ldots,b-1\right\}  \right)  $ (since $x_{a+1}$ is one of
-the latter $x_{j}$). Furthermore, $z_{a}\geq z_{b}$ follows from $z_{a}\geq
-y_{a}\geq y_{b}\geq z_{b}$ (since $z_{b}\leq y_{b}$). Next, $x_{b-1}\geq
-z_{b}$ (if $a+1\neq b$) follows from $\left(  \text{all of the }x_{j}\text{
-and }y_{j}\text{ with }j\in\left\{  a+1,a+2,\ldots,b-1\right\}  \right)  \geq
-y_{b}\geq z_{b}$ (since $x_{b-1}$ is one of those former $x_{j}$). Finally,
-$z_{b}\geq x_{b+1}$ follows by combining $z_{b}\geq x_{b}$ (this is because
-$z_{b}$ lies in the interval $\left[  x_{b},x_{a}\right]  $) and $x_{b}\geq
-x_{b+1}$. Thus, we have checked all the necessary inequalities to ensure that
-$z$ is weakly decreasing. Thus, requirement 1 holds.
+inequality $z_{a}\geq x_{a+1}$ (if $a+1\neq b$) follows from
+\[
+z_{a}\geq y_{a}\geq\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with
+}j\in\left\{  a+1,a+2,\ldots,b-1\right\}  \right)
+\]
+(since $x_{a+1}$ is one of the latter $x_{j}$). Furthermore, $z_{a}\geq z_{b}$
+follows from $z_{a}\geq y_{a}\geq y_{b}\geq z_{b}$ (since $z_{b}\leq y_{b}$).
+Next, $x_{b-1}\geq z_{b}$ (if $a+1\neq b$) follows from
+\[
+\left(  \text{all of the }x_{j}\text{ and }y_{j}\text{ with }j\in\left\{
+a+1,a+2,\ldots,b-1\right\}  \right)  \geq y_{b}\geq z_{b}%
+\]
+(since $x_{b-1}$ is one of those former $x_{j}$). Finally, $z_{b}\geq x_{b+1}$
+follows by combining $z_{b}\geq x_{b}$ (this is because $z_{b}$ lies in the
+interval $\left[  x_{b},x_{a}\right]  $) and $x_{b}\geq x_{b+1}$. Thus, we
+have checked all the necessary inequalities to ensure that $z$ is weakly
+decreasing. Thus, requirement 1 holds.
 
 Finally, we need to verify requirement 2. In other words, we need to show that
 $z\succcurlyeq y$. Since $z$ and $y$ are weakly decreasing, this means that we
@@ -19248,10 +19281,10 @@ sums $\sum_{j=1}^{n}\dfrac{x_{i}}{x_{j}}A_{i,j}$ for $i\in\left[  n\right]  $.
 \end{proof}
 
 \begin{remark}
-If the $x_{1},x_{2},\ldots,x_{n}$ in Corollary
-\ref{cor.posmat.rho-in-terms-of-rowsums-x} are chosen appropriately, both of
-the inequalities can become equalities. (This follows from the
-Perron--Frobenius theorems further below.)
+If the matrix $A$ in Corollary \ref{cor.posmat.rho-in-terms-of-rowsums-x} is
+positive, then there is a choice of $x_{1},x_{2},\ldots,x_{n}>0$ such that
+both of the inequalities become equalities. (This follows from Theorem
+\ref{thm.posmat.perron} \textbf{(c)} further below.)
 \end{remark}
 
 \begin{corollary}
@@ -20148,7 +20181,7 @@ A\right)  >0$. This proves Theorem \ref{thm.posmat.perron} \textbf{(a)}.
 
 This also shows that the matrix $\dfrac{1}{\rho\left(  A\right)  }A$ is
 well-defined. Moreover, $\dfrac{1}{\rho\left(  A\right)  }A>0$ (since $A>0$).
-the matrix $\dfrac{1}{\rho\left(  A\right)  }A$ has the same eigenvectors as
+The matrix $\dfrac{1}{\rho\left(  A\right)  }A$ has the same eigenvectors as
 $A$ (with the same algebraic multiplicities), while the corresponding
 eigenvalues are those of $A$ multiplied by $\dfrac{1}{\rho\left(  A\right)  }%
 $. Hence, if we replace $A$ by $\dfrac{1}{\rho\left(  A\right)  }A$, then the
