@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Wednesday, December 08, 2021 10:11:41}
+%TCIDATA{LastRevised=Thursday, December 23, 2021 00:12:33}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -206,6 +206,9 @@ column vectors of size $n$) is also denoted by $\mathbb{F}^{n}$.
 $n$ is clear from the context.
 
 \item The transpose of a matrix $A$ is denoted by $A^{T}$.
+
+\item Zero vectors and zero matrices will be denoted by $0$, no matter what
+their sizes or ambient spaces are.
 
 \item If $A$ is an $n\times m$-matrix, and if $i\in\left[  n\right]  $ and
 $j\in\left[  m\right]  $, then:
@@ -541,6 +544,26 @@ The length $\left\vert \left\vert x\right\vert \right\vert $ of a vector
 $x\in\mathbb{C}^{n}$ is sometimes also called the \emph{norm} of $x$ (but
 beware that other things are called \textquotedblleft norms\textquotedblright%
 \ as well).
+
+A vector $x\in\mathbb{C}^{n}$ has zero length if and only if it is $0$:
+
+\begin{proposition}
+Let $x\in\mathbb{C}^{n}$. Then, $\left\vert \left\vert x\right\vert
+\right\vert =0$ if and only if $x=0$.
+\end{proposition}
+
+\begin{proof}
+The \textquotedblleft if\textquotedblright\ part follows from $\left\vert
+\left\vert 0\right\vert \right\vert =0$, which is obvious. To prove the
+\textquotedblleft only if\textquotedblright\ part, we assume that $\left\vert
+\left\vert x\right\vert \right\vert =0$. Thus, $\left\langle x,x\right\rangle
+=0$ (since $\left\vert \left\vert x\right\vert \right\vert =\sqrt{\left\langle
+x,x\right\rangle }$). However, if we had $x\neq0$, then Proposition
+\ref{prop.unitary.innerprod.pos} \textbf{(b)} would yield $\left\langle
+x,x\right\rangle >0$, which would contradict $\left\langle x,x\right\rangle
+=0$. Thus, we cannot have $x\neq0$. Hence, $x=0$. Thus, the \textquotedblleft
+only if\textquotedblright\ part is proven.
+\end{proof}
 
 \begin{proposition}
 For any $\lambda\in\mathbb{C}$ and $x\in\mathbb{C}^{n}$, we have $\left\vert
@@ -11120,6 +11143,16 @@ have $\sigma\left(  A\right)  =\left\{  0\right\}  $).
 \end{itemize}
 \end{exercise}
 
+\begin{exercise}
+\fbox{4} Let $A\in\mathbb{C}^{n\times n}$ be a matrix. Let $\lambda
+\in\mathbb{C}$ be nonzero. Prove the following: \medskip
+
+\textbf{(a)} If $A$ is nilpotent, then $A\sim\lambda A$. \medskip
+
+\textbf{(b)} If $A\sim\lambda A$ and if all $n$ numbers $\lambda^{1}%
+,\lambda^{2},\ldots,\lambda^{n}$ are distinct from $1$, then $A$ is nilpotent.
+\end{exercise}
+
 \subsection{Powers and the Jordan canonical form}
 
 Let $n\in\mathbb{N}$ and $A\in\mathbb{F}^{n\times n}$ for some field
@@ -15751,10 +15784,10 @@ $i\in\left[  n\right]  $; in particular, $x_{1}^{\uparrow}\leq x_{2}%
 For example, if $x=\left(  3,5,2\right)  ^{T}$, then $x_{1}=3$ and $x_{2}=5$
 and $x_{3}=2$ and%
 \begin{align*}
-x^{\downarrow} &  =\left(  5,3,2\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
+x^{\downarrow}  &  =\left(  5,3,2\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
 }x_{1}^{\downarrow}=5\text{ and }x_{2}^{\downarrow}=3\text{ and }%
 x_{3}^{\downarrow}=2\ \ \ \ \ \ \ \ \ \ \text{and}\\
-x^{\uparrow} &  =\left(  2,3,5\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
+x^{\uparrow}  &  =\left(  2,3,5\right)  ^{T}\ \ \ \ \ \ \ \ \ \ \text{and
 }x_{1}^{\uparrow}=2\text{ and }x_{2}^{\uparrow}=3\text{ and }x_{3}^{\uparrow
 }=5.
 \end{align*}
@@ -16505,15 +16538,15 @@ order-preserving, i.e., that $z$ is weakly decreasing. Since the only entries
 of $x$ that changed in our RH move were $x_{a}$ and $x_{b}$ (and since we know
 that $x$ is weakly decreasing), we only need to verify the inequalities
 \begin{align*}
-x_{a-1} &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
+x_{a-1}  &  \geq z_{a}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a>1\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a} &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+z_{a}  &  \geq x_{a+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{a} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
+z_{a}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1=b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-x_{b-1} &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
+x_{b-1}  &  \geq z_{b}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }a+1\neq b\right)
 \ \ \ \ \ \ \ \ \ \ \text{and}\\
-z_{b} &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
+z_{b}  &  \geq x_{b+1}\ \ \ \ \ \ \ \ \ \ \left(  \text{if }b\neq n\right)  .
 \end{align*}
 Fortunately, these inequalities all follow easily from the facts that we know
 (viz., from the chain of inequalities%
@@ -17106,13 +17139,14 @@ We note that the analogue of Exercise \ref{exe.major.RH.OPRH-n-1} for
 arbitrary (not necessarily weakly decreasing) column vectors is false: It is
 not hard to find two vectors $x,y\in\mathbb{R}^{4}$ such that $x\succcurlyeq
 y$ but it takes $4$ (not $3$) RH moves to transform $x$ into $y$. (For
-example, $x=\left(  5,3,2,0\right)  ^{T}$ and $y=\left(  4,4,1,1\right)  ^{T}$
+example, $x=\left(  5,3,2,0\right)  ^{T}$ and $y=\left(  1,1,4,4\right)  ^{T}$
 are two such vectors.) On the other hand, it is easy to see (piggybacking on
 Exercise \ref{exe.major.RH.OPRH-n-1}) that for any two column vectors
 $x,y\in\mathbb{R}^{n}$ satisfying $x\succcurlyeq y$, it is possible to obtain
 $y$ from $x$ by at most $2n-2$ RH moves. Finding the minimum number of RH
 moves that always suffices to transform $x\in\mathbb{R}^{n}$ into
-$y\in\mathbb{R}^{n}$ when $x\succcurlyeq y$ appears to be an interesting question.
+$y\in\mathbb{R}^{n}$ when $x\succcurlyeq y$ appears to be an interesting
+question. \medskip
 
 We can use Theorem \ref{thm.major.abs-crit} to define a \textquotedblleft
 weighted\textquotedblright\ generalization of majorization. This leads to the
@@ -17205,12 +17239,12 @@ bottom of the column vector $x$).
 \item $\mathcal{C}$\textit{:} We can obtain $y$ from $x$ by a sequence of OPRH
 moves and OPD moves. Here, an \textquotedblleft\emph{OPD move}%
 \textquotedblright\ (short for \textquotedblleft order-preserving decrease
-move\textquotedblright) means a move in which we decrease an entry of a
-decreasing vector in such a way that the vector remains decreasing (i.e., we
-replace an entry $z_{i}$ of a decreasing vector $z\in\mathbb{R}^{n}$ by a
-smaller entry $z_{i}^{\prime}\leq z_{i}$ such that we still have $z_{1}\geq
-z_{2}\geq\cdots\geq z_{i-1}\geq z_{i}^{\prime}\geq z_{i+1}\geq z_{i+2}%
-\geq\cdots\geq z_{n}$).
+move\textquotedblright) means a move in which we decrease an entry of a weakly
+decreasing vector in such a way that the vector remains weakly decreasing
+(i.e., we replace an entry $z_{i}$ of a decreasing vector $z\in\mathbb{R}^{n}$
+by a smaller entry $z_{i}^{\prime}\leq z_{i}$ such that we still have
+$z_{1}\geq z_{2}\geq\cdots\geq z_{i-1}\geq z_{i}^{\prime}\geq z_{i+1}\geq
+z_{i+2}\geq\cdots\geq z_{n}$).
 
 \item $\mathcal{D}$\textit{:} Every weakly increasing convex function
 $f:I\rightarrow\mathbb{R}$ satisfies%
@@ -18382,7 +18416,7 @@ $\left\vert A\right\vert =A$.
 
 \begin{proof}
 $\Longrightarrow:$ If $A$ is nonnegative, then each $i$ and $j$ satisfy
-$A_{i,j}=0$ and thus $\left\vert A_{i,j}\right\vert =A_{i,j}$; therefore,
+$A_{i,j}\geq0$ and thus $\left\vert A_{i,j}\right\vert =A_{i,j}$; therefore,
 $\left\vert A\right\vert =A$.
 
 $\Longleftarrow:$ If $\left\vert A\right\vert =A$, then $A$ is nonnegative
