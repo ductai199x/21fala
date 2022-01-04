@@ -18,7 +18,7 @@
 \usepackage{pythonhighlight}
 %TCIDATA{OutputFilter=latex2.dll}
 %TCIDATA{Version=5.50.0.2960}
-%TCIDATA{LastRevised=Thursday, December 23, 2021 00:12:33}
+%TCIDATA{LastRevised=Tuesday, January 04, 2022 21:12:23}
 %TCIDATA{SuppressPackageManagement}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -9900,7 +9900,7 @@ $p-1\in\mathbb{N}$). Thus, we obtain%
 ^{p-1}\right)  \right)  =\sum_{\substack{i\in\left[  k\right]  ;\\\lambda
 _{i}=\lambda}}%
 \begin{cases}
-p-1; & \text{if }p-1\leq n_{i};\\
+p-1, & \text{if }p-1\leq n_{i};\\
 n_{i}, & \text{if }p-1\geq n_{i}.
 \end{cases}
 \]
@@ -9916,7 +9916,7 @@ n_{i}, & \text{if }p>n_{i}%
 \end{cases}
 -\sum_{\substack{i\in\left[  k\right]  ;\\\lambda_{i}=\lambda}}%
 \begin{cases}
-p-1; & \text{if }p-1\leq n_{i};\\
+p-1, & \text{if }p-1\leq n_{i};\\
 n_{i}, & \text{if }p-1\geq n_{i}%
 \end{cases}
 \\
@@ -9928,7 +9928,7 @@ n_{i}, & \text{if }p>n_{i}%
 \end{cases}
 -%
 \begin{cases}
-p-1; & \text{if }p-1\leq n_{i};\\
+p-1, & \text{if }p-1\leq n_{i};\\
 n_{i}, & \text{if }p-1\geq n_{i}%
 \end{cases}
 \right)  }_{\substack{=%
@@ -14723,41 +14723,89 @@ TODO: Add exercises on determinantal criteria?
 
 \subsection{Rayleigh quotients}
 
+\subsubsection{Definition and basic properties}
+
 \begin{definition}
-Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix, and $x\in
-\mathbb{C}^{n}$ be a nonzero vector. Then, the \emph{Rayleigh quotient} for
-$A$ and $x$ is defined to be the real number%
+\label{def.herm.rayleigh}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix, and $x\in\mathbb{C}^{n}$ be a nonzero vector. Then, the \emph{Rayleigh
+quotient} for $A$ and $x$ is defined to be the real number%
 \[
 R\left(  A,x\right)  :=\dfrac{\left\langle Ax,x\right\rangle }{\left\langle
 x,x\right\rangle }=\dfrac{x^{\ast}Ax}{x^{\ast}x}=\dfrac{x^{\ast}Ax}{\left\vert
-\left\vert x\right\vert \right\vert ^{2}}=y^{\ast}Ay,
+\left\vert x\right\vert \right\vert ^{2}}.
 \]
-where $y=\dfrac{x}{\left\vert \left\vert x\right\vert \right\vert }$.
+
 \end{definition}
+
+\begin{proposition}
+\label{prop.herm.rayleigh-y}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix, and $x\in\mathbb{C}^{n}$ be a nonzero vector. Let $y=\dfrac
+{x}{\left\vert \left\vert x\right\vert \right\vert }$. Then,
+\[
+R\left(  A,x\right)  =R\left(  A,y\right)  =y^{\ast}Ay.
+\]
+
+\end{proposition}
+
+\begin{proof}
+Let $\lambda=\left\vert \left\vert x\right\vert \right\vert $. Thus,
+$y=\dfrac{x}{\lambda}$, so that $x=\lambda y$. Hence,%
+\[
+R\left(  A,x\right)  =\dfrac{\left\langle Ax,x\right\rangle }{\left\langle
+x,x\right\rangle }=\dfrac{\left\langle A\cdot\lambda y,\lambda y\right\rangle
+}{\left\langle \lambda y,\lambda y\right\rangle }=\dfrac{\overline{\lambda
+}\lambda\left\langle Ay,y\right\rangle }{\overline{\lambda}\lambda\left\langle
+y,y\right\rangle }=\dfrac{\left\langle Ay,y\right\rangle }{\left\langle
+y,y\right\rangle }=R\left(  A,y\right)
+\]
+(by the definition of $R\left(  A,y\right)  $). Moreover, the definition of
+$y$ yields $\left\vert \left\vert y\right\vert \right\vert =\left\vert
+\left\vert \dfrac{x}{\left\vert \left\vert x\right\vert \right\vert
+}\right\vert \right\vert =\dfrac{\left\vert \left\vert x\right\vert
+\right\vert }{\left\vert \left\vert x\right\vert \right\vert }=1$. Now, the
+definition of $R\left(  A,y\right)  $ yields%
+\[
+R\left(  A,y\right)  =\dfrac{y^{\ast}Ay}{\left\vert \left\vert y\right\vert
+\right\vert ^{2}}=y^{\ast}Ay\ \ \ \ \ \ \ \ \ \ \left(  \text{since
+}\left\vert \left\vert y\right\vert \right\vert =1\right)  .
+\]
+The proof of Proposition \ref{prop.herm.rayleigh-y} is thus complete.
+\end{proof}
+
+\subsubsection{The Courant--Fisher theorem: statement}
 
 Let us explore what Rayleigh quotients can tell us about the eigenvalues of a
 Hermitian matrix.
 
 Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. By the
-spectral theorem, we have $A=UDU^{\ast}$ for some unitary $U$ and some real
-diagonal matrix $D$. Consider these $U$ and $D$. We have
-$D=\operatorname*{diag}\left(  \lambda_{1},\lambda_{2},\ldots,\lambda
-_{n}\right)  $, where $\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$ are the
-eigenvalues of $A$. We WLOG assume that
+spectral theorem, we have $A=UDU^{\ast}$ for some unitary $U\in\mathbb{C}%
+^{n\times n}$ and some real diagonal matrix $D\in\mathbb{R}^{n\times n}$.
+Consider these $U$ and $D$. We have $D=\operatorname*{diag}\left(  \lambda
+_{1},\lambda_{2},\ldots,\lambda_{n}\right)  $, where $\lambda_{1},\lambda
+_{2},\ldots,\lambda_{n}$ are the eigenvalues of $A$. We WLOG assume that
 \[
 \lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}%
 \]
 (indeed, we can always achieve this by permuting rows/columns of $D$ and
-integrating the permutation matrices into $U$). We set%
+integrating the permutation matrices into $U$\ \ \ \ \footnote{Alternatively,
+we can achieve $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$ right
+away by applying Theorem \ref{thm.jnf.schurtri-diag}.}). We set%
 \[
 \lambda_{\min}\left(  A\right)  :=\lambda_{1}\ \ \ \ \ \ \ \ \ \ \text{and}%
 \ \ \ \ \ \ \ \ \ \ \lambda_{\max}\left(  A\right)  :=\lambda_{n}.
 \]
-We will also write $\lambda_{\min}$ and $\lambda_{\max}$ without the
-\textquotedblleft$\left(  A\right)  $\textquotedblright\ part.
+
 
 Let us now pick some vector $x\in\mathbb{C}^{n}$ of length $1$ (that is,
 $\left\vert \left\vert x\right\vert \right\vert =1$). Set $z=U^{\ast}x$. Then,
+$z^{\ast}=\left(  U^{\ast}x\right)  ^{\ast}=x^{\ast}\left(  U^{\ast}\right)
+^{\ast}=x^{\ast}U$. Also, the matrix $U^{\ast}$ is an isometry (since $U$ is
+unitary), and thus we have $\left\vert \left\vert U^{\ast}x\right\vert
+\right\vert =\left\vert \left\vert x\right\vert \right\vert =1$. In other
+words, $\left\vert \left\vert z\right\vert \right\vert =1$ (since $z=U^{\ast
+}x$). In other words, $\sum\limits_{k=1}^{n}\left\vert z_{k}\right\vert
+^{2}=1$ (since $\left\vert \left\vert z\right\vert \right\vert =\sqrt
+{\sum\limits_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}}$). Furthermore,
 writing $z$ as $\left(
 \begin{array}
 [c]{c}%
@@ -14767,35 +14815,27 @@ z_{2}\\
 z_{n}%
 \end{array}
 \right)  $, we have%
-\[
-x^{\ast}Ax=\underbrace{x^{\ast}U}_{=\left(  U^{\ast}x\right)  ^{\ast}=z^{\ast
-}}D\underbrace{U^{\ast}x}_{=z}=z^{\ast}Dz=\sum_{k=1}^{n}\lambda_{k}%
-\overline{z_{k}}z_{k}=\sum_{k=1}^{n}\lambda_{k}\left\vert z_{k}\right\vert
-^{2}.
-\]
-We note that $\left\vert \left\vert z\right\vert \right\vert =1$ (indeed,
-since $U$ is unitary, the matrix $U^{\ast}$ is also unitary, so $\left\vert
-\left\vert U^{\ast}x\right\vert \right\vert =\left\vert \left\vert
-x\right\vert \right\vert =1$, which means $\left\vert \left\vert z\right\vert
-\right\vert =1$). In other words, $\sum\limits_{k=1}^{n}\left\vert
-z_{k}\right\vert ^{2}=1$ (since $\left\vert \left\vert z\right\vert
-\right\vert =\sqrt{\sum\limits_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}}$).
-Now,%
-\[
-x^{\ast}Ax=\sum_{k=1}^{n}\underbrace{\lambda_{k}}_{\leq\lambda_{n}}\left\vert
-z_{k}\right\vert ^{2}\leq\sum_{k=1}^{n}\lambda_{n}\left\vert z_{k}\right\vert
-^{2}=\lambda_{n}\underbrace{\sum_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}%
-}_{=1}=\lambda_{n}.
-\]
+\begin{align*}
+x^{\ast}\underbrace{A}_{=UDU^{\ast}}x  &  =\underbrace{x^{\ast}U}_{=z^{\ast}%
+}D\underbrace{U^{\ast}x}_{=z}=z^{\ast}Dz=\sum_{k=1}^{n}\lambda_{k}%
+\overline{z_{k}}z_{k}=\sum_{k=1}^{n}\underbrace{\lambda_{k}}_{\leq\lambda_{n}%
+}\left\vert z_{k}\right\vert ^{2}\\
+&  \leq\sum_{k=1}^{n}\lambda_{n}\left\vert z_{k}\right\vert ^{2}=\lambda
+_{n}\underbrace{\sum_{k=1}^{n}\left\vert z_{k}\right\vert ^{2}}_{=1}%
+=\lambda_{n}.
+\end{align*}
 
 
-So we have shown that each vector $x\in\mathbb{C}^{n}$ of length $1$ satisfies
-$x^{\ast}Ax\leq\lambda_{n}$. This inequality becomes an equality at least for
-one vector $x$: namely, for the vector $x=Ue_{n}$ (because for this vector, we
-have $z=\underbrace{U^{\ast}U}_{=I_{n}}e_{n}=e_{n}$, so that $z_{k}=0$ for all
-$k<n$, and therefore the inequality $\sum_{k=1}^{n}\lambda_{k}\left\vert
-z_{k}\right\vert ^{2}\leq\sum_{k=1}^{n}\lambda_{n}\left\vert z_{k}\right\vert
-^{2}$ becomes an equality). Thus,%
+Thus, we have shown that each vector $x\in\mathbb{C}^{n}$ of length $1$
+satisfies $x^{\ast}Ax\leq\lambda_{n}$. This inequality becomes an equality at
+least for one vector $x$ of length $1$: namely, for the vector $x=Ue_{n}$
+(because for this vector, we have $z=\underbrace{U^{\ast}U}_{=I_{n}}%
+e_{n}=e_{n}$, so that $z_{k}=0$ for all $k<n$, and therefore the inequality
+$\sum_{k=1}^{n}\lambda_{k}\left\vert z_{k}\right\vert ^{2}\leq\sum_{k=1}%
+^{n}\lambda_{n}\left\vert z_{k}\right\vert ^{2}$ becomes an
+equality\footnote{and because the vector $Ue_{n}$ does have length $1$ (since
+$U$ is an isometry, so that $\left\vert \left\vert Ue_{n}\right\vert
+\right\vert =\left\vert \left\vert e_{n}\right\vert \right\vert =1$)}). Thus,%
 \begin{align*}
 \lambda_{n}  &  =\max\left\{  x^{\ast}Ax\ \mid\ x\in\mathbb{C}^{n}\text{ is a
 vector of length }1\right\} \\
@@ -14808,8 +14848,8 @@ Since $\lambda_{n}=\lambda_{\max}\left(  A\right)  $, we thus have proved the
 following fact:
 
 \begin{proposition}
-Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. Then, the
-largest eigenvalue of $A$ is%
+\label{prop.herm.cour-fish-max}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix with $n>0$. Then, the largest eigenvalue of $A$ is%
 \begin{align*}
 \lambda_{\max}\left(  A\right)   &  =\max\left\{  x^{\ast}Ax\ \mid
 \ x\in\mathbb{C}^{n}\text{ is a vector of length }1\right\} \\
@@ -14819,11 +14859,11 @@ nonzero}\right\}  .
 
 \end{proposition}
 
-Similarly:
+Similarly, we can prove the following:
 
 \begin{proposition}
-Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian matrix with $n>0$. Then, the
-smallest eigenvalue of $A$ is%
+\label{prop.herm.cour-fish-min}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix with $n>0$. Then, the smallest eigenvalue of $A$ is%
 \begin{align*}
 \lambda_{\min}\left(  A\right)   &  =\min\left\{  x^{\ast}Ax\ \mid
 \ x\in\mathbb{C}^{n}\text{ is a vector of length }1\right\} \\
@@ -14834,7 +14874,7 @@ nonzero}\right\}  .
 \end{proposition}
 
 What about the other eigenvalues? Can we characterize $\lambda_{2}$ (for
-example) in terms of Rayleigh quotients?
+example) in terms of Rayleigh quotients? Yes, but the characterization is more complicated:
 
 \begin{theorem}
 [Courant--Fisher theorem]\label{thm.herm.cour-fish}Let $A\in\mathbb{C}%
@@ -14854,10 +14894,19 @@ subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
 0}}\ \ R\left(  A,x\right)  . \label{thm.herm.cour-fish.maxmin}%
 \end{equation}
 
+
+(The notation \textquotedblleft$\min\limits_{x\in\Omega}f\left(  x\right)
+$\textquotedblright\ we are using here is a synonym for $\min\left\{  f\left(
+x\right)  \ \mid\ x\in\Omega\right\}  $ whenever $\Omega$ is a set and $f$ is
+a function defined on this set. The same applies to maxima. For instance,
+$\max\limits_{\substack{x\in S;\\x\neq0}}R\left(  A,x\right)  $ means
+$\max\left\{  R\left(  A,x\right)  \ \mid\ x\in S\text{ and }x\neq0\right\}  $.)
 \end{theorem}
 
 To prove this theorem, we will use some elementary facts about subspaces of
-finite-dimensional vector spaces. We begin by recalling the following definition:
+finite-dimensional vector spaces. We begin by recalling a classical definition:
+
+\subsubsection{The Courant--Fisher theorem: lemmas}
 
 \begin{definition}
 \label{def.subspaces.sum}Let $S_{1}$ and $S_{2}$ be two subspaces of a vector
@@ -14887,7 +14936,7 @@ $S_{1}\cap S_{2}$.
 
 Then, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly independent
 list of vectors in $S_{1}$. Thus, we can extend it to a basis of $S_{1}$ by
-inserting some new vectors $y_{1},y_{2},\ldots,y_{p}$. Thus,%
+inserting some new vectors $y_{1},y_{2},\ldots,y_{p}$. Hence,%
 \[
 \left(  x_{1},x_{2},\ldots,x_{k},y_{1},y_{2},\ldots,y_{p}\right)  \text{ is a
 basis of }S_{1}\text{.}%
@@ -14896,7 +14945,7 @@ basis of }S_{1}\text{.}%
 
 On the other hand, $\left(  x_{1},x_{2},\ldots,x_{k}\right)  $ is a linearly
 independent list of vectors in $S_{2}$. Thus, we can extend it to a basis of
-$S_{2}$ by inserting some new vectors $z_{1},z_{2},\ldots,z_{q}$. Thus,%
+$S_{2}$ by inserting some new vectors $z_{1},z_{2},\ldots,z_{q}$. Hence,%
 \[
 \left(  x_{1},x_{2},\ldots,x_{k},z_{1},z_{2},\ldots,z_{q}\right)  \text{ is a
 basis of }S_{2}\text{.}%
@@ -14913,8 +14962,8 @@ Now, we claim that
 \]
 Once this is proved, we will conclude that $\dim\left(  S_{1}+S_{2}\right)
 =k+p+q$, and then Proposition \ref{prop.subspaces.dimS1+S2} will follow by a
-simple computation ($k+\left(  k+p+q\right)  =\left(  k+p\right)  +\left(
-k+q\right)  $).
+simple computation (namely, $k+\left(  k+p+q\right)  =\left(  k+p\right)
++\left(  k+q\right)  $).
 
 So let us prove our claim. To prove that $\mathbf{w}$ is a basis of
 $S_{1}+S_{2}$, we need to check the following two statements:
@@ -14937,7 +14986,7 @@ y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}y_{p}\\
 &  \ \ \ \ \ \ \ \ \ \ +\mu_{1}x_{1}+\mu_{2}x_{2}+\cdots+\mu_{k}x_{k}%
 +\beta_{1}z_{1}+\beta_{2}z_{2}+\cdots+\beta_{q}z_{q}\\
 &  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{for some scalars
-}\lambda_{i},\alpha_{j},\mu_{u},\beta_{v}\in\mathbb{F}\right) \\
+}\lambda_{i},\alpha_{j},\mu_{i},\beta_{v}\in\mathbb{F}\right) \\
 &  =\left(  \lambda_{1}+\mu_{1}\right)  x_{1}+\left(  \lambda_{2}+\mu
 _{2}\right)  x_{2}+\cdots+\left(  \lambda_{k}+\mu_{k}\right)  x_{k}\\
 &  \ \ \ \ \ \ \ \ \ \ +\alpha_{1}y_{1}+\alpha_{2}y_{2}+\cdots+\alpha_{p}%
@@ -15134,7 +15183,123 @@ the reciprocal of its length, we obtain a vector of length $1$. This proves
 Corollary \ref{cor.subspaces.dim-geq-del} \textbf{(b)}.
 \end{proof}
 
-Now, we get to the proof of the Courant--Fisher theorem:
+\begin{lemma}
+\label{lem.herm.cour-fish-lem}Let $A\in\mathbb{C}^{n\times n}$ be a Hermitian
+matrix. Let $\left(  v_{1},v_{2},\ldots,v_{k}\right)  $ be an orthonormal
+tuple of eigenvectors of $A$, and let $\mu_{1},\mu_{2},\ldots,\mu_{k}$ be the
+corresponding eigenvalues (so that $A_{i}v_{i}=\mu_{i}v_{i}$ for each
+$i\in\left[  k\right]  $). Assume that $\mu_{1}\leq\mu_{2}\leq\cdots\leq
+\mu_{k}$. Then, each $v\in\operatorname*{span}\left(  v_{1},v_{2},\ldots
+,v_{k}\right)  $ satisfies%
+\begin{equation}
+\left\langle Av,v\right\rangle \geq\mu_{1}\left\langle v,v\right\rangle
+\label{eq.lem.herm.cour-fish-lem.geq}%
+\end{equation}
+and%
+\begin{equation}
+\left\langle Av,v\right\rangle \leq\mu_{k}\left\langle v,v\right\rangle .
+\label{eq.lem.herm.cour-fish-lem.leq}%
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+Let $v\in\operatorname*{span}\left(  v_{1},v_{2},\ldots,v_{k}\right)  $. Thus,
+we can write $v$ in the form%
+\begin{equation}
+v=\alpha_{1}v_{1}+\alpha_{2}v_{2}+\cdots+\alpha_{k}v_{k}
+\label{pf.lem.herm.cour-fish-lem.v=}%
+\end{equation}
+for some $\alpha_{1},\alpha_{2},\ldots,\alpha_{k}\in\mathbb{C}$. Consider
+these $\alpha_{1},\alpha_{2},\ldots,\alpha_{k}$. From
+(\ref{pf.lem.herm.cour-fish-lem.v=}), we obtain%
+\[
+v=\alpha_{1}v_{1}+\alpha_{2}v_{2}+\cdots+\alpha_{k}v_{k}=\sum_{i=1}^{k}%
+\alpha_{i}v_{i}%
+\]
+and thus%
+\[
+Av=A\sum_{i=1}^{k}\alpha_{i}v_{i}=\sum_{i=1}^{k}\alpha_{i}\underbrace{Av_{i}%
+}_{=\mu_{i}v_{i}}=\sum_{i=1}^{k}\alpha_{i}\mu_{i}v_{i}.
+\]
+Combining this with $v=\sum_{i=1}^{k}\alpha_{i}v_{i}=\sum_{j=1}^{k}\alpha
+_{j}v_{j}$, we obtain%
+\begin{equation}
+\left\langle Av,v\right\rangle =\left\langle \sum_{i=1}^{k}\alpha_{i}\mu
+_{i}v_{i},\ \sum_{j=1}^{k}\alpha_{j}v_{j}\right\rangle =\sum_{i=1}^{k}%
+\ \ \sum_{j=1}^{k}\alpha_{i}\mu_{i}\overline{\alpha_{j}}\left\langle
+v_{i},v_{j}\right\rangle . \label{pf.lem.herm.cour-fish-lem.2}%
+\end{equation}
+However, the inner products $\left\langle v_{i},v_{j}\right\rangle $ in this
+sum are $0$ whenever $i\neq j$ (since the tuple $\left(  v_{1},v_{2}%
+,\ldots,v_{k}\right)  $ is orthonormal). Thus, we can simplify this sum as
+follows:%
+\begin{align*}
+\sum_{i=1}^{k}\ \ \sum_{j=1}^{k}\alpha_{i}\mu_{i}\overline{\alpha_{j}%
+}\left\langle v_{i},v_{j}\right\rangle  &  =\sum_{i=1}^{k}\alpha_{i}\mu
+_{i}\overline{\alpha_{i}}\underbrace{\left\langle v_{i},v_{i}\right\rangle
+}_{\substack{=\left\vert \left\vert v_{i}\right\vert \right\vert
+^{2}=1\\\text{(since the tuple }\left(  v_{1},v_{2},\ldots,v_{k}\right)
+\\\text{is orthonormal)}}}=\sum_{i=1}^{k}\underbrace{\alpha_{i}\mu
+_{i}\overline{\alpha_{i}}}_{=\alpha_{i}\overline{\alpha_{i}}\cdot\mu_{i}}\\
+&  =\sum_{i=1}^{k}\underbrace{\alpha_{i}\overline{\alpha_{i}}}_{=\left\vert
+\alpha_{i}\right\vert ^{2}}\cdot\mu_{i}=\sum_{i=1}^{k}\left\vert \alpha
+_{i}\right\vert ^{2}\mu_{i}.
+\end{align*}
+Thus, (\ref{pf.lem.herm.cour-fish-lem.2}) rewrites as%
+\begin{equation}
+\left\langle Av,v\right\rangle =\sum_{i=1}^{k}\left\vert \alpha_{i}\right\vert
+^{2}\mu_{i}. \label{pf.lem.herm.cour-fish-lem.3}%
+\end{equation}
+
+
+On the other hand, from $v=\sum_{i=1}^{k}\alpha_{i}v_{i}$ and $v=\sum
+_{j=1}^{k}\alpha_{j}v_{j}$, we obtain%
+\begin{align}
+\left\langle v,v\right\rangle  &  =\left\langle \sum_{i=1}^{k}\alpha_{i}%
+v_{i},\ \sum_{j=1}^{k}\alpha_{j}v_{j}\right\rangle =\sum_{i=1}^{k}%
+\ \ \sum_{j=1}^{k}\alpha_{i}\overline{\alpha_{j}}\left\langle v_{i}%
+,v_{j}\right\rangle \nonumber\\
+&  =\sum_{i=1}^{k}\underbrace{\alpha_{i}\overline{\alpha_{i}}}_{=\left\vert
+\alpha_{i}\right\vert ^{2}}\underbrace{\left\langle v_{i},v_{i}\right\rangle
+}_{\substack{=\left\vert \left\vert v_{i}\right\vert \right\vert
+^{2}=1\\\text{(since the tuple }\left(  v_{1},v_{2},\ldots,v_{k}\right)
+\\\text{is orthonormal)}}}\nonumber\\
+&  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left(  \text{since the inner
+products }\left\langle v_{i},v_{j}\right\rangle \text{ are }0\text{ whenever
+}i\neq j\right) \nonumber\\
+&  =\sum_{i=1}^{k}\left\vert \alpha_{i}\right\vert ^{2}.
+\label{pf.lem.herm.cour-fish-lem.4}%
+\end{align}
+
+
+Now, (\ref{pf.lem.herm.cour-fish-lem.3}) becomes%
+\begin{align*}
+\left\langle Av,v\right\rangle  &  =\sum_{i=1}^{k}\left\vert \alpha
+_{i}\right\vert ^{2}\underbrace{\mu_{i}}_{\substack{\geq\mu_{1}\\\text{(since
+}\mu_{1}\leq\mu_{2}\leq\cdots\leq\mu_{k}\text{)}}}\geq\sum_{i=1}^{k}\left\vert
+\alpha_{i}\right\vert ^{2}\mu_{1}=\mu_{1}\underbrace{\sum_{i=1}^{k}\left\vert
+\alpha_{i}\right\vert ^{2}}_{\substack{=\left\langle v,v\right\rangle
+\\\text{(by (\ref{pf.lem.herm.cour-fish-lem.4}))}}}\\
+&  =\mu_{1}\left\langle v,v\right\rangle .
+\end{align*}
+This proves (\ref{eq.lem.herm.cour-fish-lem.geq}). Likewise,
+(\ref{pf.lem.herm.cour-fish-lem.3}) becomes%
+\begin{align*}
+\left\langle Av,v\right\rangle  &  =\sum_{i=1}^{k}\left\vert \alpha
+_{i}\right\vert ^{2}\underbrace{\mu_{i}}_{\substack{\leq\mu_{k}\\\text{(since
+}\mu_{1}\leq\mu_{2}\leq\cdots\leq\mu_{k}\text{)}}}\leq\sum_{i=1}^{k}\left\vert
+\alpha_{i}\right\vert ^{2}\mu_{k}=\mu_{k}\underbrace{\sum_{i=1}^{k}\left\vert
+\alpha_{i}\right\vert ^{2}}_{\substack{=\left\langle v,v\right\rangle
+\\\text{(by (\ref{pf.lem.herm.cour-fish-lem.4}))}}}\\
+&  =\mu_{k}\left\langle v,v\right\rangle .
+\end{align*}
+This proves (\ref{eq.lem.herm.cour-fish-lem.leq}).
+\end{proof}
+
+\subsubsection{The Courant--Fisher theorem: proof}
+
+Now, we are ready for the proof of the Courant--Fisher theorem:
 
 \begin{proof}
 [Proof of Theorem \ref{thm.herm.cour-fish}.]The spectral theorem (Theorem
@@ -15171,38 +15336,43 @@ nonzero vector. Thus, $\sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
 S^{\prime};\\x\neq0}}\ \ R\left(  A,x\right)  $ are well-defined.
 
 Now,%
-\[
-\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
+\begin{align}
+\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)   &  \geq
 \sup\limits_{\substack{x\in S\cap S^{\prime};\\x\neq0}}\ \ R\left(
 A,x\right)  \geq\inf\limits_{\substack{x\in S\cap S^{\prime};\\x\neq
-0}}\ \ R\left(  A,x\right)  \geq\inf\limits_{\substack{x\in S^{\prime}%
-;\\x\neq0}}\ \ R\left(  A,x\right)  .
-\]
+0}}\ \ R\left(  A,x\right) \nonumber\\
+&  \geq\inf\limits_{\substack{x\in S^{\prime};\\x\neq0}}\ \ R\left(
+A,x\right)  . \label{pf.thm.herm.cour-fish.4}%
+\end{align}
+
+
 However, I claim that $\inf\limits_{\substack{x\in S^{\prime};\\x\neq
-0}}\ \ R\left(  A,x\right)  =\lambda_{k}$. Indeed, any $x\in S^{\prime}$ is a
-linear combination $\alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}%
-u_{n}$ and therefore satisfies%
-\begin{align*}
-\left\langle Ax,x\right\rangle  &  =\left\langle A\left(  \alpha_{k}%
-u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right)  ,\ \alpha_{k}%
-u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
-&  =\left\langle \alpha_{k}Au_{k}+\alpha_{k+1}Au_{k+1}+\cdots+\alpha_{n}%
-Au_{n},\ \alpha_{k}u_{k}+\alpha_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}%
-\right\rangle \\
-&  =\left\langle \alpha_{k}\lambda_{k}u_{k}+\alpha_{k+1}\lambda_{k+1}%
-u_{k+1}+\cdots+\alpha_{n}\lambda_{n}u_{n},\ \alpha_{k}u_{k}+\alpha
-_{k+1}u_{k+1}+\cdots+\alpha_{n}u_{n}\right\rangle \\
-&  =\sum_{i=k}^{n}\underbrace{\alpha_{i}\overline{\alpha_{i}}}_{=\left\vert
-\alpha_{i}\right\vert ^{2}}\lambda_{i}\ \ \ \ \ \ \ \ \ \ \left(  \text{since
-}u_{k},u_{k+1},\ldots,u_{n}\text{ are orthonormal}\right) \\
-&  =\sum_{i=k}^{n}\left\vert \alpha_{i}\right\vert ^{2}\underbrace{\lambda
-_{i}}_{\substack{\geq\lambda_{k}\\\text{(since }\lambda_{1}\leq\lambda_{2}%
-\leq\cdots\leq\lambda_{n}\text{)}}}\geq\lambda_{k}\underbrace{\sum_{i=k}%
-^{n}\left\vert \alpha_{i}\right\vert ^{2}}_{=\left\langle x,x\right\rangle
-}=\lambda_{k}\left\langle x,x\right\rangle
-\end{align*}
-and thus $R\left(  A,x\right)  =\dfrac{\left\langle Ax,x\right\rangle
-}{\left\langle x,x\right\rangle }\geq\lambda_{k}$. So, altogether, we find%
+0}}\ \ R\left(  A,x\right)  \geq\lambda_{k}$ (actually, this is an equality,
+but we will not need this). Indeed, $\left(  u_{k},u_{k+1},\ldots
+,u_{n}\right)  $ is an orthonormal tuple of eigenvalues of $A$ (since $\left(
+u_{1},u_{2},\ldots,u_{n}\right)  $ is an orthonormal tuple of eigenvalues of
+$A$) with corresponding eigenvalues $\lambda_{k},\lambda_{k+1},\ldots
+,\lambda_{n}$ satisfying $\lambda_{k}\leq\lambda_{k+1}\leq\cdots\leq
+\lambda_{n}$ (since $\lambda_{1}\leq\lambda_{2}\leq\cdots\leq\lambda_{n}$).
+Thus, any $x\in\operatorname*{span}\left(  u_{k},u_{k+1},\ldots,u_{n}\right)
+$ satisfies%
+\[
+\left\langle Ax,x\right\rangle \geq\lambda_{k}\left\langle x,x\right\rangle
+\]
+(by (\ref{eq.lem.herm.cour-fish-lem.geq}), applied to $\left(  u_{k}%
+,u_{k+1},\ldots,u_{n}\right)  $ and $\left(  \lambda_{k},\lambda_{k+1}%
+,\ldots,\lambda_{n}\right)  $ and $x$ instead of $\left(  v_{1},v_{2}%
+,\ldots,v_{k}\right)  $ and $\left(  \mu_{1},\mu_{2},\ldots,\mu_{k}\right)  $
+and $v$) and thus $R\left(  A,x\right)  =\dfrac{\left\langle Ax,x\right\rangle
+}{\left\langle x,x\right\rangle }\geq\lambda_{k}$. In other words, any $x\in
+S^{\prime}$ satisfies $R\left(  A,x\right)  \geq\lambda_{k}$ (since
+$S^{\prime}=\operatorname*{span}\left(  u_{k},u_{k+1},\ldots,u_{n}\right)  $).
+Hence, we have%
+\[
+\inf\limits_{\substack{x\in S^{\prime};\\x\neq0}}\ \ R\left(  A,x\right)
+\geq\lambda_{k}.
+\]
+Combining this with (\ref{pf.thm.herm.cour-fish.4}), we obtain%
 \[
 \sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
 \lambda_{k}.
@@ -15226,7 +15396,7 @@ y\right\vert \right\vert =1\\
 \right) \\
 &  =\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  .
 \end{align*}
-So we conclude%
+So we conclude that%
 \[
 \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)
 =\sup\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  \geq
@@ -15246,13 +15416,15 @@ we have to choose $S=\operatorname*{span}\left(  u_{1},u_{2},\ldots
 ,u_{k}\right)  $ for this. (Why? Because each $x\in\operatorname*{span}\left(
 u_{1},u_{2},\ldots,u_{k}\right)  $ can easily be seen to satisfy $\left\langle
 Ax,x\right\rangle \leq\lambda_{k}\left\langle x,x\right\rangle $ by a similar
-argument to the one we used above.)
+argument to the one we used above\footnote{but using
+(\ref{eq.lem.herm.cour-fish-lem.leq}) instead of
+(\ref{eq.lem.herm.cour-fish-lem.geq})}.)
 
-So $\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $ is
-$\geq\lambda_{k}$ for each $S$, but is $=\lambda_{k}$ for a certain $S$.
-Therefore, $\lambda_{k}$ is the smallest possible value of $\max
-\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(  A,x\right)  $. In other
-words,%
+Thus, we have shown that the value $\max\limits_{\substack{x\in S;\\x\neq
+0}}\ \ R\left(  A,x\right)  $ is $\geq\lambda_{k}$ for each $S$, but is
+$=\lambda_{k}$ for a certain $S$. Therefore, $\lambda_{k}$ is the smallest
+possible value of $\max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
+A,x\right)  $. In other words,%
 \[
 \lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
 subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
@@ -15260,30 +15432,33 @@ A,x\right)  .
 \]
 
 
-It remains to prove the other part of the theorem -- i.e., the equality%
-\[
-\lambda_{k}=\max\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
-subspace;}\\\dim S=n-k+1}}\ \ \min\limits_{\substack{x\in S;\\x\neq
-0}}\ \ R\left(  A,x\right)  .
-\]
+Thus, we have proved (\ref{thm.herm.cour-fish.minmax}). It remains to prove
+the other part of the theorem -- i.e., the equality
+(\ref{thm.herm.cour-fish.maxmin}).
+
 One way to prove this is by arguing similarly to the above proof.
-Alternatively, we can simply apply the already proved equality%
-\[
-\lambda_{k}=\min\limits_{\substack{S\subseteq\mathbb{C}^{n}\text{ is a
-subspace;}\\\dim S=k}}\ \ \max\limits_{\substack{x\in S;\\x\neq0}}\ \ R\left(
-A,x\right)
-\]
-to $-A$ instead of $A$, recalling that $-A$ is a Hermitian matrix with
-eigenvalues%
+Alternatively, we can simply apply the already proved equality
+(\ref{thm.herm.cour-fish.minmax}) to $-A$ instead of $A$, after noticing that
+$-A$ is a Hermitian matrix with eigenvalues%
 \[
 -\lambda_{n}\leq-\lambda_{n-1}\leq\cdots\leq-\lambda_{1}.
 \]
 Keep in mind that $-\lambda_{k}$ is not the $k$-th smallest eigenvalue of
-$-A$, but it is the $k$-th largest eigenvalue of $-A$, and thus the $\left(
-n-k+1\right)  $-st smallest eigenvalue of $-A$. Thus, we have to apply the
-equality to $-A$ and $n-k+1$ instead of $A$ and $k$. Taking negatives turns
-minima into maxima and vice versa.
+$-A$, but rather is the $k$-th largest eigenvalue of $-A$, and thus the
+$\left(  n-k+1\right)  $-st smallest eigenvalue of $-A$. Thus, we have to
+apply the equality (\ref{thm.herm.cour-fish.minmax}) to $-A$ and $n-k+1$
+instead of $A$ and $k$. Taking negatives turns minima into maxima and vice
+versa (i.e., we have $\min\limits_{x\in\Omega}\left(  -f\left(  x\right)
+\right)  =-\max\limits_{x\in\Omega}f\left(  x\right)  $ and $\max
+\limits_{x\in\Omega}\left(  -f\left(  x\right)  \right)  =-\min\limits_{x\in
+\Omega}f\left(  x\right)  $). Finally, it is helpful to know that $R\left(
+-A,x\right)  =-R\left(  A,x\right)  $ for any vector $x\in\mathbb{C}^{n}$.
+Armed with these observations, we can easily derive
+(\ref{thm.herm.cour-fish.maxmin}) from (\ref{thm.herm.cour-fish.minmax}). The
+proof of Theorem \ref{thm.herm.cour-fish} is now complete.
 \end{proof}
+
+\subsubsection{The Weyl inequalities}
 
 The Courant--Fisher theorem can be used to connect the eigenvalues of $A+B$
 with the eigenvalues of $A$ and $B$.
@@ -15348,11 +15523,11 @@ _{1}\left(  A+B\right)  .
 $\left(  z_{1},z_{2},\ldots,z_{n}\right)  $ be three orthonormal bases of
 $\mathbb{C}^{n}$ with%
 \[
-Ax_{i}=\lambda_{i}\left(  A\right)  x_{i},\ \ \ \ \ \ \ \ \ \ By_{i}%
-=\lambda_{i}\left(  B\right)  y_{i},\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
-z_{i}=\lambda_{i}\left(  A+B\right)  z_{i}%
+Ax_{k}=\lambda_{k}\left(  A\right)  x_{k},\ \ \ \ \ \ \ \ \ \ By_{k}%
+=\lambda_{k}\left(  B\right)  y_{k},\ \ \ \ \ \ \ \ \ \ \left(  A+B\right)
+z_{k}=\lambda_{k}\left(  A+B\right)  z_{k}%
 \]
-for all $i\in\left[  n\right]  $. (As above, we can find such bases by using
+for all $k\in\left[  n\right]  $. (As above, we can find such bases by using
 the spectral decompositions of $A$, $B$ and $A+B$.)
 
 Let
@@ -15372,21 +15547,25 @@ there is a length-$1$ vector $v$ in $S_{1}\cap S_{2}\cap S_{3}$. This $v$
 satisfies%
 \begin{align*}
 \lambda_{i}\left(  A+B\right)   &  \leq\left\langle \left(  A+B\right)
-v,\ v\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{since }v\in
-S_{3}=\operatorname*{span}\left(  z_{i},z_{i+1},\ldots,z_{n}\right)  \right)
-\\
+v,\ v\right\rangle \ \ \ \ \ \ \ \ \ \ \left(  \text{by
+(\ref{eq.lem.herm.cour-fish-lem.geq}), since }v\in S_{3}=\operatorname*{span}%
+\left(  z_{i},z_{i+1},\ldots,z_{n}\right)  \right) \\
 &  =\left\langle Av+Bv,\ v\right\rangle =\underbrace{\left\langle
 Av,\ v\right\rangle }_{\substack{\leq\lambda_{i+j}\left(  A\right)
-\\\text{(since }v\in S_{1}=\operatorname*{span}\left(  x_{1},x_{2}%
-,\ldots,x_{i+j}\right)  \text{)}}}+\underbrace{\left\langle
-Bv,\ v\right\rangle }_{\substack{\leq\lambda_{n-j}\left(  B\right)
-\\\text{(since }v\in S_{2}=\operatorname*{span}\left(  y_{1},y_{2}%
+\\\text{(by (\ref{eq.lem.herm.cour-fish-lem.leq}),}\\\text{since }v\in
+S_{1}=\operatorname*{span}\left(  x_{1},x_{2},\ldots,x_{i+j}\right)  \text{)}%
+}}+\underbrace{\left\langle Bv,\ v\right\rangle }_{\substack{\leq\lambda
+_{n-j}\left(  B\right)  \\\text{(by (\ref{eq.lem.herm.cour-fish-lem.leq}%
+),}\\\text{since }v\in S_{2}=\operatorname*{span}\left(  y_{1},y_{2}%
 ,\ldots,y_{n-j}\right)  \text{)}}}\\
 &  \leq\lambda_{i+j}\left(  A\right)  +\lambda_{n-j}\left(  B\right)  .
 \end{align*}
-This proves \textbf{(a)}.
+This proves the inequality part of Theorem \ref{thm.herm.weyl-ineq}
+\textbf{(a)}. The equality case is not hard to analyze following the above
+argument; we leave this to the reader.
 
-We leave \textbf{(b)} and \textbf{(c)} to the reader.
+The proof of Theorem \ref{thm.herm.weyl-ineq} \textbf{(b)} is left to the
+reader as well.
 \end{proof}
 
 \subsection{([Missing lecture]) The interlacing theorem}
